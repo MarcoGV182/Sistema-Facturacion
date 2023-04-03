@@ -83,6 +83,7 @@
     <Compile Include="DRuc.cs" />
     <Compile Include="DServicio.cs" />
     <Compile Include="DSucursal.cs" />
+    <Compile Include="DTimbrado.cs" />
     <Compile Include="DTipoAjuste.cs" />
     <Compile Include="DTipoComprobante.cs" />
     <Compile Include="DTipoDocumento.cs" />
