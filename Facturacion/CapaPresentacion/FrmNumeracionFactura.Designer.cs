@@ -29,70 +29,47 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.cboComprobante = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
+            this.grbRegistro = new System.Windows.Forms.GroupBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.dataListado = new System.Windows.Forms.DataGridView();
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.chkEstado = new System.Windows.Forms.CheckBox();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtNumeroHasta = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cboComprobante = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.txtNumeroDesde = new System.Windows.Forms.TextBox();
             this.txtPuntoExpedicion = new System.Windows.Forms.TextBox();
             this.txtEstablecimiento = new System.Windows.Forms.TextBox();
+            this.chkEstadoTimbrado = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnGuardarTimbrado = new System.Windows.Forms.Button();
+            this.btnEliminarTimbrado = new System.Windows.Forms.Button();
+            this.btnEditarTimbrado = new System.Windows.Forms.Button();
+            this.dgTimbrados = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dtpFechaInicioVigencia = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.dtpFechaVencimiento = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtNroTimbrado = new System.Windows.Forms.TextBox();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.grbNumeracion = new System.Windows.Forms.GroupBox();
+            this.txtNuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
+            this.grbRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTimbrados)).BeginInit();
+            this.grbNumeracion.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // cboComprobante
-            // 
-            this.cboComprobante.FormattingEnabled = true;
-            this.cboComprobante.Items.AddRange(new object[] {
-            "Factura",
-            "Nota de Credito",
-            "AutoFactura",
-            "Ticket",
-            "Proforma"});
-            this.cboComprobante.Location = new System.Drawing.Point(361, 67);
-            this.cboComprobante.Name = "cboComprobante";
-            this.cboComprobante.Size = new System.Drawing.Size(121, 21);
-            this.cboComprobante.TabIndex = 3;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(364, 51);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(94, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Tipo Comprobante";
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Location = new System.Drawing.Point(22, 182);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 4;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // errorIcono
             // 
@@ -101,6 +78,38 @@
             // ttMensaje
             // 
             this.ttMensaje.IsBalloon = true;
+            // 
+            // grbRegistro
+            // 
+            this.grbRegistro.Controls.Add(this.btnCancelar);
+            this.grbRegistro.Controls.Add(this.dataListado);
+            this.grbRegistro.Controls.Add(this.btnEliminar);
+            this.grbRegistro.Controls.Add(this.btnGuardar);
+            this.grbRegistro.Controls.Add(this.label10);
+            this.grbRegistro.Controls.Add(this.txtNumeroHasta);
+            this.grbRegistro.Controls.Add(this.label6);
+            this.grbRegistro.Controls.Add(this.cboComprobante);
+            this.grbRegistro.Controls.Add(this.label3);
+            this.grbRegistro.Controls.Add(this.label2);
+            this.grbRegistro.Controls.Add(this.label4);
+            this.grbRegistro.Controls.Add(this.label1);
+            this.grbRegistro.Controls.Add(this.txtNumeroDesde);
+            this.grbRegistro.Controls.Add(this.txtPuntoExpedicion);
+            this.grbRegistro.Controls.Add(this.txtEstablecimiento);
+            this.grbRegistro.Location = new System.Drawing.Point(11, 67);
+            this.grbRegistro.Name = "grbRegistro";
+            this.grbRegistro.Size = new System.Drawing.Size(695, 450);
+            this.grbRegistro.TabIndex = 11;
+            this.grbRegistro.TabStop = false;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(172, 74);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 19;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // dataListado
             // 
@@ -113,15 +122,13 @@
             this.dataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Eliminar});
-            this.dataListado.Location = new System.Drawing.Point(22, 211);
+            this.dataListado.Location = new System.Drawing.Point(7, 103);
             this.dataListado.MultiSelect = false;
             this.dataListado.Name = "dataListado";
             this.dataListado.ReadOnly = true;
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListado.Size = new System.Drawing.Size(602, 165);
-            this.dataListado.TabIndex = 8;
-            this.dataListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentClick);
-            this.dataListado.DoubleClick += new System.EventHandler(this.dataListado_DoubleClick);
+            this.dataListado.Size = new System.Drawing.Size(683, 330);
+            this.dataListado.TabIndex = 17;
             // 
             // Eliminar
             // 
@@ -129,51 +136,72 @@
             this.Eliminar.Name = "Eliminar";
             this.Eliminar.ReadOnly = true;
             // 
-            // chkEstado
-            // 
-            this.chkEstado.AutoSize = true;
-            this.chkEstado.Location = new System.Drawing.Point(488, 70);
-            this.chkEstado.Name = "chkEstado";
-            this.chkEstado.Size = new System.Drawing.Size(59, 17);
-            this.chkEstado.TabIndex = 9;
-            this.chkEstado.Text = "Estado";
-            this.chkEstado.UseVisualStyleBackColor = true;
-            // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(103, 182);
+            this.btnEliminar.Location = new System.Drawing.Point(91, 74);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 10;
+            this.btnEliminar.TabIndex = 18;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // groupBox1
+            // btnGuardar
             // 
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtNumero);
-            this.groupBox1.Controls.Add(this.txtPuntoExpedicion);
-            this.groupBox1.Controls.Add(this.txtEstablecimiento);
-            this.groupBox1.Location = new System.Drawing.Point(23, 31);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(327, 73);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Numeración";
+            this.btnGuardar.Location = new System.Drawing.Point(10, 74);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardar.TabIndex = 16;
+            this.btnGuardar.Text = "Insertar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(374, 20);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Hasta";
+            // 
+            // txtNumeroHasta
+            // 
+            this.txtNumeroHasta.Location = new System.Drawing.Point(343, 36);
+            this.txtNumeroHasta.MaxLength = 50;
+            this.txtNumeroHasta.Name = "txtNumeroHasta";
+            this.txtNumeroHasta.Size = new System.Drawing.Size(100, 20);
+            this.txtNumeroHasta.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(491, 19);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(94, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Tipo Comprobante";
+            // 
+            // cboComprobante
+            // 
+            this.cboComprobante.FormattingEnabled = true;
+            this.cboComprobante.Items.AddRange(new object[] {
+            "Factura",
+            "Nota de Credito",
+            "AutoFactura",
+            "Ticket",
+            "Proforma"});
+            this.cboComprobante.Location = new System.Drawing.Point(488, 35);
+            this.cboComprobante.Name = "cboComprobante";
+            this.cboComprobante.Size = new System.Drawing.Size(121, 21);
+            this.cboComprobante.TabIndex = 12;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(233, 21);
+            this.label3.Location = new System.Drawing.Point(264, 21);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Numero";
+            this.label3.Text = "Desde";
             // 
             // label2
             // 
@@ -183,15 +211,6 @@
             this.label2.Size = new System.Drawing.Size(59, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Punto Exp.";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(189, 41);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(10, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "-";
             // 
             // label4
             // 
@@ -211,14 +230,14 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Establecimiento";
             // 
-            // txtNumero
+            // txtNumeroDesde
             // 
-            this.txtNumero.Location = new System.Drawing.Point(206, 36);
-            this.txtNumero.MaxLength = 50;
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(100, 20);
-            this.txtNumero.TabIndex = 10;
-            this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
+            this.txtNumeroDesde.Location = new System.Drawing.Point(237, 36);
+            this.txtNumeroDesde.MaxLength = 50;
+            this.txtNumeroDesde.Name = "txtNumeroDesde";
+            this.txtNumeroDesde.Size = new System.Drawing.Size(100, 20);
+            this.txtNumeroDesde.TabIndex = 10;
+            this.txtNumeroDesde.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             // 
             // txtPuntoExpedicion
             // 
@@ -238,25 +257,87 @@
             this.txtEstablecimiento.TabIndex = 3;
             this.txtEstablecimiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstablecimiento_KeyPress);
             // 
+            // chkEstadoTimbrado
+            // 
+            this.chkEstadoTimbrado.AutoSize = true;
+            this.chkEstadoTimbrado.Location = new System.Drawing.Point(454, 34);
+            this.chkEstadoTimbrado.Name = "chkEstadoTimbrado";
+            this.chkEstadoTimbrado.Size = new System.Drawing.Size(59, 17);
+            this.chkEstadoTimbrado.TabIndex = 13;
+            this.chkEstadoTimbrado.Text = "Estado";
+            this.chkEstadoTimbrado.UseVisualStyleBackColor = true;
+            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dtpFechaInicioVigencia);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.dtpFechaVencimiento);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.txtNroTimbrado);
-            this.groupBox2.Location = new System.Drawing.Point(23, 110);
+            this.groupBox2.Controls.Add(this.txtNuevo);
+            this.groupBox2.Controls.Add(this.btnGuardarTimbrado);
+            this.groupBox2.Controls.Add(this.btnEliminarTimbrado);
+            this.groupBox2.Controls.Add(this.btnEditarTimbrado);
+            this.groupBox2.Controls.Add(this.dgTimbrados);
+            this.groupBox2.Location = new System.Drawing.Point(12, 24);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(472, 66);
+            this.groupBox2.Size = new System.Drawing.Size(515, 412);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Timbrado";
             // 
+            // btnGuardarTimbrado
+            // 
+            this.btnGuardarTimbrado.Location = new System.Drawing.Point(109, 38);
+            this.btnGuardarTimbrado.Name = "btnGuardarTimbrado";
+            this.btnGuardarTimbrado.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardarTimbrado.TabIndex = 18;
+            this.btnGuardarTimbrado.Text = "Guardar";
+            this.btnGuardarTimbrado.UseVisualStyleBackColor = true;
+            this.btnGuardarTimbrado.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnEliminarTimbrado
+            // 
+            this.btnEliminarTimbrado.Location = new System.Drawing.Point(190, 38);
+            this.btnEliminarTimbrado.Name = "btnEliminarTimbrado";
+            this.btnEliminarTimbrado.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarTimbrado.TabIndex = 17;
+            this.btnEliminarTimbrado.Text = "Eliminar";
+            this.btnEliminarTimbrado.UseVisualStyleBackColor = true;
+            // 
+            // btnEditarTimbrado
+            // 
+            this.btnEditarTimbrado.Location = new System.Drawing.Point(271, 38);
+            this.btnEditarTimbrado.Name = "btnEditarTimbrado";
+            this.btnEditarTimbrado.Size = new System.Drawing.Size(75, 23);
+            this.btnEditarTimbrado.TabIndex = 16;
+            this.btnEditarTimbrado.Text = "Editar";
+            this.btnEditarTimbrado.UseVisualStyleBackColor = true;
+            // 
+            // dgTimbrados
+            // 
+            this.dgTimbrados.AllowUserToAddRows = false;
+            this.dgTimbrados.AllowUserToDeleteRows = false;
+            this.dgTimbrados.AllowUserToOrderColumns = true;
+            this.dgTimbrados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgTimbrados.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgTimbrados.BackgroundColor = System.Drawing.Color.White;
+            this.dgTimbrados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTimbrados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCheckBoxColumn1});
+            this.dgTimbrados.Location = new System.Drawing.Point(6, 67);
+            this.dgTimbrados.MultiSelect = false;
+            this.dgTimbrados.Name = "dgTimbrados";
+            this.dgTimbrados.ReadOnly = true;
+            this.dgTimbrados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgTimbrados.Size = new System.Drawing.Size(493, 321);
+            this.dgTimbrados.TabIndex = 15;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Eliminar";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            // 
             // dtpFechaInicioVigencia
             // 
             this.dtpFechaInicioVigencia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaInicioVigencia.Location = new System.Drawing.Point(172, 36);
+            this.dtpFechaInicioVigencia.Location = new System.Drawing.Point(186, 32);
             this.dtpFechaInicioVigencia.Name = "dtpFechaInicioVigencia";
             this.dtpFechaInicioVigencia.ShowCheckBox = true;
             this.dtpFechaInicioVigencia.Size = new System.Drawing.Size(113, 20);
@@ -265,7 +346,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(183, 20);
+            this.label9.Location = new System.Drawing.Point(197, 16);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(86, 13);
             this.label9.TabIndex = 13;
@@ -274,7 +355,7 @@
             // dtpFechaVencimiento
             // 
             this.dtpFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaVencimiento.Location = new System.Drawing.Point(312, 36);
+            this.dtpFechaVencimiento.Location = new System.Drawing.Point(326, 32);
             this.dtpFechaVencimiento.Name = "dtpFechaVencimiento";
             this.dtpFechaVencimiento.ShowCheckBox = true;
             this.dtpFechaVencimiento.Size = new System.Drawing.Size(113, 20);
@@ -283,7 +364,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(309, 20);
+            this.label8.Location = new System.Drawing.Point(323, 16);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(98, 13);
             this.label8.TabIndex = 11;
@@ -292,7 +373,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 20);
+            this.label7.Location = new System.Drawing.Point(24, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 13);
             this.label7.TabIndex = 11;
@@ -300,71 +381,74 @@
             // 
             // txtNroTimbrado
             // 
-            this.txtNroTimbrado.Location = new System.Drawing.Point(11, 36);
+            this.txtNroTimbrado.Location = new System.Drawing.Point(25, 32);
             this.txtNroTimbrado.MaxLength = 50;
             this.txtNroTimbrado.Name = "txtNroTimbrado";
             this.txtNroTimbrado.Size = new System.Drawing.Size(130, 20);
             this.txtNroTimbrado.TabIndex = 10;
             this.txtNroTimbrado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTimbrado_KeyPress);
             // 
-            // btnCancelar
+            // grbNumeracion
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(184, 182);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 13;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.grbNumeracion.Controls.Add(this.grbRegistro);
+            this.grbNumeracion.Controls.Add(this.dtpFechaInicioVigencia);
+            this.grbNumeracion.Controls.Add(this.label9);
+            this.grbNumeracion.Controls.Add(this.chkEstadoTimbrado);
+            this.grbNumeracion.Controls.Add(this.dtpFechaVencimiento);
+            this.grbNumeracion.Controls.Add(this.label8);
+            this.grbNumeracion.Controls.Add(this.label7);
+            this.grbNumeracion.Controls.Add(this.txtNroTimbrado);
+            this.grbNumeracion.Location = new System.Drawing.Point(533, 24);
+            this.grbNumeracion.Name = "grbNumeracion";
+            this.grbNumeracion.Size = new System.Drawing.Size(718, 547);
+            this.grbNumeracion.TabIndex = 14;
+            this.grbNumeracion.TabStop = false;
+            this.grbNumeracion.Text = "Numeración";
+            // 
+            // txtNuevo
+            // 
+            this.txtNuevo.Location = new System.Drawing.Point(28, 38);
+            this.txtNuevo.Name = "txtNuevo";
+            this.txtNuevo.Size = new System.Drawing.Size(75, 23);
+            this.txtNuevo.TabIndex = 19;
+            this.txtNuevo.Text = "Nuevo";
+            this.txtNuevo.UseVisualStyleBackColor = true;
+            this.txtNuevo.Click += new System.EventHandler(this.txtNuevo_Click);
             // 
             // FrmNumeracionFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 388);
-            this.Controls.Add(this.btnCancelar);
+            this.ClientSize = new System.Drawing.Size(1285, 583);
+            this.Controls.Add(this.grbNumeracion);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.chkEstado);
-            this.Controls.Add(this.dataListado);
-            this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.cboComprobante);
-            this.Controls.Add(this.label6);
             this.Name = "FrmNumeracionFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Numeracion";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmNumeracionFactura_FormClosing);
             this.Load += new System.EventHandler(this.FrmNumeracionFactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
+            this.grbRegistro.ResumeLayout(false);
+            this.grbRegistro.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTimbrados)).EndInit();
+            this.grbNumeracion.ResumeLayout(false);
+            this.grbNumeracion.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox cboComprobante;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.ErrorProvider errorIcono;
         private System.Windows.Forms.ToolTip ttMensaje;
-        private System.Windows.Forms.DataGridView dataListado;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
-        private System.Windows.Forms.CheckBox chkEstado;
-        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grbRegistro;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.TextBox txtNumeroDesde;
         private System.Windows.Forms.TextBox txtPuntoExpedicion;
         private System.Windows.Forms.TextBox txtEstablecimiento;
         private System.Windows.Forms.DateTimePicker dtpFechaVencimiento;
@@ -373,6 +457,22 @@
         private System.Windows.Forms.TextBox txtNroTimbrado;
         private System.Windows.Forms.DateTimePicker dtpFechaInicioVigencia;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox grbNumeracion;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtNumeroHasta;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cboComprobante;
+        private System.Windows.Forms.CheckBox chkEstadoTimbrado;
+        private System.Windows.Forms.DataGridView dgTimbrados;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.Button btnEliminarTimbrado;
+        private System.Windows.Forms.Button btnEditarTimbrado;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.DataGridView dataListado;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnGuardarTimbrado;
+        private System.Windows.Forms.Button txtNuevo;
     }
 }

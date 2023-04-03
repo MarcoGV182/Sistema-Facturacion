@@ -5,119 +5,56 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection.Emit;
 
 namespace CapaDatos
 {
     public class DNumeracionComprobante
     {
-        private int _Id;
+        public int Id { get; set; }
         public int TipoComprobante { get; set; }
         public int Establecimiento { get; set; }
         public int PuntoExpedicion { get; set; }
-        private decimal _Numero;
-        private string _Timbrado;
-        public DateTime? FechaInicioVigencia { get; set; }
-        private DateTime? _FechaVencimiento;
-        private char _Estado;
+        public int NumeroDesde { get; set; }
+        public int NumeroHasta { get; set; }
+        public DTimbrado Timbrado { get; set; }
 
-        public int Id
-        {
-            get
-            {
-                return _Id;
-            }
-
-            set
-            {
-                _Id = value;
-            }
-        }        
-
-        public decimal Numero
-        {
-            get
-            {
-                return _Numero;
-            }
-
-            set
-            {
-                _Numero = value;
-            }
-        }
-
-        public char Estado 
-        { 
-            get 
-            {
-                return _Estado;
-            }
-            set 
-            {
-                _Estado = value;
-            }
-        }
-
-        public string Timbrado
-        {
-            get
-            {
-                return _Timbrado;
-            }
-
-            set
-            {
-                _Timbrado = value;
-            }
-        }
-
-        public DateTime? FechaVencimiento
-        {
-            get
-            {
-                return _FechaVencimiento;
-            }
-
-            set
-            {
-                _FechaVencimiento = value;
-            }
-        }
 
         public DNumeracionComprobante() { }
 
-        public DNumeracionComprobante(int id, int establecimiento, int puntoexpedicion, int tipocomprobante,decimal numero,string timbrado, DateTime fechainiciovigencia, DateTime fechavencimiento ,char estado)
+        public DNumeracionComprobante(int id, int establecimiento, int puntoexpedicion, int tipocomprobante,int numerodesde,int numerohasta,DTimbrado timbrado,char estado)
         {
             this.Id = id;
             this.Establecimiento = establecimiento;
             this.PuntoExpedicion = puntoexpedicion;
             this.TipoComprobante = tipocomprobante;
-            this.Numero = numero;
+            this.NumeroDesde = numerodesde;
+            this.NumeroHasta = numerohasta;
             this.Timbrado = timbrado;
-            this.FechaInicioVigencia = fechainiciovigencia;
-            this.FechaVencimiento = fechavencimiento;
-            this.Estado = estado;
         }
 
 
         //Metodo Insertar
-        public string InsertarNumeracion(DNumeracionComprobante Numeracion)
+        public string InsertarNumeracion(DNumeracionComprobante Numeracion, SqlConnection sqlExistente=null, SqlTransaction sqltranExistente=null)
         {
             //declarar variable respuesta
-            string rpta = "";
+            string rpta = "OK";
             //instanciamos la conexion
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
+            SqlTransaction sqltran = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, sqlExistente);
+                sqltran = sqltranExistente == null ? Sqlcon.BeginTransaction() : sqltranExistente;
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
+                SqlCmd.Transaction = sqltran;
                 SqlCmd.CommandText = "sp_InsertarNumeracionComprobante";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
+                #region Parametros
                 //Parametros que recibe el procedimiento almacenado
                 SqlParameter ParId = new SqlParameter();
                 ParId.ParameterName = "@Id";
@@ -141,11 +78,17 @@ namespace CapaDatos
                 SqlCmd.Parameters.Add(ParSucursal);
 
                 //Parametros 
-                SqlParameter ParUltimoNumero = new SqlParameter();
-                ParUltimoNumero.ParameterName = "@Numero";
-                ParUltimoNumero.SqlDbType = SqlDbType.Decimal;
-                ParUltimoNumero.Value = Numeracion.Numero;
-                SqlCmd.Parameters.Add(ParUltimoNumero);
+                SqlParameter ParNumeroDesde = new SqlParameter();
+                ParNumeroDesde.ParameterName = "@NumeroDesde";
+                ParNumeroDesde.SqlDbType = SqlDbType.Int;
+                ParNumeroDesde.Value = Numeracion.NumeroDesde;
+                SqlCmd.Parameters.Add(ParNumeroDesde);
+
+                SqlParameter ParNumeroHasta = new SqlParameter();
+                ParNumeroHasta.ParameterName = "@NumeroHasta";
+                ParNumeroHasta.SqlDbType = SqlDbType.Int;
+                ParNumeroHasta.Value = Numeracion.NumeroHasta;
+                SqlCmd.Parameters.Add(ParNumeroHasta);
 
                 //Parametros 
                 SqlParameter ParTipoComprobante = new SqlParameter();
@@ -159,44 +102,27 @@ namespace CapaDatos
                 //Parametros 
                 SqlParameter ParTimbrado = new SqlParameter();
                 ParTimbrado.ParameterName = "@Timbrado";
-                ParTimbrado.SqlDbType = SqlDbType.VarChar;
-                ParTimbrado.Size = 50;
-                ParTimbrado.Value = Numeracion.Timbrado;
+                ParTimbrado.SqlDbType = SqlDbType.Int;
+                ParTimbrado.Value = Numeracion.Timbrado.IdTimbrado;
                 SqlCmd.Parameters.Add(ParTimbrado);
 
-                SqlParameter ParFechaInicioVigencia = new SqlParameter();
-                ParFechaInicioVigencia.ParameterName = "@FechaInicioVigencia";
-                ParFechaInicioVigencia.SqlDbType = SqlDbType.Date;
-                ParFechaInicioVigencia.Value = Numeracion.FechaInicioVigencia;
-                SqlCmd.Parameters.Add(ParFechaInicioVigencia);
-
-                SqlParameter ParFechaVencimiento = new SqlParameter();
-                ParFechaVencimiento.ParameterName = "@FechaVencimiento";
-                ParFechaVencimiento.SqlDbType = SqlDbType.Date;
-                ParFechaVencimiento.Value = Numeracion.FechaVencimiento;
-                SqlCmd.Parameters.Add(ParFechaVencimiento);
-
-
-                //Parametro Estado
-                SqlParameter ParEstado = new SqlParameter();
-                ParEstado.ParameterName = "@Estado";
-                ParEstado.SqlDbType = SqlDbType.Char;
-                ParEstado.Size = 1;
-                ParEstado.Value = Numeracion.Estado;
-                SqlCmd.Parameters.Add(ParEstado);
-
+                #endregion
 
                 //ejecutar el comando sql
-                rpta = SqlCmd.ExecuteNonQuery() >= 1 ? "OK" : "No se inserto el registro";
+                SqlCmd.ExecuteNonQuery();
+
+                if (sqltranExistente == null)
+                    sqltran.Commit();
             }
             catch (Exception ex)
             {
+                if (sqltranExistente == null)
+                    sqltran.Rollback();
                 rpta = ex.Message;
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                Conexion.CerrarConexion(Sqlcon, ref sqlExistente);
             }
             return rpta;
         }
@@ -220,6 +146,7 @@ namespace CapaDatos
                 SqlCmd.CommandText = "sp_EditarNumeracionComprobante";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
+                #region Parametros
                 //Parametros que recibe el procedimiento almacenado
                 SqlParameter ParId = new SqlParameter();
                 ParId.ParameterName = "@Id";
@@ -243,16 +170,23 @@ namespace CapaDatos
                 SqlCmd.Parameters.Add(ParSucursal);
 
                 //Parametros 
-                SqlParameter ParUltimoNumero = new SqlParameter();
-                ParUltimoNumero.ParameterName = "@Numero";
-                ParUltimoNumero.SqlDbType = SqlDbType.Decimal;
-                ParUltimoNumero.Value = Numeracion.Numero;
-                SqlCmd.Parameters.Add(ParUltimoNumero);
+                SqlParameter ParNumeroDesde = new SqlParameter();
+                ParNumeroDesde.ParameterName = "@NumeroDesde";
+                ParNumeroDesde.SqlDbType = SqlDbType.Int;
+                ParNumeroDesde.Value = Numeracion.NumeroDesde;
+                SqlCmd.Parameters.Add(ParNumeroDesde);
+
+                SqlParameter ParNumeroHasta = new SqlParameter();
+                ParNumeroHasta.ParameterName = "@NumeroHasta";
+                ParNumeroHasta.SqlDbType = SqlDbType.Int;
+                ParNumeroHasta.Value = Numeracion.NumeroHasta;
+                SqlCmd.Parameters.Add(ParNumeroHasta);
 
                 //Parametros 
                 SqlParameter ParTipoComprobante = new SqlParameter();
                 ParTipoComprobante.ParameterName = "@TipoComprobante";
-                ParTipoComprobante.SqlDbType = SqlDbType.Int;
+                ParTipoComprobante.SqlDbType = SqlDbType.VarChar;
+                ParTipoComprobante.Size = 10;
                 ParTipoComprobante.Value = Numeracion.TipoComprobante;
                 SqlCmd.Parameters.Add(ParTipoComprobante);
 
@@ -260,32 +194,11 @@ namespace CapaDatos
                 //Parametros 
                 SqlParameter ParTimbrado = new SqlParameter();
                 ParTimbrado.ParameterName = "@Timbrado";
-                ParTimbrado.SqlDbType = SqlDbType.VarChar;
-                ParTimbrado.Size = 50;
-                ParTimbrado.Value = Numeracion.Timbrado;
+                ParTimbrado.SqlDbType = SqlDbType.Int;
+                ParTimbrado.Value = Numeracion.Timbrado.IdTimbrado;
                 SqlCmd.Parameters.Add(ParTimbrado);
 
-                SqlParameter ParFechaInicio = new SqlParameter();
-                ParFechaInicio.ParameterName = "@FechaInicioVigencia";
-                ParFechaInicio.SqlDbType = SqlDbType.Date;
-                ParFechaInicio.Value = Numeracion.FechaInicioVigencia;
-                SqlCmd.Parameters.Add(ParFechaInicio);
-
-                SqlParameter ParFechaVencimiento = new SqlParameter();
-                ParFechaVencimiento.ParameterName = "@FechaVencimiento";
-                ParFechaVencimiento.SqlDbType = SqlDbType.Date;
-                ParFechaVencimiento.Value = Numeracion.FechaVencimiento;
-                SqlCmd.Parameters.Add(ParFechaVencimiento);
-
-
-                //Parametro Estado
-                SqlParameter ParEstado = new SqlParameter();
-                ParEstado.ParameterName = "@Estado";
-                ParEstado.SqlDbType = SqlDbType.Char;
-                ParEstado.Size = 1;
-                ParEstado.Value = Numeracion.Estado;
-                SqlCmd.Parameters.Add(ParEstado);
-
+                #endregion
 
                 //ejecutar el comando sql
                 rpta = SqlCmd.ExecuteNonQuery() >= 1 ? "OK" : "No se modificó el registro";

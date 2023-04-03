@@ -15,6 +15,12 @@ namespace CapaNegocio
             return obj.InsertarNumeracion(numeracionComprobante);
         }
 
+        public static string Insertar(DTimbrado timbrado,List<DNumeracionComprobante> ListaNumeracion)
+        {
+            DTimbrado obj = new DTimbrado();
+            return obj.InsertarNumeracionTimbrado(timbrado, ListaNumeracion);
+        }
+
         public static string Editar(DNumeracionComprobante numeracionComprobante)
         {
             DNumeracionComprobante obj = new DNumeracionComprobante();           

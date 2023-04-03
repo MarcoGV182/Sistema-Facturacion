@@ -16,7 +16,9 @@ namespace CapaPresentacion
     {
         private bool IsNuevo = false;
         private bool IsEditar = false;
-        private string id = string.Empty;
+        private int IdNumeracion = 0;
+        private int IdTimbrado = 0;
+        List<DNumeracionComprobante> ListaNumeracion = null;
 
         public FrmNumeracionFactura()
         {
@@ -69,16 +71,17 @@ namespace CapaPresentacion
         //Limpiar los controles del formulario
         private void Limpiar()
         {
-            this.id = string.Empty;
+            this.IdTimbrado = 0;
+            this.IdNumeracion = 0;
             this.txtEstablecimiento.Text = string.Empty;
             this.txtPuntoExpedicion.Text = string.Empty;
-            this.txtNumero.Text = string.Empty;
+            this.txtNumeroDesde.Text = string.Empty;
             this.txtNroTimbrado.Text = string.Empty;
             this.dtpFechaInicioVigencia.Checked = false;
             this.dtpFechaVencimiento.Checked = false;
             this.dtpFechaInicioVigencia.Value = DateTime.Now;
             this.dtpFechaVencimiento.Value = DateTime.Now;
-            this.chkEstado.Checked = false;
+            this.chkEstadoTimbrado.Checked = false;
             this.cboComprobante.SelectedIndex = 0;
         }
 
@@ -129,12 +132,12 @@ namespace CapaPresentacion
             try
             {
                 string rpta = "";
-                char estado;
+                string estado;
                 DateTime? fecha, fechaInicio;
                 
 
                 //EVALUAR CHECK ESTADO
-                estado = chkEstado.Checked == true ? 'A' : 'I';
+                estado = chkEstadoTimbrado.Checked == true ? "A" : "I";
 
                 //EVALUAR FECHA VENCIMIENTO
                 if (dtpFechaVencimiento.Checked==false)
@@ -154,41 +157,44 @@ namespace CapaPresentacion
                     return;
                 }
 
+                DTimbrado t = new DTimbrado()
+                {
+                    IdTimbrado = IdTimbrado,
+                    NroTimbrado = txtNroTimbrado.Text,
+                    FechaInicioVigencia = this.dtpFechaInicioVigencia.Value.ToString("dd-MM-yyyy"),
+                    FechaFinVigencia = dtpFechaVencimiento.Value.ToString("dd-MM-yyyy"),
+                    Estado = estado
+                };
 
-                if (id == string.Empty)
+                ListaNumeracion = new List<DNumeracionComprobante>();
+                foreach (DataGridViewRow item in dataListado.Rows)
+                {
+                    DNumeracionComprobante dNumeracion = new DNumeracionComprobante();
+                    dNumeracion.Establecimiento = Convert.ToInt32(item.Cells["Establecimiento"]);
+                    dNumeracion.PuntoExpedicion = Convert.ToInt32(item.Cells["PuntoExpedicion"]);
+                    dNumeracion.NumeroDesde = Convert.ToInt32(item.Cells["NumeroDesde"]);
+                    dNumeracion.NumeroHasta = Convert.ToInt32(item.Cells["NumeroHasta"]);
+                    dNumeracion.TipoComprobante = Convert.ToInt32(item.Cells["ComprobanteNro"]);
+                    DTimbrado timbrado = new DTimbrado() { IdTimbrado = Convert.ToInt32(item.Cells["IdTimbrado"]) };
+                    dNumeracion.Timbrado = timbrado;
+                    ListaNumeracion.Add(dNumeracion);
+                }
+
+
+                if (IdTimbrado == 0)
                 {
                     IsNuevo = true;
-                    IsEditar = false;
-                    //si se ingresa un nuevo registro
-                    DNumeracionComprobante dNumeracion = new DNumeracionComprobante();
-                    dNumeracion.Establecimiento = Convert.ToInt32(this.txtEstablecimiento.Text);
-                    dNumeracion.PuntoExpedicion = Convert.ToInt32(txtPuntoExpedicion.Text);
-                    dNumeracion.Numero = Convert.ToDecimal(txtNumero.Text);
-                    dNumeracion.TipoComprobante = Convert.ToInt32(cboComprobante.SelectedValue);
-                    dNumeracion.Timbrado = this.txtNroTimbrado.Text;
-                    dNumeracion.FechaInicioVigencia = fechaInicio;
-                    dNumeracion.FechaVencimiento = fecha;
-                    dNumeracion.Estado = estado;
+                    IsEditar = false;                    
 
-                    rpta = NNumeracionFactura.Insertar(dNumeracion);
+                    rpta = NNumeracionFactura.Insertar(t, ListaNumeracion);
                     //si se esta editando el registro
                 }
                 else
                 {
                     IsNuevo = false;
                     IsEditar = true;
-                    //si se ingresa un nuevo registro
-                    DNumeracionComprobante dNumeracion = new DNumeracionComprobante();
-                    dNumeracion.Id = Convert.ToInt32(id);
-                    dNumeracion.Establecimiento = Convert.ToInt32(this.txtEstablecimiento.Text);
-                    dNumeracion.PuntoExpedicion = Convert.ToInt32(txtPuntoExpedicion.Text);
-                    dNumeracion.Numero = Convert.ToDecimal(txtNumero.Text);
-                    dNumeracion.TipoComprobante = Convert.ToInt32(cboComprobante.SelectedValue);
-                    dNumeracion.Timbrado = this.txtNroTimbrado.Text;
-                    dNumeracion.FechaInicioVigencia = fechaInicio;
-                    dNumeracion.FechaVencimiento = fecha;
-                    dNumeracion.Estado = estado;
-                    rpta = NNumeracionFactura.Editar(dNumeracion);
+                    
+                    //rpta = NNumeracionFactura.Editar(dNumeracion);
                 }
 
 
@@ -238,10 +244,10 @@ namespace CapaPresentacion
 
             }
 
-            if (this.txtNumero.Text == string.Empty)
+            if (this.txtNumeroDesde.Text == string.Empty)
             {
                 this.MensajeError("Falta algunos datos");
-                errorIcono.SetError(txtNumero, "Ingrese los últimos dígitos");
+                errorIcono.SetError(txtNumeroDesde, "Ingrese los últimos dígitos");
                 return false;
             }
 
@@ -275,8 +281,8 @@ namespace CapaPresentacion
 
                 this.txtEstablecimiento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Establecimiento"].Value);
                 this.txtPuntoExpedicion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["PuntoExpedicion"].Value);
-                this.id = Convert.ToString(this.dataListado.CurrentRow.Cells["Id"].Value);
-                this.txtNumero.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Numero"].Value);
+                this.IdNumeracion = Convert.ToInt32(this.dataListado.CurrentRow.Cells["Id"].Value);
+                this.txtNumeroDesde.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Numero"].Value);
                 this.cboComprobante.SelectedValue = Convert.ToInt32(this.dataListado.CurrentRow.Cells["ComprobanteNro"].Value);
                 this.txtNroTimbrado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Timbrado"].Value);
                 if (this.dataListado.CurrentRow.Cells["FechaInicioVigencia"].Value.ToString() == "")
@@ -293,12 +299,12 @@ namespace CapaPresentacion
 
                 if (Convert.ToChar(this.dataListado.CurrentRow.Cells["Estado"].Value) == 'A')
                 {
-                    chkEstado.Checked = true;
+                    chkEstadoTimbrado.Checked = true;
 
                 }
                 else
                 {
-                    chkEstado.Checked = false;
+                    chkEstadoTimbrado.Checked = false;
                 }
 
             }
@@ -382,6 +388,12 @@ namespace CapaPresentacion
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            Limpiar();
+        }
+
+        private void txtNuevo_Click(object sender, EventArgs e)
+        {
+            IsNuevo = true;
             Limpiar();
         }
     }
