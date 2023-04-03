@@ -130,7 +130,7 @@
     <Compile Include="Backup BD.Designer.cs">
       <DependentUpon>Backup BD.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormularioManager.cs" />
+    <Compile Include="Utilidades\FormularioManager.cs" />
     <Compile Include="FrmCargandoForm.cs">
       <SubType>Form</SubType>
     </Compile>
