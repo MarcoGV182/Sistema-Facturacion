@@ -37,10 +37,7 @@ namespace CapaPresentacion
         private double precioInicial = 0;
 
         //Numeracion
-        int? EstablecimientoNro = null;
-        int? PuntoExpedicionNro = null;
-        int Numero = 0;
-        string Timbrado = string.Empty;
+        DNumeracionComprobante numeracion = null;
         
         private DataRow row;       
         public int id = 0;
@@ -436,11 +433,14 @@ namespace CapaPresentacion
                 Num = NFactura.MostrarNumeracion(cboComprobante.SelectedValue.ToString());
                 if (Num != null)
                 {
-                    EstablecimientoNro = Convert.ToInt32(Num.Rows[0][0]);
-                    PuntoExpedicionNro = Convert.ToInt32(Num.Rows[0][1]);
-                    Numero = Convert.ToInt32(Num.Rows[0][2]) + 1;
-                    Timbrado = Num.Rows[0][3].ToString();
-                    txtNroFactura.Text = Num.Rows[0][4].ToString();
+                    numeracion = new DNumeracionComprobante();
+                    numeracion.Establecimiento = Convert.ToInt32(Num.Rows[0][0]);
+                    numeracion.PuntoExpedicion = Convert.ToInt32(Num.Rows[0][1]);
+                    numeracion.NumeroDesde = Convert.ToInt32(Num.Rows[0][2]);
+                    numeracion.NumeroHasta = Convert.ToInt32(Num.Rows[0][3]);
+                    numeracion.NumeroActual = Convert.ToInt32(Num.Rows[0][4]);
+                    numeracion.Timbrado = new DTimbrado() { IdTimbrado = Convert.ToInt32(Num.Rows[0][5]),NroTimbrado = Num.Rows[0][6].ToString()};
+                    txtNroFactura.Text = Num.Rows[0]["NroDocumento"].ToString();
                 }
                 
             }
@@ -637,12 +637,12 @@ namespace CapaPresentacion
                 factura.CantCuota = null;
                 factura.Vendedor = null;
                 factura.Usuario = this.id.ToString();//codigo de usuario
-                if (EstablecimientoNro.HasValue)
-                    factura.Establecimiento = EstablecimientoNro.Value;
-                if (PuntoExpedicionNro.HasValue)
-                    factura.PuntoExpedicion = PuntoExpedicionNro.Value;
-                factura.Numero = Numero;
-                factura.Timbrado = Timbrado;
+                if (numeracion.Establecimiento.HasValue)
+                    factura.Establecimiento = numeracion.Establecimiento.Value;
+                if (numeracion.PuntoExpedicion.HasValue)
+                    factura.PuntoExpedicion = numeracion.PuntoExpedicion.Value;
+                factura.Numero = numeracion.NumeroActual;
+                factura.Timbrado = numeracion.Timbrado;
                 factura.Estado = "EMITIDO";
                 factura.Observacion = txtObservacion.Text;
 

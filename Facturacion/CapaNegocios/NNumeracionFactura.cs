@@ -21,10 +21,10 @@ namespace CapaNegocio
             return obj.InsertarNumeracionTimbrado(timbrado, ListaNumeracion);
         }
 
-        public static string Editar(DNumeracionComprobante numeracionComprobante)
+        public static string Editar(DTimbrado timbrado, List<DNumeracionComprobante> ListaNumeracion)
         {
             DNumeracionComprobante obj = new DNumeracionComprobante();           
-            return obj.EditarNumeracion(numeracionComprobante);
+            return obj.EditarNumeracion(timbrado, ListaNumeracion);
         }
 
         public static string Eliminar(int id)
@@ -35,10 +35,10 @@ namespace CapaNegocio
         }
 
 
-        public static DataTable Mostrar() 
+        public static DataTable Mostrar(int idTimbrado) 
         {
             DNumeracionComprobante obj = new DNumeracionComprobante();
-            return obj.MostrarNumeracion();
+            return obj.MostrarNumeracion(idTimbrado);
         }
 
     }

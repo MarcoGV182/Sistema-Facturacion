@@ -25,7 +25,7 @@ namespace CapaDatos
         public int CodTipoPago { get; set; }
         public int TipoComprobanteNro { get; set; }
         public string Estado { get; set; }
-        public string Timbrado { get; set; }
+        public DTimbrado Timbrado { get; set; }
         public string Observacion { get; set; }
         public string Usuario { get; set; }
         public int? Vendedor { get; set; }
@@ -35,7 +35,7 @@ namespace CapaDatos
 
         public DFactura() { }
 
-        public DFactura(int nroVenta,string nroFactura,int clienteNro,string nombrecliente,int establecimiento,int puntoexpedicion, int numero,string timbrado,DateTime fecha,int codtipopago,int tipoComprobante,string estado,string observacion, string usuario) 
+        public DFactura(int nroVenta,string nroFactura,int clienteNro,string nombrecliente,int establecimiento,int puntoexpedicion, int numero,DTimbrado timbrado,DateTime fecha,int codtipopago,int tipoComprobante,string estado,string observacion, string usuario) 
         {
             this.Id = nroVenta;
             this.NroFactura = nroFactura;
@@ -109,6 +109,22 @@ namespace CapaDatos
                 ParNumero.SqlDbType = SqlDbType.Int;
                 ParNumero.Value = Factura.Numero;
                 SqlCmd.Parameters.Add(ParNumero);
+
+
+                //Parametros 
+                SqlParameter ParIdTimbrado = new SqlParameter();
+                ParIdTimbrado.ParameterName = "@IdTimbrado";
+                ParIdTimbrado.SqlDbType = SqlDbType.Int;
+                ParIdTimbrado.Value = Factura.Timbrado.IdTimbrado;
+                SqlCmd.Parameters.Add(ParIdTimbrado);
+
+
+                //Parametros 
+                SqlParameter ParTimbrado = new SqlParameter();
+                ParTimbrado.ParameterName = "@Timbrado";
+                ParTimbrado.SqlDbType = SqlDbType.VarChar;
+                ParTimbrado.Value = Factura.Timbrado.NroTimbrado;
+                SqlCmd.Parameters.Add(ParTimbrado);
 
                 //Parametros 
                 SqlParameter ParClienteNro = new SqlParameter();

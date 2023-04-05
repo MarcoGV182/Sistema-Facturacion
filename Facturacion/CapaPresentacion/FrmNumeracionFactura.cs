@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio;
 using CapaDatos;
+using System.Data.Linq;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion
 {
@@ -19,6 +21,7 @@ namespace CapaPresentacion
         private int IdNumeracion = 0;
         private int IdTimbrado = 0;
         List<DNumeracionComprobante> ListaNumeracion = null;
+        DataTable dtNumeracion = null;
 
         public FrmNumeracionFactura()
         {
@@ -76,23 +79,33 @@ namespace CapaPresentacion
             this.txtEstablecimiento.Text = string.Empty;
             this.txtPuntoExpedicion.Text = string.Empty;
             this.txtNumeroDesde.Text = string.Empty;
+            this.txtNumeroHasta.Text = string.Empty;
             this.txtNroTimbrado.Text = string.Empty;
             this.dtpFechaInicioVigencia.Checked = false;
             this.dtpFechaVencimiento.Checked = false;
-            this.dtpFechaInicioVigencia.Value = DateTime.Now;
+            this.dtpFechaInicioVigencia.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             this.dtpFechaVencimiento.Value = DateTime.Now;
             this.chkEstadoTimbrado.Checked = false;
+            this.chkEstadoNumeracion.Checked = false;
             this.cboComprobante.SelectedIndex = 0;
         }
 
-
-
-
-        private void Mostrar()
+        private void MostrarTimbrado()
         {
-            this.dataListado.DataSource = NNumeracionFactura.Mostrar();
+            this.dgTimbrados.DataSource = NTimbrado.Mostrar();
+            OcultarColumnasTimbrado();
+        }
+
+        private void OcultarColumnasTimbrado()
+        {
+            this.dgTimbrados.Columns["IdTimbrado"].Visible = false;
+        }
+
+        private void Mostrar(int idTimbrado)
+        {
+            this.dataListado.DataSource = NNumeracionFactura.Mostrar(idTimbrado);
             LlenarCombos();
-            this.OcultarColumnas();
+            this.OcultarColumnasNumeracion();
         }
 
         private void LlenarCombos()
@@ -110,16 +123,46 @@ namespace CapaPresentacion
 
         }
 
-        private void OcultarColumnas() 
+        private void OcultarColumnasNumeracion() 
         {
+            this.dataListado.Columns["Id"].Visible = false;
             this.dataListado.Columns["ComprobanteNro"].Visible = false;
+            this.dataListado.Columns["IdTimbrado"].Visible = false;
+            this.dataListado.Columns["NroTimbrado"].Visible = false;
         }
 
 
+        private void Habilitar(bool valor)
+        {
+            this.txtNroTimbrado.ReadOnly = !valor;
+            this.dtpFechaInicioVigencia.Enabled = valor;
+            this.dtpFechaVencimiento.Enabled = valor;
+            this.chkEstadoTimbrado.Enabled = valor;
+            this.txtEstablecimiento.Enabled = valor;
+            this.txtPuntoExpedicion.Enabled = valor;
+            this.txtNumeroDesde.Enabled = valor;
+            this.txtNumeroHasta.Enabled = valor;
+            this.cboComprobante.Enabled = valor;
+            this.chkEstadoNumeracion.Enabled = valor;
+
+
+            //Inicializar la fecha desde del filtro al primer día del mes
+            this.dtpFechaInicioVigencia.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+        }
+
+
+        private void Botones(bool habilitado) 
+        {
+            btnAgregar.Enabled = habilitado;
+            btnQuitar.Enabled = habilitado;
+            btnCancelar.Enabled = habilitado;
+        }
+
         private void FrmNumeracionFactura_Load(object sender, EventArgs e)
         {
-            IsNuevo=true;
-            this.Mostrar();
+            Habilitar(false);
+            Botones(false);
+            MostrarTimbrado();
         }
 
         private void FrmNumeracionFactura_FormClosing(object sender, FormClosingEventArgs e)
@@ -170,12 +213,14 @@ namespace CapaPresentacion
                 foreach (DataGridViewRow item in dataListado.Rows)
                 {
                     DNumeracionComprobante dNumeracion = new DNumeracionComprobante();
-                    dNumeracion.Establecimiento = Convert.ToInt32(item.Cells["Establecimiento"]);
-                    dNumeracion.PuntoExpedicion = Convert.ToInt32(item.Cells["PuntoExpedicion"]);
-                    dNumeracion.NumeroDesde = Convert.ToInt32(item.Cells["NumeroDesde"]);
-                    dNumeracion.NumeroHasta = Convert.ToInt32(item.Cells["NumeroHasta"]);
-                    dNumeracion.TipoComprobante = Convert.ToInt32(item.Cells["ComprobanteNro"]);
-                    DTimbrado timbrado = new DTimbrado() { IdTimbrado = Convert.ToInt32(item.Cells["IdTimbrado"]) };
+                    dNumeracion.Id = Convert.ToInt32(item.Cells["Id"].Value);
+                    dNumeracion.Establecimiento = Convert.ToInt32(item.Cells["Establecimiento"].Value);
+                    dNumeracion.PuntoExpedicion = Convert.ToInt32(item.Cells["PuntoExpedicion"].Value);
+                    dNumeracion.NumeroDesde = Convert.ToInt32(item.Cells["NumeroDesde"].Value);
+                    dNumeracion.NumeroHasta = Convert.ToInt32(item.Cells["NumeroHasta"].Value);
+                    dNumeracion.TipoComprobante = Convert.ToInt32(item.Cells["ComprobanteNro"].Value);
+                    dNumeracion.Estado = item.Cells["Estado"].Value.ToString();
+                    DTimbrado timbrado = new DTimbrado() { IdTimbrado = Convert.ToInt32(item.Cells["IdTimbrado"].Value) };
                     dNumeracion.Timbrado = timbrado;
                     ListaNumeracion.Add(dNumeracion);
                 }
@@ -194,7 +239,7 @@ namespace CapaPresentacion
                     IsNuevo = false;
                     IsEditar = true;
                     
-                    //rpta = NNumeracionFactura.Editar(dNumeracion);
+                    rpta = NNumeracionFactura.Editar(t, ListaNumeracion);
                 }
 
 
@@ -213,13 +258,14 @@ namespace CapaPresentacion
                 }
                 else
                 {
-                    this.MensajeError(rpta + "\nUN REGISTRO PARA EL MISMO COMPROBANTE SE ENCUENTRA ACTIVO");
+                    this.MensajeError(rpta);
+                    return;
                 }
 
                 this.IsNuevo = true;
                 this.IsEditar = false;
                 this.Limpiar();
-                this.Mostrar();
+                this.MostrarTimbrado();
             }
             catch (Exception ex)
             {
@@ -229,25 +275,10 @@ namespace CapaPresentacion
 
         private bool Validaciones() 
         {
-            if (this.txtEstablecimiento.Text == string.Empty)
+            if (this.txtNroTimbrado.Text == string.Empty)
             {
                 this.MensajeError("Falta algunos datos");
-                errorIcono.SetError(txtEstablecimiento, "Ingrese la Serie");
-                return false;
-            }
-
-            if (this.txtPuntoExpedicion.Text == string.Empty)
-            {
-                this.MensajeError("Falta algunos datos");
-                errorIcono.SetError(txtPuntoExpedicion, "Ingrese el número de Sucursal");
-                return false;
-
-            }
-
-            if (this.txtNumeroDesde.Text == string.Empty)
-            {
-                this.MensajeError("Falta algunos datos");
-                errorIcono.SetError(txtNumeroDesde, "Ingrese los últimos dígitos");
+                errorIcono.SetError(txtNroTimbrado, "Ingrese el nro. de Timbrado");
                 return false;
             }
 
@@ -331,34 +362,43 @@ namespace CapaPresentacion
         {
             try
             {
-
-                DialogResult opcion;
-                opcion = MessageBox.Show("Desea eliminar el registro ?", "Sistema de Facturacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (opcion == DialogResult.OK)
+                if (dgTimbrados.CurrentCell == null)
                 {
-                    string codigo;
-                    string rpta = "";
-
-                    foreach (DataGridViewRow row in dataListado.Rows)
-                    {
-                        if (Convert.ToBoolean(row.Cells[0].Value))
-                        {
-                            codigo = Convert.ToString(row.Cells["Id"].Value);
-                            rpta = NNumeracionFactura.Eliminar(Convert.ToInt32(codigo));
-
-                            if (rpta.Equals("OK"))
-                            {
-                                this.MensajeOK("Se elimino correctamente el registro");
-                            }
-                            else
-                            {
-                                this.MensajeError(rpta);
-                            }
-                        }
-                    }
-
-                    this.Mostrar();
+                    MensajeError("No ha seleccionado ningun registro");
+                    return;
                 }
+
+                if (!ControlesCompartidos.MensajeConfirmacion(this,"Desea eliminar el registro?"))
+                    return;
+
+                
+                string codigo;
+                string rpta = "";
+                try
+                {
+                    int indiceFila = dgTimbrados.CurrentCell.RowIndex;
+                    DataTable dtTimbrado = (DataTable)dgTimbrados.DataSource;
+                    DataRow row = dtTimbrado.Rows[indiceFila];
+
+                    codigo = Convert.ToString(row["IdTimbrado"]);
+                    rpta = NNumeracionFactura.Eliminar(Convert.ToInt32(codigo));
+
+                    if (rpta.Equals("OK"))
+                    {
+                        this.MensajeOK("Se elimino correctamente el registro");
+                    }
+                    else
+                    {
+                        this.MensajeError(rpta);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+                this.Limpiar();
+                this.MostrarTimbrado();
             }
             catch (Exception ex)
             {
@@ -391,10 +431,90 @@ namespace CapaPresentacion
             Limpiar();
         }
 
-        private void txtNuevo_Click(object sender, EventArgs e)
+        private void btnNuevo_Click(object sender, EventArgs e)
         {
             IsNuevo = true;
             Limpiar();
+            Habilitar(true);
+            Botones(true);
+            Mostrar(IdTimbrado);
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            string estadoNum = chkEstadoNumeracion.Checked ? "A" : "I";
+            int tipoComprobante = Convert.ToInt32(cboComprobante.SelectedValue);
+            foreach (DataGridViewRow item in dataListado.Rows)
+            {
+                if (item.Cells["Estado"].ToString() == estadoNum &&
+                   Convert.ToInt32(item.Cells["ComprobanteNro"]) == tipoComprobante)
+                {
+                    MensajeError("Ya existe una numeración con estado ACTIVO para el mismo tipo de comprobante.");
+                }
+            }
+
+            dtNumeracion = (DataTable)dataListado.DataSource;
+            var newRow = dtNumeracion.NewRow();
+            newRow["id"] = 0;
+            newRow["Establecimiento"] = txtEstablecimiento.Text;
+            newRow["PuntoExpedicion"] = txtPuntoExpedicion.Text;
+            newRow["NumeroDesde"] = txtNumeroDesde.Text;
+            newRow["NumeroHasta"] = txtNumeroHasta.Text;
+            newRow["NroTimbrado"] = txtNroTimbrado.Text;
+            newRow["ComprobanteNro"] = tipoComprobante;
+            newRow["TipoComprobante"] = cboComprobante.Text;
+            newRow["IdTimbrado"] = IdTimbrado;
+            newRow["Estado"] = estadoNum;
+            dtNumeracion.Rows.InsertAt(newRow, 0);
+        }
+
+        private void btnEliminar_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                int indiceFila = dataListado.CurrentCell.RowIndex;
+                dtNumeracion = (DataTable)dataListado.DataSource;
+                DataRow row = dtNumeracion.Rows[indiceFila];
+
+                this.dtNumeracion.Rows.Remove(row);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void dgTimbrados_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgTimbrados.Rows.Count == 0)
+                    return;
+                //Cargar datos del timbrado
+                txtNroTimbrado.Text = this.dgTimbrados.CurrentRow.Cells["NroTimbrado"].Value.ToString();
+                chkEstadoTimbrado.Checked = this.dgTimbrados.CurrentRow.Cells["Estado"].Value.Equals("A");
+                dtpFechaInicioVigencia.Value = Convert.ToDateTime(this.dgTimbrados.CurrentRow.Cells["FechaInicioVigencia"].Value);
+                dtpFechaVencimiento.Value = Convert.ToDateTime(this.dgTimbrados.CurrentRow.Cells["FechaFinVigencia"].Value);
+                //Mostrar Numeraciones ligadas al timbrado
+                IdTimbrado = Convert.ToInt32(this.dgTimbrados.CurrentRow.Cells["IdTimbrado"].Value);
+                Mostrar(IdTimbrado);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+            
+        }
+
+        private void btnEditarTimbrado_Click(object sender, EventArgs e)
+        {
+            IsEditar = true;
+            IsNuevo = false;
+            Habilitar(true);
+            Botones(true);
         }
     }
 }

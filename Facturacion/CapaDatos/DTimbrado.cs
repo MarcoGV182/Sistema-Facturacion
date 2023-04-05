@@ -75,9 +75,11 @@ namespace CapaDatos
                 ParEstado.Value = timbrado.Estado;
                 SqlCmd.Parameters.Add(ParEstado);
 
-
                 //ejecutar el comando sql
                 SqlCmd.ExecuteNonQuery();
+
+
+                timbrado.IdTimbrado = Convert.ToInt32(SqlCmd.Parameters["@Id"].Value);
 
                 if (sqltranExistente == null)
                     sqltran.Commit();
@@ -124,9 +126,12 @@ namespace CapaDatos
                 foreach (var item in Listanumeracion)
                 {
                     DNumeracionComprobante num = new DNumeracionComprobante();
-                    num.InsertarNumeracion(item, Sqlcon, sqltran);
-                }
+                    item.Timbrado.IdTimbrado = timbrado.IdTimbrado;
+                    rpta = num.InsertarNumeracion(item, Sqlcon, sqltran);
 
+                    if (!rpta.Equals("OK"))
+                        throw new Exception(rpta);
+                }
 
                 sqltran.Commit();
             }
@@ -141,6 +146,30 @@ namespace CapaDatos
             }
             return rpta;
 
+
+        }
+
+        public DataTable ObtenerTimbrado()
+        {
+            DataTable DtResultado = new DataTable("Timbrado");
+            SqlConnection Sqlcon = new SqlConnection();
+            try
+            {
+                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = Sqlcon;
+                SqlCmd.CommandText = "sp_MostrarTimbrado";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
+                SqlAdapter.Fill(DtResultado);
+            }
+            catch (Exception)
+            {
+                DtResultado = null;
+            }
+
+            return DtResultado;
 
         }
     }

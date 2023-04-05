@@ -411,12 +411,12 @@
             this.dgvDetalleFactura.AllowUserToDeleteRows = false;
             this.dgvDetalleFactura.BackgroundColor = System.Drawing.Color.White;
             this.dgvDetalleFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDetalleFactura.Location = new System.Drawing.Point(121, 278);
+            this.dgvDetalleFactura.Location = new System.Drawing.Point(194, 278);
             this.dgvDetalleFactura.MultiSelect = false;
             this.dgvDetalleFactura.Name = "dgvDetalleFactura";
             this.dgvDetalleFactura.ReadOnly = true;
             this.dgvDetalleFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetalleFactura.Size = new System.Drawing.Size(842, 171);
+            this.dgvDetalleFactura.Size = new System.Drawing.Size(769, 171);
             this.dgvDetalleFactura.TabIndex = 25;
             this.dgvDetalleFactura.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDetalleFactura_CellFormatting);
             this.dgvDetalleFactura.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDetalleFactura_CellMouseClick);

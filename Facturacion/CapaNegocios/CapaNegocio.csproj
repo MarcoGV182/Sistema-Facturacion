@@ -71,6 +71,7 @@
     <Compile Include="NRegla.cs" />
     <Compile Include="NRetencion.cs" />
     <Compile Include="NServicio.cs" />
+    <Compile Include="NTimbrado.cs" />
     <Compile Include="NTipoAjuste.cs" />
     <Compile Include="NTipoComprobante.cs" />
     <Compile Include="NTipoDocumento.cs" />
