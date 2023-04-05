@@ -334,7 +334,7 @@ namespace CapaPresentacion
 
         private void ajustesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmAjuste frm = FrmAjuste.GetInstancia();
+            FrmAjusteStock frm = FrmAjusteStock.GetInstancia();
             frm.MdiParent = this;
             frm.user = usuario;
             frm.nombre = nombre;

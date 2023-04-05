@@ -141,7 +141,7 @@ namespace CapaPresentacion
 
         private void dataListado_DoubleClick_1(object sender, EventArgs e)
         {
-            FrmAjuste frm = FrmAjuste.GetInstancia();
+            FrmAjusteStock frm = FrmAjusteStock.GetInstancia();
             string id, descripcion, precio, stock;
             id = Convert.ToString(dataListado.CurrentRow.Cells["ArticuloNro"].Value);
             descripcion = Convert.ToString(dataListado.CurrentRow.Cells["Producto"].Value);

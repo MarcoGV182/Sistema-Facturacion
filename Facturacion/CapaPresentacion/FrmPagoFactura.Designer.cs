@@ -411,9 +411,9 @@
             this.label19.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.label19.Location = new System.Drawing.Point(19, 94);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(102, 16);
+            this.label19.Size = new System.Drawing.Size(98, 16);
             this.label19.TabIndex = 12;
-            this.label19.Text = "Nro Documento:";
+            this.label19.Text = "Nro. Operación:";
             // 
             // txtNroDocumentoOtros
             // 

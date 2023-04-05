@@ -67,7 +67,7 @@ namespace CapaNegocio
         {
             DAjuste obj = new DAjuste();
             obj.CodAjuste = codAjuste;
-            return obj.EliminarAjuste(obj);
+            return obj.EliminarAjusteRestaurar(obj);
         }
 
 

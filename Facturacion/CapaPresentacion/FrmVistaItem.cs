@@ -166,7 +166,7 @@ namespace CapaPresentacion
                 }
                 else
                 {
-                    codigo = Convert.ToString(dataListado.CurrentRow.Cells["ServicioNro"].Value);
+                    codigo = Convert.ToString(dataListado.CurrentRow.Cells["Codigo"].Value);
                     descripcion = Convert.ToString(dataListado.CurrentRow.Cells["Servicio"].Value);
                     precio = Convert.ToDouble(dataListado.CurrentRow.Cells["Precio"].Value);
                     codImpuesto = Convert.ToInt32(dataListado.CurrentRow.Cells["CodImpuesto"].Value);
@@ -175,11 +175,7 @@ namespace CapaPresentacion
                     baseImponible = Convert.ToDecimal(dataListado.CurrentRow.Cells["baseImponible"].Value);
                     //comision = Convert.ToDecimal(dataListado.CurrentRow.Cells["PorcentajeComision"].Value);
                     comision = 0;
-                    frm.ObtenerServicio(codigo, descripcion, precio, codImpuesto, tipoImpuesto, comision);
-
-                    /*FrmUsuarioServicio frmUS = new FrmUsuarioServicio();
-                    frmUS.ObtenerDato(Convert.ToInt32(codigo));
-                    frmUS.ShowDialog();*/
+                    frm.ObtenerServicio(codigo, descripcion, precio, codImpuesto, tipoImpuesto, comision);                    
                     this.Hide();
                 }
 
@@ -198,17 +194,7 @@ namespace CapaPresentacion
             this.StockMenor();
           
         }
-
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            if(cboItem.Text=="Producto") {
-                this.BuscarProducto();              
-            }
-            else 
-            {
-                this.BuscarServicio();
-            }
-        }
+                
 
         private void FrmVistaItem_Load(object sender, EventArgs e)
         {            
@@ -269,6 +255,18 @@ namespace CapaPresentacion
             if (e.KeyCode==Keys.Enter)
             {
                 dataListado_DoubleClick(null, null);
+            }
+        }
+
+        private void btnBuscar_Click_1(object sender, EventArgs e)
+        {
+            if (cboItem.Text == "Producto")
+            {
+                this.BuscarProducto();
+            }
+            else
+            {
+                this.BuscarServicio();
             }
         }
     }

@@ -36,10 +36,8 @@ namespace CapaDatos
 
             try
             {
-                Sqlcon = SqlconExistente == null ? new SqlConnection() : SqlconExistente;
+                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, SqlconExistente);
                 sqltran = sqltranExistente == null ? Sqlcon.BeginTransaction() : sqltranExistente;
-
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion);
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;

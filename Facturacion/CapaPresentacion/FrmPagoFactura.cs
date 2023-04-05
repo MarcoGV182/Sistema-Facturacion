@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CapaNegocio;
 using System.Data.SqlClient;
 using CapaDatos;
+using Microsoft.Reporting.WinForms;
 
 namespace CapaPresentacion
 {
@@ -169,14 +170,10 @@ namespace CapaPresentacion
                 //string pagoefectivo="", pagotarjeta="", pagocheque = "";
                 int idVenta = 0;
                 //EVALUAR
-                
-                if (Convert.ToDouble(this.lblTotal.Text) < Convert.ToDouble(this.txtTotalVenta.Text))
+                if (!Validaciones())
                 {
-                    this.MensajeError("El monto de pago ingresado es menor al monto total");
-                    this.lblError.Visible = true;
                     return;
-                }
-
+                }   
 
                 this.lblError.Visible = false;
 
@@ -189,11 +186,12 @@ namespace CapaPresentacion
                 //Pago en efectivo
                 if (this.txtMontoEfectivo.Text != "0")
                 {
+                    double vuelto = Convert.ToDouble(this.txtVuelto.Text) < 0 ? 0 : Convert.ToDouble(this.txtVuelto.Text);
                     pagoEF = new DPagoFacturaEfectivo()
                     {
                         NroVenta = idVenta,
                         Monto = Convert.ToDouble(this.txtMontoEfectivo.Text),
-                        Vuelto = Convert.ToDouble(this.txtVuelto.Text)
+                        Vuelto = vuelto
                     };
                 }
 
@@ -262,6 +260,29 @@ namespace CapaPresentacion
             }
         }
 
+
+        private bool Validaciones() 
+        {
+            if (Convert.ToDouble(this.lblTotal.Text) < Convert.ToDouble(this.txtTotalVenta.Text))
+            {
+                this.MensajeError("El monto de pago ingresado es menor al monto total");
+                this.lblError.Visible = true;
+                return false;
+            }
+
+
+            if ((Convert.ToDouble(this.txtMontoTarjeta.Text) > Convert.ToDouble(this.txtTotalVenta.Text)) ||
+                (Convert.ToDouble(this.txtMontoCheque.Text) > Convert.ToDouble(this.txtTotalVenta.Text)) ||
+                (Convert.ToDouble(this.txtMontoOtros.Text) > Convert.ToDouble(this.txtTotalVenta.Text)))
+            {
+                this.MensajeError("El monto de pago diferente a Efectivo no puede ser mayor al monto total");
+                this.lblError.Visible = true;
+                return false;
+            }
+
+
+            return true;
+        }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();

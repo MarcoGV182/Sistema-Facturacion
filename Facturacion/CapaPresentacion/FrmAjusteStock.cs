@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio;
+using CapaPresentacion.DsReporteTableAdapters;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion
 {
-    public partial class FrmAjuste : Form
+    public partial class FrmAjusteStock : Form
     {
         private bool IsNuevo;
         private DataTable Dtdetalle;
@@ -23,18 +25,18 @@ namespace CapaPresentacion
         public string apellido;
 
         //INSTANCIA PARA LLAMAR SOLO UNA VEZ AL FORMULARIO
-        private static FrmAjuste _Instancia;
-        public static FrmAjuste GetInstancia()
+        private static FrmAjusteStock _Instancia;
+        public static FrmAjusteStock GetInstancia()
         {
             if (_Instancia == null)
             {
-                _Instancia = new FrmAjuste();
+                _Instancia = new FrmAjusteStock();
             }
             return _Instancia;
         }
 
         //constructor
-        public FrmAjuste()
+        public FrmAjusteStock()
         {
             InitializeComponent();
             LlenarCombos();
@@ -108,6 +110,7 @@ namespace CapaPresentacion
             this.txtDescripcion.Text = string.Empty;
             this.txtObservacion.Text = string.Empty;
             this.txtTotalGral.Text = string.Empty;
+            LimpiarDetalle();
             this.CrearTabla();
         }
 
@@ -137,12 +140,13 @@ namespace CapaPresentacion
         //Habilitar botones
         private void Habilitar(bool valor)
         {
-            this.txtNumero.ReadOnly = valor;
+            this.txtNumero.ReadOnly = !valor;
             this.txtDescripcion.ReadOnly = !valor;            
             this.dtpFecha.Enabled = valor;          
-            this.txtItem.ReadOnly = valor;
-            this.txtCodItem.ReadOnly = valor;            
-            this.txtPrecio.ReadOnly = valor;
+            this.txtItem.ReadOnly = !valor;
+            this.txtExistencia.ReadOnly = !valor;
+            this.txtCodItem.ReadOnly = !valor;            
+            this.txtPrecio.ReadOnly = !valor;
             this.txtCantidad.ReadOnly = !valor;            
             this.txtObservacion.ReadOnly = !valor;           
             this.txtTotalGral.ReadOnly = !valor;            
@@ -353,37 +357,40 @@ namespace CapaPresentacion
             try
             {
                 string rpta = "";
-                
+
                 if (dgvDetalleAjuste.Rows.Count == 0)
                 {
-                    this.MensajeError("No existen items");
+                    this.MensajeError("No existen items para registrar");
+                    return;
+                }
+
+                if (!ControlesCompartidos.MensajeConfirmacion(this,"Desea registrar el ajuste de Stock ?"))
+                    return;
+
+
+
+                //si se ingresa un nuevo registro
+                if (this.IsNuevo)
+                {
+                    rpta = NAjuste.Insertar(this.txtDescripcion.Text, this.dtpFecha.Value, "EMITIDO", txtObservacion.Text, Convert.ToInt32(this.cboTipoAjuste.SelectedValue), user, Dtdetalle);
+
+                }
+
+                if (rpta.Equals("OK"))
+                {
+                    if (IsNuevo)
+                    {
+                        this.MensajeOK("El ajuste se ha insertado con exito");
+                    }
                 }
                 else
                 {
-                    //si se ingresa un nuevo registro
-                    if (this.IsNuevo)
-                    {
-                        rpta = NAjuste.Insertar(this.txtDescripcion.Text, this.dtpFecha.Value, "EMITIDO", txtObservacion.Text, Convert.ToInt32(this.cboTipoAjuste.SelectedValue),user,Dtdetalle);
-                           
-                    }
-
-                    if (rpta.Equals("OK"))
-                    {
-                        if (IsNuevo)
-                        {
-                            this.MensajeOK("El ajuste se ha insertado con exito");
-                        }
-                    }
-                    else
-                    {
-                        this.MensajeError(rpta);
-                    }
-                    this.IsNuevo = false;
-                    this.Botones();
-                    this.Limpiar();
-                    this.LimpiarDetalle();
-                    this.Mostrar();
+                    this.MensajeError(rpta);
                 }
+                this.IsNuevo = false;
+                this.Botones();
+                this.Limpiar();
+                this.Mostrar();
             }
             catch (Exception ex)
             {
@@ -400,7 +407,6 @@ namespace CapaPresentacion
                 this.Limpiar();
                 this.Habilitar(true);
                 this.txtDescripcion.Focus();
-                this.LimpiarDetalle();
                 this.cboTipoAjuste.SelectedIndex = 0;
                 this.ObtenerNumeracion();
             }
@@ -439,36 +445,53 @@ namespace CapaPresentacion
         {
             try
             {
-                DialogResult opcion;
-                opcion = MessageBox.Show("Desea eliminar el ajuste ?" + Environment.NewLine + "EL STOCK VOLVERA A RESTAURARSE!", "Sistema de Facturacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (opcion == DialogResult.OK)
+                //Validar que se haya selecciona al menos un registro
+                int x = dataListado.Rows.Cast<DataGridViewRow>()
+                              .Where(r => Convert.ToBoolean(r.Cells[0].Value))
+                              .Count();
+                if (x == 0)
                 {
-                    //int contador = 0;
-                    string codigo;
-                    string rpta = "";
+                    MensajeError("No ha seleccionado ningun item");
+                    return;
+                }
 
-                    //recorrer el datagrip para eliminar mas de un registro
-                    foreach (DataGridViewRow row in dataListado.Rows)
+
+                DialogResult opcion;
+                opcion = MessageBox.Show("Desea eliminar el Ajuste ?", "Sistema de Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (opcion == DialogResult.No)
+                    return;
+
+
+                //int contador = 0;
+                string codigo;
+                string rpta = "";
+
+                //recorrer el datagrip para eliminar mas de un registro
+                foreach (DataGridViewRow row in dataListado.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[0].Value))
                     {
-                        if (Convert.ToBoolean(row.Cells[0].Value))
-                        {
-                           
-                            codigo = Convert.ToString(row.Cells["CodAjuste"].Value);
+                        codigo = Convert.ToString(row.Cells["CodAjuste"].Value);
+                        rpta = NAjuste.Eliminar(Convert.ToInt32(codigo));
 
-                            rpta = NAjuste.Restaurar(Convert.ToInt32(codigo));
-                            rpta = NAjuste.Eliminar(Convert.ToInt32(codigo));
-                            
+                        if (!rpta.Equals("OK"))
+                        {
+                            MensajeError(rpta);
+                            break;
                         }
                     }
-                    //mensaje a mostrar
-                    if (rpta.Equals("OK"))
-                    {
-                        this.MensajeOK("Se eliminó correctamente el registro");
-                       
-                    }
-                    this.Mostrar();
-                    this.chkEliminar.Checked = false;
                 }
+                //mensaje a mostrar
+                if (rpta.Equals("OK"))
+                {
+                    this.MensajeOK("Se eliminó correctamente el registro");
+                }
+                else
+                {
+                    MensajeError(rpta);
+                }
+                this.Mostrar();
+                this.chkEliminar.Checked = false;
             }
             catch (Exception ex)
             {
@@ -519,6 +542,13 @@ namespace CapaPresentacion
         {
             try 
             {
+                if (this.dataListado.CurrentRow == null)
+                {
+                    MensajeError("No ha seleccionado ningun registro");
+                    return;
+                }
+
+
                 int codajuste;
                 codajuste = Convert.ToInt32(this.dataListado.CurrentRow.Cells["CodAjuste"].Value);
 

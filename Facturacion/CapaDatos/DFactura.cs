@@ -321,11 +321,18 @@ namespace CapaDatos
                 SqlCmd.Parameters.Add(ParNumero);
 
                 //Parametros 
+                SqlParameter ParIdTimbrado = new SqlParameter();
+                ParIdTimbrado.ParameterName = "@IdTimbrado";
+                ParIdTimbrado.SqlDbType = SqlDbType.Int;
+                ParIdTimbrado.Value = Factura.Timbrado.IdTimbrado;
+                SqlCmd.Parameters.Add(ParIdTimbrado);
+
+                //Parametros 
                 SqlParameter ParTimbrado = new SqlParameter();
                 ParTimbrado.ParameterName = "@Timbrado";
                 ParTimbrado.SqlDbType = SqlDbType.VarChar;
                 ParTimbrado.Size = 50;
-                ParTimbrado.Value = Factura.Timbrado;
+                ParTimbrado.Value = Factura.Timbrado.NroTimbrado;
                 SqlCmd.Parameters.Add(ParTimbrado);
 
                 //Parametros 
@@ -430,7 +437,7 @@ namespace CapaDatos
                             break;
                         else
                             //descontar stock
-                            this.DisminuirStock(det.ArticuloNro, det.Cantidad);
+                            this.DisminuirStock(det.ArticuloNro, det.Cantidad, Sqlcon, Sqltran);
                     }
                     #endregion
 
@@ -583,6 +590,7 @@ namespace CapaDatos
             {
                 if (sqltranExistente == null)
                     sqltran.Rollback();
+
                 rpta = ex.Message;
             }
             finally

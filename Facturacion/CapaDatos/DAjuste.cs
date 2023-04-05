@@ -369,18 +369,23 @@ namespace CapaDatos
 
 
         //Metodo Eliminar
-        public string EliminarAjuste(DAjuste ajuste)
+        public string EliminarAjuste(DAjuste ajuste, SqlConnection SqlConExistente = null, SqlTransaction SqlTranExistente = null)
         {
+            #region Variables
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
+            SqlTransaction SqlTran = null;
+            #endregion
+
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, SqlConExistente);
+                SqlTran = SqlTranExistente ?? Sqlcon.BeginTransaction();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
+                SqlCmd.Transaction = SqlTran;
                 SqlCmd.CommandText = "sp_EliminarAjuste";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
@@ -392,16 +397,25 @@ namespace CapaDatos
                 SqlCmd.Parameters.Add(ParCodAjuste);
 
                 //ejecutar el comando sql
-                rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se elimino el registro";
+                rpta = SqlCmd.ExecuteNonQuery() == 2 ? "OK" : "No se elimino el registro";
+
+                if (!rpta.Equals("OK"))
+                    throw new Exception(rpta);
+
+                if (SqlTranExistente == null)
+                    SqlTran.Commit();
+               
             }
             catch (Exception ex)
             {
+                if (SqlTranExistente == null)
+                    SqlTran.Rollback();
+
                 rpta = ex.Message;
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                Conexion.CerrarConexion(Sqlcon,ref SqlConExistente);
             }
 
             return rpta;
@@ -410,21 +424,21 @@ namespace CapaDatos
 
 
 
-
-
         //Metodo Restaurar Stock
-        public string RestaurarStock(DAjuste ajuste)
+        public string RestaurarStock(DAjuste ajuste,SqlConnection SqlConExistente = null, SqlTransaction SqlTranExistente = null)
         {
-            string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            string rpta = "OK";
+            SqlConnection Sqlcon = null;
+            SqlTransaction SqlTran = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, SqlConExistente);
+                SqlTran = SqlTranExistente == null ? Sqlcon.BeginTransaction() : SqlTranExistente;
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
+                SqlCmd.Transaction = SqlTran;
                 SqlCmd.CommandText = "sp_RestaurarStockAjuste";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
@@ -436,16 +450,20 @@ namespace CapaDatos
                 SqlCmd.Parameters.Add(ParCodAjuste);
 
                 //ejecutar el comando sql
-                rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se realizo el proceso con exito";
+                SqlCmd.ExecuteNonQuery();
+
+                if (SqlTranExistente == null)
+                    SqlTran.Commit();
             }
             catch (Exception ex)
             {
+                if (SqlTranExistente == null)
+                    SqlTran.Rollback();
                 rpta = ex.Message;
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                Conexion.CerrarConexion(Sqlcon, ref SqlConExistente);
             }
 
             return rpta;
@@ -453,7 +471,45 @@ namespace CapaDatos
         }
 
 
+        public string EliminarAjusteRestaurar(DAjuste ajuste) 
+        {
+            #region Variables
+            string rpta = "OK";
+            SqlConnection Sqlcon = null;
+            SqlTransaction SqlTran = null;
+            #endregion
 
+            try
+            {
+                //codigo
+                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion);
+                SqlTran = Sqlcon.BeginTransaction();
+
+                //Restaurar Stock
+                rpta = RestaurarStock(ajuste, Sqlcon, SqlTran);
+                if (rpta != "OK") 
+                { throw new Exception(rpta); }
+
+                //Eliminar Ajuste
+                rpta = EliminarAjuste(ajuste, Sqlcon, SqlTran);
+                if (rpta != "OK")
+                { throw new Exception(rpta); }
+
+
+                SqlTran.Commit();
+            }
+            catch (Exception ex)
+            {   
+                SqlTran.Rollback();
+                rpta = ex.Message;
+            }
+            finally
+            {
+                Conexion.CerrarConexion(Sqlcon);
+            }
+
+            return rpta;
+        }
 
 
 
