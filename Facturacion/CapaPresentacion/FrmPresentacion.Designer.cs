@@ -67,10 +67,9 @@
             // chktodos
             // 
             this.chktodos.AutoSize = true;
-            this.chktodos.Location = new System.Drawing.Point(104, 54);
-            this.chktodos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chktodos.Location = new System.Drawing.Point(78, 44);
             this.chktodos.Name = "chktodos";
-            this.chktodos.Size = new System.Drawing.Size(138, 20);
+            this.chktodos.Size = new System.Drawing.Size(111, 17);
             this.chktodos.TabIndex = 9;
             this.chktodos.Text = "Seleccionar todos";
             this.chktodos.UseVisualStyleBackColor = true;
@@ -86,11 +85,10 @@
             this.tabPage1.Controls.Add(this.btnBuscar);
             this.tabPage1.Controls.Add(this.txtBuscar);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage1.Size = new System.Drawing.Size(715, 322);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Size = new System.Drawing.Size(534, 270);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -105,14 +103,13 @@
             this.dataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Eliminar});
-            this.dataListado.Location = new System.Drawing.Point(13, 85);
-            this.dataListado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataListado.Location = new System.Drawing.Point(10, 69);
             this.dataListado.MultiSelect = false;
             this.dataListado.Name = "dataListado";
             this.dataListado.ReadOnly = true;
             this.dataListado.RowHeadersWidth = 51;
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListado.Size = new System.Drawing.Size(669, 197);
+            this.dataListado.Size = new System.Drawing.Size(502, 195);
             this.dataListado.TabIndex = 7;
             this.dataListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentClick);
             this.dataListado.DoubleClick += new System.EventHandler(this.dataListado_DoubleClick);
@@ -127,20 +124,18 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(508, 55);
-            this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotal.Location = new System.Drawing.Point(381, 45);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(125, 16);
+            this.lblTotal.Size = new System.Drawing.Size(100, 13);
             this.lblTotal.TabIndex = 6;
             this.lblTotal.Text = "Total de registros: 0";
             // 
             // chkEliminar
             // 
             this.chkEliminar.AutoSize = true;
-            this.chkEliminar.Location = new System.Drawing.Point(13, 55);
-            this.chkEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkEliminar.Location = new System.Drawing.Point(10, 45);
             this.chkEliminar.Name = "chkEliminar";
-            this.chkEliminar.Size = new System.Drawing.Size(77, 20);
+            this.chkEliminar.Size = new System.Drawing.Size(62, 17);
             this.chkEliminar.TabIndex = 5;
             this.chkEliminar.Text = "Eliminar";
             this.chkEliminar.UseVisualStyleBackColor = true;
@@ -148,10 +143,9 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(379, 10);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEliminar.Location = new System.Drawing.Point(284, 8);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(100, 28);
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "&Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -160,13 +154,11 @@
             // btnBuscar
             // 
             this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnBuscar.Image = global::CapaPresentacion.Properties.Resources.xmag_search_find_export_locate_5984;
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscar.Location = new System.Drawing.Point(251, 10);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBuscar.Location = new System.Drawing.Point(188, 8);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnBuscar.Size = new System.Drawing.Size(100, 28);
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 2;
             this.btnBuscar.Text = "&Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -174,19 +166,17 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(72, 12);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscar.Location = new System.Drawing.Point(54, 10);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(169, 22);
+            this.txtBuscar.Size = new System.Drawing.Size(128, 20);
             this.txtBuscar.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 18);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(7, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 16);
+            this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Nombre:";
             // 
@@ -194,21 +184,19 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(5, 11);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Location = new System.Drawing.Point(4, 9);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(723, 351);
+            this.tabControl1.Size = new System.Drawing.Size(542, 296);
             this.tabControl1.TabIndex = 7;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage2.Size = new System.Drawing.Size(715, 322);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Size = new System.Drawing.Size(534, 259);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -223,21 +211,18 @@
             this.groupBox1.Controls.Add(this.txtCodigo);
             this.groupBox1.Controls.Add(this.lblDescripcion);
             this.groupBox1.Controls.Add(this.lblCodigo);
-            this.groupBox1.Location = new System.Drawing.Point(5, 9);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(4, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(773, 303);
+            this.groupBox1.Size = new System.Drawing.Size(580, 246);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ABM";
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(475, 207);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Location = new System.Drawing.Point(356, 168);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(100, 28);
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -245,10 +230,9 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(337, 207);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditar.Location = new System.Drawing.Point(253, 168);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(100, 28);
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
             this.btnEditar.TabIndex = 6;
             this.btnEditar.Text = "E&ditar";
             this.btnEditar.UseVisualStyleBackColor = true;
@@ -256,10 +240,9 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(207, 207);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardar.Location = new System.Drawing.Point(155, 168);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(100, 28);
+            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "&Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -267,10 +250,9 @@
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Location = new System.Drawing.Point(71, 207);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNuevo.Location = new System.Drawing.Point(53, 168);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(100, 28);
+            this.btnNuevo.Size = new System.Drawing.Size(75, 23);
             this.btnNuevo.TabIndex = 4;
             this.btnNuevo.Text = "&Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
@@ -280,39 +262,35 @@
             // 
             this.txtDescripcion.BackColor = System.Drawing.SystemColors.Menu;
             this.txtDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDescripcion.Location = new System.Drawing.Point(271, 80);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDescripcion.Location = new System.Drawing.Point(203, 65);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(211, 22);
+            this.txtDescripcion.Size = new System.Drawing.Size(159, 20);
             this.txtDescripcion.TabIndex = 3;
             // 
             // txtCodigo
             // 
             this.txtCodigo.BackColor = System.Drawing.SystemColors.Menu;
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCodigo.Location = new System.Drawing.Point(272, 42);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigo.Location = new System.Drawing.Point(204, 34);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(51, 22);
+            this.txtCodigo.Size = new System.Drawing.Size(39, 20);
             this.txtCodigo.TabIndex = 2;
             // 
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(175, 85);
-            this.lblDescripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDescripcion.Location = new System.Drawing.Point(131, 69);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(82, 16);
+            this.lblDescripcion.Size = new System.Drawing.Size(66, 13);
             this.lblDescripcion.TabIndex = 1;
             this.lblDescripcion.Text = "Descripcion:";
             // 
             // lblCodigo
             // 
             this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(175, 46);
-            this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCodigo.Location = new System.Drawing.Point(131, 37);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(32, 16);
+            this.lblCodigo.Size = new System.Drawing.Size(27, 13);
             this.lblCodigo.TabIndex = 0;
             this.lblCodigo.Text = "Nro:";
             // 
@@ -322,13 +300,12 @@
             // 
             // FrmPresentacion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(732, 379);
+            this.ClientSize = new System.Drawing.Size(549, 308);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmPresentacion";
             this.Text = "Presentaciones";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPresentacion_FormClosing);

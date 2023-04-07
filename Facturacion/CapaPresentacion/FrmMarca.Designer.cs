@@ -44,16 +44,15 @@
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblTotal = new System.Windows.Forms.Label();
             this.chkEliminar = new System.Windows.Forms.CheckBox();
-            this.btnImprimir = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
             this.chktodos = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
-            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -71,7 +70,7 @@
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage2.Size = new System.Drawing.Size(523, 259);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
@@ -184,7 +183,7 @@
             this.dataListado.Name = "dataListado";
             this.dataListado.ReadOnly = true;
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListado.Size = new System.Drawing.Size(502, 160);
+            this.dataListado.Size = new System.Drawing.Size(502, 177);
             this.dataListado.TabIndex = 7;
             this.dataListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentClick);
             this.dataListado.DoubleClick += new System.EventHandler(this.dataListado_DoubleClick);
@@ -215,15 +214,6 @@
             this.chkEliminar.UseVisualStyleBackColor = true;
             this.chkEliminar.CheckedChanged += new System.EventHandler(this.chkEliminar_CheckedChanged);
             // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Location = new System.Drawing.Point(381, 8);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(75, 23);
-            this.btnImprimir.TabIndex = 4;
-            this.btnImprimir.Text = "&Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = true;
-            // 
             // btnEliminar
             // 
             this.btnEliminar.Location = new System.Drawing.Point(284, 8);
@@ -237,7 +227,6 @@
             // btnBuscar
             // 
             this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.Image = global::CapaPresentacion.Properties.Resources.xmag_search_find_export_locate_5984;
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBuscar.Location = new System.Drawing.Point(188, 8);
             this.btnBuscar.Name = "btnBuscar";
@@ -254,7 +243,6 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(128, 20);
             this.txtBuscar.TabIndex = 1;
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // tabControl1
             // 
@@ -273,18 +261,26 @@
             this.tabPage1.Controls.Add(this.dataListado);
             this.tabPage1.Controls.Add(this.lblTotal);
             this.tabPage1.Controls.Add(this.chkEliminar);
-            this.tabPage1.Controls.Add(this.btnImprimir);
             this.tabPage1.Controls.Add(this.btnEliminar);
             this.tabPage1.Controls.Add(this.btnBuscar);
             this.tabPage1.Controls.Add(this.txtBuscar);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage1.Size = new System.Drawing.Size(523, 259);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(337, 53);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(175, 13);
+            this.label15.TabIndex = 13;
+            this.label15.Text = "*Doble click en la marca para editar";
             // 
             // chktodos
             // 
@@ -309,15 +305,6 @@
             // ttMensaje
             // 
             this.ttMensaje.IsBalloon = true;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(337, 53);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(175, 13);
-            this.label15.TabIndex = 13;
-            this.label15.Text = "*Doble click en la marca para editar";
             // 
             // FrmMarca
             // 
@@ -351,7 +338,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.CheckBox chkEliminar;
-        private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtBuscar;

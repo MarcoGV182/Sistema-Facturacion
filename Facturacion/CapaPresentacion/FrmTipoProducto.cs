@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion
 {
@@ -92,6 +93,12 @@ namespace CapaPresentacion
         //Metodo buscar por descripcion
         private void Buscar()
         {
+            if (string.IsNullOrEmpty(txtBuscar.Text))
+            {
+                Mostrar();
+                return;
+            }
+
             this.dataListado.DataSource = NTipoProducto.BuscarDescripcion(this.txtBuscar.Text);
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
@@ -122,10 +129,7 @@ namespace CapaPresentacion
             this.Buscar();
         }
 
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            this.Buscar();
-        }
+        
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -251,35 +255,45 @@ namespace CapaPresentacion
         {
             try
             {
-                DialogResult opcion;
-                opcion = MessageBox.Show("Desea eliminar el registro ?", "Sistema de Facturacion", MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
-                if (opcion== DialogResult.OK)
+                //Validar que se haya selecciona al menos un registro
+                int x = dataListado.Rows.Cast<DataGridViewRow>()
+                              .Where(r => Convert.ToBoolean(r.Cells[0].Value))
+                              .Count();
+                if (x == 0)
                 {
-                    string codigo;
-                    string rpta="";
-
-                    foreach(DataGridViewRow row in dataListado.Rows) 
-                    {
-                        if (Convert.ToBoolean(row.Cells[0].Value))
-                        {
-                            codigo =Convert.ToString(row.Cells[1].Value);
-                            rpta = NTipoProducto.Eliminar(Convert.ToInt32(codigo));                            
-                        }
-                    }
-
-                    if (rpta.Equals("OK"))
-                    {
-                        this.MensajeOK("Se elimino correctamento el registro");
-                    }
-                    else
-                    {
-                        this.MensajeError("El registro ya esta definido en Productos" + Environment.NewLine + "(Productos/Tipo de Producto)");
-                    }
-
-                    this.Mostrar();
-                    this.chkEliminar.Checked = false;
-
+                    MensajeError("No ha seleccionado ningun item");
+                    return;
                 }
+
+                if (!ControlesCompartidos.MensajeConfirmacion(this, "Desea eliminar el registro ?"))
+                {
+                    return;
+                }
+
+
+                string codigo;
+                string rpta = "";
+
+                foreach (DataGridViewRow row in dataListado.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[0].Value))
+                    {
+                        codigo = Convert.ToString(row.Cells[1].Value);
+                        rpta = NTipoProducto.Eliminar(Convert.ToInt32(codigo));
+                    }
+                }
+
+                if (rpta.Equals("OK"))
+                {
+                    this.MensajeOK("Se elimino correctamento el registro");
+                }
+                else
+                {
+                    this.MensajeError("El registro ya esta definido en Productos" + Environment.NewLine + "(Productos/Tipo de Producto)");
+                }
+
+                this.Mostrar();
+                this.chkEliminar.Checked = false;
             }
             catch(Exception ex)
             {

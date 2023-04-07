@@ -13,18 +13,20 @@ namespace CapaPresentacion
 {
     public partial class FrmRecordatorio : Form
     {
+        private Point mouseOffset;
+        private bool isDragging = false;
         public FrmRecordatorio()
         {
             InitializeComponent();
         }
 
         private static FrmRecordatorio _Instancia;
+
         public static FrmRecordatorio GetInstancia() 
-        { 
-            if(_Instancia==null) 
+        {           
+            if (_Instancia==null) 
             {
                 _Instancia = new FrmRecordatorio();
-            
             }
             return _Instancia;
         }
@@ -55,8 +57,14 @@ namespace CapaPresentacion
         private void FrmAviso_Load(object sender, EventArgs e)
         {
             this.cboRango.SelectedIndex = 0;
-            this.Top = 0;
-            this.Left = 900;
+
+            this.StartPosition = FormStartPosition.Manual;
+            int x = this.MdiParent.Location.X + this.MdiParent.ClientSize.Width - this.Width;
+            int y = Math.Max(this.MdiParent.Location.Y, 0) + SystemInformation.CaptionHeight;
+            this.Location = new Point(x, y);            
+            this.MdiParent = this.MdiParent;
+            /*this.Top = 0;
+            this.Left = 2000;*/
             this.Mostrar();
         }
 
@@ -74,5 +82,36 @@ namespace CapaPresentacion
         {
             this.Close();
         }
+
+        #region Eventos de Mouse
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                mouseOffset = new Point(-e.X, -e.Y);
+                isDragging = true;
+            }
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging && e.Button == MouseButtons.Left)
+            {
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(mouseOffset.X, mouseOffset.Y);
+                this.Location = mousePos;
+            }
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = false;
+            }
+        }
+
+        #endregion
+
     }
 }
