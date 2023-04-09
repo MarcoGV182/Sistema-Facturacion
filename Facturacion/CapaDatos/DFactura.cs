@@ -699,7 +699,7 @@ namespace CapaDatos
         }
 
         //Metodo Mostrar
-        public DataTable MostrarDetalleFactura(string NroFactura, int clienteNro)
+        public DataTable MostrarDetalleFactura(int idVenta)
         {
             DataTable DtResultado = new DataTable("DetalleFactura");
             SqlConnection Sqlcon = new SqlConnection();
@@ -712,28 +712,27 @@ namespace CapaDatos
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 // Parametros
-                SqlParameter ParTextoBuscar1 = new SqlParameter();
-                ParTextoBuscar1.ParameterName = "@TextoBuscar1";
-                ParTextoBuscar1.SqlDbType = SqlDbType.VarChar;
-                ParTextoBuscar1.Size = 50;
-                ParTextoBuscar1.SqlValue = NroFactura;
-                SqlCmd.Parameters.Add(ParTextoBuscar1);
+                SqlParameter ParIdVenta = new SqlParameter();
+                ParIdVenta.ParameterName = "@NroVenta";
+                ParIdVenta.SqlDbType = SqlDbType.Int;
+                ParIdVenta.SqlValue = idVenta;
+                SqlCmd.Parameters.Add(ParIdVenta);
 
-                // Parametros
-                SqlParameter ParTextoBuscar2 = new SqlParameter();
-                ParTextoBuscar2.ParameterName = "@TextoBuscar2";
-                ParTextoBuscar2.SqlDbType = SqlDbType.Int;
-                ParTextoBuscar2.SqlValue = clienteNro;
-                SqlCmd.Parameters.Add(ParTextoBuscar2);
+              
 
                 //instanciar un DataAdapter
                 SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
                 SqlAdapter.Fill(DtResultado);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 DtResultado = null;
+                throw ex;
             }
+            finally 
+            {
+                Conexion.CerrarConexion(Sqlcon);
+            }    
             return DtResultado;
         }
 

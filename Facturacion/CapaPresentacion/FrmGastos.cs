@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using CapaNegocio;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion
 {
@@ -72,40 +73,27 @@ namespace CapaPresentacion
             dataListado.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
             dataListado.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
-
-
-        public void SoloNumeros(KeyPressEventArgs e)
-        {
-            if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (Char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
+        
 
         //Limpiar los controles del formulario
         private void Limpiar()
         {
             this.txtNroDocumento.Text = string.Empty;
             this.txtdescripcion.Text = string.Empty;
-            this.dtpFechaNac.Text = string.Empty;
+            this.dtpFechaOperacion.Text = string.Empty;
             this.txtImporte.Text = string.Empty;
         }
 
         //Habilitar botones
         private void Habilitar(bool valor)
         {
+            this.txtCodigo.ReadOnly = true;
             this.txtNroDocumento.ReadOnly = !valor;
             this.txtdescripcion.ReadOnly = !valor;
             this.txtImporte.ReadOnly = !valor;
-            this.dtpFechaNac.Enabled = valor;
+            this.dtpFechaOperacion.Enabled = valor;
+            cboFormaPago.Enabled = valor;
+            cboTipoOperacion.Enabled = valor;
         }
 
         //Habilitar Botones
@@ -139,28 +127,20 @@ namespace CapaPresentacion
         }
 
         private void LlenarComboBox()
-        {
-        
-            cboTipoOperacion.DataSource = NTipoOperacion.Mostrar();
+        {        
+            cboTipoOperacion.DataSource = ControlesCompartidos.AgregarNuevaFila(NTipoOperacion.Mostrar(), "Descripcion", "NroTipoOperacion");
             cboTipoOperacion.ValueMember = "NroTipoOperacion";
             cboTipoOperacion.DisplayMember = "Descripcion";
 
-            //llenar combo Impuesto
-            cboImpuesto.DataSource = NTipoImpuesto.Mostrar();
-            cboImpuesto.DisplayMember = "Descripcion";
-            cboImpuesto.ValueMember = "TipoImpuestoNro";
-
-            cboFormaPago.DataSource = NFormaPago.MostrarFormaPago();
+            cboFormaPago.DataSource = ControlesCompartidos.AgregarNuevaFila(NFormaPago.MostrarFormaPago(), "Descripcion", "FormaPagoNro");
             cboFormaPago.DisplayMember = "Descripcion";
             cboFormaPago.ValueMember = "FormaPagoNro";
-
-
         }
 
         //Metodo buscar nombres por gastos
         private void BuscarNombre()
         {
-            this.dataListado.DataSource = NGastos.BuscarNombre(this.txtBuscar.Text);
+            this.dataListado.DataSource = NGastos.BuscarNombre(this.txtBuscarDescripcion.Text);
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -179,7 +159,9 @@ namespace CapaPresentacion
         //Metodo buscar por fechas
         private void BuscarFechas()
         {
-            this.dataListado.DataSource = NGastos.BuscarFecha(this.dtpFechadesde.Value.ToString("dd-MM-yyyy"), dtpfechahasta.Value.ToString("dd-MM-yyyy"));
+            this.dataListado.DataSource = NGastos.BuscarFecha(dtpFechadesde.Value.ToString("yyyy-MM-dd"), 
+                                                              dtpfechahasta.Value.ToString("yyyy-MM-dd"),
+                                                              txtBuscarDescripcion.Text);
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -209,50 +191,103 @@ namespace CapaPresentacion
             try
             {
                 string rpta = "";
-                if (this.txtImporte.Text == string.Empty)
-                {
-                    this.MensajeError("Falta algunos datos");
-                    errorIcono.SetError(txtImporte, "Ingrese el importe");
-                }                
-                else
-                {   
-                    if(IsNuevo) {                 
-                    rpta = NGastos.Insertar(this.txtNroDocumento.Text,dtpFechaNac.Value,Convert.ToDecimal(this.txtImporte.Text),Convert.ToInt32(cboTipoOperacion.SelectedValue),Convert.ToInt32(this.cboImpuesto.SelectedValue),Convert.ToInt32(cboFormaPago.SelectedValue) ,this.txtdescripcion.Text.Trim().ToUpper(),Convert.ToInt32(id));  
 
+                if (!Validaciones())
+                {
+                    return;
+                }
+               
+
+
+                string nroDocumento = this.txtNroDocumento.Text;
+                DateTime fechaOperacion = dtpFechaOperacion.Value;
+                double Importe = Convert.ToDouble(this.txtImporte.Text);
+                int CodTipoOperacion = Convert.ToInt32(cboTipoOperacion.SelectedValue);
+                int CodFormaPago = Convert.ToInt32(cboFormaPago.SelectedValue);             
+                string DescripcionOperacion = this.txtdescripcion.Text.Trim().ToUpper();
+                int CodUsuario = Convert.ToInt32(id);
+
+
+                if (IsNuevo)
+                {
+                    rpta = NGastos.Insertar(nroDocumento, 
+                                            fechaOperacion, 
+                                            Importe, 
+                                            CodTipoOperacion,
+                                            CodFormaPago, 
+                                            DescripcionOperacion, 
+                                            CodUsuario);
+
+                }
+                else
+                {
+                    rpta = NGastos.Editar(Convert.ToInt32(this.txtCodigo.Text), 
+                                                            nroDocumento,
+                                                            fechaOperacion,
+                                                            Importe,
+                                                            CodTipoOperacion,
+                                                            CodFormaPago,
+                                                            DescripcionOperacion);
+                }
+
+                if (rpta.Equals("OK"))
+                {
+                    if (IsNuevo)
+                    {
+                        this.MensajeOK("Se ha insertado con exito");
                     }
                     else
                     {
-                       rpta = NGastos.Editar(Convert.ToInt32(this.txtCodigo.Text), this.txtNroDocumento.Text, dtpFechaNac.Value, Convert.ToDecimal(this.txtImporte.Text), Convert.ToInt32(cboTipoOperacion.SelectedValue), Convert.ToInt32(this.cboImpuesto.SelectedValue), Convert.ToInt32(cboFormaPago.SelectedValue), this.txtdescripcion.Text.Trim().ToUpper());
+                        this.MensajeOK("Se ha editado con exito");
                     }
-
-                    if (rpta.Equals("OK"))
-                        {
-                        if (IsNuevo)
-                        {
-                            this.MensajeOK("Se ha insertado con exito");
-                        }
-                        else
-                        {
-                            this.MensajeOK("Se ha editado con exito");
-                        }
-                        }
-                        else
-                        {
-                            this.MensajeError(rpta);
-                        }
-
-                        this.IsNuevo = false;
-                        this.IsEditar = false;
-                        this.Botones();
-                        this.Limpiar();
-                        this.Mostrar();
-                   
                 }
+                else
+                {
+                    this.MensajeError(rpta);
+                    return;
+                }
+
+                this.IsNuevo = false;
+                this.IsEditar = false;
+                this.Botones();
+                this.Limpiar();
+                this.Mostrar();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+
+
+        private bool Validaciones() 
+        {
+            errorIcono.Clear();
+
+            if (this.txtImporte.Text == string.Empty)
+            {
+                this.MensajeError("Falta algunos datos");
+                errorIcono.SetError(txtImporte, "Ingrese el importe");
+                return false;
+            }
+
+            if (Convert.ToInt32(cboFormaPago.SelectedValue) == 0)
+            {
+                this.MensajeError("Falta algunos datos");
+                errorIcono.SetError(cboFormaPago, "Favor seleccione una forma de Pago de la Operación");
+                return false;
+            }
+
+            if (Convert.ToInt32(cboTipoOperacion.SelectedValue) == 0)
+            {
+                this.MensajeError("Falta algunos datos");
+                errorIcono.SetError(cboTipoOperacion, "Favor seleccione el tipo de Operacionn");
+                return false;
+            }
+
+            return true;
+
         }
 
         private void ObtenerNumeracion()
@@ -348,37 +383,49 @@ namespace CapaPresentacion
         {
             try
             {
-                DialogResult opcion;
-                opcion = MessageBox.Show("Desea eliminar el registro ?", "Sistema de Facturacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (opcion == DialogResult.OK)
+                //Validar que se haya selecciona al menos un registro
+                int x = dataListado.Rows.Cast<DataGridViewRow>()
+                              .Where(r => Convert.ToBoolean(r.Cells[0].Value))
+                              .Count();
+                if (x == 0)
                 {
-                    //int contador = 0;
-                    string codigo;
-                    string rpta = "";
-                    //recorrer el datagrip para eliminar mas de un registro
-                    foreach (DataGridViewRow row in dataListado.Rows)
-                    {
-                        if (Convert.ToBoolean(row.Cells[0].Value))
-                        {
-                            codigo = Convert.ToString(row.Cells["GastoNro"].Value);
-                            rpta = NGastos.Eliminar(Convert.ToInt32(codigo));
-                        }
-                        
-                    }
+                    MensajeError("No ha seleccionado ningun item");
+                    return;
+                }
 
-                    //mensaje a mostrar
-                    if (rpta.Equals("OK"))
+                DialogResult opcion;
+                opcion = MessageBox.Show("Desea eliminar el registro ?", "Sistema de Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (opcion == DialogResult.No)
+                    return;
+
+
+
+                //int contador = 0;
+                string codigo;
+                string rpta = "";
+                //recorrer el datagrip para eliminar mas de un registro
+                foreach (DataGridViewRow row in dataListado.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[0].Value))
                     {
-                        this.MensajeOK("Se elimino correctamento el registro");
+                        codigo = Convert.ToString(row.Cells["GastoNro"].Value);
+                        rpta = NGastos.Eliminar(Convert.ToInt32(codigo));
                     }
-                    else
-                    {
-                        this.MensajeError(rpta);
-                    }
-                    this.chkEliminar.Checked = false;  
-                    this.Mostrar();
 
                 }
+
+                //mensaje a mostrar
+                if (rpta.Equals("OK"))
+                {
+                    this.MensajeOK("Se elimino correctamento el registro");
+                }
+                else
+                {
+                    this.MensajeError(rpta);
+                    return;
+                }
+                this.chkEliminar.Checked = false;
+                this.Mostrar();
             }
             catch (Exception ex)
             {
@@ -386,11 +433,7 @@ namespace CapaPresentacion
             }
         }
 
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            this.BuscarNombre(); 
-
-        }
+        
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
@@ -428,19 +471,23 @@ namespace CapaPresentacion
         {
             this.txtCodigo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["GastoNro"].Value);
             this.txtNroDocumento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Documento"].Value);
-            this.dtpFechaNac.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["Fecha"].Value);
+            this.dtpFechaOperacion.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["Fecha"].Value);
             this.txtdescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Descripcion"].Value);
             this.cboTipoOperacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Tipo"].Value);
             this.txtImporte.Text = Convert.ToDouble(this.dataListado.CurrentRow.Cells["Importe"].Value).ToString("N0");
-            this.cboFormaPago.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["FormaPago"].Value);
-            this.cboImpuesto.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Impuesto"].Value); 
+            this.cboFormaPago.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["FormaPago"].Value);           
             //mostrar la segunda pestana la de mantenimiento al hacer doble click
             this.tabControl1.SelectedIndex = 1;
         }
 
         private void txtImporte_KeyPress(object sender, KeyPressEventArgs e)
         {
-            SoloNumeros(e);
+            ControlesCompartidos.SoloNumeros(e);
+        }
+
+        private void txtImporte_TextChanged(object sender, EventArgs e)
+        {
+            ControlesCompartidos.FormatoNumero(sender);
         }
     }
 }

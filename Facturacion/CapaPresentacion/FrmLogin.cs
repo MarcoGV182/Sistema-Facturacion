@@ -14,6 +14,8 @@ namespace CapaPresentacion
 {
     public partial class FrmLogin : Form
     {
+        private Point mouseOffset;
+        private bool isDragging = false;
         /*string id;
         string nombre;
         string usuario;
@@ -109,5 +111,39 @@ namespace CapaPresentacion
                 this.btnIngresar_Click(null,null);
             }
         }
+
+
+
+        #region Eventos de Mouse
+        private void pictureBox3_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                mouseOffset = new Point(-e.X, -e.Y);
+                isDragging = true;
+            }
+        }
+
+        private void pictureBox3_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging && e.Button == MouseButtons.Left)
+            {
+                var activo = this.Focused;
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(mouseOffset.X, mouseOffset.Y);
+                this.Location = mousePos;
+            }
+        }
+
+        private void pictureBox3_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isDragging = false;
+
+            }
+        }
+
+        #endregion
     }
 }

@@ -174,7 +174,7 @@ namespace CapaDatos
         public string InsertarCaja(DCaja Caja) 
         {
             //declaracion de variables
-            string rpta = "";
+            string rpta = "OK";
             SqlConnection Sqlcon = new SqlConnection();
             //constrolador de errores
             try
@@ -207,7 +207,7 @@ namespace CapaDatos
                
                 //PERSONA NRO
                 SqlParameter ParPersonaNro = new SqlParameter();
-                ParPersonaNro.ParameterName = "@PersonaNro";
+                ParPersonaNro.ParameterName = "@UsuarioNro";
                 ParPersonaNro.SqlDbType = SqlDbType.Int;
                 ParPersonaNro.Value = Caja.PersonaNro;
                 SqlCmd.Parameters.Add(ParPersonaNro);
@@ -231,7 +231,7 @@ namespace CapaDatos
 
 
                 //ejecutar el comando sql
-                rpta = SqlCmd.ExecuteNonQuery() >= 1 ? "OK" : "No se inserto el registro";
+                SqlCmd.ExecuteNonQuery();
 
             }
             catch (Exception ex)
@@ -240,8 +240,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                Conexion.CerrarConexion(Sqlcon);
             }
             return rpta;
         }

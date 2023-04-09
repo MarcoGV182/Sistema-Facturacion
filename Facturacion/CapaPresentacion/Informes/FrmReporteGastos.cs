@@ -40,7 +40,7 @@ namespace CapaPresentacion
             try
             {
                 // TODO: esta línea de código carga datos en la tabla 'DsReporte.sp_LibroVenta' Puede moverla o quitarla según sea necesario.
-                this.sp_ReporteGastosTableAdapter.Fill(this.DsReporte.sp_ReporteGastos, this.dtpDesde.Value.ToString("dd/MM/yyyy"), this.dtpHasta.Value.ToString("dd/MM/yyyy"));
+                this.sp_ReporteGastosTableAdapter.Fill(this.DsReporte.sp_ReporteGastos, this.dtpDesde.Value.ToString("yyyy/MM/dd"), this.dtpHasta.Value.ToString("yyyy/MM/dd"));
 
                 this.reportViewer1.RefreshReport();
             }

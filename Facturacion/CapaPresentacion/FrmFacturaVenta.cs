@@ -40,7 +40,7 @@ namespace CapaPresentacion
         DNumeracionComprobante numeracion = null;
         
         private DataRow row;       
-        public int id = 0;
+        public int idVenta = 0;
         public string usuario = string.Empty;
         public string nombre = string.Empty;
         public string apellido = string.Empty;
@@ -279,10 +279,9 @@ namespace CapaPresentacion
             this.Dtdetalle.Columns.Add("Precio", System.Type.GetType("System.Double"));
             this.Dtdetalle.Columns.Add("PrecioInicial", System.Type.GetType("System.Double"));
             this.Dtdetalle.Columns.Add("CodTipoImpuesto", System.Type.GetType("System.Int32"));
-            this.Dtdetalle.Columns.Add("IVA", System.Type.GetType("System.String"));            
-            this.Dtdetalle.Columns.Add("PorcentajeIVA", System.Type.GetType("System.Int32"));
-            this.Dtdetalle.Columns.Add("BaseImponible", System.Type.GetType("System.Double"));
-    
+            this.Dtdetalle.Columns.Add("IVA", System.Type.GetType("System.String"));  
+            this.Dtdetalle.Columns.Add("NroVenta", System.Type.GetType("System.Int32"));
+
             this.Dtdetalle.Columns.Add("SubtotalIVA", System.Type.GetType("System.Double"));
             this.Dtdetalle.Columns.Add("SubTotalNeto", System.Type.GetType("System.Double"));
             this.Dtdetalle.Columns.Add("SubTotal", System.Type.GetType("System.Double"));
@@ -302,17 +301,17 @@ namespace CapaPresentacion
         private void Habilitar(bool valor)
         {
             this.txtNumeracionOT.ReadOnly = !valor;
-            this.txtNroFactura.ReadOnly = valor;
+            this.txtNroFactura.ReadOnly = !valor;
             this.txtDocumento.ReadOnly = !valor;
             this.txtCliente.ReadOnly = valor;
             this.dtpFecha.Enabled = valor;
             this.txtObservacion.ReadOnly = !valor;
-            this.txtItem.ReadOnly = valor;
+            this.txtItem.ReadOnly = !valor;
             this.txtCodItem.ReadOnly = valor;
             //this.txtPrecio.ReadOnly = valor;
-            this.txtExistencia.ReadOnly = valor;
+            this.txtExistencia.ReadOnly = !valor;
             this.txtCantidad.ReadOnly = !valor;
-            this.txtIva.ReadOnly = valor;
+            this.txtIva.ReadOnly = !valor;
             this.cboTipoPago.Enabled = valor;
             this.txtObservacion.ReadOnly = !valor;
             this.txtTotalGravadas.ReadOnly = !valor;
@@ -324,6 +323,8 @@ namespace CapaPresentacion
             this.btnBuscarCliente.Enabled = valor;
             this.btnAgregar.Enabled = valor;
             this.btnQuitar.Enabled = valor;
+            this.txtCliente.ReadOnly = !valor;
+            this.txtItem.ReadOnly = !valor;
             //Inicializar la fecha desde del filtro al primer día del mes
             this.dtpFechadesde.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
         }
@@ -363,18 +364,26 @@ namespace CapaPresentacion
             {
                 this.dgvDetalleFactura.Columns["Nro"].Visible = true;
                 this.dgvDetalleFactura.Columns["ItemNro"].Visible = false;
-                this.dgvDetalleFactura.Columns["BaseImponible"].Visible = false;
                 this.dgvDetalleFactura.Columns["Precio"].Visible = true;
                 this.dgvDetalleFactura.Columns["PrecioInicial"].Visible = false;
                 this.dgvDetalleFactura.Columns["IVA"].Visible = true; 
                 this.dgvDetalleFactura.Columns["CodTipoImpuesto"].Visible = false;
-                this.dgvDetalleFactura.Columns["PorcentajeIVA"].Visible = false;
+                this.dgvDetalleFactura.Columns["NroVenta"].Visible = false;
 
                 //Ocultar columnas de OT
-                this.dgvDetalleFactura.Columns["UsuarioNro"].Visible = false;
-                this.dgvDetalleFactura.Columns["Empleado"].Visible = false;
-                this.dgvDetalleFactura.Columns["ComisionServicio"].Visible = false;
-                this.dgvDetalleFactura.Columns["Ganancia"].Visible = false;
+                if (dgvDetalleFactura.Columns.Contains("UsuarioNro"))
+                    this.dgvDetalleFactura.Columns["UsuarioNro"].Visible = false;
+
+                if (dgvDetalleFactura.Columns.Contains("Empleado"))
+                    this.dgvDetalleFactura.Columns["Empleado"].Visible = false;
+
+                if (dgvDetalleFactura.Columns.Contains("ComisionServicio"))
+                    this.dgvDetalleFactura.Columns["ComisionServicio"].Visible = false;
+
+                if (dgvDetalleFactura.Columns.Contains("Ganancia"))
+                    this.dgvDetalleFactura.Columns["Ganancia"].Visible = false;
+
+
             }
             catch (Exception)
             {
@@ -395,7 +404,7 @@ namespace CapaPresentacion
         //Metodo buscar por fechas
         private void BuscarFechas()
         {
-            this.dataListado.DataSource = NFactura.BuscarFacturaFecha(this.dtpFechadesde.Value.ToString("dd-MM-yyyy"), dtpfechahasta.Value.ToString("dd-MM-yyyy"));
+            this.dataListado.DataSource = NFactura.BuscarFacturaFecha(this.dtpFechadesde.Value.ToString("yyyy-MM-dd"), dtpfechahasta.Value.ToString("yyyy-MM-dd"));
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -404,7 +413,8 @@ namespace CapaPresentacion
         //Metodo buscar por detalle
         private void MostrarDetalle()
         {
-            this.dgvDetalleFactura.DataSource = NFactura.MostrarDetalle(this.txtNroFactura.Text, codigoCliente.GetValueOrDefault());
+            this.dgvDetalleFactura.DataSource = NFactura.MostrarDetalle(idVenta);
+            OcultarColumnasDetalle();
         }
 
         private void FrmFacturaVenta_FormClosing(object sender, FormClosingEventArgs e)
@@ -597,7 +607,7 @@ namespace CapaPresentacion
                 if (dataListado.Rows.Count == 0)
                     return;
                 
-                //this.txtCodigo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["CodFactura"].Value);
+                idVenta = Convert.ToInt32(this.dataListado.CurrentRow.Cells["NroVenta"].Value);
                 this.txtCliente.Text = (this.dataListado.CurrentRow.Cells["Cliente"].Value).ToString();
                 this.codigoCliente = Convert.ToInt32(this.dataListado.CurrentRow.Cells["PersonaNro"].Value);
                 this.txtDocumento.Text = (this.dataListado.CurrentRow.Cells["Documento"].Value).ToString();
@@ -606,8 +616,8 @@ namespace CapaPresentacion
                 this.dtpFecha.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["Fecha"].Value);
                 this.cboTipoPago.Text = (this.dataListado.CurrentRow.Cells["TipoPago"].Value).ToString();
                 //this.txtDias.Text = (this.dataListado.CurrentRow.Cells["dias"].Value).ToString();
-                this.txtTotalGravadas.Text =Convert.ToDouble(this.dataListado.CurrentRow.Cells["TotalGravadas"].Value).ToString("N0");
-                this.txttotalIva.Text = Convert.ToDouble(this.dataListado.CurrentRow.Cells["Totaliva"].Value).ToString("N0");
+                this.txtTotalGravadas.Text =Convert.ToDouble(this.dataListado.CurrentRow.Cells["Gravada"].Value).ToString("N0");
+                this.txttotalIva.Text = Convert.ToDouble(this.dataListado.CurrentRow.Cells["Iva"].Value).ToString("N0");
                 this.txtTotalGral.Text = Convert.ToDouble(this.dataListado.CurrentRow.Cells["Total"].Value).ToString("N0");                
                 this.MostrarDetalle();
                 this.tabControl1.SelectedIndex = 1;
@@ -636,7 +646,7 @@ namespace CapaPresentacion
                 factura.TipoComprobanteNro = Convert.ToInt32(this.cboComprobante.SelectedValue);
                 factura.CantCuota = null;
                 factura.Vendedor = null;
-                factura.Usuario = this.id.ToString();//codigo de usuario
+                factura.Usuario = this.idVenta.ToString();//codigo de usuario
                 if (numeracion.Establecimiento.HasValue)
                     factura.Establecimiento = numeracion.Establecimiento.Value;
                 if (numeracion.PuntoExpedicion.HasValue)
@@ -649,10 +659,10 @@ namespace CapaPresentacion
                 rpta = NFactura.Insertar(factura,Dtdetalle, pagos);
                 if (rpta.Contains("OK"))
                 {
-                    id = Convert.ToInt32(rpta.Split(';')[0]);
+                    idVenta = Convert.ToInt32(rpta.Split(';')[0]);
 
                     //Confirmacion de que la factura se haya insertado
-                    NFactura.ConfirmacionInsercion(id);
+                    NFactura.ConfirmacionInsercion(idVenta);
                 
                     //this.MensajeOK("La venta se ha realizado con exito");
                     DialogResult opcion;
@@ -660,7 +670,7 @@ namespace CapaPresentacion
                     if (opcion == DialogResult.Yes)
                     {
                         FrmComprobanteVenta frm = new FrmComprobanteVenta();
-                        frm.nroVenta = id;
+                        frm.nroVenta = idVenta;
                         frm.ShowDialog();
                         frmPagoFactura.Close();
                     }   
@@ -991,8 +1001,9 @@ namespace CapaPresentacion
             {
                 if (Convert.ToInt32(txtPrecio.Text) < precioCompra)
                 {
-                    this.MensajeError("El precio de Venta no puede ser menor a la de Costo");
+                    this.MensajeError("Atención. El precio de Venta no puede ser menor a la de Costo");
                     errorIcono.SetError(txtPrecio, "Ingrese el precio");
+                    return;
                 }
 
             }
@@ -1028,8 +1039,7 @@ namespace CapaPresentacion
                 this.dgvDetalleFactura.Columns["PrecioInicial"].DefaultCellStyle.Format = "N0";
                 this.dgvDetalleFactura.Columns["SubTotalNeto"].DefaultCellStyle.Format = "N0";
                 this.dgvDetalleFactura.Columns["SubtotalIVA"].DefaultCellStyle.Format = "N0";
-                this.dgvDetalleFactura.Columns["SubTotal"].DefaultCellStyle.Format = "N0";
-                this.dgvDetalleFactura.Columns["Ganancia"].DefaultCellStyle.Format = "N0";                
+                this.dgvDetalleFactura.Columns["SubTotal"].DefaultCellStyle.Format = "N0";              
             }
             catch (Exception)
             {
@@ -1120,7 +1130,7 @@ namespace CapaPresentacion
             {
             
                 FrmComprobanteVenta frm = new FrmComprobanteVenta();  
-                frm.nroVenta = id;
+                frm.nroVenta = idVenta;
                 frm.Show();
             }
             catch (Exception ex)

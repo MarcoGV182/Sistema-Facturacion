@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion
 {
@@ -73,34 +74,35 @@ namespace CapaPresentacion
             try
             {
                 string rpta = "";
+                #region Validacion Previa
                 if (this.txtMonto.Text == string.Empty)
                 {
                     this.MensajeError("Falta algunos datos");
                     errorIcono.SetError(txtMonto, "Ingrese el importe de la caja");
+                    return;
+                }
+                #endregion
+
+                rpta = NCaja.InsertarCaja(this.dtpFechaApertura.Value, Convert.ToInt32(this.id), Convert.ToDecimal(this.txtMonto.Text), this.txtObservacion.Text);
+                //si se esta editando el registro    
+
+                if (rpta.Equals("OK"))
+                {
+
+                    this.MensajeOK("La Caja se ha abierto con exito");
+                    this.Close();
                 }
                 else
                 {
-
-
-                    rpta = NCaja.InsertarCaja(this.dtpFechaApertura.Value,Convert.ToInt32(this.id),Convert.ToDecimal(this.txtMonto.Text),this.txtObservacion.Text);
-                        //si se esta editando el registro    
-                    
-                    if (rpta.Equals("OK"))
-                    {
-                        
-                        this.MensajeOK("La Caja se ha abierto con exito");
-                        this.Close();                   
-                    }
-                    else
-                    {
-                        this.MensajeError(rpta);
-                    }
-                    
-                    this.Limpiar();
-                    //this.Mostrar();
-
-
+                    this.MensajeError(rpta);
+                    return;
                 }
+
+                this.Limpiar();
+                //this.Mostrar();
+
+
+
             }
             catch (Exception ex)
             {
@@ -117,6 +119,17 @@ namespace CapaPresentacion
         private void FrmCaja_FormClosing(object sender, FormClosingEventArgs e)
         {
             _Instancia = null;
+        }
+
+        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ControlesCompartidos.SoloNumeros(e);
+        }
+               
+
+        private void txtMonto_TextChanged(object sender, EventArgs e)
+        {
+            ControlesCompartidos.FormatoNumero(sender);
         }
     }
 }

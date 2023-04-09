@@ -13,22 +13,21 @@ namespace CapaNegocio
     public class NGastos
     {
         //Metodo para insertar que llama al metodo insertar de la capa Datos
-        public static string Insertar(string nrodocumento ,DateTime fecha, decimal importe, int nrotipooperacion,int tipoimpuestonro,int formapagonro ,string descripcion,int usuario)
+        public static string Insertar(string nrodocumento ,DateTime fecha, double importe, int nrotipooperacion,int formapagonro ,string descripcion,int usuario)
         {
             DGastos objGasto = new DGastos();
             objGasto.NroDocumento = nrodocumento;
             objGasto.Fecha = fecha;
             objGasto.Importe = importe;
             objGasto.NroTipoOperacion = nrotipooperacion;
-            objGasto.Descripcion = descripcion;
-            objGasto.TipoImpuestoNro = tipoimpuestonro;
+            objGasto.Descripcion = descripcion;          
             objGasto.FormaPagoNro = formapagonro;
             objGasto.Usuario = usuario;
             return objGasto.InsertarGasto(objGasto);
         }
 
         //Metodo para editar que llama al metodo insertar de la capa Datos
-        public static string Editar(int gastonro, string nrodocumento, DateTime fecha, decimal importe, int nrotipooperacion, int tipoimpuestonro, int formapagonro, string descripcion) 
+        public static string Editar(int gastonro, string nrodocumento, DateTime fecha, double importe, int nrotipooperacion, int formapagonro, string descripcion) 
         {
             DGastos objGasto = new DGastos();
             objGasto.GastoNro = gastonro;
@@ -37,7 +36,6 @@ namespace CapaNegocio
             objGasto.Importe = importe;
             objGasto.NroTipoOperacion = nrotipooperacion;
             objGasto.Descripcion = descripcion;
-            objGasto.TipoImpuestoNro = tipoimpuestonro;
             objGasto.FormaPagoNro = formapagonro;
             return objGasto.EditarGasto(objGasto);
 
@@ -73,10 +71,10 @@ namespace CapaNegocio
   
         }
 
-        public static DataTable BuscarFecha(string textobuscar, string textobuscar2)
+        public static DataTable BuscarFecha(string fechaDesde, string fechaHasta,string descripcion)
         {
             DGastos obj = new DGastos();
-            return obj.BuscarGastoFecha(textobuscar, textobuscar2);
+            return obj.BuscarGastoFecha(fechaDesde, fechaHasta, descripcion);
 
         }
 

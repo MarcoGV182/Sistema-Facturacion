@@ -91,7 +91,7 @@ namespace CapaPresentacion
         //Metodo buscar por fechas
         private void BuscarFechas()
         {
-            this.dataListado.DataSource = NFactura.BuscarFacturaFecha(this.dtpFechadesde.Value.ToString("dd-MM-yyyy"), dtpfechahasta.Value.ToString("dd-MM-yyyy"));
+            this.dataListado.DataSource = NFactura.BuscarFacturaFecha(this.dtpFechadesde.Value.ToString("yyyy-MM-dd"), dtpfechahasta.Value.ToString("yyyy-MM-dd"));
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }

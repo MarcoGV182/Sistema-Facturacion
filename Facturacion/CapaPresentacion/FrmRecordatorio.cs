@@ -85,7 +85,7 @@ namespace CapaPresentacion
 
         #region Eventos de Mouse
         private void panel1_MouseDown(object sender, MouseEventArgs e)
-        {
+        {            
             if (e.Button == MouseButtons.Left)
             {
                 mouseOffset = new Point(-e.X, -e.Y);
@@ -97,6 +97,7 @@ namespace CapaPresentacion
         {
             if (isDragging && e.Button == MouseButtons.Left)
             {
+                var activo = this.Focused;
                 Point mousePos = Control.MousePosition;
                 mousePos.Offset(mouseOffset.X, mouseOffset.Y);
                 this.Location = mousePos;
@@ -104,10 +105,11 @@ namespace CapaPresentacion
         }
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
-        {
+        {   
             if (e.Button == MouseButtons.Left)
             {
                 isDragging = false;
+                
             }
         }
 

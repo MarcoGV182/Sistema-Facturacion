@@ -9,7 +9,7 @@
               <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>6.11187cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
@@ -323,7 +323,7 @@
                             <TextRun>
                               <Value>=Fields!Importe.Value</Value>
                               <Style>
-                                <Format>#,0;(#,0)</Format>
+                                <Format>N0</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -371,7 +371,7 @@
         <Top>4.97953cm</Top>
         <Left>0.43495cm</Left>
         <Height>1.2cm</Height>
-        <Width>12.5cm</Width>
+        <Width>16.11187cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -398,7 +398,7 @@
         <Top>3.43641cm</Top>
         <Left>2.65745cm</Left>
         <Height>0.6cm</Height>
-        <Width>1.25646cm</Width>
+        <Width>1.39757cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -418,8 +418,10 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Fields!Column1.Value</Value>
-                <Style />
+                <Value>=Fields!Desde.Value</Value>
+                <Style>
+                  <Format>d</Format>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -427,9 +429,9 @@
         </Paragraphs>
         <rd:DefaultName>Column1</rd:DefaultName>
         <Top>3.43641cm</Top>
-        <Left>3.91391cm</Left>
+        <Left>4.23141cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
+        <Width>4.43146cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -460,7 +462,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox7</rd:DefaultName>
         <Top>3.41849cm</Top>
-        <Left>6.75849cm</Left>
+        <Left>10.77891cm</Left>
         <Height>0.6cm</Height>
         <Width>1.20354cm</Width>
         <ZIndex>3</ZIndex>
@@ -482,8 +484,10 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Fields!Column2.Value</Value>
-                <Style />
+                <Value>=Fields!Hasta.Value</Value>
+                <Style>
+                  <Format>d</Format>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -491,9 +495,9 @@
         </Paragraphs>
         <rd:DefaultName>Column2</rd:DefaultName>
         <Top>3.43641cm</Top>
-        <Left>8.06786cm</Left>
+        <Left>12.08828cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.34125cm</Width>
+        <Width>3.58479cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -526,7 +530,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox15</rd:DefaultName>
         <Top>1.72515cm</Top>
-        <Left>1.45453cm</Left>
+        <Left>3.91391cm</Left>
         <Height>1.28792cm</Height>
         <Width>10.51562cm</Width>
         <ZIndex>5</ZIndex>
@@ -558,8 +562,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox16</rd:DefaultName>
-        <Top>6.51411cm</Top>
-        <Left>10.43495cm</Left>
+        <Top>6.25009cm</Top>
+        <Left>14.04682cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>6</ZIndex>
@@ -577,7 +581,7 @@
     <Height>13.19cm</Height>
     <Style />
   </Body>
-  <Width>14.22667cm</Width>
+  <Width>19.25375cm</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
@@ -605,14 +609,6 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="Column1">
-          <DataField>Column1</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Column2">
-          <DataField>Column2</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="GastoNro">
           <DataField>GastoNro</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -641,10 +637,26 @@
           <DataField>Usuario</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Desde">
+          <DataField>Desde</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Hasta">
+          <DataField>Hasta</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Documento">
+          <DataField>Documento</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FormaPago">
+          <DataField>FormaPago</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DsReporte</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\USER\Documents\Visual Studio 2015\Projects\Facturacion\CapaPresentacion\DsReporte.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\Documentos\Programacion\Programacion\Peluqueria\Proyecto Nuevo-Final- con Facturacion y OT Juntos\Facturacion\CapaPresentacion\DsReporte.xsd</rd:SchemaPath>
         <rd:TableName>sp_ReporteGastos</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

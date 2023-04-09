@@ -454,7 +454,7 @@ namespace CapaPresentacion
         {
             FrmFacturaVenta frm = FrmFacturaVenta.GetInstancia();
             //frm.MdiParent = this;
-            frm.id = Convert.ToInt32(id);
+            frm.idVenta = Convert.ToInt32(id);
             frm.usuario = usuario;
             frm.nombre = nombre;
             frm.apellido = apellido;

@@ -409,6 +409,7 @@
             // 
             this.dgvDetalleFactura.AllowUserToAddRows = false;
             this.dgvDetalleFactura.AllowUserToDeleteRows = false;
+            this.dgvDetalleFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvDetalleFactura.BackgroundColor = System.Drawing.Color.White;
             this.dgvDetalleFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalleFactura.Location = new System.Drawing.Point(194, 278);
@@ -682,12 +683,12 @@
             // 
             // dtpFecha
             // 
-            this.dtpFecha.CustomFormat = "dd/MM/yyyy HH:mm:ss";
+            this.dtpFecha.CustomFormat = "dd/MM/yyyy";
             this.dtpFecha.Font = new System.Drawing.Font("Times New Roman", 11F);
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFecha.Location = new System.Drawing.Point(162, 81);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(179, 24);
+            this.dtpFecha.Size = new System.Drawing.Size(126, 24);
             this.dtpFecha.TabIndex = 5;
             // 
             // btnBuscarCliente

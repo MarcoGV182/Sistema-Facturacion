@@ -279,7 +279,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sp_ReporteGastosTableAdapter" GeneratorDataComponentClassName="sp_ReporteGastosTableAdapter" Name="sp_ReporteGastos" UserDataComponentName="sp_ReporteGastosTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Cn (Settings)" DbObjectName="Facturacion.dbo.sp_ReporteGastos" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Cn (Settings)" DbObjectName="GestionVenta.dbo.sp_ReporteGastos" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.sp_ReporteGastos</CommandText>
@@ -293,15 +293,16 @@
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="Column1" DataSetColumn="Column1" />
-              <Mapping SourceColumn="Column2" DataSetColumn="Column2" />
               <Mapping SourceColumn="GastoNro" DataSetColumn="GastoNro" />
               <Mapping SourceColumn="NroGasto" DataSetColumn="NroGasto" />
               <Mapping SourceColumn="Descripcion" DataSetColumn="Descripcion" />
-              <Mapping SourceColumn="Fecha" DataSetColumn="Fecha" />
               <Mapping SourceColumn="Tipo" DataSetColumn="Tipo" />
               <Mapping SourceColumn="Importe" DataSetColumn="Importe" />
               <Mapping SourceColumn="Usuario" DataSetColumn="Usuario" />
+              <Mapping SourceColumn="Desde" DataSetColumn="Desde" />
+              <Mapping SourceColumn="Hasta" DataSetColumn="Hasta" />
+              <Mapping SourceColumn="Documento" DataSetColumn="Documento" />
+              <Mapping SourceColumn="FormaPago" DataSetColumn="FormaPago" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1195,20 +1196,6 @@
         <xs:element name="sp_ReporteGastos" msprop:Generator_RowEvHandlerName="sp_ReporteGastosRowChangeEventHandler" msprop:Generator_RowDeletedName="sp_ReporteGastosRowDeleted" msprop:Generator_RowDeletingName="sp_ReporteGastosRowDeleting" msprop:Generator_RowEvArgName="sp_ReporteGastosRowChangeEvent" msprop:Generator_TablePropName="sp_ReporteGastos" msprop:Generator_RowChangedName="sp_ReporteGastosRowChanged" msprop:Generator_UserTableName="sp_ReporteGastos" msprop:Generator_RowChangingName="sp_ReporteGastosRowChanging" msprop:Generator_RowClassName="sp_ReporteGastosRow" msprop:Generator_TableClassName="sp_ReporteGastosDataTable" msprop:Generator_TableVarName="tablesp_ReporteGastos">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Column1" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="Column1Column" msprop:Generator_ColumnPropNameInRow="Column1" msprop:Generator_UserColumnName="Column1" msprop:Generator_ColumnVarNameInTable="columnColumn1" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Column2" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="Column2Column" msprop:Generator_ColumnPropNameInRow="Column2" msprop:Generator_UserColumnName="Column2" msprop:Generator_ColumnVarNameInTable="columnColumn2" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="GastoNro" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnPropNameInTable="GastoNroColumn" msprop:Generator_ColumnPropNameInRow="GastoNro" msprop:Generator_UserColumnName="GastoNro" msprop:Generator_ColumnVarNameInTable="columnGastoNro" type="xs:int" />
               <xs:element name="NroGasto" msprop:Generator_ColumnPropNameInTable="NroGastoColumn" msprop:Generator_ColumnPropNameInRow="NroGasto" msprop:Generator_UserColumnName="NroGasto" msprop:Generator_ColumnVarNameInTable="columnNroGasto" minOccurs="0">
                 <xs:simpleType>
@@ -1237,6 +1224,34 @@
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Desde" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Desde" msprop:Generator_ColumnPropNameInTable="DesdeColumn" msprop:Generator_ColumnVarNameInTable="columnDesde" msprop:Generator_UserColumnName="Desde" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Hasta" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Hasta" msprop:Generator_ColumnPropNameInTable="HastaColumn" msprop:Generator_ColumnVarNameInTable="columnHasta" msprop:Generator_UserColumnName="Hasta" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Documento" msprop:Generator_ColumnPropNameInRow="Documento" msprop:Generator_ColumnPropNameInTable="DocumentoColumn" msprop:Generator_ColumnVarNameInTable="columnDocumento" msprop:Generator_UserColumnName="Documento">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FormaPago" msprop:Generator_ColumnPropNameInRow="FormaPago" msprop:Generator_ColumnPropNameInTable="FormaPagoColumn" msprop:Generator_ColumnVarNameInTable="columnFormaPago" msprop:Generator_UserColumnName="FormaPago" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -1411,7 +1426,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Codigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_UserColumnName="Codigo" type="xs:int" />
+              <xs:element name="Codigo" msprop:Generator_UserColumnName="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -14,12 +14,11 @@ namespace CapaDatos
         private int _GastoNro;
         private string _NroDocumento;
         private DateTime _Fecha;
-        private decimal _Importe;
+        private double _Importe;
         private int _NroTipoOperacion;
         private string _Descripcion;
         private int _Usuario;
         private int _FormaPagoNro;
-        private int _TipoImpuestoNro;
         private string _Estado;
         private string _TextoBuscar; 
 
@@ -49,7 +48,7 @@ namespace CapaDatos
             }
         }
 
-        public decimal Importe
+        public double Importe
         {
             get
             {
@@ -126,19 +125,7 @@ namespace CapaDatos
                 _FormaPagoNro = value;
             }
         }
-
-        public int TipoImpuestoNro
-        {
-            get
-            {
-                return _TipoImpuestoNro;
-            }
-
-            set
-            {
-                _TipoImpuestoNro = value;
-            }
-        }
+       
 
         public string Estado
         {
@@ -170,14 +157,13 @@ namespace CapaDatos
         }
 
 
-        public DGastos(int gastonro,string nrodocumento ,DateTime fecha, decimal importe, int nrotipooperacion,int tipoimpuestonro,int formaPagonro,string estado , string descripcion, int usuario, string textobuscar) {
+        public DGastos(int gastonro,string nrodocumento ,DateTime fecha, double importe, int nrotipooperacion,int formaPagonro,string estado , string descripcion, int usuario, string textobuscar) {
             this.GastoNro = gastonro;
             this.NroDocumento = nrodocumento;
             this.Fecha = fecha;
             this.Importe = importe;
             this.NroTipoOperacion = nrotipooperacion;
             this.FormaPagoNro = formaPagonro;
-            this.TipoImpuestoNro = tipoimpuestonro;
             this.Estado = estado;
             this.Descripcion = descripcion;
             this.Usuario = usuario;
@@ -245,14 +231,6 @@ namespace CapaDatos
                 ParFormaPago.Value = Gastos.FormaPagoNro;
                 SqlCmd.Parameters.Add(ParFormaPago);
 
-                //Parametros TipoImpuestoNro
-                SqlParameter ParTipoImpuesto = new SqlParameter();
-                ParTipoImpuesto.ParameterName = "@TipoImpuestoNro";
-                ParTipoImpuesto.SqlDbType = SqlDbType.Int;
-                ParTipoImpuesto.Value = Gastos.TipoImpuestoNro;
-                SqlCmd.Parameters.Add(ParTipoImpuesto);
-
-
 
                 //Parametros Observacion
                 SqlParameter ParObservacion = new SqlParameter();
@@ -282,8 +260,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                Conexion.CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -350,15 +327,6 @@ namespace CapaDatos
                 ParFormaPago.Value = Gastos.FormaPagoNro;
                 SqlCmd.Parameters.Add(ParFormaPago);
 
-                //Parametros TipoImpuestoNro
-                SqlParameter ParTipoImpuesto = new SqlParameter();
-                ParTipoImpuesto.ParameterName = "@TipoImpuestoNro";
-                ParTipoImpuesto.SqlDbType = SqlDbType.Int;
-                ParTipoImpuesto.Value = Gastos.TipoImpuestoNro;
-                SqlCmd.Parameters.Add(ParTipoImpuesto);
-
-
-
                 //Parametros Observacion
                 SqlParameter ParObservacion = new SqlParameter();
                 ParObservacion.ParameterName = "@Descripcion";
@@ -378,8 +346,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                Conexion.CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -490,7 +457,7 @@ namespace CapaDatos
 
 
 
-        public DataTable BuscarGastoFecha(string TextoBuscar, string TextoBuscar2)
+        public DataTable BuscarGastoFecha(string FechaDesde, string FechaHasta, string Descripcion)
         {
             DataTable DtResultado = new DataTable("Gastos");
             SqlConnection Sqlcon = new SqlConnection();
@@ -499,24 +466,33 @@ namespace CapaDatos
                 Sqlcon.ConnectionString = Conexion.CadenaConexion;
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "sp_BuscarGastoFecha";
+                SqlCmd.CommandText = "sp_BuscarGastoFiltro";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 //Parametros1
                 SqlParameter ParTextoBuscar = new SqlParameter();
-                ParTextoBuscar.ParameterName = "@TextoBuscar";
+                ParTextoBuscar.ParameterName = "@FechaDesde";
                 ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
-                ParTextoBuscar.Size = 50;
-                ParTextoBuscar.SqlValue = TextoBuscar;
+                ParTextoBuscar.Size = 20;
+                ParTextoBuscar.SqlValue = FechaDesde;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
                 //Parametro2
                 SqlParameter ParTextoBuscar2 = new SqlParameter();
-                ParTextoBuscar2.ParameterName = "@TextoBuscar2";
+                ParTextoBuscar2.ParameterName = "@FechaHasta";
                 ParTextoBuscar2.SqlDbType = SqlDbType.VarChar;
-                ParTextoBuscar2.Size = 50;
-                ParTextoBuscar2.SqlValue = TextoBuscar2;
+                ParTextoBuscar2.Size = 20;
+                ParTextoBuscar2.SqlValue = FechaHasta;
                 SqlCmd.Parameters.Add(ParTextoBuscar2);
+
+
+                //Parametro2
+                SqlParameter ParDescripcion = new SqlParameter();
+                ParDescripcion.ParameterName = "@Descripcion";
+                ParDescripcion.SqlDbType = SqlDbType.VarChar;
+                ParDescripcion.Size = 150;
+                ParDescripcion.SqlValue = Descripcion;
+                SqlCmd.Parameters.Add(ParDescripcion);
 
 
                 //instanciar un DataAdapter
@@ -526,6 +502,10 @@ namespace CapaDatos
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            finally 
+            {
+                Conexion.CerrarConexion(Sqlcon);
             }
 
             return DtResultado;

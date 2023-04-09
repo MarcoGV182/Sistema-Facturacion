@@ -91,10 +91,10 @@ namespace CapaNegocio
             return objFactura.BuscarFechas(textoBuscar1, textoBuscar2);
         }
 
-        public static DataTable MostrarDetalle(string nrofactura,int clientenro)
+        public static DataTable MostrarDetalle(int idVenta)
         {
             DFactura objFactura = new DFactura();
-            return objFactura.MostrarDetalleFactura(nrofactura,clientenro);
+            return objFactura.MostrarDetalleFactura(idVenta);
         }
 
         

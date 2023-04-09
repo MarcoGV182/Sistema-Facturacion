@@ -53,7 +53,7 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.label1.Location = new System.Drawing.Point(37, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 16);
+            this.label1.Size = new System.Drawing.Size(53, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Usuario:";
             // 
@@ -63,7 +63,7 @@
             this.lbUsuario.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.lbUsuario.Location = new System.Drawing.Point(130, 68);
             this.lbUsuario.Name = "lbUsuario";
-            this.lbUsuario.Size = new System.Drawing.Size(51, 16);
+            this.lbUsuario.Size = new System.Drawing.Size(50, 16);
             this.lbUsuario.TabIndex = 1;
             this.lbUsuario.Text = "Usuario";
             // 
@@ -73,7 +73,7 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.label2.Location = new System.Drawing.Point(37, 109);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 16);
+            this.label2.Size = new System.Drawing.Size(75, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Fecha/Hora:";
             // 
@@ -83,7 +83,7 @@
             this.label3.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.label3.Location = new System.Drawing.Point(37, 145);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 16);
+            this.label3.Size = new System.Drawing.Size(89, 16);
             this.label3.TabIndex = 3;
             this.label3.Text = "Imp. Apertura:";
             // 
@@ -93,22 +93,25 @@
             this.label5.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.label5.Location = new System.Drawing.Point(22, 183);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 16);
+            this.label5.Size = new System.Drawing.Size(90, 16);
             this.label5.TabIndex = 5;
             this.label5.Text = "Observaciones";
             // 
             // txtMonto
             // 
-            this.txtMonto.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.txtMonto.Location = new System.Drawing.Point(133, 139);
+            this.txtMonto.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.txtMonto.Location = new System.Drawing.Point(133, 140);
             this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(141, 26);
+            this.txtMonto.Size = new System.Drawing.Size(141, 23);
             this.txtMonto.TabIndex = 6;
+            this.txtMonto.TextChanged += new System.EventHandler(this.txtMonto_TextChanged);
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
             // txtObservacion
             // 
             this.txtObservacion.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.txtObservacion.Location = new System.Drawing.Point(25, 202);
+            this.txtObservacion.MaxLength = 150;
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.Size = new System.Drawing.Size(317, 99);

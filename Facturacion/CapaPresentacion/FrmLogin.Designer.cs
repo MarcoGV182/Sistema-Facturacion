@@ -77,6 +77,9 @@
             this.pictureBox3.Size = new System.Drawing.Size(644, 47);
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox3_MouseDown);
+            this.pictureBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox3_MouseMove);
+            this.pictureBox3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox3_MouseUp);
             // 
             // label1
             // 
@@ -144,7 +147,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.label3.Location = new System.Drawing.Point(19, 87);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(117, 16);
+            this.label3.Size = new System.Drawing.Size(116, 16);
             this.label3.TabIndex = 1;
             this.label3.Text = "Clave de Acceso :";
             // 
@@ -154,7 +157,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.label2.Location = new System.Drawing.Point(21, 43);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 16);
+            this.label2.Size = new System.Drawing.Size(57, 16);
             this.label2.TabIndex = 0;
             this.label2.Text = "Usuario:";
             // 
