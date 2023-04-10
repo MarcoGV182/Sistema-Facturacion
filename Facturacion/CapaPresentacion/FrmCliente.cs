@@ -12,6 +12,7 @@ using CapaNegocio;
 using System.Data.SqlClient;
 using CapaDatos;
 using CapaPresentacion.DsReporteTableAdapters;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion
 {
@@ -90,7 +91,6 @@ namespace CapaPresentacion
             this.txtEmail.Text = string.Empty;
             this.cboCiudad.Text = string.Empty;
             this.dtpFechaNac.Text = string.Empty;
-            this.cboEstado.Text = string.Empty;
             this.txtObservacion.Text = string.Empty;
         }
 
@@ -107,7 +107,6 @@ namespace CapaPresentacion
             this.txtObservacion.ReadOnly = !valor;
             this.cboCiudad.Enabled = valor;
             this.dtpFechaNac.Enabled = valor;
-            this.cboEstado.Enabled = valor;
         }
 
         //Habilitar Botones
@@ -153,12 +152,12 @@ namespace CapaPresentacion
 
         private void LlenarComboBox()
         {
-            cboCiudad.DataSource = NCiudad.Mostrar();
+            cboCiudad.DataSource = ControlesCompartidos.AgregarNuevaFila(NCiudad.Mostrar(), "Descripcion", "CiudadNro");
             cboCiudad.ValueMember = "CiudadNro";
             cboCiudad.DisplayMember = "Descripcion";
 
 
-            cboTipoDocumento.DataSource = NTipoDocumento.Mostrar();
+            cboTipoDocumento.DataSource = ControlesCompartidos.AgregarNuevaFila(NTipoDocumento.Mostrar(), "Descripcion", "idTipoDocumento");
             cboTipoDocumento.ValueMember = "idTipoDocumento";
             cboTipoDocumento.DisplayMember = "Descripcion";
 
@@ -229,7 +228,6 @@ namespace CapaPresentacion
             this.Botones();
             this.Limpiar();
             this.Habilitar(true);
-            this.cboEstado.SelectedIndex = 0;
             this.txtNombre.Focus();
             
         }
@@ -243,19 +241,19 @@ namespace CapaPresentacion
                 return false;
             }
 
+            if (Convert.ToInt32(cboTipoDocumento.SelectedValue) == 0)
+            {
+                this.MensajeError("Falta algunos datos");
+                errorIcono.SetError(cboTipoDocumento, "Seleccione el tipo de documento");
+                return false;
+            }
+
             if (this.txtDocumento.Text == string.Empty)
             {
                 this.MensajeError("Falta algunos datos");
                 errorIcono.SetError(txtDocumento, "Ingrese el Nro de documento");
                 return false;
-            }
-
-            if (this.cboEstado.Text == string.Empty)
-            {
-                this.MensajeError("Falta algunos datos");
-                errorIcono.SetError(cboEstado, "Ingrese el Estado");
-                return false;
-            }
+            }            
 
             return true;
 
@@ -285,11 +283,11 @@ namespace CapaPresentacion
                 };
                 cliente.TipoDocumento = tipoDocumento;
                 cliente.FechaNacimiento = dtpFechaNac.Checked == false ? (DateTime?)null : dtpFechaNac.Value;
-                cliente.CiudadNro = Convert.ToInt32(cboCiudad.SelectedValue);
+                if (Convert.ToInt32(cboCiudad.SelectedValue) != 0)
+                    cliente.CiudadNro = Convert.ToInt32(cboCiudad.SelectedValue);
                 cliente.Direccion = this.txtDireccion.Text.Trim();
                 cliente.Telefono = this.txtTelefono.Text.Trim();
                 cliente.Email = this.txtEmail.Text.Trim();
-                cliente.Estado = this.cboEstado.Text;
                 cliente.Observacion = this.txtObservacion.Text.Trim().ToUpper();
 
                 if (this.IsNuevo)
@@ -439,11 +437,7 @@ namespace CapaPresentacion
 
             this.chkEliminar.Checked = false;
         }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
+        
 
         private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -468,7 +462,6 @@ namespace CapaPresentacion
                 this.txtTelefono.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Telefono"].Value);
                 this.txtEmail.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Email"].Value);
                 this.cboCiudad.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Ciudad"].Value);
-                this.cboEstado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Estado"].Value);
                 this.txtObservacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Observacion"].Value);
                 //mostrar la segunda pestana la de mantenimiento al hacer doble click
                 this.tabControl1.SelectedIndex = 1;

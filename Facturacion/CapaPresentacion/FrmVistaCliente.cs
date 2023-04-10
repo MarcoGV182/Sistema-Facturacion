@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CapaNegocio;
 using System.Data.SqlClient;
 using CapaDatos;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion
 {
@@ -78,7 +79,6 @@ namespace CapaPresentacion
             this.txtEmail.Text = string.Empty;
             this.cboCiudad.Text = string.Empty;
             this.dtpFechaNac.Text = string.Empty;
-            this.cboEstado.Text = string.Empty;
         }
 
         //Habilitar botones
@@ -93,7 +93,6 @@ namespace CapaPresentacion
             this.txtEmail.ReadOnly = !valor;
             this.cboCiudad.Enabled = valor;
             this.dtpFechaNac.Enabled = valor;
-            this.cboEstado.Enabled = valor;
         }
 
         //Habilitar Botones
@@ -124,10 +123,14 @@ namespace CapaPresentacion
 
         private void LlenarComboBox()
         {
-            cboCiudad.DataSource = NCiudad.Mostrar();
+            cboCiudad.DataSource = ControlesCompartidos.AgregarNuevaFila(NCiudad.Mostrar(), "Descripcion", "CiudadNro");
             cboCiudad.ValueMember = "CiudadNro";
             cboCiudad.DisplayMember = "Descripcion";
 
+
+            cboTipoDocumento.DataSource = ControlesCompartidos.AgregarNuevaFila(NTipoDocumento.Mostrar(), "Descripcion", "idTipoDocumento");
+            cboTipoDocumento.ValueMember = "idTipoDocumento";
+            cboTipoDocumento.DisplayMember = "Descripcion";
         }
 
         //Metodo para mostrar los datos en el datagrid
@@ -183,8 +186,7 @@ namespace CapaPresentacion
             this.IsNuevo = true;
             this.Botones();
             this.Limpiar();
-            this.Habilitar(true);
-            this.cboEstado.SelectedIndex = 0;
+            this.Habilitar(true);   
             this.txtNombre.Focus();
         }
 
@@ -197,19 +199,20 @@ namespace CapaPresentacion
                 return false;
             }
 
+            if (Convert.ToInt32(cboTipoDocumento.SelectedValue) == 0)
+            {
+                this.MensajeError("Falta algunos datos");
+                errorIcono.SetError(cboTipoDocumento, "Seleccione el tipo de documento");
+                return false;
+            }
+
             if (this.txtDocumento.Text == string.Empty)
             {
                 this.MensajeError("Falta algunos datos");
                 errorIcono.SetError(txtDocumento, "Ingrese el Nro de documento");
                 return false;
             }
-
-            if (this.cboEstado.Text == string.Empty)
-            {
-                this.MensajeError("Falta algunos datos");
-                errorIcono.SetError(cboEstado, "Ingrese el Estado");
-                return false;
-            }
+            
 
             return true;
 
@@ -238,11 +241,11 @@ namespace CapaPresentacion
                 };
                 cliente.TipoDocumento = tipoDocumento;
                 cliente.FechaNacimiento = dtpFechaNac.Checked == false ? (DateTime?)null : dtpFechaNac.Value;
-                cliente.CiudadNro = Convert.ToInt32(cboCiudad.SelectedValue);
+                if (Convert.ToInt32(cboCiudad.SelectedValue) != 0)
+                    cliente.CiudadNro = Convert.ToInt32(cboCiudad.SelectedValue);
                 cliente.Direccion = this.txtDireccion.Text.Trim();
                 cliente.Telefono = this.txtTelefono.Text.Trim();
-                cliente.Email = this.txtEmail.Text.Trim();
-                cliente.Estado = this.cboEstado.Text;
+                cliente.Email = this.txtEmail.Text.Trim();           
                 cliente.Observacion = this.txtObservacion.Text.Trim().ToUpper();
 
                 //si se ingresa un nuevo registro

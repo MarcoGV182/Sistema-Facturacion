@@ -70,7 +70,7 @@
             this.lblDescripcion.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.lblDescripcion.Location = new System.Drawing.Point(97, 88);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(79, 16);
+            this.lblDescripcion.Size = new System.Drawing.Size(78, 16);
             this.lblDescripcion.TabIndex = 1;
             this.lblDescripcion.Text = "Descripcion:";
             // 
@@ -80,7 +80,7 @@
             this.lblCodigo.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.lblCodigo.Location = new System.Drawing.Point(100, 57);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(33, 16);
+            this.lblCodigo.Size = new System.Drawing.Size(32, 16);
             this.lblCodigo.TabIndex = 0;
             this.lblCodigo.Text = "Nro:";
             // 
@@ -125,11 +125,11 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(381, 45);
+            this.lblTotal.Location = new System.Drawing.Point(352, 52);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(35, 13);
+            this.lblTotal.Size = new System.Drawing.Size(91, 13);
             this.lblTotal.TabIndex = 6;
-            this.lblTotal.Text = "label3";
+            this.lblTotal.Text = "Cant. Registros: 0";
             // 
             // chkEliminar
             // 
@@ -155,7 +155,6 @@
             // btnBuscar
             // 
             this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.Image = global::CapaPresentacion.Properties.Resources.xmag_search_find_export_locate_5984;
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBuscar.Location = new System.Drawing.Point(188, 8);
             this.btnBuscar.Name = "btnBuscar";
@@ -279,7 +278,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(511, 259);
+            this.tabPage1.Size = new System.Drawing.Size(519, 269);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -299,10 +298,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(8, 8);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(519, 285);
+            this.tabControl1.Size = new System.Drawing.Size(527, 295);
             this.tabControl1.TabIndex = 3;
             // 
             // FrmCiudad

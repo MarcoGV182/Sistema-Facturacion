@@ -26,6 +26,8 @@ namespace CapaPresentacion
         private double ingreso = 0;
         private double egreso = 0;
 
+        double montoApertura = 0;
+
         /*private double efectivo = 0;
         private double tarjeta = 0;
         private double cheque = 0;*/
@@ -81,14 +83,16 @@ namespace CapaPresentacion
                 DataTable dt = NCaja.MostrarCajaAbierta(Convert.ToInt32(codigo));
                 if(dt.Rows.Count==0) 
                 {
-                    MensajeError("NINGUNA CAJA SE HA ABIERTO");
+                    MensajeError($"No existe Arqueo de Caja abierta para el usuario: {usuario}");
                     this.txtSaldoActual.Text = 0.ToString();
                     this.btnCerrar.Enabled = false;
+                    return;
                 }
                 else 
                 {
                     this.txtfechaApertura.Text =Convert.ToDateTime(dt.Rows[0]["FechaApertura"].ToString()).ToString("dd/MM/yyyy HH:mm");
-                    this.txtMontoInicial.Text =Convert.ToDouble(dt.Rows[0]["ImporteApertura"].ToString()).ToString("N0");
+                    montoApertura = Convert.ToDouble(dt.Rows[0]["ImporteApertura"]);
+                    this.txtMontoInicial.Text = montoApertura.ToString("N0");
                     this.lblnrocaja.Text = dt.Rows[0]["CajaNro"].ToString();
                     this.btnCerrar.Enabled = true;
                 }
@@ -190,9 +194,13 @@ namespace CapaPresentacion
                     return;
 
                 //PASA LOS DATOS DEL DATATABLE A LOS TEXTBOX
-                txtEfectivo.Text = mov.Rows[0]["PagoEfectivo"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoEfectivo"]).ToString("N0") : "0";
-                txtCheque.Text = mov.Rows[0]["PagoCheque"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoCheque"]).ToString("N0") : "0";
-                txtTarjeta.Text = mov.Rows[0]["PagoTarjeta"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoTarjeta"]).ToString("N0") : "0";
+                double efectivo = mov.Rows[0]["PagoEfectivo"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoEfectivo"]) : 0;
+                double cheque = mov.Rows[0]["PagoCheque"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoCheque"]) : 0;
+                double tarjeta = mov.Rows[0]["PagoTarjeta"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoTarjeta"]) : 0;
+
+                txtEfectivo.Text = efectivo.ToString("N0");
+                txtCheque.Text = cheque.ToString("N0");
+                txtTarjeta.Text = tarjeta.ToString("N0");
                 //lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
                 //this.TotalesMovimientoPagos();
             }

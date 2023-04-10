@@ -147,47 +147,50 @@ namespace CapaPresentacion
             try
             {
                 string rpta = "";
+                errorIcono.Clear();
+
                 if (this.txtDescripcion.Text == string.Empty)
                 {
                     this.MensajeError("Falta algunos datos");
                     errorIcono.SetError(txtDescripcion, "Ingrese la descripcion");
+                    return;
+                }
+               
+
+                //si se ingresa un nuevo registro
+                if (this.IsNuevo)
+                {
+                    rpta = NCiudad.Insertar(this.txtDescripcion.Text.Trim());
+                    //si se esta editando el registro    
                 }
                 else
                 {
-                    //si se ingresa un nuevo registro
-                    if (this.IsNuevo)
-                    {
-                        rpta = NCiudad.Insertar(this.txtDescripcion.Text.Trim().ToUpper());
-                        //si se esta editando el registro    
-                    }
-                    else
-                    {
-                        rpta = NCiudad.Editar(Convert.ToInt32(this.txtCodigo.Text), this.txtDescripcion.Text.Trim().ToUpper());
-                    }
-                    if (rpta.Equals("OK"))
-                    {
-                        if (IsNuevo)
-                        {
-                            this.MensajeOK("Se ha insertado con exito");
-                        }
-                        else
-                        {
-                            this.MensajeOK("Se ha editado con exito");
-                        }
-                    }
-                    else
-                    {
-                        this.MensajeError(rpta);
-                    }
-
-                    this.IsNuevo = false;
-                    this.IsEditar = false;
-                    this.Botones();
-                    this.Limpiar();
-                    this.Mostrar();
-
-
+                    rpta = NCiudad.Editar(Convert.ToInt32(this.txtCodigo.Text), this.txtDescripcion.Text.Trim());
                 }
+                if (rpta.Equals("OK"))
+                {
+                    if (IsNuevo)
+                    {
+                        this.MensajeOK("Se ha insertado con exito");
+                    }
+                    else
+                    {
+                        this.MensajeOK("Se ha editado con exito");
+                    }
+                }
+                else
+                {
+                    this.MensajeError(rpta);
+                    return;
+                }
+
+                this.IsNuevo = false;
+                this.IsEditar = false;
+                this.Botones();
+                this.Limpiar();
+                this.Mostrar();
+
+
             }
             catch (Exception ex)
             {
@@ -309,36 +312,40 @@ namespace CapaPresentacion
         {
             try
             {
-                
-                DialogResult opcion;
-                opcion = MessageBox.Show("Desea eliminar el registro ?", "Sistema de Facturacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (opcion == DialogResult.OK)
+                //Validar que se haya selecciona al menos un registro
+                int x = dataListado.Rows.Cast<DataGridViewRow>()
+                              .Where(r => Convert.ToBoolean(r.Cells[0].Value))
+                              .Count();
+                if (x == 0)
                 {
-                    string codigo;
-                    string rpta = "";
+                    MensajeError("No ha seleccionado ningun item");
+                    return;
+                }
 
-                    foreach (DataGridViewRow row in dataListado.Rows)
+                string codigo;
+                string rpta = "";
+
+                foreach (DataGridViewRow row in dataListado.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[0].Value))
                     {
-                        if (Convert.ToBoolean(row.Cells[0].Value))
-                        {
-                            codigo = Convert.ToString(row.Cells[1].Value);
-                            rpta = NCiudad.Eliminar(Convert.ToInt32(codigo));
+                        codigo = Convert.ToString(row.Cells[1].Value);
+                        rpta = NCiudad.Eliminar(Convert.ToInt32(codigo));
 
-                            if (rpta.Equals("OK"))
-                            {
-                                this.MensajeOK("Se elimino correctamento el registro");
-                            }
-                            else
-                            {
-                                this.MensajeError("La registro ya esta definido en Persona" +Environment.NewLine+"(Persona/Ciudad)");
-                            }
+                        if (rpta.Equals("OK"))
+                        {
+                            this.MensajeOK("Se elimino correctamento el registro");
+                        }
+                        else
+                        {
+                            this.MensajeError("La registro ya esta definido en Persona" + Environment.NewLine + "(Persona/Ciudad)");
+                            return;
                         }
                     }
-
-                    this.Mostrar();
-                    this.chkEliminar.Checked = false;
-
                 }
+
+                this.Mostrar();
+                this.chkEliminar.Checked = false;
             }
             catch (Exception ex)
             {

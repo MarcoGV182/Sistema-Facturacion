@@ -493,12 +493,6 @@
     <Compile Include="FrmUsuarioServicio.Designer.cs">
       <DependentUpon>FrmUsuarioServicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Informes\FormPruebaReporte.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Informes\FormPruebaReporte.Designer.cs">
-      <DependentUpon>FormPruebaReporte.cs</DependentUpon>
-    </Compile>
     <Compile Include="Informes\FrmComprasFiltro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -830,9 +824,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUsuarioServicio.resx">
       <DependentUpon>FrmUsuarioServicio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Informes\FormPruebaReporte.resx">
-      <DependentUpon>FormPruebaReporte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Informes\FrmComprasFiltro.resx">
       <DependentUpon>FrmComprasFiltro.cs</DependentUpon>

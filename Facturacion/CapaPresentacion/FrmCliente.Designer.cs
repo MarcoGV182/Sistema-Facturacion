@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCliente));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboTipoDocumento = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtObservacion = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -47,8 +48,6 @@
             this.txtDocumento = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cboEstado = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cboCiudad = new System.Windows.Forms.ComboBox();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -72,7 +71,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
-            this.cboTipoDocumento = new System.Windows.Forms.ComboBox();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
@@ -110,8 +108,6 @@
             this.groupBox1.Controls.Add(this.txtDocumento);
             this.groupBox1.Controls.Add(this.txtApellido);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.cboEstado);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.cboCiudad);
             this.groupBox1.Controls.Add(this.btnCancelar);
@@ -130,6 +126,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Persona";
             // 
+            // cboTipoDocumento
+            // 
+            this.cboTipoDocumento.BackColor = System.Drawing.Color.White;
+            this.cboTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoDocumento.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cboTipoDocumento.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.cboTipoDocumento.FormattingEnabled = true;
+            this.cboTipoDocumento.Location = new System.Drawing.Point(177, 145);
+            this.cboTipoDocumento.Name = "cboTipoDocumento";
+            this.cboTipoDocumento.Size = new System.Drawing.Size(127, 23);
+            this.cboTipoDocumento.TabIndex = 26;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -143,7 +151,7 @@
             // txtObservacion
             // 
             this.txtObservacion.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.txtObservacion.Location = new System.Drawing.Point(414, 180);
+            this.txtObservacion.Location = new System.Drawing.Point(414, 149);
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.Size = new System.Drawing.Size(261, 70);
@@ -153,7 +161,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label12.Location = new System.Drawing.Point(328, 187);
+            this.label12.Location = new System.Drawing.Point(328, 156);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(81, 16);
             this.label12.TabIndex = 23;
@@ -269,29 +277,6 @@
             this.label5.Size = new System.Drawing.Size(55, 16);
             this.label5.TabIndex = 12;
             this.label5.Text = "Apellido:";
-            // 
-            // cboEstado
-            // 
-            this.cboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboEstado.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.cboEstado.FormattingEnabled = true;
-            this.cboEstado.Items.AddRange(new object[] {
-            "ACTIVO",
-            "INACTIVO"});
-            this.cboEstado.Location = new System.Drawing.Point(414, 146);
-            this.cboEstado.Name = "cboEstado";
-            this.cboEstado.Size = new System.Drawing.Size(77, 23);
-            this.cboEstado.TabIndex = 11;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label4.Location = new System.Drawing.Point(328, 152);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 16);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Estado:";
             // 
             // label3
             // 
@@ -515,7 +500,6 @@
             this.cboBuscar.Name = "cboBuscar";
             this.cboBuscar.Size = new System.Drawing.Size(89, 21);
             this.cboBuscar.TabIndex = 9;
-            this.cboBuscar.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // tabControl1
             // 
@@ -534,18 +518,6 @@
             // ttMensaje
             // 
             this.ttMensaje.IsBalloon = true;
-            // 
-            // cboTipoDocumento
-            // 
-            this.cboTipoDocumento.BackColor = System.Drawing.Color.White;
-            this.cboTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoDocumento.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cboTipoDocumento.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.cboTipoDocumento.FormattingEnabled = true;
-            this.cboTipoDocumento.Location = new System.Drawing.Point(177, 145);
-            this.cboTipoDocumento.Name = "cboTipoDocumento";
-            this.cboTipoDocumento.Size = new System.Drawing.Size(127, 23);
-            this.cboTipoDocumento.TabIndex = 26;
             // 
             // FrmCliente
             // 
@@ -577,8 +549,6 @@
 
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cboEstado;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboCiudad;
         private System.Windows.Forms.Button btnCancelar;

@@ -17,7 +17,7 @@ namespace CapaPresentacion
       
         public FrmComprobanteVenta()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }        
 
         private void FrmComprobanteVenta_Load(object sender, EventArgs e)

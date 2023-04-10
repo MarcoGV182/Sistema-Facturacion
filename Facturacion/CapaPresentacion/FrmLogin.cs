@@ -76,8 +76,7 @@ namespace CapaPresentacion
                 //validar usuario
                 if (DtLogin.Rows.Count == 0)
                 {
-                    MessageBox.Show("Usuario o Contraseña Incorrecta.\nFavor verifique", "Error de Acceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.Limpiar();
+                    MessageBox.Show("Usuario o Contraseña Incorrecta.\nFavor verifique", "Error de Acceso", MessageBoxButtons.OK, MessageBoxIcon.Error);                   
                     txtUsuario.Focus();
                 }
                 else

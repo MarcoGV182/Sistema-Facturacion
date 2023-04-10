@@ -1094,16 +1094,29 @@ namespace CapaPresentacion
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
+                #region Validaciones Reimpresion
+                if (dataListado.CurrentRow == null)
+                {
+                    MensajeError("Debe de seleccionar un registro");
+                    return;
+                }
+
+                if (this.dataListado.CurrentRow.Cells["Comprobante"].Value.ToString() != "FACTURA")
+                {
+                    MensajeError("El registro seleccionado no es un Factura");
+                    return;
+                }
+                #endregion
+
                 FrmComprobanteVenta frm = new FrmComprobanteVenta();
                 int nroVenta;
                 nroVenta = Convert.ToInt32(this.dataListado.CurrentRow.Cells["NroVenta"].Value);
                 frm.nroVenta = nroVenta;
-
                 frm.Show();
-                //frm.Show();
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

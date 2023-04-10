@@ -2756,7 +2756,7 @@ namespace CapaPresentacion {
                         int PersonaNro, 
                         int VendedorNro, 
                         string Vendedor, 
-                        string Fecha, 
+                        System.DateTime Fecha, 
                         int TipoComprobante, 
                         string Comprobante, 
                         decimal PorcentajeIVA, 
@@ -2773,8 +2773,8 @@ namespace CapaPresentacion {
                         string UsuarioAnulacion, 
                         byte[] LogoEmpresa, 
                         string Timbrado, 
-                        string FechaInicioVigencia, 
-                        string FechaVencimiento, 
+                        System.DateTime FechaInicioVigencia, 
+                        System.DateTime FechaVencimiento, 
                         string Ruc_empresa) {
                 sp_ReporteFacturaRow rowsp_ReporteFacturaRow = ((sp_ReporteFacturaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -2901,7 +2901,7 @@ namespace CapaPresentacion {
                 base.Columns.Add(this.columnVendedorNro);
                 this.columnVendedor = new global::System.Data.DataColumn("Vendedor", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVendedor);
-                this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFecha);
                 this.columnTipoComprobante = new global::System.Data.DataColumn("TipoComprobante", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTipoComprobante);
@@ -2935,9 +2935,9 @@ namespace CapaPresentacion {
                 base.Columns.Add(this.columnLogoEmpresa);
                 this.columnTimbrado = new global::System.Data.DataColumn("Timbrado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTimbrado);
-                this.columnFechaInicioVigencia = new global::System.Data.DataColumn("FechaInicioVigencia", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnFechaInicioVigencia = new global::System.Data.DataColumn("FechaInicioVigencia", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaInicioVigencia);
-                this.columnFechaVencimiento = new global::System.Data.DataColumn("FechaVencimiento", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnFechaVencimiento = new global::System.Data.DataColumn("FechaVencimiento", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaVencimiento);
                 this.columnRuc_empresa = new global::System.Data.DataColumn("Ruc_empresa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRuc_empresa);
@@ -2961,7 +2961,6 @@ namespace CapaPresentacion {
                 this.columnPersonaNro.AllowDBNull = false;
                 this.columnVendedorNro.DefaultValue = ((int)(0));
                 this.columnVendedor.MaxLength = 100;
-                this.columnFecha.MaxLength = 4000;
                 this.columnTipoComprobante.AllowDBNull = false;
                 this.columnComprobante.MaxLength = 100;
                 this.columntotal.ReadOnly = true;
@@ -11211,10 +11210,10 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Fecha {
+            public System.DateTime Fecha {
                 get {
                     try {
-                        return ((string)(this[this.tablesp_ReporteFactura.FechaColumn]));
+                        return ((global::System.DateTime)(this[this.tablesp_ReporteFactura.FechaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Fecha\' de la tabla \'sp_ReporteFactura\' es DBNull.", e);
@@ -11478,13 +11477,14 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string FechaInicioVigencia {
+            public System.DateTime FechaInicioVigencia {
                 get {
-                    if (this.IsFechaInicioVigenciaNull()) {
-                        return string.Empty;
+                    try {
+                        return ((global::System.DateTime)(this[this.tablesp_ReporteFactura.FechaInicioVigenciaColumn]));
                     }
-                    else {
-                        return ((string)(this[this.tablesp_ReporteFactura.FechaInicioVigenciaColumn]));
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaInicioVigencia\' de la tabla \'sp_ReporteFactura\' es D" +
+                                "BNull.", e);
                     }
                 }
                 set {
@@ -11494,13 +11494,14 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string FechaVencimiento {
+            public System.DateTime FechaVencimiento {
                 get {
-                    if (this.IsFechaVencimientoNull()) {
-                        return string.Empty;
+                    try {
+                        return ((global::System.DateTime)(this[this.tablesp_ReporteFactura.FechaVencimientoColumn]));
                     }
-                    else {
-                        return ((string)(this[this.tablesp_ReporteFactura.FechaVencimientoColumn]));
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaVencimiento\' de la tabla \'sp_ReporteFactura\' es DBNu" +
+                                "ll.", e);
                     }
                 }
                 set {

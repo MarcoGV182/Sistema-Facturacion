@@ -343,11 +343,15 @@ namespace CapaDatos
                 SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
                 SqlAdapter.Fill(DtResultado);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 DtResultado = null;
+                throw ex;
             }
-
+            finally 
+            {
+                Conexion.CerrarConexion(Sqlcon);
+            }
             return DtResultado;
 
         }
@@ -362,7 +366,7 @@ namespace CapaDatos
                 Sqlcon.ConnectionString = Conexion.CadenaConexion;
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "sp_BuscarProveedorRuc";
+                SqlCmd.CommandText = "sp_BuscarProveedor";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 //Parametros

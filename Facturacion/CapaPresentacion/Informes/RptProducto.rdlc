@@ -419,7 +419,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -466,7 +465,7 @@
                             <TextRun>
                               <Value>=Fields!FechaUltActualizacionStock.Value</Value>
                               <Style>
-                                <Format>dd/MM/yyyy hh:mm:ss</Format>
+                                <Format>dd/MM/yyyy HH:mm:ss</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -487,6 +486,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
