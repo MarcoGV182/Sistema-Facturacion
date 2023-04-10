@@ -247,6 +247,56 @@ namespace CapaDatos
 
 
 
+        public string EliminarArqueo(DCaja Caja)
+        {
+            //declaracion de variables
+            string rpta = "OK";
+            SqlConnection Sqlcon = new SqlConnection();
+            //constrolador de errores
+            try
+            {
+                //establecer conexion
+                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                //abrir la conexion
+                Sqlcon.Open();
+                //establecer el comando
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = Sqlcon;
+                SqlCmd.CommandText = "sp_EliminarArqueoCaja";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                //Parametros del comando
+                //NROCAJA
+                SqlParameter ParNroCaja = new SqlParameter();
+                ParNroCaja.ParameterName = "@CajaNro";
+                ParNroCaja.SqlDbType = SqlDbType.Int;
+                ParNroCaja.Value = Caja.NroCaja;
+                SqlCmd.Parameters.Add(ParNroCaja);
+
+
+                //PERSONA NRO
+                SqlParameter ParPersonaNro = new SqlParameter();
+                ParPersonaNro.ParameterName = "@UsuarioNro";
+                ParPersonaNro.SqlDbType = SqlDbType.Int;
+                ParPersonaNro.Value = Caja.PersonaNro;
+                SqlCmd.Parameters.Add(ParPersonaNro);
+
+                //ejecutar el comando sql
+                SqlCmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                rpta = ex.Message;
+            }
+            finally
+            {
+                Conexion.CerrarConexion(Sqlcon);
+            }
+            return rpta;
+        }
+
+
         //Metodo para Cerrar Caja
         public string CerrarCaja (DCaja Caja) 
         {
@@ -374,6 +424,39 @@ namespace CapaDatos
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            return DtResultado;
+        }
+
+
+
+        public DataTable MostrarListaArqueos(string fechadesde,string fechahasta)
+        {
+            DataTable DtResultado = new DataTable("ListaArqueos");
+            SqlConnection Sqlcon = new SqlConnection();
+            try
+            {
+                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = Sqlcon;
+                SqlCmd.CommandText = "sp_MostrarListaArqueos";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+
+                SqlCmd.Parameters.AddWithValue("@fechaDesde", fechadesde);
+                SqlCmd.Parameters.AddWithValue("@fechaHasta", fechahasta);
+
+                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
+                SqlAdapter.Fill(DtResultado);
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+                throw ex;                
+            }
+            finally 
+            {
+                Conexion.CerrarConexion(Sqlcon);
             }
             return DtResultado;
         }

@@ -4,22 +4,28 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using CapaDatos;
 using CapaNegocio;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion
 {
     public partial class FrmUsuario : Form
     {
-        bool IsNuevo = false;
-        bool IsEditar = false;
+        bool IsNuevoColaborador = false;
+        bool IsEditarColaborador = false;
+        bool esUsuario = false;
         public string nombre;
         public string apellido;
         public string usuario;
         public string acceso;
+
+        int idColaborador = 0;
 
         private static FrmUsuario _Instancia;
 
@@ -54,47 +60,64 @@ namespace CapaPresentacion
         //Limpiar los controles del formulario
         private void Limpiar()
         {
-            this.txtCodigo.Text = string.Empty;
-            this.txtNombre.Text = string.Empty;
-            this.txtApellido.Text = string.Empty;
-            this.txtDocumento.Text = string.Empty;
-            this.txtDireccion.Text = string.Empty;
-            this.txtTelefono.Text = string.Empty;
-            this.txtEmail.Text = string.Empty;
-            this.cboCiudad.Text = string.Empty;
-            this.dtpFechaNac.Text = string.Empty;
-            this.cboEstado.Text = string.Empty;
+            idColaborador = 0;
+            txtCodigo.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            txtApellido.Text = string.Empty;
+            txtDocumento.Text = string.Empty;
+            txtDireccion.Text = string.Empty;
+            txtTelefono.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            cboCiudad.Text = string.Empty;
+            dtpFechaNac.Text = string.Empty;
+            cboEstado.Text = string.Empty;
+            txtObservacion.Text = string.Empty;
+
+            dtpFechaNac.Checked = false;
+            dtpFechaIngreso.Checked = false;
+            dtpFechaEgreso.Checked = false;
+
+            dtpFechaNac.Value = ReiniciarFechas();
+            dtpFechaIngreso.Value = ReiniciarFechas();
+            dtpFechaEgreso.Value = ReiniciarFechas(); 
 
             //CONTROLES DE ACCESO DE USUARIO
-            this.txtUsuario.Text = string.Empty;
-            this.txtpass2.Text = string.Empty;
-            this.cboAcceso.SelectedIndex = 0;
+            txtUsuario.Text = string.Empty;
+            txtpass2.Text = string.Empty;
+            cboAcceso.SelectedIndex = 0;
+        }
+
+        private DateTime ReiniciarFechas() 
+        {
+            return DateTime.Now;
         }
 
         //Habilitar botones
         private void Habilitar(bool valor)
         {
-            this.txtCodigo.ReadOnly = !valor;
-            this.txtNombre.ReadOnly = !valor;
-            this.txtApellido.ReadOnly = !valor;
-            this.txtDocumento.ReadOnly = !valor;
-            this.txtDireccion.ReadOnly = !valor;
-            this.txtTelefono.ReadOnly = !valor;
-            this.txtObservacion.ReadOnly = !valor;
-            this.txtEmail.ReadOnly = !valor;
-            this.cboCiudad.Enabled = valor;
-            this.dtpFechaNac.Enabled = valor;
-            this.cboEstado.Enabled = valor;
-            this.txtUsuario.ReadOnly = !valor;
-            this.txtpass2.ReadOnly = !valor;
-            this.cboAcceso.Enabled = valor;
+            #region Tab Colaborador
+            txtCodigo.ReadOnly = !valor;
+            txtNombre.ReadOnly = !valor;
+            txtApellido.ReadOnly = !valor;
+            txtDocumento.ReadOnly = !valor;
+            txtDireccion.ReadOnly = !valor;
+            txtTelefono.ReadOnly = !valor;
+            txtObservacion.ReadOnly = !valor;
+            txtEmail.ReadOnly = !valor;
+            cboCiudad.Enabled = valor;
+            dtpFechaNac.Enabled = valor;
+            dtpFechaIngreso.Enabled = valor;
+            dtpFechaEgreso.Enabled = valor;
+            cboEstado.Enabled = valor;
+            #endregion
+
             LeyendaContraseña();
         }
 
         //Habilitar Botones
         private void Botones()
         {
-            if (this.IsNuevo || this.IsEditar)
+            if (this.IsNuevoColaborador || this.IsEditarColaborador)
             {
                 this.Habilitar(true);
                 this.btnNuevo.Enabled = false;
@@ -127,21 +150,19 @@ namespace CapaPresentacion
 
         private void LlenarComboBox()
         {
-            cboCiudad.DataSource = NCiudad.Mostrar();
+            cboCiudad.DataSource = ControlesCompartidos.AgregarNuevaFila(NCiudad.Mostrar(), "Descripcion", "CiudadNro");
             cboCiudad.ValueMember = "CiudadNro";
             cboCiudad.DisplayMember = "Descripcion";
 
-            cboAcceso.DataSource = NTipoUsuario.Mostrar();
+            cboAcceso.DataSource = ControlesCompartidos.AgregarNuevaFila(NTipoUsuario.Mostrar(), "Nombre", "IdRol" );
             cboAcceso.ValueMember = "IdRol";
             cboAcceso.DisplayMember = "Nombre";
         }
 
         //Metodo para mostrar los datos en el datagrid
         private void Mostrar()
-        {
-            //List<DUsuarios> usuario = Conversiones.ConvertDataTable<DUsuarios>(NUsuarios.Mostrar());
+        {   
             this.dataListado.DataSource = NUsuarios.Mostrar();
-            //this.dataListado.Columns["Descripcion"].Width = 100;
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -192,8 +213,8 @@ namespace CapaPresentacion
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            this.IsNuevo = true;
-            this.IsEditar = false;
+            this.IsNuevoColaborador = true;
+            this.IsEditarColaborador = false;
             this.Botones();
             this.Limpiar();
             this.Habilitar(true);
@@ -215,37 +236,35 @@ namespace CapaPresentacion
                 }
 
 
-                DUsuarios user = new DUsuarios();
-                user.Nombre = this.txtNombre.Text.Trim().ToUpper();
-                user.Apellido = this.txtApellido.Text.Trim().ToUpper();
-                user.Documento = this.txtDocumento.Text.Trim();
-                user.FechaNacimiento = dtpFechaNac.Checked == false ? (DateTime?)null : dtpFechaNac.Value;
-                user.CiudadNro = Convert.ToInt32(cboCiudad.SelectedValue);
-                user.Direccion = this.txtDireccion.Text.Trim();
-                user.Telefono = this.txtTelefono.Text.Trim();
-                user.Email = this.txtEmail.Text.Trim();
-                user.Estado = this.cboEstado.Text;
-                user.Observacion = this.txtObservacion.Text.Trim().ToUpper();
-                user.Usuario = this.txtUsuario.Text.Trim().ToUpper();
-                user.Pass = this.txtPass1.Text;
-                user.passNew = this.txtpass2.Text;
-                user.TipoUserNro = Convert.ToInt32(this.cboAcceso.SelectedValue);
+                DColaborador Colaborador = new DColaborador();
+                Colaborador.Nombre = this.txtNombre.Text.Trim().ToUpper();
+                Colaborador.Apellido = this.txtApellido.Text.Trim().ToUpper();
+                Colaborador.Documento = this.txtDocumento.Text.Trim();
+                Colaborador.FechaNacimiento = dtpFechaNac.Checked == false ? (DateTime?)null : dtpFechaNac.Value;
+                Colaborador.CiudadNro = Convert.ToInt32(cboCiudad.SelectedValue) == 0 ? (int?)null : Convert.ToInt32(cboCiudad.SelectedValue);
+                Colaborador.Direccion = this.txtDireccion.Text.Trim();
+                Colaborador.Telefono = this.txtTelefono.Text.Trim();
+                Colaborador.Email = this.txtEmail.Text.Trim();
+                Colaborador.Estado = this.cboEstado.Text == "ACTIVO" ? "A" : "I";
+                Colaborador.Observacion = this.txtObservacion.Text.Trim().ToUpper();
+                Colaborador.FechaIngreso = dtpFechaIngreso.Value;
+                Colaborador.FechaEgreso = dtpFechaEgreso.Checked == false ? (DateTime?)null : dtpFechaEgreso.Value;
 
                 //si se ingresa un nuevo registro
-                if (this.IsNuevo)
+                if (this.IsNuevoColaborador)
                 {
-                    rpta = NUsuarios.Insertar(user);
+                    rpta = NColaborador.Insertar(Colaborador);
                 }
 
                 //SI SE EDITAR
                 else
                 {
-                    user.PersonaNro = Convert.ToInt32(txtCodigo.Text);
-                    rpta = NUsuarios.Editar(user);
+                    Colaborador.PersonaNro = idColaborador;
+                    rpta = NColaborador.Editar(Colaborador);
                 }
                 if (rpta.Equals("OK"))
                 {
-                    if (IsNuevo)
+                    if (IsNuevoColaborador)
                     {
                         this.MensajeOK("Se ha insertado con exito");
                     }
@@ -260,8 +279,8 @@ namespace CapaPresentacion
                     return;
                 }
 
-                this.IsNuevo = false;
-                this.IsEditar = false;
+                this.IsNuevoColaborador = false;
+                this.IsEditarColaborador = false;
                 this.Botones();
                 this.Limpiar();
                 this.Mostrar();
@@ -275,6 +294,7 @@ namespace CapaPresentacion
 
         private bool Validaciones() 
         {
+            errorIcono.Clear();
             if (this.txtNombre.Text == string.Empty)
             {
                 this.MensajeError("Falta algunos datos");
@@ -295,7 +315,34 @@ namespace CapaPresentacion
                 errorIcono.SetError(cboEstado, "Ingrese el Estado");
                 return false;
             }
-            
+
+            if (dtpFechaIngreso.Checked == false)
+            {
+                this.MensajeError("Debe de ingresar la fecha de Ingreso del colaborador");
+                errorIcono.SetError(dtpFechaIngreso, "Ingrese la fecha de Ingreso del colaborador");
+                return false;
+            }
+
+            if (cboEstado.Text == "INACTIVO" && !dtpFechaEgreso.Checked )
+            {
+                this.MensajeError("El colaborador está inactivo, debe ingresar la fecha de salida");
+                errorIcono.SetError(dtpFechaEgreso, "Ingrese la fecha de Salida del colaborador");
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidacionesUsuario()
+        {
+            errorIcono.Clear();
+
+            if (idColaborador == 0)
+            {
+                MensajeError("Debe registrar primeramente al colaborador");
+                return false;
+            }
+
             if (this.cboAcceso.Text == "Supervisor" && acceso != "Supervisor")
             {
                 this.MensajeError("Solo el supervisor puede registrar a otro supervisor");
@@ -309,7 +356,18 @@ namespace CapaPresentacion
                 return false;
             }
 
-            if (IsNuevo)
+            if (!string.IsNullOrEmpty(txtUsuario.Text))
+            {
+                if (string.IsNullOrEmpty(txtPass1.Text) || string.IsNullOrEmpty(txtpass2.Text))
+                {
+                    errorIcono.SetError(txtPass1, "Ingrese la contraseña de acceso");
+                    errorIcono.SetError(txtpass2, "Repita la contraseña de acceso");
+                    this.MensajeError("Para registrar al usuario debe de ingresar las contraseñas de acceso");
+                    return false;
+                }
+            }
+
+            if (!esUsuario)
             {
                 if (txtPass1.Text != txtpass2.Text)
                 {
@@ -317,7 +375,14 @@ namespace CapaPresentacion
                     return false;
                 }
             }
-            
+
+            if (Convert.ToInt32(cboAcceso.SelectedValue) == 0)
+            {
+                errorIcono.SetError(cboAcceso, "Seleccione el rol del usuario");
+                this.MensajeError("Favor seleccione el rol del Usuario");
+                return false;
+            }
+
 
             return true;
         }
@@ -325,7 +390,7 @@ namespace CapaPresentacion
         {
             if (!this.txtCodigo.Text.Equals(""))
             {
-                this.IsEditar = true;
+                this.IsEditarColaborador = true;
                 this.Botones();
                 this.Habilitar(true);
             }
@@ -339,7 +404,7 @@ namespace CapaPresentacion
         {
             if (!this.txtCodigo.Text.Equals(""))
             {
-                this.IsEditar = true;
+                this.IsEditarColaborador = true;
                 this.Botones();
                 this.Habilitar(true);
 
@@ -357,7 +422,7 @@ namespace CapaPresentacion
 
         private void LeyendaContraseña() 
         {
-            if (IsEditar)
+            if (IsEditarColaborador)
             {
                 lblPass1.Text = "Pass Anterior";
                 lblPass2.Text = "Pass Nuevo";
@@ -370,8 +435,8 @@ namespace CapaPresentacion
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.IsNuevo = false;
-            this.IsEditar = false;
+            this.IsNuevoColaborador = false;
+            this.IsEditarColaborador = false;
             this.Botones();
             this.Limpiar();
             this.Habilitar(false);
@@ -426,25 +491,57 @@ namespace CapaPresentacion
 
         private void dataListado_DoubleClick(object sender, EventArgs e)
         {
-            this.txtCodigo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["UsuarioNro"].Value);
+            this.txtCodigo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["ColaboradorNro"].Value);
+            idColaborador = Convert.ToInt32(txtCodigo.Text);
             this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Nombre"].Value);
             this.txtApellido.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Apellido"].Value);
             this.txtDocumento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Documento"].Value);
-            this.dtpFechaNac.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["fechaNacimiento"].Value);
+            esUsuario = this.dataListado.CurrentRow.Cells["Es_Usuario"].Value.ToString() == "SI" ? true : false;
+            if (Convert.IsDBNull(this.dataListado.CurrentRow.Cells["fechaNacimiento"].Value))
+            {
+                dtpFechaNac.Checked = false;
+                txtEdad.Text = string.Empty;
+            }
+            else
+            {
+                this.dtpFechaNac.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fechaNacimiento"].Value);
+                txtEdad.Text = CalcularEdad(dtpFechaNac.Value).ToString();
+            }
+
+            //Fecha de ingreso
+            if (Convert.IsDBNull(this.dataListado.CurrentRow.Cells["FechaIngreso"].Value))
+            {
+                dtpFechaIngreso.Checked = false;
+            }
+            else
+            {
+                dtpFechaIngreso.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["FechaIngreso"].Value);
+            }
+
+            //Fecha Egreso
+            if (Convert.IsDBNull(this.dataListado.CurrentRow.Cells["FechaEgreso"].Value))
+            {
+                dtpFechaEgreso.Checked = false;
+            }
+            else
+            {
+                dtpFechaEgreso.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["FechaEgreso"].Value);
+            }
+
             this.txtDireccion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Direccion"].Value);
             this.txtTelefono.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Telefono"].Value);
             this.txtEmail.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Email"].Value);
             this.cboCiudad.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Ciudad"].Value);
-            this.cboEstado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Estado"].Value);
+            this.cboEstado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Estado"].Value) == "A" ? "ACTIVO" : "INACTIVO";
             this.txtObservacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Observacion"].Value);
             this.txtUsuario.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Login"].Value);
             this.txtpass2.Text = string.Empty;//Convert.ToString(this.dataListado.CurrentRow.Cells["Password"].Value);
-            this.cboAcceso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Acceso"].Value);
+            this.cboAcceso.SelectedValue = Convert.IsDBNull(this.dataListado.CurrentRow.Cells["IdRol"].Value) ? 0 : Convert.ToInt32(this.dataListado.CurrentRow.Cells["IdRol"].Value);
             //mostrar la segunda pestana la de mantenimiento al hacer doble click
-            this.tabControl1.SelectedIndex = 1;            
+            this.tabControl1.SelectedIndex = 1;
             this.txtpass2.PasswordChar = '*';
-            this.IsNuevo = false;
-            this.IsEditar = false;
+            this.IsNuevoColaborador = false;
+            this.IsEditarColaborador = false;
             this.Botones();
         }
 
@@ -521,6 +618,96 @@ namespace CapaPresentacion
             //this.dataListado.Columns["Salario"].DefaultCellStyle.Format = "N0";
         }
 
-       
+        private void dtpFechaNac_ValueChanged(object sender, EventArgs e)
+        {            
+            txtEdad.Text = CalcularEdad(dtpFechaNac.Value).ToString();
+        }
+        
+
+        public int CalcularEdad(DateTime fechaNacimiento)
+        {
+            // Obtiene la fecha actual:
+            DateTime fechaActual = DateTime.Today;
+
+            // Comprueba que la se haya introducido una fecha válida; si 
+            // la fecha de nacimiento es mayor a la fecha actual se muestra mensaje 
+            // de advertencia:
+            if (fechaNacimiento > fechaActual)
+            {                
+                return 0;
+            }
+            else
+            {
+                int edad = fechaActual.Year - fechaNacimiento.Year;
+
+                // Comprueba que el mes de la fecha de nacimiento es mayor 
+                // que el mes de la fecha actual:
+                if (fechaNacimiento.Month > fechaActual.Month)
+                {
+                    --edad;
+                }
+
+                return edad;
+            }
+        }
+
+        private void btnGuardarUser_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string rpta = "";
+
+                if (!ValidacionesUsuario())
+                {
+                    return;
+                }
+                
+
+                DUsuarios user = new DUsuarios();
+                user.PersonaNro = idColaborador;
+                user.PersonaNro = Convert.ToInt32(txtCodigo.Text);
+                user.Usuario = this.txtUsuario.Text.Trim().ToUpper();
+                user.Pass = this.txtPass1.Text;
+                user.passNew = this.txtpass2.Text;
+                user.TipoUserNro = Convert.ToInt32(this.cboAcceso.SelectedValue);
+
+                //si se ingresa un nuevo registro
+                if (!esUsuario)
+                {
+                    rpta = NUsuarios.Insertar(user);
+                }
+                //SI SE EDITAR
+                else
+                {                    
+                    rpta = NUsuarios.Editar(user);
+                }
+
+                if (rpta.Equals("OK"))
+                {
+                    if (!esUsuario)
+                    {
+                        this.MensajeOK("Se ha insertado con exito");
+                    }
+                    else
+                    {
+                        this.MensajeOK("Se ha editado con exito");
+                    }
+                }
+                else
+                {
+                    this.MensajeError(rpta);
+                    return;
+                }
+
+               
+                this.Botones();
+                this.Limpiar();
+                this.Mostrar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
     }
 }

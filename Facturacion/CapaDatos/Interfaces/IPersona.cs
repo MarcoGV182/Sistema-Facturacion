@@ -19,5 +19,6 @@ namespace CapaDatos.Interfaces
         string Email { get; set; }
         string Estado { get; set; }
         string Observacion { get; set; }
+        DateTime? FechaNacimiento { get; set; }
     }
 }

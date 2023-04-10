@@ -355,8 +355,7 @@ namespace CapaPresentacion
                         rpta = NProveedor.Eliminar(Convert.ToInt32(codigo));
 
                         if (!rpta.Equals("OK"))
-                        {
-                            MensajeError(rpta);
+                        {                          
                             break;
                         }
                     }

@@ -103,7 +103,7 @@
             this.txtMonto.Location = new System.Drawing.Point(133, 140);
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(141, 23);
-            this.txtMonto.TabIndex = 6;
+            this.txtMonto.TabIndex = 2;
             this.txtMonto.TextChanged += new System.EventHandler(this.txtMonto_TextChanged);
             this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
@@ -115,14 +115,14 @@
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.Size = new System.Drawing.Size(317, 99);
-            this.txtObservacion.TabIndex = 8;
+            this.txtObservacion.TabIndex = 3;
             // 
             // btnAceptar
             // 
             this.btnAceptar.Location = new System.Drawing.Point(103, 307);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 10;
+            this.btnAceptar.TabIndex = 4;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.button1_Click);
@@ -132,7 +132,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(185, 307);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 11;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -154,7 +154,7 @@
             this.dtpFechaApertura.Location = new System.Drawing.Point(133, 102);
             this.dtpFechaApertura.Name = "dtpFechaApertura";
             this.dtpFechaApertura.Size = new System.Drawing.Size(141, 24);
-            this.dtpFechaApertura.TabIndex = 9;
+            this.dtpFechaApertura.TabIndex = 1;
             // 
             // pictureBox3
             // 
@@ -164,6 +164,9 @@
             this.pictureBox3.Size = new System.Drawing.Size(377, 47);
             this.pictureBox3.TabIndex = 12;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox3_MouseDown);
+            this.pictureBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox3_MouseMove);
+            this.pictureBox3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox3_MouseUp);
             // 
             // label4
             // 

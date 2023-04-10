@@ -21,6 +21,14 @@ namespace CapaNegocio
             return Obj.InsertarCaja(Obj);
        }
 
+       public static string EliminarArqueo(int cajaNro, int usuarioNro)
+        {
+            DCaja Obj = new DCaja();
+            Obj.NroCaja = cajaNro;
+            Obj.PersonaNro = usuarioNro;
+            return Obj.EliminarArqueo(Obj);
+        }
+
 
         public static string CerrarCaja(int nrocaja,DateTime? fechacierre,decimal importeentrega,decimal saldofinal,decimal diferencia)
         {
@@ -44,6 +52,12 @@ namespace CapaNegocio
         {
             DCaja obj = new DCaja();
             return obj.MostrarMovimientoPagos(fechainicio,fechafin);
+        }
+
+        public static DataTable MostrarListaArqueo(string fechaDesde, string fechaHasta)
+        {
+            DCaja obj = new DCaja();
+            return obj.MostrarListaArqueos(fechaDesde, fechaHasta);
         }
 
         public static DataTable BuscarMovimientoPagosCaja(string fechainicio, string fechafin)

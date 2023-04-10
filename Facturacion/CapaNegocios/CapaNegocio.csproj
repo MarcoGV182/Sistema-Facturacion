@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="NBackup.cs" />
     <Compile Include="NCaja.cs" />
+    <Compile Include="NColaborador.cs" />
     <Compile Include="NCuentaPorCobrar.cs" />
     <Compile Include="NDescuento.cs" />
     <Compile Include="NEmpresa.cs" />

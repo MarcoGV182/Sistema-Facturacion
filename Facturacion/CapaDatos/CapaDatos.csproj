@@ -51,6 +51,7 @@
     <Compile Include="DCaja.cs" />
     <Compile Include="DCiudad.cs" />
     <Compile Include="DClientes.cs" />
+    <Compile Include="DColaborador.cs" />
     <Compile Include="DCompra.cs" />
     <Compile Include="DFormaPago.cs" />
     <Compile Include="DNumeracionComprobante.cs" />

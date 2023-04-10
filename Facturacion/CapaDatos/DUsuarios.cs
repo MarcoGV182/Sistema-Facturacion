@@ -20,16 +20,6 @@ namespace CapaDatos
         public string passNew { get; set; }
         private int _TipoUserNro;
         private string _TextoBuscar;
-        private string _Documento;
-        private int _CiudadNro;
-        private string _Direccion;
-        private string _Telefono;
-        private string _Email;
-        private string _Estado;
-        private string _Observacion;
-        private DateTime? _FechaNacimiento;
-        //private decimal? _Sueldo;
-        //private int _ServicioNro;
         private string[] _ReglaUsuario;
 
 
@@ -74,110 +64,7 @@ namespace CapaDatos
             get { return _TextoBuscar; }
             set { _TextoBuscar = value; }
         }
-
-        public string Documento
-        {
-            get
-            {
-                return _Documento;
-            }
-
-            set
-            {
-                _Documento = value;
-            }
-        }
-
-        public int CiudadNro
-        {
-            get
-            {
-                return _CiudadNro;
-            }
-
-            set
-            {
-                _CiudadNro = value;
-            }
-        }
-
-        public string Direccion
-        {
-            get
-            {
-                return _Direccion;
-            }
-
-            set
-            {
-                _Direccion = value;
-            }
-        }
-
-        public string Telefono
-        {
-            get
-            {
-                return _Telefono;
-            }
-
-            set
-            {
-                _Telefono = value;
-            }
-        }
-
-        public string Email
-        {
-            get
-            {
-                return _Email;
-            }
-
-            set
-            {
-                _Email = value;
-            }
-        }
-
-        public string Estado
-        {
-            get
-            {
-                return _Estado;
-            }
-
-            set
-            {
-                _Estado = value;
-            }
-        }
-
-        public DateTime? FechaNacimiento
-        {
-            get
-            {
-                return _FechaNacimiento;
-            }
-
-            set
-            {
-                _FechaNacimiento = value;
-            }
-        }
-
-        public string Observacion
-        {
-            get
-            {
-                return _Observacion;
-            }
-
-            set
-            {
-                _Observacion = value;
-            }
-        }
+     
 
         public string[] ReglaUsuario
         {
@@ -196,124 +83,33 @@ namespace CapaDatos
 
         }
 
-        public DUsuarios(int personanro ,string nombre,string apellido, string usuario, string pass, int tipoUserNro,string textobuscar,string documento,int ciudadNro,string direccion,string telefono,string email,string estado,DateTime? fechaNacimiento ,string observacion,decimal? sueldo,decimal? porcentajecomision, string[] reglausuario) {
-            this.PersonaNro = personanro;
-            this.Nombre = nombre;
-            this.Apellido = apellido;          
-            this.Documento = documento;
-            this.CiudadNro = ciudadNro;
-            this.Direccion = direccion;
-            this.Telefono=telefono;
-            this.Email = email;
-            this.Estado = estado;
-            this.FechaNacimiento = fechaNacimiento;
-            this.Observacion = observacion;
-            this.Usuario = usuario;
-            this.Pass = pass;
-            this.TipoUserNro = tipoUserNro;
-            this.TextoBuscar = textobuscar;            
-            this.ReglaUsuario = reglausuario;
-        }
-
 
         //Metodo Insertar
-        public string InsertarUsuarios(DUsuarios Usuario)
+        public string InsertarUsuarios(DUsuarios Usuario, SqlConnection sqlConExistente = null, SqlTransaction SqltranExistente = null)
         {
             //declarar variable respuesta
             string rpta = "OK";
             //instanciamos la conexion
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
+            SqlTransaction SqlTran = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, sqlConExistente);
+                SqlTran = SqltranExistente ?? Sqlcon.BeginTransaction();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
+                SqlCmd.Transaction = SqlTran;
                 SqlCmd.CommandText = "sp_InsertarUsuario";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
+                SqlParameter ParIdUser = new SqlParameter();
+                ParIdUser.ParameterName = "@IdUsuario";
+                ParIdUser.SqlDbType = SqlDbType.Int;
+                ParIdUser.Value = Usuario.PersonaNro;
+                SqlCmd.Parameters.Add(ParIdUser);
 
-                //Parametros Nombre
-                SqlParameter ParNombre = new SqlParameter();
-                ParNombre.ParameterName = "@Nombre";
-                ParNombre.SqlDbType = SqlDbType.VarChar;
-                ParNombre.Size = 100;
-                ParNombre.Value = Usuario.Nombre;
-                SqlCmd.Parameters.Add(ParNombre);
-
-                //Parametros Apellido
-                SqlParameter ParApellido = new SqlParameter();
-                ParApellido.ParameterName = "@Apellido";
-                ParApellido.SqlDbType = SqlDbType.VarChar;
-                ParApellido.Size = 100;
-                ParApellido.Value = Usuario.Apellido;
-                SqlCmd.Parameters.Add(ParApellido);
-
-                //Parametros Documento
-                SqlParameter ParDocumento = new SqlParameter();
-                ParDocumento.ParameterName = "@documento";
-                ParDocumento.SqlDbType = SqlDbType.VarChar;
-                ParDocumento.Size = 10;
-                ParDocumento.Value =Usuario.Documento;
-                SqlCmd.Parameters.Add(ParDocumento);
-
-                //Parametros Fecha Nacimiento
-                SqlParameter ParFechaNacimiento = new SqlParameter();
-                ParFechaNacimiento.ParameterName = "@fechaNacimiento";
-                ParFechaNacimiento.SqlDbType = SqlDbType.DateTime;
-                ParFechaNacimiento.Value = Usuario.FechaNacimiento;
-                SqlCmd.Parameters.Add(ParFechaNacimiento);
-
-                //Parametros Ciudad
-                SqlParameter ParCiudad = new SqlParameter();
-                ParCiudad.ParameterName = "@CiudadNro";
-                ParCiudad.SqlDbType = SqlDbType.Int;
-                ParCiudad.Value = Usuario.CiudadNro;
-                SqlCmd.Parameters.Add(ParCiudad);
-
-                //Parametros Direccion
-                SqlParameter ParDireccion = new SqlParameter();
-                ParDireccion.ParameterName = "@Direccion";
-                ParDireccion.SqlDbType = SqlDbType.VarChar;
-                ParDireccion.Size = 250;
-                ParDireccion.Value = Usuario.Direccion;
-                SqlCmd.Parameters.Add(ParDireccion);
-
-                //Parametros Telefono
-                SqlParameter ParTelefono = new SqlParameter();
-                ParTelefono.ParameterName = "@Telefono";
-                ParTelefono.SqlDbType = SqlDbType.VarChar;
-                ParTelefono.Size = 50;
-                ParTelefono.Value = Usuario.Telefono;
-                SqlCmd.Parameters.Add(ParTelefono);
-
-                //Parametros Email
-                SqlParameter ParEmail = new SqlParameter();
-                ParEmail.ParameterName = "@Email";
-                ParEmail.SqlDbType = SqlDbType.VarChar;
-                ParEmail.Size = 50;
-                ParEmail.Value = Usuario.Email;
-                SqlCmd.Parameters.Add(ParEmail);
-
-                //Parametros Estado
-                SqlParameter ParEstado = new SqlParameter();
-                ParEstado.ParameterName = "@Estado";
-                ParEstado.SqlDbType = SqlDbType.VarChar;
-                ParEstado.Size = 8;
-                ParEstado.Value = Usuario.Estado;
-                SqlCmd.Parameters.Add(ParEstado);
-
-                //Parametros Observacion
-                SqlParameter ParObservacion = new SqlParameter();
-                ParObservacion.ParameterName = "@Observacion";
-                ParObservacion.SqlDbType = SqlDbType.VarChar;
-                ParObservacion.Size = 250;
-                ParObservacion.Value = Usuario.Observacion;
-                SqlCmd.Parameters.Add(ParObservacion);
-
-                //Parametros Observacion
                 SqlParameter ParUser= new SqlParameter();
                 ParUser.ParameterName = "@Usuario";
                 ParUser.SqlDbType = SqlDbType.VarChar;
@@ -336,25 +132,22 @@ namespace CapaDatos
                 ParAcceso.Value = Usuario.TipoUserNro;
                 SqlCmd.Parameters.Add(ParAcceso);
 
-                /*//Parametro de Salario
-                SqlParameter ParSalario = new SqlParameter();
-                ParSalario.ParameterName = "@Salario";
-                ParSalario.SqlDbType = SqlDbType.Decimal;
-                ParSalario.Value = Usuario.Sueldo;
-                SqlCmd.Parameters.Add(ParSalario);*/
-
-
+            
                 //ejecutar el comando sql
                 SqlCmd.ExecuteNonQuery();
+
+                if (SqltranExistente == null)
+                    SqlTran.Commit();
             }
             catch (Exception ex)
             {
+                if (SqltranExistente == null)
+                    SqlTran.Rollback();
                 rpta = ex.Message;
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                Conexion.CerrarConexion(Sqlcon,ref sqlConExistente);
             }
             return rpta;
         }
@@ -362,20 +155,22 @@ namespace CapaDatos
 
 
         //Metodo Editar
-        public string EditarUsuario(DUsuarios Usuario)
+        public string EditarUsuario(DUsuarios Usuario, SqlConnection sqlConExistente = null, SqlTransaction SqltranExistente = null)
         {
             //declarar variable respuesta
-            string rpta = "";
+            string rpta = "OK";
             //instanciamos la conexion
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
+            SqlTransaction SqlTran = null;
             SqlCommand SqlCmd = new SqlCommand();
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, sqlConExistente);
+                SqlTran = SqltranExistente ?? Sqlcon.BeginTransaction();
                 //establecer el comando                
                 SqlCmd.Connection = Sqlcon;
+                SqlCmd.Transaction = SqlTran;
                 SqlCmd.CommandText = "sp_EditarUsuario";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
@@ -386,84 +181,6 @@ namespace CapaDatos
                 ParPersonaNro.SqlDbType = SqlDbType.Int;
                 ParPersonaNro.Value = Usuario.PersonaNro;
                 SqlCmd.Parameters.Add(ParPersonaNro);
-
-                //Parametros Nombre
-                SqlParameter ParNombre = new SqlParameter();
-                ParNombre.ParameterName = "@Nombre";
-                ParNombre.SqlDbType = SqlDbType.VarChar;
-                ParNombre.Size = 100;
-                ParNombre.Value = Usuario.Nombre;
-                SqlCmd.Parameters.Add(ParNombre);
-
-                //Parametros Apellido
-                SqlParameter ParApellido = new SqlParameter();
-                ParApellido.ParameterName = "@Apellido";
-                ParApellido.SqlDbType = SqlDbType.VarChar;
-                ParApellido.Size = 100;
-                ParApellido.Value = Usuario.Apellido;
-                SqlCmd.Parameters.Add(ParApellido);
-
-                //Parametros Documento
-                SqlParameter ParDocumento = new SqlParameter();
-                ParDocumento.ParameterName = "@documento";
-                ParDocumento.SqlDbType = SqlDbType.VarChar;
-                ParDocumento.Size = 10;
-                ParDocumento.Value = Usuario.Documento;
-                SqlCmd.Parameters.Add(ParDocumento);
-
-                //Parametros Fecha Nacimiento
-                SqlParameter ParFechaNacimiento = new SqlParameter();
-                ParFechaNacimiento.ParameterName = "@fechaNacimiento";
-                ParFechaNacimiento.SqlDbType = SqlDbType.DateTime;
-                ParFechaNacimiento.Value = Usuario.FechaNacimiento;
-                SqlCmd.Parameters.Add(ParFechaNacimiento);
-
-                //Parametros Ciudad
-                SqlParameter ParCiudad = new SqlParameter();
-                ParCiudad.ParameterName = "@CiudadNro";
-                ParCiudad.SqlDbType = SqlDbType.Int;
-                ParCiudad.Value = Usuario.CiudadNro;
-                SqlCmd.Parameters.Add(ParCiudad);
-
-                //Parametros Direccion
-                SqlParameter ParDireccion = new SqlParameter();
-                ParDireccion.ParameterName = "@Direccion";
-                ParDireccion.SqlDbType = SqlDbType.VarChar;
-                ParDireccion.Size = 250;
-                ParDireccion.Value = Usuario.Direccion;
-                SqlCmd.Parameters.Add(ParDireccion);
-
-                //Parametros Telefono
-                SqlParameter ParTelefono = new SqlParameter();
-                ParTelefono.ParameterName = "@Telefono";
-                ParTelefono.SqlDbType = SqlDbType.VarChar;
-                ParTelefono.Size = 50;
-                ParTelefono.Value = Usuario.Telefono;
-                SqlCmd.Parameters.Add(ParTelefono);
-
-                //Parametros Email
-                SqlParameter ParEmail = new SqlParameter();
-                ParEmail.ParameterName = "@Email";
-                ParEmail.SqlDbType = SqlDbType.VarChar;
-                ParEmail.Size = 50;
-                ParEmail.Value = Usuario.Email;
-                SqlCmd.Parameters.Add(ParEmail);
-
-                //Parametros Estado
-                SqlParameter ParEstado = new SqlParameter();
-                ParEstado.ParameterName = "@Estado";
-                ParEstado.SqlDbType = SqlDbType.VarChar;
-                ParEstado.Size = 8;
-                ParEstado.Value = Usuario.Estado;
-                SqlCmd.Parameters.Add(ParEstado);
-
-                //Parametros Observacion
-                SqlParameter ParObservacion = new SqlParameter();
-                ParObservacion.ParameterName = "@Observacion";
-                ParObservacion.SqlDbType = SqlDbType.VarChar;
-                ParObservacion.Size = 250;
-                ParObservacion.Value = Usuario.Observacion;
-                SqlCmd.Parameters.Add(ParObservacion);
 
                 //Parametros Observacion
                 SqlParameter ParUser = new SqlParameter();
@@ -496,22 +213,18 @@ namespace CapaDatos
                 ParAcceso.Value = Usuario.TipoUserNro;
                 SqlCmd.Parameters.Add(ParAcceso);
 
-                /*//Parametro de Salario
-                SqlParameter ParSalario = new SqlParameter();
-                ParSalario.ParameterName = "@Salario";
-                ParSalario.SqlDbType = SqlDbType.Decimal;
-                ParSalario.Value = Usuario.Sueldo;
-                SqlCmd.Parameters.Add(ParSalario);*/
-
-
                 //ejecutar el comando sql                
-                var i = SqlCmd.ExecuteNonQuery();
-                if (i>0)
-                    rpta = "OK";
+                 SqlCmd.ExecuteNonQuery();
+              
+
+                if (SqltranExistente == null)
+                    SqlTran.Commit();
 
             }
             catch (Exception ex)
-            {   
+            {
+                if (SqltranExistente == null)
+                    SqlTran.Rollback();
                 rpta = ex.Message;
             }
             finally

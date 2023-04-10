@@ -670,5 +670,16 @@ namespace CapaPresentacion
             frm.Show();
             frm.BringToFront();
         }
+
+        private void eliminarArqueoCajaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmEliminarArqueo frm = FrmEliminarArqueo.GetInstancia();
+            frm.id = id;
+            frm.usuario = usuario;
+            frm.nombre = nombre;
+            frm.apellido = apellido;
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

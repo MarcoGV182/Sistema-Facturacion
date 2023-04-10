@@ -130,6 +130,12 @@
     <Compile Include="Backup BD.Designer.cs">
       <DependentUpon>Backup BD.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEliminarArqueo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEliminarArqueo.Designer.cs">
+      <DependentUpon>FrmEliminarArqueo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilidades\FormularioManager.cs" />
     <Compile Include="FrmCargandoForm.cs">
       <SubType>Form</SubType>
@@ -653,6 +659,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConsultaRUC.resx">
       <DependentUpon>FrmConsultaRUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEliminarArqueo.resx">
+      <DependentUpon>FrmEliminarArqueo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRecordatorio.resx">
       <DependentUpon>FrmRecordatorio.cs</DependentUpon>

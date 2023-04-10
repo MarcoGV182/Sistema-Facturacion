@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUsuario));
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabListadoColaborador = new System.Windows.Forms.TabPage();
             this.chktodos = new System.Windows.Forms.CheckBox();
             this.dataListado = new System.Windows.Forms.DataGridView();
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -40,8 +40,15 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabColaborador = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dtpFechaEgreso = new System.Windows.Forms.DateTimePicker();
+            this.label15 = new System.Windows.Forms.Label();
+            this.dtpFechaIngreso = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtEdad = new System.Windows.Forms.TextBox();
             this.txtObservacion = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -68,7 +75,9 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabUsuario = new System.Windows.Forms.TabPage();
+            this.btnCancelarUser = new System.Windows.Forms.Button();
+            this.btnGuardarUser = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtPass1 = new System.Windows.Forms.TextBox();
             this.lblPass1 = new System.Windows.Forms.Label();
@@ -81,43 +90,44 @@
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabListadoColaborador.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.tabColaborador.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.tabUsuario.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabListadoColaborador);
+            this.tabControl1.Controls.Add(this.tabColaborador);
+            this.tabControl1.Controls.Add(this.tabUsuario);
             this.tabControl1.Location = new System.Drawing.Point(1, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(767, 455);
             this.tabControl1.TabIndex = 15;
             // 
-            // tabPage1
+            // tabListadoColaborador
             // 
-            this.tabPage1.Controls.Add(this.chktodos);
-            this.tabPage1.Controls.Add(this.dataListado);
-            this.tabPage1.Controls.Add(this.lblTotal);
-            this.tabPage1.Controls.Add(this.chkEliminar);
-            this.tabPage1.Controls.Add(this.btnEliminar);
-            this.tabPage1.Controls.Add(this.txtBuscar);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(759, 429);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Listado";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabListadoColaborador.Controls.Add(this.chktodos);
+            this.tabListadoColaborador.Controls.Add(this.dataListado);
+            this.tabListadoColaborador.Controls.Add(this.lblTotal);
+            this.tabListadoColaborador.Controls.Add(this.chkEliminar);
+            this.tabListadoColaborador.Controls.Add(this.btnEliminar);
+            this.tabListadoColaborador.Controls.Add(this.txtBuscar);
+            this.tabListadoColaborador.Controls.Add(this.label2);
+            this.tabListadoColaborador.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.tabListadoColaborador.Location = new System.Drawing.Point(4, 22);
+            this.tabListadoColaborador.Name = "tabListadoColaborador";
+            this.tabListadoColaborador.Padding = new System.Windows.Forms.Padding(3);
+            this.tabListadoColaborador.Size = new System.Drawing.Size(759, 429);
+            this.tabListadoColaborador.TabIndex = 0;
+            this.tabListadoColaborador.Text = "Listado";
+            this.tabListadoColaborador.UseVisualStyleBackColor = true;
             // 
             // chktodos
             // 
@@ -136,7 +146,7 @@
             this.dataListado.AllowUserToAddRows = false;
             this.dataListado.AllowUserToDeleteRows = false;
             this.dataListado.AllowUserToOrderColumns = true;
-            this.dataListado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataListado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataListado.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -157,6 +167,7 @@
             this.Eliminar.HeaderText = "Eliminar";
             this.Eliminar.Name = "Eliminar";
             this.Eliminar.ReadOnly = true;
+            this.Eliminar.Width = 59;
             // 
             // lblTotal
             // 
@@ -208,19 +219,22 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Buscar :";
             // 
-            // tabPage2
+            // tabColaborador
             // 
-            this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(759, 429);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Datos";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabColaborador.Controls.Add(this.groupBox1);
+            this.tabColaborador.Location = new System.Drawing.Point(4, 22);
+            this.tabColaborador.Name = "tabColaborador";
+            this.tabColaborador.Padding = new System.Windows.Forms.Padding(3);
+            this.tabColaborador.Size = new System.Drawing.Size(759, 429);
+            this.tabColaborador.TabIndex = 1;
+            this.tabColaborador.Text = "Colaborador";
+            this.tabColaborador.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.txtEdad);
             this.groupBox1.Controls.Add(this.txtObservacion);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.txtEmail);
@@ -253,6 +267,78 @@
             this.groupBox1.Size = new System.Drawing.Size(732, 416);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dtpFechaEgreso);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Controls.Add(this.dtpFechaIngreso);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Location = new System.Drawing.Point(389, 202);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(261, 91);
+            this.groupBox3.TabIndex = 29;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Ingreso";
+            // 
+            // dtpFechaEgreso
+            // 
+            this.dtpFechaEgreso.Font = new System.Drawing.Font("Times New Roman", 11F);
+            this.dtpFechaEgreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaEgreso.Location = new System.Drawing.Point(102, 50);
+            this.dtpFechaEgreso.Name = "dtpFechaEgreso";
+            this.dtpFechaEgreso.ShowCheckBox = true;
+            this.dtpFechaEgreso.Size = new System.Drawing.Size(109, 24);
+            this.dtpFechaEgreso.TabIndex = 28;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.label15.Location = new System.Drawing.Point(11, 56);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(81, 16);
+            this.label15.TabIndex = 27;
+            this.label15.Text = "Fecha Salida:";
+            // 
+            // dtpFechaIngreso
+            // 
+            this.dtpFechaIngreso.Font = new System.Drawing.Font("Times New Roman", 11F);
+            this.dtpFechaIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaIngreso.Location = new System.Drawing.Point(101, 21);
+            this.dtpFechaIngreso.Name = "dtpFechaIngreso";
+            this.dtpFechaIngreso.ShowCheckBox = true;
+            this.dtpFechaIngreso.Size = new System.Drawing.Size(109, 24);
+            this.dtpFechaIngreso.TabIndex = 26;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.label1.Location = new System.Drawing.Point(11, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 16);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Fecha Ingreso:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.label13.Location = new System.Drawing.Point(246, 158);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(38, 16);
+            this.label13.TabIndex = 28;
+            this.label13.Text = "Edad:";
+            // 
+            // txtEdad
+            // 
+            this.txtEdad.Location = new System.Drawing.Point(288, 154);
+            this.txtEdad.Multiline = true;
+            this.txtEdad.Name = "txtEdad";
+            this.txtEdad.ReadOnly = true;
+            this.txtEdad.Size = new System.Drawing.Size(54, 24);
+            this.txtEdad.TabIndex = 27;
             // 
             // txtObservacion
             // 
@@ -288,7 +374,7 @@
             // 
             // txtDireccion
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(130, 201);
+            this.txtDireccion.Location = new System.Drawing.Point(131, 219);
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(211, 34);
@@ -318,7 +404,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label8.Location = new System.Drawing.Point(12, 210);
+            this.label8.Location = new System.Drawing.Point(13, 228);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 16);
             this.label8.TabIndex = 18;
@@ -328,17 +414,18 @@
             // 
             this.dtpFechaNac.Font = new System.Drawing.Font("Times New Roman", 11F);
             this.dtpFechaNac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaNac.Location = new System.Drawing.Point(131, 145);
+            this.dtpFechaNac.Location = new System.Drawing.Point(131, 155);
             this.dtpFechaNac.Name = "dtpFechaNac";
             this.dtpFechaNac.ShowCheckBox = true;
             this.dtpFechaNac.Size = new System.Drawing.Size(109, 24);
             this.dtpFechaNac.TabIndex = 6;
+            this.dtpFechaNac.ValueChanged += new System.EventHandler(this.dtpFechaNac_ValueChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label7.Location = new System.Drawing.Point(12, 149);
+            this.label7.Location = new System.Drawing.Point(12, 159);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(88, 16);
             this.label7.TabIndex = 16;
@@ -350,15 +437,15 @@
             this.label6.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.label6.Location = new System.Drawing.Point(13, 120);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(117, 16);
+            this.label6.Size = new System.Drawing.Size(96, 16);
             this.label6.TabIndex = 15;
-            this.label6.Text = "N° Documento: (*)";
+            this.label6.Text = "N° Documento:";
             // 
             // txtDocumento
             // 
             this.txtDocumento.Location = new System.Drawing.Point(132, 116);
             this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(108, 23);
+            this.txtDocumento.Size = new System.Drawing.Size(158, 23);
             this.txtDocumento.TabIndex = 5;
             // 
             // txtApellido
@@ -404,7 +491,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label3.Location = new System.Drawing.Point(12, 178);
+            this.label3.Location = new System.Drawing.Point(13, 191);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 16);
             this.label3.TabIndex = 9;
@@ -415,7 +502,7 @@
             this.cboCiudad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCiudad.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cboCiudad.FormattingEnabled = true;
-            this.cboCiudad.Location = new System.Drawing.Point(130, 174);
+            this.cboCiudad.Location = new System.Drawing.Point(131, 187);
             this.cboCiudad.Name = "cboCiudad";
             this.cboCiudad.Size = new System.Drawing.Size(127, 23);
             this.cboCiudad.TabIndex = 7;
@@ -498,15 +585,36 @@
             this.lblCodigo.TabIndex = 0;
             this.lblCodigo.Text = "Nro:";
             // 
-            // tabPage3
+            // tabUsuario
             // 
-            this.tabPage3.Controls.Add(this.groupBox2);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(759, 429);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Acceso";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabUsuario.Controls.Add(this.btnCancelarUser);
+            this.tabUsuario.Controls.Add(this.btnGuardarUser);
+            this.tabUsuario.Controls.Add(this.groupBox2);
+            this.tabUsuario.Location = new System.Drawing.Point(4, 22);
+            this.tabUsuario.Name = "tabUsuario";
+            this.tabUsuario.Size = new System.Drawing.Size(759, 429);
+            this.tabUsuario.TabIndex = 2;
+            this.tabUsuario.Text = "Acceso-Usuario";
+            this.tabUsuario.UseVisualStyleBackColor = true;
+            // 
+            // btnCancelarUser
+            // 
+            this.btnCancelarUser.Location = new System.Drawing.Point(399, 244);
+            this.btnCancelarUser.Name = "btnCancelarUser";
+            this.btnCancelarUser.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelarUser.TabIndex = 30;
+            this.btnCancelarUser.Text = "Cancelar";
+            this.btnCancelarUser.UseVisualStyleBackColor = true;
+            // 
+            // btnGuardarUser
+            // 
+            this.btnGuardarUser.Location = new System.Drawing.Point(318, 244);
+            this.btnGuardarUser.Name = "btnGuardarUser";
+            this.btnGuardarUser.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardarUser.TabIndex = 28;
+            this.btnGuardarUser.Text = "&Guardar";
+            this.btnGuardarUser.UseVisualStyleBackColor = true;
+            this.btnGuardarUser.Click += new System.EventHandler(this.btnGuardarUser_Click);
             // 
             // groupBox2
             // 
@@ -528,11 +636,11 @@
             // 
             // txtPass1
             // 
-            this.txtPass1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPass1.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.txtPass1.Location = new System.Drawing.Point(92, 66);
             this.txtPass1.Name = "txtPass1";
             this.txtPass1.PasswordChar = '*';
-            this.txtPass1.Size = new System.Drawing.Size(151, 20);
+            this.txtPass1.Size = new System.Drawing.Size(151, 23);
             this.txtPass1.TabIndex = 33;
             // 
             // lblPass1
@@ -547,29 +655,29 @@
             // 
             // cboAcceso
             // 
-            this.cboAcceso.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cboAcceso.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboAcceso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAcceso.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.cboAcceso.FormattingEnabled = true;
             this.cboAcceso.Location = new System.Drawing.Point(93, 148);
             this.cboAcceso.Name = "cboAcceso";
-            this.cboAcceso.Size = new System.Drawing.Size(151, 21);
+            this.cboAcceso.Size = new System.Drawing.Size(151, 23);
             this.cboAcceso.TabIndex = 30;
             // 
             // txtpass2
             // 
-            this.txtpass2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpass2.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.txtpass2.Location = new System.Drawing.Point(92, 102);
             this.txtpass2.Name = "txtpass2";
             this.txtpass2.PasswordChar = '*';
-            this.txtpass2.Size = new System.Drawing.Size(151, 20);
+            this.txtpass2.Size = new System.Drawing.Size(151, 23);
             this.txtpass2.TabIndex = 29;
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuario.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.txtUsuario.Location = new System.Drawing.Point(92, 25);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(152, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(152, 23);
             this.txtUsuario.TabIndex = 28;
             // 
             // label14
@@ -623,13 +731,15 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmUsuario_FormClosing);
             this.Load += new System.EventHandler(this.FrmUsuario_Load);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabListadoColaborador.ResumeLayout(false);
+            this.tabListadoColaborador.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
-            this.tabPage2.ResumeLayout(false);
+            this.tabColaborador.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.tabUsuario.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
@@ -640,7 +750,7 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabListadoColaborador;
         private System.Windows.Forms.CheckBox chktodos;
         private System.Windows.Forms.DataGridView dataListado;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
@@ -649,7 +759,7 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabColaborador;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtObservacion;
         private System.Windows.Forms.Label label12;
@@ -679,7 +789,7 @@
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabUsuario;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cboAcceso;
         private System.Windows.Forms.TextBox txtpass2;
@@ -689,5 +799,14 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtPass1;
         private System.Windows.Forms.Label lblPass1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtEdad;
+        private System.Windows.Forms.DateTimePicker dtpFechaIngreso;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DateTimePicker dtpFechaEgreso;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnCancelarUser;
+        private System.Windows.Forms.Button btnGuardarUser;
     }
 }

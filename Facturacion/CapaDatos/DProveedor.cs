@@ -26,6 +26,7 @@ namespace CapaDatos
         public string Observacion { get; set; }
         public string RazonSocial { get; set; }
         public string TextoBuscar { get; set; }
+        public DateTime? FechaNacimiento { get; set; }
 
         public DProveedor()
         {
