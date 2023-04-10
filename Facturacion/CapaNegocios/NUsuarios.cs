@@ -34,29 +34,11 @@ namespace CapaNegocio
         }
 
 
-
-        //METODO PARA MOSTRAR TODOS LOS USUARIOS DE LA BD
-        public static DataTable Mostrar()
-        {
-            DUsuarios objUsuarios = new DUsuarios();
-            return objUsuarios.MostrarUsuario();
-        }
-
-        //METODO PARA MOSTRAR LOS USUARIOS POR EL SERVICIO SELECCIONADO
-        /*public static DataTable MostrarUsuarioServicio(int servicionro)
-        {
-            DUsuarios objUsuarios = new DUsuarios();
-            objUsuarios.ServicioNro = servicionro;
-            return objUsuarios.Mostrar_UsuarioServicio(objUsuarios);
-        }*/
-
-
         public static DataTable MostrarCombo()
         {
             DUsuarios objUsuarios = new DUsuarios();
             return objUsuarios.MostrarUsuarioCombo();
         }
-
 
 
         public static DataTable Buscar(string Usuario)

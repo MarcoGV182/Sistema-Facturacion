@@ -280,35 +280,6 @@ namespace CapaDatos
 
 
         //Metodo Mostrar
-        public DataTable MostrarUsuario()
-        {
-            DataTable DtResultado = new DataTable("Usuario");
-            SqlConnection Sqlcon = new SqlConnection();
-            try
-            {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                SqlCommand SqlCmd = new SqlCommand();
-                SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "sp_MostrarUsuario";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
-
-                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
-                SqlAdapter.Fill(DtResultado);
-            }
-            catch (Exception)
-            {
-                DtResultado = null;
-            }
-            finally 
-            {
-                Conexion.CerrarConexion(Sqlcon);
-            }
-
-            return DtResultado;
-        }
-
-
-        //Metodo Mostrar
         public DataTable MostrarUsuarioCombo()
         {
             DataTable DtResultado = new DataTable("Usuario");

@@ -316,6 +316,37 @@ namespace CapaDatos
             return rpta;
         }
 
+
+        //Metodo Mostrar
+        public DataTable MostrarColaborador(int? idUsuario)
+        {
+            DataTable DtResultado = new DataTable("Usuario");
+            SqlConnection Sqlcon = new SqlConnection();
+            try
+            {
+                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = Sqlcon;
+                SqlCmd.CommandText = "sp_MostrarUsuario";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlCmd.Parameters.AddWithValue("@UsuarioNro", idUsuario);
+
+                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
+                SqlAdapter.Fill(DtResultado);
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+                throw ex;
+            }
+            finally
+            {
+                Conexion.CerrarConexion(Sqlcon);
+            }
+
+            return DtResultado;
+        }
     }
 
 

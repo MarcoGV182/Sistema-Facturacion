@@ -21,6 +21,7 @@ namespace CapaPresentacion
         public string nombre = "";
         public string apellido = "";
         public string acceso="";
+        public string estado = "";
         public string[] reglas;
 
                
@@ -380,6 +381,7 @@ namespace CapaPresentacion
         {
             FrmUsuario frm = FrmUsuario.GetInstancia();
             frm.MdiParent = this;
+            frm.idUsuario = id;
             frm.usuario = usuario;
             frm.nombre = nombre;
             frm.apellido = apellido;

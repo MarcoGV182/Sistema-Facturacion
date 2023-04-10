@@ -20,12 +20,13 @@ namespace CapaPresentacion
         bool IsNuevoColaborador = false;
         bool IsEditarColaborador = false;
         bool esUsuario = false;
+        public string idUsuario;
         public string nombre;
         public string apellido;
         public string usuario;
         public string acceso;
 
-        int idColaborador = 0;
+        int? idColaborador = null;
 
         private static FrmUsuario _Instancia;
 
@@ -60,7 +61,7 @@ namespace CapaPresentacion
         //Limpiar los controles del formulario
         private void Limpiar()
         {
-            idColaborador = 0;
+            idColaborador = null;
             txtCodigo.Text = string.Empty;
             txtNombre.Text = string.Empty;
             txtApellido.Text = string.Empty;
@@ -83,7 +84,8 @@ namespace CapaPresentacion
 
             //CONTROLES DE ACCESO DE USUARIO
             txtUsuario.Text = string.Empty;
-            txtpass2.Text = string.Empty;
+            txtPass1.Text = string.Empty;
+            txtPass2.Text = string.Empty;
             cboAcceso.SelectedIndex = 0;
         }
 
@@ -110,6 +112,17 @@ namespace CapaPresentacion
             dtpFechaEgreso.Enabled = valor;
             cboEstado.Enabled = valor;
             #endregion
+
+            if (!acceso.ToUpper().Equals("ADMINISTRADOR"))
+            {
+                idColaborador = Convert.ToInt32(idUsuario);
+                TabPage pg = tabControl1.TabPages["tabColaborador"];
+                if (pg != null) { tabControl1.TabPages.Remove(pg); }
+
+                chkEliminar.Visible = false;
+                btnEliminar.Visible = false;
+                cboAcceso.Enabled = false;
+            }
 
             LeyendaContraseña();
         }
@@ -141,11 +154,8 @@ namespace CapaPresentacion
             this.dataListado.Columns[0].Visible = false;
             this.dataListado.Columns[1].Visible = false;
             this.dataListado.Columns[5].Visible = false;
-            this.dataListado.Columns[6].Visible = false; 
-            this.dataListado.Columns[7].Visible = false;
             this.dataListado.Columns[8].Visible = false;
-            this.dataListado.Columns[10].Visible = false;
-            this.dataListado.Columns[13].Visible = false;
+            this.dataListado.Columns[14].Visible = false;
         }
 
         private void LlenarComboBox()
@@ -162,7 +172,7 @@ namespace CapaPresentacion
         //Metodo para mostrar los datos en el datagrid
         private void Mostrar()
         {   
-            this.dataListado.DataSource = NUsuarios.Mostrar();
+            this.dataListado.DataSource = NColaborador.Mostrar(idColaborador);
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -175,18 +185,7 @@ namespace CapaPresentacion
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
 
-        /*private void button1_Click(object sender, EventArgs e)
-        {
-            if(btnver.Text=="Ver") {
-                this.txtpass2.PasswordChar= char.Parse("\0");
-                btnver.Text = "Ocultar";
-            }
-            else
-            {
-                this.txtpass2.PasswordChar = '*' ;
-                btnver.Text = "Ver";
-            }
-        }*/
+        
 
         private void FrmUsuario_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -194,8 +193,7 @@ namespace CapaPresentacion
         }
 
         private void FrmUsuario_Load(object sender, EventArgs e)
-        {
-                      
+        {                     
 
             if (chkEliminar.Checked == false)
             {
@@ -205,8 +203,7 @@ namespace CapaPresentacion
             //top para ubicar en la parte superior
             this.Top = 0;
             //alineado hacia la izquierda
-            this.Left = 0;
-            this.Habilitar(false);
+            this.Left = 0;           
             this.Botones();
             this.Mostrar();
         }
@@ -259,7 +256,7 @@ namespace CapaPresentacion
                 //SI SE EDITAR
                 else
                 {
-                    Colaborador.PersonaNro = idColaborador;
+                    Colaborador.PersonaNro = idColaborador.Value;
                     rpta = NColaborador.Editar(Colaborador);
                 }
                 if (rpta.Equals("OK"))
@@ -349,8 +346,8 @@ namespace CapaPresentacion
                 return false;
             }
 
-            if ((txtPass1.Text != string.Empty && txtpass2.Text == string.Empty) ||
-                (txtPass1.Text == string.Empty && txtpass2.Text != string.Empty))
+            if ((txtPass1.Text != string.Empty && txtPass2.Text == string.Empty) ||
+                (txtPass1.Text == string.Empty && txtPass2.Text != string.Empty))
             {
                 this.MensajeError("Favor verificar los datos del pass solicitado");
                 return false;
@@ -358,10 +355,10 @@ namespace CapaPresentacion
 
             if (!string.IsNullOrEmpty(txtUsuario.Text))
             {
-                if (string.IsNullOrEmpty(txtPass1.Text) || string.IsNullOrEmpty(txtpass2.Text))
+                if (string.IsNullOrEmpty(txtPass1.Text) || string.IsNullOrEmpty(txtPass2.Text))
                 {
                     errorIcono.SetError(txtPass1, "Ingrese la contraseña de acceso");
-                    errorIcono.SetError(txtpass2, "Repita la contraseña de acceso");
+                    errorIcono.SetError(txtPass2, "Repita la contraseña de acceso");
                     this.MensajeError("Para registrar al usuario debe de ingresar las contraseñas de acceso");
                     return false;
                 }
@@ -369,7 +366,7 @@ namespace CapaPresentacion
 
             if (!esUsuario)
             {
-                if (txtPass1.Text != txtpass2.Text)
+                if (txtPass1.Text != txtPass2.Text)
                 {
                     this.MensajeError("Las contraseñas no coinciden. Favor verifiquelo");
                     return false;
@@ -422,7 +419,7 @@ namespace CapaPresentacion
 
         private void LeyendaContraseña() 
         {
-            if (IsEditarColaborador)
+            if (esUsuario)
             {
                 lblPass1.Text = "Pass Anterior";
                 lblPass2.Text = "Pass Nuevo";
@@ -535,11 +532,11 @@ namespace CapaPresentacion
             this.cboEstado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Estado"].Value) == "A" ? "ACTIVO" : "INACTIVO";
             this.txtObservacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Observacion"].Value);
             this.txtUsuario.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Login"].Value);
-            this.txtpass2.Text = string.Empty;//Convert.ToString(this.dataListado.CurrentRow.Cells["Password"].Value);
+            this.txtPass2.Text = string.Empty;//Convert.ToString(this.dataListado.CurrentRow.Cells["Password"].Value);
             this.cboAcceso.SelectedValue = Convert.IsDBNull(this.dataListado.CurrentRow.Cells["IdRol"].Value) ? 0 : Convert.ToInt32(this.dataListado.CurrentRow.Cells["IdRol"].Value);
             //mostrar la segunda pestana la de mantenimiento al hacer doble click
             this.tabControl1.SelectedIndex = 1;
-            this.txtpass2.PasswordChar = '*';
+            this.txtPass2.PasswordChar = '*';
             this.IsNuevoColaborador = false;
             this.IsEditarColaborador = false;
             this.Botones();
@@ -664,11 +661,11 @@ namespace CapaPresentacion
                 
 
                 DUsuarios user = new DUsuarios();
-                user.PersonaNro = idColaborador;
+                user.PersonaNro = idColaborador.Value;
                 user.PersonaNro = Convert.ToInt32(txtCodigo.Text);
                 user.Usuario = this.txtUsuario.Text.Trim().ToUpper();
                 user.Pass = this.txtPass1.Text;
-                user.passNew = this.txtpass2.Text;
+                user.passNew = this.txtPass2.Text;
                 user.TipoUserNro = Convert.ToInt32(this.cboAcceso.SelectedValue);
 
                 //si se ingresa un nuevo registro

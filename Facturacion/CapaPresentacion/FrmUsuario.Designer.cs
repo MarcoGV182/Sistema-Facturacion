@@ -82,7 +82,7 @@
             this.txtPass1 = new System.Windows.Forms.TextBox();
             this.lblPass1 = new System.Windows.Forms.Label();
             this.cboAcceso = new System.Windows.Forms.ComboBox();
-            this.txtpass2 = new System.Windows.Forms.TextBox();
+            this.txtPass2 = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.lblPass2 = new System.Windows.Forms.Label();
@@ -621,7 +621,7 @@
             this.groupBox2.Controls.Add(this.txtPass1);
             this.groupBox2.Controls.Add(this.lblPass1);
             this.groupBox2.Controls.Add(this.cboAcceso);
-            this.groupBox2.Controls.Add(this.txtpass2);
+            this.groupBox2.Controls.Add(this.txtPass2);
             this.groupBox2.Controls.Add(this.txtUsuario);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.lblPass2);
@@ -663,14 +663,14 @@
             this.cboAcceso.Size = new System.Drawing.Size(151, 23);
             this.cboAcceso.TabIndex = 30;
             // 
-            // txtpass2
+            // txtPass2
             // 
-            this.txtpass2.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.txtpass2.Location = new System.Drawing.Point(92, 102);
-            this.txtpass2.Name = "txtpass2";
-            this.txtpass2.PasswordChar = '*';
-            this.txtpass2.Size = new System.Drawing.Size(151, 23);
-            this.txtpass2.TabIndex = 29;
+            this.txtPass2.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.txtPass2.Location = new System.Drawing.Point(92, 102);
+            this.txtPass2.Name = "txtPass2";
+            this.txtPass2.PasswordChar = '*';
+            this.txtPass2.Size = new System.Drawing.Size(151, 23);
+            this.txtPass2.TabIndex = 29;
             // 
             // txtUsuario
             // 
@@ -727,7 +727,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmUsuario";
-            this.Text = "Usuarios";
+            this.Text = "Colaboradores";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmUsuario_FormClosing);
             this.Load += new System.EventHandler(this.FrmUsuario_Load);
             this.tabControl1.ResumeLayout(false);
@@ -792,7 +792,7 @@
         private System.Windows.Forms.TabPage tabUsuario;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cboAcceso;
-        private System.Windows.Forms.TextBox txtpass2;
+        private System.Windows.Forms.TextBox txtPass2;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblPass2;

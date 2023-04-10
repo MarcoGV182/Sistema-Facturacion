@@ -282,7 +282,7 @@ namespace CapaPresentacion
 
         private void cboEmpleados_SelectedValueChanged(object sender, EventArgs e)
         {
-            table = NUsuarios.Mostrar();
+            table = NColaborador.Mostrar(null);
             
         }
 

@@ -82,12 +82,22 @@ namespace CapaPresentacion
                 }
                 else
                 {
+                    string estado = DtLogin.Rows[0]["Estado"].ToString();
+
+                    if (estado.Equals("I"))
+                    {
+                        MessageBox.Show("El usuario/Colaborador se encuentra inactivo","Sistema de Facturación",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+
                     FormPrincipal frm = new FormPrincipal();
                     frm.id = DtLogin.Rows[0]["UsuarioNro"].ToString();
                     frm.usuario = DtLogin.Rows[0]["Login"].ToString();
                     frm.nombre = DtLogin.Rows[0][1].ToString();
                     frm.apellido = DtLogin.Rows[0][2].ToString();
-                    frm.acceso = DtLogin.Rows[0][3].ToString();
+                    frm.acceso = DtLogin.Rows[0]["Rol"].ToString();
+                    frm.estado = estado;
                     frm.reglas = Convert.IsDBNull(DtLogin.Rows[0]["Reglas"]) ? null: DtLogin.Rows[0]["Reglas"].ToString().Split(',');
                     this.Limpiar();
                     frm.Show();
