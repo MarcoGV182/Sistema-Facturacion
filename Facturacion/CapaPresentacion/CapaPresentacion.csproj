@@ -1124,6 +1124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="facEasy.ico" />
+    <Content Include="Resources\CaniGattiLogo.jpg" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

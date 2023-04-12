@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.DsReporte = new CapaPresentacion.DsReporte();
-            this.sp_ReporteMovimientoCajaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sp_ReporteMovimientoCajaTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteMovimientoCajaTableAdapter();
+            this.sp_ReporteMovimientoCajaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_ReporteMovimientoCajaBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -41,12 +41,13 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DsMovimientoCaja";
-            reportDataSource1.Value = this.sp_ReporteMovimientoCajaBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "DsMovimientoCaja";
+            reportDataSource2.Value = this.sp_ReporteMovimientoCajaBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "CapaPresentacion.Informes.ReporteMovimientoCaja.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(883, 514);
             this.reportViewer1.TabIndex = 0;
             // 
@@ -55,14 +56,14 @@
             this.DsReporte.DataSetName = "DsReporte";
             this.DsReporte.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // sp_ReporteMovimientoCajaTableAdapter
+            // 
+            this.sp_ReporteMovimientoCajaTableAdapter.ClearBeforeFill = true;
+            // 
             // sp_ReporteMovimientoCajaBindingSource
             // 
             this.sp_ReporteMovimientoCajaBindingSource.DataMember = "sp_ReporteMovimientoCaja";
             this.sp_ReporteMovimientoCajaBindingSource.DataSource = this.DsReporte;
-            // 
-            // sp_ReporteMovimientoCajaTableAdapter
-            // 
-            this.sp_ReporteMovimientoCajaTableAdapter.ClearBeforeFill = true;
             // 
             // FrmInformeMovimientoCaja
             // 
@@ -82,8 +83,8 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource sp_ReporteMovimientoCajaBindingSource;
         private DsReporte DsReporte;
         private DsReporteTableAdapters.sp_ReporteMovimientoCajaTableAdapter sp_ReporteMovimientoCajaTableAdapter;
+        private System.Windows.Forms.BindingSource sp_ReporteMovimientoCajaBindingSource;
     }
 }

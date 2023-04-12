@@ -33,9 +33,9 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.sp_ReporteFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DsReporte = new CapaPresentacion.DsReporte();
+            this.spReporteFacturaDetalleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.sp_ReporteFacturaTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteFacturaTableAdapter();
-            this.spReporteFacturaDetalleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sp_ReporteFacturaDetalleTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteFacturaDetalleTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.sp_ReporteFacturaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).BeginInit();
@@ -52,6 +52,11 @@
             this.DsReporte.DataSetName = "DsReporte";
             this.DsReporte.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // spReporteFacturaDetalleBindingSource
+            // 
+            this.spReporteFacturaDetalleBindingSource.DataMember = "sp_ReporteFacturaDetalle";
+            this.spReporteFacturaDetalleBindingSource.DataSource = this.DsReporte;
+            // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -67,17 +72,10 @@
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(865, 559);
             this.reportViewer1.TabIndex = 0;
-            this.reportViewer1.RenderingComplete += new Microsoft.Reporting.WinForms.RenderingCompleteEventHandler(this.reportViewer1_RenderingComplete);
-            this.reportViewer1.Load += new System.EventHandler(this.FrmComprobanteVenta_Load);
             // 
             // sp_ReporteFacturaTableAdapter
             // 
             this.sp_ReporteFacturaTableAdapter.ClearBeforeFill = true;
-            // 
-            // spReporteFacturaDetalleBindingSource
-            // 
-            this.spReporteFacturaDetalleBindingSource.DataMember = "sp_ReporteFacturaDetalle";
-            this.spReporteFacturaDetalleBindingSource.DataSource = this.DsReporte;
             // 
             // sp_ReporteFacturaDetalleTableAdapter
             // 
@@ -92,6 +90,7 @@
             this.Name = "FrmComprobanteVenta";
             this.Text = "Factura Venta";
             this.Load += new System.EventHandler(this.FrmComprobanteVenta_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmComprobanteVenta_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.sp_ReporteFacturaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spReporteFacturaDetalleBindingSource)).EndInit();
@@ -100,12 +99,11 @@
         }
 
         #endregion
-
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource sp_ReporteFacturaBindingSource;
         private DsReporte DsReporte;
         private DsReporteTableAdapters.sp_ReporteFacturaTableAdapter sp_ReporteFacturaTableAdapter;
         private System.Windows.Forms.BindingSource spReporteFacturaDetalleBindingSource;
         private DsReporteTableAdapters.sp_ReporteFacturaDetalleTableAdapter sp_ReporteFacturaDetalleTableAdapter;
+        public Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

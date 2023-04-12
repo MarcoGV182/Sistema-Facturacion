@@ -29,10 +29,10 @@ namespace CapaPresentacion
         private string Usuariocaja ="";
         private string FechaApertura="";
         private string FechaCierre="";
-        private decimal ImporteApertura;
-        private decimal ImporteEntrega;
-        private decimal SaldoFinal;
-        private decimal DiferenciaCierre;
+        private double ImporteApertura;
+        private double ImporteEntrega;
+        private double SaldoFinal;
+        private double DiferenciaCierre;
         private string Estado="";
 
 
@@ -207,10 +207,10 @@ namespace CapaPresentacion
                 this.Usuariocaja = this.dataResumenCaja.CurrentRow.Cells["Usuario"].Value.ToString();
                 this.FechaApertura = this.dataResumenCaja.CurrentRow.Cells["FechaApertura"].Value.ToString();
                 this.FechaCierre = this.dataResumenCaja.CurrentRow.Cells["FechaCierre"].Value.ToString();
-                this.ImporteApertura = Convert.ToDecimal(this.dataResumenCaja.CurrentRow.Cells["ImporteApert"].Value.ToString());
-                this.ImporteEntrega = Convert.ToDecimal(this.dataResumenCaja.CurrentRow.Cells["Entrega"].Value.ToString());
-                this.SaldoFinal = Convert.ToDecimal(this.dataResumenCaja.CurrentRow.Cells["Saldo"].Value.ToString());
-                this.DiferenciaCierre = Convert.ToDecimal(this.dataResumenCaja.CurrentRow.Cells["Diferencia"].Value.ToString());
+                this.ImporteApertura = Convert.ToDouble(this.dataResumenCaja.CurrentRow.Cells["ImporteApertura"].Value);
+                this.ImporteEntrega = Convert.IsDBNull(this.dataResumenCaja.CurrentRow.Cells["Entrega"].Value) ? 0 : Convert.ToDouble(this.dataResumenCaja.CurrentRow.Cells["Entrega"].Value);
+                this.SaldoFinal = Convert.IsDBNull(this.dataResumenCaja.CurrentRow.Cells["Saldo"].Value) ? 0 : Convert.ToDouble(this.dataResumenCaja.CurrentRow.Cells["Saldo"].Value);
+                this.DiferenciaCierre = Convert.IsDBNull(this.dataResumenCaja.CurrentRow.Cells["Diferencia"].Value) ? 0 : Convert.ToDouble(this.dataResumenCaja.CurrentRow.Cells["Diferencia"].Value);
                 this.Estado = this.dataResumenCaja.CurrentRow.Cells["Estado"].Value.ToString();
 
 
@@ -232,7 +232,7 @@ namespace CapaPresentacion
 
         private void dataResumenCaja_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            this.dataResumenCaja.Columns["ImporteApert"].DefaultCellStyle.Format = "N0";
+            this.dataResumenCaja.Columns["ImporteApertura"].DefaultCellStyle.Format = "N0";
             this.dataResumenCaja.Columns["Entrega"].DefaultCellStyle.Format = "N0";
             this.dataResumenCaja.Columns["Saldo"].DefaultCellStyle.Format = "N0";
             this.dataResumenCaja.Columns["Diferencia"].DefaultCellStyle.Format = "N0";
@@ -261,9 +261,9 @@ namespace CapaPresentacion
                     frm.DiferenciaCierre = DiferenciaCierre;
                     frm.SaldoFinal = SaldoFinal;
                     frm.Estado = Estado;
-                    frm.Efectivo =Convert.ToDecimal(this.txtEfectivo.Text);
-                    frm.tarjeta= Convert.ToDecimal(this.txtTarjeta.Text);
-                    frm.Cheque= Convert.ToDecimal(this.txtCheque.Text);
+                    frm.Efectivo =Convert.ToDouble(this.txtEfectivo.Text);
+                    frm.tarjeta= Convert.ToDouble(this.txtTarjeta.Text);
+                    frm.Cheque= Convert.ToDouble(this.txtCheque.Text);
                     frm.ShowDialog();
                 }
                 else

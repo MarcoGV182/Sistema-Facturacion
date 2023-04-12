@@ -65,7 +65,6 @@
             this.Name = "FrmCargandoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmCargandoForm";
-            this.Load += new System.EventHandler(this.FrmCargandoForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Reporting.WinForms;
@@ -26,7 +27,7 @@ namespace CapaPresentacion
             this.Left = 50;
 
             try
-            {
+            {   
                 // TODO: esta línea de código carga datos en la tabla 'DsReporte.sp_ReporteFactura' Puede moverla o quitarla según sea necesario.
                 DsReporte.sp_ReporteFactura.Clear();
                 DsReporte.EnforceConstraints = false;
@@ -42,20 +43,17 @@ namespace CapaPresentacion
             }
         }
 
-        public void reportViewer1_RenderingComplete(object sender, Microsoft.Reporting.WinForms.RenderingCompleteEventArgs e)
+        private void FrmComprobanteVenta_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
             {
-                /*reportViewer1.PrintDialog();
-                //reportViewer1.Clear();
-                reportViewer1.LocalReport.ReleaseSandboxAppDomain();*/
+                // Liberar recursos y hacer limpieza antes de cerrar el formulario
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
             }
         }
-
-
 
     }
 }

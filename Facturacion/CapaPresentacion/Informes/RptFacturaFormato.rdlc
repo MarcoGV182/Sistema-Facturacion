@@ -3372,7 +3372,7 @@ Cel.: (0981) 200 771 - Lambaré
         </Style>
       </Rectangle>
     </ReportItems>
-    <Height>29.63583cm</Height>
+    <Height>29.26541cm</Height>
     <Style>
       <Border>
         <Style>None</Style>
@@ -3394,13 +3394,14 @@ Cel.: (0981) 200 771 - Lambaré
       </RightBorder>
     </Style>
   </Body>
-  <Width>21cm</Width>
+  <Width>20.23271cm</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
-    <LeftMargin>0cm</LeftMargin>
+    <LeftMargin>0.6cm</LeftMargin>
     <RightMargin>0cm</RightMargin>
     <TopMargin>0cm</TopMargin>
+    <BottomMargin>0cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style />
   </Page>

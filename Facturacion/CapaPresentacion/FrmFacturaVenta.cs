@@ -14,6 +14,7 @@ using System.Drawing.Printing;
 using CapaDatos;
 using CapaPresentacion.DsReporteTableAdapters;
 using System.Runtime.InteropServices;
+using System.Globalization;
 
 namespace CapaPresentacion
 {
@@ -47,6 +48,8 @@ namespace CapaPresentacion
         public string acceso = string.Empty;
 
         FrmPagoFactura frmPagoFactura = null;
+
+        string fechaIngresada = "";
 
 
         //INSTANCIA PARA LLAMAR SOLO UNA VEZ AL FORMULARIO
@@ -97,7 +100,7 @@ namespace CapaPresentacion
         public void ObtenerEmpleadoFactura(string usuarionro, string nombre)
         {
             codigoEmpleado = usuarionro;
-            this.txtEmpleado.Text = nombre;
+            //this.txtEmpleado.Text = nombre;
         }
 
 
@@ -124,7 +127,7 @@ namespace CapaPresentacion
             InitializeComponent();
             this.ttMensaje.SetToolTip(txtCliente, "Seleccione el Cliente");
             this.ttMensaje.SetToolTip(txtNroFactura, "Ingrese el numero de factura");
-            this.ttMensaje.SetToolTip(dtpFecha, "Ingrese la fecha de Compra");
+            this.ttMensaje.SetToolTip(dtpFecha, "Ingrese la fecha de Venta");
             this.ttMensaje.SetToolTip(cboTipoPago, "Seleccione el tipo de pago");
             this.ttMensaje.SetToolTip(txtItem, "Seleccione el Item");
             this.ttMensaje.SetToolTip(btnBuscarItem, "Click para buscar item");
@@ -262,7 +265,7 @@ namespace CapaPresentacion
             this.txtCantidad.Text = string.Empty;
             this.txtIva.Text = string.Empty;
             //CAMPOS OT
-            this.txtEmpleado.Text = string.Empty;
+            //this.txtEmpleado.Text = string.Empty;
             codigoEmpleado = string.Empty;
             porcentajeComision = 0;
             //Restablecer el color del control
@@ -486,9 +489,8 @@ namespace CapaPresentacion
             DataGridDiseno(dataListado);
            //DataGridDiseno(dgvDetalleFactura);
             if (chkAnular.Checked == false)
-            {
                 btnAnular.Enabled = false;
-            }
+
             this.Top = 50;
             this.Left = 30;
             this.Mostrar();
@@ -501,9 +503,32 @@ namespace CapaPresentacion
             this.MedidaColumna(dgvDetalleFactura);
             this.btnImprimir2.Visible = false;
 
+            //Evento de los radioButtons
+            rbAutoimprenta.CheckedChanged += RadioButton_CheckedChanged;
+            rbManual.CheckedChanged += RadioButton_CheckedChanged;
+
 
             this.dtpFechadesde.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month,1);
             
+        }
+
+        private void RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = sender as RadioButton;
+            if (radioButton.Checked)
+            {
+                //Si está seleccionado Autoimprenta se bloquea el numero de factura
+                if (radioButton.Name == rbAutoimprenta.Name) 
+                    txtNroFactura.ReadOnly = true;
+                //Si está selccionado Manual se habilita el campo del numero de factura
+                else if (radioButton.Name == rbManual.Name)
+                    txtNroFactura.ReadOnly = false;
+                // Desmarca los otros RadioButton
+                foreach (RadioButton otherRadioButton in gbTipo.Controls.OfType<RadioButton>().Where(rb => rb != radioButton))
+                {
+                    otherRadioButton.Checked = false;
+                }
+            }
         }
 
         private void btnAnular_Click(object sender, EventArgs e)
@@ -761,7 +786,7 @@ namespace CapaPresentacion
 
         private bool Validaciones() 
         {
-
+            errorIcono.Clear();
             if (this.txtNroFactura.Text == string.Empty)
             {
                 this.MensajeError("Falta algunos datos");
@@ -870,7 +895,7 @@ namespace CapaPresentacion
 
                 //AGREGAR DATOS DE OT
                 //SI NO ESTA ASIGNADO A NINGUN EMPLEADO IGUAL INSERTAR EL REGISTRO
-                if (codigoEmpleado == string.Empty && txtEmpleado.Text == string.Empty)
+                /*if (codigoEmpleado == string.Empty && txtEmpleado.Text == string.Empty)
                 {
                     row["UsuarioNro"] = DBNull.Value;
                     row["Empleado"] = DBNull.Value;
@@ -886,7 +911,7 @@ namespace CapaPresentacion
                     ganancia = Convert.ToDouble(row["Subtotal"]) * (Convert.ToDouble(row["ComisionServicio"]) / 100);
 
                     row["Ganancia"] = ganancia.ToString("N0");
-                }
+                }*/
 
                 this.dgvDetalleFactura.DataSource = this.Dtdetalle;               
                 this.Dtdetalle.Rows.Add(row);
@@ -943,28 +968,33 @@ namespace CapaPresentacion
         {
             try
             {
-                int indiceFila = dgvDetalleFactura.CurrentCell.RowIndex;
-                row = Dtdetalle.Rows[indiceFila];
-
-                this.dgvDetalleFactura.DataSource = this.Dtdetalle;
-                //disminuir total                
-                Total = Total - Convert.ToInt32(row["SubTotal"]);
-                SubtotalIVA = SubtotalIVA - Convert.ToInt32(row["SubtotalIVA"]);
-                SubTotalGravadas = SubTotalGravadas - Convert.ToInt32(row["SubTotalNeto"]);
-                
-                txtTotalGravadas.Text = SubTotalGravadas.ToString("N0");
-                txttotalIva.Text = SubtotalIVA.ToString("N0");
-                txtTotalGral.Text = Total.ToString("N0");
-
-                //eliminamos la fila
-
-                this.Dtdetalle.Rows.Remove(row);
-                ReenumerarItems();
+                EliminarItem();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MensajeError("No existe fila para eliminar");
+                MensajeError($"Error: {ex.Message}");
             }
+        }
+
+        private void EliminarItem() 
+        {
+            int indiceFila = dgvDetalleFactura.CurrentCell.RowIndex;
+            row = Dtdetalle.Rows[indiceFila];
+
+            this.dgvDetalleFactura.DataSource = this.Dtdetalle;
+            //disminuir total                
+            Total = Total - Convert.ToInt32(row["SubTotal"]);
+            SubtotalIVA = SubtotalIVA - Convert.ToInt32(row["SubtotalIVA"]);
+            SubTotalGravadas = SubTotalGravadas - Convert.ToInt32(row["SubTotalNeto"]);
+
+            txtTotalGravadas.Text = SubTotalGravadas.ToString("N0");
+            txttotalIva.Text = SubtotalIVA.ToString("N0");
+            txtTotalGral.Text = Total.ToString("N0");
+
+            //eliminamos la fila
+
+            this.Dtdetalle.Rows.Remove(row);
+            ReenumerarItems();
         }
 
 
@@ -1103,6 +1133,16 @@ namespace CapaPresentacion
                     return;
                 }
 
+                //Si el usuario no tiene el acceso de ADM solo puede reimprimir documentos del día
+                if (!acceso.ToUpper().Equals("ADMINISTRADOR"))
+                {
+                    if (this.dataListado.CurrentRow.Cells["Fecha"].Value.ToString() != DateTime.Now.ToShortDateString())
+                    {
+                        MensajeError("Solo puede reimprimir Facturas del día.\nSolo el ADMINISTRADOR puede reimprimir de cualquier día");
+                        return;
+                    }
+                }
+
                 if (this.dataListado.CurrentRow.Cells["Comprobante"].Value.ToString() != "FACTURA")
                 {
                     MensajeError("El registro seleccionado no es un Factura");
@@ -1110,11 +1150,22 @@ namespace CapaPresentacion
                 }
                 #endregion
 
+                //Mensaje de carga de reporte
+                btnImprimir.Text = "Cargando reporte...";
+                btnImprimir.Enabled = false;
+                this.Refresh();
+
                 FrmComprobanteVenta frm = new FrmComprobanteVenta();
                 int nroVenta;
                 nroVenta = Convert.ToInt32(this.dataListado.CurrentRow.Cells["NroVenta"].Value);
                 frm.nroVenta = nroVenta;
-                frm.Show();
+                frm.ShowDialog();
+
+                //Mensaje de carga de reporte
+                btnImprimir.Text = "&Re-Imprimir";
+                btnImprimir.Enabled = true;
+                this.Refresh();
+
             }
             catch (Exception ex)
             {
@@ -1141,10 +1192,20 @@ namespace CapaPresentacion
         {
             try
             {
-            
+                //Mensaje de carga de reporte
+                btnImprimir2.Text = "Cargando...";
+                btnImprimir2.Enabled = false;
+                this.Refresh();
+
                 FrmComprobanteVenta frm = new FrmComprobanteVenta();  
                 frm.nroVenta = idVenta;
-                frm.Show();
+                frm.ShowDialog();
+
+
+                //Mensaje de carga de reporte
+                btnImprimir2.Text = "&Imprimir";
+                btnImprimir2.Enabled = true;
+                this.Refresh();
             }
             catch (Exception ex)
             {
@@ -1334,7 +1395,14 @@ namespace CapaPresentacion
             //AL SELECCIONAR Y PRESIONAR SUPR-DEL SE ELIMINAR UN REGISTRO DEL DATAGRID
             if (e.KeyCode==Keys.Delete)
             {
-                btnQuitar_Click(null, null);
+                try
+                {
+                    EliminarItem();
+                }
+                catch (Exception ex)
+                {
+                    MensajeError($"Error: {ex.Message}");
+                }
             }
         }
 
@@ -1378,6 +1446,68 @@ namespace CapaPresentacion
                 throw;
             }*/
            
+        }
+
+        private void dgvDetalleFactura_AllowUserToDeleteRowsChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                EliminarItem();
+            }
+            catch (Exception ex)
+            {
+                MensajeError($"Error: {ex.Message}");
+            }
+        }
+
+        private void dtpFecha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Detectar si la tecla presionada es un número y agregarlo a la cadena fechaIngresada
+            if (Char.IsDigit(e.KeyChar))
+            {
+                fechaIngresada += e.KeyChar;
+            }
+        }
+
+        private void dtpFecha_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                // Obtener el valor actual del DateTimePicker
+                DateTime fecha = dtpFecha.Value;
+
+                // Formatear la fecha en el formato deseado
+                string fechaFormateada = fecha.ToString("dd/MM/yyyy");
+
+                // Establecer el texto del DateTimePicker en el valor formateado
+                dtpFecha.Text = fechaFormateada;
+            }
+            catch (FormatException)
+            {
+                // Manejar una excepción si el usuario ingresa una fecha inválida
+                MessageBox.Show("La fecha ingresada no es válida.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dtpFecha_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Obtener el control que generó el evento
+            DateTimePicker dtp = (DateTimePicker)sender;
+
+            // Verificar si se presionó la tecla de retorno de carro (Enter)
+            if (e.KeyCode == Keys.Return)
+            {
+                // Obtener el texto actual del control
+                string texto = dtp.Text;
+
+                // Verificar si el texto tiene dos dígitos para el día
+                if (texto.Length == 2 && int.TryParse(texto, out int dia))
+                {
+                    // Cambiar el foco al mes
+                    SendKeys.Send("{Right}");
+                    e.Handled = true;
+                }
+            }
         }
     }
 }

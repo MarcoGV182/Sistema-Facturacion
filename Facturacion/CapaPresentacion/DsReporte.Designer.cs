@@ -6541,7 +6541,7 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public sp_ReporteResumenCajaFechaRow Addsp_ReporteResumenCajaFechaRow(string Usuario, string FechaApertura, string FechaCierre, decimal ImporteApertura, decimal ImporteEntrega, decimal SaldoFinal, decimal DiferenciaCierre, string Estado, string FechaInicio, string FechaFin) {
+            public sp_ReporteResumenCajaFechaRow Addsp_ReporteResumenCajaFechaRow(string Usuario, System.DateTime FechaApertura, string FechaCierre, double ImporteApertura, double ImporteEntrega, double SaldoFinal, double DiferenciaCierre, string Estado, string FechaInicio, string FechaFin) {
                 sp_ReporteResumenCajaFechaRow rowsp_ReporteResumenCajaFechaRow = ((sp_ReporteResumenCajaFechaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -6597,17 +6597,17 @@ namespace CapaPresentacion {
                 base.Columns.Add(this.columnNroCaja);
                 this.columnUsuario = new global::System.Data.DataColumn("Usuario", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUsuario);
-                this.columnFechaApertura = new global::System.Data.DataColumn("FechaApertura", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnFechaApertura = new global::System.Data.DataColumn("FechaApertura", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaApertura);
                 this.columnFechaCierre = new global::System.Data.DataColumn("FechaCierre", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaCierre);
-                this.columnImporteApertura = new global::System.Data.DataColumn("ImporteApertura", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnImporteApertura = new global::System.Data.DataColumn("ImporteApertura", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImporteApertura);
-                this.columnImporteEntrega = new global::System.Data.DataColumn("ImporteEntrega", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnImporteEntrega = new global::System.Data.DataColumn("ImporteEntrega", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImporteEntrega);
-                this.columnSaldoFinal = new global::System.Data.DataColumn("SaldoFinal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnSaldoFinal = new global::System.Data.DataColumn("SaldoFinal", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSaldoFinal);
-                this.columnDiferenciaCierre = new global::System.Data.DataColumn("DiferenciaCierre", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnDiferenciaCierre = new global::System.Data.DataColumn("DiferenciaCierre", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDiferenciaCierre);
                 this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEstado);
@@ -6622,9 +6622,7 @@ namespace CapaPresentacion {
                 this.columnNroCaja.ReadOnly = true;
                 this.columnUsuario.MaxLength = 50;
                 this.columnFechaApertura.ReadOnly = true;
-                this.columnFechaApertura.MaxLength = 4000;
                 this.columnFechaCierre.ReadOnly = true;
-                this.columnFechaCierre.MaxLength = 4000;
                 this.columnImporteApertura.AllowDBNull = false;
                 this.columnEstado.AllowDBNull = false;
                 this.columnEstado.MaxLength = 1;
@@ -8542,13 +8540,15 @@ namespace CapaPresentacion {
             
             private global::System.Data.DataColumn columnImporte;
             
-            private global::System.Data.DataColumn columnUsuario1;
-            
             private global::System.Data.DataColumn columnEfectivo;
             
             private global::System.Data.DataColumn columnTarjeta;
             
             private global::System.Data.DataColumn columnCheque;
+            
+            private global::System.Data.DataColumn columnUsuarioActual;
+            
+            private global::System.Data.DataColumn columnOtros;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -8705,14 +8705,6 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Usuario1Column {
-                get {
-                    return this.columnUsuario1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn EfectivoColumn {
                 get {
                     return this.columnEfectivo;
@@ -8732,6 +8724,22 @@ namespace CapaPresentacion {
             public global::System.Data.DataColumn ChequeColumn {
                 get {
                     return this.columnCheque;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UsuarioActualColumn {
+                get {
+                    return this.columnUsuarioActual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OtrosColumn {
+                get {
+                    return this.columnOtros;
                 }
             }
             
@@ -8776,10 +8784,10 @@ namespace CapaPresentacion {
                         string Usuario, 
                         string FechaApertura, 
                         string FechaCierre, 
-                        decimal ImporteApertura, 
-                        decimal ImporteEntrega, 
-                        decimal SaldoFinal, 
-                        decimal DiferenciaCierre, 
+                        double ImporteApertura, 
+                        double ImporteEntrega, 
+                        double SaldoFinal, 
+                        double DiferenciaCierre, 
                         string Estado, 
                         string Identificador, 
                         string Fecha, 
@@ -8787,11 +8795,12 @@ namespace CapaPresentacion {
                         string Persona, 
                         string TipoOperacion, 
                         string FormaPago, 
-                        decimal Importe, 
-                        string Usuario1, 
-                        decimal Efectivo, 
-                        decimal Tarjeta, 
-                        decimal Cheque) {
+                        double Importe, 
+                        double Efectivo, 
+                        double Tarjeta, 
+                        double Cheque, 
+                        string UsuarioActual, 
+                        double Otros) {
                 sp_ReporteMovimientoCajaRow rowsp_ReporteMovimientoCajaRow = ((sp_ReporteMovimientoCajaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Usuario,
@@ -8809,10 +8818,11 @@ namespace CapaPresentacion {
                         TipoOperacion,
                         FormaPago,
                         Importe,
-                        Usuario1,
                         Efectivo,
                         Tarjeta,
-                        Cheque};
+                        Cheque,
+                        UsuarioActual,
+                        Otros};
                 rowsp_ReporteMovimientoCajaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_ReporteMovimientoCajaRow);
                 return rowsp_ReporteMovimientoCajaRow;
@@ -8850,10 +8860,11 @@ namespace CapaPresentacion {
                 this.columnTipoOperacion = base.Columns["TipoOperacion"];
                 this.columnFormaPago = base.Columns["FormaPago"];
                 this.columnImporte = base.Columns["Importe"];
-                this.columnUsuario1 = base.Columns["Usuario1"];
                 this.columnEfectivo = base.Columns["Efectivo"];
                 this.columnTarjeta = base.Columns["Tarjeta"];
                 this.columnCheque = base.Columns["Cheque"];
+                this.columnUsuarioActual = base.Columns["UsuarioActual"];
+                this.columnOtros = base.Columns["Otros"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8865,13 +8876,13 @@ namespace CapaPresentacion {
                 base.Columns.Add(this.columnFechaApertura);
                 this.columnFechaCierre = new global::System.Data.DataColumn("FechaCierre", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaCierre);
-                this.columnImporteApertura = new global::System.Data.DataColumn("ImporteApertura", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnImporteApertura = new global::System.Data.DataColumn("ImporteApertura", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImporteApertura);
-                this.columnImporteEntrega = new global::System.Data.DataColumn("ImporteEntrega", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnImporteEntrega = new global::System.Data.DataColumn("ImporteEntrega", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImporteEntrega);
-                this.columnSaldoFinal = new global::System.Data.DataColumn("SaldoFinal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnSaldoFinal = new global::System.Data.DataColumn("SaldoFinal", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSaldoFinal);
-                this.columnDiferenciaCierre = new global::System.Data.DataColumn("DiferenciaCierre", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnDiferenciaCierre = new global::System.Data.DataColumn("DiferenciaCierre", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDiferenciaCierre);
                 this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEstado);
@@ -8887,16 +8898,18 @@ namespace CapaPresentacion {
                 base.Columns.Add(this.columnTipoOperacion);
                 this.columnFormaPago = new global::System.Data.DataColumn("FormaPago", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFormaPago);
-                this.columnImporte = new global::System.Data.DataColumn("Importe", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnImporte = new global::System.Data.DataColumn("Importe", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImporte);
-                this.columnUsuario1 = new global::System.Data.DataColumn("Usuario1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUsuario1);
-                this.columnEfectivo = new global::System.Data.DataColumn("Efectivo", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnEfectivo = new global::System.Data.DataColumn("Efectivo", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEfectivo);
-                this.columnTarjeta = new global::System.Data.DataColumn("Tarjeta", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnTarjeta = new global::System.Data.DataColumn("Tarjeta", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTarjeta);
-                this.columnCheque = new global::System.Data.DataColumn("Cheque", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnCheque = new global::System.Data.DataColumn("Cheque", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCheque);
+                this.columnUsuarioActual = new global::System.Data.DataColumn("UsuarioActual", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUsuarioActual);
+                this.columnOtros = new global::System.Data.DataColumn("Otros", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOtros);
                 this.columnUsuario.ReadOnly = true;
                 this.columnUsuario.MaxLength = 100;
                 this.columnFechaApertura.ReadOnly = true;
@@ -8922,11 +8935,12 @@ namespace CapaPresentacion {
                 this.columnFormaPago.ReadOnly = true;
                 this.columnFormaPago.MaxLength = 2;
                 this.columnImporte.ReadOnly = true;
-                this.columnUsuario1.ReadOnly = true;
-                this.columnUsuario1.MaxLength = 50;
                 this.columnEfectivo.ReadOnly = true;
                 this.columnTarjeta.ReadOnly = true;
                 this.columnCheque.ReadOnly = true;
+                this.columnUsuarioActual.ReadOnly = true;
+                this.columnUsuarioActual.MaxLength = 100;
+                this.columnOtros.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14027,10 +14041,10 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string FechaApertura {
+            public System.DateTime FechaApertura {
                 get {
                     try {
-                        return ((string)(this[this.tablesp_ReporteResumenCajaFecha.FechaAperturaColumn]));
+                        return ((global::System.DateTime)(this[this.tablesp_ReporteResumenCajaFecha.FechaAperturaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaApertura\' de la tabla \'sp_ReporteResumenCajaFecha\' e" +
@@ -14046,12 +14060,11 @@ namespace CapaPresentacion {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string FechaCierre {
                 get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteResumenCajaFecha.FechaCierreColumn]));
+                    if (this.IsFechaCierreNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaCierre\' de la tabla \'sp_ReporteResumenCajaFecha\' es " +
-                                "DBNull.", e);
+                    else {
+                        return ((string)(this[this.tablesp_ReporteResumenCajaFecha.FechaCierreColumn]));
                     }
                 }
                 set {
@@ -14061,9 +14074,9 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal ImporteApertura {
+            public double ImporteApertura {
                 get {
-                    return ((decimal)(this[this.tablesp_ReporteResumenCajaFecha.ImporteAperturaColumn]));
+                    return ((double)(this[this.tablesp_ReporteResumenCajaFecha.ImporteAperturaColumn]));
                 }
                 set {
                     this[this.tablesp_ReporteResumenCajaFecha.ImporteAperturaColumn] = value;
@@ -14072,10 +14085,10 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal ImporteEntrega {
+            public double ImporteEntrega {
                 get {
                     try {
-                        return ((decimal)(this[this.tablesp_ReporteResumenCajaFecha.ImporteEntregaColumn]));
+                        return ((double)(this[this.tablesp_ReporteResumenCajaFecha.ImporteEntregaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'ImporteEntrega\' de la tabla \'sp_ReporteResumenCajaFecha\' " +
@@ -14089,10 +14102,10 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal SaldoFinal {
+            public double SaldoFinal {
                 get {
                     try {
-                        return ((decimal)(this[this.tablesp_ReporteResumenCajaFecha.SaldoFinalColumn]));
+                        return ((double)(this[this.tablesp_ReporteResumenCajaFecha.SaldoFinalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'SaldoFinal\' de la tabla \'sp_ReporteResumenCajaFecha\' es D" +
@@ -14106,10 +14119,10 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal DiferenciaCierre {
+            public double DiferenciaCierre {
                 get {
                     try {
-                        return ((decimal)(this[this.tablesp_ReporteResumenCajaFecha.DiferenciaCierreColumn]));
+                        return ((double)(this[this.tablesp_ReporteResumenCajaFecha.DiferenciaCierreColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'DiferenciaCierre\' de la tabla \'sp_ReporteResumenCajaFecha" +
@@ -15244,10 +15257,10 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal ImporteApertura {
+            public double ImporteApertura {
                 get {
                     try {
-                        return ((decimal)(this[this.tablesp_ReporteMovimientoCaja.ImporteAperturaColumn]));
+                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.ImporteAperturaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'ImporteApertura\' de la tabla \'sp_ReporteMovimientoCaja\' e" +
@@ -15261,10 +15274,10 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal ImporteEntrega {
+            public double ImporteEntrega {
                 get {
                     try {
-                        return ((decimal)(this[this.tablesp_ReporteMovimientoCaja.ImporteEntregaColumn]));
+                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.ImporteEntregaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'ImporteEntrega\' de la tabla \'sp_ReporteMovimientoCaja\' es" +
@@ -15278,10 +15291,10 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal SaldoFinal {
+            public double SaldoFinal {
                 get {
                     try {
-                        return ((decimal)(this[this.tablesp_ReporteMovimientoCaja.SaldoFinalColumn]));
+                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.SaldoFinalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'SaldoFinal\' de la tabla \'sp_ReporteMovimientoCaja\' es DBN" +
@@ -15295,10 +15308,10 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal DiferenciaCierre {
+            public double DiferenciaCierre {
                 get {
                     try {
-                        return ((decimal)(this[this.tablesp_ReporteMovimientoCaja.DiferenciaCierreColumn]));
+                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.DiferenciaCierreColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'DiferenciaCierre\' de la tabla \'sp_ReporteMovimientoCaja\' " +
@@ -15430,10 +15443,10 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal Importe {
+            public double Importe {
                 get {
                     try {
-                        return ((decimal)(this[this.tablesp_ReporteMovimientoCaja.ImporteColumn]));
+                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.ImporteColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Importe\' de la tabla \'sp_ReporteMovimientoCaja\' es DBNull" +
@@ -15447,27 +15460,10 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Usuario1 {
+            public double Efectivo {
                 get {
                     try {
-                        return ((string)(this[this.tablesp_ReporteMovimientoCaja.Usuario1Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Usuario1\' de la tabla \'sp_ReporteMovimientoCaja\' es DBNul" +
-                                "l.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.Usuario1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal Efectivo {
-                get {
-                    try {
-                        return ((decimal)(this[this.tablesp_ReporteMovimientoCaja.EfectivoColumn]));
+                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.EfectivoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Efectivo\' de la tabla \'sp_ReporteMovimientoCaja\' es DBNul" +
@@ -15481,10 +15477,10 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal Tarjeta {
+            public double Tarjeta {
                 get {
                     try {
-                        return ((decimal)(this[this.tablesp_ReporteMovimientoCaja.TarjetaColumn]));
+                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.TarjetaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Tarjeta\' de la tabla \'sp_ReporteMovimientoCaja\' es DBNull" +
@@ -15498,10 +15494,10 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal Cheque {
+            public double Cheque {
                 get {
                     try {
-                        return ((decimal)(this[this.tablesp_ReporteMovimientoCaja.ChequeColumn]));
+                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.ChequeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Cheque\' de la tabla \'sp_ReporteMovimientoCaja\' es DBNull." +
@@ -15510,6 +15506,39 @@ namespace CapaPresentacion {
                 }
                 set {
                     this[this.tablesp_ReporteMovimientoCaja.ChequeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string UsuarioActual {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_ReporteMovimientoCaja.UsuarioActualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'UsuarioActual\' de la tabla \'sp_ReporteMovimientoCaja\' es " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteMovimientoCaja.UsuarioActualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Otros {
+                get {
+                    try {
+                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.OtrosColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Otros\' de la tabla \'sp_ReporteMovimientoCaja\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteMovimientoCaja.OtrosColumn] = value;
                 }
             }
             
@@ -15695,18 +15724,6 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsUsuario1Null() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.Usuario1Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetUsuario1Null() {
-                this[this.tablesp_ReporteMovimientoCaja.Usuario1Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsEfectivoNull() {
                 return this.IsNull(this.tablesp_ReporteMovimientoCaja.EfectivoColumn);
             }
@@ -15739,6 +15756,30 @@ namespace CapaPresentacion {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetChequeNull() {
                 this[this.tablesp_ReporteMovimientoCaja.ChequeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUsuarioActualNull() {
+                return this.IsNull(this.tablesp_ReporteMovimientoCaja.UsuarioActualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUsuarioActualNull() {
+                this[this.tablesp_ReporteMovimientoCaja.UsuarioActualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsOtrosNull() {
+                return this.IsNull(this.tablesp_ReporteMovimientoCaja.OtrosColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetOtrosNull() {
+                this[this.tablesp_ReporteMovimientoCaja.OtrosColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -20943,22 +20984,13 @@ namespace CapaPresentacion.DsReporteTableAdapters {
             tableMapping.ColumnMappings.Add("Usuario", "Usuario");
             tableMapping.ColumnMappings.Add("FechaApertura", "FechaApertura");
             tableMapping.ColumnMappings.Add("FechaCierre", "FechaCierre");
-            tableMapping.ColumnMappings.Add("ImporteApertura", "ImporteApertura");
-            tableMapping.ColumnMappings.Add("ImporteEntrega", "ImporteEntrega");
-            tableMapping.ColumnMappings.Add("SaldoFinal", "SaldoFinal");
-            tableMapping.ColumnMappings.Add("DiferenciaCierre", "DiferenciaCierre");
             tableMapping.ColumnMappings.Add("Estado", "Estado");
             tableMapping.ColumnMappings.Add("Identificador", "Identificador");
-            tableMapping.ColumnMappings.Add("Fecha", "Fecha");
             tableMapping.ColumnMappings.Add("Comprobante", "Comprobante");
             tableMapping.ColumnMappings.Add("Persona", "Persona");
             tableMapping.ColumnMappings.Add("TipoOperacion", "TipoOperacion");
             tableMapping.ColumnMappings.Add("FormaPago", "FormaPago");
-            tableMapping.ColumnMappings.Add("Importe", "Importe");
-            tableMapping.ColumnMappings.Add("Usuario1", "Usuario1");
-            tableMapping.ColumnMappings.Add("Efectivo", "Efectivo");
-            tableMapping.ColumnMappings.Add("Tarjeta", "Tarjeta");
-            tableMapping.ColumnMappings.Add("Cheque", "Cheque");
+            tableMapping.ColumnMappings.Add("UsuarioActual", "UsuarioActual");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -20983,13 +21015,14 @@ namespace CapaPresentacion.DsReporteTableAdapters {
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Usuario", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaApertura", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaCierre", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ImporteApertura", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ImporteEntrega", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SaldoFinal", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DiferenciaCierre", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Efectivo", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tarjeta", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cheque", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ImporteApertura", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ImporteEntrega", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SaldoFinal", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DiferenciaCierre", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Efectivo", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tarjeta", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cheque", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Otros", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Estado", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -20997,7 +21030,7 @@ namespace CapaPresentacion.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DsReporte.sp_ReporteMovimientoCajaDataTable dataTable, string Desde, string Hasta, string Usuario, string FechaApertura, string FechaCierre, global::System.Nullable<decimal> ImporteApertura, global::System.Nullable<decimal> ImporteEntrega, global::System.Nullable<decimal> SaldoFinal, global::System.Nullable<decimal> DiferenciaCierre, global::System.Nullable<decimal> Efectivo, global::System.Nullable<decimal> Tarjeta, global::System.Nullable<decimal> Cheque, string Estado) {
+        public virtual int Fill(DsReporte.sp_ReporteMovimientoCajaDataTable dataTable, string Desde, string Hasta, string Usuario, string FechaApertura, string FechaCierre, global::System.Nullable<decimal> ImporteApertura, global::System.Nullable<decimal> ImporteEntrega, global::System.Nullable<decimal> SaldoFinal, global::System.Nullable<decimal> DiferenciaCierre, global::System.Nullable<decimal> Efectivo, global::System.Nullable<decimal> Tarjeta, global::System.Nullable<decimal> Cheque, global::System.Nullable<decimal> Otros, string Estado) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((Desde == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -21071,11 +21104,17 @@ namespace CapaPresentacion.DsReporteTableAdapters {
             else {
                 this.Adapter.SelectCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((Estado == null)) {
-                this.Adapter.SelectCommand.Parameters[13].Value = global::System.DBNull.Value;
+            if ((Otros.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[13].Value = ((decimal)(Otros.Value));
             }
             else {
-                this.Adapter.SelectCommand.Parameters[13].Value = ((string)(Estado));
+                this.Adapter.SelectCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            if ((Estado == null)) {
+                this.Adapter.SelectCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[14].Value = ((string)(Estado));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -21088,7 +21127,7 @@ namespace CapaPresentacion.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DsReporte.sp_ReporteMovimientoCajaDataTable GetData(string Desde, string Hasta, string Usuario, string FechaApertura, string FechaCierre, global::System.Nullable<decimal> ImporteApertura, global::System.Nullable<decimal> ImporteEntrega, global::System.Nullable<decimal> SaldoFinal, global::System.Nullable<decimal> DiferenciaCierre, global::System.Nullable<decimal> Efectivo, global::System.Nullable<decimal> Tarjeta, global::System.Nullable<decimal> Cheque, string Estado) {
+        public virtual DsReporte.sp_ReporteMovimientoCajaDataTable GetData(string Desde, string Hasta, string Usuario, string FechaApertura, string FechaCierre, global::System.Nullable<decimal> ImporteApertura, global::System.Nullable<decimal> ImporteEntrega, global::System.Nullable<decimal> SaldoFinal, global::System.Nullable<decimal> DiferenciaCierre, global::System.Nullable<decimal> Efectivo, global::System.Nullable<decimal> Tarjeta, global::System.Nullable<decimal> Cheque, global::System.Nullable<decimal> Otros, string Estado) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((Desde == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -21162,11 +21201,17 @@ namespace CapaPresentacion.DsReporteTableAdapters {
             else {
                 this.Adapter.SelectCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((Estado == null)) {
-                this.Adapter.SelectCommand.Parameters[13].Value = global::System.DBNull.Value;
+            if ((Otros.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[13].Value = ((decimal)(Otros.Value));
             }
             else {
-                this.Adapter.SelectCommand.Parameters[13].Value = ((string)(Estado));
+                this.Adapter.SelectCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            if ((Estado == null)) {
+                this.Adapter.SelectCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[14].Value = ((string)(Estado));
             }
             DsReporte.sp_ReporteMovimientoCajaDataTable dataTable = new DsReporte.sp_ReporteMovimientoCajaDataTable();
             this.Adapter.Fill(dataTable);

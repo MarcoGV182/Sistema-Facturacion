@@ -16,13 +16,14 @@ namespace CapaPresentacion
         public string Usuario = "";
         public string FechaApertura = "";
         public string FechaCierre = "";
-        public decimal ImporteApertura;
-        public decimal ImporteEntrega;
-        public decimal SaldoFinal;
-        public decimal DiferenciaCierre;
-        public decimal Efectivo;
-        public decimal tarjeta;
-        public decimal Cheque;
+        public double ImporteApertura;
+        public double ImporteEntrega;
+        public double SaldoFinal;
+        public double DiferenciaCierre;
+        public double Efectivo;
+        public double tarjeta;
+        public double Cheque;
+        public double Otros;
         public string Estado = "";
 
 
@@ -35,7 +36,7 @@ namespace CapaPresentacion
         private void FrmInformeMovimientoCaja_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'DsReporte.sp_ReporteMovimientoCaja' Puede moverla o quitarla según sea necesario.
-            this.sp_ReporteMovimientoCajaTableAdapter.Fill(this.DsReporte.sp_ReporteMovimientoCaja,this.FechaApertura,this.FechaCierre,this.Usuario,this.FechaApertura,this.FechaCierre,this.ImporteApertura,this.ImporteEntrega,this.SaldoFinal,this.DiferenciaCierre,Efectivo,tarjeta,Cheque,this.Estado);
+            //this.sp_ReporteMovimientoCajaTableAdapter.Fill(this.DsReporte.sp_ReporteMovimientoCaja,this.FechaApertura,this.FechaCierre,this.Usuario,this.FechaApertura,this.FechaCierre,this.ImporteApertura,this.ImporteEntrega,this.SaldoFinal,this.DiferenciaCierre,Efectivo,tarjeta,Cheque, Otros, this.Estado);
 
             this.reportViewer1.RefreshReport();
         }
