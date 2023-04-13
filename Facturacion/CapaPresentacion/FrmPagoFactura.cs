@@ -77,6 +77,7 @@ namespace CapaPresentacion
         private void MensajeError(string mensaje)
         {
             MessageBox.Show(mensaje, "Sistema de Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            lblError.Text = mensaje;
         }
 
 
@@ -263,25 +264,50 @@ namespace CapaPresentacion
 
         private bool Validaciones() 
         {
-            if (Convert.ToDouble(this.lblTotal.Text) < Convert.ToDouble(this.txtTotalVenta.Text))
+            try
             {
-                this.MensajeError("El monto de pago ingresado es menor al monto total");
-                this.lblError.Visible = true;
-                return false;
+                double totalVenta = Convert.ToDouble(this.txtTotalVenta.Text);
+                double vueltoEfectivo = Convert.ToDouble(this.txtVuelto.Text) < 0 ? 0 : Convert.ToDouble(this.txtVuelto.Text);
+                double importeEfectivo = Convert.ToDouble(this.txtMontoEfectivo.Text) - vueltoEfectivo;
+                double importeTarjeta = Convert.ToDouble(this.txtMontoTarjeta.Text);
+                double importeCheque = Convert.ToDouble(this.txtMontoCheque.Text);
+                double importeOtros = Convert.ToDouble(this.txtMontoOtros.Text);
+                double totalPagado = importeEfectivo + importeTarjeta + importeCheque + importeOtros;
+
+
+                if (totalPagado < totalVenta)
+                {
+                    this.MensajeError("El monto de pago ingresado es menor al monto total");
+                    this.lblError.Visible = true;
+                    return false;
+                }
+
+
+                if ((importeTarjeta > totalVenta) ||
+                    (importeCheque > totalVenta) ||
+                    (importeOtros > totalVenta))
+                {
+                    this.MensajeError("El monto de pago diferente a Efectivo no puede ser mayor al monto total");
+                    this.lblError.Visible = true;
+                    return false;
+                }
+
+                if (totalPagado > totalVenta)
+                {
+                    this.MensajeError("El monto de pago es mayor al monto total de la venta. Favor verifiquelo");
+                    this.lblError.Visible = true;
+                    return false;
+                }
+
+
+                return true;
             }
-
-
-            if ((Convert.ToDouble(this.txtMontoTarjeta.Text) > Convert.ToDouble(this.txtTotalVenta.Text)) ||
-                (Convert.ToDouble(this.txtMontoCheque.Text) > Convert.ToDouble(this.txtTotalVenta.Text)) ||
-                (Convert.ToDouble(this.txtMontoOtros.Text) > Convert.ToDouble(this.txtTotalVenta.Text)))
+            catch (Exception ex)
             {
-                this.MensajeError("El monto de pago diferente a Efectivo no puede ser mayor al monto total");
-                this.lblError.Visible = true;
-                return false;
+
+                throw ex;
             }
-
-
-            return true;
+            
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {

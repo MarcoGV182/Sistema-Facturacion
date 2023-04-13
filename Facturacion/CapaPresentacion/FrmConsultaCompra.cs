@@ -117,8 +117,8 @@ namespace CapaPresentacion
 
         private void dataListado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            this.dataListado.Columns["TotalGravadas"].DefaultCellStyle.Format = "N0";
-            this.dataListado.Columns["TotalIva"].DefaultCellStyle.Format = "N0";
+            this.dataListado.Columns["Gravada"].DefaultCellStyle.Format = "N0";
+            this.dataListado.Columns["Iva"].DefaultCellStyle.Format = "N0";
             this.dataListado.Columns["Total"].DefaultCellStyle.Format = "N0";
         }
 

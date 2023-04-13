@@ -22,7 +22,6 @@ namespace CapaDatos
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }
-        public string Estado { get; set; }
         public string Observacion { get; set; }
         public DateTime? FechaNacimiento { get; set; }
 
@@ -30,7 +29,7 @@ namespace CapaDatos
 
         }
 
-        public DClientes(int clienteNro,string nombre,string apellido,string documento,DateTime? fechaNacimiento,int ciudadNro,string direccion,string telefono,string email,string estado,string observacion ,string textobuscar) {
+        public DClientes(int clienteNro,string nombre,string apellido,string documento,DateTime? fechaNacimiento,int ciudadNro,string direccion,string telefono,string email,string observacion ,string textobuscar) {
             this.PersonaNro = clienteNro;
             this.Nombre = nombre;
             this.Apellido = apellido;
@@ -40,7 +39,6 @@ namespace CapaDatos
             this.Direccion = direccion;
             this.Telefono = telefono;
             this.Email = email;
-            this.Estado = estado;
             this.Observacion = observacion;
             this.TextoBuscar = textobuscar;
         }
@@ -138,14 +136,7 @@ namespace CapaDatos
                 ParEmail.Size = 50;
                 ParEmail.Value = Cliente.Email;
                 SqlCmd.Parameters.Add(ParEmail);
-
-                //Parametros Estado
-                SqlParameter ParEstado = new SqlParameter();
-                ParEstado.ParameterName = "@Estado";
-                ParEstado.SqlDbType = SqlDbType.VarChar;
-                ParEstado.Size = 8;
-                ParEstado.Value = Cliente.Estado;
-                SqlCmd.Parameters.Add(ParEstado);
+                
 
                 //Parametros Observacion
                 SqlParameter ParObservacion = new SqlParameter();
@@ -265,14 +256,6 @@ namespace CapaDatos
                 ParEmail.Size = 50;
                 ParEmail.Value = Cliente.Email;
                 SqlCmd.Parameters.Add(ParEmail);
-
-                //Parametros Estado
-                SqlParameter ParEstado = new SqlParameter();
-                ParEstado.ParameterName = "@Estado";
-                ParEstado.SqlDbType = SqlDbType.VarChar;
-                ParEstado.Size = 8;
-                ParEstado.Value = Cliente.Estado;
-                SqlCmd.Parameters.Add(ParEstado);
 
                 //Parametros Observacion
                 SqlParameter ParObservacion = new SqlParameter();

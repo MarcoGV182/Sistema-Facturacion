@@ -193,6 +193,12 @@ namespace CapaDatos
                 ParFechaVencimiento.Value = timbrado.FechaFinVigencia;
                 SqlCmd.Parameters.Add(ParFechaVencimiento);
 
+                SqlParameter ParAutoimprenta = new SqlParameter();
+                ParAutoimprenta.ParameterName = "@Ind_Autoimprenta";
+                ParAutoimprenta.SqlDbType = SqlDbType.VarChar;
+                ParAutoimprenta.Value = timbrado.Ind_Autoimprenta;
+                SqlCmd.Parameters.Add(ParAutoimprenta);
+
 
                 //Parametro Estado
                 SqlParameter ParEstado = new SqlParameter();

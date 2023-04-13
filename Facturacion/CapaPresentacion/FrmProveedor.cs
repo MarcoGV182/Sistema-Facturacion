@@ -61,7 +61,6 @@ namespace CapaPresentacion
             this.txtEmail.Text = string.Empty;
             this.txtObservacion.Text = string.Empty;
             this.cboCiudad.SelectedIndex = 0;
-            this.cboEstado.SelectedIndex = 0;
             this.cboTipoDocumento.SelectedIndex = 0;
             this.dtpFechaAniversario.Checked = false;
             this.dtpFechaAniversario.Value = DateTime.Now;
@@ -79,7 +78,6 @@ namespace CapaPresentacion
             this.txtEmail.ReadOnly = !valor;
             this.cboTipoDocumento.Enabled = valor;
             this.cboCiudad.Enabled = valor;
-            this.cboEstado.Enabled = valor;
             this.dtpFechaAniversario.Enabled = valor;
         }
 
@@ -206,7 +204,6 @@ namespace CapaPresentacion
                 proveedor.Direccion = this.txtDireccion.Text.Trim();
                 proveedor.Telefono = this.txtTelefono.Text.Trim();
                 proveedor.Email = this.txtEmail.Text.Trim();
-                proveedor.Estado = this.cboEstado.Text;
                 proveedor.Observacion = this.txtObservacion.Text.Trim().ToUpper();
 
                 if (this.IsNuevo)
@@ -293,14 +290,7 @@ namespace CapaPresentacion
                 errorIcono.SetError(txtEmail, "Favor verifique que el formato del correo sea correcto");
                 return false;
             }
-            
-
-            if (this.cboEstado.Text == string.Empty)
-            {
-                this.MensajeError("Falta algunos datos");
-                errorIcono.SetError(cboEstado, "Ingrese el Estado");
-                return false;
-            }
+           
             return true;
         }
 
@@ -452,7 +442,6 @@ namespace CapaPresentacion
             {
                 this.dtpFechaAniversario.Checked = false;
             }
-            this.cboEstado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Estado"].Value);
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -462,7 +451,6 @@ namespace CapaPresentacion
             this.Botones();
             this.Limpiar();
             this.Habilitar(true);
-            this.cboEstado.SelectedIndex = 0;
             this.txtRazonSocial.Focus();
         }
         

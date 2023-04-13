@@ -28,7 +28,11 @@ namespace CapaPresentacion
             this.Left = 50;
             try 
             {
-                // TODO: esta línea de código carga datos en la tabla 'DsReporte.sp_ReporteFactura' Puede moverla o quitarla según sea necesario.
+                // TODO: esta línea de código carga datos en la tabla 'DsReporte.sp_ReporteVentaPorFecha' Puede moverla o quitarla según sea necesario.
+                DsReporte.sp_ReporteVentaPorFecha.Clear();
+                DsReporte.EnforceConstraints = false;
+
+                // TODO: esta línea de código carga datos en la tabla 'DsReporte.sp_ReporteVentaPorFecha' Puede moverla o quitarla según sea necesario.
                 this.sp_ReporteVentaPorFechaTableAdapter.Fill(this.DsReporte.sp_ReporteVentaPorFecha, desde, hasta, filtro, personanro, tipopago);
 
                 this.reportViewer1.RefreshReport();

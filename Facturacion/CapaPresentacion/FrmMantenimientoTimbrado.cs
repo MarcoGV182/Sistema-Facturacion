@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using CapaDatos;
 using CapaNegocio;
-using CapaDatos;
-using System.Data.Linq;
 using CapaPresentacion.Utilidades;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace CapaPresentacion
 {
-    public partial class FrmNumeracionFactura : Form
+    public partial class FrmMantenimientoTimbrado : Form
     {
         private bool IsNuevo = false;
         private bool IsEditar = false;
@@ -23,19 +18,31 @@ namespace CapaPresentacion
         List<DNumeracionComprobante> ListaNumeracion = null;
         DataTable dtNumeracion = null;
 
-        public FrmNumeracionFactura()
+        public FrmMantenimientoTimbrado()
         {
             InitializeComponent();
         }
 
-        private static FrmNumeracionFactura _Instancia;
-        public static FrmNumeracionFactura GetInstancia() 
-        { 
-            if(_Instancia==null) 
+        private static FrmMantenimientoTimbrado _Instancia;
+        public static FrmMantenimientoTimbrado GetInstancia()
+        {
+            if (_Instancia == null)
             {
-                _Instancia = new FrmNumeracionFactura();
+                _Instancia = new FrmMantenimientoTimbrado();
             }
             return _Instancia;
+        }
+
+
+        private void FrmNumeracionFactura_Load(object sender, EventArgs e)
+        {
+            Habilitar(false);
+            Botones(false);
+            MostrarTimbrado();
+
+            //Evento de los radioButtons
+            rbAutoimprenta.CheckedChanged += RadioButton_CheckedChanged;
+            rbManual.CheckedChanged += RadioButton_CheckedChanged;
         }
 
         public void SoloNumeros(KeyPressEventArgs e)
@@ -111,7 +118,7 @@ namespace CapaPresentacion
         private void LlenarCombos()
         {
             try
-            {               
+            {
                 cboComprobante.DataSource = NTipoComprobante.MostrarTipoComprobante();
                 cboComprobante.DisplayMember = "Nombre";
                 cboComprobante.ValueMember = "ComprobanteNro";
@@ -123,7 +130,7 @@ namespace CapaPresentacion
 
         }
 
-        private void OcultarColumnasNumeracion() 
+        private void OcultarColumnasNumeracion()
         {
             this.dataListado.Columns["Id"].Visible = false;
             this.dataListado.Columns["ComprobanteNro"].Visible = false;
@@ -151,18 +158,11 @@ namespace CapaPresentacion
         }
 
 
-        private void Botones(bool habilitado) 
+        private void Botones(bool habilitado)
         {
             btnAgregar.Enabled = habilitado;
             btnQuitar.Enabled = habilitado;
             btnCancelar.Enabled = habilitado;
-        }
-
-        private void FrmNumeracionFactura_Load(object sender, EventArgs e)
-        {
-            Habilitar(false);
-            Botones(false);
-            MostrarTimbrado();
         }
 
         private void FrmNumeracionFactura_FormClosing(object sender, FormClosingEventArgs e)
@@ -177,13 +177,13 @@ namespace CapaPresentacion
                 string rpta = "";
                 string estado;
                 DateTime? fecha, fechaInicio;
-                
+
 
                 //EVALUAR CHECK ESTADO
                 estado = chkEstadoTimbrado.Checked == true ? "A" : "I";
 
                 //EVALUAR FECHA VENCIMIENTO
-                if (dtpFechaVencimiento.Checked==false)
+                if (dtpFechaVencimiento.Checked == false)
                     fecha = null;
                 else
                     fecha = this.dtpFechaVencimiento.Value;
@@ -206,6 +206,7 @@ namespace CapaPresentacion
                     NroTimbrado = txtNroTimbrado.Text,
                     FechaInicioVigencia = this.dtpFechaInicioVigencia.Value.ToString("dd-MM-yyyy"),
                     FechaFinVigencia = dtpFechaVencimiento.Value.ToString("dd-MM-yyyy"),
+                    Ind_Autoimprenta = rbAutoimprenta.Checked ? "S" : "N",
                     Estado = estado
                 };
 
@@ -229,7 +230,7 @@ namespace CapaPresentacion
                 if (IdTimbrado == 0)
                 {
                     IsNuevo = true;
-                    IsEditar = false;                    
+                    IsEditar = false;
 
                     rpta = NNumeracionFactura.Insertar(t, ListaNumeracion);
                     //si se esta editando el registro
@@ -238,7 +239,7 @@ namespace CapaPresentacion
                 {
                     IsNuevo = false;
                     IsEditar = true;
-                    
+
                     rpta = NNumeracionFactura.Editar(t, ListaNumeracion);
                 }
 
@@ -273,7 +274,7 @@ namespace CapaPresentacion
             }
         }
 
-        private bool Validaciones() 
+        private bool Validaciones()
         {
             if (this.txtNroTimbrado.Text == string.Empty)
             {
@@ -299,7 +300,7 @@ namespace CapaPresentacion
                 }
             }
 
-            
+
 
             return true;
         }
@@ -316,9 +317,10 @@ namespace CapaPresentacion
                 this.txtNumeroDesde.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Numero"].Value);
                 this.cboComprobante.SelectedValue = Convert.ToInt32(this.dataListado.CurrentRow.Cells["ComprobanteNro"].Value);
                 this.txtNroTimbrado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Timbrado"].Value);
+
                 if (this.dataListado.CurrentRow.Cells["FechaInicioVigencia"].Value.ToString() == "")
                 {
-                    dtpFechaInicioVigencia.Checked = false;                   
+                    dtpFechaInicioVigencia.Checked = false;
                 }
                 else
                 {
@@ -343,7 +345,7 @@ namespace CapaPresentacion
             {
                 MessageBox.Show(ex.Message);
             }
-           
+
 
 
 
@@ -368,10 +370,10 @@ namespace CapaPresentacion
                     return;
                 }
 
-                if (!ControlesCompartidos.MensajeConfirmacion(this,"Desea eliminar el registro?"))
+                if (!ControlesCompartidos.MensajeConfirmacion(this, "Desea eliminar el registro?"))
                     return;
 
-                
+
                 string codigo;
                 string rpta = "";
                 try
@@ -424,11 +426,6 @@ namespace CapaPresentacion
         private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
         {
             SoloNumeros(e);
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Limpiar();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -492,12 +489,17 @@ namespace CapaPresentacion
                 if (dgTimbrados.Rows.Count == 0)
                     return;
                 //Cargar datos del timbrado
-                txtNroTimbrado.Text = this.dgTimbrados.CurrentRow.Cells["NroTimbrado"].Value.ToString();
-                chkEstadoTimbrado.Checked = this.dgTimbrados.CurrentRow.Cells["Estado"].Value.Equals("A");
-                dtpFechaInicioVigencia.Value = Convert.ToDateTime(this.dgTimbrados.CurrentRow.Cells["FechaInicioVigencia"].Value);
-                dtpFechaVencimiento.Value = Convert.ToDateTime(this.dgTimbrados.CurrentRow.Cells["FechaFinVigencia"].Value);
+                txtNroTimbrado.Text = dgTimbrados.CurrentRow.Cells["NroTimbrado"].Value.ToString();
+                chkEstadoTimbrado.Checked = dgTimbrados.CurrentRow.Cells["Estado"].Value.Equals("A");
+                dtpFechaInicioVigencia.Value = Convert.ToDateTime(dgTimbrados.CurrentRow.Cells["FechaInicioVigencia"].Value);
+                dtpFechaVencimiento.Value = Convert.ToDateTime(dgTimbrados.CurrentRow.Cells["FechaFinVigencia"].Value);
+                if (dgTimbrados.CurrentRow.Cells["Ind_Autoimprenta"].Value.ToString().Equals("S"))
+                    rbAutoimprenta.Checked = true;
+                else
+                    rbManual.Checked = true;
+
                 //Mostrar Numeraciones ligadas al timbrado
-                IdTimbrado = Convert.ToInt32(this.dgTimbrados.CurrentRow.Cells["IdTimbrado"].Value);
+                IdTimbrado = Convert.ToInt32(dgTimbrados.CurrentRow.Cells["IdTimbrado"].Value);
                 Mostrar(IdTimbrado);
             }
             catch (Exception)
@@ -505,8 +507,6 @@ namespace CapaPresentacion
 
                 throw;
             }
-            
-            
         }
 
         private void btnEditarTimbrado_Click(object sender, EventArgs e)
@@ -515,6 +515,24 @@ namespace CapaPresentacion
             IsNuevo = false;
             Habilitar(true);
             Botones(true);
+        }
+
+        private void RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = sender as RadioButton;
+            if (radioButton.Checked)
+            {
+                // Desmarca los otros RadioButton
+                foreach (RadioButton otherRadioButton in grbNumeracion.Controls.OfType<RadioButton>().Where(rb => rb != radioButton))
+                {
+                    otherRadioButton.Checked = false;
+                }
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
         }
     }
 }

@@ -15,6 +15,8 @@ using CapaDatos;
 using CapaPresentacion.DsReporteTableAdapters;
 using System.Runtime.InteropServices;
 using System.Globalization;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Text.RegularExpressions;
 
 namespace CapaPresentacion
 {
@@ -42,6 +44,7 @@ namespace CapaPresentacion
         
         private DataRow row;       
         public int idVenta = 0;
+        public int idUsuario = 0;
         public string usuario = string.Empty;
         public string nombre = string.Empty;
         public string apellido = string.Empty;
@@ -49,7 +52,12 @@ namespace CapaPresentacion
 
         FrmPagoFactura frmPagoFactura = null;
 
-        string fechaIngresada = "";
+        string Ind_Autoimprenta = "S";
+        int establecimientoAux = 0;
+        int puntoExpedicionAux = 0;
+        int numeroAux = 0;
+        bool FormatoCorrectoFactura = true;
+        bool isInitializing = true;
 
 
         //INSTANCIA PARA LLAMAR SOLO UNA VEZ AL FORMULARIO
@@ -60,7 +68,60 @@ namespace CapaPresentacion
             }
             return _Instancia;
         }
-        
+
+        public FrmFacturaVenta()
+        {
+            InitializeComponent();
+            this.ttMensaje.SetToolTip(txtCliente, "Seleccione el Cliente");
+            this.ttMensaje.SetToolTip(txtNroFactura, "Ingrese el numero de factura");
+            this.ttMensaje.SetToolTip(dtpFecha, "Ingrese la fecha de Venta");
+            this.ttMensaje.SetToolTip(cboTipoPago, "Seleccione el tipo de pago");
+            this.ttMensaje.SetToolTip(txtItem, "Seleccione el Item");
+            this.ttMensaje.SetToolTip(btnBuscarItem, "Click para buscar item");
+            this.ttMensaje.SetToolTip(btnBuscarCliente, "Click para buscar al Cliente");
+            this.ttMensaje.SetToolTip(btnAgregar, "Click para agregar el item al carrito");
+            this.ttMensaje.SetToolTip(btnQuitar, "Click para quitar el item del carrito");
+            this.ttMensaje.SetToolTip(btnGuardar, "Click para guardar la Venta");
+            this.ttMensaje.SetToolTip(btnNuevo, "Cick para iniciar una nueva Factura");
+            this.ttMensaje.SetToolTip(btnCancelar, "Click para cancelar la Factura");
+            codigoCliente = 0;
+            this.txtCodItem.ReadOnly = true;
+            this.txtItem.ReadOnly = true;
+            this.txtCliente.ReadOnly = true;
+            this.txtIva.ReadOnly = true;
+            LlenarCombos();
+            isInitializing = true;
+            dtpFecha.Value = DateTime.Today;
+        }
+
+        private void FrmFacturaVenta_Load(object sender, EventArgs e)
+        {
+            DataGridDiseno(dataListado);
+            //DataGridDiseno(dgvDetalleFactura);
+            if (chkAnular.Checked == false)
+                btnAnular.Enabled = false;
+
+            this.Top = 50;
+            this.Left = 30;
+            this.Mostrar();
+            this.Habilitar(false);
+            this.Botones();
+            this.CrearTabla();
+            this.OcultarColumnasDetalle();
+            this.cboComprobante.SelectedIndex = 0;
+            this.cboTipoPago.SelectedIndex = 0;
+            this.MedidaColumna(dgvDetalleFactura);
+            this.btnImprimir2.Visible = false;
+
+            //Evento de los radioButtons
+            rbAutoimprenta.CheckedChanged += RadioButton_CheckedChanged;
+            rbManual.CheckedChanged += RadioButton_CheckedChanged;
+
+
+            this.dtpFechadesde.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+
+        }
+
         private void DataGridDiseno(DataGridView dgv)
         {
             dgv.BorderStyle = BorderStyle.None;
@@ -81,12 +142,12 @@ namespace CapaPresentacion
         {
             dg.Columns["Nro"].Width = 50;
             dg.Columns["Item"].Width = 240;
-            dg.Columns["Precio"].Width = 60;
+            dg.Columns["Precio"].Width = 50;
             dg.Columns["Cantidad"].Width = 55;
-            dg.Columns["IVA"].Width = 50;
-            dg.Columns["SubtotalIVA"].Width = 70;
-            dg.Columns["SubtotalNeto"].Width = 100;
-            dg.Columns["Subtotal"].Width = 75;
+            dg.Columns["IVA"].Width = 60;
+            dg.Columns["SubtotalIVA"].Width = 60;
+            dg.Columns["SubtotalNeto"].Width = 60;
+            dg.Columns["Subtotal"].Width = 60;
             //CENTRAR TEXTO EN LA COLUMNA
             dg.Columns["Cantidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
             dg.Columns["IVA"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
@@ -120,30 +181,6 @@ namespace CapaPresentacion
             {
                 e.Handled = true;
             }
-        }
-
-        public FrmFacturaVenta()
-        {
-            InitializeComponent();
-            this.ttMensaje.SetToolTip(txtCliente, "Seleccione el Cliente");
-            this.ttMensaje.SetToolTip(txtNroFactura, "Ingrese el numero de factura");
-            this.ttMensaje.SetToolTip(dtpFecha, "Ingrese la fecha de Venta");
-            this.ttMensaje.SetToolTip(cboTipoPago, "Seleccione el tipo de pago");
-            this.ttMensaje.SetToolTip(txtItem, "Seleccione el Item");
-            this.ttMensaje.SetToolTip(btnBuscarItem, "Click para buscar item");
-            this.ttMensaje.SetToolTip(btnBuscarCliente, "Click para buscar al Cliente");
-            this.ttMensaje.SetToolTip(btnAgregar, "Click para agregar el item al carrito");
-            this.ttMensaje.SetToolTip(btnQuitar,"Click para quitar el item del carrito");
-            this.ttMensaje.SetToolTip(btnGuardar, "Click para guardar la Venta");
-            this.ttMensaje.SetToolTip(btnNuevo, "Cick para iniciar una nueva Factura");
-            this.ttMensaje.SetToolTip(btnCancelar, "Click para cancelar la Factura");
-            codigoCliente = 0;
-            this.txtCodItem.ReadOnly = true;
-            this.txtItem.ReadOnly = true;
-            this.txtCliente.ReadOnly = true;
-            //this.txtPrecio.ReadOnly = true;
-            this.txtIva.ReadOnly = true;
-            LlenarCombos();
         }
 
         private void LlenarCombos()
@@ -253,6 +290,11 @@ namespace CapaPresentacion
             this.txttotalIva.Text = string.Empty;
             this.txtTotalGral.Text = string.Empty;
             this.dtpFecha.Value = DateTime.Now;
+
+            establecimientoAux = 0;
+            puntoExpedicionAux = 0;
+            numeroAux = 0;
+
             this.CrearTabla();
         }
 
@@ -297,23 +339,28 @@ namespace CapaPresentacion
 
             //relacion con el datagridview
             this.dgvDetalleFactura.DataSource = this.Dtdetalle;
+
+            dgvDetalleFactura.Columns["IVA"].HeaderText = "Impuesto";
+            dgvDetalleFactura.Columns["SubtotalIVA"].HeaderText = "IVA";
+            dgvDetalleFactura.Columns["SubTotalNeto"].HeaderText = "Neto";
+            dgvDetalleFactura.Columns["SubTotal"].HeaderText = "Total";
+
         }
 
 
         //Habilitar botones
         private void Habilitar(bool valor)
         {
-            this.txtNumeracionOT.ReadOnly = !valor;
-            this.txtNroFactura.ReadOnly = !valor;
+            this.txtNumeracionOT.ReadOnly = !valor;           
             this.txtDocumento.ReadOnly = !valor;
             this.txtCliente.ReadOnly = valor;
             this.dtpFecha.Enabled = valor;
             this.txtObservacion.ReadOnly = !valor;
             this.txtItem.ReadOnly = !valor;
             this.txtCodItem.ReadOnly = valor;
-            //this.txtPrecio.ReadOnly = valor;
             this.txtExistencia.ReadOnly = !valor;
             this.txtCantidad.ReadOnly = !valor;
+            this.txtPrecio.ReadOnly = !valor;
             this.txtIva.ReadOnly = !valor;
             this.cboTipoPago.Enabled = valor;
             this.txtObservacion.ReadOnly = !valor;
@@ -328,8 +375,13 @@ namespace CapaPresentacion
             this.btnQuitar.Enabled = valor;
             this.txtCliente.ReadOnly = !valor;
             this.txtItem.ReadOnly = !valor;
+            rbAutoimprenta.Enabled = valor;
+            rbManual.Enabled = valor;
+
             //Inicializar la fecha desde del filtro al primer día del mes
             this.dtpFechadesde.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            if (rbAutoimprenta.Checked)
+                txtNroFactura.ReadOnly = true;
         }
 
         //Habilitar Botones
@@ -359,6 +411,9 @@ namespace CapaPresentacion
             this.dataListado.Columns[0].Visible = false;
             this.dataListado.Columns["PersonaNro"].Visible = false;
             this.dataListado.Columns["TipoComprobante"].Visible = false;
+            this.dataListado.Columns["CodTipoPago"].Visible = false;
+            this.dataListado.Columns["Colaborador"].Visible = false;
+            this.dataListado.Columns["ColaboradorNro"].Visible = false;
         }
 
         private void OcultarColumnasDetalle()
@@ -390,7 +445,6 @@ namespace CapaPresentacion
             }
             catch (Exception)
             {
-
                 throw;
             }
             
@@ -443,7 +497,7 @@ namespace CapaPresentacion
             try
             {
                 DataTable Num = new DataTable();
-                Num = NFactura.MostrarNumeracion(cboComprobante.SelectedValue.ToString());
+                Num = NFactura.MostrarNumeracion(cboComprobante.SelectedValue.ToString(),Ind_Autoimprenta);
                 if (Num != null)
                 {
                     numeracion = new DNumeracionComprobante();
@@ -453,12 +507,18 @@ namespace CapaPresentacion
                     numeracion.NumeroHasta = Convert.ToInt32(Num.Rows[0][3]);
                     numeracion.NumeroActual = Convert.ToInt32(Num.Rows[0][4]);
                     numeracion.Timbrado = new DTimbrado() { IdTimbrado = Convert.ToInt32(Num.Rows[0][5]),NroTimbrado = Num.Rows[0][6].ToString()};
-                    txtNroFactura.Text = Num.Rows[0]["NroDocumento"].ToString();
+
+                    if (Ind_Autoimprenta == "S")
+                        txtNroFactura.Text = Num.Rows[0]["NroDocumento"].ToString();
+                    else
+                        txtNroFactura.Text = string.Empty;
                 }
                 
             }
             catch (Exception)
             {
+                MensajeError("No existe numeración creada. Favor configure primero el Timbrado y las numeraciones");
+                btnGuardar.Enabled = false;
                 txtNroFactura.Text = string.Empty;
             }
             
@@ -484,34 +544,6 @@ namespace CapaPresentacion
 
         }
 
-        private void FrmFacturaVenta_Load(object sender, EventArgs e)
-        {
-            DataGridDiseno(dataListado);
-           //DataGridDiseno(dgvDetalleFactura);
-            if (chkAnular.Checked == false)
-                btnAnular.Enabled = false;
-
-            this.Top = 50;
-            this.Left = 30;
-            this.Mostrar();
-            this.Habilitar(false);
-            this.Botones();
-            this.CrearTabla();            
-            this.OcultarColumnasDetalle();
-            this.cboComprobante.SelectedIndex = 0;
-            this.cboTipoPago.SelectedIndex = 0;
-            this.MedidaColumna(dgvDetalleFactura);
-            this.btnImprimir2.Visible = false;
-
-            //Evento de los radioButtons
-            rbAutoimprenta.CheckedChanged += RadioButton_CheckedChanged;
-            rbManual.CheckedChanged += RadioButton_CheckedChanged;
-
-
-            this.dtpFechadesde.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month,1);
-            
-        }
-
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = sender as RadioButton;
@@ -519,15 +551,25 @@ namespace CapaPresentacion
             {
                 //Si está seleccionado Autoimprenta se bloquea el numero de factura
                 if (radioButton.Name == rbAutoimprenta.Name) 
+                {
                     txtNroFactura.ReadOnly = true;
+                    Ind_Autoimprenta = "S";
+                }                     
                 //Si está selccionado Manual se habilita el campo del numero de factura
-                else if (radioButton.Name == rbManual.Name)
+                else if (radioButton.Name == rbManual.Name) 
+                {
                     txtNroFactura.ReadOnly = false;
+                    Ind_Autoimprenta = "N";
+                }
+                    
                 // Desmarca los otros RadioButton
                 foreach (RadioButton otherRadioButton in gbTipo.Controls.OfType<RadioButton>().Where(rb => rb != radioButton))
                 {
                     otherRadioButton.Checked = false;
                 }
+
+
+                ObtenerNumeracionComprobante();
             }
         }
 
@@ -671,12 +713,13 @@ namespace CapaPresentacion
                 factura.TipoComprobanteNro = Convert.ToInt32(this.cboComprobante.SelectedValue);
                 factura.CantCuota = null;
                 factura.Vendedor = null;
-                factura.Usuario = this.idVenta.ToString();//codigo de usuario
+                factura.Usuario = this.idUsuario.ToString();//codigo de usuario
                 if (numeracion.Establecimiento.HasValue)
                     factura.Establecimiento = numeracion.Establecimiento.Value;
                 if (numeracion.PuntoExpedicion.HasValue)
                     factura.PuntoExpedicion = numeracion.PuntoExpedicion.Value;
-                factura.Numero = numeracion.NumeroActual;
+                //Si es un documento manual se toma la numeración ingresada
+                factura.Numero = Ind_Autoimprenta == "S" ? numeracion.NumeroActual : numeroAux;
                 factura.Timbrado = numeracion.Timbrado;
                 factura.Estado = "EMITIDO";
                 factura.Observacion = txtObservacion.Text;
@@ -689,16 +732,20 @@ namespace CapaPresentacion
                     //Confirmacion de que la factura se haya insertado
                     NFactura.ConfirmacionInsercion(idVenta);
                 
-                    //this.MensajeOK("La venta se ha realizado con exito");
-                    DialogResult opcion;
-                    opcion = MessageBox.Show("Desea imprimir el comprobante ?", "Sistema de Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (opcion == DialogResult.Yes)
+                    this.MensajeOK("La venta se ha realizado con exito");
+                    if (Ind_Autoimprenta=="S")
                     {
-                        FrmComprobanteVenta frm = new FrmComprobanteVenta();
-                        frm.nroVenta = idVenta;
-                        frm.ShowDialog();
-                        frmPagoFactura.Close();
-                    }   
+                        DialogResult opcion;
+
+                        opcion = MessageBox.Show("Desea imprimir el comprobante ?", "Sistema de Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (opcion == DialogResult.Yes)
+                        {
+                            FrmComprobanteVenta frm = new FrmComprobanteVenta();
+                            frm.nroVenta = idVenta;
+                            frm.ShowDialog();
+                            frmPagoFactura.Close();
+                        }
+                    }                      
                  }
                  else
                  {
@@ -749,32 +796,47 @@ namespace CapaPresentacion
             {
                 if (!Validaciones())
                     return;
-                
 
-                if (cboTipoPago.SelectedIndex==1)
+                errorIcono.Clear();
+                DialogResult opcion;
+
+                if (Ind_Autoimprenta.ToUpper().Equals("S"))
                 {
-                    errorIcono.Clear();
-                    DialogResult opcion;
-                    opcion = MessageBox.Show("Desea registrar la Factura a Crédito ?", "Sistema de Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (cboTipoPago.SelectedIndex == 1)
+                    {   
+                        opcion = MessageBox.Show("Desea registrar la Factura a Crédito ?", "Sistema de Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (opcion == DialogResult.Yes)
+                        {
+                            InsertarFactura();
+                            //InsertarOT();
+                        }
+                    }
+                    else
+                    {
+                        errorIcono.Clear();
+
+                        frmPagoFactura = FrmPagoFactura.GetInstancia();
+                        string nrofactura, cliente, total;
+                        nrofactura = txtNroFactura.Text;
+                        cliente = codigoCliente.ToString();
+                        total = txtTotalGral.Text;
+                        frmPagoFactura.ObtenerDatosFactura(nrofactura, Convert.ToInt32(cliente), Convert.ToDecimal(total));
+                        //InsertarOT();
+                        frmPagoFactura.ShowDialog();
+                    }
+                }
+                else
+                {                   
+                    opcion = MessageBox.Show("Desea registrar la Factura Manual ?", "Sistema de Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (opcion == DialogResult.Yes)
                     {
                         InsertarFactura();
-                        //InsertarOT();
-                    }   
+                    }
+
                 }
-                else
-                {
-                    errorIcono.Clear();
-                    
-                    frmPagoFactura = FrmPagoFactura.GetInstancia();
-                    string nrofactura, cliente, total;
-                    nrofactura = txtNroFactura.Text;
-                    cliente = codigoCliente.ToString();
-                    total = txtTotalGral.Text;
-                    frmPagoFactura.ObtenerDatosFactura(nrofactura, Convert.ToInt32(cliente), Convert.ToDecimal(total));
-                    //InsertarOT();
-                    frmPagoFactura.ShowDialog();
-                }
+                
+
+               
             }
             catch (Exception ex)
             {
@@ -791,6 +853,11 @@ namespace CapaPresentacion
             {
                 this.MensajeError("Falta algunos datos");
                 errorIcono.SetError(txtNroFactura, "Favor verifique la configuración de la numeración del tipo de comprobante");
+                return false;
+            }
+
+            if (!ValidacionesTimbrado())
+            {
                 return false;
             }
 
@@ -825,6 +892,55 @@ namespace CapaPresentacion
             return true;
         }
 
+
+        private bool ValidacionesTimbrado() 
+        {            
+            if (Ind_Autoimprenta.Equals("N"))
+            {
+                if (!FormatoCorrectoFactura)
+                {
+                    this.MensajeError("Formato incorrecto");
+                    errorIcono.SetError(txtNroFactura, "Favor ingrese la numeración de la factura con el formato correcto. 000-000-0000000");
+                    return false;
+                }
+
+                //Obtener la numeración de la factura por separado
+                string[] chars = txtNroFactura.Text.Split('-', ' ');
+                if (chars.Count() != 3)
+                {
+                    this.MensajeError("Formato de Nro. de Factura incorrecto");
+                    errorIcono.SetError(txtNroFactura, "Favor corrija el formato del Nro. de Factura");
+                    return false;
+                }
+
+                int.TryParse(chars[0], out establecimientoAux);
+                int.TryParse(chars[1], out puntoExpedicionAux);
+                int.TryParse(chars[2], out numeroAux);
+
+                if (establecimientoAux != numeracion.Establecimiento)
+                {
+                    this.MensajeError($"El establecimiento: {establecimientoAux} del Nro. de Factura no coincide con lo registrado como documento Manual en Numeraciones");
+                    errorIcono.SetError(txtNroFactura, "Favor corrija el Nro. de Factura");
+                    return false;
+                }
+
+                if (puntoExpedicionAux != numeracion.PuntoExpedicion)
+                {
+                    this.MensajeError($"El Punto de Expedición: {puntoExpedicionAux} del Nro. de Factura no coincide con lo registrado como documento Manual en Numeraciones");
+                    errorIcono.SetError(txtNroFactura, "Favor corrija el Nro. de Factura");
+                    return false;
+                }
+
+                if (numeroAux < numeracion.NumeroDesde || numeroAux > numeracion.NumeroHasta)
+                {
+                    this.MensajeError($"El Numero : {numeroAux} del Nro. de Factura no coincide con lo registrado como documento Manual en Numeraciones");
+                    errorIcono.SetError(txtNroFactura, "Favor corrija el Nro. de Factura");
+                    return false;
+                }
+            }
+
+            return true;
+        }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
@@ -1346,7 +1462,13 @@ namespace CapaPresentacion
 
         private void cboComprobante_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ObtenerNumeracionComprobante();
+            if (!isInitializing)
+            {
+                // El evento SelectedIndexChanged fue ejecutado por el usuario
+                // Realizar la acción deseada aquí
+                ObtenerNumeracionComprobante();
+            }
+            
         }
 
         private void txtCantidad_TextChanged(object sender, EventArgs e)
@@ -1460,52 +1582,25 @@ namespace CapaPresentacion
             }
         }
 
-        private void dtpFecha_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtNroFactura_Validating(object sender, CancelEventArgs e)
         {
-            // Detectar si la tecla presionada es un número y agregarlo a la cadena fechaIngresada
-            if (Char.IsDigit(e.KeyChar))
+            errorIcono.Clear();
+            string pattern = @"^\d{13}$";
+            string input = txtNroFactura.Text.Replace("-", ""); // Ignorar los guiones durante la validación
+            if (Ind_Autoimprenta =="N")
             {
-                fechaIngresada += e.KeyChar;
-            }
-        }
-
-        private void dtpFecha_Leave(object sender, EventArgs e)
-        {
-            try
-            {
-                // Obtener el valor actual del DateTimePicker
-                DateTime fecha = dtpFecha.Value;
-
-                // Formatear la fecha en el formato deseado
-                string fechaFormateada = fecha.ToString("dd/MM/yyyy");
-
-                // Establecer el texto del DateTimePicker en el valor formateado
-                dtpFecha.Text = fechaFormateada;
-            }
-            catch (FormatException)
-            {
-                // Manejar una excepción si el usuario ingresa una fecha inválida
-                MessageBox.Show("La fecha ingresada no es válida.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void dtpFecha_KeyDown(object sender, KeyEventArgs e)
-        {
-            // Obtener el control que generó el evento
-            DateTimePicker dtp = (DateTimePicker)sender;
-
-            // Verificar si se presionó la tecla de retorno de carro (Enter)
-            if (e.KeyCode == Keys.Return)
-            {
-                // Obtener el texto actual del control
-                string texto = dtp.Text;
-
-                // Verificar si el texto tiene dos dígitos para el día
-                if (texto.Length == 2 && int.TryParse(texto, out int dia))
+                if (!Regex.IsMatch(input, pattern))
                 {
-                    // Cambiar el foco al mes
-                    SendKeys.Send("{Right}");
-                    e.Handled = true;
+                    MessageBox.Show("El valor ingresado no cumple con el formato requerido.");
+                    errorIcono.SetError(txtNroFactura, "Ingrese el numero de factura debe de tener 13 números (XXX-XXX-XXXXXXX)");
+                    FormatoCorrectoFactura = false;
+                    e.Cancel = true; // Cancelar la validación para mantener el foco en el TextBox
+                }
+                else
+                {
+                    // Formatear el número de seguro social
+                    txtNroFactura.Text = input.Substring(0, 3) + "-" + input.Substring(3, 3) + "-" + input.Substring(6, 7);
+                    FormatoCorrectoFactura = true;
                 }
             }
         }

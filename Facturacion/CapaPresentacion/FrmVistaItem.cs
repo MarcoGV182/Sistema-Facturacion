@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using CapaNegocio;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace CapaPresentacion
 {
@@ -68,7 +69,7 @@ namespace CapaPresentacion
         //PINTAR LAS CELDAS SEGUN EL VALOR DEL STOCK 
         private void StockMenor()
         {
-            if(this.cboItem.Text=="Producto") 
+            if(rbProductos.Checked) 
             {
                 for (int i = 0; i < dataListado.Rows.Count; i++)
                 {
@@ -101,12 +102,12 @@ namespace CapaPresentacion
         //Metodo para mostrar los datos en el datagrid
         private void Mostrar()
         {            
-            if (cboItem.Text=="Producto") 
+            if (rbProductos.Checked) 
             {
                 dataListado.DataSource = NProducto.MostrarActivo();
                 this.OcultarColumnasProducto();
                 lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
-            }else if(cboItem.Text == "Servicio")
+            }else if(rbServicios.Checked)
             {                
                 this.dataListado.DataSource = NServicio.Mostrar();
                 this.OcultarColumnasServicio();
@@ -147,7 +148,7 @@ namespace CapaPresentacion
                 int stock,codImpuesto;
                 double precio,preciocompra;
                 decimal porcentajeIVA, baseImponible, comision;
-                if (cboItem.Text == "Producto")
+                if (rbProductos.Checked)
                 {
                     codigo = Convert.ToString(dataListado.CurrentRow.Cells["ArticuloNro"].Value);
                     descripcion = Convert.ToString(dataListado.CurrentRow.Cells["Producto"].Value);
@@ -204,14 +205,23 @@ namespace CapaPresentacion
             Left = 50;
             //valor por defecto del comboitem
             this.lblTotal.Text = "Total de registros: 0";
-            this.cboItem.SelectedIndex = 0;
-           
+
+            //Inicializar radioButtons
+            rbProductos.Checked = true;
+            rbServicios.Checked = false;
+
+            Mostrar();
+
+            rbProductos.CheckedChanged += RadioButton_CheckedChanged;
+            rbServicios.CheckedChanged += RadioButton_CheckedChanged;
+
+
         }
 
         private void dataListado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         { 
         try {
-                if (cboItem.Text=="Producto")
+                if (rbProductos.Checked)
                 {
                     this.dataListado.Columns["Precio"].DefaultCellStyle.Format = "N0";                    
                     this.dataListado.Columns["PrecioCompra"].DefaultCellStyle.Format = "N0";
@@ -260,13 +270,27 @@ namespace CapaPresentacion
 
         private void btnBuscar_Click_1(object sender, EventArgs e)
         {
-            if (cboItem.Text == "Producto")
+            if (rbProductos.Checked)
             {
                 this.BuscarProducto();
             }
             else
             {
                 this.BuscarServicio();
+            }
+        }
+
+
+        private void RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            System.Windows.Forms.RadioButton radioButton = sender as System.Windows.Forms.RadioButton;
+            if (radioButton.Checked)
+            {
+                // Desmarca los otros RadioButton
+                foreach (System.Windows.Forms.RadioButton otherRadioButton in groupBox1.Controls.OfType<System.Windows.Forms.RadioButton>().Where(rb => rb != radioButton))
+                {
+                    otherRadioButton.Checked = false;
+                }
             }
         }
     }

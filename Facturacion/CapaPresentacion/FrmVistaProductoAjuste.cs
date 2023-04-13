@@ -82,8 +82,8 @@ namespace CapaPresentacion
         //ocultar columnas
         private void OcultarColumnas()
         {
-            this.dataListado.Columns[0].Visible = false;
-            this.dataListado.Columns[1].Visible = false;
+            this.dataListado.Columns["ArticuloNro"].Visible = false;
+            this.dataListado.Columns["PorcentajeIVA"].Visible = false;
         }
 
         //Metodo para mostrar los datos en el datagrid

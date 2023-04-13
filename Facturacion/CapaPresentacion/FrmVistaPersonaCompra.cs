@@ -60,8 +60,7 @@ namespace CapaPresentacion
             this.txtTelefono.Text = string.Empty;
             this.txtEmail.Text = string.Empty;
             this.cboCiudad.Text = string.Empty;
-            this.dtpFechaNac.Text = string.Empty;
-            this.cboEstado.Text = string.Empty;
+            this.dtpFechaAniversario.Text = string.Empty;
         }
 
         //Habilitar botones
@@ -75,8 +74,7 @@ namespace CapaPresentacion
             this.txtTelefono.ReadOnly = !valor;
             this.txtEmail.ReadOnly = !valor;
             this.cboCiudad.Enabled = valor;
-            this.dtpFechaNac.Enabled = valor;
-            this.cboEstado.Enabled = valor;
+            this.dtpFechaAniversario.Enabled = valor;
         }
 
         //Habilitar Botones
@@ -172,7 +170,6 @@ namespace CapaPresentacion
             this.Botones();
             this.Limpiar();
             this.Habilitar(true);
-            this.cboEstado.SelectedIndex = 0;
             this.txtNombre.Focus();
         }
 
@@ -189,13 +186,6 @@ namespace CapaPresentacion
             {
                 this.MensajeError("Falta algunos datos");
                 errorIcono.SetError(txtDocumento, "Ingrese el Nro de documento");
-                return false;
-            }
-
-            if (this.cboEstado.Text == string.Empty)
-            {
-                this.MensajeError("Falta algunos datos");
-                errorIcono.SetError(cboEstado, "Ingrese el Estado");
                 return false;
             }
 
@@ -239,12 +229,11 @@ namespace CapaPresentacion
                     Descripcion = cboCiudad.Text
                 };
                 cliente.TipoDocumento = tipoDocumento;
-                cliente.FechaNacimiento = dtpFechaNac.Checked == false ? (DateTime?)null : dtpFechaNac.Value;
+                cliente.FechaNacimiento = dtpFechaAniversario.Checked == false ? (DateTime?)null : dtpFechaAniversario.Value;
                 cliente.CiudadNro = Convert.ToInt32(cboCiudad.SelectedValue);
                 cliente.Direccion = this.txtDireccion.Text.Trim();
                 cliente.Telefono = this.txtTelefono.Text.Trim();
                 cliente.Email = this.txtEmail.Text.Trim();
-                cliente.Estado = this.cboEstado.Text;
                 cliente.Observacion = this.txtObservacion.Text.Trim().ToUpper();
 
 

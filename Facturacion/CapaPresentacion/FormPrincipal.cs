@@ -326,6 +326,7 @@ namespace CapaPresentacion
         {
             FrmFacturaVenta frm= FrmFacturaVenta.GetInstancia();
             frm.MdiParent = this;
+            frm.idUsuario = Convert.ToInt32(id);
             frm.usuario = usuario;
             frm.nombre = nombre;
             frm.apellido = apellido;
@@ -456,7 +457,7 @@ namespace CapaPresentacion
         {
             FrmFacturaVenta frm = FrmFacturaVenta.GetInstancia();
             //frm.MdiParent = this;
-            frm.idVenta = Convert.ToInt32(id);
+            frm.idUsuario = Convert.ToInt32(id);
             frm.usuario = usuario;
             frm.nombre = nombre;
             frm.apellido = apellido;
@@ -609,7 +610,7 @@ namespace CapaPresentacion
 
         private void numeracionFacturaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmNumeracionFactura frm = FrmNumeracionFactura.GetInstancia();
+            FrmMantenimientoTimbrado frm = FrmMantenimientoTimbrado.GetInstancia();
             frm.MdiParent = this;
             frm.Show();
         }

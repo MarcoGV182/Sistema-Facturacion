@@ -136,7 +136,7 @@
             this.cboTipoDocumento.Location = new System.Drawing.Point(177, 145);
             this.cboTipoDocumento.Name = "cboTipoDocumento";
             this.cboTipoDocumento.Size = new System.Drawing.Size(127, 23);
-            this.cboTipoDocumento.TabIndex = 26;
+            this.cboTipoDocumento.TabIndex = 3;
             // 
             // label1
             // 
@@ -155,7 +155,7 @@
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.Size = new System.Drawing.Size(261, 70);
-            this.txtObservacion.TabIndex = 24;
+            this.txtObservacion.TabIndex = 10;
             // 
             // label12
             // 
@@ -173,7 +173,7 @@
             this.txtEmail.Location = new System.Drawing.Point(414, 111);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(195, 23);
-            this.txtEmail.TabIndex = 10;
+            this.txtEmail.TabIndex = 9;
             // 
             // txtTelefono
             // 
@@ -181,7 +181,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(414, 76);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(100, 23);
-            this.txtTelefono.TabIndex = 9;
+            this.txtTelefono.TabIndex = 8;
             // 
             // txtDireccion
             // 
@@ -190,7 +190,7 @@
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(211, 34);
-            this.txtDireccion.TabIndex = 8;
+            this.txtDireccion.TabIndex = 7;
             // 
             // label10
             // 
@@ -226,17 +226,17 @@
             // 
             this.dtpFechaNac.Font = new System.Drawing.Font("Times New Roman", 11F);
             this.dtpFechaNac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaNac.Location = new System.Drawing.Point(155, 211);
+            this.dtpFechaNac.Location = new System.Drawing.Point(155, 214);
             this.dtpFechaNac.Name = "dtpFechaNac";
             this.dtpFechaNac.ShowCheckBox = true;
             this.dtpFechaNac.Size = new System.Drawing.Size(110, 24);
-            this.dtpFechaNac.TabIndex = 6;
+            this.dtpFechaNac.TabIndex = 5;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label7.Location = new System.Drawing.Point(67, 216);
+            this.label7.Location = new System.Drawing.Point(67, 219);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(88, 16);
             this.label7.TabIndex = 16;
@@ -258,7 +258,7 @@
             this.txtDocumento.Location = new System.Drawing.Point(155, 180);
             this.txtDocumento.Name = "txtDocumento";
             this.txtDocumento.Size = new System.Drawing.Size(108, 23);
-            this.txtDocumento.TabIndex = 5;
+            this.txtDocumento.TabIndex = 4;
             // 
             // txtApellido
             // 
@@ -266,7 +266,7 @@
             this.txtApellido.Location = new System.Drawing.Point(141, 111);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(158, 23);
-            this.txtApellido.TabIndex = 4;
+            this.txtApellido.TabIndex = 2;
             // 
             // label5
             // 
@@ -298,14 +298,14 @@
             this.cboCiudad.Location = new System.Drawing.Point(155, 250);
             this.cboCiudad.Name = "cboCiudad";
             this.cboCiudad.Size = new System.Drawing.Size(127, 23);
-            this.cboCiudad.TabIndex = 7;
+            this.cboCiudad.TabIndex = 6;
             // 
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(497, 320);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 7;
+            this.btnCancelar.TabIndex = 14;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -325,7 +325,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(296, 319);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 12;
+            this.btnGuardar.TabIndex = 11;
             this.btnGuardar.Text = "&Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -335,7 +335,7 @@
             this.btnNuevo.Location = new System.Drawing.Point(194, 319);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(75, 23);
-            this.btnNuevo.TabIndex = 4;
+            this.btnNuevo.TabIndex = 12;
             this.btnNuevo.Text = "&Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
@@ -348,7 +348,7 @@
             this.txtNombre.Location = new System.Drawing.Point(140, 75);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(159, 23);
-            this.txtNombre.TabIndex = 3;
+            this.txtNombre.TabIndex = 1;
             // 
             // txtCodigo
             // 
@@ -358,7 +358,7 @@
             this.txtCodigo.Location = new System.Drawing.Point(141, 38);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(31, 23);
-            this.txtCodigo.TabIndex = 2;
+            this.txtCodigo.TabIndex = 0;
             // 
             // lblDescripcion
             // 

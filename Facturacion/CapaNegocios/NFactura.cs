@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Data;
 using CapaDatos;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CapaNegocio
 {
@@ -40,25 +41,79 @@ namespace CapaNegocio
         public static string Insertar(DFactura CabFactura, DataTable dtDetalleFactura, RegistroPagoFacturacion pagos)
         {
             DFactura objFactura = new DFactura();
-            //DETALLES DE COMPRAS
             List<DDetalleFactura> detalles = new List<DDetalleFactura>();
-            foreach (DataRow row in dtDetalleFactura.Rows)
+            string respuesta = "OK";
+            try
             {
-                DDetalleFactura dtFactura = new DDetalleFactura();
-
-                dtFactura.ArticuloNro = Convert.ToInt32(row["ItemNro"].ToString());
-                dtFactura.NroItem = Convert.ToInt32(row["Nro"]);
-                dtFactura.Cantidad = Convert.ToInt32(row["Cantidad"].ToString());
-                dtFactura.Precio = Convert.ToInt64(row["PrecioInicial"]);
-                dtFactura.PrecioFinal = Convert.ToInt64(row["Precio"]);
-                DTipoImpuesto ti = new DTipoImpuesto()
+                double totalFactura = 0;                
+                //DETALLES DE COMPRAS
+                foreach (DataRow row in dtDetalleFactura.Rows)
                 {
-                    TipoImpuestoNro = Convert.ToInt32(row["CodTipoImpuesto"])
-                };
-                dtFactura.TipoImpuesto = ti;
-                detalles.Add(dtFactura);
+                    DDetalleFactura dtFactura = new DDetalleFactura();
+
+                    dtFactura.ArticuloNro = Convert.ToInt32(row["ItemNro"].ToString());
+                    dtFactura.NroItem = Convert.ToInt32(row["Nro"]);
+                    dtFactura.Cantidad = Convert.ToInt32(row["Cantidad"].ToString());
+                    dtFactura.Precio = Convert.ToInt64(row["PrecioInicial"]);
+                    dtFactura.PrecioFinal = Convert.ToInt64(row["Precio"]);
+                    DTipoImpuesto ti = new DTipoImpuesto()
+                    {
+                        TipoImpuestoNro = Convert.ToInt32(row["CodTipoImpuesto"])
+                    };
+                    dtFactura.TipoImpuesto = ti;
+                    detalles.Add(dtFactura);
+
+                    totalFactura = dtFactura.PrecioFinal * dtFactura.Cantidad;
+                }
+
+                respuesta = ValidacionPagos(totalFactura, pagos);
+                if (!respuesta.Equals("OK"))
+                    throw new Exception(respuesta);
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }    
+           
             return objFactura.RegistrarFacturacion(CabFactura, detalles, pagos);
+        }
+
+
+        private static string ValidacionPagos(double totalVenta,RegistroPagoFacturacion pagos) 
+        {
+            string val = "OK";
+            if (pagos != null)
+            {
+                double importeEfectivo = pagos.Efectivo.Monto - pagos.Efectivo.Vuelto;
+                double importeTarjeta = pagos.Tarjeta.Monto;
+                double importeCheque = pagos.Cheque.Monto;
+                double importeOtros = pagos.Otro.Monto;
+                double totalPagado = importeEfectivo + importeTarjeta + importeCheque + importeOtros;
+
+
+                if (totalPagado < totalVenta)
+                {
+                    val = "El monto de pago ingresado es menor al monto total";
+                    return val;
+                }
+
+
+                if ((importeTarjeta > totalVenta) ||
+                    (importeCheque > totalVenta) ||
+                    (importeOtros > totalVenta))
+                {
+                    val = "El monto de pago diferente a Efectivo no puede ser mayor al monto total";
+                    return val;
+                }
+
+                if (totalPagado > totalVenta)
+                {
+                    val = "El monto de pago diferente a Efectivo no puede ser mayor al monto total";
+                    return val;
+                }
+            }
+
+            return val;
         }
 
 
@@ -116,10 +171,10 @@ namespace CapaNegocio
 
 
         //PRUEBA DE NUMERACION DE FACTURA
-        public static DataTable MostrarNumeracion(string comprobante)
+        public static DataTable MostrarNumeracion(string comprobante,string indAutoimprenta)
         {
             DFactura objFactura = new DFactura();
-            return objFactura.MostrarNumeracionFactura(comprobante);
+            return objFactura.MostrarNumeracionFactura(comprobante, indAutoimprenta);
         }
 
 

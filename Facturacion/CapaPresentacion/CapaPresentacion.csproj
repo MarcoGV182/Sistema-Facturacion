@@ -301,11 +301,11 @@
     <Compile Include="FrmMovimiento.Designer.cs">
       <DependentUpon>FrmMovimiento.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmNumeracionFactura.cs">
+    <Compile Include="FrmMantenimientoTimbrado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmNumeracionFactura.Designer.cs">
-      <DependentUpon>FrmNumeracionFactura.cs</DependentUpon>
+    <Compile Include="FrmMantenimientoTimbrado.Designer.cs">
+      <DependentUpon>FrmMantenimientoTimbrado.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmOrdenTrabajo.cs">
       <SubType>Form</SubType>
@@ -729,8 +729,8 @@
     <EmbeddedResource Include="FrmMovimiento.resx">
       <DependentUpon>FrmMovimiento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmNumeracionFactura.resx">
-      <DependentUpon>FrmNumeracionFactura.cs</DependentUpon>
+    <EmbeddedResource Include="FrmMantenimientoTimbrado.resx">
+      <DependentUpon>FrmMantenimientoTimbrado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmOrdenTrabajo.resx">
       <DependentUpon>FrmOrdenTrabajo.cs</DependentUpon>

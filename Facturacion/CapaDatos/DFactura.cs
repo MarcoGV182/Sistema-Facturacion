@@ -266,7 +266,7 @@ namespace CapaDatos
                                           List<DDetalleFactura> DetalleFactura,
                                           RegistroPagoFacturacion pagos)
         {
-            string rpta = "";
+            string rpta = "OK";
             SqlConnection Sqlcon = new SqlConnection();
             SqlTransaction Sqltran = null;
             try
@@ -420,7 +420,7 @@ namespace CapaDatos
                 SqlCmd.Parameters.Add(ParUsuario);
 
                 //ejecutar el comando sql
-                rpta = SqlCmd.ExecuteNonQuery() >= 1 ? "OK" : "No se inserto el registro";
+                SqlCmd.ExecuteNonQuery();
 
                 if (rpta.Equals("OK"))
                 {
@@ -830,7 +830,7 @@ namespace CapaDatos
         }
 
         //Metodo Numeracion de Factura
-        public DataTable MostrarNumeracionFactura(string comprobante)
+        public DataTable MostrarNumeracionFactura(string comprobante,string indAutoimprenta)
         {
             DataTable DtResultado = new DataTable("Factura");
             SqlConnection Sqlcon = new SqlConnection();
@@ -850,15 +850,26 @@ namespace CapaDatos
                 ParComprobante.Value = comprobante;
                 SqlCmd.Parameters.Add(ParComprobante);
 
+                SqlParameter ParIndAutoimprenta = new SqlParameter();
+                ParIndAutoimprenta.ParameterName = "@IndAutoimprenta";
+                ParIndAutoimprenta.SqlDbType = SqlDbType.VarChar;
+                ParIndAutoimprenta.Value = indAutoimprenta;
+                SqlCmd.Parameters.Add(ParIndAutoimprenta);
+
 
 
                 //instanciar un DataAdapter
                 SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
                 SqlAdapter.Fill(DtResultado);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 DtResultado = null;
+                throw ex;
+            }
+            finally 
+            {
+                Conexion.CerrarConexion(Sqlcon);
             }
             return DtResultado;
         }

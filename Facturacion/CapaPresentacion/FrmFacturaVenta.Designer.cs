@@ -69,6 +69,9 @@
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.gbTipo = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rbManual = new System.Windows.Forms.RadioButton();
+            this.rbAutoimprenta = new System.Windows.Forms.RadioButton();
             this.cboComprobante = new System.Windows.Forms.ComboBox();
             this.lblComprobante = new System.Windows.Forms.Label();
             this.lblAyuda = new System.Windows.Forms.Label();
@@ -94,19 +97,16 @@
             this.txttotalIva = new System.Windows.Forms.TextBox();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.rbAutoimprenta = new System.Windows.Forms.RadioButton();
-            this.rbManual = new System.Windows.Forms.RadioButton();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.gbTipo.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label11
@@ -229,9 +229,9 @@
             this.btnBuscarItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarItem.Font = new System.Drawing.Font("Times New Roman", 8.7F);
             this.btnBuscarItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscarItem.Location = new System.Drawing.Point(805, 48);
+            this.btnBuscarItem.Location = new System.Drawing.Point(796, 48);
             this.btnBuscarItem.Name = "btnBuscarItem";
-            this.btnBuscarItem.Size = new System.Drawing.Size(69, 24);
+            this.btnBuscarItem.Size = new System.Drawing.Size(78, 24);
             this.btnBuscarItem.TabIndex = 9;
             this.btnBuscarItem.Text = "Buscar[F5]";
             this.btnBuscarItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -399,7 +399,6 @@
             // dgvDetalleFactura
             // 
             this.dgvDetalleFactura.AllowUserToAddRows = false;
-            this.dgvDetalleFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvDetalleFactura.BackgroundColor = System.Drawing.Color.White;
             this.dgvDetalleFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalleFactura.Location = new System.Drawing.Point(198, 277);
@@ -581,6 +580,41 @@
             this.gbTipo.TabStop = false;
             this.gbTipo.Text = "Datos";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.rbManual);
+            this.groupBox4.Controls.Add(this.rbAutoimprenta);
+            this.groupBox4.Location = new System.Drawing.Point(710, 86);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(224, 68);
+            this.groupBox4.TabIndex = 50;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Tipo";
+            // 
+            // rbManual
+            // 
+            this.rbManual.AutoSize = true;
+            this.rbManual.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.rbManual.Location = new System.Drawing.Point(126, 33);
+            this.rbManual.Name = "rbManual";
+            this.rbManual.Size = new System.Drawing.Size(66, 20);
+            this.rbManual.TabIndex = 49;
+            this.rbManual.Text = "Manual";
+            this.rbManual.UseVisualStyleBackColor = true;
+            // 
+            // rbAutoimprenta
+            // 
+            this.rbAutoimprenta.AutoSize = true;
+            this.rbAutoimprenta.Checked = true;
+            this.rbAutoimprenta.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.rbAutoimprenta.Location = new System.Drawing.Point(11, 33);
+            this.rbAutoimprenta.Name = "rbAutoimprenta";
+            this.rbAutoimprenta.Size = new System.Drawing.Size(101, 20);
+            this.rbAutoimprenta.TabIndex = 48;
+            this.rbAutoimprenta.TabStop = true;
+            this.rbAutoimprenta.Text = "Autoimprenta";
+            this.rbAutoimprenta.UseVisualStyleBackColor = true;
+            // 
             // cboComprobante
             // 
             this.cboComprobante.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -652,6 +686,7 @@
             this.txtNroFactura.Size = new System.Drawing.Size(141, 24);
             this.txtNroFactura.TabIndex = 2;
             this.txtNroFactura.Leave += new System.EventHandler(this.txtDocumento_Leave);
+            this.txtNroFactura.Validating += new System.ComponentModel.CancelEventHandler(this.txtNroFactura_Validating);
             // 
             // txtDocumento
             // 
@@ -685,9 +720,6 @@
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(126, 24);
             this.dtpFecha.TabIndex = 5;
-            this.dtpFecha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpFecha_KeyDown);
-            this.dtpFecha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtpFecha_KeyPress);
-            this.dtpFecha.Leave += new System.EventHandler(this.dtpFecha_Leave);
             // 
             // btnBuscarCliente
             // 
@@ -894,41 +926,6 @@
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // rbAutoimprenta
-            // 
-            this.rbAutoimprenta.AutoSize = true;
-            this.rbAutoimprenta.Checked = true;
-            this.rbAutoimprenta.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.rbAutoimprenta.Location = new System.Drawing.Point(11, 33);
-            this.rbAutoimprenta.Name = "rbAutoimprenta";
-            this.rbAutoimprenta.Size = new System.Drawing.Size(101, 20);
-            this.rbAutoimprenta.TabIndex = 48;
-            this.rbAutoimprenta.TabStop = true;
-            this.rbAutoimprenta.Text = "Autoimprenta";
-            this.rbAutoimprenta.UseVisualStyleBackColor = true;
-            // 
-            // rbManual
-            // 
-            this.rbManual.AutoSize = true;
-            this.rbManual.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.rbManual.Location = new System.Drawing.Point(126, 33);
-            this.rbManual.Name = "rbManual";
-            this.rbManual.Size = new System.Drawing.Size(66, 20);
-            this.rbManual.TabIndex = 49;
-            this.rbManual.Text = "Manual";
-            this.rbManual.UseVisualStyleBackColor = true;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.rbManual);
-            this.groupBox4.Controls.Add(this.rbAutoimprenta);
-            this.groupBox4.Location = new System.Drawing.Point(710, 86);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(224, 68);
-            this.groupBox4.TabIndex = 50;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Tipo";
-            // 
             // FrmFacturaVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -952,6 +949,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
             this.gbTipo.ResumeLayout(false);
             this.gbTipo.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -959,8 +958,6 @@
             this.tabPage2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }

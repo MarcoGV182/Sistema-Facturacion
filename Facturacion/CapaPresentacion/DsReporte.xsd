@@ -34,7 +34,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sp_ReporteVentaPorFechaTableAdapter" GeneratorDataComponentClassName="sp_ReporteVentaPorFechaTableAdapter" Name="sp_ReporteVentaPorFecha" UserDataComponentName="sp_ReporteVentaPorFechaTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Cn (Settings)" DbObjectName="Facturacion.dbo.sp_ReporteVentaPorFecha" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Cn (Settings)" DbObjectName="GestionVenta.dbo.sp_ReporteVentaPorFecha" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.sp_ReporteVentaPorFecha</CommandText>
@@ -56,22 +56,30 @@
               <Mapping SourceColumn="Desde" DataSetColumn="Desde" />
               <Mapping SourceColumn="Hasta" DataSetColumn="Hasta" />
               <Mapping SourceColumn="Cliente" DataSetColumn="Cliente" />
-              <Mapping SourceColumn="Fecha" DataSetColumn="Fecha" />
               <Mapping SourceColumn="CodTipoPago" DataSetColumn="CodTipoPago" />
               <Mapping SourceColumn="TipoPago" DataSetColumn="TipoPago" />
-              <Mapping SourceColumn="TipoComprobante" DataSetColumn="TipoComprobante" />
               <Mapping SourceColumn="Estado" DataSetColumn="Estado" />
-              <Mapping SourceColumn="TotalIVA" DataSetColumn="TotalIVA" />
-              <Mapping SourceColumn="TotalGravadas" DataSetColumn="TotalGravadas" />
-              <Mapping SourceColumn="Total" DataSetColumn="Total" />
               <Mapping SourceColumn="Observacion" DataSetColumn="Observacion" />
               <Mapping SourceColumn="Usuario" DataSetColumn="Usuario" />
+              <Mapping SourceColumn="NroVenta" DataSetColumn="NroVenta" />
+              <Mapping SourceColumn="Documento" DataSetColumn="Documento" />
+              <Mapping SourceColumn="ColaboradorNro" DataSetColumn="ColaboradorNro" />
+              <Mapping SourceColumn="Colaborador" DataSetColumn="Colaborador" />
+              <Mapping SourceColumn="Comprobante" DataSetColumn="Comprobante" />
+              <Mapping SourceColumn="Iva" DataSetColumn="Iva" />
+              <Mapping SourceColumn="Gravada" DataSetColumn="Gravada" />
+              <Mapping SourceColumn="Exento" DataSetColumn="Exento" />
+              <Mapping SourceColumn="UsuarioInsercion" DataSetColumn="UsuarioInsercion" />
+              <Mapping SourceColumn="FechaInsercion" DataSetColumn="FechaInsercion" />
+              <Mapping SourceColumn="FechaAnulacion" DataSetColumn="FechaAnulacion" />
+              <Mapping SourceColumn="UsuarioAnulacion" DataSetColumn="UsuarioAnulacion" />
+              <Mapping SourceColumn="Total" DataSetColumn="Total" />
             </Mappings>
             <Sources />
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sp_ReporteCompraPorFechaTableAdapter" GeneratorDataComponentClassName="sp_ReporteCompraPorFechaTableAdapter" Name="sp_ReporteCompraPorFecha" UserDataComponentName="sp_ReporteCompraPorFechaTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Cn (Settings)" DbObjectName="Facturacion.dbo.sp_ReporteCompraPorFecha" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Cn (Settings)" DbObjectName="GestionVenta.dbo.sp_ReporteCompraPorFecha" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.sp_ReporteCompraPorFecha</CommandText>
@@ -93,16 +101,26 @@
               <Mapping SourceColumn="Desde" DataSetColumn="Desde" />
               <Mapping SourceColumn="Hasta" DataSetColumn="Hasta" />
               <Mapping SourceColumn="Cliente" DataSetColumn="Cliente" />
-              <Mapping SourceColumn="Fecha" DataSetColumn="Fecha" />
               <Mapping SourceColumn="CodTipoPago" DataSetColumn="CodTipoPago" />
               <Mapping SourceColumn="TipoPago" DataSetColumn="TipoPago" />
-              <Mapping SourceColumn="TipoComprobante" DataSetColumn="TipoComprobante" />
               <Mapping SourceColumn="Estado" DataSetColumn="Estado" />
               <Mapping SourceColumn="TotalIVA" DataSetColumn="TotalIVA" />
               <Mapping SourceColumn="TotalGravadas" DataSetColumn="TotalGravadas" />
               <Mapping SourceColumn="Total" DataSetColumn="Total" />
               <Mapping SourceColumn="Observacion" DataSetColumn="Observacion" />
               <Mapping SourceColumn="Usuario" DataSetColumn="Usuario" />
+              <Mapping SourceColumn="NroCompra" DataSetColumn="NroCompra" />
+              <Mapping SourceColumn="NroTimbrado" DataSetColumn="NroTimbrado" />
+              <Mapping SourceColumn="Documento" DataSetColumn="Documento" />
+              <Mapping SourceColumn="Proveedor" DataSetColumn="Proveedor" />
+              <Mapping SourceColumn="CantCuotas" DataSetColumn="CantCuotas" />
+              <Mapping SourceColumn="Comprobante" DataSetColumn="Comprobante" />
+              <Mapping SourceColumn="Iva" DataSetColumn="Iva" />
+              <Mapping SourceColumn="Gravada" DataSetColumn="Gravada" />
+              <Mapping SourceColumn="Exento" DataSetColumn="Exento" />
+              <Mapping SourceColumn="total" DataSetColumn="total" />
+              <Mapping SourceColumn="UsuarioInsercion" DataSetColumn="UsuarioInsercion" />
+              <Mapping SourceColumn="FechaInsercion" DataSetColumn="FechaInsercion" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -773,9 +791,6 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="TotalIVA" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="TotalIVAColumn" msprop:Generator_ColumnPropNameInRow="TotalIVA" msprop:Generator_UserColumnName="TotalIVA" msprop:Generator_ColumnVarNameInTable="columnTotalIVA" type="xs:decimal" minOccurs="0" />
-              <xs:element name="TotalGravadas" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="TotalGravadasColumn" msprop:Generator_ColumnPropNameInRow="TotalGravadas" msprop:Generator_UserColumnName="TotalGravadas" msprop:Generator_ColumnVarNameInTable="columnTotalGravadas" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Total" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_UserColumnName="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" type="xs:decimal" minOccurs="0" />
               <xs:element name="Observacion" msprop:Generator_ColumnPropNameInTable="ObservacionColumn" msprop:Generator_ColumnPropNameInRow="Observacion" msprop:Generator_UserColumnName="Observacion" msprop:Generator_ColumnVarNameInTable="columnObservacion" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -790,6 +805,43 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="NroVenta" msprop:Generator_ColumnPropNameInTable="NroVentaColumn" msprop:Generator_ColumnPropNameInRow="NroVenta" msprop:Generator_UserColumnName="NroVenta" msprop:Generator_ColumnVarNameInTable="columnNroVenta" type="xs:int" />
+              <xs:element name="Documento" msprop:Generator_ColumnPropNameInTable="DocumentoColumn" msprop:Generator_ColumnPropNameInRow="Documento" msprop:Generator_UserColumnName="Documento" msprop:Generator_ColumnVarNameInTable="columnDocumento">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ColaboradorNro" msprop:Generator_ColumnPropNameInTable="ColaboradorNroColumn" msprop:Generator_ColumnPropNameInRow="ColaboradorNro" msprop:Generator_UserColumnName="ColaboradorNro" msprop:Generator_ColumnVarNameInTable="columnColaboradorNro" type="xs:int" minOccurs="0" />
+              <xs:element name="Colaborador" msprop:Generator_ColumnPropNameInTable="ColaboradorColumn" msprop:Generator_ColumnPropNameInRow="Colaborador" msprop:Generator_UserColumnName="Colaborador" msprop:Generator_ColumnVarNameInTable="columnColaborador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Comprobante" msprop:Generator_ColumnPropNameInTable="ComprobanteColumn" msprop:Generator_ColumnPropNameInRow="Comprobante" msprop:Generator_UserColumnName="Comprobante" msprop:Generator_ColumnVarNameInTable="columnComprobante" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Iva" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="IvaColumn" msprop:Generator_ColumnPropNameInRow="Iva" msprop:Generator_UserColumnName="Iva" msprop:Generator_ColumnVarNameInTable="columnIva" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Gravada" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="GravadaColumn" msprop:Generator_ColumnPropNameInRow="Gravada" msprop:Generator_UserColumnName="Gravada" msprop:Generator_ColumnVarNameInTable="columnGravada" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Exento" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="ExentoColumn" msprop:Generator_ColumnPropNameInRow="Exento" msprop:Generator_UserColumnName="Exento" msprop:Generator_ColumnVarNameInTable="columnExento" type="xs:decimal" minOccurs="0" />
+              <xs:element name="UsuarioInsercion" msprop:Generator_ColumnPropNameInTable="UsuarioInsercionColumn" msprop:Generator_ColumnPropNameInRow="UsuarioInsercion" msprop:Generator_UserColumnName="UsuarioInsercion" msprop:Generator_ColumnVarNameInTable="columnUsuarioInsercion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaInsercion" msprop:Generator_ColumnPropNameInTable="FechaInsercionColumn" msprop:Generator_ColumnPropNameInRow="FechaInsercion" msprop:Generator_UserColumnName="FechaInsercion" msprop:Generator_ColumnVarNameInTable="columnFechaInsercion" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FechaAnulacion" msprop:Generator_ColumnPropNameInTable="FechaAnulacionColumn" msprop:Generator_ColumnPropNameInRow="FechaAnulacion" msprop:Generator_UserColumnName="FechaAnulacion" msprop:Generator_ColumnVarNameInTable="columnFechaAnulacion" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="UsuarioAnulacion" msprop:Generator_ColumnPropNameInTable="UsuarioAnulacionColumn" msprop:Generator_ColumnPropNameInRow="UsuarioAnulacion" msprop:Generator_UserColumnName="UsuarioAnulacion" msprop:Generator_ColumnVarNameInTable="columnUsuarioAnulacion" type="xs:int" minOccurs="0" />
+              <xs:element name="Total" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -865,6 +917,48 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="NroCompra" msprop:Generator_ColumnPropNameInRow="NroCompra" msprop:Generator_ColumnPropNameInTable="NroCompraColumn" msprop:Generator_ColumnVarNameInTable="columnNroCompra" msprop:Generator_UserColumnName="NroCompra" type="xs:int" />
+              <xs:element name="NroTimbrado" msprop:Generator_ColumnPropNameInRow="NroTimbrado" msprop:Generator_ColumnPropNameInTable="NroTimbradoColumn" msprop:Generator_ColumnVarNameInTable="columnNroTimbrado" msprop:Generator_UserColumnName="NroTimbrado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Documento" msprop:Generator_ColumnPropNameInRow="Documento" msprop:Generator_ColumnPropNameInTable="DocumentoColumn" msprop:Generator_ColumnVarNameInTable="columnDocumento" msprop:Generator_UserColumnName="Documento">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Proveedor" msprop:Generator_ColumnPropNameInRow="Proveedor" msprop:Generator_ColumnPropNameInTable="ProveedorColumn" msprop:Generator_ColumnVarNameInTable="columnProveedor" msprop:Generator_UserColumnName="Proveedor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="201" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CantCuotas" msprop:Generator_ColumnPropNameInRow="CantCuotas" msprop:Generator_ColumnPropNameInTable="CantCuotasColumn" msprop:Generator_ColumnVarNameInTable="columnCantCuotas" msprop:Generator_UserColumnName="CantCuotas" type="xs:int" minOccurs="0" />
+              <xs:element name="Comprobante" msprop:Generator_ColumnPropNameInRow="Comprobante" msprop:Generator_ColumnPropNameInTable="ComprobanteColumn" msprop:Generator_ColumnVarNameInTable="columnComprobante" msprop:Generator_UserColumnName="Comprobante" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Iva" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Iva" msprop:Generator_ColumnPropNameInTable="IvaColumn" msprop:Generator_ColumnVarNameInTable="columnIva" msprop:Generator_UserColumnName="Iva" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Gravada" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Gravada" msprop:Generator_ColumnPropNameInTable="GravadaColumn" msprop:Generator_ColumnVarNameInTable="columnGravada" msprop:Generator_UserColumnName="Gravada" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Exento" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Exento" msprop:Generator_ColumnPropNameInTable="ExentoColumn" msprop:Generator_ColumnVarNameInTable="columnExento" msprop:Generator_UserColumnName="Exento" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="total" msprop:Generator_ColumnPropNameInTable="totalColumn" msprop:Generator_ColumnVarNameInTable="columntotal" msprop:Generator_UserColumnName="total" type="xs:decimal" minOccurs="0" />
+              <xs:element name="UsuarioInsercion" msprop:Generator_ColumnPropNameInRow="UsuarioInsercion" msprop:Generator_ColumnPropNameInTable="UsuarioInsercionColumn" msprop:Generator_ColumnVarNameInTable="columnUsuarioInsercion" msprop:Generator_UserColumnName="UsuarioInsercion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaInsercion" msprop:Generator_ColumnPropNameInRow="FechaInsercion" msprop:Generator_ColumnPropNameInTable="FechaInsercionColumn" msprop:Generator_ColumnVarNameInTable="columnFechaInsercion" msprop:Generator_UserColumnName="FechaInsercion" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

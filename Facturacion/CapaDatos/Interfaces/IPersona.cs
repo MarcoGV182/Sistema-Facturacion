@@ -17,7 +17,6 @@ namespace CapaDatos.Interfaces
         string Direccion { get; set; }
         string Telefono { get; set; }
         string Email { get; set; }
-        string Estado { get; set; }
         string Observacion { get; set; }
         DateTime? FechaNacimiento { get; set; }
     }

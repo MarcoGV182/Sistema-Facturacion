@@ -33,6 +33,9 @@
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.rbRazonSocial = new System.Windows.Forms.RadioButton();
+            this.rbRUC = new System.Windows.Forms.RadioButton();
             this.dataListado = new System.Windows.Forms.DataGridView();
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -50,14 +53,12 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaAniversario = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDocumento = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cboEstado = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cboCiudad = new System.Windows.Forms.ComboBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -68,9 +69,6 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.rbRUC = new System.Windows.Forms.RadioButton();
-            this.rbRazonSocial = new System.Windows.Forms.RadioButton();
-            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -113,6 +111,38 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(188, 10);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 10;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // rbRazonSocial
+            // 
+            this.rbRazonSocial.AutoSize = true;
+            this.rbRazonSocial.Location = new System.Drawing.Point(323, 14);
+            this.rbRazonSocial.Name = "rbRazonSocial";
+            this.rbRazonSocial.Size = new System.Drawing.Size(88, 17);
+            this.rbRazonSocial.TabIndex = 9;
+            this.rbRazonSocial.Text = "Razon Social";
+            this.rbRazonSocial.UseVisualStyleBackColor = true;
+            // 
+            // rbRUC
+            // 
+            this.rbRUC.AutoSize = true;
+            this.rbRUC.Checked = true;
+            this.rbRUC.Location = new System.Drawing.Point(269, 14);
+            this.rbRUC.Name = "rbRUC";
+            this.rbRUC.Size = new System.Drawing.Size(48, 17);
+            this.rbRUC.TabIndex = 8;
+            this.rbRUC.TabStop = true;
+            this.rbRUC.Text = "RUC";
+            this.rbRUC.UseVisualStyleBackColor = true;
             // 
             // dataListado
             // 
@@ -188,14 +218,12 @@
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.dtpFechaNac);
+            this.groupBox1.Controls.Add(this.dtpFechaAniversario);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtDocumento);
             this.groupBox1.Controls.Add(this.txtApellido);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.cboEstado);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.cboCiudad);
             this.groupBox1.Controls.Add(this.txtNombre);
@@ -220,7 +248,7 @@
             this.cboTipoDocumento.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cboTipoDocumento.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.cboTipoDocumento.FormattingEnabled = true;
-            this.cboTipoDocumento.Location = new System.Drawing.Point(131, 136);
+            this.cboTipoDocumento.Location = new System.Drawing.Point(131, 137);
             this.cboTipoDocumento.Name = "cboTipoDocumento";
             this.cboTipoDocumento.Size = new System.Drawing.Size(127, 23);
             this.cboTipoDocumento.TabIndex = 50;
@@ -229,7 +257,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label1.Location = new System.Drawing.Point(22, 140);
+            this.label1.Location = new System.Drawing.Point(22, 141);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 16);
             this.label1.TabIndex = 49;
@@ -238,7 +266,7 @@
             // txtObservacion
             // 
             this.txtObservacion.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.txtObservacion.Location = new System.Drawing.Point(368, 171);
+            this.txtObservacion.Location = new System.Drawing.Point(368, 142);
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.Size = new System.Drawing.Size(261, 70);
@@ -248,7 +276,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label12.Location = new System.Drawing.Point(282, 178);
+            this.label12.Location = new System.Drawing.Point(282, 149);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(81, 16);
             this.label12.TabIndex = 47;
@@ -309,31 +337,31 @@
             this.label8.TabIndex = 44;
             this.label8.Text = "Direccion:";
             // 
-            // dtpFechaNac
+            // dtpFechaAniversario
             // 
-            this.dtpFechaNac.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.dtpFechaNac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaNac.Location = new System.Drawing.Point(109, 202);
-            this.dtpFechaNac.Name = "dtpFechaNac";
-            this.dtpFechaNac.ShowCheckBox = true;
-            this.dtpFechaNac.Size = new System.Drawing.Size(110, 24);
-            this.dtpFechaNac.TabIndex = 33;
+            this.dtpFechaAniversario.Font = new System.Drawing.Font("Times New Roman", 11F);
+            this.dtpFechaAniversario.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaAniversario.Location = new System.Drawing.Point(114, 205);
+            this.dtpFechaAniversario.Name = "dtpFechaAniversario";
+            this.dtpFechaAniversario.ShowCheckBox = true;
+            this.dtpFechaAniversario.Size = new System.Drawing.Size(110, 24);
+            this.dtpFechaAniversario.TabIndex = 33;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label7.Location = new System.Drawing.Point(21, 207);
+            this.label7.Location = new System.Drawing.Point(21, 210);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 16);
+            this.label7.Size = new System.Drawing.Size(93, 16);
             this.label7.TabIndex = 43;
-            this.label7.Text = "Fecha de Nac:";
+            this.label7.Text = "Fecha de Aniv.:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label6.Location = new System.Drawing.Point(23, 175);
+            this.label6.Location = new System.Drawing.Point(22, 177);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 16);
             this.label6.TabIndex = 42;
@@ -342,7 +370,7 @@
             // txtDocumento
             // 
             this.txtDocumento.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.txtDocumento.Location = new System.Drawing.Point(109, 171);
+            this.txtDocumento.Location = new System.Drawing.Point(114, 173);
             this.txtDocumento.Name = "txtDocumento";
             this.txtDocumento.Size = new System.Drawing.Size(108, 23);
             this.txtDocumento.TabIndex = 32;
@@ -364,29 +392,6 @@
             this.label5.Size = new System.Drawing.Size(55, 16);
             this.label5.TabIndex = 41;
             this.label5.Text = "Apellido:";
-            // 
-            // cboEstado
-            // 
-            this.cboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboEstado.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.cboEstado.FormattingEnabled = true;
-            this.cboEstado.Items.AddRange(new object[] {
-            "ACTIVO",
-            "INACTIVO"});
-            this.cboEstado.Location = new System.Drawing.Point(368, 137);
-            this.cboEstado.Name = "cboEstado";
-            this.cboEstado.Size = new System.Drawing.Size(77, 23);
-            this.cboEstado.TabIndex = 40;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label4.Location = new System.Drawing.Point(282, 143);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 16);
-            this.label4.TabIndex = 39;
-            this.label4.Text = "Estado:";
             // 
             // label3
             // 
@@ -490,38 +495,6 @@
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // rbRUC
-            // 
-            this.rbRUC.AutoSize = true;
-            this.rbRUC.Checked = true;
-            this.rbRUC.Location = new System.Drawing.Point(269, 14);
-            this.rbRUC.Name = "rbRUC";
-            this.rbRUC.Size = new System.Drawing.Size(48, 17);
-            this.rbRUC.TabIndex = 8;
-            this.rbRUC.TabStop = true;
-            this.rbRUC.Text = "RUC";
-            this.rbRUC.UseVisualStyleBackColor = true;
-            // 
-            // rbRazonSocial
-            // 
-            this.rbRazonSocial.AutoSize = true;
-            this.rbRazonSocial.Location = new System.Drawing.Point(323, 14);
-            this.rbRazonSocial.Name = "rbRazonSocial";
-            this.rbRazonSocial.Size = new System.Drawing.Size(88, 17);
-            this.rbRazonSocial.TabIndex = 9;
-            this.rbRazonSocial.Text = "Razon Social";
-            this.rbRazonSocial.UseVisualStyleBackColor = true;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Location = new System.Drawing.Point(188, 10);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 10;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // FrmVistaPersonaCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -571,14 +544,12 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker dtpFechaNac;
+        private System.Windows.Forms.DateTimePicker dtpFechaAniversario;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtDocumento;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cboEstado;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboCiudad;
         private System.Windows.Forms.TextBox txtNombre;

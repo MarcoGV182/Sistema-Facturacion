@@ -6,10 +6,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.65062cm</Width>
+              <Width>3.25374cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.37383cm</Width>
+              <Width>3.78862cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.36771cm</Width>
@@ -24,10 +24,13 @@
               <Width>2.34125cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.44708cm</Width>
+              <Width>2.3677cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.26188cm</Width>
+              <Width>2.36771cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.15605cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.10313cm</Width>
@@ -216,7 +219,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Total IVA</Value>
+                              <Value>IVA</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -250,7 +253,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Total Gravadas</Value>
+                              <Value>Gravadas</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -262,6 +265,40 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox18</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox11">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Exento</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox11</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -478,14 +515,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="TipoComprobante">
+                    <Textbox Name="Comprobante">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!TipoComprobante.Value</Value>
+                              <Value>=Fields!Comprobante.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -494,7 +531,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>TipoComprobante</rd:DefaultName>
+                      <rd:DefaultName>Comprobante</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -510,25 +547,25 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="TotalIVA">
+                    <Textbox Name="Iva">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!TotalIVA.Value</Value>
+                              <Value>=Fields!Iva.Value</Value>
                               <Style>
                                 <Format>#,0;(#,0)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Right</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>TotalIVA</rd:DefaultName>
+                      <rd:DefaultName>Iva</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -544,25 +581,59 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="TotalGravadas">
+                    <Textbox Name="Gravada">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!TotalGravadas.Value</Value>
+                              <Value>=Fields!Gravada.Value</Value>
                               <Style>
                                 <Format>#,0;(#,0)</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Right</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>TotalGravadas</rd:DefaultName>
+                      <rd:DefaultName>Gravada</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Exento">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Exento.Value</Value>
+                              <Style>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Exento</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -592,7 +663,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Right</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -657,6 +728,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -673,7 +745,7 @@
         <Top>0.17639cm</Top>
         <Left>0.38203cm</Left>
         <Height>1.2cm</Height>
-        <Width>24.39148cm</Width>
+        <Width>25.59189cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -688,10 +760,10 @@
       </Border>
     </Style>
   </Body>
-  <Width>25.51308cm</Width>
+  <Width>27.27351cm</Width>
   <Page>
     <PageHeader>
-      <Height>2.4299cm</Height>
+      <Height>2.48282cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -705,7 +777,7 @@
                   <Value>VENTAS REALIZADAS</Value>
                   <Style>
                     <FontSize>20pt</FontSize>
-                    <FontWeight>Thin</FontWeight>
+                    <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -877,7 +949,7 @@
                   <Value>=Now()</Value>
                   <Style>
                     <FontWeight>Bold</FontWeight>
-                    <Format>d</Format>
+                    <Format>f</Format>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -920,7 +992,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>0.17639cm</Top>
-          <Left>3.49122cm</Left>
+          <Left>3.80872cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>1</ZIndex>
@@ -941,7 +1013,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Nro. Registros:</Value>
+                  <Value>Cant. Registros:</Value>
                   <Style>
                     <FontWeight>Bold</FontWeight>
                   </Style>
@@ -954,7 +1026,7 @@
           <Top>0.17639cm</Top>
           <Left>0.64727cm</Left>
           <Height>0.6cm</Height>
-          <Width>2.73812cm</Width>
+          <Width>2.9885cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -975,10 +1047,10 @@
     </PageFooter>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
-    <LeftMargin>2cm</LeftMargin>
-    <RightMargin>2cm</RightMargin>
-    <TopMargin>2cm</TopMargin>
-    <BottomMargin>2cm</BottomMargin>
+    <LeftMargin>0.5cm</LeftMargin>
+    <RightMargin>0cm</RightMargin>
+    <TopMargin>0cm</TopMargin>
+    <BottomMargin>0cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style />
   </Page>
@@ -1039,18 +1111,6 @@
           <DataField>Estado</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="TotalIVA">
-          <DataField>TotalIVA</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="TotalGravadas">
-          <DataField>TotalGravadas</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="Total">
-          <DataField>Total</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
         <Field Name="Observacion">
           <DataField>Observacion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1059,10 +1119,62 @@
           <DataField>Usuario</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="NroVenta">
+          <DataField>NroVenta</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Documento">
+          <DataField>Documento</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ColaboradorNro">
+          <DataField>ColaboradorNro</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Colaborador">
+          <DataField>Colaborador</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Comprobante">
+          <DataField>Comprobante</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Iva">
+          <DataField>Iva</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Gravada">
+          <DataField>Gravada</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Exento">
+          <DataField>Exento</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="UsuarioInsercion">
+          <DataField>UsuarioInsercion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FechaInsercion">
+          <DataField>FechaInsercion</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="FechaAnulacion">
+          <DataField>FechaAnulacion</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="UsuarioAnulacion">
+          <DataField>UsuarioAnulacion</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Total">
+          <DataField>Total</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DsReporte</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\USER\Documents\Visual Studio 2015\Projects\Facturacion\CapaPresentacion\DsReporte.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\Documentos\Programacion\Programacion\Peluqueria\Proyecto Nuevo-Final- con Facturacion y OT Juntos\Facturacion\CapaPresentacion\DsReporte.xsd</rd:SchemaPath>
         <rd:TableName>sp_ReporteVentaPorFecha</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -1070,6 +1182,7 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
+  <Language>es-PY</Language>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>91564fac-10c7-4a5b-a037-44338feb1195</rd:ReportID>
 </Report>

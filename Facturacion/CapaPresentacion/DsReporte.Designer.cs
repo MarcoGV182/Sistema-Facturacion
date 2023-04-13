@@ -1413,15 +1413,35 @@ namespace CapaPresentacion {
             
             private global::System.Data.DataColumn columnEstado;
             
-            private global::System.Data.DataColumn columnTotalIVA;
-            
-            private global::System.Data.DataColumn columnTotalGravadas;
-            
-            private global::System.Data.DataColumn columnTotal;
-            
             private global::System.Data.DataColumn columnObservacion;
             
             private global::System.Data.DataColumn columnUsuario;
+            
+            private global::System.Data.DataColumn columnNroVenta;
+            
+            private global::System.Data.DataColumn columnDocumento;
+            
+            private global::System.Data.DataColumn columnColaboradorNro;
+            
+            private global::System.Data.DataColumn columnColaborador;
+            
+            private global::System.Data.DataColumn columnComprobante;
+            
+            private global::System.Data.DataColumn columnIva;
+            
+            private global::System.Data.DataColumn columnGravada;
+            
+            private global::System.Data.DataColumn columnExento;
+            
+            private global::System.Data.DataColumn columnUsuarioInsercion;
+            
+            private global::System.Data.DataColumn columnFechaInsercion;
+            
+            private global::System.Data.DataColumn columnFechaAnulacion;
+            
+            private global::System.Data.DataColumn columnUsuarioAnulacion;
+            
+            private global::System.Data.DataColumn columnTotal;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -1538,30 +1558,6 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TotalIVAColumn {
-                get {
-                    return this.columnTotalIVA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TotalGravadasColumn {
-                get {
-                    return this.columnTotalGravadas;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TotalColumn {
-                get {
-                    return this.columnTotal;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn ObservacionColumn {
                 get {
                     return this.columnObservacion;
@@ -1573,6 +1569,110 @@ namespace CapaPresentacion {
             public global::System.Data.DataColumn UsuarioColumn {
                 get {
                     return this.columnUsuario;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NroVentaColumn {
+                get {
+                    return this.columnNroVenta;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DocumentoColumn {
+                get {
+                    return this.columnDocumento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ColaboradorNroColumn {
+                get {
+                    return this.columnColaboradorNro;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ColaboradorColumn {
+                get {
+                    return this.columnColaborador;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ComprobanteColumn {
+                get {
+                    return this.columnComprobante;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IvaColumn {
+                get {
+                    return this.columnIva;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn GravadaColumn {
+                get {
+                    return this.columnGravada;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ExentoColumn {
+                get {
+                    return this.columnExento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UsuarioInsercionColumn {
+                get {
+                    return this.columnUsuarioInsercion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FechaInsercionColumn {
+                get {
+                    return this.columnFechaInsercion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FechaAnulacionColumn {
+                get {
+                    return this.columnFechaAnulacion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UsuarioAnulacionColumn {
+                get {
+                    return this.columnUsuarioAnulacion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TotalColumn {
+                get {
+                    return this.columnTotal;
                 }
             }
             
@@ -1613,7 +1713,30 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public sp_ReporteVentaPorFechaRow Addsp_ReporteVentaPorFechaRow(string NroFactura, string Desde, string Hasta, string Cliente, System.DateTime Fecha, string TipoPago, string TipoComprobante, string Estado, decimal TotalIVA, decimal TotalGravadas, decimal Total, string Observacion, string Usuario) {
+            public sp_ReporteVentaPorFechaRow Addsp_ReporteVentaPorFechaRow(
+                        string NroFactura, 
+                        string Desde, 
+                        string Hasta, 
+                        string Cliente, 
+                        System.DateTime Fecha, 
+                        string TipoPago, 
+                        string TipoComprobante, 
+                        string Estado, 
+                        string Observacion, 
+                        string Usuario, 
+                        int NroVenta, 
+                        string Documento, 
+                        int ColaboradorNro, 
+                        string Colaborador, 
+                        string Comprobante, 
+                        decimal Iva, 
+                        decimal Gravada, 
+                        decimal Exento, 
+                        string UsuarioInsercion, 
+                        System.DateTime FechaInsercion, 
+                        System.DateTime FechaAnulacion, 
+                        int UsuarioAnulacion, 
+                        decimal Total) {
                 sp_ReporteVentaPorFechaRow rowsp_ReporteVentaPorFechaRow = ((sp_ReporteVentaPorFechaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NroFactura,
@@ -1626,11 +1749,21 @@ namespace CapaPresentacion {
                         TipoPago,
                         TipoComprobante,
                         Estado,
-                        TotalIVA,
-                        TotalGravadas,
-                        Total,
                         Observacion,
-                        Usuario};
+                        Usuario,
+                        NroVenta,
+                        Documento,
+                        ColaboradorNro,
+                        Colaborador,
+                        Comprobante,
+                        Iva,
+                        Gravada,
+                        Exento,
+                        UsuarioInsercion,
+                        FechaInsercion,
+                        FechaAnulacion,
+                        UsuarioAnulacion,
+                        Total};
                 rowsp_ReporteVentaPorFechaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_ReporteVentaPorFechaRow);
                 return rowsp_ReporteVentaPorFechaRow;
@@ -1663,11 +1796,21 @@ namespace CapaPresentacion {
                 this.columnTipoPago = base.Columns["TipoPago"];
                 this.columnTipoComprobante = base.Columns["TipoComprobante"];
                 this.columnEstado = base.Columns["Estado"];
-                this.columnTotalIVA = base.Columns["TotalIVA"];
-                this.columnTotalGravadas = base.Columns["TotalGravadas"];
-                this.columnTotal = base.Columns["Total"];
                 this.columnObservacion = base.Columns["Observacion"];
                 this.columnUsuario = base.Columns["Usuario"];
+                this.columnNroVenta = base.Columns["NroVenta"];
+                this.columnDocumento = base.Columns["Documento"];
+                this.columnColaboradorNro = base.Columns["ColaboradorNro"];
+                this.columnColaborador = base.Columns["Colaborador"];
+                this.columnComprobante = base.Columns["Comprobante"];
+                this.columnIva = base.Columns["Iva"];
+                this.columnGravada = base.Columns["Gravada"];
+                this.columnExento = base.Columns["Exento"];
+                this.columnUsuarioInsercion = base.Columns["UsuarioInsercion"];
+                this.columnFechaInsercion = base.Columns["FechaInsercion"];
+                this.columnFechaAnulacion = base.Columns["FechaAnulacion"];
+                this.columnUsuarioAnulacion = base.Columns["UsuarioAnulacion"];
+                this.columnTotal = base.Columns["Total"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1693,16 +1836,36 @@ namespace CapaPresentacion {
                 base.Columns.Add(this.columnTipoComprobante);
                 this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEstado);
-                this.columnTotalIVA = new global::System.Data.DataColumn("TotalIVA", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalIVA);
-                this.columnTotalGravadas = new global::System.Data.DataColumn("TotalGravadas", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalGravadas);
-                this.columnTotal = new global::System.Data.DataColumn("Total", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotal);
                 this.columnObservacion = new global::System.Data.DataColumn("Observacion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnObservacion);
                 this.columnUsuario = new global::System.Data.DataColumn("Usuario", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUsuario);
+                this.columnNroVenta = new global::System.Data.DataColumn("NroVenta", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNroVenta);
+                this.columnDocumento = new global::System.Data.DataColumn("Documento", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDocumento);
+                this.columnColaboradorNro = new global::System.Data.DataColumn("ColaboradorNro", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnColaboradorNro);
+                this.columnColaborador = new global::System.Data.DataColumn("Colaborador", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnColaborador);
+                this.columnComprobante = new global::System.Data.DataColumn("Comprobante", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnComprobante);
+                this.columnIva = new global::System.Data.DataColumn("Iva", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIva);
+                this.columnGravada = new global::System.Data.DataColumn("Gravada", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGravada);
+                this.columnExento = new global::System.Data.DataColumn("Exento", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExento);
+                this.columnUsuarioInsercion = new global::System.Data.DataColumn("UsuarioInsercion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUsuarioInsercion);
+                this.columnFechaInsercion = new global::System.Data.DataColumn("FechaInsercion", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaInsercion);
+                this.columnFechaAnulacion = new global::System.Data.DataColumn("FechaAnulacion", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaAnulacion);
+                this.columnUsuarioAnulacion = new global::System.Data.DataColumn("UsuarioAnulacion", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUsuarioAnulacion);
+                this.columnTotal = new global::System.Data.DataColumn("Total", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotal);
                 this.columnNroFactura.AllowDBNull = false;
                 this.columnNroFactura.MaxLength = 50;
                 this.columnPersonaNro.AutoIncrement = true;
@@ -1723,12 +1886,19 @@ namespace CapaPresentacion {
                 this.columnTipoComprobante.MaxLength = 50;
                 this.columnEstado.AllowDBNull = false;
                 this.columnEstado.MaxLength = 8;
-                this.columnTotalIVA.ReadOnly = true;
-                this.columnTotalGravadas.ReadOnly = true;
-                this.columnTotal.ReadOnly = true;
                 this.columnObservacion.MaxLength = 256;
                 this.columnUsuario.AllowDBNull = false;
                 this.columnUsuario.MaxLength = 50;
+                this.columnNroVenta.AllowDBNull = false;
+                this.columnDocumento.AllowDBNull = false;
+                this.columnDocumento.MaxLength = 10;
+                this.columnColaborador.MaxLength = 100;
+                this.columnComprobante.MaxLength = 100;
+                this.columnIva.ReadOnly = true;
+                this.columnGravada.ReadOnly = true;
+                this.columnExento.ReadOnly = true;
+                this.columnUsuarioInsercion.MaxLength = 50;
+                this.columnTotal.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1892,6 +2062,30 @@ namespace CapaPresentacion {
             
             private global::System.Data.DataColumn columnUsuario;
             
+            private global::System.Data.DataColumn columnNroCompra;
+            
+            private global::System.Data.DataColumn columnNroTimbrado;
+            
+            private global::System.Data.DataColumn columnDocumento;
+            
+            private global::System.Data.DataColumn columnProveedor;
+            
+            private global::System.Data.DataColumn columnCantCuotas;
+            
+            private global::System.Data.DataColumn columnComprobante;
+            
+            private global::System.Data.DataColumn columnIva;
+            
+            private global::System.Data.DataColumn columnGravada;
+            
+            private global::System.Data.DataColumn columnExento;
+            
+            private global::System.Data.DataColumn columntotal;
+            
+            private global::System.Data.DataColumn columnUsuarioInsercion;
+            
+            private global::System.Data.DataColumn columnFechaInsercion;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public sp_ReporteCompraPorFechaDataTable() {
@@ -2047,6 +2241,102 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NroCompraColumn {
+                get {
+                    return this.columnNroCompra;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NroTimbradoColumn {
+                get {
+                    return this.columnNroTimbrado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DocumentoColumn {
+                get {
+                    return this.columnDocumento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ProveedorColumn {
+                get {
+                    return this.columnProveedor;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CantCuotasColumn {
+                get {
+                    return this.columnCantCuotas;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ComprobanteColumn {
+                get {
+                    return this.columnComprobante;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IvaColumn {
+                get {
+                    return this.columnIva;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn GravadaColumn {
+                get {
+                    return this.columnGravada;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ExentoColumn {
+                get {
+                    return this.columnExento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn totalColumn {
+                get {
+                    return this.columntotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UsuarioInsercionColumn {
+                get {
+                    return this.columnUsuarioInsercion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FechaInsercionColumn {
+                get {
+                    return this.columnFechaInsercion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2082,7 +2372,32 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public sp_ReporteCompraPorFechaRow Addsp_ReporteCompraPorFechaRow(string NroFacturaCompra, string Desde, string Hasta, string Cliente, System.DateTime Fecha, string TipoPago, string TipoComprobante, string Estado, decimal TotalIVA, decimal TotalGravadas, decimal Total, string Observacion, string Usuario) {
+            public sp_ReporteCompraPorFechaRow Addsp_ReporteCompraPorFechaRow(
+                        string NroFacturaCompra, 
+                        string Desde, 
+                        string Hasta, 
+                        string Cliente, 
+                        System.DateTime Fecha, 
+                        string TipoPago, 
+                        string TipoComprobante, 
+                        string Estado, 
+                        decimal TotalIVA, 
+                        decimal TotalGravadas, 
+                        decimal Total, 
+                        string Observacion, 
+                        string Usuario, 
+                        int NroCompra, 
+                        string NroTimbrado, 
+                        string Documento, 
+                        string Proveedor, 
+                        int CantCuotas, 
+                        string Comprobante, 
+                        decimal Iva, 
+                        decimal Gravada, 
+                        decimal Exento, 
+                        decimal total1, 
+                        string UsuarioInsercion, 
+                        System.DateTime FechaInsercion) {
                 sp_ReporteCompraPorFechaRow rowsp_ReporteCompraPorFechaRow = ((sp_ReporteCompraPorFechaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NroFacturaCompra,
@@ -2099,7 +2414,19 @@ namespace CapaPresentacion {
                         TotalGravadas,
                         Total,
                         Observacion,
-                        Usuario};
+                        Usuario,
+                        NroCompra,
+                        NroTimbrado,
+                        Documento,
+                        Proveedor,
+                        CantCuotas,
+                        Comprobante,
+                        Iva,
+                        Gravada,
+                        Exento,
+                        total1,
+                        UsuarioInsercion,
+                        FechaInsercion};
                 rowsp_ReporteCompraPorFechaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_ReporteCompraPorFechaRow);
                 return rowsp_ReporteCompraPorFechaRow;
@@ -2137,6 +2464,18 @@ namespace CapaPresentacion {
                 this.columnTotal = base.Columns["Total"];
                 this.columnObservacion = base.Columns["Observacion"];
                 this.columnUsuario = base.Columns["Usuario"];
+                this.columnNroCompra = base.Columns["NroCompra"];
+                this.columnNroTimbrado = base.Columns["NroTimbrado"];
+                this.columnDocumento = base.Columns["Documento"];
+                this.columnProveedor = base.Columns["Proveedor"];
+                this.columnCantCuotas = base.Columns["CantCuotas"];
+                this.columnComprobante = base.Columns["Comprobante"];
+                this.columnIva = base.Columns["Iva"];
+                this.columnGravada = base.Columns["Gravada"];
+                this.columnExento = base.Columns["Exento"];
+                this.columntotal = base.Columns["total"];
+                this.columnUsuarioInsercion = base.Columns["UsuarioInsercion"];
+                this.columnFechaInsercion = base.Columns["FechaInsercion"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2172,6 +2511,30 @@ namespace CapaPresentacion {
                 base.Columns.Add(this.columnObservacion);
                 this.columnUsuario = new global::System.Data.DataColumn("Usuario", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUsuario);
+                this.columnNroCompra = new global::System.Data.DataColumn("NroCompra", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNroCompra);
+                this.columnNroTimbrado = new global::System.Data.DataColumn("NroTimbrado", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNroTimbrado);
+                this.columnDocumento = new global::System.Data.DataColumn("Documento", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDocumento);
+                this.columnProveedor = new global::System.Data.DataColumn("Proveedor", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProveedor);
+                this.columnCantCuotas = new global::System.Data.DataColumn("CantCuotas", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCantCuotas);
+                this.columnComprobante = new global::System.Data.DataColumn("Comprobante", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnComprobante);
+                this.columnIva = new global::System.Data.DataColumn("Iva", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIva);
+                this.columnGravada = new global::System.Data.DataColumn("Gravada", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGravada);
+                this.columnExento = new global::System.Data.DataColumn("Exento", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExento);
+                this.columntotal = new global::System.Data.DataColumn("total", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal);
+                this.columnUsuarioInsercion = new global::System.Data.DataColumn("UsuarioInsercion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUsuarioInsercion);
+                this.columnFechaInsercion = new global::System.Data.DataColumn("FechaInsercion", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaInsercion);
                 this.columnNroFacturaCompra.AllowDBNull = false;
                 this.columnNroFacturaCompra.MaxLength = 50;
                 this.columnPersonaNro.AutoIncrement = true;
@@ -2198,6 +2561,17 @@ namespace CapaPresentacion {
                 this.columnObservacion.MaxLength = 256;
                 this.columnUsuario.AllowDBNull = false;
                 this.columnUsuario.MaxLength = 50;
+                this.columnNroCompra.AllowDBNull = false;
+                this.columnNroTimbrado.MaxLength = 10;
+                this.columnDocumento.AllowDBNull = false;
+                this.columnDocumento.MaxLength = 10;
+                this.columnProveedor.MaxLength = 201;
+                this.columnComprobante.MaxLength = 100;
+                this.columnIva.ReadOnly = true;
+                this.columnGravada.ReadOnly = true;
+                this.columnExento.ReadOnly = true;
+                this.columntotal.ReadOnly = true;
+                this.columnUsuarioInsercion.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10510,56 +10884,6 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal TotalIVA {
-                get {
-                    try {
-                        return ((decimal)(this[this.tablesp_ReporteVentaPorFecha.TotalIVAColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TotalIVA\' de la tabla \'sp_ReporteVentaPorFecha\' es DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteVentaPorFecha.TotalIVAColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal TotalGravadas {
-                get {
-                    try {
-                        return ((decimal)(this[this.tablesp_ReporteVentaPorFecha.TotalGravadasColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TotalGravadas\' de la tabla \'sp_ReporteVentaPorFecha\' es D" +
-                                "BNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteVentaPorFecha.TotalGravadasColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal Total {
-                get {
-                    try {
-                        return ((decimal)(this[this.tablesp_ReporteVentaPorFecha.TotalColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Total\' de la tabla \'sp_ReporteVentaPorFecha\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteVentaPorFecha.TotalColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Observacion {
                 get {
                     try {
@@ -10583,6 +10907,212 @@ namespace CapaPresentacion {
                 }
                 set {
                     this[this.tablesp_ReporteVentaPorFecha.UsuarioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int NroVenta {
+                get {
+                    return ((int)(this[this.tablesp_ReporteVentaPorFecha.NroVentaColumn]));
+                }
+                set {
+                    this[this.tablesp_ReporteVentaPorFecha.NroVentaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Documento {
+                get {
+                    return ((string)(this[this.tablesp_ReporteVentaPorFecha.DocumentoColumn]));
+                }
+                set {
+                    this[this.tablesp_ReporteVentaPorFecha.DocumentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ColaboradorNro {
+                get {
+                    try {
+                        return ((int)(this[this.tablesp_ReporteVentaPorFecha.ColaboradorNroColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ColaboradorNro\' de la tabla \'sp_ReporteVentaPorFecha\' es " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteVentaPorFecha.ColaboradorNroColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Colaborador {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_ReporteVentaPorFecha.ColaboradorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Colaborador\' de la tabla \'sp_ReporteVentaPorFecha\' es DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteVentaPorFecha.ColaboradorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Comprobante {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_ReporteVentaPorFecha.ComprobanteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Comprobante\' de la tabla \'sp_ReporteVentaPorFecha\' es DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteVentaPorFecha.ComprobanteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal Iva {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_ReporteVentaPorFecha.IvaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Iva\' de la tabla \'sp_ReporteVentaPorFecha\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteVentaPorFecha.IvaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal Gravada {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_ReporteVentaPorFecha.GravadaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Gravada\' de la tabla \'sp_ReporteVentaPorFecha\' es DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteVentaPorFecha.GravadaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal Exento {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_ReporteVentaPorFecha.ExentoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Exento\' de la tabla \'sp_ReporteVentaPorFecha\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteVentaPorFecha.ExentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string UsuarioInsercion {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_ReporteVentaPorFecha.UsuarioInsercionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'UsuarioInsercion\' de la tabla \'sp_ReporteVentaPorFecha\' e" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteVentaPorFecha.UsuarioInsercionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime FechaInsercion {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablesp_ReporteVentaPorFecha.FechaInsercionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaInsercion\' de la tabla \'sp_ReporteVentaPorFecha\' es " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteVentaPorFecha.FechaInsercionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime FechaAnulacion {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablesp_ReporteVentaPorFecha.FechaAnulacionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaAnulacion\' de la tabla \'sp_ReporteVentaPorFecha\' es " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteVentaPorFecha.FechaAnulacionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int UsuarioAnulacion {
+                get {
+                    try {
+                        return ((int)(this[this.tablesp_ReporteVentaPorFecha.UsuarioAnulacionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'UsuarioAnulacion\' de la tabla \'sp_ReporteVentaPorFecha\' e" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteVentaPorFecha.UsuarioAnulacionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal Total {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_ReporteVentaPorFecha.TotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Total\' de la tabla \'sp_ReporteVentaPorFecha\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteVentaPorFecha.TotalColumn] = value;
                 }
             }
             
@@ -10636,26 +11166,134 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTotalIVANull() {
-                return this.IsNull(this.tablesp_ReporteVentaPorFecha.TotalIVAColumn);
+            public bool IsObservacionNull() {
+                return this.IsNull(this.tablesp_ReporteVentaPorFecha.ObservacionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTotalIVANull() {
-                this[this.tablesp_ReporteVentaPorFecha.TotalIVAColumn] = global::System.Convert.DBNull;
+            public void SetObservacionNull() {
+                this[this.tablesp_ReporteVentaPorFecha.ObservacionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTotalGravadasNull() {
-                return this.IsNull(this.tablesp_ReporteVentaPorFecha.TotalGravadasColumn);
+            public bool IsColaboradorNroNull() {
+                return this.IsNull(this.tablesp_ReporteVentaPorFecha.ColaboradorNroColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTotalGravadasNull() {
-                this[this.tablesp_ReporteVentaPorFecha.TotalGravadasColumn] = global::System.Convert.DBNull;
+            public void SetColaboradorNroNull() {
+                this[this.tablesp_ReporteVentaPorFecha.ColaboradorNroColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsColaboradorNull() {
+                return this.IsNull(this.tablesp_ReporteVentaPorFecha.ColaboradorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetColaboradorNull() {
+                this[this.tablesp_ReporteVentaPorFecha.ColaboradorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsComprobanteNull() {
+                return this.IsNull(this.tablesp_ReporteVentaPorFecha.ComprobanteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetComprobanteNull() {
+                this[this.tablesp_ReporteVentaPorFecha.ComprobanteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsIvaNull() {
+                return this.IsNull(this.tablesp_ReporteVentaPorFecha.IvaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetIvaNull() {
+                this[this.tablesp_ReporteVentaPorFecha.IvaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsGravadaNull() {
+                return this.IsNull(this.tablesp_ReporteVentaPorFecha.GravadaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetGravadaNull() {
+                this[this.tablesp_ReporteVentaPorFecha.GravadaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsExentoNull() {
+                return this.IsNull(this.tablesp_ReporteVentaPorFecha.ExentoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetExentoNull() {
+                this[this.tablesp_ReporteVentaPorFecha.ExentoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUsuarioInsercionNull() {
+                return this.IsNull(this.tablesp_ReporteVentaPorFecha.UsuarioInsercionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUsuarioInsercionNull() {
+                this[this.tablesp_ReporteVentaPorFecha.UsuarioInsercionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFechaInsercionNull() {
+                return this.IsNull(this.tablesp_ReporteVentaPorFecha.FechaInsercionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFechaInsercionNull() {
+                this[this.tablesp_ReporteVentaPorFecha.FechaInsercionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFechaAnulacionNull() {
+                return this.IsNull(this.tablesp_ReporteVentaPorFecha.FechaAnulacionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFechaAnulacionNull() {
+                this[this.tablesp_ReporteVentaPorFecha.FechaAnulacionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUsuarioAnulacionNull() {
+                return this.IsNull(this.tablesp_ReporteVentaPorFecha.UsuarioAnulacionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUsuarioAnulacionNull() {
+                this[this.tablesp_ReporteVentaPorFecha.UsuarioAnulacionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10668,18 +11306,6 @@ namespace CapaPresentacion {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetTotalNull() {
                 this[this.tablesp_ReporteVentaPorFecha.TotalColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsObservacionNull() {
-                return this.IsNull(this.tablesp_ReporteVentaPorFecha.ObservacionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetObservacionNull() {
-                this[this.tablesp_ReporteVentaPorFecha.ObservacionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -10909,6 +11535,196 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int NroCompra {
+                get {
+                    return ((int)(this[this.tablesp_ReporteCompraPorFecha.NroCompraColumn]));
+                }
+                set {
+                    this[this.tablesp_ReporteCompraPorFecha.NroCompraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string NroTimbrado {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_ReporteCompraPorFecha.NroTimbradoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NroTimbrado\' de la tabla \'sp_ReporteCompraPorFecha\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteCompraPorFecha.NroTimbradoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Documento {
+                get {
+                    return ((string)(this[this.tablesp_ReporteCompraPorFecha.DocumentoColumn]));
+                }
+                set {
+                    this[this.tablesp_ReporteCompraPorFecha.DocumentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Proveedor {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_ReporteCompraPorFecha.ProveedorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Proveedor\' de la tabla \'sp_ReporteCompraPorFecha\' es DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteCompraPorFecha.ProveedorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int CantCuotas {
+                get {
+                    try {
+                        return ((int)(this[this.tablesp_ReporteCompraPorFecha.CantCuotasColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CantCuotas\' de la tabla \'sp_ReporteCompraPorFecha\' es DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteCompraPorFecha.CantCuotasColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Comprobante {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_ReporteCompraPorFecha.ComprobanteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Comprobante\' de la tabla \'sp_ReporteCompraPorFecha\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteCompraPorFecha.ComprobanteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal Iva {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_ReporteCompraPorFecha.IvaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Iva\' de la tabla \'sp_ReporteCompraPorFecha\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteCompraPorFecha.IvaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal Gravada {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_ReporteCompraPorFecha.GravadaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Gravada\' de la tabla \'sp_ReporteCompraPorFecha\' es DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteCompraPorFecha.GravadaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal Exento {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_ReporteCompraPorFecha.ExentoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Exento\' de la tabla \'sp_ReporteCompraPorFecha\' es DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteCompraPorFecha.ExentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal total {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_ReporteCompraPorFecha.totalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'total\' de la tabla \'sp_ReporteCompraPorFecha\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteCompraPorFecha.totalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string UsuarioInsercion {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_ReporteCompraPorFecha.UsuarioInsercionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'UsuarioInsercion\' de la tabla \'sp_ReporteCompraPorFecha\' " +
+                                "es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteCompraPorFecha.UsuarioInsercionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime FechaInsercion {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablesp_ReporteCompraPorFecha.FechaInsercionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaInsercion\' de la tabla \'sp_ReporteCompraPorFecha\' es" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteCompraPorFecha.FechaInsercionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsDesdeNull() {
                 return this.IsNull(this.tablesp_ReporteCompraPorFecha.DesdeColumn);
             }
@@ -11001,6 +11817,126 @@ namespace CapaPresentacion {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetObservacionNull() {
                 this[this.tablesp_ReporteCompraPorFecha.ObservacionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsNroTimbradoNull() {
+                return this.IsNull(this.tablesp_ReporteCompraPorFecha.NroTimbradoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetNroTimbradoNull() {
+                this[this.tablesp_ReporteCompraPorFecha.NroTimbradoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsProveedorNull() {
+                return this.IsNull(this.tablesp_ReporteCompraPorFecha.ProveedorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetProveedorNull() {
+                this[this.tablesp_ReporteCompraPorFecha.ProveedorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsCantCuotasNull() {
+                return this.IsNull(this.tablesp_ReporteCompraPorFecha.CantCuotasColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetCantCuotasNull() {
+                this[this.tablesp_ReporteCompraPorFecha.CantCuotasColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsComprobanteNull() {
+                return this.IsNull(this.tablesp_ReporteCompraPorFecha.ComprobanteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetComprobanteNull() {
+                this[this.tablesp_ReporteCompraPorFecha.ComprobanteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsIvaNull() {
+                return this.IsNull(this.tablesp_ReporteCompraPorFecha.IvaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetIvaNull() {
+                this[this.tablesp_ReporteCompraPorFecha.IvaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsGravadaNull() {
+                return this.IsNull(this.tablesp_ReporteCompraPorFecha.GravadaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetGravadaNull() {
+                this[this.tablesp_ReporteCompraPorFecha.GravadaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsExentoNull() {
+                return this.IsNull(this.tablesp_ReporteCompraPorFecha.ExentoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetExentoNull() {
+                this[this.tablesp_ReporteCompraPorFecha.ExentoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IstotalNull() {
+                return this.IsNull(this.tablesp_ReporteCompraPorFecha.totalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SettotalNull() {
+                this[this.tablesp_ReporteCompraPorFecha.totalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUsuarioInsercionNull() {
+                return this.IsNull(this.tablesp_ReporteCompraPorFecha.UsuarioInsercionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUsuarioInsercionNull() {
+                this[this.tablesp_ReporteCompraPorFecha.UsuarioInsercionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFechaInsercionNull() {
+                return this.IsNull(this.tablesp_ReporteCompraPorFecha.FechaInsercionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFechaInsercionNull() {
+                this[this.tablesp_ReporteCompraPorFecha.FechaInsercionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -17518,16 +18454,24 @@ namespace CapaPresentacion.DsReporteTableAdapters {
             tableMapping.ColumnMappings.Add("Desde", "Desde");
             tableMapping.ColumnMappings.Add("Hasta", "Hasta");
             tableMapping.ColumnMappings.Add("Cliente", "Cliente");
-            tableMapping.ColumnMappings.Add("Fecha", "Fecha");
             tableMapping.ColumnMappings.Add("CodTipoPago", "CodTipoPago");
             tableMapping.ColumnMappings.Add("TipoPago", "TipoPago");
-            tableMapping.ColumnMappings.Add("TipoComprobante", "TipoComprobante");
             tableMapping.ColumnMappings.Add("Estado", "Estado");
-            tableMapping.ColumnMappings.Add("TotalIVA", "TotalIVA");
-            tableMapping.ColumnMappings.Add("TotalGravadas", "TotalGravadas");
-            tableMapping.ColumnMappings.Add("Total", "Total");
             tableMapping.ColumnMappings.Add("Observacion", "Observacion");
             tableMapping.ColumnMappings.Add("Usuario", "Usuario");
+            tableMapping.ColumnMappings.Add("NroVenta", "NroVenta");
+            tableMapping.ColumnMappings.Add("Documento", "Documento");
+            tableMapping.ColumnMappings.Add("ColaboradorNro", "ColaboradorNro");
+            tableMapping.ColumnMappings.Add("Colaborador", "Colaborador");
+            tableMapping.ColumnMappings.Add("Comprobante", "Comprobante");
+            tableMapping.ColumnMappings.Add("Iva", "Iva");
+            tableMapping.ColumnMappings.Add("Gravada", "Gravada");
+            tableMapping.ColumnMappings.Add("Exento", "Exento");
+            tableMapping.ColumnMappings.Add("UsuarioInsercion", "UsuarioInsercion");
+            tableMapping.ColumnMappings.Add("FechaInsercion", "FechaInsercion");
+            tableMapping.ColumnMappings.Add("FechaAnulacion", "FechaAnulacion");
+            tableMapping.ColumnMappings.Add("UsuarioAnulacion", "UsuarioAnulacion");
+            tableMapping.ColumnMappings.Add("Total", "Total");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -17765,16 +18709,26 @@ namespace CapaPresentacion.DsReporteTableAdapters {
             tableMapping.ColumnMappings.Add("Desde", "Desde");
             tableMapping.ColumnMappings.Add("Hasta", "Hasta");
             tableMapping.ColumnMappings.Add("Cliente", "Cliente");
-            tableMapping.ColumnMappings.Add("Fecha", "Fecha");
             tableMapping.ColumnMappings.Add("CodTipoPago", "CodTipoPago");
             tableMapping.ColumnMappings.Add("TipoPago", "TipoPago");
-            tableMapping.ColumnMappings.Add("TipoComprobante", "TipoComprobante");
             tableMapping.ColumnMappings.Add("Estado", "Estado");
             tableMapping.ColumnMappings.Add("TotalIVA", "TotalIVA");
             tableMapping.ColumnMappings.Add("TotalGravadas", "TotalGravadas");
             tableMapping.ColumnMappings.Add("Total", "Total");
             tableMapping.ColumnMappings.Add("Observacion", "Observacion");
             tableMapping.ColumnMappings.Add("Usuario", "Usuario");
+            tableMapping.ColumnMappings.Add("NroCompra", "NroCompra");
+            tableMapping.ColumnMappings.Add("NroTimbrado", "NroTimbrado");
+            tableMapping.ColumnMappings.Add("Documento", "Documento");
+            tableMapping.ColumnMappings.Add("Proveedor", "Proveedor");
+            tableMapping.ColumnMappings.Add("CantCuotas", "CantCuotas");
+            tableMapping.ColumnMappings.Add("Comprobante", "Comprobante");
+            tableMapping.ColumnMappings.Add("Iva", "Iva");
+            tableMapping.ColumnMappings.Add("Gravada", "Gravada");
+            tableMapping.ColumnMappings.Add("Exento", "Exento");
+            tableMapping.ColumnMappings.Add("total", "total");
+            tableMapping.ColumnMappings.Add("UsuarioInsercion", "UsuarioInsercion");
+            tableMapping.ColumnMappings.Add("FechaInsercion", "FechaInsercion");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

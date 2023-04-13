@@ -33,16 +33,19 @@
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.cboItem = new System.Windows.Forms.ComboBox();
             this.dataListado = new System.Windows.Forms.DataGridView();
             this.lblTotal = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.rbServicios = new System.Windows.Forms.RadioButton();
+            this.rbProductos = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // errorIcono
@@ -55,8 +58,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.btnBuscar);
-            this.tabPage1.Controls.Add(this.cboItem);
             this.tabPage1.Controls.Add(this.dataListado);
             this.tabPage1.Controls.Add(this.lblTotal);
             this.tabPage1.Controls.Add(this.txtBuscar);
@@ -64,34 +67,20 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(734, 355);
+            this.tabPage1.Size = new System.Drawing.Size(734, 392);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(342, 8);
+            this.btnBuscar.Location = new System.Drawing.Point(421, 9);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 9;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click_1);
-            // 
-            // cboItem
-            // 
-            this.cboItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboItem.FormattingEnabled = true;
-            this.cboItem.Items.AddRange(new object[] {
-            "Servicio",
-            "Producto"});
-            this.cboItem.Location = new System.Drawing.Point(215, 9);
-            this.cboItem.Name = "cboItem";
-            this.cboItem.Size = new System.Drawing.Size(121, 21);
-            this.cboItem.TabIndex = 8;
-            this.cboItem.SelectedIndexChanged += new System.EventHandler(this.cboItem_SelectedIndexChanged);
-            this.cboItem.SelectedValueChanged += new System.EventHandler(this.cboItem_SelectedValueChanged);
             // 
             // dataListado
             // 
@@ -106,7 +95,7 @@
             this.dataListado.Name = "dataListado";
             this.dataListado.ReadOnly = true;
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListado.Size = new System.Drawing.Size(718, 307);
+            this.dataListado.Size = new System.Drawing.Size(718, 341);
             this.dataListado.TabIndex = 7;
             this.dataListado.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataListado_CellFormatting);
             this.dataListado.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataListado_CellPainting);
@@ -117,10 +106,10 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(544, 24);
+            this.lblTotal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.lblTotal.Location = new System.Drawing.Point(575, 24);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(121, 15);
+            this.lblTotal.Size = new System.Drawing.Size(120, 17);
             this.lblTotal.TabIndex = 6;
             this.lblTotal.Text = "Cant. Registros: 0";
             // 
@@ -134,11 +123,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 15);
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.label2.Location = new System.Drawing.Point(13, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.Size = new System.Drawing.Size(44, 16);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Nombre:";
+            this.label2.Text = "Filtrar:";
             // 
             // tabControl1
             // 
@@ -146,14 +136,46 @@
             this.tabControl1.Location = new System.Drawing.Point(2, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(742, 381);
+            this.tabControl1.Size = new System.Drawing.Size(742, 418);
             this.tabControl1.TabIndex = 9;
+            // 
+            // rbServicios
+            // 
+            this.rbServicios.AutoSize = true;
+            this.rbServicios.Location = new System.Drawing.Point(20, 11);
+            this.rbServicios.Name = "rbServicios";
+            this.rbServicios.Size = new System.Drawing.Size(68, 17);
+            this.rbServicios.TabIndex = 10;
+            this.rbServicios.TabStop = true;
+            this.rbServicios.Text = "Servicios";
+            this.rbServicios.UseVisualStyleBackColor = true;
+            // 
+            // rbProductos
+            // 
+            this.rbProductos.AutoSize = true;
+            this.rbProductos.Location = new System.Drawing.Point(94, 11);
+            this.rbProductos.Name = "rbProductos";
+            this.rbProductos.Size = new System.Drawing.Size(73, 17);
+            this.rbProductos.TabIndex = 11;
+            this.rbProductos.TabStop = true;
+            this.rbProductos.Text = "Productos";
+            this.rbProductos.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbProductos);
+            this.groupBox1.Controls.Add(this.rbServicios);
+            this.groupBox1.Location = new System.Drawing.Point(215, 2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 31);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
             // 
             // FrmVistaItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(756, 392);
+            this.ClientSize = new System.Drawing.Size(756, 420);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmVistaItem";
@@ -166,6 +188,8 @@
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -180,7 +204,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolTip ttMensaje;
         public System.Windows.Forms.DataGridView dataListado;
-        private System.Windows.Forms.ComboBox cboItem;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.RadioButton rbProductos;
+        private System.Windows.Forms.RadioButton rbServicios;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
