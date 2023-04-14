@@ -63,7 +63,7 @@ namespace CapaNegocio
                     dtFactura.TipoImpuesto = ti;
                     detalles.Add(dtFactura);
 
-                    totalFactura = dtFactura.PrecioFinal * dtFactura.Cantidad;
+                    totalFactura += dtFactura.PrecioFinal * dtFactura.Cantidad;
                 }
 
                 respuesta = ValidacionPagos(totalFactura, pagos);
@@ -84,10 +84,10 @@ namespace CapaNegocio
             string val = "OK";
             if (pagos != null)
             {
-                double importeEfectivo = pagos.Efectivo.Monto - pagos.Efectivo.Vuelto;
-                double importeTarjeta = pagos.Tarjeta.Monto;
-                double importeCheque = pagos.Cheque.Monto;
-                double importeOtros = pagos.Otro.Monto;
+                double importeEfectivo = pagos.Efectivo == null ? 0 : (pagos.Efectivo.Monto - pagos.Efectivo.Vuelto);
+                double importeTarjeta = pagos.Tarjeta == null ? 0 : pagos.Tarjeta.Monto;
+                double importeCheque = pagos.Cheque == null ? 0 : pagos.Cheque.Monto;
+                double importeOtros = pagos.Otro == null ? 0 : pagos.Otro.Monto;
                 double totalPagado = importeEfectivo + importeTarjeta + importeCheque + importeOtros;
 
 

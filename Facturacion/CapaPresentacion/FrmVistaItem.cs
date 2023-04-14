@@ -286,6 +286,7 @@ namespace CapaPresentacion
             System.Windows.Forms.RadioButton radioButton = sender as System.Windows.Forms.RadioButton;
             if (radioButton.Checked)
             {
+                Mostrar();
                 // Desmarca los otros RadioButton
                 foreach (System.Windows.Forms.RadioButton otherRadioButton in groupBox1.Controls.OfType<System.Windows.Forms.RadioButton>().Where(rb => rb != radioButton))
                 {

@@ -227,6 +227,7 @@ namespace CapaPresentacion
                 if (!ValidacionCliente())
                     return;
 
+                //si se ingresa un nuevo registro
 
                 DClientes cliente = new DClientes();
                 int codigoCliente = string.IsNullOrEmpty(txtCodigo.Text) ? 0 : Convert.ToInt32(txtCodigo.Text);
@@ -236,8 +237,8 @@ namespace CapaPresentacion
                 cliente.Documento = this.txtDocumento.Text.Trim();
                 DTipoDocumento tipoDocumento = new DTipoDocumento()
                 {
-                    idTipoDocumento = Convert.ToInt32(cboCiudad.SelectedValue),
-                    Descripcion = cboCiudad.Text
+                    idTipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue),
+                    Descripcion = cboTipoDocumento.Text
                 };
                 cliente.TipoDocumento = tipoDocumento;
                 cliente.FechaNacimiento = dtpFechaNac.Checked == false ? (DateTime?)null : dtpFechaNac.Value;
@@ -245,37 +246,21 @@ namespace CapaPresentacion
                     cliente.CiudadNro = Convert.ToInt32(cboCiudad.SelectedValue);
                 cliente.Direccion = this.txtDireccion.Text.Trim();
                 cliente.Telefono = this.txtTelefono.Text.Trim();
-                cliente.Email = this.txtEmail.Text.Trim();           
+                cliente.Email = this.txtEmail.Text.Trim();
                 cliente.Observacion = this.txtObservacion.Text.Trim().ToUpper();
 
-                //si se ingresa un nuevo registro
-                if (this.IsNuevo)
-                {
-                    rpta = NCliente.Insertar(cliente);
-                    //si se esta editando el registro   
-                }
-                else
-                {
-                    rpta = NCliente.Editar(cliente);
+                rpta = NCliente.Insertar(cliente);
 
-                }
                 if (rpta.Equals("OK"))
-                {
-                    if (IsNuevo)
-                    {
-                        this.MensajeOK("Se ha insertado con exito");
-                    }
-                    else
-                    {
-                        this.MensajeOK("Se ha editado con exito");
-                    }
-                }
-                else
+                    this.MensajeOK("Se ha insertado con exito");
+                else 
                 {
                     this.MensajeError(rpta);
+                    return;
                 }
+                    
 
-                this.IsNuevo = false;
+
                 this.Botones();
                 this.Limpiar();
                 this.Mostrar();

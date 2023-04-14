@@ -39,11 +39,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.cboTipoDocumento = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtObservacion = new System.Windows.Forms.TextBox();
@@ -66,6 +61,11 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
@@ -209,44 +209,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Clientes";
             // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(413, 303);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 7;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Location = new System.Drawing.Point(312, 303);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 12;
-            this.btnGuardar.Text = "&Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Location = new System.Drawing.Point(210, 303);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(75, 23);
-            this.btnNuevo.TabIndex = 4;
-            this.btnNuevo.Text = "&Nuevo";
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // errorIcono
-            // 
-            this.errorIcono.ContainerControl = this;
-            // 
-            // ttMensaje
-            // 
-            this.ttMensaje.IsBalloon = true;
-            // 
             // cboTipoDocumento
             // 
             this.cboTipoDocumento.BackColor = System.Drawing.Color.White;
@@ -257,7 +219,7 @@
             this.cboTipoDocumento.Location = new System.Drawing.Point(141, 138);
             this.cboTipoDocumento.Name = "cboTipoDocumento";
             this.cboTipoDocumento.Size = new System.Drawing.Size(127, 23);
-            this.cboTipoDocumento.TabIndex = 50;
+            this.cboTipoDocumento.TabIndex = 3;
             // 
             // label1
             // 
@@ -276,7 +238,7 @@
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.Size = new System.Drawing.Size(261, 70);
-            this.txtObservacion.TabIndex = 48;
+            this.txtObservacion.TabIndex = 10;
             // 
             // label12
             // 
@@ -294,7 +256,7 @@
             this.txtEmail.Location = new System.Drawing.Point(378, 104);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(195, 23);
-            this.txtEmail.TabIndex = 38;
+            this.txtEmail.TabIndex = 9;
             // 
             // txtTelefono
             // 
@@ -302,7 +264,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(378, 69);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(100, 23);
-            this.txtTelefono.TabIndex = 36;
+            this.txtTelefono.TabIndex = 8;
             // 
             // txtDireccion
             // 
@@ -311,7 +273,7 @@
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(211, 34);
-            this.txtDireccion.TabIndex = 35;
+            this.txtDireccion.TabIndex = 7;
             // 
             // label10
             // 
@@ -351,7 +313,7 @@
             this.dtpFechaNac.Name = "dtpFechaNac";
             this.dtpFechaNac.ShowCheckBox = true;
             this.dtpFechaNac.Size = new System.Drawing.Size(110, 24);
-            this.dtpFechaNac.TabIndex = 33;
+            this.dtpFechaNac.TabIndex = 5;
             // 
             // label7
             // 
@@ -379,7 +341,7 @@
             this.txtDocumento.Location = new System.Drawing.Point(119, 173);
             this.txtDocumento.Name = "txtDocumento";
             this.txtDocumento.Size = new System.Drawing.Size(108, 23);
-            this.txtDocumento.TabIndex = 32;
+            this.txtDocumento.TabIndex = 4;
             // 
             // txtApellido
             // 
@@ -387,7 +349,7 @@
             this.txtApellido.Location = new System.Drawing.Point(105, 104);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(158, 23);
-            this.txtApellido.TabIndex = 31;
+            this.txtApellido.TabIndex = 2;
             // 
             // label5
             // 
@@ -419,7 +381,7 @@
             this.cboCiudad.Location = new System.Drawing.Point(119, 243);
             this.cboCiudad.Name = "cboCiudad";
             this.cboCiudad.Size = new System.Drawing.Size(127, 23);
-            this.cboCiudad.TabIndex = 34;
+            this.cboCiudad.TabIndex = 6;
             // 
             // txtNombre
             // 
@@ -429,7 +391,7 @@
             this.txtNombre.Location = new System.Drawing.Point(104, 68);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(159, 23);
-            this.txtNombre.TabIndex = 30;
+            this.txtNombre.TabIndex = 1;
             // 
             // txtCodigo
             // 
@@ -460,6 +422,44 @@
             this.lblCodigo.Size = new System.Drawing.Size(32, 16);
             this.lblCodigo.TabIndex = 27;
             this.lblCodigo.Text = "Nro:";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(413, 303);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 13;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Location = new System.Drawing.Point(312, 303);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardar.TabIndex = 11;
+            this.btnGuardar.Text = "&Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Location = new System.Drawing.Point(210, 303);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(75, 23);
+            this.btnNuevo.TabIndex = 12;
+            this.btnNuevo.Text = "&Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // errorIcono
+            // 
+            this.errorIcono.ContainerControl = this;
+            // 
+            // ttMensaje
+            // 
+            this.ttMensaje.IsBalloon = true;
             // 
             // FrmVistaCliente
             // 

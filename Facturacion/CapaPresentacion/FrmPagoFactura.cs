@@ -204,7 +204,7 @@ namespace CapaPresentacion
                         NroVenta = idVenta,
                         TipoTarjeta = this.cboTarjeta.Text,
                         ComprobanteNro = txtComprobante.Text,
-                        Monto = Convert.ToDouble(this.txtMontoEfectivo.Text)
+                        Monto = Convert.ToDouble(this.txtMontoTarjeta.Text)
                     };
                 }
 

@@ -148,7 +148,7 @@ namespace CapaPresentacion
             dg.Columns["SubtotalIVA"].Width = 60;
             dg.Columns["SubtotalNeto"].Width = 60;
             dg.Columns["Subtotal"].Width = 60;
-            //CENTRAR TEXTO EN LA COLUMNA
+            //CENTRAR TEXTO EN LAS CELDAS
             dg.Columns["Cantidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
             dg.Columns["IVA"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
             dg.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
@@ -156,6 +156,15 @@ namespace CapaPresentacion
             dg.Columns["SubtotalIVA"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
             dg.Columns["SubtotalNeto"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
             dg.Columns["SubTotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
+
+            //CENTRAR TEXTO EN LAS COLUMNAS
+            dg.Columns["Cantidad"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dg.Columns["IVA"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dg.Columns["Precio"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dg.Columns["PrecioInicial"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dg.Columns["SubtotalIVA"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dg.Columns["SubtotalNeto"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dg.Columns["SubTotal"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         public void ObtenerEmpleadoFactura(string usuarionro, string nombre)
@@ -279,7 +288,9 @@ namespace CapaPresentacion
         //Limpiar los controles del formulario
         private void Limpiar()
         {
-           
+            Total = 0;
+            SubtotalIVA = 0;
+            SubTotalGravadas = 0;
             //this.txtNroFactura.Text = string.Empty;
             codigoCliente = 0;
             this.txtCliente.Text = "XXXXXX";
@@ -682,7 +693,13 @@ namespace CapaPresentacion
                 this.cboComprobante.Text = (this.dataListado.CurrentRow.Cells["TipoComprobante"].Value).ToString();
                 this.dtpFecha.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["Fecha"].Value);
                 this.cboTipoPago.Text = (this.dataListado.CurrentRow.Cells["TipoPago"].Value).ToString();
-                //this.txtDias.Text = (this.dataListado.CurrentRow.Cells["dias"].Value).ToString();
+
+                //Evaluar si el documento fue registrados como AUTOIMPRENTA o MANUAL
+                if (dataListado.CurrentRow.Cells["Ind_Autoimprenta"].Value.ToString() == "S")
+                    rbAutoimprenta.Checked = true;
+                else if (dataListado.CurrentRow.Cells["Ind_Autoimprenta"].Value.ToString() == "N")
+                    rbManual.Checked = true;
+
                 this.txtTotalGravadas.Text =Convert.ToDouble(this.dataListado.CurrentRow.Cells["Gravada"].Value).ToString("N0");
                 this.txttotalIva.Text = Convert.ToDouble(this.dataListado.CurrentRow.Cells["Iva"].Value).ToString("N0");
                 this.txtTotalGral.Text = Convert.ToDouble(this.dataListado.CurrentRow.Cells["Total"].Value).ToString("N0");                
@@ -714,6 +731,7 @@ namespace CapaPresentacion
                 factura.CantCuota = null;
                 factura.Vendedor = null;
                 factura.Usuario = this.idUsuario.ToString();//codigo de usuario
+                factura.Ind_Autoimprenta = Ind_Autoimprenta;
                 if (numeracion.Establecimiento.HasValue)
                     factura.Establecimiento = numeracion.Establecimiento.Value;
                 if (numeracion.PuntoExpedicion.HasValue)
@@ -736,7 +754,6 @@ namespace CapaPresentacion
                     if (Ind_Autoimprenta=="S")
                     {
                         DialogResult opcion;
-
                         opcion = MessageBox.Show("Desea imprimir el comprobante ?", "Sistema de Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (opcion == DialogResult.Yes)
                         {
@@ -1094,10 +1111,15 @@ namespace CapaPresentacion
 
         private void EliminarItem() 
         {
+            if (dgvDetalleFactura.CurrentCell == null)
+            {
+                MensajeError("No existe item para eliminar");
+                return;
+            }
+
             int indiceFila = dgvDetalleFactura.CurrentCell.RowIndex;
             row = Dtdetalle.Rows[indiceFila];
-
-            this.dgvDetalleFactura.DataSource = this.Dtdetalle;
+            
             //disminuir total                
             Total = Total - Convert.ToInt32(row["SubTotal"]);
             SubtotalIVA = SubtotalIVA - Convert.ToInt32(row["SubtotalIVA"]);
@@ -1108,8 +1130,8 @@ namespace CapaPresentacion
             txtTotalGral.Text = Total.ToString("N0");
 
             //eliminamos la fila
-
             this.Dtdetalle.Rows.Remove(row);
+            this.dgvDetalleFactura.DataSource = this.Dtdetalle;
             ReenumerarItems();
         }
 
@@ -1162,13 +1184,6 @@ namespace CapaPresentacion
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            //Inhabilitamos el timer
-            //timer1.Enabled = true;
-            
-            Total = 0;
-            SubtotalIVA = 0;
-            SubTotalGravadas = 0;
-
             this.IsNuevo = false;
             this.Limpiar();
             this.Habilitar(false);
@@ -1373,8 +1388,7 @@ namespace CapaPresentacion
                     DataTable tablacliente = NCliente.MostrarTextbox(txtDocumento.Text);
                     if (tablacliente == null)
                     {
-                        FrmConsultaRUC frmRuc = new FrmConsultaRUC();
-                        frmRuc.RUC_Nombre = txtDocumento.Text;
+                        MensajeError("Cliente con el numero de documento ingresado no existe");
                         return;
                     }
                     codigoCliente = Convert.ToInt32(tablacliente.Rows[0][0]);
@@ -1568,18 +1582,6 @@ namespace CapaPresentacion
                 throw;
             }*/
            
-        }
-
-        private void dgvDetalleFactura_AllowUserToDeleteRowsChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                EliminarItem();
-            }
-            catch (Exception ex)
-            {
-                MensajeError($"Error: {ex.Message}");
-            }
         }
 
         private void txtNroFactura_Validating(object sender, CancelEventArgs e)

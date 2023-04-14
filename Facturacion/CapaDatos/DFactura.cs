@@ -31,6 +31,7 @@ namespace CapaDatos
         public int? Vendedor { get; set; }
         public int? CantCuota { get; set; }
         public int NroOrden { get; set; }
+        public string Ind_Autoimprenta { get; set; }
 
 
         public DFactura() { }
@@ -401,6 +402,12 @@ namespace CapaDatos
                 ParEstado.Size = 9;
                 ParEstado.Value = Factura.Estado;
                 SqlCmd.Parameters.Add(ParEstado);
+
+                SqlParameter ParIndAutoimprenta = new SqlParameter();
+                ParIndAutoimprenta.ParameterName = "@Ind_Autoimprenta";
+                ParIndAutoimprenta.SqlDbType = SqlDbType.VarChar;
+                ParIndAutoimprenta.Value = Factura.Ind_Autoimprenta;
+                SqlCmd.Parameters.Add(ParIndAutoimprenta);
 
 
                 //Parametros Estado
