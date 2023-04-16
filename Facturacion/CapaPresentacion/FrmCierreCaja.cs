@@ -27,6 +27,7 @@ namespace CapaPresentacion
         private double egreso = 0;
 
         double montoApertura = 0;
+        int nroArqueo = 0;
 
         /*private double efectivo = 0;
         private double tarjeta = 0;
@@ -93,7 +94,8 @@ namespace CapaPresentacion
                     this.txtfechaApertura.Text =Convert.ToDateTime(dt.Rows[0]["FechaApertura"].ToString()).ToString("dd/MM/yyyy HH:mm");
                     montoApertura = Convert.ToDouble(dt.Rows[0]["ImporteApertura"]);
                     this.txtMontoInicial.Text = montoApertura.ToString("N0");
-                    this.lblnrocaja.Text = dt.Rows[0]["CajaNro"].ToString();
+                    nroArqueo = Convert.ToInt32(dt.Rows[0]["CajaNro"]);
+                    this.lblnrocaja.Text = nroArqueo.ToString();
                     this.btnCerrar.Enabled = true;
                 }
                 
@@ -190,18 +192,29 @@ namespace CapaPresentacion
                 //SE CARGA EN EL DATABLE EL METODO
                 mov = NCaja.BuscarMovimientoPagosCaja(this.txtfechaApertura.Text, dtpFechaCierre.Value.ToString("dd/MM/yyyy HH:mm"));
 
-                if (mov == null)
-                    return;
-
-                //PASA LOS DATOS DEL DATATABLE A LOS TEXTBOX
-                double efectivo = mov.Rows[0]["PagoEfectivo"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoEfectivo"]) : 0;
-                double cheque = mov.Rows[0]["PagoCheque"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoCheque"]) : 0;
-                double tarjeta = mov.Rows[0]["PagoTarjeta"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoTarjeta"]) : 0;
+                double efectivo = 0;
+                double cheque = 0;
+                double tarjeta = 0;
+                double otros = 0;
 
                 txtEfectivo.Text = efectivo.ToString("N0");
                 txtCheque.Text = cheque.ToString("N0");
                 txtTarjeta.Text = tarjeta.ToString("N0");
-                //lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
+                txtOtros.Text = otros.ToString("N0");
+
+                if (mov == null)
+                    return;
+
+                //PASA LOS DATOS DEL DATATABLE A LOS TEXTBOX
+                efectivo = mov.Rows[0]["PagoEfectivo"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoEfectivo"]) : 0;
+                cheque = mov.Rows[0]["PagoCheque"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoCheque"]) : 0;
+                tarjeta = mov.Rows[0]["PagoTarjeta"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoTarjeta"]) : 0;
+                otros = mov.Rows[0]["PagoOtros"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoOtros"]) : 0;
+
+                txtEfectivo.Text = efectivo.ToString("N0");
+                txtCheque.Text = cheque.ToString("N0");
+                txtTarjeta.Text = tarjeta.ToString("N0");
+                txtOtros.Text = otros.ToString("N0");
                 //this.TotalesMovimientoPagos();
             }
             if (txtMontoInicial.Text != string.Empty)
@@ -238,57 +251,46 @@ namespace CapaPresentacion
         {
             try
             {
-                if(txtImporteEntrega.Text=="0") 
+                string mensaje = "";
+                if (!string.IsNullOrEmpty(txtImporteEntrega.Text) && Convert.ToDouble(txtImporteEntrega.Text) == 0)
                 {
-                    DialogResult opcion;
-                    opcion = MessageBox.Show("El importe de Entrega es 0 \nEsta seguro que desea cerrar la caja?", "Sistema de Facturacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    if (opcion == DialogResult.OK)
-                    {
-
-                        string rpta = "";
-                        rpta = NCaja.CerrarCaja(Convert.ToInt32(this.lblnrocaja.Text), this.dtpFechaCierre.Value, Convert.ToDecimal(txtImporteEntrega.Text), Convert.ToDecimal(txtSaldoActual.Text), Convert.ToDecimal(txtDiferenciaSaldo.Text));
-                        //si se esta editando el registro    
-
-                        if (rpta.Equals("OK"))
-                        {
-                            this.MensajeOK("La Caja se ha cerrado con exito");
-                            this.Close();
-                        }
-                        else
-                        {
-                            this.MensajeError(rpta);
-                        }
-
-                        //this.Limpiar();
-                        //this.Mostrar();
-                    }
+                    mensaje = "El importe de Entrega es 0 \nEsta seguro que desea cerrar la caja?";
                 }
                 else
                 {
-                    DialogResult opcion;
-                    opcion = MessageBox.Show("Esta seguro que desea cerrar la caja?", "Sistema de Facturacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    if (opcion == DialogResult.OK)
-                    {
-
-                        string rpta = "";
-                        rpta = NCaja.CerrarCaja(Convert.ToInt32(this.lblnrocaja.Text), this.dtpFechaCierre.Value, Convert.ToDecimal(txtImporteEntrega.Text), Convert.ToDecimal(txtSaldoActual.Text), Convert.ToDecimal(txtDiferenciaSaldo.Text));
-                        //si se esta editando el registro    
-
-                        if (rpta.Equals("OK"))
-                        {
-                            this.MensajeOK("La Caja se ha cerrado con exito");
-                            this.Close();
-                        }
-                        else
-                        {
-                            this.MensajeError(rpta);
-                        }
-
-                        //this.Limpiar();
-                        //this.Mostrar();
-                    }
+                    mensaje = "Esta seguro que desea cerrar la caja?";
                 }
-                
+
+
+                DialogResult opcion;
+                opcion = MessageBox.Show(mensaje, "Sistema de Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (opcion == DialogResult.No)
+                {
+                    return;
+                }
+
+
+
+                DateTime fechaCierre = this.dtpFechaCierre.Value;
+                double ImporteEntrega = Convert.ToDouble(txtImporteEntrega.Text);
+                double Saldo = Convert.ToDouble(txtSaldoActual.Text);
+                double Diferencia = Convert.ToDouble(txtDiferenciaSaldo.Text);
+
+
+                string rpta = "";
+                rpta = NCaja.CerrarCaja(nroArqueo, fechaCierre, ImporteEntrega, Saldo, Diferencia);
+                //si se esta editando el registro    
+
+                if (rpta.Equals("OK"))
+                {
+                    this.MensajeOK("La Caja se ha cerrado con exito");
+                    this.Close();
+                }
+                else
+                {
+                    this.MensajeError(rpta);
+                    return;
+                }
             }
             catch (Exception ex)
             {

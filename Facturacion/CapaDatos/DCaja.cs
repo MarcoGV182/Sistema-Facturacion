@@ -16,12 +16,12 @@ namespace CapaDatos
         private DateTime _FechaApertura;
         private DateTime? _FechaCierre;
         private int _PersonaNro;
-        private decimal _Monto;        
+        private double _Monto;        
         private char _Estado;
         private string _Observacion;
-        private decimal _ImporteEntrega;
-        private decimal _Diferencia;
-        private decimal _SaldoFinal;
+        private double _ImporteEntrega;
+        private double _Diferencia;
+        private double _SaldoFinal;
 
         public int NroCaja
         {
@@ -75,7 +75,7 @@ namespace CapaDatos
             }
         }
 
-        public decimal Monto
+        public double Monto
         {
             get
             {
@@ -114,7 +114,7 @@ namespace CapaDatos
             }
         }
 
-        public decimal ImporteEntrega
+        public double ImporteEntrega
         {
             get
             {
@@ -127,7 +127,7 @@ namespace CapaDatos
             }
         }
 
-        public decimal Diferencia
+        public double Diferencia
         {
             get
             {
@@ -140,7 +140,7 @@ namespace CapaDatos
             }
         }
 
-        public decimal SaldoFinal
+        public double SaldoFinal
         {
             get
             {
@@ -156,7 +156,7 @@ namespace CapaDatos
         //Constructor sin parametris
         public DCaja() { }
         //constructor con parametros
-        public DCaja(int nroCaja,DateTime fechaApertura, DateTime? fechaCierre,int personaNro,char estado,decimal monto,decimal importeentrega,decimal saldofinal,decimal diferencia ,string observacion)
+        public DCaja(int nroCaja,DateTime fechaApertura, DateTime? fechaCierre,int personaNro,char estado,double monto,double importeentrega,double saldofinal,double diferencia ,string observacion)
         {
             this.NroCaja = NroCaja;
             this.FechaApertura = fechaApertura;
@@ -319,7 +319,7 @@ namespace CapaDatos
                 //Parametros del comando
                 //NROCAJA
                 SqlParameter ParNroCaja = new SqlParameter();
-                ParNroCaja.ParameterName = "@NroCaja";
+                ParNroCaja.ParameterName = "@CajaNro";
                 ParNroCaja.SqlDbType = SqlDbType.Int;
                 ParNroCaja.Value = Caja.NroCaja;
                 SqlCmd.Parameters.Add(ParNroCaja);

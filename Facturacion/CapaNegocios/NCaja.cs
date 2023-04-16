@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.Sql;
 using CapaDatos;
+using System.Windows.Forms;
 
 namespace CapaNegocio
 {
     public class NCaja
     {
-       public static string InsertarCaja(DateTime fechaApertura, int personaNro, decimal monto, string observacion) 
+       public static string InsertarCaja(DateTime fechaApertura, int personaNro, double monto, string observacion) 
        {
             DCaja Obj = new DCaja();
             Obj.FechaApertura = fechaApertura;
@@ -30,7 +31,7 @@ namespace CapaNegocio
         }
 
 
-        public static string CerrarCaja(int nrocaja,DateTime? fechacierre,decimal importeentrega,decimal saldofinal,decimal diferencia)
+        public static string CerrarCaja(int nrocaja,DateTime? fechacierre,double importeentrega, double saldofinal, double diferencia)
         {
             DCaja Obj = new DCaja();
             Obj.NroCaja = nrocaja;

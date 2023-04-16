@@ -60,13 +60,15 @@ namespace CapaPresentacion {
         
         private sp_ReporteDetalleLiquidacionFinalDataTable tablesp_ReporteDetalleLiquidacionFinal;
         
-        private sp_ReporteMovimientoCajaDataTable tablesp_ReporteMovimientoCaja;
-        
         private sp_ReporteServiciosRealizadosUsuarioDataTable tablesp_ReporteServiciosRealizadosUsuario;
         
         private sp_ReportePagosProveedorDataTable tablesp_ReportePagosProveedor;
         
         private sp_ReporteFacturaDetalleDataTable tablesp_ReporteFacturaDetalle;
+        
+        private sp_MostrarCabeceraArqueoCajaDataTable tablesp_MostrarCabeceraArqueoCaja;
+        
+        private sp_MostrarDetalleArqueoCajaDataTable tablesp_MostrarDetalleArqueoCaja;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -150,9 +152,6 @@ namespace CapaPresentacion {
                 if ((ds.Tables["sp_ReporteDetalleLiquidacionFinal"] != null)) {
                     base.Tables.Add(new sp_ReporteDetalleLiquidacionFinalDataTable(ds.Tables["sp_ReporteDetalleLiquidacionFinal"]));
                 }
-                if ((ds.Tables["sp_ReporteMovimientoCaja"] != null)) {
-                    base.Tables.Add(new sp_ReporteMovimientoCajaDataTable(ds.Tables["sp_ReporteMovimientoCaja"]));
-                }
                 if ((ds.Tables["sp_ReporteServiciosRealizadosUsuario"] != null)) {
                     base.Tables.Add(new sp_ReporteServiciosRealizadosUsuarioDataTable(ds.Tables["sp_ReporteServiciosRealizadosUsuario"]));
                 }
@@ -161,6 +160,12 @@ namespace CapaPresentacion {
                 }
                 if ((ds.Tables["sp_ReporteFacturaDetalle"] != null)) {
                     base.Tables.Add(new sp_ReporteFacturaDetalleDataTable(ds.Tables["sp_ReporteFacturaDetalle"]));
+                }
+                if ((ds.Tables["sp_MostrarCabeceraArqueoCaja"] != null)) {
+                    base.Tables.Add(new sp_MostrarCabeceraArqueoCajaDataTable(ds.Tables["sp_MostrarCabeceraArqueoCaja"]));
+                }
+                if ((ds.Tables["sp_MostrarDetalleArqueoCaja"] != null)) {
+                    base.Tables.Add(new sp_MostrarDetalleArqueoCajaDataTable(ds.Tables["sp_MostrarDetalleArqueoCaja"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -364,16 +369,6 @@ namespace CapaPresentacion {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public sp_ReporteMovimientoCajaDataTable sp_ReporteMovimientoCaja {
-            get {
-                return this.tablesp_ReporteMovimientoCaja;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public sp_ReporteServiciosRealizadosUsuarioDataTable sp_ReporteServiciosRealizadosUsuario {
             get {
                 return this.tablesp_ReporteServiciosRealizadosUsuario;
@@ -397,6 +392,26 @@ namespace CapaPresentacion {
         public sp_ReporteFacturaDetalleDataTable sp_ReporteFacturaDetalle {
             get {
                 return this.tablesp_ReporteFacturaDetalle;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public sp_MostrarCabeceraArqueoCajaDataTable sp_MostrarCabeceraArqueoCaja {
+            get {
+                return this.tablesp_MostrarCabeceraArqueoCaja;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public sp_MostrarDetalleArqueoCajaDataTable sp_MostrarDetalleArqueoCaja {
+            get {
+                return this.tablesp_MostrarDetalleArqueoCaja;
             }
         }
         
@@ -521,9 +536,6 @@ namespace CapaPresentacion {
                 if ((ds.Tables["sp_ReporteDetalleLiquidacionFinal"] != null)) {
                     base.Tables.Add(new sp_ReporteDetalleLiquidacionFinalDataTable(ds.Tables["sp_ReporteDetalleLiquidacionFinal"]));
                 }
-                if ((ds.Tables["sp_ReporteMovimientoCaja"] != null)) {
-                    base.Tables.Add(new sp_ReporteMovimientoCajaDataTable(ds.Tables["sp_ReporteMovimientoCaja"]));
-                }
                 if ((ds.Tables["sp_ReporteServiciosRealizadosUsuario"] != null)) {
                     base.Tables.Add(new sp_ReporteServiciosRealizadosUsuarioDataTable(ds.Tables["sp_ReporteServiciosRealizadosUsuario"]));
                 }
@@ -532,6 +544,12 @@ namespace CapaPresentacion {
                 }
                 if ((ds.Tables["sp_ReporteFacturaDetalle"] != null)) {
                     base.Tables.Add(new sp_ReporteFacturaDetalleDataTable(ds.Tables["sp_ReporteFacturaDetalle"]));
+                }
+                if ((ds.Tables["sp_MostrarCabeceraArqueoCaja"] != null)) {
+                    base.Tables.Add(new sp_MostrarCabeceraArqueoCajaDataTable(ds.Tables["sp_MostrarCabeceraArqueoCaja"]));
+                }
+                if ((ds.Tables["sp_MostrarDetalleArqueoCaja"] != null)) {
+                    base.Tables.Add(new sp_MostrarDetalleArqueoCajaDataTable(ds.Tables["sp_MostrarDetalleArqueoCaja"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -674,12 +692,6 @@ namespace CapaPresentacion {
                     this.tablesp_ReporteDetalleLiquidacionFinal.InitVars();
                 }
             }
-            this.tablesp_ReporteMovimientoCaja = ((sp_ReporteMovimientoCajaDataTable)(base.Tables["sp_ReporteMovimientoCaja"]));
-            if ((initTable == true)) {
-                if ((this.tablesp_ReporteMovimientoCaja != null)) {
-                    this.tablesp_ReporteMovimientoCaja.InitVars();
-                }
-            }
             this.tablesp_ReporteServiciosRealizadosUsuario = ((sp_ReporteServiciosRealizadosUsuarioDataTable)(base.Tables["sp_ReporteServiciosRealizadosUsuario"]));
             if ((initTable == true)) {
                 if ((this.tablesp_ReporteServiciosRealizadosUsuario != null)) {
@@ -696,6 +708,18 @@ namespace CapaPresentacion {
             if ((initTable == true)) {
                 if ((this.tablesp_ReporteFacturaDetalle != null)) {
                     this.tablesp_ReporteFacturaDetalle.InitVars();
+                }
+            }
+            this.tablesp_MostrarCabeceraArqueoCaja = ((sp_MostrarCabeceraArqueoCajaDataTable)(base.Tables["sp_MostrarCabeceraArqueoCaja"]));
+            if ((initTable == true)) {
+                if ((this.tablesp_MostrarCabeceraArqueoCaja != null)) {
+                    this.tablesp_MostrarCabeceraArqueoCaja.InitVars();
+                }
+            }
+            this.tablesp_MostrarDetalleArqueoCaja = ((sp_MostrarDetalleArqueoCajaDataTable)(base.Tables["sp_MostrarDetalleArqueoCaja"]));
+            if ((initTable == true)) {
+                if ((this.tablesp_MostrarDetalleArqueoCaja != null)) {
+                    this.tablesp_MostrarDetalleArqueoCaja.InitVars();
                 }
             }
         }
@@ -744,14 +768,16 @@ namespace CapaPresentacion {
             base.Tables.Add(this.tablesp_ReporteDeudas);
             this.tablesp_ReporteDetalleLiquidacionFinal = new sp_ReporteDetalleLiquidacionFinalDataTable();
             base.Tables.Add(this.tablesp_ReporteDetalleLiquidacionFinal);
-            this.tablesp_ReporteMovimientoCaja = new sp_ReporteMovimientoCajaDataTable();
-            base.Tables.Add(this.tablesp_ReporteMovimientoCaja);
             this.tablesp_ReporteServiciosRealizadosUsuario = new sp_ReporteServiciosRealizadosUsuarioDataTable();
             base.Tables.Add(this.tablesp_ReporteServiciosRealizadosUsuario);
             this.tablesp_ReportePagosProveedor = new sp_ReportePagosProveedorDataTable();
             base.Tables.Add(this.tablesp_ReportePagosProveedor);
             this.tablesp_ReporteFacturaDetalle = new sp_ReporteFacturaDetalleDataTable();
             base.Tables.Add(this.tablesp_ReporteFacturaDetalle);
+            this.tablesp_MostrarCabeceraArqueoCaja = new sp_MostrarCabeceraArqueoCajaDataTable();
+            base.Tables.Add(this.tablesp_MostrarCabeceraArqueoCaja);
+            this.tablesp_MostrarDetalleArqueoCaja = new sp_MostrarDetalleArqueoCajaDataTable();
+            base.Tables.Add(this.tablesp_MostrarDetalleArqueoCaja);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -864,12 +890,6 @@ namespace CapaPresentacion {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializesp_ReporteMovimientoCaja() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializesp_ReporteServiciosRealizadosUsuario() {
             return false;
         }
@@ -883,6 +903,18 @@ namespace CapaPresentacion {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializesp_ReporteFacturaDetalle() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializesp_MostrarCabeceraArqueoCaja() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializesp_MostrarDetalleArqueoCaja() {
             return false;
         }
         
@@ -996,9 +1028,6 @@ namespace CapaPresentacion {
         public delegate void sp_ReporteDetalleLiquidacionFinalRowChangeEventHandler(object sender, sp_ReporteDetalleLiquidacionFinalRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void sp_ReporteMovimientoCajaRowChangeEventHandler(object sender, sp_ReporteMovimientoCajaRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void sp_ReporteServiciosRealizadosUsuarioRowChangeEventHandler(object sender, sp_ReporteServiciosRealizadosUsuarioRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -1006,6 +1035,12 @@ namespace CapaPresentacion {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void sp_ReporteFacturaDetalleRowChangeEventHandler(object sender, sp_ReporteFacturaDetalleRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void sp_MostrarCabeceraArqueoCajaRowChangeEventHandler(object sender, sp_MostrarCabeceraArqueoCajaRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void sp_MostrarDetalleArqueoCajaRowChangeEventHandler(object sender, sp_MostrarDetalleArqueoCajaRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -8882,570 +8917,6 @@ namespace CapaPresentacion {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class sp_ReporteMovimientoCajaDataTable : global::System.Data.TypedTableBase<sp_ReporteMovimientoCajaRow> {
-            
-            private global::System.Data.DataColumn columnUsuario;
-            
-            private global::System.Data.DataColumn columnFechaApertura;
-            
-            private global::System.Data.DataColumn columnFechaCierre;
-            
-            private global::System.Data.DataColumn columnImporteApertura;
-            
-            private global::System.Data.DataColumn columnImporteEntrega;
-            
-            private global::System.Data.DataColumn columnSaldoFinal;
-            
-            private global::System.Data.DataColumn columnDiferenciaCierre;
-            
-            private global::System.Data.DataColumn columnEstado;
-            
-            private global::System.Data.DataColumn columnIdentificador;
-            
-            private global::System.Data.DataColumn columnFecha;
-            
-            private global::System.Data.DataColumn columnComprobante;
-            
-            private global::System.Data.DataColumn columnPersona;
-            
-            private global::System.Data.DataColumn columnTipoOperacion;
-            
-            private global::System.Data.DataColumn columnFormaPago;
-            
-            private global::System.Data.DataColumn columnImporte;
-            
-            private global::System.Data.DataColumn columnEfectivo;
-            
-            private global::System.Data.DataColumn columnTarjeta;
-            
-            private global::System.Data.DataColumn columnCheque;
-            
-            private global::System.Data.DataColumn columnUsuarioActual;
-            
-            private global::System.Data.DataColumn columnOtros;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public sp_ReporteMovimientoCajaDataTable() {
-                this.TableName = "sp_ReporteMovimientoCaja";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal sp_ReporteMovimientoCajaDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected sp_ReporteMovimientoCajaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn UsuarioColumn {
-                get {
-                    return this.columnUsuario;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn FechaAperturaColumn {
-                get {
-                    return this.columnFechaApertura;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn FechaCierreColumn {
-                get {
-                    return this.columnFechaCierre;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ImporteAperturaColumn {
-                get {
-                    return this.columnImporteApertura;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ImporteEntregaColumn {
-                get {
-                    return this.columnImporteEntrega;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn SaldoFinalColumn {
-                get {
-                    return this.columnSaldoFinal;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn DiferenciaCierreColumn {
-                get {
-                    return this.columnDiferenciaCierre;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn EstadoColumn {
-                get {
-                    return this.columnEstado;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IdentificadorColumn {
-                get {
-                    return this.columnIdentificador;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn FechaColumn {
-                get {
-                    return this.columnFecha;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ComprobanteColumn {
-                get {
-                    return this.columnComprobante;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn PersonaColumn {
-                get {
-                    return this.columnPersona;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TipoOperacionColumn {
-                get {
-                    return this.columnTipoOperacion;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn FormaPagoColumn {
-                get {
-                    return this.columnFormaPago;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ImporteColumn {
-                get {
-                    return this.columnImporte;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn EfectivoColumn {
-                get {
-                    return this.columnEfectivo;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TarjetaColumn {
-                get {
-                    return this.columnTarjeta;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ChequeColumn {
-                get {
-                    return this.columnCheque;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn UsuarioActualColumn {
-                get {
-                    return this.columnUsuarioActual;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn OtrosColumn {
-                get {
-                    return this.columnOtros;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public sp_ReporteMovimientoCajaRow this[int index] {
-                get {
-                    return ((sp_ReporteMovimientoCajaRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event sp_ReporteMovimientoCajaRowChangeEventHandler sp_ReporteMovimientoCajaRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event sp_ReporteMovimientoCajaRowChangeEventHandler sp_ReporteMovimientoCajaRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event sp_ReporteMovimientoCajaRowChangeEventHandler sp_ReporteMovimientoCajaRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event sp_ReporteMovimientoCajaRowChangeEventHandler sp_ReporteMovimientoCajaRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Addsp_ReporteMovimientoCajaRow(sp_ReporteMovimientoCajaRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public sp_ReporteMovimientoCajaRow Addsp_ReporteMovimientoCajaRow(
-                        string Usuario, 
-                        string FechaApertura, 
-                        string FechaCierre, 
-                        double ImporteApertura, 
-                        double ImporteEntrega, 
-                        double SaldoFinal, 
-                        double DiferenciaCierre, 
-                        string Estado, 
-                        string Identificador, 
-                        string Fecha, 
-                        string Comprobante, 
-                        string Persona, 
-                        string TipoOperacion, 
-                        string FormaPago, 
-                        double Importe, 
-                        double Efectivo, 
-                        double Tarjeta, 
-                        double Cheque, 
-                        string UsuarioActual, 
-                        double Otros) {
-                sp_ReporteMovimientoCajaRow rowsp_ReporteMovimientoCajaRow = ((sp_ReporteMovimientoCajaRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        Usuario,
-                        FechaApertura,
-                        FechaCierre,
-                        ImporteApertura,
-                        ImporteEntrega,
-                        SaldoFinal,
-                        DiferenciaCierre,
-                        Estado,
-                        Identificador,
-                        Fecha,
-                        Comprobante,
-                        Persona,
-                        TipoOperacion,
-                        FormaPago,
-                        Importe,
-                        Efectivo,
-                        Tarjeta,
-                        Cheque,
-                        UsuarioActual,
-                        Otros};
-                rowsp_ReporteMovimientoCajaRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowsp_ReporteMovimientoCajaRow);
-                return rowsp_ReporteMovimientoCajaRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                sp_ReporteMovimientoCajaDataTable cln = ((sp_ReporteMovimientoCajaDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new sp_ReporteMovimientoCajaDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-                this.columnUsuario = base.Columns["Usuario"];
-                this.columnFechaApertura = base.Columns["FechaApertura"];
-                this.columnFechaCierre = base.Columns["FechaCierre"];
-                this.columnImporteApertura = base.Columns["ImporteApertura"];
-                this.columnImporteEntrega = base.Columns["ImporteEntrega"];
-                this.columnSaldoFinal = base.Columns["SaldoFinal"];
-                this.columnDiferenciaCierre = base.Columns["DiferenciaCierre"];
-                this.columnEstado = base.Columns["Estado"];
-                this.columnIdentificador = base.Columns["Identificador"];
-                this.columnFecha = base.Columns["Fecha"];
-                this.columnComprobante = base.Columns["Comprobante"];
-                this.columnPersona = base.Columns["Persona"];
-                this.columnTipoOperacion = base.Columns["TipoOperacion"];
-                this.columnFormaPago = base.Columns["FormaPago"];
-                this.columnImporte = base.Columns["Importe"];
-                this.columnEfectivo = base.Columns["Efectivo"];
-                this.columnTarjeta = base.Columns["Tarjeta"];
-                this.columnCheque = base.Columns["Cheque"];
-                this.columnUsuarioActual = base.Columns["UsuarioActual"];
-                this.columnOtros = base.Columns["Otros"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-                this.columnUsuario = new global::System.Data.DataColumn("Usuario", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUsuario);
-                this.columnFechaApertura = new global::System.Data.DataColumn("FechaApertura", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFechaApertura);
-                this.columnFechaCierre = new global::System.Data.DataColumn("FechaCierre", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFechaCierre);
-                this.columnImporteApertura = new global::System.Data.DataColumn("ImporteApertura", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnImporteApertura);
-                this.columnImporteEntrega = new global::System.Data.DataColumn("ImporteEntrega", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnImporteEntrega);
-                this.columnSaldoFinal = new global::System.Data.DataColumn("SaldoFinal", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSaldoFinal);
-                this.columnDiferenciaCierre = new global::System.Data.DataColumn("DiferenciaCierre", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDiferenciaCierre);
-                this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEstado);
-                this.columnIdentificador = new global::System.Data.DataColumn("Identificador", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIdentificador);
-                this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFecha);
-                this.columnComprobante = new global::System.Data.DataColumn("Comprobante", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnComprobante);
-                this.columnPersona = new global::System.Data.DataColumn("Persona", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPersona);
-                this.columnTipoOperacion = new global::System.Data.DataColumn("TipoOperacion", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTipoOperacion);
-                this.columnFormaPago = new global::System.Data.DataColumn("FormaPago", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFormaPago);
-                this.columnImporte = new global::System.Data.DataColumn("Importe", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnImporte);
-                this.columnEfectivo = new global::System.Data.DataColumn("Efectivo", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEfectivo);
-                this.columnTarjeta = new global::System.Data.DataColumn("Tarjeta", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTarjeta);
-                this.columnCheque = new global::System.Data.DataColumn("Cheque", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCheque);
-                this.columnUsuarioActual = new global::System.Data.DataColumn("UsuarioActual", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUsuarioActual);
-                this.columnOtros = new global::System.Data.DataColumn("Otros", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOtros);
-                this.columnUsuario.ReadOnly = true;
-                this.columnUsuario.MaxLength = 100;
-                this.columnFechaApertura.ReadOnly = true;
-                this.columnFechaApertura.MaxLength = 20;
-                this.columnFechaCierre.ReadOnly = true;
-                this.columnFechaCierre.MaxLength = 20;
-                this.columnImporteApertura.ReadOnly = true;
-                this.columnImporteEntrega.ReadOnly = true;
-                this.columnSaldoFinal.ReadOnly = true;
-                this.columnDiferenciaCierre.ReadOnly = true;
-                this.columnEstado.ReadOnly = true;
-                this.columnEstado.MaxLength = 1;
-                this.columnIdentificador.ReadOnly = true;
-                this.columnIdentificador.MaxLength = 20;
-                this.columnFecha.ReadOnly = true;
-                this.columnFecha.MaxLength = 4000;
-                this.columnComprobante.ReadOnly = true;
-                this.columnComprobante.MaxLength = 150;
-                this.columnPersona.ReadOnly = true;
-                this.columnPersona.MaxLength = 201;
-                this.columnTipoOperacion.ReadOnly = true;
-                this.columnTipoOperacion.MaxLength = 100;
-                this.columnFormaPago.ReadOnly = true;
-                this.columnFormaPago.MaxLength = 2;
-                this.columnImporte.ReadOnly = true;
-                this.columnEfectivo.ReadOnly = true;
-                this.columnTarjeta.ReadOnly = true;
-                this.columnCheque.ReadOnly = true;
-                this.columnUsuarioActual.ReadOnly = true;
-                this.columnUsuarioActual.MaxLength = 100;
-                this.columnOtros.ReadOnly = true;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public sp_ReporteMovimientoCajaRow Newsp_ReporteMovimientoCajaRow() {
-                return ((sp_ReporteMovimientoCajaRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new sp_ReporteMovimientoCajaRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(sp_ReporteMovimientoCajaRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.sp_ReporteMovimientoCajaRowChanged != null)) {
-                    this.sp_ReporteMovimientoCajaRowChanged(this, new sp_ReporteMovimientoCajaRowChangeEvent(((sp_ReporteMovimientoCajaRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.sp_ReporteMovimientoCajaRowChanging != null)) {
-                    this.sp_ReporteMovimientoCajaRowChanging(this, new sp_ReporteMovimientoCajaRowChangeEvent(((sp_ReporteMovimientoCajaRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.sp_ReporteMovimientoCajaRowDeleted != null)) {
-                    this.sp_ReporteMovimientoCajaRowDeleted(this, new sp_ReporteMovimientoCajaRowChangeEvent(((sp_ReporteMovimientoCajaRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.sp_ReporteMovimientoCajaRowDeleting != null)) {
-                    this.sp_ReporteMovimientoCajaRowDeleting(this, new sp_ReporteMovimientoCajaRowChangeEvent(((sp_ReporteMovimientoCajaRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Removesp_ReporteMovimientoCajaRow(sp_ReporteMovimientoCajaRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DsReporte ds = new DsReporte();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "sp_ReporteMovimientoCajaDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class sp_ReporteServiciosRealizadosUsuarioDataTable : global::System.Data.TypedTableBase<sp_ReporteServiciosRealizadosUsuarioRow> {
             
             private global::System.Data.DataColumn columnNumeracion;
@@ -10511,6 +9982,969 @@ namespace CapaPresentacion {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "sp_ReporteFacturaDetalleDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class sp_MostrarCabeceraArqueoCajaDataTable : global::System.Data.TypedTableBase<sp_MostrarCabeceraArqueoCajaRow> {
+            
+            private global::System.Data.DataColumn columnPagoEfectivo;
+            
+            private global::System.Data.DataColumn columnPagoTarjeta;
+            
+            private global::System.Data.DataColumn columnPagoCheque;
+            
+            private global::System.Data.DataColumn columnPagoOtros;
+            
+            private global::System.Data.DataColumn columnFechaApertura;
+            
+            private global::System.Data.DataColumn columnFechaCierre;
+            
+            private global::System.Data.DataColumn columnEstado;
+            
+            private global::System.Data.DataColumn columnImporteApertura;
+            
+            private global::System.Data.DataColumn columnSaldoFinal;
+            
+            private global::System.Data.DataColumn columnImporteEntrega;
+            
+            private global::System.Data.DataColumn columnDiferencia;
+            
+            private global::System.Data.DataColumn columnUsuario;
+            
+            private global::System.Data.DataColumn columnCajaNro;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sp_MostrarCabeceraArqueoCajaDataTable() {
+                this.TableName = "sp_MostrarCabeceraArqueoCaja";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal sp_MostrarCabeceraArqueoCajaDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected sp_MostrarCabeceraArqueoCajaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PagoEfectivoColumn {
+                get {
+                    return this.columnPagoEfectivo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PagoTarjetaColumn {
+                get {
+                    return this.columnPagoTarjeta;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PagoChequeColumn {
+                get {
+                    return this.columnPagoCheque;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PagoOtrosColumn {
+                get {
+                    return this.columnPagoOtros;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FechaAperturaColumn {
+                get {
+                    return this.columnFechaApertura;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FechaCierreColumn {
+                get {
+                    return this.columnFechaCierre;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EstadoColumn {
+                get {
+                    return this.columnEstado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ImporteAperturaColumn {
+                get {
+                    return this.columnImporteApertura;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SaldoFinalColumn {
+                get {
+                    return this.columnSaldoFinal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ImporteEntregaColumn {
+                get {
+                    return this.columnImporteEntrega;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DiferenciaColumn {
+                get {
+                    return this.columnDiferencia;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UsuarioColumn {
+                get {
+                    return this.columnUsuario;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CajaNroColumn {
+                get {
+                    return this.columnCajaNro;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sp_MostrarCabeceraArqueoCajaRow this[int index] {
+                get {
+                    return ((sp_MostrarCabeceraArqueoCajaRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event sp_MostrarCabeceraArqueoCajaRowChangeEventHandler sp_MostrarCabeceraArqueoCajaRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event sp_MostrarCabeceraArqueoCajaRowChangeEventHandler sp_MostrarCabeceraArqueoCajaRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event sp_MostrarCabeceraArqueoCajaRowChangeEventHandler sp_MostrarCabeceraArqueoCajaRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event sp_MostrarCabeceraArqueoCajaRowChangeEventHandler sp_MostrarCabeceraArqueoCajaRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Addsp_MostrarCabeceraArqueoCajaRow(sp_MostrarCabeceraArqueoCajaRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sp_MostrarCabeceraArqueoCajaRow Addsp_MostrarCabeceraArqueoCajaRow(decimal PagoEfectivo, decimal PagoTarjeta, decimal PagoCheque, decimal PagoOtros, System.DateTime FechaApertura, System.DateTime FechaCierre, string Estado, decimal ImporteApertura, decimal SaldoFinal, decimal ImporteEntrega, decimal Diferencia, string Usuario, int CajaNro) {
+                sp_MostrarCabeceraArqueoCajaRow rowsp_MostrarCabeceraArqueoCajaRow = ((sp_MostrarCabeceraArqueoCajaRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        PagoEfectivo,
+                        PagoTarjeta,
+                        PagoCheque,
+                        PagoOtros,
+                        FechaApertura,
+                        FechaCierre,
+                        Estado,
+                        ImporteApertura,
+                        SaldoFinal,
+                        ImporteEntrega,
+                        Diferencia,
+                        Usuario,
+                        CajaNro};
+                rowsp_MostrarCabeceraArqueoCajaRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowsp_MostrarCabeceraArqueoCajaRow);
+                return rowsp_MostrarCabeceraArqueoCajaRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                sp_MostrarCabeceraArqueoCajaDataTable cln = ((sp_MostrarCabeceraArqueoCajaDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new sp_MostrarCabeceraArqueoCajaDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnPagoEfectivo = base.Columns["PagoEfectivo"];
+                this.columnPagoTarjeta = base.Columns["PagoTarjeta"];
+                this.columnPagoCheque = base.Columns["PagoCheque"];
+                this.columnPagoOtros = base.Columns["PagoOtros"];
+                this.columnFechaApertura = base.Columns["FechaApertura"];
+                this.columnFechaCierre = base.Columns["FechaCierre"];
+                this.columnEstado = base.Columns["Estado"];
+                this.columnImporteApertura = base.Columns["ImporteApertura"];
+                this.columnSaldoFinal = base.Columns["SaldoFinal"];
+                this.columnImporteEntrega = base.Columns["ImporteEntrega"];
+                this.columnDiferencia = base.Columns["Diferencia"];
+                this.columnUsuario = base.Columns["Usuario"];
+                this.columnCajaNro = base.Columns["CajaNro"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnPagoEfectivo = new global::System.Data.DataColumn("PagoEfectivo", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPagoEfectivo);
+                this.columnPagoTarjeta = new global::System.Data.DataColumn("PagoTarjeta", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPagoTarjeta);
+                this.columnPagoCheque = new global::System.Data.DataColumn("PagoCheque", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPagoCheque);
+                this.columnPagoOtros = new global::System.Data.DataColumn("PagoOtros", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPagoOtros);
+                this.columnFechaApertura = new global::System.Data.DataColumn("FechaApertura", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaApertura);
+                this.columnFechaCierre = new global::System.Data.DataColumn("FechaCierre", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaCierre);
+                this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEstado);
+                this.columnImporteApertura = new global::System.Data.DataColumn("ImporteApertura", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImporteApertura);
+                this.columnSaldoFinal = new global::System.Data.DataColumn("SaldoFinal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSaldoFinal);
+                this.columnImporteEntrega = new global::System.Data.DataColumn("ImporteEntrega", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImporteEntrega);
+                this.columnDiferencia = new global::System.Data.DataColumn("Diferencia", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDiferencia);
+                this.columnUsuario = new global::System.Data.DataColumn("Usuario", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUsuario);
+                this.columnCajaNro = new global::System.Data.DataColumn("CajaNro", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCajaNro);
+                this.columnFechaApertura.ReadOnly = true;
+                this.columnFechaCierre.ReadOnly = true;
+                this.columnEstado.ReadOnly = true;
+                this.columnEstado.MaxLength = 1;
+                this.columnImporteApertura.ReadOnly = true;
+                this.columnSaldoFinal.ReadOnly = true;
+                this.columnImporteEntrega.ReadOnly = true;
+                this.columnDiferencia.ReadOnly = true;
+                this.columnUsuario.ReadOnly = true;
+                this.columnUsuario.MaxLength = 20;
+                this.columnCajaNro.ReadOnly = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sp_MostrarCabeceraArqueoCajaRow Newsp_MostrarCabeceraArqueoCajaRow() {
+                return ((sp_MostrarCabeceraArqueoCajaRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new sp_MostrarCabeceraArqueoCajaRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(sp_MostrarCabeceraArqueoCajaRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.sp_MostrarCabeceraArqueoCajaRowChanged != null)) {
+                    this.sp_MostrarCabeceraArqueoCajaRowChanged(this, new sp_MostrarCabeceraArqueoCajaRowChangeEvent(((sp_MostrarCabeceraArqueoCajaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.sp_MostrarCabeceraArqueoCajaRowChanging != null)) {
+                    this.sp_MostrarCabeceraArqueoCajaRowChanging(this, new sp_MostrarCabeceraArqueoCajaRowChangeEvent(((sp_MostrarCabeceraArqueoCajaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.sp_MostrarCabeceraArqueoCajaRowDeleted != null)) {
+                    this.sp_MostrarCabeceraArqueoCajaRowDeleted(this, new sp_MostrarCabeceraArqueoCajaRowChangeEvent(((sp_MostrarCabeceraArqueoCajaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.sp_MostrarCabeceraArqueoCajaRowDeleting != null)) {
+                    this.sp_MostrarCabeceraArqueoCajaRowDeleting(this, new sp_MostrarCabeceraArqueoCajaRowChangeEvent(((sp_MostrarCabeceraArqueoCajaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Removesp_MostrarCabeceraArqueoCajaRow(sp_MostrarCabeceraArqueoCajaRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DsReporte ds = new DsReporte();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "sp_MostrarCabeceraArqueoCajaDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class sp_MostrarDetalleArqueoCajaDataTable : global::System.Data.TypedTableBase<sp_MostrarDetalleArqueoCajaRow> {
+            
+            private global::System.Data.DataColumn columnIdentificador;
+            
+            private global::System.Data.DataColumn columnFecha;
+            
+            private global::System.Data.DataColumn columnComprobante;
+            
+            private global::System.Data.DataColumn columnPersona;
+            
+            private global::System.Data.DataColumn columnTipoOperacion;
+            
+            private global::System.Data.DataColumn columnFormaPago;
+            
+            private global::System.Data.DataColumn columnImporte;
+            
+            private global::System.Data.DataColumn columnUsuario;
+            
+            private global::System.Data.DataColumn columnCajaNro;
+            
+            private global::System.Data.DataColumn columnUsuarioNro;
+            
+            private global::System.Data.DataColumn columnFechaApertura;
+            
+            private global::System.Data.DataColumn columnFechaCierre;
+            
+            private global::System.Data.DataColumn columnImporteApertura;
+            
+            private global::System.Data.DataColumn columnImporteEntrega;
+            
+            private global::System.Data.DataColumn columnSaldoFinal;
+            
+            private global::System.Data.DataColumn columnDiferenciaCierre;
+            
+            private global::System.Data.DataColumn columnEstado;
+            
+            private global::System.Data.DataColumn columnObservacion;
+            
+            private global::System.Data.DataColumn columnFechaRegistro;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sp_MostrarDetalleArqueoCajaDataTable() {
+                this.TableName = "sp_MostrarDetalleArqueoCaja";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal sp_MostrarDetalleArqueoCajaDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected sp_MostrarDetalleArqueoCajaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IdentificadorColumn {
+                get {
+                    return this.columnIdentificador;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FechaColumn {
+                get {
+                    return this.columnFecha;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ComprobanteColumn {
+                get {
+                    return this.columnComprobante;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PersonaColumn {
+                get {
+                    return this.columnPersona;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn TipoOperacionColumn {
+                get {
+                    return this.columnTipoOperacion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FormaPagoColumn {
+                get {
+                    return this.columnFormaPago;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ImporteColumn {
+                get {
+                    return this.columnImporte;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UsuarioColumn {
+                get {
+                    return this.columnUsuario;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CajaNroColumn {
+                get {
+                    return this.columnCajaNro;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UsuarioNroColumn {
+                get {
+                    return this.columnUsuarioNro;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FechaAperturaColumn {
+                get {
+                    return this.columnFechaApertura;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FechaCierreColumn {
+                get {
+                    return this.columnFechaCierre;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ImporteAperturaColumn {
+                get {
+                    return this.columnImporteApertura;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ImporteEntregaColumn {
+                get {
+                    return this.columnImporteEntrega;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SaldoFinalColumn {
+                get {
+                    return this.columnSaldoFinal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DiferenciaCierreColumn {
+                get {
+                    return this.columnDiferenciaCierre;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EstadoColumn {
+                get {
+                    return this.columnEstado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ObservacionColumn {
+                get {
+                    return this.columnObservacion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FechaRegistroColumn {
+                get {
+                    return this.columnFechaRegistro;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sp_MostrarDetalleArqueoCajaRow this[int index] {
+                get {
+                    return ((sp_MostrarDetalleArqueoCajaRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event sp_MostrarDetalleArqueoCajaRowChangeEventHandler sp_MostrarDetalleArqueoCajaRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event sp_MostrarDetalleArqueoCajaRowChangeEventHandler sp_MostrarDetalleArqueoCajaRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event sp_MostrarDetalleArqueoCajaRowChangeEventHandler sp_MostrarDetalleArqueoCajaRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event sp_MostrarDetalleArqueoCajaRowChangeEventHandler sp_MostrarDetalleArqueoCajaRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Addsp_MostrarDetalleArqueoCajaRow(sp_MostrarDetalleArqueoCajaRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sp_MostrarDetalleArqueoCajaRow Addsp_MostrarDetalleArqueoCajaRow(
+                        string Identificador, 
+                        System.DateTime Fecha, 
+                        string Comprobante, 
+                        string Persona, 
+                        string TipoOperacion, 
+                        string FormaPago, 
+                        decimal Importe, 
+                        string Usuario, 
+                        int UsuarioNro, 
+                        System.DateTime FechaApertura, 
+                        System.DateTime FechaCierre, 
+                        decimal ImporteApertura, 
+                        decimal ImporteEntrega, 
+                        decimal SaldoFinal, 
+                        decimal DiferenciaCierre, 
+                        string Estado, 
+                        string Observacion, 
+                        System.DateTime FechaRegistro) {
+                sp_MostrarDetalleArqueoCajaRow rowsp_MostrarDetalleArqueoCajaRow = ((sp_MostrarDetalleArqueoCajaRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Identificador,
+                        Fecha,
+                        Comprobante,
+                        Persona,
+                        TipoOperacion,
+                        FormaPago,
+                        Importe,
+                        Usuario,
+                        null,
+                        UsuarioNro,
+                        FechaApertura,
+                        FechaCierre,
+                        ImporteApertura,
+                        ImporteEntrega,
+                        SaldoFinal,
+                        DiferenciaCierre,
+                        Estado,
+                        Observacion,
+                        FechaRegistro};
+                rowsp_MostrarDetalleArqueoCajaRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowsp_MostrarDetalleArqueoCajaRow);
+                return rowsp_MostrarDetalleArqueoCajaRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                sp_MostrarDetalleArqueoCajaDataTable cln = ((sp_MostrarDetalleArqueoCajaDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new sp_MostrarDetalleArqueoCajaDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnIdentificador = base.Columns["Identificador"];
+                this.columnFecha = base.Columns["Fecha"];
+                this.columnComprobante = base.Columns["Comprobante"];
+                this.columnPersona = base.Columns["Persona"];
+                this.columnTipoOperacion = base.Columns["TipoOperacion"];
+                this.columnFormaPago = base.Columns["FormaPago"];
+                this.columnImporte = base.Columns["Importe"];
+                this.columnUsuario = base.Columns["Usuario"];
+                this.columnCajaNro = base.Columns["CajaNro"];
+                this.columnUsuarioNro = base.Columns["UsuarioNro"];
+                this.columnFechaApertura = base.Columns["FechaApertura"];
+                this.columnFechaCierre = base.Columns["FechaCierre"];
+                this.columnImporteApertura = base.Columns["ImporteApertura"];
+                this.columnImporteEntrega = base.Columns["ImporteEntrega"];
+                this.columnSaldoFinal = base.Columns["SaldoFinal"];
+                this.columnDiferenciaCierre = base.Columns["DiferenciaCierre"];
+                this.columnEstado = base.Columns["Estado"];
+                this.columnObservacion = base.Columns["Observacion"];
+                this.columnFechaRegistro = base.Columns["FechaRegistro"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnIdentificador = new global::System.Data.DataColumn("Identificador", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdentificador);
+                this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFecha);
+                this.columnComprobante = new global::System.Data.DataColumn("Comprobante", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnComprobante);
+                this.columnPersona = new global::System.Data.DataColumn("Persona", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPersona);
+                this.columnTipoOperacion = new global::System.Data.DataColumn("TipoOperacion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTipoOperacion);
+                this.columnFormaPago = new global::System.Data.DataColumn("FormaPago", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFormaPago);
+                this.columnImporte = new global::System.Data.DataColumn("Importe", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImporte);
+                this.columnUsuario = new global::System.Data.DataColumn("Usuario", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUsuario);
+                this.columnCajaNro = new global::System.Data.DataColumn("CajaNro", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCajaNro);
+                this.columnUsuarioNro = new global::System.Data.DataColumn("UsuarioNro", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUsuarioNro);
+                this.columnFechaApertura = new global::System.Data.DataColumn("FechaApertura", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaApertura);
+                this.columnFechaCierre = new global::System.Data.DataColumn("FechaCierre", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaCierre);
+                this.columnImporteApertura = new global::System.Data.DataColumn("ImporteApertura", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImporteApertura);
+                this.columnImporteEntrega = new global::System.Data.DataColumn("ImporteEntrega", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImporteEntrega);
+                this.columnSaldoFinal = new global::System.Data.DataColumn("SaldoFinal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSaldoFinal);
+                this.columnDiferenciaCierre = new global::System.Data.DataColumn("DiferenciaCierre", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDiferenciaCierre);
+                this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEstado);
+                this.columnObservacion = new global::System.Data.DataColumn("Observacion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnObservacion);
+                this.columnFechaRegistro = new global::System.Data.DataColumn("FechaRegistro", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaRegistro);
+                this.columnIdentificador.AllowDBNull = false;
+                this.columnIdentificador.MaxLength = 20;
+                this.columnFecha.AllowDBNull = false;
+                this.columnComprobante.MaxLength = 150;
+                this.columnPersona.MaxLength = 250;
+                this.columnTipoOperacion.AllowDBNull = false;
+                this.columnTipoOperacion.MaxLength = 100;
+                this.columnFormaPago.MaxLength = 2;
+                this.columnUsuario.MaxLength = 50;
+                this.columnCajaNro.AutoIncrement = true;
+                this.columnCajaNro.AutoIncrementSeed = -1;
+                this.columnCajaNro.AutoIncrementStep = -1;
+                this.columnCajaNro.AllowDBNull = false;
+                this.columnCajaNro.ReadOnly = true;
+                this.columnUsuarioNro.AllowDBNull = false;
+                this.columnFechaApertura.AllowDBNull = false;
+                this.columnImporteApertura.AllowDBNull = false;
+                this.columnEstado.AllowDBNull = false;
+                this.columnEstado.MaxLength = 1;
+                this.columnObservacion.MaxLength = 150;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sp_MostrarDetalleArqueoCajaRow Newsp_MostrarDetalleArqueoCajaRow() {
+                return ((sp_MostrarDetalleArqueoCajaRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new sp_MostrarDetalleArqueoCajaRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(sp_MostrarDetalleArqueoCajaRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.sp_MostrarDetalleArqueoCajaRowChanged != null)) {
+                    this.sp_MostrarDetalleArqueoCajaRowChanged(this, new sp_MostrarDetalleArqueoCajaRowChangeEvent(((sp_MostrarDetalleArqueoCajaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.sp_MostrarDetalleArqueoCajaRowChanging != null)) {
+                    this.sp_MostrarDetalleArqueoCajaRowChanging(this, new sp_MostrarDetalleArqueoCajaRowChangeEvent(((sp_MostrarDetalleArqueoCajaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.sp_MostrarDetalleArqueoCajaRowDeleted != null)) {
+                    this.sp_MostrarDetalleArqueoCajaRowDeleted(this, new sp_MostrarDetalleArqueoCajaRowChangeEvent(((sp_MostrarDetalleArqueoCajaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.sp_MostrarDetalleArqueoCajaRowDeleting != null)) {
+                    this.sp_MostrarDetalleArqueoCajaRowDeleting(this, new sp_MostrarDetalleArqueoCajaRowChangeEvent(((sp_MostrarDetalleArqueoCajaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Removesp_MostrarDetalleArqueoCajaRow(sp_MostrarDetalleArqueoCajaRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DsReporte ds = new DsReporte();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "sp_MostrarDetalleArqueoCajaDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -16129,599 +16563,6 @@ namespace CapaPresentacion {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class sp_ReporteMovimientoCajaRow : global::System.Data.DataRow {
-            
-            private sp_ReporteMovimientoCajaDataTable tablesp_ReporteMovimientoCaja;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal sp_ReporteMovimientoCajaRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tablesp_ReporteMovimientoCaja = ((sp_ReporteMovimientoCajaDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Usuario {
-                get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteMovimientoCaja.UsuarioColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Usuario\' de la tabla \'sp_ReporteMovimientoCaja\' es DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.UsuarioColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string FechaApertura {
-                get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteMovimientoCaja.FechaAperturaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaApertura\' de la tabla \'sp_ReporteMovimientoCaja\' es " +
-                                "DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.FechaAperturaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string FechaCierre {
-                get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteMovimientoCaja.FechaCierreColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaCierre\' de la tabla \'sp_ReporteMovimientoCaja\' es DB" +
-                                "Null.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.FechaCierreColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double ImporteApertura {
-                get {
-                    try {
-                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.ImporteAperturaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ImporteApertura\' de la tabla \'sp_ReporteMovimientoCaja\' e" +
-                                "s DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.ImporteAperturaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double ImporteEntrega {
-                get {
-                    try {
-                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.ImporteEntregaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ImporteEntrega\' de la tabla \'sp_ReporteMovimientoCaja\' es" +
-                                " DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.ImporteEntregaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double SaldoFinal {
-                get {
-                    try {
-                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.SaldoFinalColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SaldoFinal\' de la tabla \'sp_ReporteMovimientoCaja\' es DBN" +
-                                "ull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.SaldoFinalColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double DiferenciaCierre {
-                get {
-                    try {
-                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.DiferenciaCierreColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DiferenciaCierre\' de la tabla \'sp_ReporteMovimientoCaja\' " +
-                                "es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.DiferenciaCierreColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Estado {
-                get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteMovimientoCaja.EstadoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Estado\' de la tabla \'sp_ReporteMovimientoCaja\' es DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.EstadoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Identificador {
-                get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteMovimientoCaja.IdentificadorColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Identificador\' de la tabla \'sp_ReporteMovimientoCaja\' es " +
-                                "DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.IdentificadorColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Fecha {
-                get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteMovimientoCaja.FechaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Fecha\' de la tabla \'sp_ReporteMovimientoCaja\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.FechaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Comprobante {
-                get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteMovimientoCaja.ComprobanteColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Comprobante\' de la tabla \'sp_ReporteMovimientoCaja\' es DB" +
-                                "Null.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.ComprobanteColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Persona {
-                get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteMovimientoCaja.PersonaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Persona\' de la tabla \'sp_ReporteMovimientoCaja\' es DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.PersonaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string TipoOperacion {
-                get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteMovimientoCaja.TipoOperacionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TipoOperacion\' de la tabla \'sp_ReporteMovimientoCaja\' es " +
-                                "DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.TipoOperacionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string FormaPago {
-                get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteMovimientoCaja.FormaPagoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FormaPago\' de la tabla \'sp_ReporteMovimientoCaja\' es DBNu" +
-                                "ll.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.FormaPagoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double Importe {
-                get {
-                    try {
-                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.ImporteColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Importe\' de la tabla \'sp_ReporteMovimientoCaja\' es DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.ImporteColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double Efectivo {
-                get {
-                    try {
-                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.EfectivoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Efectivo\' de la tabla \'sp_ReporteMovimientoCaja\' es DBNul" +
-                                "l.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.EfectivoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double Tarjeta {
-                get {
-                    try {
-                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.TarjetaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Tarjeta\' de la tabla \'sp_ReporteMovimientoCaja\' es DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.TarjetaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double Cheque {
-                get {
-                    try {
-                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.ChequeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Cheque\' de la tabla \'sp_ReporteMovimientoCaja\' es DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.ChequeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string UsuarioActual {
-                get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteMovimientoCaja.UsuarioActualColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'UsuarioActual\' de la tabla \'sp_ReporteMovimientoCaja\' es " +
-                                "DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.UsuarioActualColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double Otros {
-                get {
-                    try {
-                        return ((double)(this[this.tablesp_ReporteMovimientoCaja.OtrosColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Otros\' de la tabla \'sp_ReporteMovimientoCaja\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimientoCaja.OtrosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsUsuarioNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.UsuarioColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetUsuarioNull() {
-                this[this.tablesp_ReporteMovimientoCaja.UsuarioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsFechaAperturaNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.FechaAperturaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetFechaAperturaNull() {
-                this[this.tablesp_ReporteMovimientoCaja.FechaAperturaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsFechaCierreNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.FechaCierreColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetFechaCierreNull() {
-                this[this.tablesp_ReporteMovimientoCaja.FechaCierreColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsImporteAperturaNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.ImporteAperturaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetImporteAperturaNull() {
-                this[this.tablesp_ReporteMovimientoCaja.ImporteAperturaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsImporteEntregaNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.ImporteEntregaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetImporteEntregaNull() {
-                this[this.tablesp_ReporteMovimientoCaja.ImporteEntregaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsSaldoFinalNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.SaldoFinalColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetSaldoFinalNull() {
-                this[this.tablesp_ReporteMovimientoCaja.SaldoFinalColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsDiferenciaCierreNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.DiferenciaCierreColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetDiferenciaCierreNull() {
-                this[this.tablesp_ReporteMovimientoCaja.DiferenciaCierreColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsEstadoNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.EstadoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetEstadoNull() {
-                this[this.tablesp_ReporteMovimientoCaja.EstadoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsIdentificadorNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.IdentificadorColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetIdentificadorNull() {
-                this[this.tablesp_ReporteMovimientoCaja.IdentificadorColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsFechaNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.FechaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetFechaNull() {
-                this[this.tablesp_ReporteMovimientoCaja.FechaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsComprobanteNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.ComprobanteColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetComprobanteNull() {
-                this[this.tablesp_ReporteMovimientoCaja.ComprobanteColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPersonaNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.PersonaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPersonaNull() {
-                this[this.tablesp_ReporteMovimientoCaja.PersonaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTipoOperacionNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.TipoOperacionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTipoOperacionNull() {
-                this[this.tablesp_ReporteMovimientoCaja.TipoOperacionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsFormaPagoNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.FormaPagoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetFormaPagoNull() {
-                this[this.tablesp_ReporteMovimientoCaja.FormaPagoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsImporteNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.ImporteColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetImporteNull() {
-                this[this.tablesp_ReporteMovimientoCaja.ImporteColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsEfectivoNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.EfectivoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetEfectivoNull() {
-                this[this.tablesp_ReporteMovimientoCaja.EfectivoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTarjetaNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.TarjetaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTarjetaNull() {
-                this[this.tablesp_ReporteMovimientoCaja.TarjetaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsChequeNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.ChequeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetChequeNull() {
-                this[this.tablesp_ReporteMovimientoCaja.ChequeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsUsuarioActualNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.UsuarioActualColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetUsuarioActualNull() {
-                this[this.tablesp_ReporteMovimientoCaja.UsuarioActualColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsOtrosNull() {
-                return this.IsNull(this.tablesp_ReporteMovimientoCaja.OtrosColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetOtrosNull() {
-                this[this.tablesp_ReporteMovimientoCaja.OtrosColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
         public partial class sp_ReporteServiciosRealizadosUsuarioRow : global::System.Data.DataRow {
             
             private sp_ReporteServiciosRealizadosUsuarioDataTable tablesp_ReporteServiciosRealizadosUsuario;
@@ -17402,6 +17243,820 @@ namespace CapaPresentacion {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class sp_MostrarCabeceraArqueoCajaRow : global::System.Data.DataRow {
+            
+            private sp_MostrarCabeceraArqueoCajaDataTable tablesp_MostrarCabeceraArqueoCaja;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal sp_MostrarCabeceraArqueoCajaRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablesp_MostrarCabeceraArqueoCaja = ((sp_MostrarCabeceraArqueoCajaDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal PagoEfectivo {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_MostrarCabeceraArqueoCaja.PagoEfectivoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PagoEfectivo\' de la tabla \'sp_MostrarCabeceraArqueoCaja\' " +
+                                "es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarCabeceraArqueoCaja.PagoEfectivoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal PagoTarjeta {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_MostrarCabeceraArqueoCaja.PagoTarjetaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PagoTarjeta\' de la tabla \'sp_MostrarCabeceraArqueoCaja\' e" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarCabeceraArqueoCaja.PagoTarjetaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal PagoCheque {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_MostrarCabeceraArqueoCaja.PagoChequeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PagoCheque\' de la tabla \'sp_MostrarCabeceraArqueoCaja\' es" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarCabeceraArqueoCaja.PagoChequeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal PagoOtros {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_MostrarCabeceraArqueoCaja.PagoOtrosColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PagoOtros\' de la tabla \'sp_MostrarCabeceraArqueoCaja\' es " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarCabeceraArqueoCaja.PagoOtrosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime FechaApertura {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablesp_MostrarCabeceraArqueoCaja.FechaAperturaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaApertura\' de la tabla \'sp_MostrarCabeceraArqueoCaja\'" +
+                                " es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarCabeceraArqueoCaja.FechaAperturaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime FechaCierre {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablesp_MostrarCabeceraArqueoCaja.FechaCierreColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaCierre\' de la tabla \'sp_MostrarCabeceraArqueoCaja\' e" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarCabeceraArqueoCaja.FechaCierreColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Estado {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_MostrarCabeceraArqueoCaja.EstadoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Estado\' de la tabla \'sp_MostrarCabeceraArqueoCaja\' es DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarCabeceraArqueoCaja.EstadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal ImporteApertura {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_MostrarCabeceraArqueoCaja.ImporteAperturaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ImporteApertura\' de la tabla \'sp_MostrarCabeceraArqueoCaj" +
+                                "a\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarCabeceraArqueoCaja.ImporteAperturaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal SaldoFinal {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_MostrarCabeceraArqueoCaja.SaldoFinalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SaldoFinal\' de la tabla \'sp_MostrarCabeceraArqueoCaja\' es" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarCabeceraArqueoCaja.SaldoFinalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal ImporteEntrega {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_MostrarCabeceraArqueoCaja.ImporteEntregaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ImporteEntrega\' de la tabla \'sp_MostrarCabeceraArqueoCaja" +
+                                "\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarCabeceraArqueoCaja.ImporteEntregaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal Diferencia {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_MostrarCabeceraArqueoCaja.DiferenciaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Diferencia\' de la tabla \'sp_MostrarCabeceraArqueoCaja\' es" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarCabeceraArqueoCaja.DiferenciaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Usuario {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_MostrarCabeceraArqueoCaja.UsuarioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Usuario\' de la tabla \'sp_MostrarCabeceraArqueoCaja\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarCabeceraArqueoCaja.UsuarioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int CajaNro {
+                get {
+                    try {
+                        return ((int)(this[this.tablesp_MostrarCabeceraArqueoCaja.CajaNroColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CajaNro\' de la tabla \'sp_MostrarCabeceraArqueoCaja\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarCabeceraArqueoCaja.CajaNroColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPagoEfectivoNull() {
+                return this.IsNull(this.tablesp_MostrarCabeceraArqueoCaja.PagoEfectivoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPagoEfectivoNull() {
+                this[this.tablesp_MostrarCabeceraArqueoCaja.PagoEfectivoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPagoTarjetaNull() {
+                return this.IsNull(this.tablesp_MostrarCabeceraArqueoCaja.PagoTarjetaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPagoTarjetaNull() {
+                this[this.tablesp_MostrarCabeceraArqueoCaja.PagoTarjetaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPagoChequeNull() {
+                return this.IsNull(this.tablesp_MostrarCabeceraArqueoCaja.PagoChequeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPagoChequeNull() {
+                this[this.tablesp_MostrarCabeceraArqueoCaja.PagoChequeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPagoOtrosNull() {
+                return this.IsNull(this.tablesp_MostrarCabeceraArqueoCaja.PagoOtrosColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPagoOtrosNull() {
+                this[this.tablesp_MostrarCabeceraArqueoCaja.PagoOtrosColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFechaAperturaNull() {
+                return this.IsNull(this.tablesp_MostrarCabeceraArqueoCaja.FechaAperturaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFechaAperturaNull() {
+                this[this.tablesp_MostrarCabeceraArqueoCaja.FechaAperturaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFechaCierreNull() {
+                return this.IsNull(this.tablesp_MostrarCabeceraArqueoCaja.FechaCierreColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFechaCierreNull() {
+                this[this.tablesp_MostrarCabeceraArqueoCaja.FechaCierreColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsEstadoNull() {
+                return this.IsNull(this.tablesp_MostrarCabeceraArqueoCaja.EstadoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetEstadoNull() {
+                this[this.tablesp_MostrarCabeceraArqueoCaja.EstadoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsImporteAperturaNull() {
+                return this.IsNull(this.tablesp_MostrarCabeceraArqueoCaja.ImporteAperturaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetImporteAperturaNull() {
+                this[this.tablesp_MostrarCabeceraArqueoCaja.ImporteAperturaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsSaldoFinalNull() {
+                return this.IsNull(this.tablesp_MostrarCabeceraArqueoCaja.SaldoFinalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetSaldoFinalNull() {
+                this[this.tablesp_MostrarCabeceraArqueoCaja.SaldoFinalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsImporteEntregaNull() {
+                return this.IsNull(this.tablesp_MostrarCabeceraArqueoCaja.ImporteEntregaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetImporteEntregaNull() {
+                this[this.tablesp_MostrarCabeceraArqueoCaja.ImporteEntregaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsDiferenciaNull() {
+                return this.IsNull(this.tablesp_MostrarCabeceraArqueoCaja.DiferenciaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetDiferenciaNull() {
+                this[this.tablesp_MostrarCabeceraArqueoCaja.DiferenciaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUsuarioNull() {
+                return this.IsNull(this.tablesp_MostrarCabeceraArqueoCaja.UsuarioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUsuarioNull() {
+                this[this.tablesp_MostrarCabeceraArqueoCaja.UsuarioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsCajaNroNull() {
+                return this.IsNull(this.tablesp_MostrarCabeceraArqueoCaja.CajaNroColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetCajaNroNull() {
+                this[this.tablesp_MostrarCabeceraArqueoCaja.CajaNroColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class sp_MostrarDetalleArqueoCajaRow : global::System.Data.DataRow {
+            
+            private sp_MostrarDetalleArqueoCajaDataTable tablesp_MostrarDetalleArqueoCaja;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal sp_MostrarDetalleArqueoCajaRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablesp_MostrarDetalleArqueoCaja = ((sp_MostrarDetalleArqueoCajaDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Identificador {
+                get {
+                    return ((string)(this[this.tablesp_MostrarDetalleArqueoCaja.IdentificadorColumn]));
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.IdentificadorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime Fecha {
+                get {
+                    return ((global::System.DateTime)(this[this.tablesp_MostrarDetalleArqueoCaja.FechaColumn]));
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.FechaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Comprobante {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_MostrarDetalleArqueoCaja.ComprobanteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Comprobante\' de la tabla \'sp_MostrarDetalleArqueoCaja\' es" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.ComprobanteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Persona {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_MostrarDetalleArqueoCaja.PersonaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Persona\' de la tabla \'sp_MostrarDetalleArqueoCaja\' es DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.PersonaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string TipoOperacion {
+                get {
+                    return ((string)(this[this.tablesp_MostrarDetalleArqueoCaja.TipoOperacionColumn]));
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.TipoOperacionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string FormaPago {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_MostrarDetalleArqueoCaja.FormaPagoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FormaPago\' de la tabla \'sp_MostrarDetalleArqueoCaja\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.FormaPagoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal Importe {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_MostrarDetalleArqueoCaja.ImporteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Importe\' de la tabla \'sp_MostrarDetalleArqueoCaja\' es DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.ImporteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Usuario {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_MostrarDetalleArqueoCaja.UsuarioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Usuario\' de la tabla \'sp_MostrarDetalleArqueoCaja\' es DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.UsuarioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int CajaNro {
+                get {
+                    return ((int)(this[this.tablesp_MostrarDetalleArqueoCaja.CajaNroColumn]));
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.CajaNroColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int UsuarioNro {
+                get {
+                    return ((int)(this[this.tablesp_MostrarDetalleArqueoCaja.UsuarioNroColumn]));
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.UsuarioNroColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime FechaApertura {
+                get {
+                    return ((global::System.DateTime)(this[this.tablesp_MostrarDetalleArqueoCaja.FechaAperturaColumn]));
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.FechaAperturaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime FechaCierre {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablesp_MostrarDetalleArqueoCaja.FechaCierreColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaCierre\' de la tabla \'sp_MostrarDetalleArqueoCaja\' es" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.FechaCierreColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal ImporteApertura {
+                get {
+                    return ((decimal)(this[this.tablesp_MostrarDetalleArqueoCaja.ImporteAperturaColumn]));
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.ImporteAperturaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal ImporteEntrega {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_MostrarDetalleArqueoCaja.ImporteEntregaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ImporteEntrega\' de la tabla \'sp_MostrarDetalleArqueoCaja\'" +
+                                " es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.ImporteEntregaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal SaldoFinal {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_MostrarDetalleArqueoCaja.SaldoFinalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SaldoFinal\' de la tabla \'sp_MostrarDetalleArqueoCaja\' es " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.SaldoFinalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal DiferenciaCierre {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_MostrarDetalleArqueoCaja.DiferenciaCierreColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DiferenciaCierre\' de la tabla \'sp_MostrarDetalleArqueoCaj" +
+                                "a\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.DiferenciaCierreColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Estado {
+                get {
+                    return ((string)(this[this.tablesp_MostrarDetalleArqueoCaja.EstadoColumn]));
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.EstadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Observacion {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_MostrarDetalleArqueoCaja.ObservacionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Observacion\' de la tabla \'sp_MostrarDetalleArqueoCaja\' es" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.ObservacionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime FechaRegistro {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablesp_MostrarDetalleArqueoCaja.FechaRegistroColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaRegistro\' de la tabla \'sp_MostrarDetalleArqueoCaja\' " +
+                                "es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.FechaRegistroColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsComprobanteNull() {
+                return this.IsNull(this.tablesp_MostrarDetalleArqueoCaja.ComprobanteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetComprobanteNull() {
+                this[this.tablesp_MostrarDetalleArqueoCaja.ComprobanteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPersonaNull() {
+                return this.IsNull(this.tablesp_MostrarDetalleArqueoCaja.PersonaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPersonaNull() {
+                this[this.tablesp_MostrarDetalleArqueoCaja.PersonaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFormaPagoNull() {
+                return this.IsNull(this.tablesp_MostrarDetalleArqueoCaja.FormaPagoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFormaPagoNull() {
+                this[this.tablesp_MostrarDetalleArqueoCaja.FormaPagoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsImporteNull() {
+                return this.IsNull(this.tablesp_MostrarDetalleArqueoCaja.ImporteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetImporteNull() {
+                this[this.tablesp_MostrarDetalleArqueoCaja.ImporteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUsuarioNull() {
+                return this.IsNull(this.tablesp_MostrarDetalleArqueoCaja.UsuarioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUsuarioNull() {
+                this[this.tablesp_MostrarDetalleArqueoCaja.UsuarioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFechaCierreNull() {
+                return this.IsNull(this.tablesp_MostrarDetalleArqueoCaja.FechaCierreColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFechaCierreNull() {
+                this[this.tablesp_MostrarDetalleArqueoCaja.FechaCierreColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsImporteEntregaNull() {
+                return this.IsNull(this.tablesp_MostrarDetalleArqueoCaja.ImporteEntregaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetImporteEntregaNull() {
+                this[this.tablesp_MostrarDetalleArqueoCaja.ImporteEntregaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsSaldoFinalNull() {
+                return this.IsNull(this.tablesp_MostrarDetalleArqueoCaja.SaldoFinalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetSaldoFinalNull() {
+                this[this.tablesp_MostrarDetalleArqueoCaja.SaldoFinalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsDiferenciaCierreNull() {
+                return this.IsNull(this.tablesp_MostrarDetalleArqueoCaja.DiferenciaCierreColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetDiferenciaCierreNull() {
+                this[this.tablesp_MostrarDetalleArqueoCaja.DiferenciaCierreColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsObservacionNull() {
+                return this.IsNull(this.tablesp_MostrarDetalleArqueoCaja.ObservacionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetObservacionNull() {
+                this[this.tablesp_MostrarDetalleArqueoCaja.ObservacionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFechaRegistroNull() {
+                return this.IsNull(this.tablesp_MostrarDetalleArqueoCaja.FechaRegistroColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFechaRegistroNull() {
+                this[this.tablesp_MostrarDetalleArqueoCaja.FechaRegistroColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -18017,40 +18672,6 @@ namespace CapaPresentacion {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class sp_ReporteMovimientoCajaRowChangeEvent : global::System.EventArgs {
-            
-            private sp_ReporteMovimientoCajaRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public sp_ReporteMovimientoCajaRowChangeEvent(sp_ReporteMovimientoCajaRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public sp_ReporteMovimientoCajaRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public class sp_ReporteServiciosRealizadosUsuarioRowChangeEvent : global::System.EventArgs {
             
             private sp_ReporteServiciosRealizadosUsuarioRow eventRow;
@@ -18135,6 +18756,74 @@ namespace CapaPresentacion {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public sp_ReporteFacturaDetalleRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class sp_MostrarCabeceraArqueoCajaRowChangeEvent : global::System.EventArgs {
+            
+            private sp_MostrarCabeceraArqueoCajaRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sp_MostrarCabeceraArqueoCajaRowChangeEvent(sp_MostrarCabeceraArqueoCajaRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sp_MostrarCabeceraArqueoCajaRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class sp_MostrarDetalleArqueoCajaRowChangeEvent : global::System.EventArgs {
+            
+            private sp_MostrarDetalleArqueoCajaRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sp_MostrarDetalleArqueoCajaRowChangeEvent(sp_MostrarDetalleArqueoCajaRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public sp_MostrarDetalleArqueoCajaRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -21823,365 +22512,6 @@ namespace CapaPresentacion.DsReporteTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class sp_ReporteMovimientoCajaTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public sp_ReporteMovimientoCajaTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "sp_ReporteMovimientoCaja";
-            tableMapping.ColumnMappings.Add("Usuario", "Usuario");
-            tableMapping.ColumnMappings.Add("FechaApertura", "FechaApertura");
-            tableMapping.ColumnMappings.Add("FechaCierre", "FechaCierre");
-            tableMapping.ColumnMappings.Add("Estado", "Estado");
-            tableMapping.ColumnMappings.Add("Identificador", "Identificador");
-            tableMapping.ColumnMappings.Add("Comprobante", "Comprobante");
-            tableMapping.ColumnMappings.Add("Persona", "Persona");
-            tableMapping.ColumnMappings.Add("TipoOperacion", "TipoOperacion");
-            tableMapping.ColumnMappings.Add("FormaPago", "FormaPago");
-            tableMapping.ColumnMappings.Add("UsuarioActual", "UsuarioActual");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "dbo.sp_ReporteMovimientoCaja";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Desde", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Hasta", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Usuario", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaApertura", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaCierre", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ImporteApertura", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ImporteEntrega", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SaldoFinal", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DiferenciaCierre", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Efectivo", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tarjeta", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cheque", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Otros", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Estado", global::System.Data.SqlDbType.Char, 1, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DsReporte.sp_ReporteMovimientoCajaDataTable dataTable, string Desde, string Hasta, string Usuario, string FechaApertura, string FechaCierre, global::System.Nullable<decimal> ImporteApertura, global::System.Nullable<decimal> ImporteEntrega, global::System.Nullable<decimal> SaldoFinal, global::System.Nullable<decimal> DiferenciaCierre, global::System.Nullable<decimal> Efectivo, global::System.Nullable<decimal> Tarjeta, global::System.Nullable<decimal> Cheque, global::System.Nullable<decimal> Otros, string Estado) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((Desde == null)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Desde));
-            }
-            if ((Hasta == null)) {
-                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(Hasta));
-            }
-            if ((Usuario == null)) {
-                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(Usuario));
-            }
-            if ((FechaApertura == null)) {
-                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(FechaApertura));
-            }
-            if ((FechaCierre == null)) {
-                this.Adapter.SelectCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(FechaCierre));
-            }
-            if ((ImporteApertura.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[6].Value = ((decimal)(ImporteApertura.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((ImporteEntrega.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[7].Value = ((decimal)(ImporteEntrega.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((SaldoFinal.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[8].Value = ((decimal)(SaldoFinal.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((DiferenciaCierre.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[9].Value = ((decimal)(DiferenciaCierre.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            if ((Efectivo.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[10].Value = ((decimal)(Efectivo.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((Tarjeta.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[11].Value = ((decimal)(Tarjeta.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            if ((Cheque.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[12].Value = ((decimal)(Cheque.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((Otros.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[13].Value = ((decimal)(Otros.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            if ((Estado == null)) {
-                this.Adapter.SelectCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[14].Value = ((string)(Estado));
-            }
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DsReporte.sp_ReporteMovimientoCajaDataTable GetData(string Desde, string Hasta, string Usuario, string FechaApertura, string FechaCierre, global::System.Nullable<decimal> ImporteApertura, global::System.Nullable<decimal> ImporteEntrega, global::System.Nullable<decimal> SaldoFinal, global::System.Nullable<decimal> DiferenciaCierre, global::System.Nullable<decimal> Efectivo, global::System.Nullable<decimal> Tarjeta, global::System.Nullable<decimal> Cheque, global::System.Nullable<decimal> Otros, string Estado) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((Desde == null)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Desde));
-            }
-            if ((Hasta == null)) {
-                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(Hasta));
-            }
-            if ((Usuario == null)) {
-                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(Usuario));
-            }
-            if ((FechaApertura == null)) {
-                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(FechaApertura));
-            }
-            if ((FechaCierre == null)) {
-                this.Adapter.SelectCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[5].Value = ((string)(FechaCierre));
-            }
-            if ((ImporteApertura.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[6].Value = ((decimal)(ImporteApertura.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((ImporteEntrega.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[7].Value = ((decimal)(ImporteEntrega.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((SaldoFinal.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[8].Value = ((decimal)(SaldoFinal.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((DiferenciaCierre.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[9].Value = ((decimal)(DiferenciaCierre.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            if ((Efectivo.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[10].Value = ((decimal)(Efectivo.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((Tarjeta.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[11].Value = ((decimal)(Tarjeta.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            if ((Cheque.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[12].Value = ((decimal)(Cheque.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((Otros.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[13].Value = ((decimal)(Otros.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            if ((Estado == null)) {
-                this.Adapter.SelectCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[14].Value = ((string)(Estado));
-            }
-            DsReporte.sp_ReporteMovimientoCajaDataTable dataTable = new DsReporte.sp_ReporteMovimientoCajaDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class sp_ReporteServiciosRealizadosUsuarioTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
@@ -22748,6 +23078,398 @@ namespace CapaPresentacion.DsReporteTableAdapters {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             DsReporte.sp_ReporteFacturaDetalleDataTable dataTable = new DsReporte.sp_ReporteFacturaDetalleDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class sp_MostrarCabeceraArqueoCajaTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public sp_MostrarCabeceraArqueoCajaTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "sp_MostrarCabeceraArqueoCaja";
+            tableMapping.ColumnMappings.Add("PagoEfectivo", "PagoEfectivo");
+            tableMapping.ColumnMappings.Add("PagoTarjeta", "PagoTarjeta");
+            tableMapping.ColumnMappings.Add("PagoCheque", "PagoCheque");
+            tableMapping.ColumnMappings.Add("PagoOtros", "PagoOtros");
+            tableMapping.ColumnMappings.Add("FechaApertura", "FechaApertura");
+            tableMapping.ColumnMappings.Add("FechaCierre", "FechaCierre");
+            tableMapping.ColumnMappings.Add("Estado", "Estado");
+            tableMapping.ColumnMappings.Add("ImporteApertura", "ImporteApertura");
+            tableMapping.ColumnMappings.Add("SaldoFinal", "SaldoFinal");
+            tableMapping.ColumnMappings.Add("ImporteEntrega", "ImporteEntrega");
+            tableMapping.ColumnMappings.Add("Diferencia", "Diferencia");
+            tableMapping.ColumnMappings.Add("Usuario", "Usuario");
+            tableMapping.ColumnMappings.Add("CajaNro", "CajaNro");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "dbo.sp_MostrarCabeceraArqueoCaja";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CajaNro", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DsReporte.sp_MostrarCabeceraArqueoCajaDataTable dataTable, global::System.Nullable<int> CajaNro) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((CajaNro.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(CajaNro.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DsReporte.sp_MostrarCabeceraArqueoCajaDataTable GetData(global::System.Nullable<int> CajaNro) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((CajaNro.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(CajaNro.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            DsReporte.sp_MostrarCabeceraArqueoCajaDataTable dataTable = new DsReporte.sp_MostrarCabeceraArqueoCajaDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class sp_MostrarDetalleArqueoCajaTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public sp_MostrarDetalleArqueoCajaTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "sp_MostrarDetalleArqueoCaja";
+            tableMapping.ColumnMappings.Add("Identificador", "Identificador");
+            tableMapping.ColumnMappings.Add("Fecha", "Fecha");
+            tableMapping.ColumnMappings.Add("Comprobante", "Comprobante");
+            tableMapping.ColumnMappings.Add("Persona", "Persona");
+            tableMapping.ColumnMappings.Add("TipoOperacion", "TipoOperacion");
+            tableMapping.ColumnMappings.Add("FormaPago", "FormaPago");
+            tableMapping.ColumnMappings.Add("Importe", "Importe");
+            tableMapping.ColumnMappings.Add("Usuario", "Usuario");
+            tableMapping.ColumnMappings.Add("CajaNro", "CajaNro");
+            tableMapping.ColumnMappings.Add("UsuarioNro", "UsuarioNro");
+            tableMapping.ColumnMappings.Add("FechaApertura", "FechaApertura");
+            tableMapping.ColumnMappings.Add("FechaCierre", "FechaCierre");
+            tableMapping.ColumnMappings.Add("ImporteApertura", "ImporteApertura");
+            tableMapping.ColumnMappings.Add("ImporteEntrega", "ImporteEntrega");
+            tableMapping.ColumnMappings.Add("SaldoFinal", "SaldoFinal");
+            tableMapping.ColumnMappings.Add("DiferenciaCierre", "DiferenciaCierre");
+            tableMapping.ColumnMappings.Add("Estado", "Estado");
+            tableMapping.ColumnMappings.Add("Observacion", "Observacion");
+            tableMapping.ColumnMappings.Add("FechaRegistro", "FechaRegistro");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "dbo.sp_MostrarDetalleArqueoCaja";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CajaNro", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DsReporte.sp_MostrarDetalleArqueoCajaDataTable dataTable, global::System.Nullable<int> CajaNro) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((CajaNro.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(CajaNro.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DsReporte.sp_MostrarDetalleArqueoCajaDataTable GetData(global::System.Nullable<int> CajaNro) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((CajaNro.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(CajaNro.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            DsReporte.sp_MostrarDetalleArqueoCajaDataTable dataTable = new DsReporte.sp_MostrarDetalleArqueoCajaDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

@@ -29,20 +29,43 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.spMostrarCabeceraArqueoCajaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.spMostrarDetalleArqueoCajaBindingSource = new System.Windows.Forms.BindingSource(this.components);            
+
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.DsReporte = new CapaPresentacion.DsReporte();
-            this.sp_ReporteMovimientoCajaTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteMovimientoCajaTableAdapter();
-            this.sp_ReporteMovimientoCajaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sp_MostrarCabeceraArqueoCajaTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_MostrarCabeceraArqueoCajaTableAdapter();
+            this.sp_MostrarDetalleArqueoCajaTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_MostrarDetalleArqueoCajaTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.spMostrarCabeceraArqueoCajaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spMostrarDetalleArqueoCajaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sp_ReporteMovimientoCajaBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // sp_ReporteFacturaBindingSource
+            // 
+            this.spMostrarCabeceraArqueoCajaBindingSource.DataMember = "sp_MostrarCabeceraArqueoCaja";
+            this.spMostrarCabeceraArqueoCajaBindingSource.DataSource = this.DsReporte;
+            // 
+            // DsReporte
+            // 
+            this.DsReporte.DataSetName = "DsReporte";
+            this.DsReporte.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // spReporteFacturaDetalleBindingSource
+            // 
+            this.spMostrarDetalleArqueoCajaBindingSource.DataMember = "sp_MostrarDetalleArqueoCaja";
+            this.spMostrarDetalleArqueoCajaBindingSource.DataSource = this.DsReporte;
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource2.Name = "DsMovimientoCaja";
-            reportDataSource2.Value = this.sp_ReporteMovimientoCajaBindingSource;
+            reportDataSource1.Name = "DsCabecera";
+            reportDataSource1.Value = this.spMostrarCabeceraArqueoCajaBindingSource;
+            reportDataSource2.Name = "DsDetalle";
+            reportDataSource2.Value = this.spMostrarDetalleArqueoCajaBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "CapaPresentacion.Informes.ReporteMovimientoCaja.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
@@ -56,14 +79,13 @@
             this.DsReporte.DataSetName = "DsReporte";
             this.DsReporte.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // sp_ReporteMovimientoCajaTableAdapter
+            // sp_MostrarCabeceraArqueoCajaTableAdapter
             // 
-            this.sp_ReporteMovimientoCajaTableAdapter.ClearBeforeFill = true;
+            this.sp_MostrarCabeceraArqueoCajaTableAdapter.ClearBeforeFill = true;
             // 
-            // sp_ReporteMovimientoCajaBindingSource
+            // sp_MostrarDetalleArqueoCajaTableAdapter
             // 
-            this.sp_ReporteMovimientoCajaBindingSource.DataMember = "sp_ReporteMovimientoCaja";
-            this.sp_ReporteMovimientoCajaBindingSource.DataSource = this.DsReporte;
+            this.sp_MostrarDetalleArqueoCajaTableAdapter.ClearBeforeFill = true;
             // 
             // FrmInformeMovimientoCaja
             // 
@@ -74,8 +96,9 @@
             this.Name = "FrmInformeMovimientoCaja";
             this.Text = "FrmInformeMovimientoCaja";
             this.Load += new System.EventHandler(this.FrmInformeMovimientoCaja_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.spMostrarCabeceraArqueoCajaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spMostrarDetalleArqueoCajaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sp_ReporteMovimientoCajaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -83,8 +106,11 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private DsReporte DsReporte;
-        private DsReporteTableAdapters.sp_ReporteMovimientoCajaTableAdapter sp_ReporteMovimientoCajaTableAdapter;
         private System.Windows.Forms.BindingSource sp_ReporteMovimientoCajaBindingSource;
+        private System.Windows.Forms.BindingSource spMostrarCabeceraArqueoCajaBindingSource;
+        private System.Windows.Forms.BindingSource spMostrarDetalleArqueoCajaBindingSource;
+        private DsReporteTableAdapters.sp_MostrarCabeceraArqueoCajaTableAdapter sp_MostrarCabeceraArqueoCajaTableAdapter;
+        private DsReporteTableAdapters.sp_MostrarDetalleArqueoCajaTableAdapter sp_MostrarDetalleArqueoCajaTableAdapter;
+        private DsReporte DsReporte;
     }
 }

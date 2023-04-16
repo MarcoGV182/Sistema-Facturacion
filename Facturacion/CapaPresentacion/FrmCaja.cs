@@ -86,7 +86,7 @@ namespace CapaPresentacion
                 }
                 #endregion
 
-                rpta = NCaja.InsertarCaja(this.dtpFechaApertura.Value, Convert.ToInt32(this.id), Convert.ToDecimal(this.txtMonto.Text), this.txtObservacion.Text);
+                rpta = NCaja.InsertarCaja(this.dtpFechaApertura.Value, Convert.ToInt32(this.id), Convert.ToDouble(this.txtMonto.Text), this.txtObservacion.Text);
                 //si se esta editando el registro    
 
                 if (rpta.Equals("OK"))

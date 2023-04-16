@@ -64,6 +64,8 @@
             this.dataListado = new System.Windows.Forms.DataGridView();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
+            this.txtOtros = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.gbCaja.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
@@ -436,11 +438,36 @@
             // 
             this.ttMensaje.IsBalloon = true;
             // 
+            // txtOtros
+            // 
+            this.txtOtros.BackColor = System.Drawing.Color.Gainsboro;
+            this.txtOtros.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtOtros.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOtros.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.txtOtros.Location = new System.Drawing.Point(519, 371);
+            this.txtOtros.Name = "txtOtros";
+            this.txtOtros.ReadOnly = true;
+            this.txtOtros.Size = new System.Drawing.Size(156, 18);
+            this.txtOtros.TabIndex = 27;
+            this.txtOtros.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(447, 371);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(51, 17);
+            this.label15.TabIndex = 26;
+            this.label15.Text = "Otros:";
+            // 
             // FrmCierreCaja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1135, 397);
+            this.Controls.Add(this.txtOtros);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.txtDiferencia);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label11);
@@ -519,5 +546,7 @@
         private System.Windows.Forms.DataGridView dataListado;
         private System.Windows.Forms.ErrorProvider errorIcono;
         private System.Windows.Forms.ToolTip ttMensaje;
+        private System.Windows.Forms.TextBox txtOtros;
+        private System.Windows.Forms.Label label15;
     }
 }

@@ -26,6 +26,7 @@ namespace CapaPresentacion
         private double egreso = 0;
 
         //ATRIBUTOS CAJA
+        int CajaNro = 0;
         private string Usuariocaja ="";
         private string FechaApertura="";
         private string FechaCierre="";
@@ -145,7 +146,8 @@ namespace CapaPresentacion
         {
             this.txtingreso.Text = 0.ToString();
             this.txtegreso.Text = 0.ToString();
-            this.dataListado.DataSource = NMovimiento.BuscarFechaMovimientoCaja(this.dataResumenCaja.CurrentRow.Cells["FechaApertura"].Value.ToString(), this.dataResumenCaja.CurrentRow.Cells["FechaCierre"].Value.ToString());
+            this.dataListado.DataSource = NMovimiento.BuscarFechaMovimientoCaja(this.dataResumenCaja.CurrentRow.Cells["FechaApertura"].Value.ToString(), 
+                                                                                this.dataResumenCaja.CurrentRow.Cells["FechaCierre"].Value.ToString());
             //lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
             this.TotalesMovimiento();
            
@@ -204,6 +206,7 @@ namespace CapaPresentacion
             try
             {
                 //CargarVariables
+                CajaNro = Convert.ToInt32(this.dataResumenCaja.CurrentRow.Cells["CajaNro"].Value);
                 this.Usuariocaja = this.dataResumenCaja.CurrentRow.Cells["Usuario"].Value.ToString();
                 this.FechaApertura = this.dataResumenCaja.CurrentRow.Cells["FechaApertura"].Value.ToString();
                 this.FechaCierre = this.dataResumenCaja.CurrentRow.Cells["FechaCierre"].Value.ToString();
@@ -253,17 +256,7 @@ namespace CapaPresentacion
                 if (dataListado.Rows.Count>0)
                 {
                     FrmInformeMovimientoCaja frm = new FrmInformeMovimientoCaja();
-                    frm.Usuario = Usuariocaja;
-                    frm.FechaApertura = FechaApertura;
-                    frm.FechaCierre = FechaCierre;
-                    frm.ImporteApertura = ImporteApertura;
-                    frm.ImporteEntrega = ImporteEntrega;
-                    frm.DiferenciaCierre = DiferenciaCierre;
-                    frm.SaldoFinal = SaldoFinal;
-                    frm.Estado = Estado;
-                    frm.Efectivo =Convert.ToDouble(this.txtEfectivo.Text);
-                    frm.tarjeta= Convert.ToDouble(this.txtTarjeta.Text);
-                    frm.Cheque= Convert.ToDouble(this.txtCheque.Text);
+                    frm.CajaNro = CajaNro;                    
                     frm.ShowDialog();
                 }
                 else
