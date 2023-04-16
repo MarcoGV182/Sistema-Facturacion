@@ -81,8 +81,8 @@ namespace CapaDatos
                 //Parametros Fecha Nacimiento
                 SqlParameter ParFechaNacimiento = new SqlParameter();
                 ParFechaNacimiento.ParameterName = "@fechaNacimiento";
-                ParFechaNacimiento.SqlDbType = SqlDbType.DateTime;
-                ParFechaNacimiento.Value = Colaborador;
+                ParFechaNacimiento.SqlDbType = SqlDbType.Date;
+                ParFechaNacimiento.Value = Colaborador.FechaNacimiento.Value.Date;
                 SqlCmd.Parameters.Add(ParFechaNacimiento);
 
                 //Parametros Ciudad
@@ -135,7 +135,7 @@ namespace CapaDatos
                 SqlParameter ParFechaIngreso = new SqlParameter();
                 ParFechaIngreso.ParameterName = "@FechaIngreso";
                 ParFechaIngreso.SqlDbType = SqlDbType.Date;
-                ParFechaIngreso.Value = Colaborador.FechaIngreso;
+                ParFechaIngreso.Value = Colaborador.FechaIngreso.Date;
                 SqlCmd.Parameters.Add(ParFechaIngreso);
 
                 

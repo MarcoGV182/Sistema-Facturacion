@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -78,6 +79,19 @@ namespace CapaPresentacion.Utilidades
                 // Mover el cursor al final del texto
                 textBox.SelectionStart = formattedNumber.Length;
             }
+        }
+
+
+        public static bool ValidarDireccionCorreo(string email) 
+        {
+            string emailRegex = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+
+            if (!Regex.IsMatch(email, emailRegex))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

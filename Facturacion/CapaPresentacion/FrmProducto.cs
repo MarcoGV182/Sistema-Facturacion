@@ -289,10 +289,11 @@ namespace CapaPresentacion
             this.Botones();
             this.Limpiar();
             this.Habilitar(true);
+
             this.cboEstado.SelectedIndex = 0;
             this.txtCodigoBarra.Focus();
             this.txtCodigo.Visible = true;
-            this.txtStockActual.Enabled = true;             
+            this.txtStockActual.Enabled = false;             
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

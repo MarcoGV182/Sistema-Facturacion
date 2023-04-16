@@ -567,7 +567,7 @@ namespace CapaPresentacion
 
         private void tiposDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmTipoUsuario frm = FrmTipoUsuario.GetInstancia();
+            FrmRoles frm = FrmRoles.GetInstancia();
             frm.MdiParent = this;
             frm.Show();
         }

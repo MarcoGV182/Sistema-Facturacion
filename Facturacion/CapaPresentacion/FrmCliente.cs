@@ -253,7 +253,15 @@ namespace CapaPresentacion
                 this.MensajeError("Falta algunos datos");
                 errorIcono.SetError(txtDocumento, "Ingrese el Nro de documento");
                 return false;
-            }            
+            }
+
+
+            if (!string.IsNullOrWhiteSpace(txtEmail.Text) && !ControlesCompartidos.ValidarDireccionCorreo(txtEmail.Text))
+            {
+                this.MensajeError("Formato incorrecto");
+                errorIcono.SetError(txtEmail, "Favor verifique que el formato del correo sea correcto");
+                return false;
+            }
 
             return true;
 

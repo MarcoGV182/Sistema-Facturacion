@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -168,10 +169,8 @@ namespace CapaPresentacion
         {
             if (e.ColumnIndex == dataListado.Columns["Eliminar"].Index)
             {
-                DataGridViewCheckBoxCell chkEliminarDV = (DataGridViewCheckBoxCell)dataListado.Rows[e.RowIndex].Cells["Eliminar"];
-               
-                chkEliminarDV.Value = !Convert.ToBoolean(chkEliminarDV.Value);
-                                          
+                DataGridViewCheckBoxCell chkEliminar = (DataGridViewCheckBoxCell)dataListado.Rows[e.RowIndex].Cells["Eliminar"];
+                chkEliminar.Value = !Convert.ToBoolean(chkEliminar.Value);
             }
         }
 
@@ -287,13 +286,15 @@ namespace CapaPresentacion
                     {
                         codigo = Convert.ToString(row.Cells[1].Value);
                         rpta = NUnidadMedida.Eliminar(Convert.ToInt32(codigo));
+
+                        if (!rpta.Equals("OK"))
+                        {
+                            this.MensajeError(rpta);
+                            return;
+                        }
                     }
 
-                    if (!rpta.Equals("OK"))
-                    {
-                        this.MensajeError(rpta);
-                        break;
-                    }
+                    
                 }
 
                 //mensaje a mostrar

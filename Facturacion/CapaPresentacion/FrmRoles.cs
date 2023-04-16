@@ -12,24 +12,24 @@ using CapaNegocio;
 
 namespace CapaPresentacion
 {
-    public partial class FrmTipoUsuario : Form
+    public partial class FrmRoles : Form
     {
 
         private bool IsNuevo = false;
         private bool IsEditar = false;
 
         //INSTANCIA PARA LLAMAR SOLO UNA VEZ AL FORMULARIO
-        private static FrmTipoUsuario _Instancia;
-        public static FrmTipoUsuario GetInstancia()
+        private static FrmRoles _Instancia;
+        public static FrmRoles GetInstancia()
         {
             if (_Instancia == null)
             {
-                _Instancia = new FrmTipoUsuario();
+                _Instancia = new FrmRoles();
             }
             return _Instancia;
         }
 
-        public FrmTipoUsuario()
+        public FrmRoles()
         {
             InitializeComponent();
             this.ttMensaje.SetToolTip(txtNombre, "Por favor ingrese el nombre");

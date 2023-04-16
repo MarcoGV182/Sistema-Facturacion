@@ -168,15 +168,28 @@ namespace CapaPresentacion
                         codigo = Convert.ToString(row.Cells[1].Value);
                         rpta = NMarca.Eliminar(Convert.ToInt32(codigo));
 
-                        if (rpta.Equals("OK"))
+                        if (!rpta.Equals("OK"))
                         {
-                            this.MensajeOK("Se elimino correctamente el registro");
-                        }
-                        else
-                        {
-                            this.MensajeError("El registro ya esta definido en Productos" + Environment.NewLine + "(Productos/Marca)");
+                            MensajeError(rpta);
+                            return;
                         }
                     }
+                }
+
+                //mensaje a mostrar
+                if (rpta.Equals("OK") && x == 1)
+                {
+                    this.MensajeOK("Se elimino correctamento el registro");
+                }
+
+                if (rpta.Equals("OK") && x > 1)
+                {
+                    this.MensajeOK($"Se eliminaron correctamento la cantidad de {x} registros ");
+                }
+
+                if (!rpta.Equals("OK"))
+                {
+                    this.MensajeError($"Ocurrio un error: {rpta}");
                 }
 
                 this.Mostrar();

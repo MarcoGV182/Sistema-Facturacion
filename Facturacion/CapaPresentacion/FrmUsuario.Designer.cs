@@ -283,13 +283,14 @@
             // 
             // dtpFechaEgreso
             // 
+            this.dtpFechaEgreso.Checked = false;
             this.dtpFechaEgreso.Font = new System.Drawing.Font("Times New Roman", 11F);
             this.dtpFechaEgreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaEgreso.Location = new System.Drawing.Point(102, 50);
             this.dtpFechaEgreso.Name = "dtpFechaEgreso";
             this.dtpFechaEgreso.ShowCheckBox = true;
             this.dtpFechaEgreso.Size = new System.Drawing.Size(109, 24);
-            this.dtpFechaEgreso.TabIndex = 28;
+            this.dtpFechaEgreso.TabIndex = 14;
             // 
             // label15
             // 
@@ -309,7 +310,7 @@
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
             this.dtpFechaIngreso.ShowCheckBox = true;
             this.dtpFechaIngreso.Size = new System.Drawing.Size(109, 24);
-            this.dtpFechaIngreso.TabIndex = 26;
+            this.dtpFechaIngreso.TabIndex = 13;
             // 
             // label1
             // 
@@ -346,7 +347,7 @@
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.Size = new System.Drawing.Size(261, 70);
-            this.txtObservacion.TabIndex = 24;
+            this.txtObservacion.TabIndex = 12;
             // 
             // label12
             // 
@@ -532,7 +533,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(267, 357);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 12;
+            this.btnGuardar.TabIndex = 15;
             this.btnGuardar.Text = "&Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -542,7 +543,7 @@
             this.btnNuevo.Location = new System.Drawing.Point(182, 357);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(75, 23);
-            this.btnNuevo.TabIndex = 4;
+            this.btnNuevo.TabIndex = 16;
             this.btnNuevo.Text = "&Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
@@ -550,7 +551,6 @@
             // txtNombre
             // 
             this.txtNombre.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Location = new System.Drawing.Point(132, 61);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(159, 23);

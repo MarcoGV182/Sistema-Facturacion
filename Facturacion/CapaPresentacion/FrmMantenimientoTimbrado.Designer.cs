@@ -61,9 +61,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtNroTimbrado = new System.Windows.Forms.TextBox();
             this.grbNumeracion = new System.Windows.Forms.GroupBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.rbManual = new System.Windows.Forms.RadioButton();
             this.rbAutoimprenta = new System.Windows.Forms.RadioButton();
-            this.btnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.grbRegistro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
@@ -97,9 +97,11 @@
             this.grbRegistro.Controls.Add(this.txtNumeroDesde);
             this.grbRegistro.Controls.Add(this.txtPuntoExpedicion);
             this.grbRegistro.Controls.Add(this.txtEstablecimiento);
-            this.grbRegistro.Location = new System.Drawing.Point(11, 116);
+            this.grbRegistro.Location = new System.Drawing.Point(15, 143);
+            this.grbRegistro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grbRegistro.Name = "grbRegistro";
-            this.grbRegistro.Size = new System.Drawing.Size(695, 411);
+            this.grbRegistro.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grbRegistro.Size = new System.Drawing.Size(927, 506);
             this.grbRegistro.TabIndex = 11;
             this.grbRegistro.TabStop = false;
             this.grbRegistro.Text = "Numeración";
@@ -107,11 +109,12 @@
             // chkEstadoNumeracion
             // 
             this.chkEstadoNumeracion.AutoSize = true;
-            this.chkEstadoNumeracion.Location = new System.Drawing.Point(583, 49);
+            this.chkEstadoNumeracion.Location = new System.Drawing.Point(758, 60);
+            this.chkEstadoNumeracion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkEstadoNumeracion.Name = "chkEstadoNumeracion";
-            this.chkEstadoNumeracion.Size = new System.Drawing.Size(64, 20);
+            this.chkEstadoNumeracion.Size = new System.Drawing.Size(76, 23);
             this.chkEstadoNumeracion.TabIndex = 10;
-            this.chkEstadoNumeracion.Text = "Estado";
+            this.chkEstadoNumeracion.Text = "Activo";
             this.chkEstadoNumeracion.UseVisualStyleBackColor = true;
             // 
             // dataListado
@@ -123,19 +126,22 @@
             this.dataListado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataListado.BackgroundColor = System.Drawing.Color.White;
             this.dataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataListado.Location = new System.Drawing.Point(7, 115);
+            this.dataListado.Location = new System.Drawing.Point(9, 142);
+            this.dataListado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataListado.MultiSelect = false;
             this.dataListado.Name = "dataListado";
             this.dataListado.ReadOnly = true;
+            this.dataListado.RowHeadersWidth = 51;
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListado.Size = new System.Drawing.Size(683, 286);
+            this.dataListado.Size = new System.Drawing.Size(911, 352);
             this.dataListado.TabIndex = 17;
             // 
             // btnQuitar
             // 
-            this.btnQuitar.Location = new System.Drawing.Point(91, 86);
+            this.btnQuitar.Location = new System.Drawing.Point(121, 106);
+            this.btnQuitar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(75, 24);
+            this.btnQuitar.Size = new System.Drawing.Size(100, 30);
             this.btnQuitar.TabIndex = 12;
             this.btnQuitar.Text = "Quitar";
             this.btnQuitar.UseVisualStyleBackColor = true;
@@ -144,9 +150,10 @@
             // btnAgregar
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.btnAgregar.Location = new System.Drawing.Point(10, 86);
+            this.btnAgregar.Location = new System.Drawing.Point(13, 106);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 24);
+            this.btnAgregar.Size = new System.Drawing.Size(100, 30);
             this.btnAgregar.TabIndex = 11;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -155,26 +162,29 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(346, 32);
+            this.label10.Location = new System.Drawing.Point(461, 39);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(38, 16);
+            this.label10.Size = new System.Drawing.Size(47, 19);
             this.label10.TabIndex = 15;
             this.label10.Text = "Hasta";
             // 
             // txtNumeroHasta
             // 
-            this.txtNumeroHasta.Location = new System.Drawing.Point(315, 48);
+            this.txtNumeroHasta.Location = new System.Drawing.Point(420, 59);
+            this.txtNumeroHasta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNumeroHasta.MaxLength = 10;
             this.txtNumeroHasta.Name = "txtNumeroHasta";
-            this.txtNumeroHasta.Size = new System.Drawing.Size(100, 23);
+            this.txtNumeroHasta.Size = new System.Drawing.Size(132, 27);
             this.txtNumeroHasta.TabIndex = 8;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(432, 31);
+            this.label6.Location = new System.Drawing.Point(576, 38);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 16);
+            this.label6.Size = new System.Drawing.Size(135, 19);
             this.label6.TabIndex = 11;
             this.label6.Text = "Tipo Comprobante";
             // 
@@ -188,82 +198,91 @@
             "AutoFactura",
             "Ticket",
             "Proforma"});
-            this.cboComprobante.Location = new System.Drawing.Point(429, 47);
+            this.cboComprobante.Location = new System.Drawing.Point(572, 58);
+            this.cboComprobante.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboComprobante.Name = "cboComprobante";
-            this.cboComprobante.Size = new System.Drawing.Size(121, 23);
+            this.cboComprobante.Size = new System.Drawing.Size(160, 27);
             this.cboComprobante.TabIndex = 9;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(236, 32);
+            this.label3.Location = new System.Drawing.Point(315, 39);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 16);
+            this.label3.Size = new System.Drawing.Size(52, 19);
             this.label3.TabIndex = 4;
             this.label3.Text = "Desde";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(110, 33);
+            this.label2.Location = new System.Drawing.Point(147, 41);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 16);
+            this.label2.Size = new System.Drawing.Size(83, 19);
             this.label2.TabIndex = 5;
             this.label2.Text = "Punto Exp.";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(75, 52);
+            this.label4.Location = new System.Drawing.Point(100, 64);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(12, 16);
+            this.label4.Size = new System.Drawing.Size(15, 19);
             this.label4.TabIndex = 7;
             this.label4.Text = "-";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 33);
+            this.label1.Location = new System.Drawing.Point(5, 41);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 16);
+            this.label1.Size = new System.Drawing.Size(120, 19);
             this.label1.TabIndex = 8;
             this.label1.Text = "Establecimiento";
             // 
             // txtNumeroDesde
             // 
-            this.txtNumeroDesde.Location = new System.Drawing.Point(209, 48);
+            this.txtNumeroDesde.Location = new System.Drawing.Point(279, 59);
+            this.txtNumeroDesde.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNumeroDesde.MaxLength = 10;
             this.txtNumeroDesde.Name = "txtNumeroDesde";
-            this.txtNumeroDesde.Size = new System.Drawing.Size(100, 23);
+            this.txtNumeroDesde.Size = new System.Drawing.Size(132, 27);
             this.txtNumeroDesde.TabIndex = 7;
             this.txtNumeroDesde.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             // 
             // txtPuntoExpedicion
             // 
-            this.txtPuntoExpedicion.Location = new System.Drawing.Point(96, 49);
+            this.txtPuntoExpedicion.Location = new System.Drawing.Point(128, 60);
+            this.txtPuntoExpedicion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPuntoExpedicion.MaxLength = 3;
             this.txtPuntoExpedicion.Name = "txtPuntoExpedicion";
-            this.txtPuntoExpedicion.Size = new System.Drawing.Size(100, 23);
+            this.txtPuntoExpedicion.Size = new System.Drawing.Size(132, 27);
             this.txtPuntoExpedicion.TabIndex = 6;
             this.txtPuntoExpedicion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPuntoExpedicion_KeyPress);
             // 
             // txtEstablecimiento
             // 
-            this.txtEstablecimiento.Location = new System.Drawing.Point(9, 49);
+            this.txtEstablecimiento.Location = new System.Drawing.Point(12, 60);
+            this.txtEstablecimiento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEstablecimiento.MaxLength = 3;
             this.txtEstablecimiento.Name = "txtEstablecimiento";
-            this.txtEstablecimiento.Size = new System.Drawing.Size(64, 23);
+            this.txtEstablecimiento.Size = new System.Drawing.Size(84, 27);
             this.txtEstablecimiento.TabIndex = 5;
             this.txtEstablecimiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstablecimiento_KeyPress);
             // 
             // chkEstadoTimbrado
             // 
             this.chkEstadoTimbrado.AutoSize = true;
-            this.chkEstadoTimbrado.Location = new System.Drawing.Point(606, 72);
+            this.chkEstadoTimbrado.Location = new System.Drawing.Point(805, 89);
+            this.chkEstadoTimbrado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkEstadoTimbrado.Name = "chkEstadoTimbrado";
-            this.chkEstadoTimbrado.Size = new System.Drawing.Size(64, 20);
+            this.chkEstadoTimbrado.Size = new System.Drawing.Size(76, 23);
             this.chkEstadoTimbrado.TabIndex = 4;
-            this.chkEstadoTimbrado.Text = "Estado";
+            this.chkEstadoTimbrado.Text = "Activo";
             this.chkEstadoTimbrado.UseVisualStyleBackColor = true;
             // 
             // groupBox2
@@ -271,18 +290,21 @@
             this.groupBox2.Controls.Add(this.btnEliminarTimbrado);
             this.groupBox2.Controls.Add(this.dgTimbrados);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.groupBox2.Location = new System.Drawing.Point(12, 24);
+            this.groupBox2.Location = new System.Drawing.Point(16, 30);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(515, 412);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(687, 507);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Timbrado";
             // 
             // btnEliminarTimbrado
             // 
-            this.btnEliminarTimbrado.Location = new System.Drawing.Point(6, 38);
+            this.btnEliminarTimbrado.Location = new System.Drawing.Point(8, 47);
+            this.btnEliminarTimbrado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEliminarTimbrado.Name = "btnEliminarTimbrado";
-            this.btnEliminarTimbrado.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarTimbrado.Size = new System.Drawing.Size(100, 28);
             this.btnEliminarTimbrado.TabIndex = 17;
             this.btnEliminarTimbrado.Text = "Eliminar";
             this.btnEliminarTimbrado.UseVisualStyleBackColor = true;
@@ -297,20 +319,23 @@
             this.dgTimbrados.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgTimbrados.BackgroundColor = System.Drawing.Color.White;
             this.dgTimbrados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTimbrados.Location = new System.Drawing.Point(6, 67);
+            this.dgTimbrados.Location = new System.Drawing.Point(8, 82);
+            this.dgTimbrados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgTimbrados.MultiSelect = false;
             this.dgTimbrados.Name = "dgTimbrados";
             this.dgTimbrados.ReadOnly = true;
+            this.dgTimbrados.RowHeadersWidth = 51;
             this.dgTimbrados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTimbrados.Size = new System.Drawing.Size(493, 321);
+            this.dgTimbrados.Size = new System.Drawing.Size(657, 395);
             this.dgTimbrados.TabIndex = 15;
             this.dgTimbrados.DoubleClick += new System.EventHandler(this.dgTimbrados_DoubleClick);
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Location = new System.Drawing.Point(395, 9);
+            this.btnNuevo.Location = new System.Drawing.Point(527, 11);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(64, 23);
+            this.btnNuevo.Size = new System.Drawing.Size(85, 28);
             this.btnNuevo.TabIndex = 19;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
@@ -318,9 +343,10 @@
             // 
             // btnGuardarTimbrado
             // 
-            this.btnGuardarTimbrado.Location = new System.Drawing.Point(468, 9);
+            this.btnGuardarTimbrado.Location = new System.Drawing.Point(624, 11);
+            this.btnGuardarTimbrado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGuardarTimbrado.Name = "btnGuardarTimbrado";
-            this.btnGuardarTimbrado.Size = new System.Drawing.Size(64, 23);
+            this.btnGuardarTimbrado.Size = new System.Drawing.Size(85, 28);
             this.btnGuardarTimbrado.TabIndex = 14;
             this.btnGuardarTimbrado.Text = "Guardar";
             this.btnGuardarTimbrado.UseVisualStyleBackColor = true;
@@ -328,9 +354,10 @@
             // 
             // btnEditarTimbrado
             // 
-            this.btnEditarTimbrado.Location = new System.Drawing.Point(542, 9);
+            this.btnEditarTimbrado.Location = new System.Drawing.Point(723, 11);
+            this.btnEditarTimbrado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEditarTimbrado.Name = "btnEditarTimbrado";
-            this.btnEditarTimbrado.Size = new System.Drawing.Size(65, 23);
+            this.btnEditarTimbrado.Size = new System.Drawing.Size(87, 28);
             this.btnEditarTimbrado.TabIndex = 16;
             this.btnEditarTimbrado.Text = "Editar";
             this.btnEditarTimbrado.UseVisualStyleBackColor = true;
@@ -339,38 +366,42 @@
             // dtpFechaInicioVigencia
             // 
             this.dtpFechaInicioVigencia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaInicioVigencia.Location = new System.Drawing.Point(158, 71);
+            this.dtpFechaInicioVigencia.Location = new System.Drawing.Point(211, 87);
+            this.dtpFechaInicioVigencia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpFechaInicioVigencia.Name = "dtpFechaInicioVigencia";
             this.dtpFechaInicioVigencia.ShowCheckBox = true;
-            this.dtpFechaInicioVigencia.Size = new System.Drawing.Size(113, 23);
+            this.dtpFechaInicioVigencia.Size = new System.Drawing.Size(149, 27);
             this.dtpFechaInicioVigencia.TabIndex = 2;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label9.Location = new System.Drawing.Point(160, 55);
+            this.label9.Location = new System.Drawing.Point(213, 68);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(103, 16);
+            this.label9.Size = new System.Drawing.Size(124, 19);
             this.label9.TabIndex = 13;
             this.label9.Text = "Fecha Inicio Vig.";
             // 
             // dtpFechaVencimiento
             // 
             this.dtpFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaVencimiento.Location = new System.Drawing.Point(284, 71);
+            this.dtpFechaVencimiento.Location = new System.Drawing.Point(379, 87);
+            this.dtpFechaVencimiento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpFechaVencimiento.Name = "dtpFechaVencimiento";
             this.dtpFechaVencimiento.ShowCheckBox = true;
-            this.dtpFechaVencimiento.Size = new System.Drawing.Size(113, 23);
+            this.dtpFechaVencimiento.Size = new System.Drawing.Size(149, 27);
             this.dtpFechaVencimiento.TabIndex = 3;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label8.Location = new System.Drawing.Point(281, 55);
+            this.label8.Location = new System.Drawing.Point(375, 68);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(113, 16);
+            this.label8.Size = new System.Drawing.Size(139, 19);
             this.label8.TabIndex = 11;
             this.label8.Text = "Fecha Vencimiento";
             // 
@@ -378,18 +409,20 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label7.Location = new System.Drawing.Point(15, 55);
+            this.label7.Location = new System.Drawing.Point(20, 68);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 16);
+            this.label7.Size = new System.Drawing.Size(65, 19);
             this.label7.TabIndex = 11;
             this.label7.Text = "Número";
             // 
             // txtNroTimbrado
             // 
-            this.txtNroTimbrado.Location = new System.Drawing.Point(16, 71);
+            this.txtNroTimbrado.Location = new System.Drawing.Point(21, 87);
+            this.txtNroTimbrado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNroTimbrado.MaxLength = 10;
             this.txtNroTimbrado.Name = "txtNroTimbrado";
-            this.txtNroTimbrado.Size = new System.Drawing.Size(130, 23);
+            this.txtNroTimbrado.Size = new System.Drawing.Size(172, 27);
             this.txtNroTimbrado.TabIndex = 1;
             this.txtNroTimbrado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTimbrado_KeyPress);
             // 
@@ -410,20 +443,34 @@
             this.grbNumeracion.Controls.Add(this.label7);
             this.grbNumeracion.Controls.Add(this.txtNroTimbrado);
             this.grbNumeracion.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.grbNumeracion.Location = new System.Drawing.Point(533, 24);
+            this.grbNumeracion.Location = new System.Drawing.Point(711, 30);
+            this.grbNumeracion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grbNumeracion.Name = "grbNumeracion";
-            this.grbNumeracion.Size = new System.Drawing.Size(718, 547);
+            this.grbNumeracion.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grbNumeracion.Size = new System.Drawing.Size(957, 673);
             this.grbNumeracion.TabIndex = 14;
             this.grbNumeracion.TabStop = false;
             this.grbNumeracion.Text = "Mantenimiento";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(827, 11);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(92, 28);
+            this.btnCancelar.TabIndex = 52;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // rbManual
             // 
             this.rbManual.AutoSize = true;
             this.rbManual.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.rbManual.Location = new System.Drawing.Point(523, 71);
+            this.rbManual.Location = new System.Drawing.Point(697, 87);
+            this.rbManual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbManual.Name = "rbManual";
-            this.rbManual.Size = new System.Drawing.Size(66, 20);
+            this.rbManual.Size = new System.Drawing.Size(80, 23);
             this.rbManual.TabIndex = 51;
             this.rbManual.Text = "Manual";
             this.rbManual.UseVisualStyleBackColor = true;
@@ -433,31 +480,23 @@
             this.rbAutoimprenta.AutoSize = true;
             this.rbAutoimprenta.Checked = true;
             this.rbAutoimprenta.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.rbAutoimprenta.Location = new System.Drawing.Point(416, 71);
+            this.rbAutoimprenta.Location = new System.Drawing.Point(555, 87);
+            this.rbAutoimprenta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbAutoimprenta.Name = "rbAutoimprenta";
-            this.rbAutoimprenta.Size = new System.Drawing.Size(101, 20);
+            this.rbAutoimprenta.Size = new System.Drawing.Size(123, 23);
             this.rbAutoimprenta.TabIndex = 50;
             this.rbAutoimprenta.TabStop = true;
             this.rbAutoimprenta.Text = "Autoimprenta";
             this.rbAutoimprenta.UseVisualStyleBackColor = true;
             // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(620, 9);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(69, 23);
-            this.btnCancelar.TabIndex = 52;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
             // FrmMantenimientoTimbrado
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1285, 583);
+            this.ClientSize = new System.Drawing.Size(1713, 718);
             this.Controls.Add(this.grbNumeracion);
             this.Controls.Add(this.groupBox2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmMantenimientoTimbrado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Numeracion";

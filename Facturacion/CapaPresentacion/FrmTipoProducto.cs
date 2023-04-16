@@ -290,6 +290,7 @@ namespace CapaPresentacion
                 else
                 {
                     this.MensajeError("El registro ya esta definido en Productos" + Environment.NewLine + "(Productos/Tipo de Producto)");
+                    return;
                 }
 
                 this.Mostrar();

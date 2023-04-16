@@ -309,6 +309,7 @@ namespace CapaPresentacion
         {
             try
             {
+                Habilitar(false);
                 IsEditar = true;
 
                 this.txtEstablecimiento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Establecimiento"].Value);
@@ -504,7 +505,6 @@ namespace CapaPresentacion
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

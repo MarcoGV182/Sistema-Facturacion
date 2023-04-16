@@ -215,10 +215,11 @@ namespace CapaPresentacion
             this.Botones();
             this.Limpiar();
             this.Habilitar(true);
-            this.cboEstado.SelectedIndex = 0;
-            this.txtNombre.Focus();
 
-            
+            //Inicializar algunos controles
+            this.cboEstado.SelectedIndex = 0;
+            dtpFechaEgreso.Checked = false;
+            this.txtNombre.Focus();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -317,6 +318,13 @@ namespace CapaPresentacion
             {
                 this.MensajeError("Debe de ingresar la fecha de Ingreso del colaborador");
                 errorIcono.SetError(dtpFechaIngreso, "Ingrese la fecha de Ingreso del colaborador");
+                return false;
+            }
+
+            if (!string.IsNullOrWhiteSpace(txtEmail.Text) && !ControlesCompartidos.ValidarDireccionCorreo(txtEmail.Text))
+            {
+                this.MensajeError("Formato incorrecto");
+                errorIcono.SetError(txtEmail, "Favor verifique que el formato del correo sea correcto");
                 return false;
             }
 

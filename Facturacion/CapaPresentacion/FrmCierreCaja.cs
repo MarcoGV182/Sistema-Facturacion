@@ -29,10 +29,6 @@ namespace CapaPresentacion
         double montoApertura = 0;
         int nroArqueo = 0;
 
-        /*private double efectivo = 0;
-        private double tarjeta = 0;
-        private double cheque = 0;*/
-
         private static FrmCierreCaja _Instancia;
         public static FrmCierreCaja GetInstancia() 
         { 
@@ -186,6 +182,7 @@ namespace CapaPresentacion
                 txtEfectivo.Text = "0";
                 txtCheque.Text ="0";
                 txtTarjeta.Text = "0";
+                txtOtros.Text = "0";
             }
             else
             {

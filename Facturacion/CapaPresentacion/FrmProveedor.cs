@@ -283,8 +283,7 @@ namespace CapaPresentacion
                 return false;
             }
 
-            string emailRegex = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            if (!string.IsNullOrWhiteSpace(txtEmail.Text) && !Regex.IsMatch(txtEmail.Text, emailRegex))
+            if (!string.IsNullOrWhiteSpace(txtEmail.Text) && !ControlesCompartidos.ValidarDireccionCorreo(txtEmail.Text))
             {
                 this.MensajeError("Formato incorrecto");
                 errorIcono.SetError(txtEmail, "Favor verifique que el formato del correo sea correcto");
