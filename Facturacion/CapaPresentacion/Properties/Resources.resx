@@ -163,11 +163,14 @@
   <data name="Ncrow-Mega-Pack-1-Excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ncrow-Mega-Pack-1-Excel.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FacEasy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FacEasy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="NumeracionFactura" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NumeracionFactura.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="usuario png" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\usuario png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ver png" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ver png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lista" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lista.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -186,6 +189,9 @@
   </data>
   <data name="Buscar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Buscar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="usuario png" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\usuario png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="presentacion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\presentacion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,9 +226,6 @@
   <data name="backup png" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\backup png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mantenimiento png" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mantenimiento png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Proceso" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Proceso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -238,8 +241,8 @@
   <data name="Reglas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Reglas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ver png" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ver png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cuenta por pagar png" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cuenta por pagar png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -247,11 +250,14 @@
   <data name="conseguir-dinero" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\conseguir-dinero.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tipouser" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tipouser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mantenimiento png" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mantenimiento png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="herramienta png" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\herramienta png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cargando" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cargando.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="recordatorio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\recordatorio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -277,14 +283,14 @@
   <data name="menos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\menos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cuenta por pagar png" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cuenta por pagar png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="consulta png" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\consulta png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="importar png" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\importar png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tipouser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tipouser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Buscar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Buscar2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -316,7 +322,7 @@
   <data name="persona png" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\persona png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FacEasy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FacEasy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cargando1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cargando.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

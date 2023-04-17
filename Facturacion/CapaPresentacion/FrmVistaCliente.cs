@@ -70,15 +70,23 @@ namespace CapaPresentacion
         //Limpiar los controles del formulario
         private void Limpiar()
         {
-            this.txtCodigo.Text = string.Empty;
-            this.txtNombre.Text = string.Empty;
-            this.txtApellido.Text = string.Empty;
-            this.txtDocumento.Text = string.Empty;
-            this.txtDireccion.Text = string.Empty;
-            this.txtTelefono.Text = string.Empty;
-            this.txtEmail.Text = string.Empty;
-            this.cboCiudad.Text = string.Empty;
-            this.dtpFechaNac.Text = string.Empty;
+            txtCodigo.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            txtApellido.Text = string.Empty;
+            txtDocumento.Text = string.Empty;
+            txtDireccion.Text = string.Empty;
+            txtTelefono.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            cboCiudad.Text = string.Empty;
+            dtpFechaNac.Text = string.Empty;
+            txtObservacion.Text = string.Empty;
+
+            dtpFechaNac.Value = DateTime.Now;
+            dtpFechaNac.Checked = false;
+
+            //Iniciliar los combobox
+            cboCiudad.SelectedIndex = 0;
+            cboTipoDocumento.SelectedIndex = 0;
         }
 
         //Habilitar botones
@@ -101,14 +109,12 @@ namespace CapaPresentacion
             if (this.IsNuevo)
             {
                 this.Habilitar(true);
-                this.btnNuevo.Enabled = false;
                 this.btnGuardar.Enabled = true;
                 this.btnCancelar.Enabled = true;
             }
             else
             {
                 this.Habilitar(false);
-                this.btnNuevo.Enabled = true;
                 this.btnGuardar.Enabled = false;
                 this.btnCancelar.Enabled = false;
             }
@@ -116,9 +122,9 @@ namespace CapaPresentacion
 
         //ocultar columnas
         private void OcultarColumnas()
-        {
+        {  
             this.dataListado.Columns[0].Visible = false;
-            this.dataListado.Columns[1].Visible = false;
+            this.dataListado.Columns["NroTipoDocumento"].Visible = false;
         }
 
         private void LlenarComboBox()
@@ -171,7 +177,8 @@ namespace CapaPresentacion
             DataGridDiseno(dataListado);
             //inicializar combo de busqueda
             cboBuscar.SelectedIndex = 0;
-            
+            dtpFechaNac.Checked = false;
+
             //top para ubicar en la parte superior
             this.Top = 100;
             //alineado hacia la izquierda
@@ -180,13 +187,14 @@ namespace CapaPresentacion
             this.Botones();
             this.Mostrar();
         }
+                
 
-        private void btnNuevo_Click(object sender, EventArgs e)
+        private void NuevoRegistro()
         {
             this.IsNuevo = true;
             this.Botones();
             this.Limpiar();
-            this.Habilitar(true);   
+            this.Habilitar(true);
             this.txtNombre.Focus();
         }
 
@@ -258,8 +266,6 @@ namespace CapaPresentacion
                     this.MensajeError(rpta);
                     return;
                 }
-                    
-
 
                 this.Botones();
                 this.Limpiar();
@@ -329,10 +335,14 @@ namespace CapaPresentacion
                 this.BuscarDocumento();
             }
         }
+       
 
-        private void FrmVistaCliente_KeyUp(object sender, KeyEventArgs e)
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (tabControl1.SelectedIndex == 1)
+            {
+                NuevoRegistro();
+            }
         }
     }
 }

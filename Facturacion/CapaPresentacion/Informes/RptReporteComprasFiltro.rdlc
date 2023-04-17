@@ -6,7 +6,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.5334cm</Width>
+              <Width>3.05562cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>4.74423cm</Width>
@@ -119,7 +119,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox5</rd:DefaultName>
@@ -151,7 +153,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -444,7 +448,7 @@
                             <TextRun>
                               <Value>=Fields!Fecha.Value</Value>
                               <Style>
-                                <Format>d</Format>
+                                <Format>dd/MM/yyyy</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -501,14 +505,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="TipoComprobante">
+                    <Textbox Name="Comprobante">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!TipoComprobante.Value</Value>
+                              <Value>=Fields!Comprobante.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -517,7 +521,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>TipoComprobante</rd:DefaultName>
+                      <rd:DefaultName>Comprobante</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -731,7 +735,7 @@
         <Top>0.31433cm</Top>
         <Left>0.34078cm</Left>
         <Height>1.2cm</Height>
-        <Width>25.2668cm</Width>
+        <Width>25.78902cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -782,37 +786,6 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
-        <Textbox Name="Desde">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=Fields!Desde.Value</Value>
-                  <Style />
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Desde</rd:DefaultName>
-          <Top>1.48798cm</Top>
-          <Left>8.02695cm</Left>
-          <Height>0.6cm</Height>
-          <Width>2.5cm</Width>
-          <ZIndex>1</ZIndex>
-          <Style>
-            <Border>
-              <Color>LightGrey</Color>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
         <Textbox Name="Textbox20">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
@@ -825,6 +798,13 @@
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
+                <TextRun>
+                  <Value>=Fields!Desde.Value</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                    <Format>dd/MM/yyyy</Format>
+                  </Style>
+                </TextRun>
               </TextRuns>
               <Style />
             </Paragraph>
@@ -833,8 +813,8 @@
           <Top>1.49652cm</Top>
           <Left>6.34716cm</Left>
           <Height>0.6cm</Height>
-          <Width>1.57396cm</Width>
-          <ZIndex>2</ZIndex>
+          <Width>4.66958cm</Width>
+          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Color>LightGrey</Color>
@@ -858,6 +838,13 @@
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
+                <TextRun>
+                  <Value>=Fields!Hasta.Value</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                    <Format>dd/MM/yyyy</Format>
+                  </Style>
+                </TextRun>
               </TextRuns>
               <Style />
             </Paragraph>
@@ -866,39 +853,8 @@
           <Top>1.5124cm</Top>
           <Left>14.58862cm</Left>
           <Height>0.6cm</Height>
-          <Width>1.36229cm</Width>
-          <ZIndex>3</ZIndex>
-          <Style>
-            <Border>
-              <Color>LightGrey</Color>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Hasta">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=Fields!Hasta.Value</Value>
-                  <Style />
-                </TextRun>
-              </TextRuns>
-              <Style />
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Hasta</rd:DefaultName>
-          <Top>1.5124cm</Top>
-          <Left>16.09202cm</Left>
-          <Height>0.6cm</Height>
-          <Width>2.5cm</Width>
-          <ZIndex>4</ZIndex>
+          <Width>3.79646cm</Width>
+          <ZIndex>2</ZIndex>
           <Style>
             <Border>
               <Color>LightGrey</Color>
@@ -1068,10 +1024,6 @@
         </Field>
         <Field Name="Hasta">
           <DataField>Hasta</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Cliente">
-          <DataField>Cliente</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Fecha">

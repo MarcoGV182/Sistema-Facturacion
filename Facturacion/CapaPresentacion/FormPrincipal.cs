@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion
 {
@@ -175,6 +177,10 @@ namespace CapaPresentacion
 
             try
             {
+                if (ControlesCompartidos.ObtenerValorAppSettings().Equals("N"))
+                {
+                    return;
+                }
                 //PARA MOSTRAR LA IMAGEN
                 byte[] imagenBuffer = (byte[])datos.Rows[0]["Logo"];
                 System.IO.MemoryStream ms = new System.IO.MemoryStream(imagenBuffer);
@@ -186,6 +192,8 @@ namespace CapaPresentacion
 
             }
         }
+
+        
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
@@ -419,12 +427,13 @@ namespace CapaPresentacion
         {
             FrmGastos frm = FrmGastos.GetInstancia();
             frm.MdiParent = this;
-            frm.Show();
-            frm.BringToFront();
             frm.usuario = usuario;
             frm.id = id;
             frm.nombre = nombre;
-            frm.apellido = apellido;
+            frm.apellido = apellido;          
+            frm.Show();
+            frm.BringToFront();
+         
         }
 
         private void importarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -450,19 +459,20 @@ namespace CapaPresentacion
             frm.nombre = nombre;
             frm.apellido = apellido;
             frm.acceso = acceso; 
-            frm.Show(); 
+            frm.Show();
         }
 
         private void ventasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmFacturaVenta frm = FrmFacturaVenta.GetInstancia();
-            //frm.MdiParent = this;
+            frm.MdiParent = this;
             frm.idUsuario = Convert.ToInt32(id);
             frm.usuario = usuario;
             frm.nombre = nombre;
             frm.apellido = apellido;
             frm.acceso = acceso; 
             frm.Show();
+            frm.BringToFront();
         }
 
         private void ventasPorFechaToolStripMenuItem_Click(object sender, EventArgs e)

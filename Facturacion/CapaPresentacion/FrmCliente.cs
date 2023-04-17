@@ -13,6 +13,8 @@ using System.Data.SqlClient;
 using CapaDatos;
 using CapaPresentacion.DsReporteTableAdapters;
 using CapaPresentacion.Utilidades;
+using System.Data.SqlTypes;
+using System.Windows;
 
 namespace CapaPresentacion
 {
@@ -92,6 +94,13 @@ namespace CapaPresentacion
             this.cboCiudad.Text = string.Empty;
             this.dtpFechaNac.Text = string.Empty;
             this.txtObservacion.Text = string.Empty;
+
+            dtpFechaNac.Value = DateTime.Now;
+            dtpFechaNac.Checked = false;
+
+            //Iniciliar los combobox
+            cboCiudad.SelectedIndex = 0;
+            cboTipoDocumento.SelectedIndex = 0;
         }
 
         //Habilitar botones
@@ -210,7 +219,9 @@ namespace CapaPresentacion
                 chktodos.Visible = false;
                 btnEliminar.Enabled = false;
             }
-            
+
+            dtpFechaNac.Checked = false;
+
             //top para ubicar en la parte superior
             this.Top = 0;
             //alineado hacia la izquierda

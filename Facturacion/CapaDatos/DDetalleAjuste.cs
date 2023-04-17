@@ -155,7 +155,7 @@ namespace CapaDatos
                 //Parametros Precio
                 SqlParameter ParPrecio = new SqlParameter();
                 ParPrecio.ParameterName = "@Costo";
-                ParPrecio.SqlDbType = SqlDbType.Money;
+                ParPrecio.SqlDbType = SqlDbType.Decimal;
                 ParPrecio.Value = DetalleAjuste.Costo;
                 SqlCmd.Parameters.Add(ParPrecio);
 

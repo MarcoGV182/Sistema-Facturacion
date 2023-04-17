@@ -48,6 +48,7 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.chkFondoPantalla = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pxLogo)).BeginInit();
             this.SuspendLayout();
@@ -233,11 +234,22 @@
             this.txtDireccion.Size = new System.Drawing.Size(262, 23);
             this.txtDireccion.TabIndex = 20;
             // 
+            // chkFondoPantalla
+            // 
+            this.chkFondoPantalla.AutoSize = true;
+            this.chkFondoPantalla.Location = new System.Drawing.Point(324, 398);
+            this.chkFondoPantalla.Name = "chkFondoPantalla";
+            this.chkFondoPantalla.Size = new System.Drawing.Size(97, 17);
+            this.chkFondoPantalla.TabIndex = 21;
+            this.chkFondoPantalla.Text = "Fondo Pantalla";
+            this.chkFondoPantalla.UseVisualStyleBackColor = true;
+            // 
             // FrmEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(456, 466);
+            this.Controls.Add(this.chkFondoPantalla);
             this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnLimpiar);
@@ -289,5 +301,6 @@
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox chkFondoPantalla;
     }
 }

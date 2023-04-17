@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using CapaDatos;
 using CapaNegocio;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion
 {
@@ -84,7 +87,17 @@ namespace CapaPresentacion
                 System.IO.MemoryStream ms = new System.IO.MemoryStream(imagenBuffer);
                 this.pxLogo.Image = Image.FromStream(ms);
                 this.pxLogo.SizeMode = PictureBoxSizeMode.StretchImage;
-                
+
+                var valorFondo = ControlesCompartidos.ObtenerValorAppSettings();
+                if (valorFondo.Equals("N"))
+                {
+                    chkFondoPantalla.Checked = false;
+                }
+                else if(valorFondo.Equals("S"))
+                {
+                    chkFondoPantalla.Checked = true;
+                }
+
             }
             catch (Exception ex)
             {
@@ -178,6 +191,15 @@ namespace CapaPresentacion
                     rpta = NEmpresa.Editar(empresa);
                 }
 
+                if (chkFondoPantalla.Checked) 
+                {
+                    ActualizarConfiguracion("S");
+                }
+                else
+                {
+                    ActualizarConfiguracion("N");
+                }
+
                 if (rpta.Equals("OK"))
                 {
                     if (IsNuevo)
@@ -204,6 +226,17 @@ namespace CapaPresentacion
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+        private void ActualizarConfiguracion(string valor) 
+        {
+            // Modificar el valor de la clave especificada
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["Ind_logoFondoPantalla"].Value = valor;
+            config.Save(ConfigurationSaveMode.Modified);
+
+            // Recargar la sección de configuración para que los cambios surtan efecto
+            ConfigurationManager.RefreshSection("appSettings");
         }
         
         private void btnCancelar_Click(object sender, EventArgs e)

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CapaDatos;
 using CapaNegocio;
 using CapaPresentacion.DsReporteTableAdapters;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion
 {
@@ -17,7 +18,6 @@ namespace CapaPresentacion
     {
 
         private bool IsNuevo = false;
-        private bool IsEditar = false;
 
 
         //INSTANCIA PARA LLAMAR SOLO UNA VEZ AL FORMULARIO
@@ -139,20 +139,16 @@ namespace CapaPresentacion
         //Habilitar Botones
         private void Botones()
         {
-            if (this.IsNuevo || this.IsEditar)
+            if (this.IsNuevo)
             {
-                this.Habilitar(true);
-                this.btnNuevo.Enabled = false;
+                this.Habilitar(true);                
                 this.btnGuardar.Enabled = true;
-                this.btnEditar.Enabled = false;
                 this.btnCancelar.Enabled = true;
             }
             else
             {
-                this.Habilitar(false);
-                this.btnNuevo.Enabled = true;
+                this.Habilitar(false);                
                 this.btnGuardar.Enabled = false;
-                this.btnEditar.Enabled = true;
                 this.btnCancelar.Enabled = false;
             }
         }
@@ -204,38 +200,33 @@ namespace CapaPresentacion
             this.Mostrar();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ttMensaje_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
-
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            NuevoRegistro();
         }
 
-        private void btnNuevo_Click(object sender, EventArgs e)
+        private void NuevoRegistro() 
         {
             this.IsNuevo = true;
-            this.IsEditar = false;
             this.Botones();
             this.Limpiar();
             this.Habilitar(true);
             this.cboEstado.SelectedIndex = 0;
             this.txtDescripcion.Focus();
             this.txtCodigo.Visible = false;
+
         }
 
+        
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
                 string rpta = "";
+
+                if (!ControlesCompartidos.MensajeConfirmacion(this, "¿Desea guardar el registro?"))
+                    return;
+
                 if (!Validaciones())
                 {
                     return;
@@ -244,17 +235,19 @@ namespace CapaPresentacion
 
                 //si se ingresa un nuevo registro
                 DProducto producto = new DProducto();
-                producto.ProductoNro = Convert.ToInt32(this.txtCodigo.Text);
+
                 producto.Descripcion = this.txtDescripcion.Text.Trim().ToUpper();
                 producto.TipoProductoNro = Convert.ToInt32(cboTipoProducto.SelectedValue);
+                producto.CodigoBarra = txtCodigoBarra.Text;
                 producto.UnidadMedida = new DUnidadMedida()
                 {
                     UnidadMedidaNro = Convert.ToInt32(cboUnidadMedida.SelectedValue),
                     Descripcion = cboUnidadMedida.Text.Trim()
                 };
+                producto.FechaVencimiento = dtpFechaVto.Checked ? dtpFechaVto.Value : (DateTime?)null;
                 producto.IdPresentacion = Convert.ToInt32(cboPresentacion.SelectedValue);
                 producto.MarcaNro = Convert.ToInt32(cboMarca.SelectedValue);
-                producto.StockActual = Convert.ToInt32(this.txtStockActual.Text);
+                producto.StockActual = 0;//Convert.ToInt32(this.txtStockActual.Text);
                 producto.Stockminimo = Convert.ToInt32(this.txtStockMinimo.Value);
                 producto.PrecioCompra = Convert.ToDecimal(this.txtPrecioCompra.Text);
                 producto.Precio = Convert.ToDecimal(this.txtPrecioVenta.Text);
@@ -266,13 +259,11 @@ namespace CapaPresentacion
                 producto.Observacion = this.txtObservacion.Text;
                 producto.Estado = this.cboEstado.Text;
 
+
+
                 if (this.IsNuevo)
                 {
                     rpta = NProducto.Insertar(producto);
-                }
-                else
-                {
-                    rpta = NProducto.Editar(producto);
                 }
 
 
@@ -282,24 +273,17 @@ namespace CapaPresentacion
                     {
                         this.MensajeOK("Se ha insertado con exito");
                         this.errorIcono.Clear();
-                    }
-                    else
-                    {
-                        this.MensajeOK("Se ha editado con exito");
-                        this.errorIcono.Clear();
-                    }
+                    }                    
                 }
                 else
                 {
                     this.MensajeError(rpta);
+                    return;
                 }
-
                 this.IsNuevo = false;
-                this.IsEditar = false;
                 this.Botones();
                 this.Limpiar();
                 this.Mostrar();
-            
             }
             catch (Exception ex)
             {
@@ -369,19 +353,7 @@ namespace CapaPresentacion
 
             return true;
         }
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            if (!this.txtCodigo.Text.Equals(""))
-            {
-                this.IsEditar = true;
-                this.Botones();
-                this.Habilitar(true);
-            }
-            else
-            {
-                this.MensajeError("Debe de seleccionar primero el registro a modificar");
-            }
-        }
+        
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -432,18 +404,17 @@ namespace CapaPresentacion
             {
                 MessageBox.Show(ex.Message);  
                 
-            }
-           
-        }
-
-        private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            }           
         }
 
         private void dataListado_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             StockMenor();
+        }
+
+        private void btnRecargar_Click(object sender, EventArgs e)
+        {
+            LlenarCombos();
         }
     }
 }

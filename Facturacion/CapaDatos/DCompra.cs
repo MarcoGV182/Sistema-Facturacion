@@ -19,7 +19,7 @@ namespace CapaDatos
         public DProveedor Proveedor { get; set; }
         public DateTime Fecha { get; set; }
         public DTipoPago TipoPago { get; set; }
-        public int CantCuotas { get; set; }
+        public int? CantCuotas { get; set; }
         public DateTime? FechaVencimiento { get; set; }
         public string NroTimbrado { get; set; }
         public DTipoComprobante TipoComprobate { get; set; }

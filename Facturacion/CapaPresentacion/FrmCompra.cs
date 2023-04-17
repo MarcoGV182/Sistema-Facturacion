@@ -20,6 +20,7 @@ namespace CapaPresentacion
     {
         private bool IsNuevo;
         private DataTable Dtdetalle;
+        private DataRow row;
         private double Total = 0;
         private double SubTotal = 0;
         private double SubtotalIVA = 0;
@@ -32,6 +33,7 @@ namespace CapaPresentacion
         int establecimiento = 0;
         int puntoExpedicion = 0;
         int numero = 0;
+        int codTipoPago = 0;
 
 
         //atributos para obtener al usuario
@@ -271,11 +273,7 @@ namespace CapaPresentacion
             this.txtCantidad.ReadOnly = !valor;
             this.txtIva.ReadOnly = !valor;
             this.cboTipoPago.Enabled = valor;
-            this.txtObservacion.ReadOnly = !valor;
-            //this.txtTotal.ReadOnly = !valor;
-            this.txttotalIva.ReadOnly = !valor;
-            this.txtTotalGravadas.ReadOnly = !valor;
-            this.txtTotalGral.ReadOnly = !valor;
+            this.txtObservacion.ReadOnly = !valor;            
             this.txtDias.ReadOnly = !valor;
             this.dtpFechaVenc.Enabled = valor;
             this.cboTipoPago.Enabled = valor;
@@ -415,16 +413,14 @@ namespace CapaPresentacion
             catch(Exception ex) 
         {
                 MessageBox.Show(ex.Message); 
-        }
-            
-            
+        }   
 
         }
 
         private void btnBuscarProveedor_Click(object sender, EventArgs e)
         {
-            FrmVistaPersonaCompra frmpersona = new FrmVistaPersonaCompra();
-            frmpersona.ShowDialog();
+            FrmVistaProveedor frmproveedor = new FrmVistaProveedor();
+            frmproveedor.ShowDialog();
         }
 
         private void btnBuscarProducto_Click(object sender, EventArgs e)
@@ -579,6 +575,7 @@ namespace CapaPresentacion
                     int.TryParse(chars[2], out numero);
                 }
 
+                codTipoPago = Convert.ToInt32(this.cboTipoPago.SelectedValue);
 
                 DCompra compra = new DCompra()
                 {
@@ -594,7 +591,7 @@ namespace CapaPresentacion
                         FormaPago = Convert.ToInt32(this.cboTipoPago.SelectedValue),
                         Descripcion = this.cboTipoPago.Text
                     },
-                    CantCuotas = Convert.ToInt32(this.txtDias.Text),
+                    CantCuotas = codTipoPago == 2 ? Convert.ToInt32(this.txtDias.Text) : (int?)null,
                     FechaVencimiento = dtpFechaVenc.Visible ? dtpFechaVenc.Value : (DateTime?)null,
                     TipoComprobate = new DTipoComprobante()
                     {
@@ -640,11 +637,20 @@ namespace CapaPresentacion
 
         private bool Validaciones() 
         {
+            errorIcono.Clear();
+
             #region Validaciones
             if (!this.txtNroFactura.MaskCompleted)
             {
                 this.MensajeError("Falta algunos datos");
                 errorIcono.SetError(txtNroFactura, "Ingrese el Numero de factura según el formato");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(txtNroTimbrado.Text))
+            {
+                this.MensajeError("Falta algunos datos");
+                errorIcono.SetError(txtNroFactura, "Favor ingrese el nro. de Timbrado de la Factura");
                 return false;
             }
 
@@ -660,6 +666,18 @@ namespace CapaPresentacion
                 this.MensajeError("No existen registros en el detalle");
                 return false;
             }
+
+            if (codTipoPago == 2)
+            {
+                if (string.IsNullOrEmpty(txtDias.Text))
+                {
+                    this.MensajeError("Falta algunos datos");
+                    errorIcono.SetError(txtDias, "La Operación es a Crédito, favor ingrese el día a pagar");
+                    return false;
+                }
+            }
+
+
             #endregion
 
             return true;
@@ -786,10 +804,15 @@ namespace CapaPresentacion
         {
             try 
             {
-                int indiceFila = dgvDetalleCompra.CurrentCell.RowIndex;
-                DataRow row = Dtdetalle.Rows[indiceFila];
+                if (dgvDetalleCompra.CurrentCell == null)
+                {
+                    MensajeError("No existe item para eliminar");
+                    return;
+                }
 
-                this.dgvDetalleCompra.DataSource = this.Dtdetalle;
+                int indiceFila = dgvDetalleCompra.CurrentCell.RowIndex;
+                row = Dtdetalle.Rows[indiceFila];
+
                 //disminuir total                
                 Total = Total - Convert.ToInt32(row["SubTotal"]);
                 SubtotalIVA = SubtotalIVA - Convert.ToInt32(row["SubtotalIVA"]);
@@ -800,9 +823,10 @@ namespace CapaPresentacion
                 txtTotalGral.Text = Total.ToString("N0");
 
                 //eliminamos la fila
-
                 this.Dtdetalle.Rows.Remove(row);
+                this.dgvDetalleCompra.DataSource = this.Dtdetalle;
                 ReenumerarItems();
+
             }
             catch(Exception)
             {
@@ -956,21 +980,21 @@ namespace CapaPresentacion
             {
                 if (txtDocumento.Text != string.Empty)
                 {
-                    DataTable tablacliente = NCliente.MostrarTextbox(txtDocumento.Text);
+                    DataTable tablaProveedor = NProveedor.BuscarProveedor("R",txtDocumento.Text);
 
                    
-                    if (tablacliente.Rows.Count == 0)
+                    if (tablaProveedor.Rows.Count == 0)
                     {
-                        if (!ControlesCompartidos.MensajeConfirmacion(this, "No existe el Proveedor en la Base de Datos. Desea buscarlo en Internet ?"))
+                        if (!ControlesCompartidos.MensajeConfirmacion(this, "No existe el Proveedor registrado en la Base de Datos"))
                             return;
 
                         //FrmConsultaRUC consultaRuc = new FrmConsultaRUC(txtDocumento.Text, this);
-                        FrmConsultaRUC consultaRuc = new FrmConsultaRUC();
-                        consultaRuc.ShowDialog();
+                        //FrmConsultaRUC consultaRuc = new FrmConsultaRUC();
+                        //consultaRuc.ShowDialog();
                     }
 
-                    this.txtProveedor.Text = tablacliente.Rows[0][1].ToString();
-                    this.CodProveedor = Convert.ToInt32(tablacliente.Rows[0][0]);
+                    this.txtProveedor.Text = tablaProveedor.Rows[0]["RazonSocial"].ToString();
+                    this.CodProveedor = Convert.ToInt32(tablaProveedor.Rows[0]["ProveedorNro"]);
                 }
 
             }
@@ -989,6 +1013,18 @@ namespace CapaPresentacion
             txtDocumento.Text = registro.Ruc;
             txtProveedor.Text = registro.RazonSocial;
             // Asigna aquí los valores de los controles correspondientes
+        }
+
+        private void txtDias_TextChanged(object sender, EventArgs e)
+        {
+            int dias = 0;
+            if (string.IsNullOrEmpty(txtDias.Text) && !int.TryParse(txtDias.Text, out dias))
+            {
+                MensajeError("Favor ingrese la cantidad de días");
+            }
+
+            var fechaVencimiento = DateTime.Now.AddDays(dias);
+            dtpFechaVenc.Value = fechaVencimiento;
         }
     }
 }

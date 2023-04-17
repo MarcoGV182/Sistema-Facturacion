@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaDatos;
 using CapaNegocio;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion
 {
     public partial class FrmVistaProveedor : Form
     {
         bool IsNuevo = false;
-        bool IsEditar = false;
 
         public FrmVistaProveedor()
         {
@@ -55,8 +56,11 @@ namespace CapaPresentacion
             this.txtDireccion.Text = string.Empty;
             this.txtTelefono.Text = string.Empty;
             this.txtEmail.Text = string.Empty;
-            this.cboCiudad.Text = string.Empty;
-            this.cboEstado.Text = string.Empty;
+            this.txtObservacion.Text = string.Empty;
+            this.cboCiudad.SelectedIndex = 0;
+            this.cboTipoDocumento.SelectedIndex = 0;
+            this.dtpFechaAniversario.Checked = false;
+            this.dtpFechaAniversario.Value = DateTime.Now;
         }
 
         //Habilitar botones
@@ -69,26 +73,21 @@ namespace CapaPresentacion
             this.txtTelefono.ReadOnly = !valor;
             this.txtEmail.ReadOnly = !valor;
             this.cboCiudad.Enabled = valor;
-            this.cboEstado.Enabled = valor;
         }
 
         //Habilitar Botones
         private void Botones()
         {
-            if (this.IsNuevo || this.IsEditar)
+            if (this.IsNuevo)
             {
-                this.Habilitar(true);
-                this.btnNuevo.Enabled = false;
-                this.btnGuardar.Enabled = true;
-                this.btnEditar.Enabled = false;
+                this.Habilitar(true);                
+                this.btnGuardar.Enabled = true;               
                 this.btnCancelar.Enabled = true;
             }
             else
             {
-                this.Habilitar(false);
-                this.btnNuevo.Enabled = true;
-                this.btnGuardar.Enabled = false;
-                this.btnEditar.Enabled = true;
+                this.Habilitar(false);               
+                this.btnGuardar.Enabled = false;               
                 this.btnCancelar.Enabled = false;
             }
         }
@@ -97,15 +96,19 @@ namespace CapaPresentacion
         private void OcultarColumnas()
         {
             this.dataListado.Columns[0].Visible = false;
-            this.dataListado.Columns[1].Visible = false;
+            this.dataListado.Columns[2].Visible = false;
+            this.dataListado.Columns[5].Visible = false;
         }
 
         private void LlenarComboBox()
         {
-            cboCiudad.DataSource = NCiudad.Mostrar();
+            cboCiudad.DataSource = ControlesCompartidos.AgregarNuevaFila(NCiudad.Mostrar(), "Descripcion", "CiudadNro");
             cboCiudad.ValueMember = "CiudadNro";
             cboCiudad.DisplayMember = "Descripcion";
 
+            cboTipoDocumento.DataSource = ControlesCompartidos.AgregarNuevaFila(NTipoDocumento.Mostrar(), "Descripcion", "idTipoDocumento");
+            cboTipoDocumento.ValueMember = "idTipoDocumento";
+            cboTipoDocumento.DisplayMember = "Descripcion";
         }
 
         //Metodo para mostrar los datos en el datagrid
@@ -132,15 +135,14 @@ namespace CapaPresentacion
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
+                
 
-        private void btnNuevo_Click(object sender, EventArgs e)
+        private void NuevoRegistro() 
         {
             this.IsNuevo = true;
-            this.IsEditar = false;
             this.Botones();
             this.Limpiar();
             this.Habilitar(true);
-            this.cboEstado.SelectedIndex = 0;
             this.txtRazonSocial.Focus();
         }
 
@@ -149,55 +151,59 @@ namespace CapaPresentacion
             try
             {
                 string rpta = "";
-                if (this.txtRazonSocial.Text == string.Empty)
+
+                if (!ValidacionProveedor())
+                    return;
+
+                //si se ingresa un nuevo registro
+
+                DProveedor proveedor = new DProveedor();
+                int codigoProveedor = string.IsNullOrEmpty(txtCodigo.Text) ? 0 : Convert.ToInt32(txtCodigo.Text);
+                proveedor.PersonaNro = codigoProveedor;
+                proveedor.RazonSocial = this.txtRazonSocial.Text.Trim().ToUpper();
+                proveedor.Documento = this.txtRUC.Text.Trim();
+                DTipoDocumento tipoDocumento = new DTipoDocumento()
                 {
-                    this.MensajeError("Falta algunos datos");
-                    errorIcono.SetError(txtRazonSocial, "Ingrese la RazonSocial");
-                }
-                else if (this.txtRUC.Text == string.Empty)
+                    idTipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue),
+                    Descripcion = cboTipoDocumento.Text
+                };
+                proveedor.TipoDocumento = tipoDocumento;
+                proveedor.FechaAniversario = dtpFechaAniversario.Checked == false ? (DateTime?)null : dtpFechaAniversario.Value;
+                proveedor.CiudadNro = Convert.ToInt32(cboCiudad.SelectedValue) == 0 ? (int?)null : Convert.ToInt32(cboCiudad.SelectedValue);
+                proveedor.Direccion = this.txtDireccion.Text.Trim();
+                proveedor.Telefono = this.txtTelefono.Text.Trim();
+                proveedor.Email = this.txtEmail.Text.Trim();
+                proveedor.Observacion = this.txtObservacion.Text.Trim().ToUpper();
+
+                if (this.IsNuevo)
                 {
-                    this.MensajeError("Falta algunos datos");
-                    errorIcono.SetError(txtRUC, "Ingrese el Nro de RUC del Proveedor");
-                }
-                else if (this.cboEstado.Text == string.Empty)
-                {
-                    this.MensajeError("Falta algunos datos");
-                    errorIcono.SetError(cboEstado, "Ingrese el Estado del Proveedor");
-                }
-                else
-                {
-                    //si se ingresa un nuevo registro
-                    if (this.IsNuevo)
-                    {
-                        //rpta = NProveedor.Insertar(this.txtRazonSocial.Text.Trim().ToUpper(), this.txtRUC.Text.Trim(), Convert.ToInt32(cboCiudad.SelectedValue), this.txtDireccion.Text.Trim(), this.txtTelefono.Text.Trim(), this.txtEmail.Text.Trim(), this.cboEstado.Text, this.txtRepresentante.Text);
-                        //si se esta editando el registro    
-                    }
-                    else
-                    {
-                        //rpta = NProveedor.Editar(Convert.ToInt32(this.txtCodigo.Text), this.txtRazonSocial.Text.Trim().ToUpper(), this.txtRUC.Text.Trim(), Convert.ToInt32(cboCiudad.SelectedValue), this.txtDireccion.Text.Trim(), this.txtTelefono.Text.Trim(), this.txtEmail.Text.Trim(), this.cboEstado.Text, this.txtRepresentante.Text);
-                    }
+                    rpta = NProveedor.Insertar(proveedor);
+
                     if (rpta.Equals("OK"))
-                    {
-                        if (IsNuevo)
-                        {
-                            this.MensajeOK("Se ha insertado con exito");
-                        }
-                        else
-                        {
-                            this.MensajeOK("Se ha editado con exito");
-                        }
-                    }
+                        this.MensajeOK("Se ha insertado con exito");
                     else
                     {
                         this.MensajeError(rpta);
+                        return;
                     }
-
-                    this.IsNuevo = false;
-                    this.IsEditar = false;
-                    this.Botones();
-                    this.Limpiar();
-                    this.Mostrar();
                 }
+                else
+                {
+                    rpta = NProveedor.Editar(proveedor);
+
+                    if (rpta.Equals("OK"))
+                        this.MensajeOK("Se ha editado con exito");
+                    else
+                    {
+                        this.MensajeError(rpta);
+                        return;
+                    }
+                }
+
+                this.IsNuevo = false;
+                this.Botones();
+                this.Limpiar();
+                this.Mostrar();
             }
             catch (Exception ex)
             {
@@ -205,18 +211,39 @@ namespace CapaPresentacion
             }
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
+
+        private bool ValidacionProveedor()
         {
-            if (!this.txtCodigo.Text.Equals(""))
+            errorIcono.Clear();
+            if (this.txtRazonSocial.Text == string.Empty)
             {
-                this.IsEditar = true;
-                this.Botones();
-                this.Habilitar(true);
+                this.MensajeError("Falta algunos datos");
+                errorIcono.SetError(txtRazonSocial, "Ingrese la Razon Social del Proveedor");
+                return false;
             }
-            else
+
+            if (Convert.ToInt32(cboTipoDocumento.SelectedValue) == 0)
             {
-                this.MensajeError("Debe de seleccionar primero el registro a modificar");
+                this.MensajeError("Falta algunos datos");
+                errorIcono.SetError(cboTipoDocumento, "Seleccione el tipo de documento");
+                return false;
             }
+
+            if (this.txtRUC.Text == string.Empty)
+            {
+                this.MensajeError("Falta algunos datos");
+                errorIcono.SetError(txtRUC, "Ingrese el Nro de documento");
+                return false;
+            }
+
+            if (!string.IsNullOrWhiteSpace(txtEmail.Text) && !ControlesCompartidos.ValidarDireccionCorreo(txtEmail.Text))
+            {
+                this.MensajeError("Formato incorrecto");
+                errorIcono.SetError(txtEmail, "Favor verifique que el formato del correo sea correcto");
+                return false;
+            }
+
+            return true;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -227,8 +254,6 @@ namespace CapaPresentacion
 
         private void FrmVistaProveedor_Load(object sender, EventArgs e)
         {
-            //inicializar combo de busqueda
-            cboBuscar.SelectedIndex = 0;
             //top para ubicar en la parte superior
             this.Top = 0;
             //alineado hacia la izquierda
@@ -236,18 +261,14 @@ namespace CapaPresentacion
             this.Habilitar(false);
             this.Botones();
             this.Mostrar();
+
+            rbRUC.CheckedChanged += RadioButton_CheckedChanged;
+            rbRazonSocial.CheckedChanged += RadioButton_CheckedChanged;
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            if (cboBuscar.SelectedItem.Equals("Razon Social"))
-            {
-                this.BuscarRazonSocial();
-            }
-            else
-            {
-                this.BuscarRUC();
-            }
+            
         }
 
         private void dataListado_DoubleClick(object sender, EventArgs e)
@@ -256,10 +277,48 @@ namespace CapaPresentacion
             string codigo,documento ,razonsocial;
             codigo = Convert.ToString(dataListado.CurrentRow.Cells["ProveedorNro"].Value);
             razonsocial = Convert.ToString(dataListado.CurrentRow.Cells["RazonSocial"].Value);
-            documento = Convert.ToString(dataListado.CurrentRow.Cells["Documento"].Value);
+            documento = Convert.ToString(dataListado.CurrentRow.Cells["NroDocumento"].Value);
 
             frm.ObtenerProveedor(codigo, documento,razonsocial);
             this.Hide();
+        }
+
+        private void RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = sender as RadioButton;
+            if (radioButton.Checked)
+            {
+                // Desmarca los otros RadioButton
+                foreach (RadioButton otherRadioButton in groupBox1.Controls.OfType<RadioButton>().Where(rb => rb != radioButton))
+                {
+                    otherRadioButton.Checked = false;
+                }
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(this.txtBuscar.Text))
+            {
+                this.Mostrar();
+            }
+
+            else if (rbRazonSocial.Checked)
+            {
+                this.BuscarRazonSocial();
+            }
+            else if (rbRUC.Checked)
+            {
+                this.BuscarRUC();
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 1)
+            {
+                NuevoRegistro();
+            }
         }
     }
 }

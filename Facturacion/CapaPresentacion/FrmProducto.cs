@@ -435,7 +435,7 @@ namespace CapaPresentacion
                 return false;
             }
 
-            if (this.txtPrecioVenta.Text == string.Empty || Convert.ToInt32(txtPrecioVenta.Text) <=0)
+            if (this.txtPrecioVenta.Text == string.Empty || Convert.ToDouble(txtPrecioVenta.Text.Replace(".","").Replace(",","")) <=0)
             {
                 this.MensajeError("Falta algunos datos");
                 errorIcono.SetError(txtPrecioVenta, "Ingrese el Precio de Venta del Producto");
@@ -680,12 +680,7 @@ namespace CapaPresentacion
             }
            
         }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void txtPrecioMinorista_TextChanged(object sender, EventArgs e)
         {
             if (txtPrecioVenta.Text == string.Empty)
@@ -694,6 +689,11 @@ namespace CapaPresentacion
 
             }
 
+        }
+
+        private void btnRecargar_Click(object sender, EventArgs e)
+        {
+            LlenarCombos();
         }
     }
  }

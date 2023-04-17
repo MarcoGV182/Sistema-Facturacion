@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -92,6 +93,15 @@ namespace CapaPresentacion.Utilidades
             }
 
             return true;
+        }
+
+
+        public static string ObtenerValorAppSettings()
+        {
+            // Obtener el valor de la clave 'Ind_logoFondoPantalla'
+            var valor = ConfigurationManager.AppSettings["Ind_logoFondoPantalla"];
+            // Devolver el valor encontrado
+            return valor;
         }
     }
 }

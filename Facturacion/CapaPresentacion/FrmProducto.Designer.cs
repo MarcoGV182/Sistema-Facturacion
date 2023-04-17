@@ -48,6 +48,7 @@
             this.tabProducto = new System.Windows.Forms.TabControl();
             this.tabPageMantenimiento = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnRecargar = new System.Windows.Forms.Button();
             this.dtpFechaVto = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.txtCodigoBarra = new System.Windows.Forms.TextBox();
@@ -138,7 +139,7 @@
             this.tabPageListado.Location = new System.Drawing.Point(4, 22);
             this.tabPageListado.Name = "tabPageListado";
             this.tabPageListado.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageListado.Size = new System.Drawing.Size(770, 399);
+            this.tabPageListado.Size = new System.Drawing.Size(829, 435);
             this.tabPageListado.TabIndex = 0;
             this.tabPageListado.Text = "Listado";
             this.tabPageListado.UseVisualStyleBackColor = true;
@@ -187,7 +188,7 @@
             this.dataListado.ReadOnly = true;
             this.dataListado.RowHeadersWidth = 51;
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListado.Size = new System.Drawing.Size(754, 324);
+            this.dataListado.Size = new System.Drawing.Size(811, 360);
             this.dataListado.TabIndex = 7;
             this.dataListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentClick);
             this.dataListado.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataListado_CellFormatting);
@@ -268,7 +269,7 @@
             this.tabProducto.Location = new System.Drawing.Point(3, 8);
             this.tabProducto.Name = "tabProducto";
             this.tabProducto.SelectedIndex = 0;
-            this.tabProducto.Size = new System.Drawing.Size(778, 425);
+            this.tabProducto.Size = new System.Drawing.Size(837, 461);
             this.tabProducto.TabIndex = 7;
             // 
             // tabPageMantenimiento
@@ -277,13 +278,14 @@
             this.tabPageMantenimiento.Location = new System.Drawing.Point(4, 22);
             this.tabPageMantenimiento.Name = "tabPageMantenimiento";
             this.tabPageMantenimiento.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMantenimiento.Size = new System.Drawing.Size(770, 399);
+            this.tabPageMantenimiento.Size = new System.Drawing.Size(829, 435);
             this.tabPageMantenimiento.TabIndex = 1;
             this.tabPageMantenimiento.Text = "Mantenimiento";
             this.tabPageMantenimiento.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnRecargar);
             this.groupBox1.Controls.Add(this.dtpFechaVto);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.txtCodigoBarra);
@@ -314,10 +316,22 @@
             this.groupBox1.Controls.Add(this.lblCodigo);
             this.groupBox1.Location = new System.Drawing.Point(4, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(760, 386);
+            this.groupBox1.Size = new System.Drawing.Size(817, 422);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Productos";
+            // 
+            // btnRecargar
+            // 
+            this.btnRecargar.BackgroundImage = global::CapaPresentacion.Properties.Resources.cargando;
+            this.btnRecargar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRecargar.Location = new System.Drawing.Point(249, 127);
+            this.btnRecargar.Name = "btnRecargar";
+            this.btnRecargar.Size = new System.Drawing.Size(32, 23);
+            this.btnRecargar.TabIndex = 28;
+            this.ttMensaje.SetToolTip(this.btnRecargar, "Click para recargar las listas");
+            this.btnRecargar.UseVisualStyleBackColor = true;
+            this.btnRecargar.Click += new System.EventHandler(this.btnRecargar_Click);
             // 
             // dtpFechaVto
             // 
@@ -360,7 +374,7 @@
             // 
             this.cboImpuesto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboImpuesto.FormattingEnabled = true;
-            this.cboImpuesto.Location = new System.Drawing.Point(339, 59);
+            this.cboImpuesto.Location = new System.Drawing.Point(376, 59);
             this.cboImpuesto.Name = "cboImpuesto";
             this.cboImpuesto.Size = new System.Drawing.Size(113, 21);
             this.cboImpuesto.TabIndex = 9;
@@ -368,7 +382,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(292, 65);
+            this.label1.Location = new System.Drawing.Point(329, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 24;
@@ -376,7 +390,7 @@
             // 
             // txtObservacion
             // 
-            this.txtObservacion.Location = new System.Drawing.Point(268, 158);
+            this.txtObservacion.Location = new System.Drawing.Point(305, 158);
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.Size = new System.Drawing.Size(187, 124);
@@ -390,7 +404,7 @@
             this.cboEstado.Items.AddRange(new object[] {
             "ACTIVO",
             "INACTIVO"});
-            this.cboEstado.Location = new System.Drawing.Point(339, 25);
+            this.cboEstado.Location = new System.Drawing.Point(376, 25);
             this.cboEstado.Name = "cboEstado";
             this.cboEstado.Size = new System.Drawing.Size(113, 21);
             this.cboEstado.TabIndex = 8;
@@ -442,7 +456,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(265, 136);
+            this.label13.Location = new System.Drawing.Point(302, 136);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(70, 13);
             this.label13.TabIndex = 16;
@@ -451,7 +465,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(290, 33);
+            this.label12.Location = new System.Drawing.Point(327, 33);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(43, 13);
             this.label12.TabIndex = 15;
@@ -464,13 +478,12 @@
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(471, 19);
+            this.groupBox3.Location = new System.Drawing.Point(508, 19);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(265, 89);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "PRECIOS:";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // txtPrecioVenta
             // 
@@ -508,7 +521,7 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(472, 158);
+            this.groupBox2.Location = new System.Drawing.Point(509, 158);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(265, 113);
             this.groupBox2.TabIndex = 13;
@@ -595,7 +608,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(475, 329);
+            this.btnCancelar.Location = new System.Drawing.Point(493, 369);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 15;
@@ -605,7 +618,7 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(394, 329);
+            this.btnEditar.Location = new System.Drawing.Point(412, 369);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 23);
             this.btnEditar.TabIndex = 17;
@@ -615,7 +628,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(313, 329);
+            this.btnGuardar.Location = new System.Drawing.Point(331, 369);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 14;
@@ -625,7 +638,7 @@
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Location = new System.Drawing.Point(232, 329);
+            this.btnNuevo.Location = new System.Drawing.Point(250, 369);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(75, 23);
             this.btnNuevo.TabIndex = 16;
@@ -682,7 +695,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(793, 438);
+            this.ClientSize = new System.Drawing.Size(840, 471);
             this.Controls.Add(this.tabProducto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -764,5 +777,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DateTimePicker dtpFechaVto;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button btnRecargar;
     }
 }

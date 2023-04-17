@@ -32,17 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultaCompra));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dtpfechahasta = new System.Windows.Forms.DateTimePicker();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtpFechadesde = new System.Windows.Forms.DateTimePicker();
-            this.dataListado = new System.Windows.Forms.DataGridView();
-            this.Anular = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -53,12 +42,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnContado = new System.Windows.Forms.Button();
             this.btnCredito = new System.Windows.Forms.Button();
+            this.dtpfechahasta = new System.Windows.Forms.DateTimePicker();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpFechadesde = new System.Windows.Forms.DateTimePicker();
+            this.dataListado = new System.Windows.Forms.DataGridView();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -67,7 +66,7 @@
             this.tabControl1.Location = new System.Drawing.Point(5, 6);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1030, 475);
+            this.tabControl1.Size = new System.Drawing.Size(1109, 565);
             this.tabControl1.TabIndex = 13;
             // 
             // tabPage1
@@ -85,116 +84,10 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1022, 449);
+            this.tabPage1.Size = new System.Drawing.Size(1101, 539);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // dtpfechahasta
-            // 
-            this.dtpfechahasta.CalendarFont = new System.Drawing.Font("Times New Roman", 10F);
-            this.dtpfechahasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpfechahasta.Location = new System.Drawing.Point(209, 19);
-            this.dtpfechahasta.Name = "dtpfechahasta";
-            this.dtpfechahasta.Size = new System.Drawing.Size(93, 20);
-            this.dtpfechahasta.TabIndex = 13;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label14.Location = new System.Drawing.Point(164, 21);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(42, 16);
-            this.label14.TabIndex = 12;
-            this.label14.Text = "Hasta:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label2.Location = new System.Drawing.Point(17, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 16);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Desde:";
-            // 
-            // dtpFechadesde
-            // 
-            this.dtpFechadesde.CalendarFont = new System.Drawing.Font("Times New Roman", 10F);
-            this.dtpFechadesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechadesde.Location = new System.Drawing.Point(69, 18);
-            this.dtpFechadesde.Name = "dtpFechadesde";
-            this.dtpFechadesde.Size = new System.Drawing.Size(90, 20);
-            this.dtpFechadesde.TabIndex = 10;
-            // 
-            // dataListado
-            // 
-            this.dataListado.AllowUserToAddRows = false;
-            this.dataListado.AllowUserToDeleteRows = false;
-            this.dataListado.AllowUserToOrderColumns = true;
-            this.dataListado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dataListado.BackgroundColor = System.Drawing.Color.White;
-            this.dataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Anular});
-            this.dataListado.Location = new System.Drawing.Point(141, 79);
-            this.dataListado.MultiSelect = false;
-            this.dataListado.Name = "dataListado";
-            this.dataListado.ReadOnly = true;
-            this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListado.Size = new System.Drawing.Size(865, 364);
-            this.dataListado.TabIndex = 7;
-            this.dataListado.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataListado_CellFormatting);
-            this.dataListado.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataListado_CellPainting);
-            // 
-            // Anular
-            // 
-            this.Anular.HeaderText = "Anular";
-            this.Anular.Name = "Anular";
-            this.Anular.ReadOnly = true;
-            this.Anular.Width = 43;
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
-            this.lblTotal.Location = new System.Drawing.Point(440, 59);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(130, 17);
-            this.lblTotal.TabIndex = 6;
-            this.lblTotal.Text = "Total de registros: 0";
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Location = new System.Drawing.Point(378, 15);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(75, 23);
-            this.btnImprimir.TabIndex = 4;
-            this.btnImprimir.Text = "&Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = true;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscar.Location = new System.Drawing.Point(309, 16);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnBuscar.Size = new System.Drawing.Size(63, 23);
-            this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.Text = "&Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // errorIcono
-            // 
-            this.errorIcono.ContainerControl = this;
-            // 
-            // ttMensaje
-            // 
-            this.ttMensaje.IsBalloon = true;
             // 
             // groupBox2
             // 
@@ -298,12 +191,109 @@
             this.btnCredito.UseVisualStyleBackColor = false;
             this.btnCredito.Click += new System.EventHandler(this.btnCredito_Click);
             // 
+            // dtpfechahasta
+            // 
+            this.dtpfechahasta.CalendarFont = new System.Drawing.Font("Times New Roman", 10F);
+            this.dtpfechahasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpfechahasta.Location = new System.Drawing.Point(209, 19);
+            this.dtpfechahasta.Name = "dtpfechahasta";
+            this.dtpfechahasta.Size = new System.Drawing.Size(93, 20);
+            this.dtpfechahasta.TabIndex = 13;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.label14.Location = new System.Drawing.Point(164, 21);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(41, 16);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "Hasta:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.label2.Location = new System.Drawing.Point(17, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 16);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Desde:";
+            // 
+            // dtpFechadesde
+            // 
+            this.dtpFechadesde.CalendarFont = new System.Drawing.Font("Times New Roman", 10F);
+            this.dtpFechadesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechadesde.Location = new System.Drawing.Point(69, 18);
+            this.dtpFechadesde.Name = "dtpFechadesde";
+            this.dtpFechadesde.Size = new System.Drawing.Size(90, 20);
+            this.dtpFechadesde.TabIndex = 10;
+            // 
+            // dataListado
+            // 
+            this.dataListado.AllowUserToAddRows = false;
+            this.dataListado.AllowUserToDeleteRows = false;
+            this.dataListado.AllowUserToOrderColumns = true;
+            this.dataListado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataListado.BackgroundColor = System.Drawing.Color.White;
+            this.dataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataListado.Location = new System.Drawing.Point(141, 79);
+            this.dataListado.MultiSelect = false;
+            this.dataListado.Name = "dataListado";
+            this.dataListado.ReadOnly = true;
+            this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataListado.Size = new System.Drawing.Size(954, 454);
+            this.dataListado.TabIndex = 7;
+            this.dataListado.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataListado_CellFormatting);
+            this.dataListado.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataListado_CellPainting);
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            this.lblTotal.Location = new System.Drawing.Point(757, 59);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(130, 17);
+            this.lblTotal.TabIndex = 6;
+            this.lblTotal.Text = "Total de registros: 0";
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Location = new System.Drawing.Point(378, 15);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(75, 23);
+            this.btnImprimir.TabIndex = 4;
+            this.btnImprimir.Text = "&Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBuscar.Location = new System.Drawing.Point(309, 16);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnBuscar.Size = new System.Drawing.Size(63, 23);
+            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.Text = "&Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // errorIcono
+            // 
+            this.errorIcono.ContainerControl = this;
+            // 
+            // ttMensaje
+            // 
+            this.ttMensaje.IsBalloon = true;
+            // 
             // FrmConsultaCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkRed;
-            this.ClientSize = new System.Drawing.Size(1037, 493);
+            this.ClientSize = new System.Drawing.Size(1116, 574);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -315,12 +305,12 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -336,7 +326,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpFechadesde;
         private System.Windows.Forms.DataGridView dataListado;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Anular;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnBuscar;

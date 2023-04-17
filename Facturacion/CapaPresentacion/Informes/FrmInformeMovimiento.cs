@@ -28,7 +28,7 @@ namespace CapaPresentacion
         try 
         {
                 // TODO: esta línea de código carga datos en la tabla 'DsReporte.sp_ReporteMovimiento' Puede moverla o quitarla según sea necesario.
-                this.sp_ReporteMovimientoTableAdapter.Fill(this.DsReporte.sp_ReporteMovimiento, dtpDesde.Value.ToString("dd-MM-yyyy"), dtpHasta.Value.ToString("dd-MM-yyyy"));
+                this.sp_ReporteMovimientoTableAdapter.Fill(this.DsReporte.sp_ReporteMovimiento, dtpDesde.Value.ToString("yyyy-MM-dd"), dtpHasta.Value.ToString("yyyy-MM-dd"));
 
                 this.reportViewer1.RefreshReport();
             }

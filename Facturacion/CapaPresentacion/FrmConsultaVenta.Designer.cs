@@ -78,7 +78,7 @@
             this.tabControl1.Location = new System.Drawing.Point(3, 6);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1309, 506);
+            this.tabControl1.Size = new System.Drawing.Size(1309, 568);
             this.tabControl1.TabIndex = 12;
             // 
             // tabPage1
@@ -98,7 +98,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1301, 480);
+            this.tabPage1.Size = new System.Drawing.Size(1301, 542);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -126,7 +126,7 @@
             this.dataDetalle.ReadOnly = true;
             this.dataDetalle.RowHeadersVisible = false;
             this.dataDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataDetalle.Size = new System.Drawing.Size(253, 107);
+            this.dataDetalle.Size = new System.Drawing.Size(253, 126);
             this.dataDetalle.TabIndex = 17;
             this.dataDetalle.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataDetalle_CellFormatting);
             // 
@@ -283,7 +283,7 @@
             this.dataListado.Name = "dataListado";
             this.dataListado.ReadOnly = true;
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListado.Size = new System.Drawing.Size(917, 406);
+            this.dataListado.Size = new System.Drawing.Size(917, 468);
             this.dataListado.TabIndex = 7;
             this.dataListado.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataListado_CellFormatting);
             this.dataListado.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataListado_CellPainting);
@@ -303,7 +303,7 @@
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
-            this.lblTotal.Location = new System.Drawing.Point(440, 47);
+            this.lblTotal.Location = new System.Drawing.Point(797, 47);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(130, 17);
             this.lblTotal.TabIndex = 6;
@@ -337,7 +337,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkRed;
-            this.ClientSize = new System.Drawing.Size(1316, 516);
+            this.ClientSize = new System.Drawing.Size(1316, 576);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

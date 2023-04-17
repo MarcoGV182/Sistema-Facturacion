@@ -22,9 +22,9 @@ namespace CapaPresentacion
 
         private void LlenarComboCliente()
         {
-            cboCliente.DataSource = NCliente.MostrarCombo(this.txtnombre.Text);
-            cboCliente.ValueMember = "PersonaNro";
-            cboCliente.DisplayMember = "Cliente";
+            cboCliente.DataSource = NProveedor.BuscarProveedor("R",this.txtnombre.Text);
+            cboCliente.ValueMember = "ProveedorNro";
+            cboCliente.DisplayMember = "Proveedor";
         }
 
         private void LlenarComboTipo() 
@@ -48,8 +48,8 @@ namespace CapaPresentacion
         {
             FrmComprasFiltro frm = new FrmComprasFiltro();
             //Rango de fecha desde y hasta
-            frm.desde = this.dtpDesde.Value.ToString("dd/MM/yyyy");
-            frm.hasta = this.dtpHasta.Value.ToString("dd/MM/yyyy");
+            frm.desde = this.dtpDesde.Value.ToString("dd-MM-yyyy");
+            frm.hasta = this.dtpHasta.Value.ToString("dd-MM-yyyy");
             //Parametro de filtro
             if (cboFiltro.Text == "TODOS")
             {
@@ -88,7 +88,7 @@ namespace CapaPresentacion
 
         private void txtnombre_TextChanged(object sender, EventArgs e)
         {
-          if(this.txtnombre.Text!=string.Empty) {
+            if(this.txtnombre.Text!=string.Empty) {
                 this.LlenarComboCliente();
             }
             else 

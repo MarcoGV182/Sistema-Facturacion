@@ -2075,8 +2075,6 @@ namespace CapaPresentacion {
             
             private global::System.Data.DataColumn columnHasta;
             
-            private global::System.Data.DataColumn columnCliente;
-            
             private global::System.Data.DataColumn columnFecha;
             
             private global::System.Data.DataColumn columnCodTipoPago;
@@ -2183,14 +2181,6 @@ namespace CapaPresentacion {
             public global::System.Data.DataColumn HastaColumn {
                 get {
                     return this.columnHasta;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ClienteColumn {
-                get {
-                    return this.columnCliente;
                 }
             }
             
@@ -2411,7 +2401,6 @@ namespace CapaPresentacion {
                         string NroFacturaCompra, 
                         string Desde, 
                         string Hasta, 
-                        string Cliente, 
                         System.DateTime Fecha, 
                         string TipoPago, 
                         string TipoComprobante, 
@@ -2439,7 +2428,6 @@ namespace CapaPresentacion {
                         null,
                         Desde,
                         Hasta,
-                        Cliente,
                         Fecha,
                         null,
                         TipoPago,
@@ -2488,7 +2476,6 @@ namespace CapaPresentacion {
                 this.columnPersonaNro = base.Columns["PersonaNro"];
                 this.columnDesde = base.Columns["Desde"];
                 this.columnHasta = base.Columns["Hasta"];
-                this.columnCliente = base.Columns["Cliente"];
                 this.columnFecha = base.Columns["Fecha"];
                 this.columnCodTipoPago = base.Columns["CodTipoPago"];
                 this.columnTipoPago = base.Columns["TipoPago"];
@@ -2524,8 +2511,6 @@ namespace CapaPresentacion {
                 base.Columns.Add(this.columnDesde);
                 this.columnHasta = new global::System.Data.DataColumn("Hasta", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHasta);
-                this.columnCliente = new global::System.Data.DataColumn("Cliente", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCliente);
                 this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFecha);
                 this.columnCodTipoPago = new global::System.Data.DataColumn("CodTipoPago", typeof(int), null, global::System.Data.MappingType.Element);
@@ -2579,8 +2564,6 @@ namespace CapaPresentacion {
                 this.columnDesde.MaxLength = 20;
                 this.columnHasta.ReadOnly = true;
                 this.columnHasta.MaxLength = 20;
-                this.columnCliente.ReadOnly = true;
-                this.columnCliente.MaxLength = 201;
                 this.columnFecha.AllowDBNull = false;
                 this.columnCodTipoPago.AutoIncrement = true;
                 this.columnCodTipoPago.AllowDBNull = false;
@@ -2600,6 +2583,7 @@ namespace CapaPresentacion {
                 this.columnNroTimbrado.MaxLength = 10;
                 this.columnDocumento.AllowDBNull = false;
                 this.columnDocumento.MaxLength = 10;
+                this.columnProveedor.AllowDBNull = false;
                 this.columnProveedor.MaxLength = 201;
                 this.columnComprobante.MaxLength = 100;
                 this.columnIva.ReadOnly = true;
@@ -5981,10 +5965,6 @@ namespace CapaPresentacion {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class sp_ReporteMovimientoDataTable : global::System.Data.TypedTableBase<sp_ReporteMovimientoRow> {
             
-            private global::System.Data.DataColumn columnColumn1;
-            
-            private global::System.Data.DataColumn columnColumn2;
-            
             private global::System.Data.DataColumn columnIdentificador;
             
             private global::System.Data.DataColumn columnFecha;
@@ -5998,6 +5978,10 @@ namespace CapaPresentacion {
             private global::System.Data.DataColumn columnImporte;
             
             private global::System.Data.DataColumn columnUsuario;
+            
+            private global::System.Data.DataColumn columnFiltroDesde;
+            
+            private global::System.Data.DataColumn columnFiltroHasta;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -6030,22 +6014,6 @@ namespace CapaPresentacion {
             protected sp_ReporteMovimientoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Column1Column {
-                get {
-                    return this.columnColumn1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Column2Column {
-                get {
-                    return this.columnColumn2;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6106,6 +6074,22 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FiltroDesdeColumn {
+                get {
+                    return this.columnFiltroDesde;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FiltroHastaColumn {
+                get {
+                    return this.columnFiltroHasta;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -6141,18 +6125,18 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public sp_ReporteMovimientoRow Addsp_ReporteMovimientoRow(string Column1, string Column2, string Identificador, string Fecha, string Comprobante, string Persona, string TipoOperacion, decimal Importe, string Usuario) {
+            public sp_ReporteMovimientoRow Addsp_ReporteMovimientoRow(string Identificador, System.DateTime Fecha, string Comprobante, string Persona, string TipoOperacion, decimal Importe, string Usuario, string FiltroDesde, string FiltroHasta) {
                 sp_ReporteMovimientoRow rowsp_ReporteMovimientoRow = ((sp_ReporteMovimientoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Column1,
-                        Column2,
                         Identificador,
                         Fecha,
                         Comprobante,
                         Persona,
                         TipoOperacion,
                         Importe,
-                        Usuario};
+                        Usuario,
+                        FiltroDesde,
+                        FiltroHasta};
                 rowsp_ReporteMovimientoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_ReporteMovimientoRow);
                 return rowsp_ReporteMovimientoRow;
@@ -6175,8 +6159,6 @@ namespace CapaPresentacion {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnColumn1 = base.Columns["Column1"];
-                this.columnColumn2 = base.Columns["Column2"];
                 this.columnIdentificador = base.Columns["Identificador"];
                 this.columnFecha = base.Columns["Fecha"];
                 this.columnComprobante = base.Columns["Comprobante"];
@@ -6184,18 +6166,16 @@ namespace CapaPresentacion {
                 this.columnTipoOperacion = base.Columns["TipoOperacion"];
                 this.columnImporte = base.Columns["Importe"];
                 this.columnUsuario = base.Columns["Usuario"];
+                this.columnFiltroDesde = base.Columns["FiltroDesde"];
+                this.columnFiltroHasta = base.Columns["FiltroHasta"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnColumn1 = new global::System.Data.DataColumn("Column1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnColumn1);
-                this.columnColumn2 = new global::System.Data.DataColumn("Column2", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnColumn2);
                 this.columnIdentificador = new global::System.Data.DataColumn("Identificador", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdentificador);
-                this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFecha);
                 this.columnComprobante = new global::System.Data.DataColumn("Comprobante", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnComprobante);
@@ -6207,23 +6187,28 @@ namespace CapaPresentacion {
                 base.Columns.Add(this.columnImporte);
                 this.columnUsuario = new global::System.Data.DataColumn("Usuario", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUsuario);
-                this.columnColumn1.ReadOnly = true;
-                this.columnColumn1.MaxLength = 20;
-                this.columnColumn2.ReadOnly = true;
-                this.columnColumn2.MaxLength = 20;
+                this.columnFiltroDesde = new global::System.Data.DataColumn("FiltroDesde", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFiltroDesde);
+                this.columnFiltroHasta = new global::System.Data.DataColumn("FiltroHasta", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFiltroHasta);
+                this.columnIdentificador.AllowDBNull = false;
                 this.columnIdentificador.ReadOnly = true;
                 this.columnIdentificador.MaxLength = 50;
                 this.columnFecha.ReadOnly = true;
-                this.columnFecha.MaxLength = 4000;
                 this.columnComprobante.ReadOnly = true;
                 this.columnComprobante.MaxLength = 150;
                 this.columnPersona.ReadOnly = true;
                 this.columnPersona.MaxLength = 201;
+                this.columnTipoOperacion.AllowDBNull = false;
                 this.columnTipoOperacion.ReadOnly = true;
                 this.columnTipoOperacion.MaxLength = 100;
                 this.columnImporte.ReadOnly = true;
                 this.columnUsuario.ReadOnly = true;
                 this.columnUsuario.MaxLength = 50;
+                this.columnFiltroDesde.ReadOnly = true;
+                this.columnFiltroDesde.MaxLength = 20;
+                this.columnFiltroHasta.ReadOnly = true;
+                this.columnFiltroHasta.MaxLength = 20;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11813,23 +11798,6 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Cliente {
-                get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteCompraPorFecha.ClienteColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Cliente\' de la tabla \'sp_ReporteCompraPorFecha\' es DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteCompraPorFecha.ClienteColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public System.DateTime Fecha {
                 get {
                     return ((global::System.DateTime)(this[this.tablesp_ReporteCompraPorFecha.FechaColumn]));
@@ -12010,13 +11978,7 @@ namespace CapaPresentacion {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Proveedor {
                 get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteCompraPorFecha.ProveedorColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Proveedor\' de la tabla \'sp_ReporteCompraPorFecha\' es DBNu" +
-                                "ll.", e);
-                    }
+                    return ((string)(this[this.tablesp_ReporteCompraPorFecha.ProveedorColumn]));
                 }
                 set {
                     this[this.tablesp_ReporteCompraPorFecha.ProveedorColumn] = value;
@@ -12183,18 +12145,6 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsClienteNull() {
-                return this.IsNull(this.tablesp_ReporteCompraPorFecha.ClienteColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetClienteNull() {
-                this[this.tablesp_ReporteCompraPorFecha.ClienteColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsTipoPagoNull() {
                 return this.IsNull(this.tablesp_ReporteCompraPorFecha.TipoPagoColumn);
             }
@@ -12263,18 +12213,6 @@ namespace CapaPresentacion {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetNroTimbradoNull() {
                 this[this.tablesp_ReporteCompraPorFecha.NroTimbradoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsProveedorNull() {
-                return this.IsNull(this.tablesp_ReporteCompraPorFecha.ProveedorColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetProveedorNull() {
-                this[this.tablesp_ReporteCompraPorFecha.ProveedorColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14877,47 +14815,9 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Column1 {
-                get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteMovimiento.Column1Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Column1\' de la tabla \'sp_ReporteMovimiento\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimiento.Column1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Column2 {
-                get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteMovimiento.Column2Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Column2\' de la tabla \'sp_ReporteMovimiento\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteMovimiento.Column2Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Identificador {
                 get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteMovimiento.IdentificadorColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Identificador\' de la tabla \'sp_ReporteMovimiento\' es DBNu" +
-                                "ll.", e);
-                    }
+                    return ((string)(this[this.tablesp_ReporteMovimiento.IdentificadorColumn]));
                 }
                 set {
                     this[this.tablesp_ReporteMovimiento.IdentificadorColumn] = value;
@@ -14926,10 +14826,10 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Fecha {
+            public System.DateTime Fecha {
                 get {
                     try {
-                        return ((string)(this[this.tablesp_ReporteMovimiento.FechaColumn]));
+                        return ((global::System.DateTime)(this[this.tablesp_ReporteMovimiento.FechaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Fecha\' de la tabla \'sp_ReporteMovimiento\' es DBNull.", e);
@@ -14977,13 +14877,7 @@ namespace CapaPresentacion {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string TipoOperacion {
                 get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteMovimiento.TipoOperacionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TipoOperacion\' de la tabla \'sp_ReporteMovimiento\' es DBNu" +
-                                "ll.", e);
-                    }
+                    return ((string)(this[this.tablesp_ReporteMovimiento.TipoOperacionColumn]));
                 }
                 set {
                     this[this.tablesp_ReporteMovimiento.TipoOperacionColumn] = value;
@@ -15024,38 +14918,36 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsColumn1Null() {
-                return this.IsNull(this.tablesp_ReporteMovimiento.Column1Column);
+            public string FiltroDesde {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_ReporteMovimiento.FiltroDesdeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FiltroDesde\' de la tabla \'sp_ReporteMovimiento\' es DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteMovimiento.FiltroDesdeColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetColumn1Null() {
-                this[this.tablesp_ReporteMovimiento.Column1Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsColumn2Null() {
-                return this.IsNull(this.tablesp_ReporteMovimiento.Column2Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetColumn2Null() {
-                this[this.tablesp_ReporteMovimiento.Column2Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsIdentificadorNull() {
-                return this.IsNull(this.tablesp_ReporteMovimiento.IdentificadorColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetIdentificadorNull() {
-                this[this.tablesp_ReporteMovimiento.IdentificadorColumn] = global::System.Convert.DBNull;
+            public string FiltroHasta {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_ReporteMovimiento.FiltroHastaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FiltroHasta\' de la tabla \'sp_ReporteMovimiento\' es DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteMovimiento.FiltroHastaColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15096,18 +14988,6 @@ namespace CapaPresentacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTipoOperacionNull() {
-                return this.IsNull(this.tablesp_ReporteMovimiento.TipoOperacionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTipoOperacionNull() {
-                this[this.tablesp_ReporteMovimiento.TipoOperacionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsImporteNull() {
                 return this.IsNull(this.tablesp_ReporteMovimiento.ImporteColumn);
             }
@@ -15128,6 +15008,30 @@ namespace CapaPresentacion {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetUsuarioNull() {
                 this[this.tablesp_ReporteMovimiento.UsuarioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFiltroDesdeNull() {
+                return this.IsNull(this.tablesp_ReporteMovimiento.FiltroDesdeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFiltroDesdeNull() {
+                this[this.tablesp_ReporteMovimiento.FiltroDesdeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFiltroHastaNull() {
+                return this.IsNull(this.tablesp_ReporteMovimiento.FiltroHastaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFiltroHastaNull() {
+                this[this.tablesp_ReporteMovimiento.FiltroHastaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -19397,7 +19301,6 @@ namespace CapaPresentacion.DsReporteTableAdapters {
             tableMapping.ColumnMappings.Add("PersonaNro", "PersonaNro");
             tableMapping.ColumnMappings.Add("Desde", "Desde");
             tableMapping.ColumnMappings.Add("Hasta", "Hasta");
-            tableMapping.ColumnMappings.Add("Cliente", "Cliente");
             tableMapping.ColumnMappings.Add("CodTipoPago", "CodTipoPago");
             tableMapping.ColumnMappings.Add("TipoPago", "TipoPago");
             tableMapping.ColumnMappings.Add("Estado", "Estado");
@@ -21075,8 +20978,6 @@ namespace CapaPresentacion.DsReporteTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "sp_ReporteMovimiento";
-            tableMapping.ColumnMappings.Add("Column1", "Column1");
-            tableMapping.ColumnMappings.Add("Column2", "Column2");
             tableMapping.ColumnMappings.Add("Identificador", "Identificador");
             tableMapping.ColumnMappings.Add("Fecha", "Fecha");
             tableMapping.ColumnMappings.Add("Comprobante", "Comprobante");
@@ -21084,6 +20985,8 @@ namespace CapaPresentacion.DsReporteTableAdapters {
             tableMapping.ColumnMappings.Add("TipoOperacion", "TipoOperacion");
             tableMapping.ColumnMappings.Add("Importe", "Importe");
             tableMapping.ColumnMappings.Add("Usuario", "Usuario");
+            tableMapping.ColumnMappings.Add("FiltroDesde", "FiltroDesde");
+            tableMapping.ColumnMappings.Add("FiltroHasta", "FiltroHasta");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

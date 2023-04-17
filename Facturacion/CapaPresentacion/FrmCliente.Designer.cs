@@ -384,7 +384,7 @@
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.lblTotal.Location = new System.Drawing.Point(381, 45);
+            this.lblTotal.Location = new System.Drawing.Point(516, 47);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(119, 16);
             this.lblTotal.TabIndex = 6;
@@ -467,6 +467,7 @@
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataListado.Size = new System.Drawing.Size(734, 309);
             this.dataListado.TabIndex = 7;
+            this.ttMensaje.SetToolTip(this.dataListado, "Doble click en un registro para editar");
             this.dataListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentClick);
             this.dataListado.DoubleClick += new System.EventHandler(this.dataListado_DoubleClick);
             // 

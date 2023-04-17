@@ -43,7 +43,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox1</rd:DefaultName>
@@ -75,7 +77,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -107,7 +111,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox5</rd:DefaultName>
@@ -133,13 +139,15 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Persona</Value>
+                              <Value>Cliente/Proveedor</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox7</rd:DefaultName>
@@ -203,7 +211,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox11</rd:DefaultName>
@@ -266,11 +276,13 @@
                             <TextRun>
                               <Value>=Fields!Fecha.Value</Value>
                               <Style>
-                                <Format>d</Format>
+                                <Format>dd/MM/yyyy</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Fecha</rd:DefaultName>
@@ -392,7 +404,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Importe</rd:DefaultName>
@@ -435,7 +449,7 @@
         </TablixRowHierarchy>
         <DataSetName>DsInformeMovimiento</DataSetName>
         <Top>3.80683cm</Top>
-        <Left>0.14499cm</Left>
+        <Left>0.46249cm</Left>
         <Height>1.2cm</Height>
         <Width>17.76522cm</Width>
         <Style>
@@ -451,9 +465,16 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Desde:</Value>
+                <Value>Desde: </Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!FiltroDesde.Value</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                  <Format>d</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -462,43 +483,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox15</rd:DefaultName>
         <Top>2.27224cm</Top>
-        <Left>4.85395cm</Left>
+        <Left>3.58395cm</Left>
         <Height>0.6cm</Height>
-        <Width>1.38875cm</Width>
+        <Width>4.96062cm</Width>
         <ZIndex>1</ZIndex>
-        <Style>
-          <Border>
-            <Color>LightGrey</Color>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Column1">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Fields!Column1.Value</Value>
-                <Style>
-                  <Format>d</Format>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Column1</rd:DefaultName>
-        <Top>2.29016cm</Top>
-        <Left>6.33562cm</Left>
-        <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
-        <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Color>LightGrey</Color>
@@ -517,9 +505,16 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Hasta:</Value>
+                <Value>Hasta: </Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!FiltroHasta.Value</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                  <Format>d</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -528,43 +523,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
         <Top>2.27224cm</Top>
-        <Left>9.08728cm</Left>
+        <Left>10.99228cm</Left>
         <Height>0.6cm</Height>
-        <Width>1.30938cm</Width>
-        <ZIndex>3</ZIndex>
-        <Style>
-          <Border>
-            <Color>LightGrey</Color>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Column2">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Fields!Column2.Value</Value>
-                <Style>
-                  <Format>d</Format>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Column2</rd:DefaultName>
-        <Top>2.29016cm</Top>
-        <Left>10.43666cm</Left>
-        <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
-        <ZIndex>4</ZIndex>
+        <Width>4.7619cm</Width>
+        <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Color>LightGrey</Color>
@@ -595,10 +557,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
         <Top>5.43842cm</Top>
-        <Left>15.67479cm</Left>
+        <Left>15.99229cm</Left>
         <Height>0.6cm</Height>
         <Width>2.23542cm</Width>
-        <ZIndex>5</ZIndex>
+        <ZIndex>3</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -633,7 +595,7 @@
         <Left>5.71416cm</Left>
         <Height>1.04069cm</Height>
         <Width>6.60042cm</Width>
-        <ZIndex>6</ZIndex>
+        <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -662,10 +624,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox2</rd:DefaultName>
         <Top>5.43842cm</Top>
-        <Left>12.93668cm</Left>
+        <Left>13.25418cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
-        <ZIndex>7</ZIndex>
+        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -693,11 +655,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>6.21481cm</Top>
-        <Left>12.93668cm</Left>
+        <Top>6.18306cm</Top>
+        <Left>13.25418cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
-        <ZIndex>8</ZIndex>
+        <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -727,10 +689,40 @@
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
         <Top>6.17953cm</Top>
-        <Left>15.67481cm</Left>
+        <Left>15.99231cm</Left>
         <Height>0.6cm</Height>
         <Width>2.23542cm</Width>
-        <ZIndex>9</ZIndex>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="ExecutionTime">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Globals!ExecutionTime</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>ExecutionTime</rd:DefaultName>
+        <Top>25.44974cm</Top>
+        <Left>14.49599cm</Left>
+        <Height>0.6cm</Height>
+        <Width>6.04542cm</Width>
+        <ZIndex>8</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -742,15 +734,15 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>3.98959in</Height>
+    <Height>27cm</Height>
     <Style />
   </Body>
-  <Width>7.16009in</Width>
+  <Width>21cm</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
-    <LeftMargin>1cm</LeftMargin>
-    <RightMargin>1cm</RightMargin>
+    <LeftMargin>0.5cm</LeftMargin>
+    <RightMargin>0.5cm</RightMargin>
     <TopMargin>1cm</TopMargin>
     <BottomMargin>1cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
@@ -807,12 +799,20 @@
         </Field>
         <Field Name="Usuario">
           <DataField>Usuario</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FiltroDesde">
+          <DataField>FiltroDesde</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FiltroHasta">
+          <DataField>FiltroHasta</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DsReporte</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\USER\Documents\Visual Studio 2015\Projects\Facturacion\CapaPresentacion\DsReporte.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\Documentos\Programacion\Programacion\Peluqueria\Proyecto Nuevo-Final- con Facturacion y OT Juntos\Facturacion\CapaPresentacion\DsReporte.xsd</rd:SchemaPath>
         <rd:TableName>sp_ReporteMovimiento</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -820,6 +820,7 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
+  <Language>es-PY</Language>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>a6d3ebc5-960b-40a0-b634-b2216710c514</rd:ReportID>
 </Report>

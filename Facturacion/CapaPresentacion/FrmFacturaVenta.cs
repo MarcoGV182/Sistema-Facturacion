@@ -760,7 +760,10 @@ namespace CapaPresentacion
                             FrmComprobanteVenta frm = new FrmComprobanteVenta();
                             frm.nroVenta = idVenta;
                             frm.ShowDialog();
-                            frmPagoFactura.Close();
+
+                            if (frmPagoFactura != null)
+                                frmPagoFactura.Close();
+
                         }
                     }                      
                  }
@@ -781,6 +784,10 @@ namespace CapaPresentacion
             {   
                 MessageBox.Show(ex.Message + ex.StackTrace);
                 return "";
+            }
+            finally 
+            {
+              Mostrar();
             }
         }
 

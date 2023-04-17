@@ -267,11 +267,12 @@
             // txtDias
             // 
             this.txtDias.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.txtDias.Location = new System.Drawing.Point(512, 55);
+            this.txtDias.Location = new System.Drawing.Point(501, 55);
             this.txtDias.Name = "txtDias";
-            this.txtDias.Size = new System.Drawing.Size(35, 23);
+            this.txtDias.Size = new System.Drawing.Size(47, 23);
             this.txtDias.TabIndex = 7;
             this.txtDias.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDias.TextChanged += new System.EventHandler(this.txtDias_TextChanged);
             this.txtDias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDias_KeyPress);
             this.txtDias.Leave += new System.EventHandler(this.txtDias_Leave);
             // 
@@ -281,9 +282,9 @@
             this.lbldias.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.lbldias.Location = new System.Drawing.Point(460, 59);
             this.lbldias.Name = "lbldias";
-            this.lbldias.Size = new System.Drawing.Size(49, 16);
+            this.lbldias.Size = new System.Drawing.Size(35, 16);
             this.lbldias.TabIndex = 32;
-            this.lbldias.Text = "Cuotas:";
+            this.lbldias.Text = "Dias:";
             // 
             // label7
             // 
@@ -535,6 +536,7 @@
             this.txtTotalGravadas.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
             this.txtTotalGravadas.Location = new System.Drawing.Point(180, 60);
             this.txtTotalGravadas.Name = "txtTotalGravadas";
+            this.txtTotalGravadas.ReadOnly = true;
             this.txtTotalGravadas.Size = new System.Drawing.Size(111, 24);
             this.txtTotalGravadas.TabIndex = 7;
             this.txtTotalGravadas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -553,6 +555,7 @@
             this.txtTotalGral.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.txtTotalGral.Location = new System.Drawing.Point(180, 86);
             this.txtTotalGral.Name = "txtTotalGral";
+            this.txtTotalGral.ReadOnly = true;
             this.txtTotalGral.Size = new System.Drawing.Size(111, 26);
             this.txtTotalGral.TabIndex = 5;
             this.txtTotalGral.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -562,6 +565,7 @@
             this.txttotalIva.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold);
             this.txttotalIva.Location = new System.Drawing.Point(180, 34);
             this.txttotalIva.Name = "txttotalIva";
+            this.txttotalIva.ReadOnly = true;
             this.txttotalIva.Size = new System.Drawing.Size(111, 24);
             this.txttotalIva.TabIndex = 4;
             this.txttotalIva.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -594,7 +598,9 @@
             this.dgvDetalleCompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalleCompra.Location = new System.Drawing.Point(139, 204);
             this.dgvDetalleCompra.Name = "dgvDetalleCompra";
+            this.dgvDetalleCompra.ReadOnly = true;
             this.dgvDetalleCompra.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDetalleCompra.ShowEditingIcon = false;
             this.dgvDetalleCompra.Size = new System.Drawing.Size(696, 210);
             this.dgvDetalleCompra.TabIndex = 25;
             this.dgvDetalleCompra.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDetalleCompra_CellFormatting);
@@ -649,9 +655,10 @@
             // txtIva
             // 
             this.txtIva.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.txtIva.Location = new System.Drawing.Point(696, 46);
+            this.txtIva.Location = new System.Drawing.Point(687, 46);
             this.txtIva.Name = "txtIva";
-            this.txtIva.Size = new System.Drawing.Size(41, 24);
+            this.txtIva.ReadOnly = true;
+            this.txtIva.Size = new System.Drawing.Size(54, 24);
             this.txtIva.TabIndex = 13;
             this.txtIva.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -709,7 +716,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label5.Location = new System.Drawing.Point(620, 28);
+            this.label5.Location = new System.Drawing.Point(615, 28);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 16);
             this.label5.TabIndex = 7;
@@ -718,7 +725,7 @@
             // txtPrecioCompra
             // 
             this.txtPrecioCompra.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.txtPrecioCompra.Location = new System.Drawing.Point(604, 46);
+            this.txtPrecioCompra.Location = new System.Drawing.Point(599, 46);
             this.txtPrecioCompra.Name = "txtPrecioCompra";
             this.txtPrecioCompra.Size = new System.Drawing.Size(86, 24);
             this.txtPrecioCompra.TabIndex = 6;
@@ -728,7 +735,7 @@
             // txtUnidadMedida
             // 
             this.txtUnidadMedida.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.txtUnidadMedida.Location = new System.Drawing.Point(531, 46);
+            this.txtUnidadMedida.Location = new System.Drawing.Point(526, 46);
             this.txtUnidadMedida.Name = "txtUnidadMedida";
             this.txtUnidadMedida.Size = new System.Drawing.Size(69, 24);
             this.txtUnidadMedida.TabIndex = 5;
@@ -738,7 +745,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label4.Location = new System.Drawing.Point(530, 27);
+            this.label4.Location = new System.Drawing.Point(525, 27);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 16);
             this.label4.TabIndex = 4;
@@ -747,7 +754,7 @@
             // txtProducto
             // 
             this.txtProducto.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.txtProducto.Location = new System.Drawing.Point(186, 47);
+            this.txtProducto.Location = new System.Drawing.Point(181, 47);
             this.txtProducto.Name = "txtProducto";
             this.txtProducto.Size = new System.Drawing.Size(339, 24);
             this.txtProducto.TabIndex = 3;
@@ -756,7 +763,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label3.Location = new System.Drawing.Point(344, 28);
+            this.label3.Location = new System.Drawing.Point(339, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 16);
             this.label3.TabIndex = 2;
@@ -765,7 +772,7 @@
             // txtCodProducto
             // 
             this.txtCodProducto.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.txtCodProducto.Location = new System.Drawing.Point(143, 47);
+            this.txtCodProducto.Location = new System.Drawing.Point(138, 47);
             this.txtCodProducto.Name = "txtCodProducto";
             this.txtCodProducto.Size = new System.Drawing.Size(37, 24);
             this.txtCodProducto.TabIndex = 1;
@@ -775,7 +782,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label1.Location = new System.Drawing.Point(144, 27);
+            this.label1.Location = new System.Drawing.Point(139, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 16);
             this.label1.TabIndex = 0;

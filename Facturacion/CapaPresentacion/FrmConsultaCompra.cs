@@ -62,9 +62,19 @@ namespace CapaPresentacion
         //ocultar columnas
         private void OcultarColumnas()
         {
-            this.dataListado.Columns[0].Visible = false;
-            this.dataListado.Columns["PersonaNro"].Visible = false;
-            // this.dataListado.Columns[3].Visible = false;
+            if (dataListado.Rows.Count == 0)
+                return;
+
+            try
+            {
+                this.dataListado.Columns[0].Visible = false;
+                this.dataListado.Columns[1].Visible = false;
+                this.dataListado.Columns[3].Visible = false;
+                this.dataListado.Columns[9].Visible = false;
+            }
+            catch (Exception)
+            {
+            }
         }
 
 
@@ -90,7 +100,7 @@ namespace CapaPresentacion
         //Metodo buscar por fechas
         private void BuscarFechas()
         {
-            this.dataListado.DataSource = NCompra.BuscarCompraFecha(this.dtpFechadesde.Value.ToString("dd-MM-yyyy"), dtpfechahasta.Value.ToString("dd-MM-yyyy"));
+            this.dataListado.DataSource = NCompra.BuscarCompraFecha(this.dtpFechadesde.Value.ToString("yyyy-MM-dd"), dtpfechahasta.Value.ToString("yyyy-MM-dd"));
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
