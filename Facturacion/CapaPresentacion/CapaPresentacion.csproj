@@ -635,6 +635,9 @@
     <Compile Include="Utilidades\DataGridAgrupado.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Utilidades\RButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">

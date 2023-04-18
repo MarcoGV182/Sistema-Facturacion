@@ -14,7 +14,7 @@ namespace CapaDatos.Interfaces
         int Numero { get; set; }
 
 
-        string Anular(int id,string usuario);
+        string Anular(int id,int usuario);
     }
 
    

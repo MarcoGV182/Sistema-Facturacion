@@ -229,7 +229,6 @@ namespace CapaPresentacion
         {
             this.dataListado.Columns[0].Visible = false;
             this.dataListado.Columns["NroOT"].Visible = false;
-            this.dataListado.Columns["PersonaNro"].Visible = false;
             this.dataListado.Columns["NroUsuarioInsercion"].Visible = false;
         }
 

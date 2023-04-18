@@ -229,7 +229,7 @@ namespace CapaDatos
 
 
         //Metodo Anular
-        public string Anular(int id, string usuario)
+        public string Anular(int id, int usuario)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
@@ -254,7 +254,7 @@ namespace CapaDatos
                 
                 SqlParameter ParUsuario = new SqlParameter();
                 ParUsuario.ParameterName = "@Usuario";
-                ParUsuario.SqlDbType = SqlDbType.VarChar;
+                ParUsuario.SqlDbType = SqlDbType.Int;
                 ParUsuario.Value = usuario;
                 SqlCmd.Parameters.Add(ParUsuario);
 

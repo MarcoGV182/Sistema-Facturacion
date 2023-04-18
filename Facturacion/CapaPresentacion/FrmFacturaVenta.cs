@@ -624,7 +624,7 @@ namespace CapaPresentacion
                         }
 
                         codigo = Convert.ToInt32(row.Cells["NroVenta"].Value);
-                        rpta = NFactura.AnularFactura(codigo, usuario);
+                        rpta = NFactura.AnularFactura(codigo, idUsuario);
                     }
                 }
                 //mensaje a mostrar

@@ -39,7 +39,7 @@ namespace CapaNegocio
 
 
         //Metodo para anular que llama al metodo eliminar de la capa Datos
-        public static string AnularCompra(int NroCompra, string usuario)
+        public static string AnularCompra(int NroCompra, int usuario)
         {
             DCompra objCompra = new DCompra();           
             return objCompra.Anular(NroCompra,usuario);

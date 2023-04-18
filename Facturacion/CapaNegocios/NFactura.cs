@@ -118,7 +118,7 @@ namespace CapaNegocio
 
 
         //Metodo para eliminar que llama al metodo eliminar de la capa Datos
-        public static string AnularFactura(int nroVenta,string usuario)
+        public static string AnularFactura(int nroVenta,int usuario)
         {
             DFactura objFactura = new DFactura();
             return objFactura.Anular(nroVenta, usuario);

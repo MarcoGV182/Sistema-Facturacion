@@ -509,7 +509,7 @@ namespace CapaDatos
 
 
         //Metodo Eliminar
-        public string Anular(int id,string usuario)
+        public string Anular(int id,int usuario)
         {
             string rpta = "OK";
             SqlConnection Sqlcon = new SqlConnection();
@@ -534,8 +534,7 @@ namespace CapaDatos
                 //Parametros 
                 SqlParameter ParUsuario = new SqlParameter();
                 ParUsuario.ParameterName = "@Usuario";
-                ParUsuario.SqlDbType = SqlDbType.VarChar;
-                ParUsuario.Size = 50;
+                ParUsuario.SqlDbType = SqlDbType.Int;
                 ParUsuario.Value = usuario;
                 SqlCmd.Parameters.Add(ParUsuario);
 
@@ -549,8 +548,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                Conexion.CerrarConexion(Sqlcon);
             }
             return rpta;
         }

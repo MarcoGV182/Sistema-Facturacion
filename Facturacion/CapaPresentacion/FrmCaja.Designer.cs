@@ -36,13 +36,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtMonto = new System.Windows.Forms.TextBox();
             this.txtObservacion = new System.Windows.Forms.TextBox();
-            this.btnAceptar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.dtpFechaApertura = new System.Windows.Forms.DateTimePicker();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnAceptar = new CapaDatos.Personalizacion.RButton();
+            this.btnCancelar = new CapaDatos.Personalizacion.RButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
@@ -117,26 +117,6 @@
             this.txtObservacion.Size = new System.Drawing.Size(317, 99);
             this.txtObservacion.TabIndex = 3;
             // 
-            // btnAceptar
-            // 
-            this.btnAceptar.Location = new System.Drawing.Point(103, 307);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 4;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(185, 307);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 5;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
             // ttMensaje
             // 
             this.ttMensaje.IsBalloon = true;
@@ -180,15 +160,53 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Apertura de Caja";
             // 
+            // btnAceptar
+            // 
+            this.btnAceptar.BackColor = System.Drawing.Color.Maroon;
+            this.btnAceptar.BackgroundColor = System.Drawing.Color.Maroon;
+            this.btnAceptar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnAceptar.BorderRadius = 10;
+            this.btnAceptar.BorderSize = 0;
+            this.btnAceptar.FlatAppearance.BorderSize = 0;
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptar.ForeColor = System.Drawing.Color.White;
+            this.btnAceptar.Location = new System.Drawing.Point(114, 305);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(68, 32);
+            this.btnAceptar.TabIndex = 14;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.TextColor = System.Drawing.Color.White;
+            this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.Maroon;
+            this.btnCancelar.BackgroundColor = System.Drawing.Color.Maroon;
+            this.btnCancelar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnCancelar.BorderRadius = 10;
+            this.btnCancelar.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Location = new System.Drawing.Point(206, 305);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(68, 32);
+            this.btnCancelar.TabIndex = 15;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextColor = System.Drawing.Color.White;
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // FrmCaja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(374, 342);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.dtpFechaApertura);
             this.Controls.Add(this.txtObservacion);
             this.Controls.Add(this.txtMonto);
@@ -219,12 +237,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.TextBox txtObservacion;
-        private System.Windows.Forms.Button btnAceptar;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ToolTip ttMensaje;
         private System.Windows.Forms.ErrorProvider errorIcono;
         private System.Windows.Forms.DateTimePicker dtpFechaApertura;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label4;
+        private CapaDatos.Personalizacion.RButton btnCancelar;
+        private CapaDatos.Personalizacion.RButton btnAceptar;
     }
 }

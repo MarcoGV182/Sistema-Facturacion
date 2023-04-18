@@ -475,9 +475,7 @@ namespace CapaPresentacion
             this.txtdescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Descripcion"].Value);
             this.cboTipoOperacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Tipo"].Value);
             this.txtImporte.Text = Convert.ToDouble(this.dataListado.CurrentRow.Cells["Importe"].Value).ToString("N0");
-            this.cboFormaPago.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["FormaPago"].Value);           
-            //mostrar la segunda pestana la de mantenimiento al hacer doble click
-            this.tabControl1.SelectedIndex = 1;
+            this.cboFormaPago.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["FormaPago"].Value);
         }
 
         private void txtImporte_KeyPress(object sender, KeyPressEventArgs e)
