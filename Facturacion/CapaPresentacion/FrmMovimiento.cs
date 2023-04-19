@@ -49,15 +49,15 @@ namespace CapaPresentacion
             {
                 foreach (DataGridViewRow row in dataListado.Rows)
                 {
-                    if (row.Cells["TipoOperacion"].Value.ToString() == "INGRESO")
+                    if (Convert.ToDouble(row.Cells["Ingreso"].Value) > 0)
                     {
-                        ingreso += Convert.ToDouble(row.Cells["Importe"].Value);
+                        ingreso += Convert.ToDouble(row.Cells["Ingreso"].Value);
                         txtingreso.Text = ingreso.ToString("N0");
                        
                     }
-                    else if (row.Cells["TipoOperacion"].Value.ToString() == "EGRESO")
+                    else if (Convert.ToDouble(row.Cells["Egreso"].Value) > 0)
                     {
-                        egreso += Convert.ToDouble(row.Cells["Importe"].Value);
+                        egreso += Convert.ToDouble(row.Cells["Egreso"].Value);
                         txtegreso.Text = egreso.ToString("N0");                       
                     }                   
                 }
@@ -144,7 +144,7 @@ namespace CapaPresentacion
             try {
                 foreach (DataGridViewRow row in dataListado.Rows)
                 {
-                    if (row.Cells["TipoOperacion"].Value.ToString() == "INGRESO")
+                    if (Convert.ToDouble(row.Cells["Ingreso"].Value) > 0)
                     {
                         row.DefaultCellStyle.ForeColor = Color.Blue;
                     }
@@ -169,7 +169,8 @@ namespace CapaPresentacion
 
         private void dataListado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            this.dataListado.Columns["Importe"].DefaultCellStyle.Format = "N0";
+            this.dataListado.Columns["Ingreso"].DefaultCellStyle.Format = "N0";
+            this.dataListado.Columns["Egreso"].DefaultCellStyle.Format = "N0";
         }
 
         private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -191,7 +192,7 @@ namespace CapaPresentacion
                 dataListado.CurrentCell = null;
                 foreach (DataGridViewRow r in dataListado.Rows)
                 {
-                    if (r.Cells["TipoOperacion"].Value.ToString() == "INGRESO")
+                    if (Convert.ToDouble(r.Cells["Ingreso"].Value) > 0)
                     {
                         r.Visible = true;
                     }
@@ -216,7 +217,7 @@ namespace CapaPresentacion
                 dataListado.CurrentCell = null;
                 foreach (DataGridViewRow r in dataListado.Rows)
                 {
-                    if (r.Cells["TipoOperacion"].Value.ToString()=="EGRESO")
+                    if (Convert.ToDouble(r.Cells["Egreso"].Value) > 0)
                     {
                         r.Visible = true;
                     }
@@ -225,7 +226,6 @@ namespace CapaPresentacion
                         r.Visible = false;
                     }
                 }
-
             }
             catch (Exception ex)
             {

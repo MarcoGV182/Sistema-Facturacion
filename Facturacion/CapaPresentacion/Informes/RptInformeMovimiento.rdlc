@@ -6,19 +6,19 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.02917cm</Width>
+              <Width>3.34667cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.23542cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.15395cm</Width>
+              <Width>5.63562cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>3.37313cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.73813cm</Width>
+              <Width>2.50002cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.23542cm</Width>
@@ -105,7 +105,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Comprobante</Value>
+                              <Value>Concepto</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -173,13 +173,15 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Tipo Operacion</Value>
+                              <Value>Ingreso</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox9</rd:DefaultName>
@@ -205,7 +207,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Importe</Value>
+                              <Value>Egreso</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -301,21 +303,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Comprobante">
+                    <Textbox Name="Concepto">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Comprobante.Value</Value>
+                              <Value>=Fields!Concepto.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Comprobante</rd:DefaultName>
+                      <rd:DefaultName>Concepto</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -361,21 +363,25 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="TipoOperacion">
+                    <Textbox Name="Ingreso">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!TipoOperacion.Value</Value>
-                              <Style />
+                              <Value>=Fields!Ingreso.Value</Value>
+                              <Style>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>TipoOperacion</rd:DefaultName>
+                      <rd:DefaultName>Ingreso</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -391,14 +397,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Importe">
+                    <Textbox Name="Egreso">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Importe.Value</Value>
+                              <Value>=Fields!Egreso.Value</Value>
                               <Style>
                                 <Format>#,0;(#,0)</Format>
                               </Style>
@@ -409,7 +415,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Importe</rd:DefaultName>
+                      <rd:DefaultName>Egreso</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -451,7 +457,7 @@
         <Top>3.80683cm</Top>
         <Left>0.46249cm</Left>
         <Height>1.2cm</Height>
-        <Width>17.76522cm</Width>
+        <Width>19.32628cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -474,7 +480,7 @@
                 <Value>=Fields!FiltroDesde.Value</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
-                  <Format>d</Format>
+                  <Format>dd/MM/yyyy</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -483,7 +489,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox15</rd:DefaultName>
         <Top>2.27224cm</Top>
-        <Left>3.58395cm</Left>
+        <Left>4.53645cm</Left>
         <Height>0.6cm</Height>
         <Width>4.96062cm</Width>
         <ZIndex>1</ZIndex>
@@ -514,7 +520,7 @@
                 <Value>=Fields!FiltroHasta.Value</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
-                  <Format>d</Format>
+                  <Format>dd/MM/yyyy</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -523,7 +529,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox17</rd:DefaultName>
         <Top>2.27224cm</Top>
-        <Left>10.99228cm</Left>
+        <Left>11.94478cm</Left>
         <Height>0.6cm</Height>
         <Width>4.7619cm</Width>
         <ZIndex>2</ZIndex>
@@ -545,19 +551,21 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=SUM(cdbl(IIf(Fields!TipoOperacion.Value="INGRESO",0,Fields!Importe.Value)))</Value>
+                <Value>=SUM(cdbl(IIf(Fields!Egreso.Value&gt; 0,Fields!Egreso.Value,0)))</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                   <Format>#,0;(#,0)</Format>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>5.43842cm</Top>
-        <Left>15.99229cm</Left>
+        <Top>5.18322cm</Top>
+        <Left>17.55335cm</Left>
         <Height>0.6cm</Height>
         <Width>2.23542cm</Width>
         <ZIndex>3</ZIndex>
@@ -592,74 +600,10 @@
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
         <Top>1.10835cm</Top>
-        <Left>5.71416cm</Left>
+        <Left>7.38103cm</Left>
         <Height>1.04069cm</Height>
         <Width>6.60042cm</Width>
         <ZIndex>4</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox2">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Egresos:</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox2</rd:DefaultName>
-        <Top>5.43842cm</Top>
-        <Left>13.25418cm</Left>
-        <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
-        <ZIndex>5</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox4">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Ingresos:</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>6.18306cm</Top>
-        <Left>13.25418cm</Left>
-        <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
-        <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -677,52 +621,24 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=SUM(cdbl(IIf(Fields!TipoOperacion.Value="EGRESO",0,Fields!Importe.Value)))</Value>
+                <Value>=SUM(cdbl(IIf(Fields!Ingreso.Value &gt; 0,Fields!Ingreso.Value,0)))</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                   <Format>#,0;(#,0)</Format>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>6.17953cm</Top>
-        <Left>15.99231cm</Left>
+        <Top>5.18322cm</Top>
+        <Left>15.05333cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.23542cm</Width>
-        <ZIndex>7</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="ExecutionTime">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Globals!ExecutionTime</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>ExecutionTime</rd:DefaultName>
-        <Top>25.44974cm</Top>
-        <Left>14.49599cm</Left>
-        <Height>0.6cm</Height>
-        <Width>6.04542cm</Width>
-        <ZIndex>8</ZIndex>
+        <Width>2.50002cm</Width>
+        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -734,17 +650,58 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>27cm</Height>
+    <Height>24.25057cm</Height>
     <Style />
   </Body>
-  <Width>21cm</Width>
+  <Width>20.23271cm</Width>
   <Page>
+    <PageFooter>
+      <Height>1.24354cm</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="ExecutionTime">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Globals!ExecutionTime</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>ExecutionTime</rd:DefaultName>
+          <Top>0.17639cm</Top>
+          <Left>0.46249cm</Left>
+          <Height>0.6cm</Height>
+          <Width>6.04542cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
     <LeftMargin>0.5cm</LeftMargin>
-    <RightMargin>0.5cm</RightMargin>
-    <TopMargin>1cm</TopMargin>
-    <BottomMargin>1cm</BottomMargin>
+    <RightMargin>0cm</RightMargin>
+    <TopMargin>0cm</TopMargin>
+    <BottomMargin>0cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style />
   </Page>
@@ -765,21 +722,13 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="Column1">
-          <DataField>Column1</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Column2">
-          <DataField>Column2</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="Identificador">
           <DataField>Identificador</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Fecha">
           <DataField>Fecha</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="Comprobante">
           <DataField>Comprobante</DataField>
@@ -789,25 +738,29 @@
           <DataField>Persona</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="TipoOperacion">
-          <DataField>TipoOperacion</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Importe">
-          <DataField>Importe</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
         <Field Name="Usuario">
           <DataField>Usuario</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="FiltroDesde">
           <DataField>FiltroDesde</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="FiltroHasta">
           <DataField>FiltroHasta</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Concepto">
+          <DataField>Concepto</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Ingreso">
+          <DataField>Ingreso</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Egreso">
+          <DataField>Egreso</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>

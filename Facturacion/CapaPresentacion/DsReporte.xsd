@@ -371,14 +371,14 @@
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="Identificador" DataSetColumn="Identificador" />
-              <Mapping SourceColumn="Fecha" DataSetColumn="Fecha" />
               <Mapping SourceColumn="Comprobante" DataSetColumn="Comprobante" />
               <Mapping SourceColumn="Persona" DataSetColumn="Persona" />
-              <Mapping SourceColumn="TipoOperacion" DataSetColumn="TipoOperacion" />
-              <Mapping SourceColumn="Importe" DataSetColumn="Importe" />
               <Mapping SourceColumn="Usuario" DataSetColumn="Usuario" />
               <Mapping SourceColumn="FiltroDesde" DataSetColumn="FiltroDesde" />
               <Mapping SourceColumn="FiltroHasta" DataSetColumn="FiltroHasta" />
+              <Mapping SourceColumn="Concepto" DataSetColumn="Concepto" />
+              <Mapping SourceColumn="Ingreso" DataSetColumn="Ingreso" />
+              <Mapping SourceColumn="Egreso" DataSetColumn="Egreso" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -866,7 +866,7 @@
               </xs:element>
               <xs:element name="FechaInsercion" msprop:Generator_ColumnPropNameInTable="FechaInsercionColumn" msprop:Generator_ColumnPropNameInRow="FechaInsercion" msprop:Generator_UserColumnName="FechaInsercion" msprop:Generator_ColumnVarNameInTable="columnFechaInsercion" type="xs:dateTime" minOccurs="0" />
               <xs:element name="FechaAnulacion" msprop:Generator_ColumnPropNameInTable="FechaAnulacionColumn" msprop:Generator_ColumnPropNameInRow="FechaAnulacion" msprop:Generator_UserColumnName="FechaAnulacion" msprop:Generator_ColumnVarNameInTable="columnFechaAnulacion" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="UsuarioAnulacion" msprop:Generator_ColumnPropNameInTable="UsuarioAnulacionColumn" msprop:Generator_ColumnPropNameInRow="UsuarioAnulacion" msprop:Generator_UserColumnName="UsuarioAnulacion" msprop:Generator_ColumnVarNameInTable="columnUsuarioAnulacion" type="xs:int" minOccurs="0" />
+              <xs:element name="UsuarioAnulacion" msprop:Generator_ColumnPropNameInTable="UsuarioAnulacionColumn" msprop:Generator_ColumnPropNameInRow="UsuarioAnulacion" msprop:Generator_UserColumnName="UsuarioAnulacion" msprop:Generator_ColumnVarNameInTable="columnUsuarioAnulacion" type="xs:string" minOccurs="0" />
               <xs:element name="Total" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_UserColumnName="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
@@ -1176,20 +1176,8 @@
         <xs:element name="sp_LibroCompra" msprop:Generator_RowEvHandlerName="sp_LibroCompraRowChangeEventHandler" msprop:Generator_RowDeletedName="sp_LibroCompraRowDeleted" msprop:Generator_RowDeletingName="sp_LibroCompraRowDeleting" msprop:Generator_RowEvArgName="sp_LibroCompraRowChangeEvent" msprop:Generator_TablePropName="sp_LibroCompra" msprop:Generator_RowChangedName="sp_LibroCompraRowChanged" msprop:Generator_UserTableName="sp_LibroCompra" msprop:Generator_RowChangingName="sp_LibroCompraRowChanging" msprop:Generator_RowClassName="sp_LibroCompraRow" msprop:Generator_TableClassName="sp_LibroCompraDataTable" msprop:Generator_TableVarName="tablesp_LibroCompra">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Desde" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="DesdeColumn" msprop:Generator_ColumnPropNameInRow="Desde" msprop:Generator_UserColumnName="Desde" msprop:Generator_ColumnVarNameInTable="columnDesde" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Hasta" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="HastaColumn" msprop:Generator_ColumnPropNameInRow="Hasta" msprop:Generator_UserColumnName="Hasta" msprop:Generator_ColumnVarNameInTable="columnHasta" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
+              <xs:element name="Desde" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="DesdeColumn" msprop:Generator_ColumnPropNameInRow="Desde" msprop:Generator_UserColumnName="Desde" msprop:Generator_ColumnVarNameInTable="columnDesde" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Hasta" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="HastaColumn" msprop:Generator_ColumnPropNameInRow="Hasta" msprop:Generator_UserColumnName="Hasta" msprop:Generator_ColumnVarNameInTable="columnHasta" type="xs:dateTime" minOccurs="0" />
               <xs:element name="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" type="xs:dateTime" />
               <xs:element name="NroFacturaCompra" msprop:Generator_ColumnPropNameInTable="NroFacturaCompraColumn" msprop:Generator_ColumnPropNameInRow="NroFacturaCompra" msprop:Generator_UserColumnName="NroFacturaCompra" msprop:Generator_ColumnVarNameInTable="columnNroFacturaCompra">
                 <xs:simpleType>
@@ -1443,14 +1431,6 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="TipoOperacion" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="TipoOperacionColumn" msprop:Generator_ColumnPropNameInRow="TipoOperacion" msprop:Generator_UserColumnName="TipoOperacion" msprop:Generator_ColumnVarNameInTable="columnTipoOperacion">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Importe" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="ImporteColumn" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" type="xs:decimal" minOccurs="0" />
               <xs:element name="Usuario" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="UsuarioColumn" msprop:Generator_ColumnPropNameInRow="Usuario" msprop:Generator_UserColumnName="Usuario" msprop:Generator_ColumnVarNameInTable="columnUsuario" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -1458,20 +1438,17 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="FiltroDesde" msdata:ReadOnly="true" msprop:Generator_UserColumnName="FiltroDesde" msprop:Generator_ColumnPropNameInTable="FiltroDesdeColumn" msprop:Generator_ColumnPropNameInRow="FiltroDesde" msprop:Generator_ColumnVarNameInTable="columnFiltroDesde" minOccurs="0">
+              <xs:element name="FiltroDesde" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="FiltroDesdeColumn" msprop:Generator_ColumnPropNameInRow="FiltroDesde" msprop:Generator_UserColumnName="FiltroDesde" msprop:Generator_ColumnVarNameInTable="columnFiltroDesde" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FiltroHasta" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="FiltroHastaColumn" msprop:Generator_ColumnPropNameInRow="FiltroHasta" msprop:Generator_UserColumnName="FiltroHasta" msprop:Generator_ColumnVarNameInTable="columnFiltroHasta" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Concepto" msprop:Generator_ColumnPropNameInTable="ConceptoColumn" msprop:Generator_ColumnPropNameInRow="Concepto" msprop:Generator_UserColumnName="Concepto" msprop:Generator_ColumnVarNameInTable="columnConcepto" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
+                    <xs:maxLength value="150" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="FiltroHasta" msdata:ReadOnly="true" msprop:Generator_UserColumnName="FiltroHasta" msprop:Generator_ColumnPropNameInTable="FiltroHastaColumn" msprop:Generator_ColumnPropNameInRow="FiltroHasta" msprop:Generator_ColumnVarNameInTable="columnFiltroHasta" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
+              <xs:element name="Ingreso" msprop:Generator_ColumnPropNameInTable="IngresoColumn" msprop:Generator_ColumnPropNameInRow="Ingreso" msprop:Generator_UserColumnName="Ingreso" msprop:Generator_ColumnVarNameInTable="columnIngreso" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Egreso" msprop:Generator_ColumnPropNameInTable="EgresoColumn" msprop:Generator_ColumnPropNameInRow="Egreso" msprop:Generator_UserColumnName="Egreso" msprop:Generator_ColumnVarNameInTable="columnEgreso" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -482,8 +482,6 @@ namespace CapaPresentacion
                 this.txtEmail.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Email"].Value);
                 this.cboCiudad.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Ciudad"].Value);
                 this.txtObservacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Observacion"].Value);
-                //mostrar la segunda pestana la de mantenimiento al hacer doble click
-                this.tabControl1.SelectedIndex = 1;
              } 
              catch(Exception ex) {
                 MessageBox.Show(ex.Message);
