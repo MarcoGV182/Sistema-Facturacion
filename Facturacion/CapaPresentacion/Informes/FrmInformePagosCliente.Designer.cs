@@ -1,4 +1,6 @@
-﻿namespace CapaPresentacion
+﻿using CapaPresentacion.Informes;
+
+namespace CapaPresentacion
 {
     partial class FrmInformePagosCliente
     {
@@ -30,10 +32,10 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.DsReporte = new CapaPresentacion.DsReporte();
+            this.DsReporte = new Informes.DsReporte();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.sp_ReportePagosClienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sp_ReportePagosClienteTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReportePagosClienteTableAdapter();
+            this.sp_ReportePagosClienteTableAdapter = new Informes.DsReporteTableAdapters.sp_ReportePagosClienteTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_ReportePagosClienteBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -83,6 +85,6 @@
         private DsReporte DsReporte;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource sp_ReportePagosClienteBindingSource;
-        private DsReporteTableAdapters.sp_ReportePagosClienteTableAdapter sp_ReportePagosClienteTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_ReportePagosClienteTableAdapter sp_ReportePagosClienteTableAdapter;
     }
 }

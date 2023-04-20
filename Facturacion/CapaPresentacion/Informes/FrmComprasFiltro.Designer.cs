@@ -1,4 +1,6 @@
-﻿namespace CapaPresentacion
+﻿using CapaPresentacion.Informes;
+
+namespace CapaPresentacion
 {
     partial class FrmComprasFiltro
     {
@@ -31,9 +33,9 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.sp_ReporteCompraPorFechaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DsReporte = new CapaPresentacion.DsReporte();
+            this.DsReporte = new CapaPresentacion.Informes.DsReporte();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.sp_ReporteCompraPorFechaTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteCompraPorFechaTableAdapter();
+            this.sp_ReporteCompraPorFechaTableAdapter = new CapaPresentacion.Informes.DsReporteTableAdapters.sp_ReporteCompraPorFechaTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.sp_ReporteCompraPorFechaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).BeginInit();
             this.SuspendLayout();
@@ -84,6 +86,6 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource sp_ReporteCompraPorFechaBindingSource;
         private DsReporte DsReporte;
-        private DsReporteTableAdapters.sp_ReporteCompraPorFechaTableAdapter sp_ReporteCompraPorFechaTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_ReporteCompraPorFechaTableAdapter sp_ReporteCompraPorFechaTableAdapter;
     }
 }

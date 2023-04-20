@@ -347,6 +347,36 @@ namespace CapaDatos
 
             return DtResultado;
         }
+
+
+        public DataTable MostrarListaColaboradorActivo()
+        {
+            DataTable DtResultado = new DataTable("Colaborador");
+            SqlConnection Sqlcon = new SqlConnection();
+            try
+            {
+                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = Sqlcon;
+                SqlCmd.CommandText = "MostrarListaColaboradorActivo";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
+                SqlAdapter.Fill(DtResultado);
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+                throw ex;
+            }
+            finally 
+            {
+                Conexion.CerrarConexion(Sqlcon);
+            }
+
+            return DtResultado;
+
+        }
     }
 
 

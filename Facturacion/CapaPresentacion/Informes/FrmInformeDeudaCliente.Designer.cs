@@ -1,4 +1,5 @@
-﻿namespace CapaPresentacion
+﻿using CapaPresentacion.Informes;
+namespace CapaPresentacion
 {
     partial class FrmInformeDeudaCliente
     {
@@ -31,9 +32,9 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.DsReporte = new CapaPresentacion.DsReporte();
+            this.DsReporte = new DsReporte();
             this.sp_ReporteDeudasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sp_ReporteDeudasTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteDeudasTableAdapter();
+            this.sp_ReporteDeudasTableAdapter = new Informes.DsReporteTableAdapters.sp_ReporteDeudasTableAdapter();
             this.cboEstado = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnGenerar = new System.Windows.Forms.Button();
@@ -124,7 +125,7 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource sp_ReporteDeudasBindingSource;
         private DsReporte DsReporte;
-        private DsReporteTableAdapters.sp_ReporteDeudasTableAdapter sp_ReporteDeudasTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_ReporteDeudasTableAdapter sp_ReporteDeudasTableAdapter;
         private System.Windows.Forms.ComboBox cboEstado;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnGenerar;

@@ -1,4 +1,6 @@
-﻿namespace CapaPresentacion
+﻿using CapaPresentacion.Informes;
+
+namespace CapaPresentacion
 {
     partial class FrmInformeMovimiento
     {
@@ -31,14 +33,14 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.sp_ReporteMovimientoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DsReporte = new CapaPresentacion.DsReporte();
+            this.DsReporte = new Informes.DsReporte();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.dtpHasta = new System.Windows.Forms.DateTimePicker();
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.sp_ReporteMovimientoTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteMovimientoTableAdapter();
+            this.sp_ReporteMovimientoTableAdapter = new Informes.DsReporteTableAdapters.sp_ReporteMovimientoTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.sp_ReporteMovimientoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).BeginInit();
             this.SuspendLayout();
@@ -146,6 +148,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource sp_ReporteMovimientoBindingSource;
         private DsReporte DsReporte;
-        private DsReporteTableAdapters.sp_ReporteMovimientoTableAdapter sp_ReporteMovimientoTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_ReporteMovimientoTableAdapter sp_ReporteMovimientoTableAdapter;
     }
 }

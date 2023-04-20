@@ -1,4 +1,5 @@
-﻿namespace CapaPresentacion
+﻿using CapaPresentacion.Informes;
+namespace CapaPresentacion
 {
     partial class FrmVentasFiltro
     {
@@ -31,9 +32,9 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.sp_ReporteVentaPorFechaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DsReporte = new CapaPresentacion.DsReporte();
+            this.DsReporte = new Informes.DsReporte();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.sp_ReporteVentaPorFechaTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteVentaPorFechaTableAdapter();
+            this.sp_ReporteVentaPorFechaTableAdapter = new Informes.DsReporteTableAdapters.sp_ReporteVentaPorFechaTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.sp_ReporteVentaPorFechaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).BeginInit();
             this.SuspendLayout();
@@ -84,6 +85,6 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource sp_ReporteVentaPorFechaBindingSource;
         private DsReporte DsReporte;
-        public DsReporteTableAdapters.sp_ReporteVentaPorFechaTableAdapter sp_ReporteVentaPorFechaTableAdapter;
+        public Informes.DsReporteTableAdapters.sp_ReporteVentaPorFechaTableAdapter sp_ReporteVentaPorFechaTableAdapter;
     }
 }

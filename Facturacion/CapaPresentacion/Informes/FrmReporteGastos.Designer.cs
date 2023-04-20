@@ -1,4 +1,5 @@
-﻿namespace CapaPresentacion
+﻿using CapaPresentacion.Informes;
+namespace CapaPresentacion
 {
     partial class FrmReporteGastos
     {
@@ -36,9 +37,9 @@
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.DsReporte = new CapaPresentacion.DsReporte();
+            this.DsReporte = new Informes.DsReporte();
             this.sp_ReporteGastosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sp_ReporteGastosTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteGastosTableAdapter();
+            this.sp_ReporteGastosTableAdapter = new Informes.DsReporteTableAdapters.sp_ReporteGastosTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_ReporteGastosBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -145,6 +146,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource sp_ReporteGastosBindingSource;
         private DsReporte DsReporte;
-        private DsReporteTableAdapters.sp_ReporteGastosTableAdapter sp_ReporteGastosTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_ReporteGastosTableAdapter sp_ReporteGastosTableAdapter;
     }
 }

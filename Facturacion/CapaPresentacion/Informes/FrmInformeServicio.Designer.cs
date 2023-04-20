@@ -1,4 +1,5 @@
-﻿namespace CapaPresentacion
+﻿using CapaPresentacion.Informes;
+namespace CapaPresentacion
 {
     partial class FrmInformeServicio
     {
@@ -31,9 +32,9 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.DsReporte = new CapaPresentacion.DsReporte();
+            this.DsReporte = new Informes.DsReporte();
             this.sp_ReporteServicioBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sp_ReporteServicioTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteServicioTableAdapter();
+            this.sp_ReporteServicioTableAdapter = new Informes.DsReporteTableAdapters.sp_ReporteServicioTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_ReporteServicioBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +86,6 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private DsReporte DsReporte;
         private System.Windows.Forms.BindingSource sp_ReporteServicioBindingSource;
-        private DsReporteTableAdapters.sp_ReporteServicioTableAdapter sp_ReporteServicioTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_ReporteServicioTableAdapter sp_ReporteServicioTableAdapter;
     }
 }

@@ -1,4 +1,5 @@
-﻿namespace CapaPresentacion
+﻿using CapaPresentacion.Informes;
+namespace CapaPresentacion
 {
     partial class FrmLibroCompra
     {
@@ -31,9 +32,9 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.sp_LibroCompraBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DsReporte = new CapaPresentacion.DsReporte();
+            this.DsReporte = new Informes.DsReporte();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.sp_LibroCompraTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_LibroCompraTableAdapter();
+            this.sp_LibroCompraTableAdapter = new Informes.DsReporteTableAdapters.sp_LibroCompraTableAdapter();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.dtpHasta = new System.Windows.Forms.DateTimePicker();
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
@@ -141,7 +142,7 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource sp_LibroCompraBindingSource;
         private DsReporte DsReporte;
-        private DsReporteTableAdapters.sp_LibroCompraTableAdapter sp_LibroCompraTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_LibroCompraTableAdapter sp_LibroCompraTableAdapter;
         private System.Windows.Forms.Button btnGenerar;
         private System.Windows.Forms.DateTimePicker dtpHasta;
         private System.Windows.Forms.DateTimePicker dtpDesde;

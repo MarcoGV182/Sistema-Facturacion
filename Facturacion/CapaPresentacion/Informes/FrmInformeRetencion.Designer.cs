@@ -1,4 +1,5 @@
-﻿namespace CapaPresentacion
+﻿using CapaPresentacion.Informes;
+namespace CapaPresentacion
 {
     partial class FrmInformeRetencion
     {
@@ -31,14 +32,14 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.sp_ReporteRetencionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DsReporte = new CapaPresentacion.DsReporte();
+            this.DsReporte = new Informes.DsReporte();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.dtpHasta = new System.Windows.Forms.DateTimePicker();
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.sp_ReporteRetencionTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteRetencionTableAdapter();
+            this.sp_ReporteRetencionTableAdapter = new Informes.DsReporteTableAdapters.sp_ReporteRetencionTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.sp_ReporteRetencionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).BeginInit();
             this.SuspendLayout();
@@ -147,6 +148,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource sp_ReporteRetencionBindingSource;
         private DsReporte DsReporte;
-        private DsReporteTableAdapters.sp_ReporteRetencionTableAdapter sp_ReporteRetencionTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_ReporteRetencionTableAdapter sp_ReporteRetencionTableAdapter;
     }
 }

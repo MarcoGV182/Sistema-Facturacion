@@ -1,4 +1,5 @@
-﻿namespace CapaPresentacion
+﻿using CapaPresentacion.Informes;
+namespace CapaPresentacion
 {
     partial class FrmInformeLiquidacion
     {
@@ -35,13 +36,13 @@
             this.cboEmpleado = new System.Windows.Forms.ComboBox();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.DsReporte = new CapaPresentacion.DsReporte();
+            this.DsReporte = new DsReporte();
             this.sp_ReporteLiquidacionFinalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sp_ReporteLiquidacionFinalTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteLiquidacionFinalTableAdapter();
+            this.sp_ReporteLiquidacionFinalTableAdapter = new Informes.DsReporteTableAdapters.sp_ReporteLiquidacionFinalTableAdapter();
             this.sp_ReporteDetalleLiquidacionFinalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sp_ReporteDetalleLiquidacionFinalTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteDetalleLiquidacionFinalTableAdapter();
+            this.sp_ReporteDetalleLiquidacionFinalTableAdapter = new Informes.DsReporteTableAdapters.sp_ReporteDetalleLiquidacionFinalTableAdapter();
             this.sp_ReporteServiciosRealizadosUsuarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sp_ReporteServiciosRealizadosUsuarioTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteServiciosRealizadosUsuarioTableAdapter();
+            this.sp_ReporteServiciosRealizadosUsuarioTableAdapter = new Informes.DsReporteTableAdapters.sp_ReporteServiciosRealizadosUsuarioTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_ReporteLiquidacionFinalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_ReporteDetalleLiquidacionFinalBindingSource)).BeginInit();
@@ -142,8 +143,8 @@
         private DsReporte DsReporte;
         private System.Windows.Forms.BindingSource sp_ReporteDetalleLiquidacionFinalBindingSource;
         private System.Windows.Forms.BindingSource sp_ReporteServiciosRealizadosUsuarioBindingSource;
-        private DsReporteTableAdapters.sp_ReporteLiquidacionFinalTableAdapter sp_ReporteLiquidacionFinalTableAdapter;
-        private DsReporteTableAdapters.sp_ReporteDetalleLiquidacionFinalTableAdapter sp_ReporteDetalleLiquidacionFinalTableAdapter;
-        private DsReporteTableAdapters.sp_ReporteServiciosRealizadosUsuarioTableAdapter sp_ReporteServiciosRealizadosUsuarioTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_ReporteLiquidacionFinalTableAdapter sp_ReporteLiquidacionFinalTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_ReporteDetalleLiquidacionFinalTableAdapter sp_ReporteDetalleLiquidacionFinalTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_ReporteServiciosRealizadosUsuarioTableAdapter sp_ReporteServiciosRealizadosUsuarioTableAdapter;
     }
 }

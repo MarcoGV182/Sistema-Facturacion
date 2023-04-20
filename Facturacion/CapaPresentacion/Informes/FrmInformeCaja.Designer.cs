@@ -1,4 +1,5 @@
-﻿namespace CapaPresentacion
+﻿using CapaPresentacion.Informes;
+namespace CapaPresentacion
 {
     partial class FrmInformeCaja
     {
@@ -31,14 +32,14 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.sp_ReporteResumenCajaFechaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DsReporte = new CapaPresentacion.DsReporte();
+            this.DsReporte = new DsReporte();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.dtpHasta = new System.Windows.Forms.DateTimePicker();
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.sp_ReporteResumenCajaFechaTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteResumenCajaFechaTableAdapter();
+            this.sp_ReporteResumenCajaFechaTableAdapter = new Informes.DsReporteTableAdapters.sp_ReporteResumenCajaFechaTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.sp_ReporteResumenCajaFechaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).BeginInit();
             this.SuspendLayout();
@@ -150,6 +151,6 @@
         private System.Windows.Forms.Label label1;
         private DsReporte DsReporte;
         private System.Windows.Forms.BindingSource sp_ReporteResumenCajaFechaBindingSource;
-        private DsReporteTableAdapters.sp_ReporteResumenCajaFechaTableAdapter sp_ReporteResumenCajaFechaTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_ReporteResumenCajaFechaTableAdapter sp_ReporteResumenCajaFechaTableAdapter;
     }
 }

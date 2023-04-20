@@ -28,5 +28,11 @@ namespace CapaNegocio
             DColaborador objColaborador = new DColaborador();
             return objColaborador.MostrarColaborador(usuarioNro);
         }
+
+        public static DataTable MostrarColaboradorActivo()
+        {
+            DColaborador objColaborador = new DColaborador();
+            return objColaborador.MostrarListaColaboradorActivo();
+        }
     }
 }

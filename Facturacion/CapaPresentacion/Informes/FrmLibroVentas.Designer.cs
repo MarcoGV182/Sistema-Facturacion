@@ -1,4 +1,5 @@
-﻿namespace CapaPresentacion
+﻿using CapaPresentacion.Informes;
+namespace CapaPresentacion
 {
     partial class FrmLibroVentas
     {
@@ -36,9 +37,9 @@
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.dtpHasta = new System.Windows.Forms.DateTimePicker();
             this.btnGenerar = new System.Windows.Forms.Button();
-            this.DsReporte = new CapaPresentacion.DsReporte();
+            this.DsReporte = new Informes.DsReporte();
             this.sp_LibroVentaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sp_LibroVentaTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_LibroVentaTableAdapter();
+            this.sp_LibroVentaTableAdapter = new Informes.DsReporteTableAdapters.sp_LibroVentaTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_LibroVentaBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -147,6 +148,6 @@
         private System.Windows.Forms.Button btnGenerar;
         private DsReporte DsReporte;
         private System.Windows.Forms.BindingSource sp_LibroVentaBindingSource;
-        private DsReporteTableAdapters.sp_LibroVentaTableAdapter sp_LibroVentaTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_LibroVentaTableAdapter sp_LibroVentaTableAdapter;
     }
 }

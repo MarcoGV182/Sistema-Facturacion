@@ -1,4 +1,6 @@
-﻿namespace CapaPresentacion
+﻿using CapaPresentacion.Informes;
+
+namespace CapaPresentacion
 {
     partial class FrmComprobanteVenta
     {
@@ -32,11 +34,11 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.sp_ReporteFacturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DsReporte = new CapaPresentacion.DsReporte();
+            this.DsReporte = new DsReporte();
             this.spReporteFacturaDetalleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.sp_ReporteFacturaTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteFacturaTableAdapter();
-            this.sp_ReporteFacturaDetalleTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_ReporteFacturaDetalleTableAdapter();
+            this.sp_ReporteFacturaTableAdapter = new Informes.DsReporteTableAdapters.sp_ReporteFacturaTableAdapter();
+            this.sp_ReporteFacturaDetalleTableAdapter = new Informes.DsReporteTableAdapters.sp_ReporteFacturaDetalleTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.sp_ReporteFacturaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spReporteFacturaDetalleBindingSource)).BeginInit();
@@ -101,9 +103,9 @@
         #endregion
         private System.Windows.Forms.BindingSource sp_ReporteFacturaBindingSource;
         private DsReporte DsReporte;
-        private DsReporteTableAdapters.sp_ReporteFacturaTableAdapter sp_ReporteFacturaTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_ReporteFacturaTableAdapter sp_ReporteFacturaTableAdapter;
         private System.Windows.Forms.BindingSource spReporteFacturaDetalleBindingSource;
-        private DsReporteTableAdapters.sp_ReporteFacturaDetalleTableAdapter sp_ReporteFacturaDetalleTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_ReporteFacturaDetalleTableAdapter sp_ReporteFacturaDetalleTableAdapter;
         public Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

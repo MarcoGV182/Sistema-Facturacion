@@ -23,9 +23,9 @@ namespace CapaPresentacion
 
         public void CargarCombo() 
         {
-            cboEmpleado.DataSource = NUsuarios.MostrarCombo();
-            cboEmpleado.ValueMember = "UsuarioNro";
-            cboEmpleado.DisplayMember = "Usuario";
+            cboEmpleado.DataSource = NColaborador.MostrarColaboradorActivo();
+            cboEmpleado.ValueMember = "ColaboradorNro";
+            cboEmpleado.DisplayMember = "NombreApellido";
         }
             
 

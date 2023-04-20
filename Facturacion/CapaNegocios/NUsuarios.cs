@@ -34,13 +34,6 @@ namespace CapaNegocio
         }
 
 
-        public static DataTable MostrarCombo()
-        {
-            DUsuarios objUsuarios = new DUsuarios();
-            return objUsuarios.MostrarUsuarioCombo();
-        }
-
-
         public static DataTable Buscar(string Usuario)
         {
             DUsuarios objUsuarios = new DUsuarios();

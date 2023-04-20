@@ -1,4 +1,6 @@
-﻿namespace CapaPresentacion
+﻿using CapaPresentacion.Informes;
+
+namespace CapaPresentacion
 {
     partial class FrmInformeMovimientoCaja
     {
@@ -35,9 +37,9 @@
             this.spMostrarDetalleArqueoCajaBindingSource = new System.Windows.Forms.BindingSource(this.components);            
 
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.DsReporte = new CapaPresentacion.DsReporte();
-            this.sp_MostrarCabeceraArqueoCajaTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_MostrarCabeceraArqueoCajaTableAdapter();
-            this.sp_MostrarDetalleArqueoCajaTableAdapter = new CapaPresentacion.DsReporteTableAdapters.sp_MostrarDetalleArqueoCajaTableAdapter();
+            this.DsReporte = new Informes.DsReporte();
+            this.sp_MostrarCabeceraArqueoCajaTableAdapter = new Informes.DsReporteTableAdapters.sp_MostrarCabeceraArqueoCajaTableAdapter();
+            this.sp_MostrarDetalleArqueoCajaTableAdapter = new Informes.DsReporteTableAdapters.sp_MostrarDetalleArqueoCajaTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.spMostrarCabeceraArqueoCajaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spMostrarDetalleArqueoCajaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DsReporte)).BeginInit();
@@ -109,8 +111,8 @@
         private System.Windows.Forms.BindingSource sp_ReporteMovimientoCajaBindingSource;
         private System.Windows.Forms.BindingSource spMostrarCabeceraArqueoCajaBindingSource;
         private System.Windows.Forms.BindingSource spMostrarDetalleArqueoCajaBindingSource;
-        private DsReporteTableAdapters.sp_MostrarCabeceraArqueoCajaTableAdapter sp_MostrarCabeceraArqueoCajaTableAdapter;
-        private DsReporteTableAdapters.sp_MostrarDetalleArqueoCajaTableAdapter sp_MostrarDetalleArqueoCajaTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_MostrarCabeceraArqueoCajaTableAdapter sp_MostrarCabeceraArqueoCajaTableAdapter;
+        private Informes.DsReporteTableAdapters.sp_MostrarDetalleArqueoCajaTableAdapter sp_MostrarDetalleArqueoCajaTableAdapter;
         private DsReporte DsReporte;
     }
 }

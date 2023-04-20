@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
 
-namespace CapaDatos.Personalizacion
+namespace CapaPresentacion.Utilidades
 {
     public class RButton: Button
     {
