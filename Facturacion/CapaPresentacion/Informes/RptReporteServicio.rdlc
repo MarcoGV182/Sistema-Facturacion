@@ -6,16 +6,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.75916cm</Width>
+              <Width>1.28292cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>5.0548cm</Width>
+              <Width>4.49918cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.81208cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.58479cm</Width>
+              <Width>3.05562cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.5475cm</Width>
@@ -24,7 +24,7 @@
               <Width>4.59021cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.87042cm</Width>
+              <Width>3.42605cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -33,7 +33,7 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox1">
+                    <Textbox Name="Textbox2">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -42,6 +42,7 @@
                             <TextRun>
                               <Value>Código</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -51,7 +52,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox1</rd:DefaultName>
+                      <rd:DefaultName>Textbox2</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -76,6 +77,7 @@
                             <TextRun>
                               <Value>Servicio</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -108,6 +110,7 @@
                             <TextRun>
                               <Value>Precio</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -142,6 +145,7 @@
                             <TextRun>
                               <Value>Tipo Servicio</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -176,6 +180,7 @@
                             <TextRun>
                               <Value>IVA</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -210,6 +215,7 @@
                             <TextRun>
                               <Value>Observacion</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -231,7 +237,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -245,11 +250,14 @@
                             <TextRun>
                               <Value>Fecha Registro</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox14</rd:DefaultName>
@@ -281,7 +289,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Codigo.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -311,7 +321,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Servicio.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -342,6 +354,7 @@
                             <TextRun>
                               <Value>=Fields!Precio.Value</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <Format>#,0;(#,0)</Format>
                               </Style>
                             </TextRun>
@@ -375,7 +388,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!TipoServicio.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -405,7 +420,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!TipoImpuesto.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -437,7 +454,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Observacion.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -468,7 +487,8 @@
                             <TextRun>
                               <Value>=Fields!FechaRegistro.Value</Value>
                               <Style>
-                                <Format>dd/MM/yyyy hh:mm:ss</Format>
+                                <FontSize>9pt</FontSize>
+                                <Format>dd/MM/yyyy hh:mm</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -517,10 +537,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DsReporteServicio</DataSetName>
-        <Top>2.82787cm</Top>
-        <Left>1.14216cm</Left>
+        <Top>2.51037cm</Top>
+        <Left>0.18966cm</Left>
         <Height>1.2cm</Height>
-        <Width>21.21896cm</Width>
+        <Width>20.21356cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -560,9 +580,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
         <Top>1.00224cm</Top>
-        <Left>1.10279cm</Left>
+        <Left>0.21379cm</Left>
         <Height>0.99688cm</Height>
-        <Width>20.96729cm</Width>
+        <Width>20.18942cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -575,18 +595,94 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox4">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>="Cant.Registros: " &amp; Count(Fields!Codigo.Value, "DsReporteServicio")</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>3.88676cm</Top>
+        <Left>0.21379cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.6418cm</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>25.30792cm</Height>
     <Style />
   </Body>
-  <Width>23.75516cm</Width>
+  <Width>20.73542cm</Width>
   <Page>
+    <PageFooter>
+      <Height>2.14312cm</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox6">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Globals!ExecutionTime</Value>
+                  <Style>
+                    <Format>dd/MM/yyyy HH:mm:ss</Format>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox6</rd:DefaultName>
+          <Top>0.17639cm</Top>
+          <Left>14.64884cm</Left>
+          <Height>0.6cm</Height>
+          <Width>5.75437cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
-    <LeftMargin>2cm</LeftMargin>
-    <RightMargin>2cm</RightMargin>
-    <TopMargin>2cm</TopMargin>
-    <BottomMargin>2cm</BottomMargin>
+    <LeftMargin>0cm</LeftMargin>
+    <RightMargin>0cm</RightMargin>
+    <TopMargin>0cm</TopMargin>
+    <BottomMargin>0cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style />
   </Page>
@@ -607,10 +703,6 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="Codigo">
-          <DataField>ServicioNro</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
         <Field Name="Servicio">
           <DataField>Servicio</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -655,10 +747,14 @@
           <DataField>TipoServicio</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Codigo">
+          <DataField>Codigo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DsReporte</rd:DataSetName>
-        <rd:SchemaPath>D:\Documentos\Programacion\Programacion\Peluqueria\Proyecto Nuevo-Final- con Facturacion y OT Juntos\Facturacion\CapaPresentacion\DsReporte.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\Documentos\Programacion\Programacion\Peluqueria\Proyecto Nuevo-Final- con Facturacion y OT Juntos\Facturacion\CapaPresentacion\Informes\DsReporte.xsd</rd:SchemaPath>
         <rd:TableName>sp_ReporteServicio</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -666,6 +762,7 @@
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
+  <Language>es-PY</Language>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>01e34245-000b-494f-a671-9789cd64205c</rd:ReportID>
 </Report>

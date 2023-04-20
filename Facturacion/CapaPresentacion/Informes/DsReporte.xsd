@@ -311,7 +311,6 @@
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="GastoNro" DataSetColumn="GastoNro" />
-              <Mapping SourceColumn="NroGasto" DataSetColumn="NroGasto" />
               <Mapping SourceColumn="Descripcion" DataSetColumn="Descripcion" />
               <Mapping SourceColumn="Tipo" DataSetColumn="Tipo" />
               <Mapping SourceColumn="Importe" DataSetColumn="Importe" />
@@ -1284,13 +1283,6 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="GastoNro" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnPropNameInTable="GastoNroColumn" msprop:Generator_ColumnPropNameInRow="GastoNro" msprop:Generator_UserColumnName="GastoNro" msprop:Generator_ColumnVarNameInTable="columnGastoNro" type="xs:int" />
-              <xs:element name="NroGasto" msprop:Generator_ColumnPropNameInTable="NroGastoColumn" msprop:Generator_ColumnPropNameInRow="NroGasto" msprop:Generator_UserColumnName="NroGasto" msprop:Generator_ColumnVarNameInTable="columnNroGasto" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_UserColumnName="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -1314,20 +1306,8 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Desde" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="DesdeColumn" msprop:Generator_ColumnPropNameInRow="Desde" msprop:Generator_UserColumnName="Desde" msprop:Generator_ColumnVarNameInTable="columnDesde" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Hasta" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="HastaColumn" msprop:Generator_ColumnPropNameInRow="Hasta" msprop:Generator_UserColumnName="Hasta" msprop:Generator_ColumnVarNameInTable="columnHasta" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
+              <xs:element name="Desde" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="DesdeColumn" msprop:Generator_ColumnPropNameInRow="Desde" msprop:Generator_UserColumnName="Desde" msprop:Generator_ColumnVarNameInTable="columnDesde" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Hasta" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="HastaColumn" msprop:Generator_ColumnPropNameInRow="Hasta" msprop:Generator_UserColumnName="Hasta" msprop:Generator_ColumnVarNameInTable="columnHasta" type="xs:dateTime" minOccurs="0" />
               <xs:element name="Documento" msprop:Generator_ColumnPropNameInTable="DocumentoColumn" msprop:Generator_ColumnPropNameInRow="Documento" msprop:Generator_UserColumnName="Documento" msprop:Generator_ColumnVarNameInTable="columnDocumento">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -1488,7 +1468,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="FechaRegistro" msprop:Generator_ColumnPropNameInTable="FechaRegistroColumn" msprop:Generator_ColumnPropNameInRow="FechaRegistro" msprop:Generator_UserColumnName="FechaRegistro" msprop:Generator_ColumnVarNameInTable="columnFechaRegistro" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FechaRegistro" msprop:Generator_ColumnPropNameInTable="FechaRegistroColumn" msprop:Generator_ColumnPropNameInRow="FechaRegistro" msprop:Generator_UserColumnName="FechaRegistro" msprop:Generator_ColumnVarNameInTable="columnFechaRegistro" type="xs:dateTime" />
               <xs:element name="TipoServicio" msprop:Generator_ColumnPropNameInTable="TipoServicioColumn" msprop:Generator_ColumnPropNameInRow="TipoServicio" msprop:Generator_UserColumnName="TipoServicio" msprop:Generator_ColumnVarNameInTable="columnTipoServicio" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -1945,10 +1925,6 @@
     <xs:unique name="sp_ReporteRetencion_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:sp_ReporteRetencion" />
       <xs:field xpath="mstns:RetencionNro" />
-    </xs:unique>
-    <xs:unique name="sp_ReporteGastos_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:sp_ReporteGastos" />
-      <xs:field xpath="mstns:GastoNro" />
     </xs:unique>
     <xs:unique name="sp_ReporteAjuste_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:sp_ReporteAjuste" />

@@ -666,6 +666,12 @@ namespace CapaPresentacion.Formularios.Mantenimiento
         {
             try
             {
+                if (this.dataListado.CurrentRow == null)
+                {
+                    MensajeError("No ha seleccionado ningún registro");
+                    return;
+                }
+                
                 FrmInformeOT frm = new FrmInformeOT();
                 int NroOT;
                 NroOT = Convert.ToInt32 (this.dataListado.CurrentRow.Cells["Numeracion"].Value);

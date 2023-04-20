@@ -5111,8 +5111,6 @@ namespace CapaPresentacion.Informes {
             
             private global::System.Data.DataColumn columnGastoNro;
             
-            private global::System.Data.DataColumn columnNroGasto;
-            
             private global::System.Data.DataColumn columnDescripcion;
             
             private global::System.Data.DataColumn columnFecha;
@@ -5169,14 +5167,6 @@ namespace CapaPresentacion.Informes {
             public global::System.Data.DataColumn GastoNroColumn {
                 get {
                     return this.columnGastoNro;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn NroGastoColumn {
-                get {
-                    return this.columnNroGasto;
                 }
             }
             
@@ -5289,11 +5279,10 @@ namespace CapaPresentacion.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public sp_ReporteGastosRow Addsp_ReporteGastosRow(string NroGasto, string Descripcion, System.DateTime Fecha, string Tipo, decimal Importe, string Usuario, string Desde, string Hasta, string Documento, string FormaPago) {
+            public sp_ReporteGastosRow Addsp_ReporteGastosRow(string Descripcion, System.DateTime Fecha, string Tipo, decimal Importe, string Usuario, System.DateTime Desde, System.DateTime Hasta, string Documento, string FormaPago) {
                 sp_ReporteGastosRow rowsp_ReporteGastosRow = ((sp_ReporteGastosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        NroGasto,
                         Descripcion,
                         Fecha,
                         Tipo,
@@ -5306,13 +5295,6 @@ namespace CapaPresentacion.Informes {
                 rowsp_ReporteGastosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_ReporteGastosRow);
                 return rowsp_ReporteGastosRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public sp_ReporteGastosRow FindByGastoNro(int GastoNro) {
-                return ((sp_ReporteGastosRow)(this.Rows.Find(new object[] {
-                            GastoNro})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5333,7 +5315,6 @@ namespace CapaPresentacion.Informes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
                 this.columnGastoNro = base.Columns["GastoNro"];
-                this.columnNroGasto = base.Columns["NroGasto"];
                 this.columnDescripcion = base.Columns["Descripcion"];
                 this.columnFecha = base.Columns["Fecha"];
                 this.columnTipo = base.Columns["Tipo"];
@@ -5350,8 +5331,6 @@ namespace CapaPresentacion.Informes {
             private void InitClass() {
                 this.columnGastoNro = new global::System.Data.DataColumn("GastoNro", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGastoNro);
-                this.columnNroGasto = new global::System.Data.DataColumn("NroGasto", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNroGasto);
                 this.columnDescripcion = new global::System.Data.DataColumn("Descripcion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescripcion);
                 this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
@@ -5362,29 +5341,23 @@ namespace CapaPresentacion.Informes {
                 base.Columns.Add(this.columnImporte);
                 this.columnUsuario = new global::System.Data.DataColumn("Usuario", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUsuario);
-                this.columnDesde = new global::System.Data.DataColumn("Desde", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDesde = new global::System.Data.DataColumn("Desde", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDesde);
-                this.columnHasta = new global::System.Data.DataColumn("Hasta", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnHasta = new global::System.Data.DataColumn("Hasta", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHasta);
                 this.columnDocumento = new global::System.Data.DataColumn("Documento", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDocumento);
                 this.columnFormaPago = new global::System.Data.DataColumn("FormaPago", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFormaPago);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnGastoNro}, true));
                 this.columnGastoNro.AutoIncrement = true;
                 this.columnGastoNro.AllowDBNull = false;
                 this.columnGastoNro.ReadOnly = true;
-                this.columnGastoNro.Unique = true;
-                this.columnNroGasto.MaxLength = 10;
                 this.columnDescripcion.MaxLength = 150;
                 this.columnTipo.AllowDBNull = false;
                 this.columnTipo.MaxLength = 100;
                 this.columnUsuario.MaxLength = 50;
                 this.columnDesde.ReadOnly = true;
-                this.columnDesde.MaxLength = 20;
                 this.columnHasta.ReadOnly = true;
-                this.columnHasta.MaxLength = 20;
                 this.columnDocumento.AllowDBNull = false;
                 this.columnDocumento.MaxLength = 20;
                 this.columnFormaPago.MaxLength = 8;
@@ -6627,6 +6600,7 @@ namespace CapaPresentacion.Informes {
                 this.columnCodImpuesto.AllowDBNull = false;
                 this.columnTipoImpuesto.AllowDBNull = false;
                 this.columnTipoImpuesto.MaxLength = 100;
+                this.columnFechaRegistro.AllowDBNull = false;
                 this.columnTipoServicio.MaxLength = 250;
                 this.columnCodigo.AllowDBNull = false;
             }
@@ -14318,22 +14292,6 @@ namespace CapaPresentacion.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string NroGasto {
-                get {
-                    try {
-                        return ((string)(this[this.tablesp_ReporteGastos.NroGastoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NroGasto\' de la tabla \'sp_ReporteGastos\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_ReporteGastos.NroGastoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Descripcion {
                 get {
                     try {
@@ -14409,10 +14367,10 @@ namespace CapaPresentacion.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Desde {
+            public System.DateTime Desde {
                 get {
                     try {
-                        return ((string)(this[this.tablesp_ReporteGastos.DesdeColumn]));
+                        return ((global::System.DateTime)(this[this.tablesp_ReporteGastos.DesdeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Desde\' de la tabla \'sp_ReporteGastos\' es DBNull.", e);
@@ -14425,10 +14383,10 @@ namespace CapaPresentacion.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Hasta {
+            public System.DateTime Hasta {
                 get {
                     try {
-                        return ((string)(this[this.tablesp_ReporteGastos.HastaColumn]));
+                        return ((global::System.DateTime)(this[this.tablesp_ReporteGastos.HastaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Hasta\' de la tabla \'sp_ReporteGastos\' es DBNull.", e);
@@ -14464,18 +14422,6 @@ namespace CapaPresentacion.Informes {
                 set {
                     this[this.tablesp_ReporteGastos.FormaPagoColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsNroGastoNull() {
-                return this.IsNull(this.tablesp_ReporteGastos.NroGastoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetNroGastoNull() {
-                this[this.tablesp_ReporteGastos.NroGastoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15221,13 +15167,7 @@ namespace CapaPresentacion.Informes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public System.DateTime FechaRegistro {
                 get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tablesp_ReporteServicio.FechaRegistroColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaRegistro\' de la tabla \'sp_ReporteServicio\' es DBNull" +
-                                ".", e);
-                    }
+                    return ((global::System.DateTime)(this[this.tablesp_ReporteServicio.FechaRegistroColumn]));
                 }
                 set {
                     this[this.tablesp_ReporteServicio.FechaRegistroColumn] = value;
@@ -15296,18 +15236,6 @@ namespace CapaPresentacion.Informes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetBaseImponibleNull() {
                 this[this.tablesp_ReporteServicio.BaseImponibleColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsFechaRegistroNull() {
-                return this.IsNull(this.tablesp_ReporteServicio.FechaRegistroColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetFechaRegistroNull() {
-                this[this.tablesp_ReporteServicio.FechaRegistroColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20635,7 +20563,6 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "sp_ReporteGastos";
             tableMapping.ColumnMappings.Add("GastoNro", "GastoNro");
-            tableMapping.ColumnMappings.Add("NroGasto", "NroGasto");
             tableMapping.ColumnMappings.Add("Descripcion", "Descripcion");
             tableMapping.ColumnMappings.Add("Tipo", "Tipo");
             tableMapping.ColumnMappings.Add("Importe", "Importe");
