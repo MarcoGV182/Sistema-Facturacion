@@ -275,12 +275,14 @@ namespace CapaPresentacion.Formularios.Facturacion
             this.txtNroTimbrado.ReadOnly = !valor;
             this.dtpFecha.Enabled = valor;            
             this.txtObservacion.ReadOnly = !valor;
+
+
             this.txtProducto.ReadOnly= !valor;
             this.txtCodProducto.ReadOnly = !valor;
             this.txtUnidadMedida.ReadOnly = valor;
             this.txtPrecioCompra.ReadOnly = !valor;
             this.txtCantidad.ReadOnly = !valor;
-            this.txtIva.ReadOnly = !valor;
+
             this.cboTipoPago.Enabled = valor;
             this.txtObservacion.ReadOnly = !valor;            
             this.txtDias.ReadOnly = !valor;
@@ -403,8 +405,8 @@ namespace CapaPresentacion.Formularios.Facturacion
 
         private void FrmCompra_Load(object sender, EventArgs e)
         {
-        try 
-        {      
+            try
+            {
                 this.Top = 0;
                 this.Left = 0;
                 this.Mostrar();
@@ -419,11 +421,10 @@ namespace CapaPresentacion.Formularios.Facturacion
 
                 this.MedidaColumna(dgvDetalleCompra);
             }
-            catch(Exception ex) 
-        {
-                MessageBox.Show(ex.Message); 
-        }   
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnBuscarProveedor_Click(object sender, EventArgs e)
@@ -846,7 +847,8 @@ namespace CapaPresentacion.Formularios.Facturacion
         private void cboTipoPago_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-            if(cboTipoPago.SelectedIndex==1) {
+            if(cboTipoPago.SelectedIndex==1) 
+            {
                 this.txtDias.Visible = true;
                 this.lbldias.Visible = true;
                 this.lblVencimiento.Visible = true;
@@ -1027,7 +1029,7 @@ namespace CapaPresentacion.Formularios.Facturacion
         private void txtDias_TextChanged(object sender, EventArgs e)
         {
             int dias = 0;
-            if (string.IsNullOrEmpty(txtDias.Text) && !int.TryParse(txtDias.Text, out dias))
+            if (cboTipoPago.SelectedIndex == 1 && string.IsNullOrEmpty(txtDias.Text) && !int.TryParse(txtDias.Text, out dias))
             {
                 MensajeError("Favor ingrese la cantidad de días");
             }

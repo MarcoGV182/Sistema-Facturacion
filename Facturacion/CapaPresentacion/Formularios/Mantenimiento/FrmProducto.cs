@@ -153,6 +153,8 @@ namespace CapaPresentacion
             this.txtObservacion.ReadOnly = !valor;
             this.dtpFechaVto.Enabled = valor;
             this.txtPrecioCompra.ReadOnly = true;
+            //Se inhabilita el boton de stock actual que será solo para mostrar el valor
+            this.txtStockActual.ReadOnly = true;
 
             //Solo en el alta del producto se deja cargar el primer precio de compra
             if (IsEditar)
@@ -291,8 +293,7 @@ namespace CapaPresentacion
 
             this.txtCodigoBarra.Focus();
             this.cboEstado.SelectedIndex = 0;            
-            this.txtCodigo.Visible = true;
-            this.txtStockActual.Enabled = false;
+            this.txtCodigo.Visible = true;            
             this.dtpFechaVto.Checked = false;
         }
 
