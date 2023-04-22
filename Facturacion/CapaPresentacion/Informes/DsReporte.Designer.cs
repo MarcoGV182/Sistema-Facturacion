@@ -10429,11 +10429,7 @@ namespace CapaPresentacion.Informes {
             
             private global::System.Data.DataColumn columnPersona;
             
-            private global::System.Data.DataColumn columnTipoOperacion;
-            
             private global::System.Data.DataColumn columnFormaPago;
-            
-            private global::System.Data.DataColumn columnImporte;
             
             private global::System.Data.DataColumn columnUsuario;
             
@@ -10458,6 +10454,12 @@ namespace CapaPresentacion.Informes {
             private global::System.Data.DataColumn columnObservacion;
             
             private global::System.Data.DataColumn columnFechaRegistro;
+            
+            private global::System.Data.DataColumn columnConcepto;
+            
+            private global::System.Data.DataColumn columnIngreso;
+            
+            private global::System.Data.DataColumn columnEgreso;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -10526,25 +10528,9 @@ namespace CapaPresentacion.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TipoOperacionColumn {
-                get {
-                    return this.columnTipoOperacion;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn FormaPagoColumn {
                 get {
                     return this.columnFormaPago;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ImporteColumn {
-                get {
-                    return this.columnImporte;
                 }
             }
             
@@ -10646,6 +10632,30 @@ namespace CapaPresentacion.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ConceptoColumn {
+                get {
+                    return this.columnConcepto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IngresoColumn {
+                get {
+                    return this.columnIngreso;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EgresoColumn {
+                get {
+                    return this.columnEgreso;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -10686,9 +10696,7 @@ namespace CapaPresentacion.Informes {
                         System.DateTime Fecha, 
                         string Comprobante, 
                         string Persona, 
-                        string TipoOperacion, 
                         string FormaPago, 
-                        decimal Importe, 
                         string Usuario, 
                         int UsuarioNro, 
                         System.DateTime FechaApertura, 
@@ -10699,16 +10707,17 @@ namespace CapaPresentacion.Informes {
                         decimal DiferenciaCierre, 
                         string Estado, 
                         string Observacion, 
-                        System.DateTime FechaRegistro) {
+                        System.DateTime FechaRegistro, 
+                        string Concepto, 
+                        decimal Ingreso, 
+                        decimal Egreso) {
                 sp_MostrarDetalleArqueoCajaRow rowsp_MostrarDetalleArqueoCajaRow = ((sp_MostrarDetalleArqueoCajaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Identificador,
                         Fecha,
                         Comprobante,
                         Persona,
-                        TipoOperacion,
                         FormaPago,
-                        Importe,
                         Usuario,
                         null,
                         UsuarioNro,
@@ -10720,7 +10729,10 @@ namespace CapaPresentacion.Informes {
                         DiferenciaCierre,
                         Estado,
                         Observacion,
-                        FechaRegistro};
+                        FechaRegistro,
+                        Concepto,
+                        Ingreso,
+                        Egreso};
                 rowsp_MostrarDetalleArqueoCajaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_MostrarDetalleArqueoCajaRow);
                 return rowsp_MostrarDetalleArqueoCajaRow;
@@ -10747,9 +10759,7 @@ namespace CapaPresentacion.Informes {
                 this.columnFecha = base.Columns["Fecha"];
                 this.columnComprobante = base.Columns["Comprobante"];
                 this.columnPersona = base.Columns["Persona"];
-                this.columnTipoOperacion = base.Columns["TipoOperacion"];
                 this.columnFormaPago = base.Columns["FormaPago"];
-                this.columnImporte = base.Columns["Importe"];
                 this.columnUsuario = base.Columns["Usuario"];
                 this.columnCajaNro = base.Columns["CajaNro"];
                 this.columnUsuarioNro = base.Columns["UsuarioNro"];
@@ -10762,6 +10772,9 @@ namespace CapaPresentacion.Informes {
                 this.columnEstado = base.Columns["Estado"];
                 this.columnObservacion = base.Columns["Observacion"];
                 this.columnFechaRegistro = base.Columns["FechaRegistro"];
+                this.columnConcepto = base.Columns["Concepto"];
+                this.columnIngreso = base.Columns["Ingreso"];
+                this.columnEgreso = base.Columns["Egreso"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10775,12 +10788,8 @@ namespace CapaPresentacion.Informes {
                 base.Columns.Add(this.columnComprobante);
                 this.columnPersona = new global::System.Data.DataColumn("Persona", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPersona);
-                this.columnTipoOperacion = new global::System.Data.DataColumn("TipoOperacion", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTipoOperacion);
                 this.columnFormaPago = new global::System.Data.DataColumn("FormaPago", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFormaPago);
-                this.columnImporte = new global::System.Data.DataColumn("Importe", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnImporte);
                 this.columnUsuario = new global::System.Data.DataColumn("Usuario", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUsuario);
                 this.columnCajaNro = new global::System.Data.DataColumn("CajaNro", typeof(int), null, global::System.Data.MappingType.Element);
@@ -10805,13 +10814,17 @@ namespace CapaPresentacion.Informes {
                 base.Columns.Add(this.columnObservacion);
                 this.columnFechaRegistro = new global::System.Data.DataColumn("FechaRegistro", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaRegistro);
+                this.columnConcepto = new global::System.Data.DataColumn("Concepto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnConcepto);
+                this.columnIngreso = new global::System.Data.DataColumn("Ingreso", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIngreso);
+                this.columnEgreso = new global::System.Data.DataColumn("Egreso", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEgreso);
                 this.columnIdentificador.AllowDBNull = false;
                 this.columnIdentificador.MaxLength = 20;
                 this.columnFecha.AllowDBNull = false;
                 this.columnComprobante.MaxLength = 150;
                 this.columnPersona.MaxLength = 250;
-                this.columnTipoOperacion.AllowDBNull = false;
-                this.columnTipoOperacion.MaxLength = 100;
                 this.columnFormaPago.MaxLength = 2;
                 this.columnUsuario.MaxLength = 50;
                 this.columnCajaNro.AutoIncrement = true;
@@ -10825,6 +10838,7 @@ namespace CapaPresentacion.Informes {
                 this.columnEstado.AllowDBNull = false;
                 this.columnEstado.MaxLength = 1;
                 this.columnObservacion.MaxLength = 150;
+                this.columnConcepto.MaxLength = 150;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17590,17 +17604,6 @@ namespace CapaPresentacion.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string TipoOperacion {
-                get {
-                    return ((string)(this[this.tablesp_MostrarDetalleArqueoCaja.TipoOperacionColumn]));
-                }
-                set {
-                    this[this.tablesp_MostrarDetalleArqueoCaja.TipoOperacionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string FormaPago {
                 get {
                     try {
@@ -17613,23 +17616,6 @@ namespace CapaPresentacion.Informes {
                 }
                 set {
                     this[this.tablesp_MostrarDetalleArqueoCaja.FormaPagoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal Importe {
-                get {
-                    try {
-                        return ((decimal)(this[this.tablesp_MostrarDetalleArqueoCaja.ImporteColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Importe\' de la tabla \'sp_MostrarDetalleArqueoCaja\' es DBN" +
-                                "ull.", e);
-                    }
-                }
-                set {
-                    this[this.tablesp_MostrarDetalleArqueoCaja.ImporteColumn] = value;
                 }
             }
             
@@ -17809,6 +17795,57 @@ namespace CapaPresentacion.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Concepto {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_MostrarDetalleArqueoCaja.ConceptoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Concepto\' de la tabla \'sp_MostrarDetalleArqueoCaja\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.ConceptoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal Ingreso {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_MostrarDetalleArqueoCaja.IngresoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Ingreso\' de la tabla \'sp_MostrarDetalleArqueoCaja\' es DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.IngresoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal Egreso {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_MostrarDetalleArqueoCaja.EgresoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Egreso\' de la tabla \'sp_MostrarDetalleArqueoCaja\' es DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarDetalleArqueoCaja.EgresoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsComprobanteNull() {
                 return this.IsNull(this.tablesp_MostrarDetalleArqueoCaja.ComprobanteColumn);
             }
@@ -17841,18 +17878,6 @@ namespace CapaPresentacion.Informes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetFormaPagoNull() {
                 this[this.tablesp_MostrarDetalleArqueoCaja.FormaPagoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsImporteNull() {
-                return this.IsNull(this.tablesp_MostrarDetalleArqueoCaja.ImporteColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetImporteNull() {
-                this[this.tablesp_MostrarDetalleArqueoCaja.ImporteColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17937,6 +17962,42 @@ namespace CapaPresentacion.Informes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetFechaRegistroNull() {
                 this[this.tablesp_MostrarDetalleArqueoCaja.FechaRegistroColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsConceptoNull() {
+                return this.IsNull(this.tablesp_MostrarDetalleArqueoCaja.ConceptoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetConceptoNull() {
+                this[this.tablesp_MostrarDetalleArqueoCaja.ConceptoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsIngresoNull() {
+                return this.IsNull(this.tablesp_MostrarDetalleArqueoCaja.IngresoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetIngresoNull() {
+                this[this.tablesp_MostrarDetalleArqueoCaja.IngresoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsEgresoNull() {
+                return this.IsNull(this.tablesp_MostrarDetalleArqueoCaja.EgresoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetEgresoNull() {
+                this[this.tablesp_MostrarDetalleArqueoCaja.EgresoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -23283,9 +23344,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
             tableMapping.ColumnMappings.Add("Fecha", "Fecha");
             tableMapping.ColumnMappings.Add("Comprobante", "Comprobante");
             tableMapping.ColumnMappings.Add("Persona", "Persona");
-            tableMapping.ColumnMappings.Add("TipoOperacion", "TipoOperacion");
             tableMapping.ColumnMappings.Add("FormaPago", "FormaPago");
-            tableMapping.ColumnMappings.Add("Importe", "Importe");
             tableMapping.ColumnMappings.Add("Usuario", "Usuario");
             tableMapping.ColumnMappings.Add("CajaNro", "CajaNro");
             tableMapping.ColumnMappings.Add("UsuarioNro", "UsuarioNro");
@@ -23298,6 +23357,9 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
             tableMapping.ColumnMappings.Add("Estado", "Estado");
             tableMapping.ColumnMappings.Add("Observacion", "Observacion");
             tableMapping.ColumnMappings.Add("FechaRegistro", "FechaRegistro");
+            tableMapping.ColumnMappings.Add("Concepto", "Concepto");
+            tableMapping.ColumnMappings.Add("Ingreso", "Ingreso");
+            tableMapping.ColumnMappings.Add("Egreso", "Egreso");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

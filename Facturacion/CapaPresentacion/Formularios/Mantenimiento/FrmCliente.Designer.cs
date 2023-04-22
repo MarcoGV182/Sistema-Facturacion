@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCliente));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCancelar = new CapaPresentacion.Utilidades.RButton();
+            this.btnEditar = new CapaPresentacion.Utilidades.RButton();
+            this.btnGuardar = new CapaPresentacion.Utilidades.RButton();
+            this.btnNuevo = new CapaPresentacion.Utilidades.RButton();
             this.cboTipoDocumento = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtObservacion = new System.Windows.Forms.TextBox();
@@ -60,15 +64,11 @@
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.chkEliminar = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnEliminar = new CapaPresentacion.Utilidades.RButton();
             this.cboBuscar = new System.Windows.Forms.ComboBox();
             this.lblTotal = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnNuevo = new CapaPresentacion.Utilidades.RButton();
-            this.btnGuardar = new CapaPresentacion.Utilidades.RButton();
-            this.btnEditar = new CapaPresentacion.Utilidades.RButton();
-            this.btnCancelar = new CapaPresentacion.Utilidades.RButton();
-            this.btnEliminar = new CapaPresentacion.Utilidades.RButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
@@ -111,6 +111,82 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Mantenimiento";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnCancelar.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnCancelar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnCancelar.BorderRadius = 15;
+            this.btnCancelar.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Location = new System.Drawing.Point(431, 439);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 40);
+            this.btnCancelar.TabIndex = 29;
+            this.btnCancelar.Text = "&Cancelar";
+            this.btnCancelar.TextColor = System.Drawing.Color.White;
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnEditar.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnEditar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnEditar.BorderRadius = 15;
+            this.btnEditar.BorderSize = 0;
+            this.btnEditar.FlatAppearance.BorderSize = 0;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.ForeColor = System.Drawing.Color.White;
+            this.btnEditar.Location = new System.Drawing.Point(332, 439);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 40);
+            this.btnEditar.TabIndex = 28;
+            this.btnEditar.Text = "&Editar";
+            this.btnEditar.TextColor = System.Drawing.Color.White;
+            this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnGuardar.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnGuardar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnGuardar.BorderRadius = 15;
+            this.btnGuardar.BorderSize = 0;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(235, 439);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(75, 40);
+            this.btnGuardar.TabIndex = 27;
+            this.btnGuardar.Text = "&Guardar";
+            this.btnGuardar.TextColor = System.Drawing.Color.White;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnNuevo.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnNuevo.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnNuevo.BorderRadius = 15;
+            this.btnNuevo.BorderSize = 0;
+            this.btnNuevo.FlatAppearance.BorderSize = 0;
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.ForeColor = System.Drawing.Color.White;
+            this.btnNuevo.Location = new System.Drawing.Point(140, 439);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(75, 40);
+            this.btnNuevo.TabIndex = 26;
+            this.btnNuevo.Text = "&Nuevo";
+            this.btnNuevo.TextColor = System.Drawing.Color.White;
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // cboTipoDocumento
             // 
@@ -408,6 +484,25 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Listado";
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnEliminar.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnEliminar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnEliminar.BorderRadius = 15;
+            this.btnEliminar.BorderSize = 0;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(235, 58);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 28);
+            this.btnEliminar.TabIndex = 30;
+            this.btnEliminar.Text = "&Eliminar";
+            this.btnEliminar.TextColor = System.Drawing.Color.White;
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // cboBuscar
             // 
             this.cboBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -449,97 +544,6 @@
             this.label2.Size = new System.Drawing.Size(72, 16);
             this.label2.TabIndex = 10;
             this.label2.Text = "Buscar por:";
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnNuevo.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnNuevo.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnNuevo.BorderRadius = 15;
-            this.btnNuevo.BorderSize = 0;
-            this.btnNuevo.FlatAppearance.BorderSize = 0;
-            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(140, 439);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(75, 40);
-            this.btnNuevo.TabIndex = 26;
-            this.btnNuevo.Text = "&Nuevo";
-            this.btnNuevo.TextColor = System.Drawing.Color.White;
-            this.btnNuevo.UseVisualStyleBackColor = false;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnGuardar.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnGuardar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnGuardar.BorderRadius = 15;
-            this.btnGuardar.BorderSize = 0;
-            this.btnGuardar.FlatAppearance.BorderSize = 0;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(235, 439);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(75, 40);
-            this.btnGuardar.TabIndex = 27;
-            this.btnGuardar.Text = "&Guardar";
-            this.btnGuardar.TextColor = System.Drawing.Color.White;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnEditar.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnEditar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnEditar.BorderRadius = 15;
-            this.btnEditar.BorderSize = 0;
-            this.btnEditar.FlatAppearance.BorderSize = 0;
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(332, 439);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 40);
-            this.btnEditar.TabIndex = 28;
-            this.btnEditar.Text = "&Editar";
-            this.btnEditar.TextColor = System.Drawing.Color.White;
-            this.btnEditar.UseVisualStyleBackColor = false;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnCancelar.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnCancelar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnCancelar.BorderRadius = 15;
-            this.btnCancelar.BorderSize = 0;
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(431, 439);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 40);
-            this.btnCancelar.TabIndex = 29;
-            this.btnCancelar.Text = "&Cancelar";
-            this.btnCancelar.TextColor = System.Drawing.Color.White;
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnEliminar.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnEliminar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnEliminar.BorderRadius = 15;
-            this.btnEliminar.BorderSize = 0;
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(235, 58);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 28);
-            this.btnEliminar.TabIndex = 30;
-            this.btnEliminar.Text = "&Eliminar";
-            this.btnEliminar.TextColor = System.Drawing.Color.White;
-            this.btnEliminar.UseVisualStyleBackColor = false;
             // 
             // FrmCliente
             // 

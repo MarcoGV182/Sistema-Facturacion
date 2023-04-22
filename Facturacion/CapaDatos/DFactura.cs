@@ -478,6 +478,15 @@ namespace CapaDatos
                             if (!rpta.Equals("OK"))
                                 throw new Exception(rpta);
                         }
+
+                        if (pagos.Otro != null)
+                        {
+                            DPagoFacturaOtros ot = new DPagoFacturaOtros();
+                            pagos.Otro.NroVenta = this.Id;
+                            rpta = ot.InsertarPagoFacturaOtros(pagos.Otro, Sqlcon, Sqltran);
+                            if (!rpta.Equals("OK"))
+                                throw new Exception(rpta);
+                        }
                     }
                     #endregion
                 }

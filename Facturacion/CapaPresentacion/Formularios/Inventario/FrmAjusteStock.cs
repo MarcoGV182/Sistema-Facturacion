@@ -144,17 +144,18 @@ namespace CapaPresentacion.Formularios.Inventario
             this.txtNumero.ReadOnly = !valor;
             this.txtDescripcion.ReadOnly = !valor;            
             this.dtpFecha.Enabled = valor;          
-            this.txtItem.ReadOnly = !valor;
-            this.txtExistencia.ReadOnly = !valor;
-            this.txtCodItem.ReadOnly = !valor;            
-            this.txtPrecio.ReadOnly = !valor;
+            this.txtItem.ReadOnly = !valor;            
+            this.txtCodItem.ReadOnly = !valor;
             this.txtCantidad.ReadOnly = !valor;            
             this.txtObservacion.ReadOnly = !valor;           
             this.txtTotalGral.ReadOnly = !valor;            
             this.cboTipoAjuste.Enabled = valor;            
             btnBuscarProducto.Enabled = valor;
             btnAgregar.Enabled = valor;
-            btnQuitar.Enabled = valor;          
+            btnQuitar.Enabled = valor;
+
+            this.txtPrecio.ReadOnly = true;
+            this.txtExistencia.ReadOnly = true;
 
         }
 

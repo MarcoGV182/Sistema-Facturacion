@@ -685,7 +685,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sp_MostrarDetalleArqueoCajaTableAdapter" GeneratorDataComponentClassName="sp_MostrarDetalleArqueoCajaTableAdapter" Name="sp_MostrarDetalleArqueoCaja" UserDataComponentName="sp_MostrarDetalleArqueoCajaTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Cn (Settings)" DbObjectName="GestionVenta.dbo.sp_MostrarDetalleArqueoCaja" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Cn (Settings)" DbObjectName="GestionVenta.dbo.sp_MostrarDetalleArqueoCaja" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.sp_MostrarDetalleArqueoCaja</CommandText>
@@ -702,9 +702,7 @@
               <Mapping SourceColumn="Fecha" DataSetColumn="Fecha" />
               <Mapping SourceColumn="Comprobante" DataSetColumn="Comprobante" />
               <Mapping SourceColumn="Persona" DataSetColumn="Persona" />
-              <Mapping SourceColumn="TipoOperacion" DataSetColumn="TipoOperacion" />
               <Mapping SourceColumn="FormaPago" DataSetColumn="FormaPago" />
-              <Mapping SourceColumn="Importe" DataSetColumn="Importe" />
               <Mapping SourceColumn="Usuario" DataSetColumn="Usuario" />
               <Mapping SourceColumn="CajaNro" DataSetColumn="CajaNro" />
               <Mapping SourceColumn="UsuarioNro" DataSetColumn="UsuarioNro" />
@@ -717,6 +715,9 @@
               <Mapping SourceColumn="Estado" DataSetColumn="Estado" />
               <Mapping SourceColumn="Observacion" DataSetColumn="Observacion" />
               <Mapping SourceColumn="FechaRegistro" DataSetColumn="FechaRegistro" />
+              <Mapping SourceColumn="Concepto" DataSetColumn="Concepto" />
+              <Mapping SourceColumn="Ingreso" DataSetColumn="Ingreso" />
+              <Mapping SourceColumn="Egreso" DataSetColumn="Egreso" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1864,13 +1865,6 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="TipoOperacion" msprop:Generator_ColumnPropNameInTable="TipoOperacionColumn" msprop:Generator_ColumnPropNameInRow="TipoOperacion" msprop:Generator_UserColumnName="TipoOperacion" msprop:Generator_ColumnVarNameInTable="columnTipoOperacion">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="FormaPago" msprop:Generator_ColumnPropNameInTable="FormaPagoColumn" msprop:Generator_ColumnPropNameInRow="FormaPago" msprop:Generator_UserColumnName="FormaPago" msprop:Generator_ColumnVarNameInTable="columnFormaPago" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -1878,7 +1872,6 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Importe" msprop:Generator_ColumnPropNameInTable="ImporteColumn" msprop:Generator_ColumnPropNameInRow="Importe" msprop:Generator_UserColumnName="Importe" msprop:Generator_ColumnVarNameInTable="columnImporte" type="xs:decimal" minOccurs="0" />
               <xs:element name="Usuario" msprop:Generator_ColumnPropNameInTable="UsuarioColumn" msprop:Generator_ColumnPropNameInRow="Usuario" msprop:Generator_UserColumnName="Usuario" msprop:Generator_ColumnVarNameInTable="columnUsuario" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -1909,6 +1902,15 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="FechaRegistro" msprop:Generator_ColumnPropNameInTable="FechaRegistroColumn" msprop:Generator_ColumnPropNameInRow="FechaRegistro" msprop:Generator_UserColumnName="FechaRegistro" msprop:Generator_ColumnVarNameInTable="columnFechaRegistro" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Concepto" msprop:Generator_ColumnPropNameInRow="Concepto" msprop:Generator_ColumnPropNameInTable="ConceptoColumn" msprop:Generator_ColumnVarNameInTable="columnConcepto" msprop:Generator_UserColumnName="Concepto" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Ingreso" msprop:Generator_ColumnPropNameInRow="Ingreso" msprop:Generator_ColumnPropNameInTable="IngresoColumn" msprop:Generator_ColumnVarNameInTable="columnIngreso" msprop:Generator_UserColumnName="Ingreso" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Egreso" msprop:Generator_ColumnPropNameInRow="Egreso" msprop:Generator_ColumnPropNameInTable="EgresoColumn" msprop:Generator_ColumnVarNameInTable="columnEgreso" msprop:Generator_UserColumnName="Egreso" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

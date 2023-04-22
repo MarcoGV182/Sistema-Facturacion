@@ -308,6 +308,7 @@
             // 
             // cboBanco
             // 
+            this.cboBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBanco.FormattingEnabled = true;
             this.cboBanco.Location = new System.Drawing.Point(115, 118);
             this.cboBanco.Name = "cboBanco";
@@ -389,10 +390,12 @@
             // 
             // cboTipoPago
             // 
+            this.cboTipoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoPago.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.cboTipoPago.FormattingEnabled = true;
-            this.cboTipoPago.Location = new System.Drawing.Point(126, 52);
+            this.cboTipoPago.Location = new System.Drawing.Point(126, 54);
             this.cboTipoPago.Name = "cboTipoPago";
-            this.cboTipoPago.Size = new System.Drawing.Size(139, 25);
+            this.cboTipoPago.Size = new System.Drawing.Size(139, 23);
             this.cboTipoPago.TabIndex = 14;
             // 
             // label4
@@ -422,6 +425,7 @@
             this.txtNroDocumentoOtros.Name = "txtNroDocumentoOtros";
             this.txtNroDocumentoOtros.Size = new System.Drawing.Size(138, 24);
             this.txtNroDocumentoOtros.TabIndex = 8;
+            this.ttMensaje.SetToolTip(this.txtNroDocumentoOtros, "Nro. de la transferencia o comprobante (opcional)");
             // 
             // label20
             // 
@@ -440,6 +444,7 @@
             this.txtMontoOtros.Size = new System.Drawing.Size(138, 24);
             this.txtMontoOtros.TabIndex = 9;
             this.txtMontoOtros.Text = "0";
+            this.txtMontoOtros.TextChanged += new System.EventHandler(this.txtMontoOtros_TextChanged);
             // 
             // groupBox1
             // 

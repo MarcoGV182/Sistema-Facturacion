@@ -28,7 +28,7 @@
     <TargetCulture>es-PY</TargetCulture>
     <ProductName>FacEasy</ProductName>
     <PublisherName>FacEasy</PublisherName>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -650,6 +650,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Formularios\Facturacion\FrmFacturaVenta.es-PY.resx">
+      <DependentUpon>FrmFacturaVenta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Herramientas\Backup BD.resx">
       <DependentUpon>Backup BD.cs</DependentUpon>
     </EmbeddedResource>

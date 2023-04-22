@@ -21,7 +21,6 @@ namespace CapaPresentacion.Formularios.Facturacion
         public FrmPagoFactura()
         {
             InitializeComponent();
-            this.CargaCombo();
         }
 
         private static FrmPagoFactura _Instancia;
@@ -56,13 +55,19 @@ namespace CapaPresentacion.Formularios.Facturacion
         }
 
 
-        private void Limpiar() 
+        public void LimpiarPagoFactura() 
         {
-            this.txtMontoCheque.Text = "0";
-            this.txtMontoEfectivo.Text = "0";
-            this.txtMontoTarjeta.Text = "0";
-            this.txtComprobante.Text = string.Empty;
-            this.txtNroCheque.Text = string.Empty;
+            txtMontoCheque.Text = "0";
+            txtMontoEfectivo.Text = "0";
+            txtMontoTarjeta.Text = "0";
+            txtMontoOtros.Text = "0";
+            txtComprobante.Text = string.Empty;
+            txtNroDocumentoOtros.Text = string.Empty;
+            cboBanco.SelectedIndex = 0;
+            cboTarjeta.SelectedIndex = 0;
+            cboTipoPago.SelectedIndex = 0;
+            txtNroCheque.Text = string.Empty;
+            tabControl1.SelectedIndex = 0;
         }
 
 
@@ -120,11 +125,14 @@ namespace CapaPresentacion.Formularios.Facturacion
 
         private void FrmPagoFactura_Load(object sender, EventArgs e)
         {
-            this.txtMontoEfectivo.Focus();
-            dtpFechaCheque.Checked = false;
-            this.cboBanco.SelectedIndex = 0;
-            this.cboTarjeta.SelectedIndex = 0;
+            CargaCombo();
             Calcular();
+
+            txtMontoEfectivo.Focus();
+            dtpFechaCheque.Checked = false;
+            cboBanco.SelectedIndex = 0;
+            cboTarjeta.SelectedIndex = 0;
+            
         }
 
         private void txtValorAbonar_TextChanged(object sender, EventArgs e)
@@ -350,6 +358,18 @@ namespace CapaPresentacion.Formularios.Facturacion
         private void txtMontoCheque_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.SoloNumeros(e);
+        }
+
+        private void txtMontoOtros_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Calcular();
+            }
+            catch (Exception)
+            {
+                txtMontoOtros.Text = "0";
+            }
         }
     }
 }

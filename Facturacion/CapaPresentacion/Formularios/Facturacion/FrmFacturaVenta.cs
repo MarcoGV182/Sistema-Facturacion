@@ -770,10 +770,12 @@ namespace CapaPresentacion.Formularios.Facturacion
                             FrmComprobanteVenta frm = new FrmComprobanteVenta();
                             frm.nroVenta = idVenta;
                             frm.ShowDialog();
+                        }
 
-                            if (frmPagoFactura != null)
-                                frmPagoFactura.Close();
-
+                        if (frmPagoFactura != null)
+                        {
+                            frmPagoFactura.LimpiarPagoFactura();
+                            frmPagoFactura.Close();
                         }
                     }                      
                  }

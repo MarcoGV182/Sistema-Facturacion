@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -89,15 +90,15 @@ namespace CapaPresentacion.Formularios.Gastos
                 {
                     foreach (DataGridViewRow row in dataListado.Rows)
                     {
-                        if (row.Cells["TipoOperacion"].Value.ToString() == "INGRESO")
+                        if (Convert.ToDouble(row.Cells["Ingreso"].Value) > 0)
                         {
-                            ingreso += Convert.ToDouble(row.Cells["Importe"].Value);
+                            ingreso += Convert.ToDouble(row.Cells["Ingreso"].Value);
                             txtingreso.Text = ingreso.ToString("N0");
 
                         }
-                        else if (row.Cells["TipoOperacion"].Value.ToString() == "EGRESO")
+                        else if (Convert.ToDouble(row.Cells["Egreso"].Value)> 0)
                         {
-                            egreso += Convert.ToDouble(row.Cells["Importe"].Value);
+                            egreso += Convert.ToDouble(row.Cells["Egreso"].Value);
                             txtegreso.Text = egreso.ToString("N0");
                         }
                     }
@@ -146,11 +147,23 @@ namespace CapaPresentacion.Formularios.Gastos
         {
             this.txtingreso.Text = 0.ToString();
             this.txtegreso.Text = 0.ToString();
+
+            if (this.dataResumenCaja.CurrentRow.Cells["FechaCierre"].Value == null)
+            {
+                MensajeError("El arqueo de Caja no tiene fecha de cierre. Favor verifique si el arqueo ya se encuentra cerrado");
+                return;
+            }
+
             this.dataListado.DataSource = NMovimiento.BuscarFechaMovimientoCaja(this.dataResumenCaja.CurrentRow.Cells["FechaApertura"].Value.ToString(), 
                                                                                 this.dataResumenCaja.CurrentRow.Cells["FechaCierre"].Value.ToString());
             //lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
             this.TotalesMovimiento();
            
+        }
+
+        private void MensajeError(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Sistema de Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 
@@ -160,7 +173,7 @@ namespace CapaPresentacion.Formularios.Gastos
             {
                 foreach (DataGridViewRow row in dataListado.Rows)
                 {
-                    if (row.Cells["TipoOperacion"].Value.ToString() == "INGRESO")
+                    if (Convert.ToDouble(row.Cells["Ingreso"].Value)> 0)
                     {
                         row.DefaultCellStyle.ForeColor = Color.Blue;
                     }
@@ -178,14 +191,6 @@ namespace CapaPresentacion.Formularios.Gastos
         }
 
 
-
-
-        private void dtpDesde_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             this.BuscarCajaPorFecha();
@@ -193,7 +198,8 @@ namespace CapaPresentacion.Formularios.Gastos
 
         private void dataListado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            this.dataListado.Columns["Importe"].DefaultCellStyle.Format = "N0";
+            this.dataListado.Columns["Ingreso"].DefaultCellStyle.Format = "N0";
+            this.dataListado.Columns["Egreso"].DefaultCellStyle.Format = "N0";
         }
 
         private void dataListado_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -253,7 +259,7 @@ namespace CapaPresentacion.Formularios.Gastos
         {
             try
             {
-                if (dataListado.Rows.Count>0)
+                if (dataResumenCaja.Rows.Count>0)
                 {
                     FrmInformeMovimientoCaja frm = new FrmInformeMovimientoCaja();
                     frm.CajaNro = CajaNro;                    

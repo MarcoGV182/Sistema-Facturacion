@@ -29,8 +29,8 @@ namespace CapaDatos
                 Sqlcon.ConnectionString = Conexion.CadenaConexion;
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "select * from dbo.TipoPagoOtros";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
+                SqlCmd.CommandText = "select TipoOtrosNro, Descripcion from dbo.TipoPagoOtros";
+                SqlCmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
                 SqlAdapter.Fill(DtResultado);
@@ -38,6 +38,10 @@ namespace CapaDatos
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            finally 
+            {
+                Conexion.CerrarConexion(Sqlcon);
             }
 
             return DtResultado;
