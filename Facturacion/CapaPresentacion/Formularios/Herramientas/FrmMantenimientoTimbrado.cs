@@ -37,7 +37,7 @@ namespace CapaPresentacion.Formularios.Herramientas
         private void FrmNumeracionFactura_Load(object sender, EventArgs e)
         {
             Habilitar(false);
-            Botones(false);
+            Botones();
             MostrarTimbrado();
 
             //Evento de los radioButtons
@@ -95,6 +95,9 @@ namespace CapaPresentacion.Formularios.Herramientas
             this.chkEstadoTimbrado.Checked = false;
             this.chkEstadoNumeracion.Checked = false;
             this.cboComprobante.SelectedIndex = 0;
+
+            IsEditar = false;
+            IsNuevo = false;
         }
 
         private void MostrarTimbrado()
@@ -152,17 +155,38 @@ namespace CapaPresentacion.Formularios.Herramientas
             this.cboComprobante.Enabled = valor;
             this.chkEstadoNumeracion.Enabled = valor;
 
+            rbAutoimprenta.Enabled = valor;
+            rbManual.Enabled = valor;
+
 
             //Inicializar la fecha desde del filtro al primer día del mes
             this.dtpFechaInicioVigencia.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
         }
 
 
-        private void Botones(bool habilitado)
+        private void Botones()
         {
-            btnAgregar.Enabled = habilitado;
-            btnQuitar.Enabled = habilitado;
-            btnCancelar.Enabled = habilitado;
+            if (this.IsNuevo || this.IsEditar)
+            {
+                this.btnNuevo.Enabled = false;
+                this.btnGuardarTimbrado.Enabled = true;
+                this.btnEditarTimbrado.Enabled = false;
+                this.btnCancelar.Enabled = true;
+                btnCancelar.Enabled = true;
+                btnAgregar.Enabled = true;
+                btnQuitar.Enabled = true;
+            }
+            else
+            {                
+                this.btnNuevo.Enabled = true;
+                this.btnGuardarTimbrado.Enabled = false;
+                this.btnEditarTimbrado.Enabled = true;
+                this.btnCancelar.Enabled = false;
+                btnCancelar.Enabled = true;
+                btnAgregar.Enabled = true;
+                btnQuitar.Enabled = true;
+            }
+            
         }
 
         private void FrmNumeracionFactura_FormClosing(object sender, FormClosingEventArgs e)
@@ -266,6 +290,7 @@ namespace CapaPresentacion.Formularios.Herramientas
                 this.IsNuevo = true;
                 this.IsEditar = false;
                 this.Limpiar();
+                Botones();
                 this.MostrarTimbrado();
             }
             catch (Exception ex)
@@ -434,7 +459,7 @@ namespace CapaPresentacion.Formularios.Herramientas
             IsNuevo = true;
             Limpiar();
             Habilitar(true);
-            Botones(true);
+            Botones();
             Mostrar(IdTimbrado);
         }
 
@@ -514,7 +539,7 @@ namespace CapaPresentacion.Formularios.Herramientas
             IsEditar = true;
             IsNuevo = false;
             Habilitar(true);
-            Botones(true);
+            Botones();
         }
 
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
@@ -533,6 +558,8 @@ namespace CapaPresentacion.Formularios.Herramientas
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Limpiar();
+            this.Habilitar(false);
+            Botones();
         }
     }
 }
