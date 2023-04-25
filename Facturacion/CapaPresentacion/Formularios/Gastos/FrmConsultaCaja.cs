@@ -135,6 +135,7 @@ namespace CapaPresentacion.Formularios.Gastos
             txtEfectivo.Text = mov.Rows[0]["PagoEfectivo"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoEfectivo"]).ToString("N0") : "0";
             txtCheque.Text = mov.Rows[0]["PagoCheque"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoCheque"]).ToString("N0") : "0";
             txtTarjeta.Text = mov.Rows[0]["PagoTarjeta"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoTarjeta"]).ToString("N0") : "0";
+            txtOtros.Text = mov.Rows[0]["PagoOtros"] != DBNull.Value ? Convert.ToDouble(mov.Rows[0]["PagoOtros"]).ToString("N0") : "0";
             //lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
             //this.TotalesMovimientoPagos();
         }

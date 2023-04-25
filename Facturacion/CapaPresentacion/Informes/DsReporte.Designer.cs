@@ -10021,6 +10021,8 @@ namespace CapaPresentacion.Informes {
             
             private global::System.Data.DataColumn columnCajaNro;
             
+            private global::System.Data.DataColumn columnObservacion;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public sp_MostrarCabeceraArqueoCajaDataTable() {
@@ -10160,6 +10162,14 @@ namespace CapaPresentacion.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ObservacionColumn {
+                get {
+                    return this.columnObservacion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -10195,7 +10205,7 @@ namespace CapaPresentacion.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public sp_MostrarCabeceraArqueoCajaRow Addsp_MostrarCabeceraArqueoCajaRow(decimal PagoEfectivo, decimal PagoTarjeta, decimal PagoCheque, decimal PagoOtros, System.DateTime FechaApertura, System.DateTime FechaCierre, string Estado, decimal ImporteApertura, decimal SaldoFinal, decimal ImporteEntrega, decimal Diferencia, string Usuario, int CajaNro) {
+            public sp_MostrarCabeceraArqueoCajaRow Addsp_MostrarCabeceraArqueoCajaRow(decimal PagoEfectivo, decimal PagoTarjeta, decimal PagoCheque, decimal PagoOtros, System.DateTime FechaApertura, System.DateTime FechaCierre, string Estado, decimal ImporteApertura, decimal SaldoFinal, decimal ImporteEntrega, decimal Diferencia, string Usuario, int CajaNro, string Observacion) {
                 sp_MostrarCabeceraArqueoCajaRow rowsp_MostrarCabeceraArqueoCajaRow = ((sp_MostrarCabeceraArqueoCajaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PagoEfectivo,
@@ -10210,7 +10220,8 @@ namespace CapaPresentacion.Informes {
                         ImporteEntrega,
                         Diferencia,
                         Usuario,
-                        CajaNro};
+                        CajaNro,
+                        Observacion};
                 rowsp_MostrarCabeceraArqueoCajaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_MostrarCabeceraArqueoCajaRow);
                 return rowsp_MostrarCabeceraArqueoCajaRow;
@@ -10246,6 +10257,7 @@ namespace CapaPresentacion.Informes {
                 this.columnDiferencia = base.Columns["Diferencia"];
                 this.columnUsuario = base.Columns["Usuario"];
                 this.columnCajaNro = base.Columns["CajaNro"];
+                this.columnObservacion = base.Columns["Observacion"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10277,6 +10289,8 @@ namespace CapaPresentacion.Informes {
                 base.Columns.Add(this.columnUsuario);
                 this.columnCajaNro = new global::System.Data.DataColumn("CajaNro", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCajaNro);
+                this.columnObservacion = new global::System.Data.DataColumn("Observacion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnObservacion);
                 this.columnFechaApertura.ReadOnly = true;
                 this.columnFechaCierre.ReadOnly = true;
                 this.columnEstado.ReadOnly = true;
@@ -10288,6 +10302,8 @@ namespace CapaPresentacion.Informes {
                 this.columnUsuario.ReadOnly = true;
                 this.columnUsuario.MaxLength = 20;
                 this.columnCajaNro.ReadOnly = true;
+                this.columnObservacion.ReadOnly = true;
+                this.columnObservacion.MaxLength = 150;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17377,6 +17393,23 @@ namespace CapaPresentacion.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Observacion {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_MostrarCabeceraArqueoCaja.ObservacionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Observacion\' de la tabla \'sp_MostrarCabeceraArqueoCaja\' e" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_MostrarCabeceraArqueoCaja.ObservacionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsPagoEfectivoNull() {
                 return this.IsNull(this.tablesp_MostrarCabeceraArqueoCaja.PagoEfectivoColumn);
             }
@@ -17529,6 +17562,18 @@ namespace CapaPresentacion.Informes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCajaNroNull() {
                 this[this.tablesp_MostrarCabeceraArqueoCaja.CajaNroColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsObservacionNull() {
+                return this.IsNull(this.tablesp_MostrarCabeceraArqueoCaja.ObservacionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetObservacionNull() {
+                this[this.tablesp_MostrarCabeceraArqueoCaja.ObservacionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -23151,8 +23196,6 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
             tableMapping.ColumnMappings.Add("PagoTarjeta", "PagoTarjeta");
             tableMapping.ColumnMappings.Add("PagoCheque", "PagoCheque");
             tableMapping.ColumnMappings.Add("PagoOtros", "PagoOtros");
-            tableMapping.ColumnMappings.Add("FechaApertura", "FechaApertura");
-            tableMapping.ColumnMappings.Add("FechaCierre", "FechaCierre");
             tableMapping.ColumnMappings.Add("Estado", "Estado");
             tableMapping.ColumnMappings.Add("ImporteApertura", "ImporteApertura");
             tableMapping.ColumnMappings.Add("SaldoFinal", "SaldoFinal");
@@ -23160,6 +23203,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
             tableMapping.ColumnMappings.Add("Diferencia", "Diferencia");
             tableMapping.ColumnMappings.Add("Usuario", "Usuario");
             tableMapping.ColumnMappings.Add("CajaNro", "CajaNro");
+            tableMapping.ColumnMappings.Add("Observacion", "Observacion");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

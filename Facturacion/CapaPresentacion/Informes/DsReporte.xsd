@@ -671,8 +671,6 @@
               <Mapping SourceColumn="PagoTarjeta" DataSetColumn="PagoTarjeta" />
               <Mapping SourceColumn="PagoCheque" DataSetColumn="PagoCheque" />
               <Mapping SourceColumn="PagoOtros" DataSetColumn="PagoOtros" />
-              <Mapping SourceColumn="FechaApertura" DataSetColumn="FechaApertura" />
-              <Mapping SourceColumn="FechaCierre" DataSetColumn="FechaCierre" />
               <Mapping SourceColumn="Estado" DataSetColumn="Estado" />
               <Mapping SourceColumn="ImporteApertura" DataSetColumn="ImporteApertura" />
               <Mapping SourceColumn="SaldoFinal" DataSetColumn="SaldoFinal" />
@@ -680,6 +678,7 @@
               <Mapping SourceColumn="Diferencia" DataSetColumn="Diferencia" />
               <Mapping SourceColumn="Usuario" DataSetColumn="Usuario" />
               <Mapping SourceColumn="CajaNro" DataSetColumn="CajaNro" />
+              <Mapping SourceColumn="Observacion" DataSetColumn="Observacion" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1837,6 +1836,13 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="CajaNro" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="CajaNroColumn" msprop:Generator_ColumnPropNameInRow="CajaNro" msprop:Generator_UserColumnName="CajaNro" msprop:Generator_ColumnVarNameInTable="columnCajaNro" type="xs:int" minOccurs="0" />
+              <xs:element name="Observacion" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Observacion" msprop:Generator_ColumnPropNameInTable="ObservacionColumn" msprop:Generator_ColumnVarNameInTable="columnObservacion" msprop:Generator_UserColumnName="Observacion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1902,15 +1908,15 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="FechaRegistro" msprop:Generator_ColumnPropNameInTable="FechaRegistroColumn" msprop:Generator_ColumnPropNameInRow="FechaRegistro" msprop:Generator_UserColumnName="FechaRegistro" msprop:Generator_ColumnVarNameInTable="columnFechaRegistro" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Concepto" msprop:Generator_ColumnPropNameInRow="Concepto" msprop:Generator_ColumnPropNameInTable="ConceptoColumn" msprop:Generator_ColumnVarNameInTable="columnConcepto" msprop:Generator_UserColumnName="Concepto" minOccurs="0">
+              <xs:element name="Concepto" msprop:Generator_UserColumnName="Concepto" msprop:Generator_ColumnPropNameInTable="ConceptoColumn" msprop:Generator_ColumnPropNameInRow="Concepto" msprop:Generator_ColumnVarNameInTable="columnConcepto" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Ingreso" msprop:Generator_ColumnPropNameInRow="Ingreso" msprop:Generator_ColumnPropNameInTable="IngresoColumn" msprop:Generator_ColumnVarNameInTable="columnIngreso" msprop:Generator_UserColumnName="Ingreso" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Egreso" msprop:Generator_ColumnPropNameInRow="Egreso" msprop:Generator_ColumnPropNameInTable="EgresoColumn" msprop:Generator_ColumnVarNameInTable="columnEgreso" msprop:Generator_UserColumnName="Egreso" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Ingreso" msprop:Generator_UserColumnName="Ingreso" msprop:Generator_ColumnPropNameInTable="IngresoColumn" msprop:Generator_ColumnPropNameInRow="Ingreso" msprop:Generator_ColumnVarNameInTable="columnIngreso" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Egreso" msprop:Generator_UserColumnName="Egreso" msprop:Generator_ColumnPropNameInTable="EgresoColumn" msprop:Generator_ColumnPropNameInRow="Egreso" msprop:Generator_ColumnVarNameInTable="columnEgreso" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

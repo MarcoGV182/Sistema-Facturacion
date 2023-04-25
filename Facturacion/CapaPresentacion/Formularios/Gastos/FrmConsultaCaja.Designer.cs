@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataResumenCaja = new System.Windows.Forms.DataGridView();
             this.gbFechas = new System.Windows.Forms.GroupBox();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -54,6 +54,8 @@
             this.dataListado = new System.Windows.Forms.DataGridView();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.lblSinRegistros = new System.Windows.Forms.Label();
+            this.txtOtros = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataResumenCaja)).BeginInit();
             this.gbFechas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
@@ -64,10 +66,10 @@
             this.dataResumenCaja.AllowUserToAddRows = false;
             this.dataResumenCaja.AllowUserToDeleteRows = false;
             this.dataResumenCaja.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dataResumenCaja.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            this.dataResumenCaja.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dataResumenCaja.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dataResumenCaja.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataResumenCaja.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
@@ -94,9 +96,9 @@
             this.gbFechas.Controls.Add(this.dtpHasta);
             this.gbFechas.Controls.Add(this.dtpDesde);
             this.gbFechas.Font = new System.Drawing.Font("Times New Roman", 9.5F);
-            this.gbFechas.Location = new System.Drawing.Point(57, 2);
+            this.gbFechas.Location = new System.Drawing.Point(73, 2);
             this.gbFechas.Name = "gbFechas";
-            this.gbFechas.Size = new System.Drawing.Size(371, 76);
+            this.gbFechas.Size = new System.Drawing.Size(379, 76);
             this.gbFechas.TabIndex = 12;
             this.gbFechas.TabStop = false;
             this.gbFechas.Text = "Fechas";
@@ -105,7 +107,7 @@
             // 
             this.btnBuscar.Location = new System.Drawing.Point(281, 40);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(55, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(71, 23);
             this.btnBuscar.TabIndex = 16;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -115,9 +117,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label2.Location = new System.Drawing.Point(180, 21);
+            this.label2.Location = new System.Drawing.Point(201, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 16);
+            this.label2.Size = new System.Drawing.Size(41, 16);
             this.label2.TabIndex = 14;
             this.label2.Text = "Hasta:";
             // 
@@ -125,9 +127,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label1.Location = new System.Drawing.Point(33, 21);
+            this.label1.Location = new System.Drawing.Point(51, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 16);
+            this.label1.Size = new System.Drawing.Size(45, 16);
             this.label1.TabIndex = 15;
             this.label1.Text = "Desde:";
             // 
@@ -187,7 +189,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(887, 44);
+            this.label11.Location = new System.Drawing.Point(877, 55);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(154, 22);
             this.label11.TabIndex = 26;
@@ -320,8 +322,8 @@
             this.dataListado.Name = "dataListado";
             this.dataListado.ReadOnly = true;
             this.dataListado.RowHeadersVisible = false;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.dataListado.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.dataListado.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataListado.Size = new System.Drawing.Size(738, 283);
             this.dataListado.TabIndex = 27;
             this.dataListado.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataListado_CellFormatting);
@@ -349,11 +351,36 @@
             this.lblSinRegistros.Text = "Sin registros";
             this.lblSinRegistros.Visible = false;
             // 
+            // txtOtros
+            // 
+            this.txtOtros.BackColor = System.Drawing.Color.Gainsboro;
+            this.txtOtros.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtOtros.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOtros.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.txtOtros.Location = new System.Drawing.Point(741, 475);
+            this.txtOtros.Name = "txtOtros";
+            this.txtOtros.ReadOnly = true;
+            this.txtOtros.Size = new System.Drawing.Size(156, 18);
+            this.txtOtros.TabIndex = 43;
+            this.txtOtros.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(670, 476);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(51, 17);
+            this.label15.TabIndex = 42;
+            this.label15.Text = "Otros:";
+            // 
             // FrmConsultaCaja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1322, 484);
+            this.ClientSize = new System.Drawing.Size(1322, 506);
+            this.Controls.Add(this.txtOtros);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.lblSinRegistros);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.txtDiferencia);
@@ -373,7 +400,7 @@
             this.Controls.Add(this.btnVerMovimientos);
             this.Controls.Add(this.gbFechas);
             this.Controls.Add(this.dataResumenCaja);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmConsultaCaja";
             this.Text = "Consulta Caja";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmConsultaCaja_FormClosing);
@@ -413,5 +440,7 @@
         private System.Windows.Forms.DataGridView dataListado;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Label lblSinRegistros;
+        private System.Windows.Forms.TextBox txtOtros;
+        private System.Windows.Forms.Label label15;
     }
 }

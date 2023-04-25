@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using System.Data.SqlClient;
 using CapaNegocio;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion.Formularios.Gastos
 {
@@ -276,11 +277,18 @@ namespace CapaPresentacion.Formularios.Gastos
 
                 string rpta = "";
                 rpta = NCaja.CerrarCaja(nroArqueo, fechaCierre, ImporteEntrega, Saldo, Diferencia);
-                //si se esta editando el registro    
 
+                //si se esta editando el registro    
                 if (rpta.Equals("OK"))
                 {
                     this.MensajeOK("La Caja se ha cerrado con exito");
+                    if (ControlesCompartidos.MensajeConfirmacion(this, "Desea imprimir el reporte de Arqueo de caja ?"))
+                    {
+                        FrmInformeMovimientoCaja frm = new FrmInformeMovimientoCaja();
+                        frm.CajaNro = nroArqueo;
+                        frm.ShowDialog();
+                    }
+                   
                     this.Close();
                 }
                 else

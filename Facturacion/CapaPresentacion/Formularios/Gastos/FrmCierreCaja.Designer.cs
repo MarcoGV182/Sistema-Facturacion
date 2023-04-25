@@ -178,9 +178,9 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(202, 338);
+            this.btnCancelar.Location = new System.Drawing.Point(183, 338);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(46, 27);
+            this.btnCancelar.Size = new System.Drawing.Size(85, 27);
             this.btnCancelar.TabIndex = 11;
             this.btnCancelar.Text = "Salir";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -465,7 +465,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1135, 397);
+            this.ClientSize = new System.Drawing.Size(1135, 408);
             this.Controls.Add(this.txtOtros);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txtDiferencia);
