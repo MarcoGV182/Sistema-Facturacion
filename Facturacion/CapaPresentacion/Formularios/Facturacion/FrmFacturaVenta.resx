@@ -312,6 +312,9 @@
   <data name="&gt;&gt;rbManual.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
   <data name="rbAutoimprenta.IconPadding" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -423,8 +426,8 @@
   <data name="&gt;&gt;btnImprimir2.Type" xml:space="preserve">
     <value>CapaPresentacion.Utilidades.RButton, CapaPresentacion, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;dtpFecha.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;dgvDetalleFactura.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="rbManual.Error" xml:space="preserve">
     <value />
@@ -540,8 +543,8 @@
   <data name="dtpFecha.Error" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;label18.Name" xml:space="preserve">
-    <value>label18</value>
+  <data name="rbAutoimprenta.Error" xml:space="preserve">
+    <value />
   </data>
   <data name="chkAnular.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 59</value>
@@ -765,6 +768,9 @@
   <data name="txtCliente.IconPadding" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="label13.Error" xml:space="preserve">
+    <value />
+  </data>
   <data name="&gt;&gt;txtCliente.Parent" xml:space="preserve">
     <value>gbTipo</value>
   </data>
@@ -806,6 +812,9 @@
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Cod.</value>
+  </data>
+  <data name="lblProveedor.Error" xml:space="preserve">
+    <value />
   </data>
   <data name="rbAutoimprenta.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -939,6 +948,9 @@
   <data name="tabPage2.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
   </data>
+  <data name="btnCancelar.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
   <data name="groupBox4.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
   </data>
@@ -1029,9 +1041,6 @@
   <data name="&gt;&gt;btnImprimir.Type" xml:space="preserve">
     <value>CapaPresentacion.Utilidades.RButton, CapaPresentacion, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="txtExistencia.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
-  </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1040,9 +1049,6 @@
   </data>
   <data name="&gt;&gt;lblDescripcion.Name" xml:space="preserve">
     <value>lblDescripcion</value>
-  </data>
-  <data name="gbTipo.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="lblAyuda.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -1113,11 +1119,17 @@
   <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 10pt</value>
   </data>
+  <data name="txtTotalGravadas.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 26</value>
+  </data>
   <data name="label6.Error" xml:space="preserve">
     <value />
   </data>
   <data name="lblDescripcion.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
+  </data>
+  <data name="label2.Error" xml:space="preserve">
+    <value />
   </data>
   <data name="lblComprobante.Error" xml:space="preserve">
     <value />
@@ -1187,9 +1199,6 @@
   </data>
   <data name="dtpFechadesde.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="lblDescripcion.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
   </data>
   <data name="btnAnular.Text" xml:space="preserve">
     <value>Anular</value>
@@ -1314,9 +1323,6 @@
   <data name="label12.Text" xml:space="preserve">
     <value>IVA</value>
   </data>
-  <data name="&gt;&gt;dgvDetalleFactura.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="&gt;&gt;rbAutoimprenta.Parent" xml:space="preserve">
     <value>groupBox4</value>
   </data>
@@ -1329,20 +1335,14 @@
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="Anular.Width" type="System.Int32, mscorlib">
-    <value>43</value>
-  </data>
   <data name="txtExistencia.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 24</value>
   </data>
   <data name="tabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="cboComprobante.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtTotalGravadas.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 26</value>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 10pt</value>
   </data>
   <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
     <value>tabPage2</value>
@@ -1410,11 +1410,11 @@
   <data name="&gt;&gt;btnBuscar.Name" xml:space="preserve">
     <value>btnBuscar</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Ventas</value>
-  </data>
   <data name="lblSinRegistros.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
+  </data>
+  <data name="&gt;&gt;dtpFecha.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="txtIva.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -1497,8 +1497,8 @@
   <data name="txtNumeracionOT.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;lblTotal.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="lblDescripcion.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1580,6 +1580,9 @@
   </data>
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
   </data>
   <data name="tabPage2.Error" xml:space="preserve">
     <value />
@@ -2890,8 +2893,8 @@
   <data name="dtpFechadesde.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 11</value>
   </data>
-  <data name="btnCancelar.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="dtpFecha.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2934,9 +2937,6 @@
   </data>
   <data name="txtCantidad.Location" type="System.Drawing.Point, System.Drawing">
     <value>747, 48</value>
-  </data>
-  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 10pt</value>
   </data>
   <data name="lblDescripcion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3028,14 +3028,17 @@
   <data name="lblFecha.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
   </data>
-  <data name="&gt;&gt;txtNumeracionOT.Name" xml:space="preserve">
-    <value>txtNumeracionOT</value>
+  <data name="cboComprobante.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="txtDocumento.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 11.25pt, style=Bold</value>
   </data>
   <data name="btnAgregar.ToolTip" xml:space="preserve">
     <value>Click para agregar a la grilla</value>
+  </data>
+  <data name="&gt;&gt;lblTotal.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;chkAnular.Name" xml:space="preserve">
     <value>chkAnular</value>
@@ -3108,9 +3111,6 @@
   </data>
   <data name="btnAgregar.IconPadding" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="btnAnular.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3205,8 +3205,8 @@
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
   </data>
-  <data name="lblProveedor.Error" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;txtNumeracionOT.Name" xml:space="preserve">
+    <value>txtNumeracionOT</value>
   </data>
   <data name="lblDescripcion.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 10pt</value>
@@ -3322,8 +3322,8 @@
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="btnAgregar.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Ventas</value>
   </data>
   <data name="btnGuardar.ToolTip" xml:space="preserve">
     <value />
@@ -3334,8 +3334,8 @@
   <data name="btnImprimir.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 23</value>
   </data>
-  <data name="label13.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
+  <data name="gbTipo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="rbAutoimprenta.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
@@ -3490,8 +3490,8 @@
   <data name="&gt;&gt;gbTipo.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="dtpFecha.ToolTip" xml:space="preserve">
-    <value />
+  <data name="txtExistencia.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
   </data>
   <data name="txtCantidad.IconAlignment" type="System.Windows.Forms.ErrorIconAlignment, System.Windows.Forms">
     <value>MiddleRight</value>
@@ -3622,8 +3622,8 @@
   <data name="btnBuscarItem.Error" xml:space="preserve">
     <value />
   </data>
-  <data name="rbAutoimprenta.Error" xml:space="preserve">
-    <value />
+  <data name="btnAgregar.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
   </data>
   <data name="&gt;&gt;dataListado.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3772,7 +3772,7 @@
   <data name="&gt;&gt;txtTotalGral.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="label2.Error" xml:space="preserve">
+  <data name="btnAnular.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="&gt;&gt;chkAnular.Type" xml:space="preserve">
@@ -3787,8 +3787,8 @@
   <data name="&gt;&gt;txtCantidad.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <data name="label13.Error" xml:space="preserve">
-    <value />
+  <data name="Anular.Width" type="System.Int32, mscorlib">
+    <value>43</value>
   </data>
   <data name="txtNroFactura.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 11.25pt, style=Bold</value>

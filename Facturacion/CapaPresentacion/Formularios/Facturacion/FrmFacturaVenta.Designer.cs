@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFacturaVenta));
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnQuitar = new CapaPresentacion.Utilidades.RButton();
+            this.btnAgregar = new CapaPresentacion.Utilidades.RButton();
             this.btnBuscarItem = new CapaPresentacion.Utilidades.RButton();
             this.label4 = new System.Windows.Forms.Label();
             this.txtExistencia = new System.Windows.Forms.TextBox();
@@ -61,7 +63,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.gbTipo = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.rbManual = new System.Windows.Forms.RadioButton();
@@ -95,8 +96,7 @@
             this.txttotalIva = new System.Windows.Forms.TextBox();
             this.btnGuardar = new CapaPresentacion.Utilidades.RButton();
             this.btnNuevo = new CapaPresentacion.Utilidades.RButton();
-            this.btnQuitar = new CapaPresentacion.Utilidades.RButton();
-            this.btnAgregar = new CapaPresentacion.Utilidades.RButton();
+            this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleFactura)).BeginInit();
@@ -143,6 +143,46 @@
             this.groupBox2.TabStop = false;
             this.ttMensaje.SetToolTip(this.groupBox2, resources.GetString("groupBox2.ToolTip"));
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // btnQuitar
+            // 
+            resources.ApplyResources(this.btnQuitar, "btnQuitar");
+            this.btnQuitar.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnQuitar.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnQuitar.BorderColor = System.Drawing.Color.Lavender;
+            this.btnQuitar.BorderRadius = 10;
+            this.btnQuitar.BorderSize = 0;
+            this.errorIcono.SetError(this.btnQuitar, resources.GetString("btnQuitar.Error"));
+            this.btnQuitar.FlatAppearance.BorderSize = 0;
+            this.btnQuitar.ForeColor = System.Drawing.Color.White;
+            this.errorIcono.SetIconAlignment(this.btnQuitar, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("btnQuitar.IconAlignment"))));
+            this.errorIcono.SetIconPadding(this.btnQuitar, ((int)(resources.GetObject("btnQuitar.IconPadding"))));
+            this.btnQuitar.Image = global::CapaPresentacion.Properties.Resources.menos;
+            this.btnQuitar.Name = "btnQuitar";
+            this.btnQuitar.TextColor = System.Drawing.Color.White;
+            this.ttMensaje.SetToolTip(this.btnQuitar, resources.GetString("btnQuitar.ToolTip"));
+            this.btnQuitar.UseVisualStyleBackColor = false;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
+            // 
+            // btnAgregar
+            // 
+            resources.ApplyResources(this.btnAgregar, "btnAgregar");
+            this.btnAgregar.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnAgregar.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnAgregar.BorderColor = System.Drawing.Color.Lavender;
+            this.btnAgregar.BorderRadius = 10;
+            this.btnAgregar.BorderSize = 0;
+            this.errorIcono.SetError(this.btnAgregar, resources.GetString("btnAgregar.Error"));
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.ForeColor = System.Drawing.Color.White;
+            this.errorIcono.SetIconAlignment(this.btnAgregar, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("btnAgregar.IconAlignment"))));
+            this.errorIcono.SetIconPadding(this.btnAgregar, ((int)(resources.GetObject("btnAgregar.IconPadding"))));
+            this.btnAgregar.Image = global::CapaPresentacion.Properties.Resources.mas;
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.TextColor = System.Drawing.Color.White;
+            this.ttMensaje.SetToolTip(this.btnAgregar, resources.GetString("btnAgregar.ToolTip"));
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnBuscarItem
             // 
@@ -448,10 +488,6 @@
             // 
             this.errorIcono.ContainerControl = this;
             resources.ApplyResources(this.errorIcono, "errorIcono");
-            // 
-            // ttMensaje
-            // 
-            this.ttMensaje.IsBalloon = true;
             // 
             // gbTipo
             // 
@@ -901,45 +937,9 @@
             this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // btnQuitar
+            // ttMensaje
             // 
-            resources.ApplyResources(this.btnQuitar, "btnQuitar");
-            this.btnQuitar.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnQuitar.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnQuitar.BorderColor = System.Drawing.Color.Lavender;
-            this.btnQuitar.BorderRadius = 10;
-            this.btnQuitar.BorderSize = 0;
-            this.errorIcono.SetError(this.btnQuitar, resources.GetString("btnQuitar.Error"));
-            this.btnQuitar.FlatAppearance.BorderSize = 0;
-            this.btnQuitar.ForeColor = System.Drawing.Color.White;
-            this.errorIcono.SetIconAlignment(this.btnQuitar, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("btnQuitar.IconAlignment"))));
-            this.errorIcono.SetIconPadding(this.btnQuitar, ((int)(resources.GetObject("btnQuitar.IconPadding"))));
-            this.btnQuitar.Image = global::CapaPresentacion.Properties.Resources.menos;
-            this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.TextColor = System.Drawing.Color.White;
-            this.ttMensaje.SetToolTip(this.btnQuitar, resources.GetString("btnQuitar.ToolTip"));
-            this.btnQuitar.UseVisualStyleBackColor = false;
-            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
-            // 
-            // btnAgregar
-            // 
-            resources.ApplyResources(this.btnAgregar, "btnAgregar");
-            this.btnAgregar.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnAgregar.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnAgregar.BorderColor = System.Drawing.Color.Lavender;
-            this.btnAgregar.BorderRadius = 10;
-            this.btnAgregar.BorderSize = 0;
-            this.errorIcono.SetError(this.btnAgregar, resources.GetString("btnAgregar.Error"));
-            this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.ForeColor = System.Drawing.Color.White;
-            this.errorIcono.SetIconAlignment(this.btnAgregar, ((System.Windows.Forms.ErrorIconAlignment)(resources.GetObject("btnAgregar.IconAlignment"))));
-            this.errorIcono.SetIconPadding(this.btnAgregar, ((int)(resources.GetObject("btnAgregar.IconPadding"))));
-            this.btnAgregar.Image = global::CapaPresentacion.Properties.Resources.mas;
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.TextColor = System.Drawing.Color.White;
-            this.ttMensaje.SetToolTip(this.btnAgregar, resources.GetString("btnAgregar.ToolTip"));
-            this.btnAgregar.UseVisualStyleBackColor = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.ttMensaje.IsBalloon = true;
             // 
             // FrmFacturaVenta
             // 

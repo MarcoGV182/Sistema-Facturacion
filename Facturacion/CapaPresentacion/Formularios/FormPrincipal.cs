@@ -330,6 +330,8 @@ namespace CapaPresentacion.Formularios
         {
             FrmFacturaVenta frm= FrmFacturaVenta.GetInstancia();
             frm.MdiParent = this;
+            frm.AutoSize = true;
+            frm.Dock = DockStyle.Fill;
             frm.idUsuario = Convert.ToInt32(id);
             frm.usuario = usuario;
             frm.nombre = nombre;

@@ -118,12 +118,8 @@ namespace CapaPresentacion.Formularios.Gastos
         //ocultar columnas
         private void OcultarColumnas()
         {
-            if(dataListado.Rows.Count>0) 
-            {
-                this.dataListado.Columns[0].Visible = false;
-                this.dataListado.Columns[1].Visible = false;
-            }
-            
+            this.dataListado.Columns[0].Visible = false;
+            this.dataListado.Columns[1].Visible = false;
         }
 
         private void LlenarComboBox()
