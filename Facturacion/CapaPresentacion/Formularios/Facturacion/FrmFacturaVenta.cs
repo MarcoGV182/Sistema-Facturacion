@@ -104,6 +104,7 @@ namespace CapaPresentacion.Formularios.Facturacion
 
             this.Top = 50;
             this.Left = 30;
+
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();
@@ -428,12 +429,23 @@ namespace CapaPresentacion.Formularios.Facturacion
         //ocultar columnas
         private void OcultarColumnas()
         {
-            this.dataListado.Columns[0].Visible = false;
-            this.dataListado.Columns["PersonaNro"].Visible = false;
-            this.dataListado.Columns["TipoComprobante"].Visible = false;
-            this.dataListado.Columns["CodTipoPago"].Visible = false;
-            this.dataListado.Columns["Colaborador"].Visible = false;
-            this.dataListado.Columns["ColaboradorNro"].Visible = false;
+            if (dataListado.Rows.Count == 0)
+                return;
+
+            try
+            {
+                this.dataListado.Columns[0].Visible = false;
+                this.dataListado.Columns["PersonaNro"].Visible = false;
+                this.dataListado.Columns["TipoComprobante"].Visible = false;
+                this.dataListado.Columns["CodTipoPago"].Visible = false;
+                this.dataListado.Columns["Colaborador"].Visible = false;
+                this.dataListado.Columns["ColaboradorNro"].Visible = false;
+            }
+            catch (Exception)
+            {
+
+            }
+            
         }
 
         private void OcultarColumnasDetalle()

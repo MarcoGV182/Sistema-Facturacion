@@ -148,19 +148,16 @@ namespace CapaPresentacion.Formularios.Mantenimiento
         {
             try
             {
-                if (dataListado.ColumnCount > 0)
-                {
-                    this.dataListado.Columns[0].Visible = false;
-                    this.dataListado.Columns["NroTipoDocumento"].Visible = false;
-                }
+                if (dataListado.Rows.Count == 0)
+                    return;
+
+                this.dataListado.Columns[0].Visible = false;
+                this.dataListado.Columns["NroTipoDocumento"].Visible = false;
             }
             catch (Exception)
             {
 
             }
-            
-               
-
         }
 
         private void LlenarComboBox()

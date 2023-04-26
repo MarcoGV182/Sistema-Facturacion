@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCompra));
             this.cboTipoPago = new System.Windows.Forms.ComboBox();
             this.txtProveedor = new System.Windows.Forms.TextBox();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
@@ -388,7 +387,7 @@
             this.tabPage1.Controls.Add(this.btnBuscar);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1160, 588);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
@@ -534,7 +533,7 @@
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1160, 588);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
@@ -899,9 +898,7 @@
             this.ClientSize = new System.Drawing.Size(1177, 621);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.MaximizeBox = false;
             this.Name = "FrmCompra";
             this.Text = "Compras";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCompra_FormClosing);

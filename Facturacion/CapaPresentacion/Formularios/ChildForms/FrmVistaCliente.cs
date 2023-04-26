@@ -123,9 +123,20 @@ namespace CapaPresentacion.Formularios.ChildForms
 
         //ocultar columnas
         private void OcultarColumnas()
-        {  
-            this.dataListado.Columns[0].Visible = false;
-            this.dataListado.Columns["NroTipoDocumento"].Visible = false;
+        {
+            try
+            {
+                if (dataListado.Rows.Count == 0)
+                    return;
+
+                this.dataListado.Columns[0].Visible = false;
+                this.dataListado.Columns["NroTipoDocumento"].Visible = false;
+            }
+            catch (Exception)
+            {
+                
+            }
+            
         }
 
         private void LlenarComboBox()
