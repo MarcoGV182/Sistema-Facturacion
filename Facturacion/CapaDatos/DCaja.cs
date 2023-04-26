@@ -246,7 +246,6 @@ namespace CapaDatos
         }
 
 
-
         public string EliminarArqueo(DCaja Caja)
         {
             //declaracion de variables
@@ -371,7 +370,6 @@ namespace CapaDatos
         }
 
 
-
         //Metodo Mostrar
         public DataTable MostrarSaldoCaja()
         {
@@ -427,7 +425,6 @@ namespace CapaDatos
             }
             return DtResultado;
         }
-
 
 
         public DataTable MostrarListaArqueos(string fechadesde,string fechahasta)
@@ -503,7 +500,6 @@ namespace CapaDatos
         }
 
 
-
         public DataTable BuscarMovimientoPagos(string fechainicio, string fechafin)
         {
             DataTable DtResultado = new DataTable("MovimientoPagosFactura");
@@ -546,7 +542,6 @@ namespace CapaDatos
             }
             return DtResultado;
         }
-
 
 
         //FILTRO CAJA POR FECHA -RESUMEN

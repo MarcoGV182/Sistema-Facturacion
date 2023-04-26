@@ -7,11 +7,14 @@ using System.Data;
 using System.Data.Sql;
 using CapaDatos;
 using System.Windows.Forms;
+using System.IO.Pipes;
 
 namespace CapaNegocio
 {
     public class NCaja
     {
+
+
        public static string InsertarCaja(DateTime fechaApertura, int personaNro, double monto, string observacion) 
        {
             DCaja Obj = new DCaja();
@@ -30,7 +33,6 @@ namespace CapaNegocio
             return Obj.EliminarArqueo(Obj);
         }
 
-
         public static string CerrarCaja(int nrocaja,DateTime? fechacierre,double importeentrega, double saldofinal, double diferencia)
         {
             DCaja Obj = new DCaja();
@@ -41,7 +43,6 @@ namespace CapaNegocio
             Obj.Diferencia = diferencia;           
             return Obj.CerrarCaja(Obj);
         }
-
 
         public static DataTable MostrarSaldo() 
        {
@@ -73,13 +74,18 @@ namespace CapaNegocio
             return obj.FiltroCajaResumen(fechainicio, fechafin);
         }
 
-
         public static DataTable MostrarCajaAbierta(int usuario)
        {
             DCaja obj = new DCaja();
             return obj.MostrarCajaAbierta(usuario);
 
        }
-          
+         
+        public static DataTable ReporteMovimientoCaja(int nroCaja) 
+        {
+            DataTable dt = new DataTable();
+            return dt;
+        }
+
     }
 }
