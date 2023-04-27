@@ -54,7 +54,7 @@ namespace CapaDatos
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "Update Raza set Descripcion = @Descripcion where ID = @id";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
+                SqlCmd.CommandType = CommandType.Text;
                                 
                 SqlCmd.Parameters.AddWithValue("@Descripcion", raza.Descripcion);
                 SqlCmd.Parameters.AddWithValue("@id", raza.Id);
@@ -86,7 +86,7 @@ namespace CapaDatos
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "Delete from Raza where id = @id";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
+                SqlCmd.CommandType = CommandType.Text;
 
                 SqlCmd.Parameters.AddWithValue("@id", raza.Id);
 
@@ -118,7 +118,7 @@ namespace CapaDatos
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "Select Id,Descripcion from Raza";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
+                SqlCmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
                 SqlAdapter.Fill(DtResultado);

@@ -69,6 +69,7 @@
     <Compile Include="NProceso.cs" />
     <Compile Include="NProducto.cs" />
     <Compile Include="NProveedor.cs" />
+    <Compile Include="NRaza.cs" />
     <Compile Include="NRegla.cs" />
     <Compile Include="NRetencion.cs" />
     <Compile Include="NServicio.cs" />

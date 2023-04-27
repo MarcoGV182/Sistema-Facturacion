@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaPresentacion.Formularios;
+using CapaPresentacion.Formularios.Mantenimiento;
 
 namespace CapaPresentacion
 {
@@ -20,7 +21,7 @@ namespace CapaPresentacion
             //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("es-PY");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLogin());
+            Application.Run(new FrmRaza());
             //Application.Run(new FrmConsultaRUC());
         }
     }
