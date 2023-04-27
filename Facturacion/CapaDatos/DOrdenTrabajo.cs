@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace CapaDatos
 {
-    public class DOrdenTrabajo
+    public class DOrdenTrabajo:Conexion
     {
         private int _NroOT;
         private DateTime _Fecha;
@@ -157,12 +157,11 @@ namespace CapaDatos
         public string InsertarOT(DOrdenTrabajo OT, List<DDetalleOrdenTrabajo> DetalleOT)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer la transaccion
                 SqlTransaction Sqltran = Sqlcon.BeginTransaction();
                 //establecer el comando
@@ -279,8 +278,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -290,12 +288,11 @@ namespace CapaDatos
         public string EditarOT(DOrdenTrabajo OT, List<DDetalleOrdenTrabajo> DetalleOT)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer la transaccion
                 SqlTransaction Sqltran = Sqlcon.BeginTransaction();
                 //establecer el comando
@@ -396,8 +393,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -410,12 +406,11 @@ namespace CapaDatos
         public string EliminarOT(DOrdenTrabajo OT)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -441,8 +436,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -453,10 +447,10 @@ namespace CapaDatos
         public DataTable BuscarOrdenTrabajo(string Textobuscar)
         {
             DataTable DtResultado = new DataTable("OT");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarOT";
@@ -479,6 +473,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
+            }
             return DtResultado;
         }
 
@@ -488,10 +486,10 @@ namespace CapaDatos
         public DataTable BuscarOTFecha(string fecha1,string fecha2)
         {
             DataTable DtResultado = new DataTable("OT");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarOTFecha";
@@ -523,6 +521,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
+            }
             return DtResultado;
         }
 
@@ -532,10 +534,10 @@ namespace CapaDatos
         public DataTable MostrarDetalleOT(int nrooT)
         {
             DataTable DtResultado = new DataTable("DetalleOrdenTrabajo");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarDetalleOrdenTrabajo";
@@ -550,7 +552,6 @@ namespace CapaDatos
                 SqlCmd.Parameters.Add(ParNroOT);
 
 
-
                 //instanciar un DataAdapter
                 SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
                 SqlAdapter.Fill(DtResultado);
@@ -558,6 +559,10 @@ namespace CapaDatos
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
             }
             return DtResultado;
         }
@@ -567,10 +572,10 @@ namespace CapaDatos
         public DataTable MostrarOT()
         {
             DataTable DtResultado = new DataTable("OrdenTrabajo");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarOrdenTrabajo";
@@ -585,6 +590,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
+            }
             return DtResultado;
         }
 
@@ -593,10 +602,10 @@ namespace CapaDatos
         public DataTable MostrarNumeracionOT()
         {
             DataTable DtResultado = new DataTable("OrdenTrabajo");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_CargarNumeracionOT";
@@ -611,6 +620,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
+            }
             return DtResultado;
         }
 
@@ -619,10 +632,10 @@ namespace CapaDatos
         public DataTable MostrarCabOTFactura(string numeracion)
         {
             DataTable DtResultado = new DataTable("OrdenTrabajo");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarOrdenTrabajoFactura";
@@ -644,6 +657,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
+            }
             return DtResultado;
         }
 
@@ -655,10 +672,10 @@ namespace CapaDatos
         public DataTable MostrarOTFactura(string numeracion)
         {
             DataTable DtResultado = new DataTable("OrdenTrabajo");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarDetalleOrdenTrabajoFactura";
@@ -679,6 +696,10 @@ namespace CapaDatos
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
             }
             return DtResultado;
         }

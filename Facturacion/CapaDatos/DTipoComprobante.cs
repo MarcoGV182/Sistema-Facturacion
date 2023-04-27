@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class DTipoComprobante
+    public class DTipoComprobante:Conexion
     {
 
         public int ComprobanteNro { get; set; }
@@ -25,10 +25,10 @@ namespace CapaDatos
         public DataTable MostrarTipoComprobante()
         {
             DataTable DtResultado = new DataTable("TipoComprobante");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarTipoComprobante";
@@ -40,6 +40,10 @@ namespace CapaDatos
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            finally
+            {
+                CerrarConexion(Sqlcon);
             }
 
             return DtResultado;

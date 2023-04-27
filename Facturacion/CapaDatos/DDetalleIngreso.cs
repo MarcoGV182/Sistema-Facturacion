@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 namespace CapaDatos
 {
-    public class DDetalleIngreso
+    public class DDetalleIngreso:Conexion
     {
         public int idCompra { get; set; }
         private int _DetalleCompraNro;

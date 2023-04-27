@@ -602,7 +602,7 @@
             this.btnCancelarUser.Location = new System.Drawing.Point(399, 256);
             this.btnCancelarUser.Name = "btnCancelarUser";
             this.btnCancelarUser.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelarUser.TabIndex = 30;
+            this.btnCancelarUser.TabIndex = 33;
             this.btnCancelarUser.Text = "Cancelar";
             this.btnCancelarUser.UseVisualStyleBackColor = true;
             // 
@@ -611,7 +611,7 @@
             this.btnGuardarUser.Location = new System.Drawing.Point(318, 256);
             this.btnGuardarUser.Name = "btnGuardarUser";
             this.btnGuardarUser.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardarUser.TabIndex = 28;
+            this.btnGuardarUser.TabIndex = 32;
             this.btnGuardarUser.Text = "&Guardar";
             this.btnGuardarUser.UseVisualStyleBackColor = true;
             this.btnGuardarUser.Click += new System.EventHandler(this.btnGuardarUser_Click);
@@ -641,7 +641,7 @@
             this.txtPass1.Name = "txtPass1";
             this.txtPass1.PasswordChar = '*';
             this.txtPass1.Size = new System.Drawing.Size(151, 23);
-            this.txtPass1.TabIndex = 33;
+            this.txtPass1.TabIndex = 29;
             // 
             // lblPass1
             // 
@@ -661,7 +661,7 @@
             this.cboAcceso.Location = new System.Drawing.Point(93, 148);
             this.cboAcceso.Name = "cboAcceso";
             this.cboAcceso.Size = new System.Drawing.Size(151, 23);
-            this.cboAcceso.TabIndex = 30;
+            this.cboAcceso.TabIndex = 31;
             // 
             // txtPass2
             // 
@@ -670,7 +670,7 @@
             this.txtPass2.Name = "txtPass2";
             this.txtPass2.PasswordChar = '*';
             this.txtPass2.Size = new System.Drawing.Size(151, 23);
-            this.txtPass2.TabIndex = 29;
+            this.txtPass2.TabIndex = 30;
             // 
             // txtUsuario
             // 

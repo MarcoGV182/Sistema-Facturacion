@@ -8,7 +8,7 @@ using System.Data;
 
 namespace CapaDatos
 {
-    public class DSucursal
+    public class DSucursal:Conexion
     {
         private int _SucursalNro;
         private int _EmpresaNro;
@@ -90,8 +90,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -140,8 +139,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -155,8 +153,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -204,8 +201,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -219,8 +215,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -244,8 +239,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -259,7 +253,7 @@ namespace CapaDatos
             SqlConnection Sqlcon = new SqlConnection();
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarSucursal";
@@ -271,6 +265,10 @@ namespace CapaDatos
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            finally
+            {
+                CerrarConexion(Sqlcon);
             }
 
             return DtResultado;

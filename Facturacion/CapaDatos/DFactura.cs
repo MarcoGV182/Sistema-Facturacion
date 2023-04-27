@@ -12,7 +12,7 @@ using CapaDatos.Interfaces;
 
 namespace CapaDatos
 {
-    public class DFactura : IDocumento
+    public class DFactura : Conexion,IDocumento
     {
         public int Id { get; set; }
         public int Establecimiento { get; set; }
@@ -65,7 +65,7 @@ namespace CapaDatos
                 //codigo
                 /*Sqlcon.ConnectionString = Conexion.CadenaConexion;
                 Sqlcon.Open();*/
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion);
+                Sqlcon = AbrirConexion();
                 //establecer la transaccion
                 SqlTransaction Sqltran = Sqlcon.BeginTransaction();
                 //establecer el comando
@@ -253,7 +253,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
                 /*if (Sqlcon.State == ConnectionState.Open)
                     Sqlcon.Close();*/
             }
@@ -275,7 +275,7 @@ namespace CapaDatos
                 //codigo
                 /*Sqlcon.ConnectionString = Conexion.CadenaConexion;
                 Sqlcon.Open();*/
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion);
+                Sqlcon = AbrirConexion();
                 //establecer la transaccion
                 Sqltran = Sqlcon.BeginTransaction();
                 //establecer el comando
@@ -508,7 +508,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
                 /*if (Sqlcon.State == ConnectionState.Open)
                     Sqlcon.Close();*/
             }
@@ -521,12 +521,11 @@ namespace CapaDatos
         public string Anular(int id,int usuario)
         {
             string rpta = "OK";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -557,7 +556,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -571,7 +570,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, SqlconExistente);
+                Sqlcon = AbrirConexion(SqlconExistente);
                 sqltran = sqltranExistente == null ? Sqlcon.BeginTransaction() : sqltranExistente;
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
@@ -609,7 +608,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon, ref SqlconExistente);
+                CerrarConexion(Sqlcon, ref SqlconExistente);
             }
 
             return rpta;
@@ -626,8 +625,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -671,10 +669,10 @@ namespace CapaDatos
         public DataTable BuscarFechas(string fechaInicio, string FechaFin)
         {
             DataTable DtResultado = new DataTable("Factura");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarFacturaFechas";
@@ -707,7 +705,7 @@ namespace CapaDatos
             }
             finally 
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return DtResultado;
         }
@@ -716,10 +714,10 @@ namespace CapaDatos
         public DataTable MostrarDetalleFactura(int idVenta)
         {
             DataTable DtResultado = new DataTable("DetalleFactura");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarDetalleFactura";
@@ -745,7 +743,7 @@ namespace CapaDatos
             }
             finally 
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }    
             return DtResultado;
         }
@@ -754,12 +752,11 @@ namespace CapaDatos
         public string ConfInsercion(int NroVenta)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -795,10 +792,10 @@ namespace CapaDatos
         public DataTable MostrarFactura()
         {
             DataTable DtResultado = new DataTable("Factura");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarFactura";
@@ -822,10 +819,10 @@ namespace CapaDatos
         public DataTable MostrarFacturaAnulada()
         {
             DataTable DtResultado = new DataTable("Factura");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarFacturaAnulada";
@@ -847,10 +844,10 @@ namespace CapaDatos
         public DataTable MostrarNumeracionFactura(string comprobante,string indAutoimprenta)
         {
             DataTable DtResultado = new DataTable("Factura");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarNumeracionFactura";
@@ -883,7 +880,7 @@ namespace CapaDatos
             }
             finally 
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return DtResultado;
         }
@@ -894,10 +891,10 @@ namespace CapaDatos
         public DataTable MostrarPagosFactura(DFactura Factura)
         {
             DataTable DtResultado = new DataTable("PagosFactura");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarPagosFactura";
@@ -930,7 +927,7 @@ namespace CapaDatos
             SqlConnection Sqlcon = new SqlConnection();
             try
             {                
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion);             
+                Sqlcon = AbrirConexion();             
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;               
@@ -953,7 +950,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
                
             }
             return ImporteRetorno;

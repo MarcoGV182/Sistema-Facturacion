@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace CapaDatos
 {
-    public class DCiudad
+    public class DCiudad:Conexion
     {
         private int _CiudadNro;
         public int CiudadNro
@@ -50,12 +50,11 @@ namespace CapaDatos
         public string InsertarCiudad(DCiudad Ciudad)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -98,12 +97,11 @@ namespace CapaDatos
         public string EditarCiudad(DCiudad Ciudad)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -146,12 +144,11 @@ namespace CapaDatos
         public string EliminarCiudad(DCiudad Ciudad)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -187,10 +184,10 @@ namespace CapaDatos
         public DataTable MostrarCiudad()
         {
             DataTable DtResultado = new DataTable("Ciudad");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarCiudad";
@@ -203,6 +200,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
+            }
 
             return DtResultado;
 
@@ -212,10 +213,10 @@ namespace CapaDatos
         public DataTable BuscarNombre(DCiudad Ciudad)
         {
             DataTable DtResultado = new DataTable("Ciudad");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarCiudad";
@@ -236,6 +237,10 @@ namespace CapaDatos
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
             }
 
             return DtResultado;

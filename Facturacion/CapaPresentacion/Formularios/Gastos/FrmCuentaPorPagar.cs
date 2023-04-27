@@ -136,7 +136,7 @@ namespace CapaPresentacion.Formularios.Gastos
         //Metodo para mostrar los datos en el datagrid
         public void MostrarFacturas()
         {      
-                this.dataListado.DataSource = NCliente.ObtenerDeudaProveedor(txtProveedorNro.Text);
+                this.dataListado.DataSource = NProveedor.ObtenerDeudaProveedor(txtProveedorNro.Text);
                 //this.dataListado.Columns["Descripcion"].Width = 100;
                 this.OcultarColumnas();
                 lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);            

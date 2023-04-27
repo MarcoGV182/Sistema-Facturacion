@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace CapaDatos
 {
-    public class DAjuste
+    public class DAjuste:Conexion
     {
         private int _CodAjuste;
         private string _Descripcion;
@@ -126,12 +126,11 @@ namespace CapaDatos
         public string InsertarAjuste(DAjuste Ajuste, List<DDetalleAjuste> DetalleAjuste)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer la transaccion
                 SqlTransaction Sqltran = Sqlcon.BeginTransaction();
                 //establecer el comando
@@ -246,10 +245,10 @@ namespace CapaDatos
         public DataTable BuscarFechas(string Textobuscar1, string TextoBuscar2)
         {
             DataTable DtResultado = new DataTable("Ajuste");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarAjusteFechas";
@@ -286,10 +285,10 @@ namespace CapaDatos
         public DataTable MostrarDetalleAjuste(int CodAjuste)
         {
             DataTable DtResultado = new DataTable("DetalleAjuste");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarDetalleAjuste";
@@ -323,7 +322,7 @@ namespace CapaDatos
             SqlConnection Sqlcon = new SqlConnection();
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarAjuste";
@@ -349,7 +348,7 @@ namespace CapaDatos
             SqlConnection Sqlcon = new SqlConnection();
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_CargarNumeracionAjuste";
@@ -380,7 +379,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, SqlConExistente);
+                Sqlcon = AbrirConexion(SqlConExistente);
                 SqlTran = SqlTranExistente ?? Sqlcon.BeginTransaction();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
@@ -415,7 +414,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon,ref SqlConExistente);
+                CerrarConexion(Sqlcon,ref SqlConExistente);
             }
 
             return rpta;
@@ -433,7 +432,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, SqlConExistente);
+                Sqlcon = AbrirConexion(SqlConExistente);
                 SqlTran = SqlTranExistente == null ? Sqlcon.BeginTransaction() : SqlTranExistente;
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
@@ -463,7 +462,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon, ref SqlConExistente);
+                CerrarConexion(Sqlcon, ref SqlConExistente);
             }
 
             return rpta;
@@ -482,7 +481,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion);
+                Sqlcon = AbrirConexion();
                 SqlTran = Sqlcon.BeginTransaction();
 
                 //Restaurar Stock
@@ -505,7 +504,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;

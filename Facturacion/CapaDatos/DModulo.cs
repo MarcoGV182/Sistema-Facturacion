@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class DModulo
+    public class DModulo:Conexion
     {
         public int IdModulo { get; set; }
         public string Descripcion { get; set; }
@@ -23,11 +23,11 @@ namespace CapaDatos
         public /*List<DModulo>*/DataTable Mostrar()
         {
             DataTable DtResultado = new DataTable("Modulo");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             //List<DModulo> modulo = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "select * from Modulo";
@@ -46,6 +46,10 @@ namespace CapaDatos
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
             }
 
             return DtResultado;

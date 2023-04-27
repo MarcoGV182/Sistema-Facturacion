@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace CapaDatos
 {
-    public class DRetencion
+    public class DRetencion:Conexion
     {
         private int _RetencionNro;
         private string _NroRetencion;
@@ -146,8 +147,7 @@ namespace CapaDatos
             try
             {
                 //abrimos la conexion
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -227,8 +227,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -242,7 +241,7 @@ namespace CapaDatos
             SqlConnection Sqlcon = new SqlConnection();
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarRetencion";
@@ -268,6 +267,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally
+            {
+                CerrarConexion(Sqlcon);
+            }
             return DtResultado;
         }
 
@@ -279,8 +282,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -304,8 +306,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;

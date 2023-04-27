@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 namespace CapaDatos
 {
-    public class DBackup
+    public class DBackup:Conexion
     {
         private string _Ruta;
         private string _Alias;
@@ -68,12 +68,11 @@ namespace CapaDatos
         public string Backup(DBackup bd)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -130,7 +129,7 @@ namespace CapaDatos
             SqlConnection Sqlcon = new SqlConnection();
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_Recordatorios";

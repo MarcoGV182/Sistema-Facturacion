@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class DTipoDocumento
+    public class DTipoDocumento:Conexion
     {
         public int idTipoDocumento { get; set; }
         public string Descripcion { get; set; }
@@ -21,10 +21,10 @@ namespace CapaDatos
         public DataTable MostrarTipoDocumento()
         {
             DataTable DtResultado = new DataTable("TipoDocumento");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "select t.idTipoDocumento,UPPER(Descripcion) Descripcion from tipodocumento t";
@@ -36,6 +36,10 @@ namespace CapaDatos
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            finally
+            {
+                CerrarConexion(Sqlcon);
             }
 
             return DtResultado;

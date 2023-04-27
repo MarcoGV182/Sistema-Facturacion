@@ -8,7 +8,7 @@ using System.Data;
 
 namespace CapaDatos
 {
-    public class DDetalleAjuste
+    public class DDetalleAjuste:Conexion
     {
         private int _CodDetalleAjuste;
         private int _CodAjuste;

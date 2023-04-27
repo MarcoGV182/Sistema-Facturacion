@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class DPagoFactura
+    public class DPagoFactura:Conexion
     {
         public int PagoNro { get; set; }
         public int NroVenta { get; set; }

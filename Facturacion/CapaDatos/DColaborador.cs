@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class DColaborador : IPersona
+    public class DColaborador : Conexion, IPersona
     {
         public int PersonaNro { get ; set; }
         public string Nombre { get; set; }
@@ -41,12 +41,11 @@ namespace CapaDatos
             //declarar variable respuesta
             string rpta = "OK";
             //instanciamos la conexion
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -164,7 +163,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -177,13 +176,12 @@ namespace CapaDatos
             //declarar variable respuesta
             string rpta = "OK";
             //instanciamos la conexion
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             SqlCommand SqlCmd = new SqlCommand();
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando                
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.Transaction = Sqlcon.BeginTransaction();
@@ -311,7 +309,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -321,10 +319,10 @@ namespace CapaDatos
         public DataTable MostrarColaborador(int? idUsuario)
         {
             DataTable DtResultado = new DataTable("Usuario");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarUsuario";
@@ -342,7 +340,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
 
             return DtResultado;
@@ -352,10 +350,10 @@ namespace CapaDatos
         public DataTable MostrarListaColaboradorActivo()
         {
             DataTable DtResultado = new DataTable("Colaborador");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "MostrarListaColaboradorActivo";
@@ -371,7 +369,7 @@ namespace CapaDatos
             }
             finally 
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
 
             return DtResultado;

@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace CapaDatos
 {
-    public class DTipoProducto
+    public class DTipoProducto : Conexion
     {
         private int _TipoProductoNro;
         public int TipoProductoNro
@@ -46,11 +46,10 @@ namespace CapaDatos
         //Metodo insertar
         public string InsertarTipoProducto(DTipoProducto TipoProducto) {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -81,8 +80,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -94,12 +92,11 @@ namespace CapaDatos
         public string EditarTipoProducto(DTipoProducto TipoProducto)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -131,8 +128,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -144,12 +140,11 @@ namespace CapaDatos
         public string EliminarTipoProducto(DTipoProducto TipoProducto)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -173,8 +168,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -185,10 +179,10 @@ namespace CapaDatos
         public DataTable MostrarTipoProducto()
         {
             DataTable DtResultado = new DataTable("TipoProducto");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try 
             {
-                Sqlcon.ConnectionString= Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection=Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarTipoProducto";
@@ -201,6 +195,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally
+            {
+                CerrarConexion(Sqlcon);
+            }
 
             return DtResultado;
 
@@ -210,10 +208,10 @@ namespace CapaDatos
         public DataTable BuscarNombre(DTipoProducto TipoProducto)
         {
             DataTable DtResultado = new DataTable("TipoProducto");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarTipoProducto";
@@ -234,6 +232,10 @@ namespace CapaDatos
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            finally
+            {
+                CerrarConexion(Sqlcon);
             }
 
             return DtResultado;

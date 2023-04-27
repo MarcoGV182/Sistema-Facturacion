@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace CapaDatos
 {
-    public class DTipoUsuarioRegla
+    public class DTipoUsuarioRegla : Conexion
     {
         public DRol Rol { get; set; }
         public DOperacion Operacion { get; set; }
@@ -25,12 +25,11 @@ namespace CapaDatos
         public string InsertarTipoUsuarioRegla(DTipoUsuarioRegla TipoUsuarioRegla, string tieneHabilitado)
         {
             string rpta = "OK";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -69,7 +68,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -80,10 +79,10 @@ namespace CapaDatos
         public DataTable MostrarTipoUsuarioRegla(DTipoUsuarioRegla TUR)
         {
             DataTable DtResultado = new DataTable("TipoUsuarioRegla");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarUsuario_Regla";
@@ -111,6 +110,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
+            }
 
             return DtResultado;
 
@@ -120,12 +123,11 @@ namespace CapaDatos
         public string EliminarTipoUserRegla(DTipoUsuarioRegla TUR)
         {
             string rpta = "OK";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -149,7 +151,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;

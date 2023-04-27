@@ -9,7 +9,7 @@ using CapaDatos.Interfaces;
 
 namespace CapaDatos
 {
-    public class DCompra : IDocumento
+    public class DCompra : Conexion, IDocumento
     {
         public int Id { get; set; }
         public int Establecimiento { get; set; }
@@ -44,8 +44,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer la transaccion
                 Sqltran = Sqlcon.BeginTransaction();
                 //establecer el comando
@@ -221,7 +220,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -232,12 +231,11 @@ namespace CapaDatos
         public string Anular(int id, int usuario)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -262,8 +260,6 @@ namespace CapaDatos
                 //ejecutar el comando sql
                 rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se anuló el registro";
                 
-
-
             }
             catch (Exception ex)
             {
@@ -271,8 +267,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -283,12 +278,11 @@ namespace CapaDatos
         public string EliminarCompra(DCompra Compra)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -312,8 +306,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -323,12 +316,11 @@ namespace CapaDatos
         public string RestaurarStock(DCompra Compra)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -353,8 +345,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -368,10 +359,10 @@ namespace CapaDatos
         public DataTable BuscarFechas(string Textobuscar1, string TextoBuscar2)
         {
             DataTable DtResultado = new DataTable("Compra");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarCompraFechas";
@@ -399,6 +390,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
+            }
             return DtResultado;
         }
 
@@ -406,10 +401,10 @@ namespace CapaDatos
         public DataTable MostrarDetalleCompra(int NroCompra)
         {
             DataTable DtResultado = new DataTable("DetalleCompra");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarDetalleCompra";
@@ -432,7 +427,7 @@ namespace CapaDatos
             }
             finally 
             {
-                Conexion.CerrarConexion(Sqlcon);            
+                CerrarConexion(Sqlcon);            
             }
             return DtResultado;
         }
@@ -442,10 +437,10 @@ namespace CapaDatos
         public DataTable MostrarCompra()
         {
             DataTable DtResultado = new DataTable("Compra");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarCompra";
@@ -460,6 +455,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally
+            { 
+                CerrarConexion(Sqlcon);
+            }
             return DtResultado;
         }
 
@@ -468,10 +467,10 @@ namespace CapaDatos
         public DataTable MostrarCompraAnulada()
         {
             DataTable DtResultado = new DataTable("Compra");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarCompraAnulada";
@@ -485,6 +484,10 @@ namespace CapaDatos
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
             }
             return DtResultado;
         }
@@ -501,7 +504,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, SqlconExistente);
+                Sqlcon = AbrirConexion(SqlconExistente);
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -538,7 +541,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon, ref SqlconExistente);
+                CerrarConexion(Sqlcon, ref SqlconExistente);
             }
             return rpta;
         }
@@ -553,7 +556,7 @@ namespace CapaDatos
             try
             {   
                 //codigo
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, SqlconExistente);
+                Sqlcon = AbrirConexion(SqlconExistente);
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -588,7 +591,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon,ref SqlconExistente);
+                CerrarConexion(Sqlcon,ref SqlconExistente);
             }
             return rpta;
         }
@@ -599,12 +602,11 @@ namespace CapaDatos
         public string CuentaAPagar(DCompra Compra)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -630,8 +632,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }

@@ -8,7 +8,7 @@ using System.Data;
 
 namespace CapaDatos
 {
-    public class DDetalleFactura
+    public class DDetalleFactura:Conexion
     {
         public int NroVenta { get; set; }
         public int NroItem { get; set; }

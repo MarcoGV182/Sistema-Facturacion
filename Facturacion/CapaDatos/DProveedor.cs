@@ -10,7 +10,7 @@ using CapaDatos.Interfaces;
 
 namespace CapaDatos
 {
-    public class DProveedor: IPersona
+    public class DProveedor:Conexion, IPersona
     {   
         public DateTime? FechaAniversario { get; set; }
         public int PersonaNro { get; set; }
@@ -54,8 +54,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -167,8 +166,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -276,8 +274,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -301,8 +298,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -316,7 +312,7 @@ namespace CapaDatos
             SqlConnection Sqlcon = new SqlConnection();
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarProveedor";
@@ -332,7 +328,7 @@ namespace CapaDatos
             }
             finally 
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return DtResultado;
 
@@ -345,7 +341,7 @@ namespace CapaDatos
             SqlConnection Sqlcon = new SqlConnection();
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarProveedor";
@@ -373,12 +369,115 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally
+            {
+                CerrarConexion(Sqlcon);
+            }
 
             return DtResultado;
 
         }
 
 
+        //Metodo Mostrar
+        public DataTable MostrarDeudaProveedor()
+        {
+            DataTable DtResultado = new DataTable("Proveedor");
+            SqlConnection Sqlcon = null;
+            try
+            {
+                Sqlcon = AbrirConexion();
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = Sqlcon;
+                SqlCmd.CommandText = "sp_MostrarDeudaProveedor";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
+                SqlAdapter.Fill(DtResultado);
+            }
+            catch (Exception)
+            {
+                DtResultado = null;
+            }
+            finally
+            {
+                CerrarConexion(Sqlcon);
+            }
+
+            return DtResultado;
+
+        }
+
+
+        public DataTable BuscarDeudaProveedorDocumento(DProveedor proveedor)
+        {
+            DataTable DtResultado = new DataTable("Proveedor");
+            SqlConnection Sqlcon = new SqlConnection();
+            try
+            {
+                Sqlcon = AbrirConexion();
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = Sqlcon;
+                SqlCmd.CommandText = "sp_BuscarDeudaProveedor";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                //Parametros
+                SqlParameter ParTextoBuscar = new SqlParameter();
+                ParTextoBuscar.ParameterName = "@TextoBuscar";
+                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
+                ParTextoBuscar.Size = 50;
+                ParTextoBuscar.SqlValue = proveedor.TextoBuscar;
+                SqlCmd.Parameters.Add(ParTextoBuscar);
+
+                //instanciar un DataAdapter
+                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
+                SqlAdapter.Fill(DtResultado);
+            }
+            catch (Exception)
+            {
+                DtResultado = null;
+            }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
+            }
+
+            return DtResultado;
+
+        }
+
+
+        //Metodo Buscar deuda
+        public DataTable ObtenerDeudaProveedor(string persona)
+        {
+            DataTable DtResultado = new DataTable("Deuda");
+            SqlConnection Sqlcon = null;
+            try
+            {
+                Sqlcon = AbrirConexion();
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = Sqlcon;
+                SqlCmd.CommandText = "sp_ObtenerDeudaProveedor";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                //Parametros
+                SqlParameter ParTextoBuscar = new SqlParameter();
+                ParTextoBuscar.ParameterName = "@ProveedorNro";
+                ParTextoBuscar.SqlDbType = SqlDbType.Int;
+                ParTextoBuscar.SqlValue = persona;
+                SqlCmd.Parameters.Add(ParTextoBuscar);
+
+                //instanciar un DataAdapter
+                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
+                SqlAdapter.Fill(DtResultado);
+            }
+            catch (Exception)
+            {
+                DtResultado = null;
+            }
+
+            return DtResultado;
+        }
 
     }
 }

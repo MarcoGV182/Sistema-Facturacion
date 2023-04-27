@@ -33,9 +33,9 @@ namespace CapaNegocio
 
 
         //Metodo para mostrar que llama al metodo mostrar de la capa Datos
-        public async static Task<DataTable> Mostrar()
+        public static DataTable Mostrar()
         {
-            return await new DProducto().MostrarProducto();
+            return new DProducto().MostrarProducto();
         }
 
         //Metodo para mostrar que llama al metodo mostrar de la capa Datos

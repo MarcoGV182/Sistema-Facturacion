@@ -66,7 +66,7 @@ namespace CapaPresentacion.Formularios.ChildForms
         {
             try 
             {
-                this.dataListado.DataSource = NCliente.MostrarDeudaProveedor();
+                this.dataListado.DataSource = NProveedor.MostrarDeudaProveedor();
                 //this.dataListado.Columns["Descripcion"].Width = 100;
                 this.OcultarColumnas();
                 lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
@@ -89,7 +89,7 @@ namespace CapaPresentacion.Formularios.ChildForms
 
         private void BuscarRUC()
         {
-            this.dataListado.DataSource = NCliente.BuscarDeudaProveedorDocumento(this.txtBuscar.Text);
+            this.dataListado.DataSource = NProveedor.BuscarDeudaProveedorDocumento(this.txtBuscar.Text);
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }

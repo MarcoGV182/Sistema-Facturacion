@@ -31,7 +31,7 @@ namespace CapaDatos
             try
             {
                 #region Conexion y transaccion
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, SqlconExistente);
+                Sqlcon = AbrirConexion(SqlconExistente);
                 sqltran = sqltranExistente == null ? Sqlcon.BeginTransaction() : sqltranExistente;
 
                 SqlCommand SqlCmd = new SqlCommand();
@@ -66,7 +66,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon, ref SqlconExistente);
+                CerrarConexion(Sqlcon, ref SqlconExistente);
             }
             return rpta;
         }

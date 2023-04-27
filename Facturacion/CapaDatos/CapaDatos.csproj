@@ -80,6 +80,7 @@
     <Compile Include="DProducto.cs" />
     <Compile Include="DProveedor.cs" />
     <Compile Include="DOperacion.cs" />
+    <Compile Include="DRaza.cs" />
     <Compile Include="DRetencion.cs" />
     <Compile Include="DRuc.cs" />
     <Compile Include="DServicio.cs" />

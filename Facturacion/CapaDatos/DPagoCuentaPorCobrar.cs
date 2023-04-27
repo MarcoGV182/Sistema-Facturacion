@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace CapaDatos
 {
-    public class DPagoCuentaPorCobrar
+    public class DPagoCuentaPorCobrar:Conexion
     {
         private int _PagoNro;
         private int _CuentaporCobrarNro;
@@ -134,8 +134,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -201,8 +200,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -216,7 +214,7 @@ namespace CapaDatos
             SqlConnection Sqlcon = new SqlConnection();
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_ObtenerDeudaCliente";
@@ -239,6 +237,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally
+            {
+                CerrarConexion(Sqlcon);
+            }
 
             return DtResultado;
 
@@ -252,7 +254,7 @@ namespace CapaDatos
             SqlConnection Sqlcon = new SqlConnection();
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarCuotaFactura";
@@ -275,6 +277,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally
+            {
+                CerrarConexion(Sqlcon);
+            }
 
             return DtResultado;
 
@@ -288,7 +294,7 @@ namespace CapaDatos
             SqlConnection Sqlcon = new SqlConnection();
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarHistoricoPagoCC";
@@ -311,6 +317,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally
+            {
+                CerrarConexion(Sqlcon);
+            }
 
             return DtResultado;
 
@@ -324,8 +334,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -359,8 +368,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }

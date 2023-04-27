@@ -41,6 +41,25 @@ namespace CapaNegocio
             return new DProveedor().MostrarProveedor();
         }
 
+        //Metodo para mostrar que llama al metodo mostrar de la capa Datos
+        public static DataTable MostrarDeudaProveedor()
+        {
+            return new DProveedor().MostrarDeudaProveedor();
+        }
+
+        public static DataTable ObtenerDeudaProveedor(string textoBuscar)
+        {        
+            return new DProveedor().ObtenerDeudaProveedor(textoBuscar);
+        }
+
+        //Metodo para buscar que llama al metodo buscar por documento de la capa Datos
+        public static DataTable BuscarDeudaProveedorDocumento(string textoBuscar)
+        {
+            DProveedor objProveeedor = new DProveedor();
+            objProveeedor.TextoBuscar = textoBuscar;
+            return objProveeedor.BuscarDeudaProveedorDocumento(objProveeedor);
+        }
+
 
         //Metodo para buscar que llama al metodo buscar por documento de la capa Datos
         public static DataTable BuscarProveedor(string tipo,string textoBuscar)

@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 namespace CapaDatos
 {
-    public class DMovimiento
+    public class DMovimiento:Conexion
     {
 
 
@@ -16,10 +16,10 @@ namespace CapaDatos
         public DataTable MostrarMovimiento()
         {
             DataTable DtResultado = new DataTable("Movimiento");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarMovimiento";
@@ -34,6 +34,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
+            }
             return DtResultado;
         }
 
@@ -42,10 +46,10 @@ namespace CapaDatos
         public DataTable BuscarMovimientoCaja(string FechaDesde, string FechaHasta)
         {
             DataTable DtResultado = new DataTable("Movimiento");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, null);                
+                Sqlcon = AbrirConexion();                
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarFechaMovimientoCaja";
@@ -67,7 +71,7 @@ namespace CapaDatos
             }
             finally 
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }   
             return DtResultado;
         }
@@ -76,10 +80,10 @@ namespace CapaDatos
         public DataTable BuscarMovimiento(string Textobuscar1, string TextoBuscar2)
         {
             DataTable DtResultado = new DataTable("Movimiento");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarFechaMovimiento";
@@ -105,9 +109,14 @@ namespace CapaDatos
                 SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
                 SqlAdapter.Fill(DtResultado);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 DtResultado = null;
+                throw ex;
+            }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
             }
             return DtResultado;
         }
