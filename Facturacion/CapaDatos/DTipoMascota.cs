@@ -9,14 +9,13 @@ using CapaDatos.Interfaces;
 
 namespace CapaDatos
 {
-    public class DRaza:Conexion,IGeneric<DRaza>
-    {   
+    public class DTipoMascota:Conexion,IGeneric<DTipoMascota>
+    {
         public int Id { get; set; }
         public string Descripcion { get; set; }
 
 
-
-        public string Insertar(DRaza raza)
+        public string Insertar(DTipoMascota TipoMascota)
         {
             string rpta;
             SqlConnection SqlCon = null;
@@ -25,13 +24,13 @@ namespace CapaDatos
                 SqlCon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "Insert into Raza(Descripcion)values(@Descripcion)";
+                SqlCmd.CommandText = "Insert into TipoMascota(Descripcion)values(@Descripcion)";
                 SqlCmd.CommandType = CommandType.Text;
 
-                SqlCmd.Parameters.AddWithValue("@Descripcion", raza.Descripcion);
-                
+                SqlCmd.Parameters.AddWithValue("@Descripcion", TipoMascota.Descripcion);
+
                 //ejecutar el comando sql
-                rpta = SqlCmd.ExecuteNonQuery()> 0 ? "OK": throw new Exception("Ocurrio un error al insertar el registro");
+                rpta = SqlCmd.ExecuteNonQuery()> 0 ? "Ok": throw new Exception("Ocurrio un error al insertar el registro");
             }
             catch (Exception ex)
             {
@@ -45,7 +44,7 @@ namespace CapaDatos
         }
 
         //Metodo Editar
-        public string Editar(DRaza raza)
+        public string Editar(DTipoMascota TipoMascota)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
@@ -54,11 +53,11 @@ namespace CapaDatos
                 Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "Update Raza set Descripcion = @Descripcion where ID = @id";
+                SqlCmd.CommandText = "Update TipoMascota set Descripcion = @Descripcion where ID = @id";
                 SqlCmd.CommandType = CommandType.Text;
-                                
-                SqlCmd.Parameters.AddWithValue("@Descripcion", raza.Descripcion);
-                SqlCmd.Parameters.AddWithValue("@id", raza.Id);
+
+                SqlCmd.Parameters.AddWithValue("@Descripcion", TipoMascota.Descripcion);
+                SqlCmd.Parameters.AddWithValue("@id", TipoMascota.Id);
 
                 //ejecutar el comando sql
                 rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se actualizo el registro";
@@ -86,7 +85,7 @@ namespace CapaDatos
                 Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "Delete from Raza where id = @id";
+                SqlCmd.CommandText = "Delete from TipoMascota where id = @id";
                 SqlCmd.CommandType = CommandType.Text;
 
                 SqlCmd.Parameters.AddWithValue("@id", id);
@@ -111,14 +110,14 @@ namespace CapaDatos
         //Metodo Mostrar
         public DataTable Mostrar()
         {
-            DataTable DtResultado = new DataTable("Raza");
+            DataTable DtResultado = new DataTable("TipoMascota");
             SqlConnection Sqlcon = null;
             try
             {
                 Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "Select Id,Descripcion from Raza";
+                SqlCmd.CommandText = "Select Id,Descripcion from TipoMascota";
                 SqlCmd.CommandType = CommandType.Text;
 
                 SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
@@ -128,7 +127,7 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
-            finally 
+            finally
             {
                 CerrarConexion(Sqlcon);
             }

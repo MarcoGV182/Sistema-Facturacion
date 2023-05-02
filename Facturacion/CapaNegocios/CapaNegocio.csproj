@@ -78,6 +78,7 @@
     <Compile Include="NTipoComprobante.cs" />
     <Compile Include="NTipoDocumento.cs" />
     <Compile Include="NTipoImpuesto.cs" />
+    <Compile Include="NTipoMascota.cs" />
     <Compile Include="NTipoOperacion.cs" />
     <Compile Include="NTipoPago.cs" />
     <Compile Include="NTipoProducto.cs" />

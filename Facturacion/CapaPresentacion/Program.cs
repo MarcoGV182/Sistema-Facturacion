@@ -21,7 +21,7 @@ namespace CapaPresentacion
             //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("es-PY");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmRaza());
+            Application.Run(new FrmTipoMascota());
             //Application.Run(new FrmConsultaRUC());
         }
     }

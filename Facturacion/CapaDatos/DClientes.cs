@@ -24,6 +24,7 @@ namespace CapaDatos
         public string Email { get; set; }
         public string Observacion { get; set; }
         public DateTime? FechaNacimiento { get; set; }
+        public int Edad { get => CalcularEdad(); }
 
         public DClientes() {
 
@@ -44,8 +45,6 @@ namespace CapaDatos
         }
 
 
-
-        //Metodo insertar
         public string InsertarCliente(DClientes Cliente)
         {
             string rpta = "";
@@ -163,7 +162,6 @@ namespace CapaDatos
         }
 
 
-        //Metodo Editar
         public string EditarCliente(DClientes Cliente)
         {
             string rpta = "";
@@ -454,8 +452,6 @@ namespace CapaDatos
         }
 
 
-
-
         //Metodo Buscar
         public DataTable BuscarNombre(DClientes Cliente)
         {
@@ -663,6 +659,40 @@ namespace CapaDatos
             }
 
             return rpta;
+        }
+
+
+        public int CalcularEdad()
+        {
+            // Obtiene la fecha actual:
+            DateTime fechaActual = DateTime.Today;
+
+            
+            if (FechaNacimiento.Value == null)
+            {
+                return 0;
+            }
+
+            // Comprueba que la se haya introducido una fecha válida; si 
+            // la fecha de nacimiento es mayor a la fecha actual se muestra mensaje 
+            // de advertencia:
+            if (FechaNacimiento.Value > fechaActual)
+            {
+                return 0;
+            }
+            else
+            {
+                int edad = fechaActual.Year - FechaNacimiento.Value.Year;
+
+                // Comprueba que el mes de la fecha de nacimiento es mayor 
+                // que el mes de la fecha actual:
+                if (FechaNacimiento.Value.Month > fechaActual.Month)
+                {
+                    --edad;
+                }
+
+                return edad;
+            }
         }
     }
 }

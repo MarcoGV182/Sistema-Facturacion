@@ -15,24 +15,24 @@ using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion.Formularios.Mantenimiento
 {
-    public partial class FrmRaza : Form
+    public partial class FrmTipoMascota : Form
     {
         private bool IsNuevo = false;
         private bool IsEditar = false;
-        List<NRaza> listaRaza = new List<NRaza>();
+        List<NTipoMascota> listaTipoMascota = new List<NTipoMascota>();
 
         //INSTANCIA PARA LLAMAR SOLO UNA VEZ AL FORMULARIO
-        private static FrmRaza _Instancia;
+        private static FrmTipoMascota _Instancia;
 
-        public static FrmRaza GetInstancia()
+        public static FrmTipoMascota GetInstancia()
         {
             if (_Instancia == null)
             {
-                _Instancia = new FrmRaza();
+                _Instancia = new FrmTipoMascota();
             }
             return _Instancia;
         }
-        public FrmRaza()
+        public FrmTipoMascota()
         {
             InitializeComponent();
             this.ttMensaje.SetToolTip(txtDescripcion, "Ingrese la descripcion de la Marca");
@@ -106,8 +106,8 @@ namespace CapaPresentacion.Formularios.Mantenimiento
         //Metodo para mostrar los datos en el datagrid
         private void Mostrar()
         {
-            listaRaza = NRaza.MostrarListaRaza();
-            this.dataListado.DataSource = listaRaza;
+            listaTipoMascota = NTipoMascota.Mostrar();
+            this.dataListado.DataSource = listaTipoMascota;
 
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros " + Convert.ToString(dataListado.Rows.Count);
@@ -116,7 +116,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
         //Metodo buscar por descripcion
         private void Buscar()
         {
-            var filtro = listaRaza.Where(c => c.Descripcion.ToUpper().Contains(txtBuscar.Text.ToUpper())).ToList();
+            var filtro = listaTipoMascota.Where(c => c.Descripcion.ToUpper().Contains(txtBuscar.Text.ToUpper())).ToList();
             this.dataListado.DataSource = filtro;
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros " + Convert.ToString(dataListado.Rows.Count);
@@ -173,7 +173,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
                     if (Convert.ToBoolean(row.Cells[0].Value))
                     {
                         codigo = Convert.ToString(row.Cells[1].Value);
-                        rpta = NRaza.Eliminar(Convert.ToInt32(codigo));
+                        rpta = NTipoMascota.Eliminar(Convert.ToInt32(codigo));
 
                         if (!rpta.Equals("OK"))
                         {
@@ -268,19 +268,19 @@ namespace CapaPresentacion.Formularios.Mantenimiento
                 //si se ingresa un nuevo registro
                 if (this.IsNuevo)
                 {
-                    rpta = NRaza.Insertar(this.txtDescripcion.Text.Trim());
+                    rpta = NTipoMascota.Insertar(this.txtDescripcion.Text.Trim());
                     //si se esta editando el registro    
                 }
                 else
                 {
-                    DRaza marca = new DRaza();
+                    DTipoMascota marca = new DTipoMascota();
                     marca.Id = Convert.ToInt32(this.txtCodigo.Text);
                     marca.Descripcion = this.txtDescripcion.Text.Trim();
-                    rpta = NRaza.Editar(marca);
+                    rpta = NTipoMascota.Editar(marca);
                 }
 
 
-                if (rpta.Equals("OK"))
+                if (rpta.ToUpper().Equals("OK"))
                 {
                     if (IsNuevo)
                     {

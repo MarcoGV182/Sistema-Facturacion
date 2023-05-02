@@ -140,6 +140,12 @@
     <Compile Include="Formularios\Gastos\FrmEliminarArqueo.Designer.cs">
       <DependentUpon>FrmEliminarArqueo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Mantenimiento\FrmTipoMascota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Mantenimiento\FrmTipoMascota.Designer.cs">
+      <DependentUpon>FrmTipoMascota.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Mantenimiento\FrmRaza.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -687,6 +693,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gastos\FrmCuentaPorCobrar.resx">
       <DependentUpon>FrmCuentaPorCobrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Mantenimiento\FrmTipoMascota.resx">
+      <DependentUpon>FrmTipoMascota.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Mantenimiento\FrmRaza.resx">
       <DependentUpon>FrmRaza.cs</DependentUpon>

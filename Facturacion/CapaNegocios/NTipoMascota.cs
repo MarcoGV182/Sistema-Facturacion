@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace CapaNegocio
 {
-    public class NRaza
-    {
+    public class NTipoMascota
+    {   
         #region Propiedades
         public int Id { get; set; }
         public string Descripcion { get; set; }
         #endregion
 
         #region Constructor
-        public NRaza()
+        public NTipoMascota()
         {
 
         }
@@ -26,48 +26,50 @@ namespace CapaNegocio
         //Metodo para insertar que llama al metodo insertar de la capa Datos
         public static string Insertar(string descripcion)
         {
-            DRaza objRaza = new DRaza();
+            DTipoMascota objRaza = new DTipoMascota();
             objRaza.Descripcion = descripcion;
             return objRaza.Insertar(objRaza);
         }
 
         //Metodo para editar que llama al metodo editar de la capa Datos
-        public static string Editar(DRaza marca)
+        public static string Editar(DTipoMascota marca)
         {
-            DRaza objMarca = new DRaza();
+            DTipoMascota objMarca = new DTipoMascota();
             return objMarca.Editar(marca);
         }
 
         //Metodo para eliminar que llama al metodo eliminar de la capa Datos
-        public static string Eliminar(int raza)
+        public static string Eliminar(int id)
         {
-            DRaza objRazas = new DRaza();
-            return objRazas.Eliminar(raza);
+            DTipoMascota objTipoMascota = new DTipoMascota();
+            return objTipoMascota.Eliminar(id);
         }
 
 
         //Metodo para mostrar que llama al metodo mostrar de la capa Datos
-        public static List<NRaza> MostrarListaRaza()
-        {
-            DRaza dRaza = new DRaza();
-            List<NRaza> listaRaza = new List<NRaza>();
-            DataTable Dt = dRaza.Mostrar();
+        public static List<NTipoMascota> Mostrar()
+        {            
+            List<NTipoMascota> listaRaza = new List<NTipoMascota>();
 
+            DTipoMascota DTipoMascota = new DTipoMascota();
+            DataTable Dt = DTipoMascota.Mostrar();
 
-            foreach (DataRow item in Dt.Rows)
+            if (Dt != null)
             {
-                NRaza r = new NRaza()
+                foreach (DataRow item in Dt.Rows)
                 {
-                    Id = int.Parse(item["Id"].ToString()),
-                    Descripcion = item["Descripcion"].ToString()
-                };
+                    NTipoMascota r = new NTipoMascota()
+                    {
+                        Id = int.Parse(item["Id"].ToString()),
+                        Descripcion = item["Descripcion"].ToString()
+                    };
 
-                listaRaza.Add(r);
-            }
+                    listaRaza.Add(r);
+                }
+            }            
 
             return listaRaza;
         }
         #endregion
-
     }
 }

@@ -16,7 +16,7 @@ namespace CapaDatos
 
         public Conexion()
         {
-            CadenaConexion = ConfigurationManager.ConnectionStrings["CapaPresentacion.Properties.Settings.Cn"].ConnectionString;
+            CadenaConexion = ConfigurationManager.ConnectionStrings["SqlCnn"].ConnectionString;
         }
 
         #region Acceso a Datos

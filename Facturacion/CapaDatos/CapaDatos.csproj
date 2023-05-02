@@ -84,12 +84,14 @@
     <Compile Include="DRetencion.cs" />
     <Compile Include="DRuc.cs" />
     <Compile Include="DServicio.cs" />
+    <Compile Include="DSexoMascota.cs" />
     <Compile Include="DSucursal.cs" />
     <Compile Include="DTimbrado.cs" />
     <Compile Include="DTipoAjuste.cs" />
     <Compile Include="DTipoComprobante.cs" />
     <Compile Include="DTipoDocumento.cs" />
     <Compile Include="DTipoImpuesto.cs" />
+    <Compile Include="DTipoMascota.cs" />
     <Compile Include="DTipoOperacion.cs" />
     <Compile Include="DTipoPago.cs" />
     <Compile Include="DTipoProducto.cs" />
@@ -101,7 +103,9 @@
     <Compile Include="DUsuarioServicio.cs" />
     <Compile Include="Interfaces\IDocumento.cs" />
     <Compile Include="DModulo.cs" />
+    <Compile Include="Interfaces\IGeneric.cs" />
     <Compile Include="Interfaces\IPersona.cs" />
+    <Compile Include="DMascota.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
