@@ -116,7 +116,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
         //Obtener los datos del Cliente
         public void ObtenerCliente(string clienteNro, string documento,string nombre, string apellido)
         {
-            this.txtClienteNro.Text = clienteNro;
+            //this.txtClienteNro.Text = clienteNro;
             this.txtDocumento.Text = documento;
             this.txtCliente.Text = nombre + " " + apellido;
         }
@@ -128,7 +128,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
             this.txtCodItem.Text = codigo;
             this.txtItem.Text = descripcion;
             this.txtPrecio.Text = PrecioMinorista;
-            this.txtComisionServicio.Text = comision;
+            //this.txtComisionServicio.Text = comision;
               //  this.txtIva.Text = iva;
               //his.txtDivisor.Text = divisor;
                // this.txtGravadas.Text = gravadas;
@@ -137,7 +137,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
         public void ObtenerEmpleado(string usuarionro,string nombre) 
         {
 
-            this.txtUsuarioNro.Text = usuarionro;
+            //this.txtUsuarioNro.Text = usuarionro;
             this.txtUsuarioNombre.Text = nombre;
         }
 
@@ -145,16 +145,16 @@ namespace CapaPresentacion.Formularios.Mantenimiento
         //Limpiar los controles del formulario
         private void Limpiar()
         {
-            this.txtCodigo.Text = string.Empty;
+            //this.txtCodigo.Text = string.Empty;
             this.txtNumeracion.Text = string.Empty;
             this.txtDocumento.Text = string.Empty;
-            this.txtDias.Text = string.Empty;
-            this.txtClienteNro.Text = string.Empty;
+            //this.txtDias.Text = string.Empty;
+            //this.txtClienteNro.Text = string.Empty;
             this.txtCliente.Text = string.Empty;            
             this.txtObservacion.Text = string.Empty;            
-            this.txtFormula.Text = string.Empty;
+            //this.txtFormula.Text = string.Empty;
             this.lbltotalgral.Text = 0.ToString();
-            this.dtpFechaVisita.Value = DateTime.Now;
+            //this.dtpFechaVisita.Value = DateTime.Now;
             this.dtpFecha.Value = DateTime.Now;
             this.CrearTabla();
         }
@@ -164,7 +164,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
             this.txtItem.Text = string.Empty;
             this.txtCodItem.Text = string.Empty;
             this.txtPrecio.Text = string.Empty;
-            this.txtUsuarioNro.Text = string.Empty;
+            //this.txtUsuarioNro.Text = string.Empty;
             this.txtUsuarioNombre.Text = string.Empty;            
             //this.txtIva.Text = string.Empty;
         }
@@ -187,13 +187,13 @@ namespace CapaPresentacion.Formularios.Mantenimiento
         //Habilitar botones
         private void Habilitar(bool valor)
         {
-            this.txtCodigo.ReadOnly = valor;
+            //this.txtCodigo.ReadOnly = valor;
            // this.txtNumeracion.ReadOnly = !valor;
             this.txtCliente.ReadOnly = !valor;
             this.txtDocumento.ReadOnly = !valor;
             this.dtpFecha.Enabled = valor;
             this.txtObservacion.ReadOnly = !valor;
-            this.txtFormula.ReadOnly = !valor;            
+            //this.txtFormula.ReadOnly = !valor;            
             this.txtItem.ReadOnly = valor;
             this.txtCodItem.ReadOnly = valor;
             this.txtObservacion.ReadOnly = !valor;
@@ -201,7 +201,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
             btnBuscarCliente.Enabled = valor;
             btnAgregar.Enabled = valor;
             btnQuitar.Enabled = valor;
-            dtpFechaVisita.Checked = false;
+           //dtpFechaVisita.Checked = false;
         }
 
         //Habilitar Botones
@@ -263,7 +263,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
             total = 0;
             try
             {
-                this.dgvDetalleOT.DataSource = NOrdenTrabajo.MostrarDetalle(Convert.ToInt32(this.txtCodigo.Text));
+                //this.dgvDetalleOT.DataSource = NOrdenTrabajo.MostrarDetalle(Convert.ToInt32(this.txtCodigo.Text));
                 this.dgvDetalleOT.Columns["ServicioNro"].Visible = false;
                 foreach (DataGridViewRow datarow in dgvDetalleOT.Rows)
                 {
@@ -337,12 +337,12 @@ namespace CapaPresentacion.Formularios.Mantenimiento
                     btnBuscar.Focus();
 
                 }
-                else if (this.txtUsuarioNro.Text==string.Empty)
+                /*else if (this.txtUsuarioNro.Text==string.Empty)
                 {
                     this.MensajeError("Falta algunos datos");
                     errorIcono.SetError(txtUsuarioNombre, "Asigne el servicio a un empleado");
                     btnBuscar.Focus();
-                }
+                }*/
                 else
                 {
                     bool registrar = true;
@@ -350,11 +350,11 @@ namespace CapaPresentacion.Formularios.Mantenimiento
 
                     foreach (DataRow row in Dtdetalle.Rows)
                     {
-                        if (Convert.ToInt32(row["ItemNro"]) == Convert.ToInt32(txtCodItem.Text) && Convert.ToInt32(row["UsuarioNro"]) == Convert.ToInt32(txtUsuarioNro.Text))
+                        /*if (Convert.ToInt32(row["ItemNro"]) == Convert.ToInt32(txtCodItem.Text) && Convert.ToInt32(row["UsuarioNro"]) == Convert.ToInt32(txtUsuarioNro.Text))
                         {
                             registrar = false;
                             this.MensajeError("Ya se agregó el Item");
-                        }
+                        }*/
                     }
                     if (registrar)
                     {
@@ -362,10 +362,10 @@ namespace CapaPresentacion.Formularios.Mantenimiento
                         row = this.Dtdetalle.NewRow();
                         row["ItemNro"] = Convert.ToInt32(txtCodItem.Text);
                         row["Servicio"] = txtItem.Text;
-                        row["UsuarioNro"] = txtUsuarioNro.Text;
+                        //row["UsuarioNro"] = txtUsuarioNro.Text;
                         row["Empleado"] = txtUsuarioNombre.Text;
                         row["Precio"] = txtPrecio.Text;
-                        row["ComisionServicio"] = txtComisionServicio.Text;
+                        //row["ComisionServicio"] = txtComisionServicio.Text;
 
                         ganancia = Convert.ToDouble(row["Precio"]) * (Convert.ToDouble(row["ComisionServicio"]) / 100);
 
@@ -439,7 +439,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
             this.LimpiarDetalle();
             ObtenerNumeracion();
             this.OcultarColumnasDetalle();
-            gbAviso.Visible = true;
+            //gbAviso.Visible = true;
             
 
         }
@@ -452,18 +452,18 @@ namespace CapaPresentacion.Formularios.Mantenimiento
                 string rpta = "";
                
 
-                if (this.txtClienteNro.Text == string.Empty)
+                /*if (this.txtClienteNro.Text == string.Empty)
                 {
                     this.MensajeError("Falta algunos datos");
                     txtDocumento.Focus();
                     errorIcono.SetError(txtDocumento, "Ingrese el proveedor");
-                }
-                else if (txtFormula.Text!=string.Empty && txtDias.Text==string.Empty)
+                }*/
+                /*else if (txtFormula.Text!=string.Empty && txtDias.Text==string.Empty)
                 {
                     this.MensajeError("Falta algunos datos");
                     errorIcono.SetError(txtDias, "Ingrese los dias de la proxima visita");
-                }
-                else if (dgvDetalleOT.Rows.Count == 0)
+                }*/
+                if (dgvDetalleOT.Rows.Count == 0)
                 {
                     this.MensajeError("No existen items");
                 }
@@ -472,13 +472,13 @@ namespace CapaPresentacion.Formularios.Mantenimiento
                     //si se ingresa un nuevo registro
                     if (this.IsNuevo)
                     {
-                        rpta = NOrdenTrabajo.Insertar(this.dtpFecha.Value, Convert.ToInt32(this.txtClienteNro.Text), this.txtFormula.Text.Trim().ToUpper(), this.txtDias.Text == string.Empty? (Int32?)null:Convert.ToInt32(this.txtDias.Text),dtpFechaVisita.Checked==false? (DateTime?)null: dtpFechaVisita.Value,txtObservacion.Text.Trim().ToUpper(),id, usuario, Dtdetalle);
+                        //rpta = NOrdenTrabajo.Insertar(this.dtpFecha.Value, Convert.ToInt32(this.txtClienteNro.Text), this.txtFormula.Text.Trim().ToUpper(), this.txtDias.Text == string.Empty? (Int32?)null:Convert.ToInt32(this.txtDias.Text),dtpFechaVisita.Checked==false? (DateTime?)null: dtpFechaVisita.Value,txtObservacion.Text.Trim().ToUpper(),id, usuario, Dtdetalle);
                         //si se esta editando el registro    
                     }
                     else 
                     {
                        // eliminar = NOrdenTrabajo.EliminarOT(Convert.ToInt32(txtCodigo.Text));
-                        rpta = NOrdenTrabajo.Editar(Convert.ToInt32(txtCodigo.Text), this.dtpFecha.Value, Convert.ToInt32(this.txtClienteNro.Text), this.txtFormula.Text.Trim().ToUpper(), this.txtDias.Text == string.Empty ? (Int32?)null : Convert.ToInt32(this.txtDias.Text), dtpFechaVisita.Checked == false ? (DateTime?)null : dtpFechaVisita.Value, txtObservacion.Text.Trim().ToUpper(), Dtdetalle);
+                        //rpta = NOrdenTrabajo.Editar(Convert.ToInt32(txtCodigo.Text), this.dtpFecha.Value, Convert.ToInt32(this.txtClienteNro.Text), this.txtFormula.Text.Trim().ToUpper(), this.txtDias.Text == string.Empty ? (Int32?)null : Convert.ToInt32(this.txtDias.Text), dtpFechaVisita.Checked == false ? (DateTime?)null : dtpFechaVisita.Value, txtObservacion.Text.Trim().ToUpper(), Dtdetalle);
                         //si se esta editando el registro     
                     }
 
@@ -533,7 +533,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (!this.txtCodigo.Text.Equals(""))
+            /*if (!this.txtCodigo.Text.Equals(""))
             {
                 this.IsEditar = true;
                 this.Botones();
@@ -543,7 +543,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
             else
             {
                 this.MensajeError("Debe de seleccionar primero el registro a modificar");
-            }
+            }*/
         }
 
         private void chkEliminar_CheckedChanged(object sender, EventArgs e)
@@ -614,15 +614,15 @@ namespace CapaPresentacion.Formularios.Mantenimiento
             {
                 //this.txtCodigo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["CodFactura"].Value);
                 this.txtCliente.Text = (this.dataListado.CurrentRow.Cells["Cliente"].Value).ToString();
-                this.txtClienteNro.Text = (this.dataListado.CurrentRow.Cells["PersonaNro"].Value).ToString();
+                //this.txtClienteNro.Text = (this.dataListado.CurrentRow.Cells["PersonaNro"].Value).ToString();
                 this.txtDocumento.Text= (this.dataListado.CurrentRow.Cells["Documento"].Value).ToString();
-                this.txtCodigo.Text = (this.dataListado.CurrentRow.Cells["NroOT"].Value).ToString();
+                //this.txtCodigo.Text = (this.dataListado.CurrentRow.Cells["NroOT"].Value).ToString();
                 this.txtNumeracion.Text = (this.dataListado.CurrentRow.Cells["Numeracion"].Value).ToString();
                 this.dtpFecha.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["Fecha"].Value);
-                this.txtFormula.Text = (this.dataListado.CurrentRow.Cells["Formula"].Value).ToString();
-                this.txtDias.Text = (this.dataListado.CurrentRow.Cells["Dias"].Value).ToString();
+                //this.txtFormula.Text = (this.dataListado.CurrentRow.Cells["Formula"].Value).ToString();
+                //this.txtDias.Text = (this.dataListado.CurrentRow.Cells["Dias"].Value).ToString();
 
-                if(this.dataListado.CurrentRow.Cells["FechaVisita"].Value!=DBNull.Value) 
+                /*if(this.dataListado.CurrentRow.Cells["FechaVisita"].Value!=DBNull.Value) 
                 {
                     
                     this.dtpFechaVisita.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["FechaVisita"].Value);
@@ -631,7 +631,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
                 else
                 {
                     this.gbAviso.Visible = false;
-                }
+                }*/
                 
                 
                 this.txtObservacion.Text = this.dataListado.CurrentRow.Cells["Observacion"].Value.ToString();
@@ -716,7 +716,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
                 if (txtDocumento.Text != string.Empty)
                 {
                     DataTable tablacliente = NCliente.MostrarTextbox(txtDocumento.Text);
-                    this.txtClienteNro.Text = tablacliente.Rows[0][0].ToString();
+                    //this.txtClienteNro.Text = tablacliente.Rows[0][0].ToString();
                     this.txtCliente.Text = tablacliente.Rows[0][1].ToString();
                 }
 
@@ -738,7 +738,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
             
             try
             {
-                if (Convert.ToInt32(txtDias.Text) <= 0)
+                /*if (Convert.ToInt32(txtDias.Text) <= 0)
                 {
                     this.MensajeError("Falta algunos datos");
                     errorIcono.SetError(txtDias, "Los dias no pueden ser menor o igual 0");
@@ -748,7 +748,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
                     //SE SUMA EL DIA INGRESADO PARA CALCULAR LA FECHA DE VENCIMIENTO
                     dtpFechaVisita.Visible = true;
                     dtpFechaVisita.Value = dtpFechaVisita.Value.AddDays(int.Parse(txtDias.Text));                    
-                }
+                }*/
 
             }
             catch (Exception)

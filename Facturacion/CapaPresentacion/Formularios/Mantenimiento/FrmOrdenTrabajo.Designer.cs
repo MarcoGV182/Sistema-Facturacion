@@ -34,29 +34,19 @@
             this.label13 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.gbAviso = new System.Windows.Forms.GroupBox();
-            this.txtDias = new System.Windows.Forms.TextBox();
-            this.dtpFechaVisita = new System.Windows.Forms.DateTimePicker();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtFormula = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lblComprobante = new System.Windows.Forms.Label();
             this.txtDocumento = new System.Windows.Forms.TextBox();
             this.lblFecha = new System.Windows.Forms.Label();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtClienteNro = new System.Windows.Forms.TextBox();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.lblProveedor = new System.Windows.Forms.Label();
             this.txtNumeracion = new System.Windows.Forms.TextBox();
             this.lblDescripcion = new System.Windows.Forms.Label();
-            this.lblCodigo = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -64,14 +54,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dgvDetalleOT = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtGanancia = new System.Windows.Forms.TextBox();
-            this.txtComisionServicio = new System.Windows.Forms.TextBox();
-            this.txtUsuarioNro = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.txtPrecioCompra = new System.Windows.Forms.TextBox();
-            this.txtGravadas = new System.Windows.Forms.TextBox();
-            this.txtDivisor = new System.Windows.Forms.TextBox();
             this.btnQuitar = new System.Windows.Forms.Button();
             this.btnBuscarItem = new System.Windows.Forms.Button();
             this.txtUsuarioNombre = new System.Windows.Forms.TextBox();
@@ -101,7 +85,6 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.gbAviso.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleOT)).BeginInit();
@@ -128,7 +111,7 @@
             this.label13.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.label13.Location = new System.Drawing.Point(569, 327);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(146, 16);
+            this.label13.Size = new System.Drawing.Size(145, 16);
             this.label13.TabIndex = 23;
             this.label13.Text = "Observacion (Opcional):";
             // 
@@ -145,20 +128,6 @@
             // errorIcono
             // 
             this.errorIcono.ContainerControl = this;
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCodigo.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.errorIcono.SetIconAlignment(this.txtCodigo, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
-            this.txtCodigo.Location = new System.Drawing.Point(96, 114);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(39, 23);
-            this.txtCodigo.TabIndex = 0;
-            this.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtCodigo.Visible = false;
             // 
             // dtpFecha
             // 
@@ -197,104 +166,22 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.gbAviso);
             this.groupBox1.Controls.Add(this.txtDocumento);
             this.groupBox1.Controls.Add(this.dtpFecha);
             this.groupBox1.Controls.Add(this.lblFecha);
             this.groupBox1.Controls.Add(this.btnBuscarCliente);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtClienteNro);
             this.groupBox1.Controls.Add(this.txtCliente);
             this.groupBox1.Controls.Add(this.lblProveedor);
             this.groupBox1.Controls.Add(this.txtNumeracion);
-            this.groupBox1.Controls.Add(this.txtCodigo);
             this.groupBox1.Controls.Add(this.lblDescripcion);
-            this.groupBox1.Controls.Add(this.lblCodigo);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
             this.groupBox1.Location = new System.Drawing.Point(40, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(763, 157);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            // 
-            // gbAviso
-            // 
-            this.gbAviso.BackColor = System.Drawing.Color.PeachPuff;
-            this.gbAviso.Controls.Add(this.txtDias);
-            this.gbAviso.Controls.Add(this.dtpFechaVisita);
-            this.gbAviso.Controls.Add(this.label11);
-            this.gbAviso.Controls.Add(this.txtFormula);
-            this.gbAviso.Controls.Add(this.label10);
-            this.gbAviso.Controls.Add(this.lblComprobante);
-            this.gbAviso.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold);
-            this.gbAviso.Location = new System.Drawing.Point(353, 66);
-            this.gbAviso.Name = "gbAviso";
-            this.gbAviso.Size = new System.Drawing.Size(372, 80);
-            this.gbAviso.TabIndex = 38;
-            this.gbAviso.TabStop = false;
-            this.gbAviso.Text = "Datos recordatorio";
-            // 
-            // txtDias
-            // 
-            this.txtDias.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDias.Location = new System.Drawing.Point(160, 44);
-            this.txtDias.Name = "txtDias";
-            this.txtDias.Size = new System.Drawing.Size(37, 22);
-            this.txtDias.TabIndex = 44;
-            this.txtDias.Leave += new System.EventHandler(this.txtdias_Leave);
-            // 
-            // dtpFechaVisita
-            // 
-            this.dtpFechaVisita.CalendarFont = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dtpFechaVisita.CustomFormat = "dd/MM/yyyy HH:mm";
-            this.dtpFechaVisita.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.dtpFechaVisita.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaVisita.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dtpFechaVisita.Location = new System.Drawing.Point(216, 43);
-            this.dtpFechaVisita.Name = "dtpFechaVisita";
-            this.dtpFechaVisita.ShowCheckBox = true;
-            this.dtpFechaVisita.Size = new System.Drawing.Size(122, 24);
-            this.dtpFechaVisita.TabIndex = 40;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label11.Location = new System.Drawing.Point(213, 25);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(112, 16);
-            this.label11.TabIndex = 42;
-            this.label11.Text = "Fecha prox. visita:";
-            // 
-            // txtFormula
-            // 
-            this.txtFormula.BackColor = System.Drawing.Color.White;
-            this.txtFormula.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.txtFormula.Location = new System.Drawing.Point(20, 43);
-            this.txtFormula.Name = "txtFormula";
-            this.txtFormula.Size = new System.Drawing.Size(121, 23);
-            this.txtFormula.TabIndex = 4;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label10.Location = new System.Drawing.Point(159, 25);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(36, 16);
-            this.label10.TabIndex = 41;
-            this.label10.Text = "Dias:";
-            // 
-            // lblComprobante
-            // 
-            this.lblComprobante.AutoSize = true;
-            this.lblComprobante.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.lblComprobante.Location = new System.Drawing.Point(51, 25);
-            this.lblComprobante.Name = "lblComprobante";
-            this.lblComprobante.Size = new System.Drawing.Size(58, 16);
-            this.lblComprobante.TabIndex = 34;
-            this.lblComprobante.Text = "Formula:";
             // 
             // txtDocumento
             // 
@@ -311,7 +198,7 @@
             this.lblFecha.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.lblFecha.Location = new System.Drawing.Point(11, 77);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(45, 16);
+            this.lblFecha.Size = new System.Drawing.Size(44, 16);
             this.lblFecha.TabIndex = 29;
             this.lblFecha.Text = "Fecha:";
             // 
@@ -320,7 +207,7 @@
             this.btnBuscarCliente.BackColor = System.Drawing.Color.Transparent;
             this.btnBuscarCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnBuscarCliente.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscarCliente.Location = new System.Drawing.Point(584, 29);
+            this.btnBuscarCliente.Location = new System.Drawing.Point(635, 29);
             this.btnBuscarCliente.Name = "btnBuscarCliente";
             this.btnBuscarCliente.Size = new System.Drawing.Size(56, 25);
             this.btnBuscarCliente.TabIndex = 2;
@@ -348,17 +235,6 @@
             this.label4.TabIndex = 34;
             this.label4.Text = "N° Doc.";
             // 
-            // txtClienteNro
-            // 
-            this.txtClienteNro.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtClienteNro.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.txtClienteNro.Location = new System.Drawing.Point(142, 113);
-            this.txtClienteNro.Name = "txtClienteNro";
-            this.txtClienteNro.Size = new System.Drawing.Size(37, 23);
-            this.txtClienteNro.TabIndex = 25;
-            this.txtClienteNro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtClienteNro.Visible = false;
-            // 
             // txtCliente
             // 
             this.txtCliente.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -366,7 +242,7 @@
             this.txtCliente.Location = new System.Drawing.Point(372, 29);
             this.txtCliente.Multiline = true;
             this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(209, 24);
+            this.txtCliente.Size = new System.Drawing.Size(257, 24);
             this.txtCliente.TabIndex = 2;
             // 
             // lblProveedor
@@ -375,7 +251,7 @@
             this.lblProveedor.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.lblProveedor.Location = new System.Drawing.Point(225, 33);
             this.lblProveedor.Name = "lblProveedor";
-            this.lblProveedor.Size = new System.Drawing.Size(49, 16);
+            this.lblProveedor.Size = new System.Drawing.Size(48, 16);
             this.lblProveedor.TabIndex = 8;
             this.lblProveedor.Text = "Cliente:";
             // 
@@ -397,20 +273,9 @@
             this.lblDescripcion.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.lblDescripcion.Location = new System.Drawing.Point(12, 33);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(55, 16);
+            this.lblDescripcion.Size = new System.Drawing.Size(54, 16);
             this.lblDescripcion.TabIndex = 1;
             this.lblDescripcion.Text = "Nro OT:";
-            // 
-            // lblCodigo
-            // 
-            this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.Location = new System.Drawing.Point(38, 120);
-            this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(56, 16);
-            this.lblCodigo.TabIndex = 0;
-            this.lblCodigo.Text = "Cod OT:";
-            this.lblCodigo.Visible = false;
             // 
             // tabPage2
             // 
@@ -470,7 +335,7 @@
             this.label9.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.label9.Location = new System.Drawing.Point(68, 479);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(43, 16);
+            this.label9.Size = new System.Drawing.Size(42, 16);
             this.label9.TabIndex = 42;
             this.label9.Text = "Total: ";
             // 
@@ -493,14 +358,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtGanancia);
-            this.groupBox2.Controls.Add(this.txtComisionServicio);
-            this.groupBox2.Controls.Add(this.txtUsuarioNro);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.txtPrecio);
-            this.groupBox2.Controls.Add(this.txtPrecioCompra);
-            this.groupBox2.Controls.Add(this.txtGravadas);
-            this.groupBox2.Controls.Add(this.txtDivisor);
             this.groupBox2.Controls.Add(this.btnQuitar);
             this.groupBox2.Controls.Add(this.btnAgregar);
             this.groupBox2.Controls.Add(this.btnBuscarItem);
@@ -517,37 +376,13 @@
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             // 
-            // txtGanancia
-            // 
-            this.txtGanancia.Location = new System.Drawing.Point(172, 92);
-            this.txtGanancia.Name = "txtGanancia";
-            this.txtGanancia.Size = new System.Drawing.Size(29, 21);
-            this.txtGanancia.TabIndex = 24;
-            this.txtGanancia.Visible = false;
-            // 
-            // txtComisionServicio
-            // 
-            this.txtComisionServicio.Location = new System.Drawing.Point(137, 92);
-            this.txtComisionServicio.Name = "txtComisionServicio";
-            this.txtComisionServicio.Size = new System.Drawing.Size(29, 21);
-            this.txtComisionServicio.TabIndex = 24;
-            this.txtComisionServicio.Visible = false;
-            // 
-            // txtUsuarioNro
-            // 
-            this.txtUsuarioNro.Location = new System.Drawing.Point(99, 92);
-            this.txtUsuarioNro.Name = "txtUsuarioNro";
-            this.txtUsuarioNro.Size = new System.Drawing.Size(29, 21);
-            this.txtUsuarioNro.TabIndex = 24;
-            this.txtUsuarioNro.Visible = false;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.label6.Location = new System.Drawing.Point(538, 12);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 16);
+            this.label6.Size = new System.Drawing.Size(43, 16);
             this.label6.TabIndex = 23;
             this.label6.Text = "Precio";
             // 
@@ -563,31 +398,6 @@
             this.txtPrecio.TabIndex = 22;
             this.txtPrecio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
-            // 
-            // txtPrecioCompra
-            // 
-            this.txtPrecioCompra.Location = new System.Drawing.Point(68, 92);
-            this.txtPrecioCompra.Name = "txtPrecioCompra";
-            this.txtPrecioCompra.Size = new System.Drawing.Size(24, 21);
-            this.txtPrecioCompra.TabIndex = 21;
-            this.txtPrecioCompra.Visible = false;
-            // 
-            // txtGravadas
-            // 
-            this.txtGravadas.Location = new System.Drawing.Point(39, 92);
-            this.txtGravadas.Name = "txtGravadas";
-            this.txtGravadas.Size = new System.Drawing.Size(23, 21);
-            this.txtGravadas.TabIndex = 18;
-            this.txtGravadas.Visible = false;
-            // 
-            // txtDivisor
-            // 
-            this.txtDivisor.Location = new System.Drawing.Point(13, 92);
-            this.txtDivisor.Name = "txtDivisor";
-            this.txtDivisor.Size = new System.Drawing.Size(20, 21);
-            this.txtDivisor.TabIndex = 15;
-            this.txtDivisor.Visible = false;
-            this.txtDivisor.TextChanged += new System.EventHandler(this.txtDivisor_TextChanged);
             // 
             // btnQuitar
             // 
@@ -657,7 +467,7 @@
             this.label7.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.label7.Location = new System.Drawing.Point(391, 12);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(115, 16);
+            this.label7.Size = new System.Drawing.Size(114, 16);
             this.label7.TabIndex = 2;
             this.label7.Text = "Personal/Empleado";
             // 
@@ -667,7 +477,7 @@
             this.label3.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.label3.Location = new System.Drawing.Point(183, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 16);
+            this.label3.Size = new System.Drawing.Size(53, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Servicio";
             // 
@@ -689,7 +499,7 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.label1.Location = new System.Drawing.Point(20, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 16);
+            this.label1.Size = new System.Drawing.Size(34, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Cod.";
             // 
@@ -801,7 +611,7 @@
             this.label14.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.label14.Location = new System.Drawing.Point(189, 32);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(42, 16);
+            this.label14.Size = new System.Drawing.Size(41, 16);
             this.label14.TabIndex = 17;
             this.label14.Text = "Hasta:";
             // 
@@ -811,7 +621,7 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.label2.Location = new System.Drawing.Point(6, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 16);
+            this.label2.Size = new System.Drawing.Size(26, 16);
             this.label2.TabIndex = 16;
             this.label2.Text = "De:";
             // 
@@ -893,7 +703,7 @@
             this.chkEliminar.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.chkEliminar.Location = new System.Drawing.Point(10, 96);
             this.chkEliminar.Name = "chkEliminar";
-            this.chkEliminar.Size = new System.Drawing.Size(73, 20);
+            this.chkEliminar.Size = new System.Drawing.Size(72, 20);
             this.chkEliminar.TabIndex = 5;
             this.chkEliminar.Text = "Eliminar";
             this.chkEliminar.UseVisualStyleBackColor = true;
@@ -942,8 +752,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.gbAviso.ResumeLayout(false);
-            this.gbAviso.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -979,9 +787,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dgvDetalleOT;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtPrecioCompra;
-        private System.Windows.Forms.TextBox txtGravadas;
-        private System.Windows.Forms.TextBox txtDivisor;
         private System.Windows.Forms.Button btnQuitar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnBuscarItem;
@@ -990,39 +795,26 @@
         private System.Windows.Forms.TextBox txtCodItem;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label lblComprobante;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Button btnBuscarCliente;
-        private System.Windows.Forms.TextBox txtClienteNro;
         private System.Windows.Forms.TextBox txtCliente;
         private System.Windows.Forms.Label lblProveedor;
         private System.Windows.Forms.TextBox txtNumeracion;
-        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label lblDescripcion;
-        private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.ToolTip ttMensaje;
-        private System.Windows.Forms.TextBox txtFormula;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtDocumento;
         private System.Windows.Forms.Label lbltotalgral;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.GroupBox gbAviso;
-        private System.Windows.Forms.TextBox txtDias;
-        private System.Windows.Forms.DateTimePicker dtpFechaVisita;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.TextBox txtUsuarioNro;
         private System.Windows.Forms.TextBox txtUsuarioNombre;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtGanancia;
-        private System.Windows.Forms.TextBox txtComisionServicio;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.GroupBox gbFechas;
         private System.Windows.Forms.DateTimePicker dtpfechahasta;
