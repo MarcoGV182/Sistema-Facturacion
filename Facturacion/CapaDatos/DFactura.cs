@@ -891,9 +891,9 @@ namespace CapaDatos
 
 
         //Metodo Numeracion de Factura
-        public DataTable MostrarPagosFactura(DFactura Factura)
+        public DataSet MostrarPagosFactura(DFactura Factura)
         {
-            DataTable DtResultado = new DataTable("PagosFactura");
+            DataSet DtResultado = new DataSet("DsPagos");
             SqlConnection Sqlcon = new SqlConnection();
             try
             {

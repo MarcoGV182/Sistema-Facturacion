@@ -97,6 +97,7 @@
             this.txtnombreusuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.modificarRegistroPagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -297,19 +298,20 @@
             // 
             this.MenuFacturacion.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.comprasToolStripMenuItem,
-            this.ventasToolStripMenuItem});
+            this.ventasToolStripMenuItem,
+            this.modificarRegistroPagoToolStripMenuItem});
             this.MenuFacturacion.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.MenuFacturacion.ForeColor = System.Drawing.Color.Black;
             this.MenuFacturacion.Image = global::CapaPresentacion.Properties.Resources.facttura_png;
             this.MenuFacturacion.Name = "MenuFacturacion";
-            this.MenuFacturacion.Size = new System.Drawing.Size(102, 20);
-            this.MenuFacturacion.Text = "Facturacion";
+            this.MenuFacturacion.Size = new System.Drawing.Size(105, 20);
+            this.MenuFacturacion.Text = "Operaciones";
             // 
             // comprasToolStripMenuItem
             // 
             this.comprasToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.compras_png;
             this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
-            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.comprasToolStripMenuItem.Tag = "8";
             this.comprasToolStripMenuItem.Text = "Compras";
             this.comprasToolStripMenuItem.Click += new System.EventHandler(this.comprasToolStripMenuItem_Click);
@@ -318,7 +320,7 @@
             // 
             this.ventasToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.venta_png;
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.ventasToolStripMenuItem.Tag = "9";
             this.ventasToolStripMenuItem.Text = "Ventas";
             this.ventasToolStripMenuItem.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click);
@@ -642,7 +644,7 @@
             // 
             this.procesosAbiertosToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.Proceso;
             this.procesosAbiertosToolStripMenuItem.Name = "procesosAbiertosToolStripMenuItem";
-            this.procesosAbiertosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.procesosAbiertosToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.procesosAbiertosToolStripMenuItem.Tag = "30";
             this.procesosAbiertosToolStripMenuItem.Text = "Procesos";
             this.procesosAbiertosToolStripMenuItem.Click += new System.EventHandler(this.procesosAbiertosToolStripMenuItem_Click);
@@ -651,7 +653,7 @@
             // 
             this.descuentosToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.descuento;
             this.descuentosToolStripMenuItem.Name = "descuentosToolStripMenuItem";
-            this.descuentosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.descuentosToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.descuentosToolStripMenuItem.Tag = "31";
             this.descuentosToolStripMenuItem.Text = "Descuentos";
             this.descuentosToolStripMenuItem.Click += new System.EventHandler(this.descuentosToolStripMenuItem_Click);
@@ -733,6 +735,14 @@
             this.toolStrip.Size = new System.Drawing.Size(927, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
+            // 
+            // modificarRegistroPagoToolStripMenuItem
+            // 
+            this.modificarRegistroPagoToolStripMenuItem.Name = "modificarRegistroPagoToolStripMenuItem";
+            this.modificarRegistroPagoToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.modificarRegistroPagoToolStripMenuItem.Tag = "32";
+            this.modificarRegistroPagoToolStripMenuItem.Text = "Modificar Registro Pago";
+            this.modificarRegistroPagoToolStripMenuItem.Click += new System.EventHandler(this.modificarRegistroPagoToolStripMenuItem_Click);
             // 
             // FormPrincipal
             // 
@@ -834,6 +844,7 @@
         private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarArqueoCajaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificarRegistroPagoToolStripMenuItem;
     }
 }
 

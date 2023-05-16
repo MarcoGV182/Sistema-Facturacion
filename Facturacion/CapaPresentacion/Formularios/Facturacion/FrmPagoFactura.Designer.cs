@@ -230,10 +230,13 @@
             // 
             // cboTarjeta
             // 
+            this.cboTarjeta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTarjeta.FormattingEnabled = true;
             this.cboTarjeta.Items.AddRange(new object[] {
             "CREDITO",
-            "DEBITO"});
+            "DEBITO",
+            "PREPAGA",
+            "OTROS"});
             this.cboTarjeta.Location = new System.Drawing.Point(127, 103);
             this.cboTarjeta.Name = "cboTarjeta";
             this.cboTarjeta.Size = new System.Drawing.Size(121, 25);

@@ -256,7 +256,7 @@ namespace CapaPresentacion.Formularios.Consultas
 
                 //SE SELECCIONA UNA FACTURA Y SE MUESTRAN LOS PAGOS REALIZADOS
                 int NroVentaSeleccionado = Convert.ToInt32(this.dataListado.Rows[dataListado.CurrentRow.Index].Cells["NroVenta"].Value);
-                this.dataDetalle.DataSource = NFactura.MostrarPagoFactura(NroVentaSeleccionado);
+                this.dataDetalle.DataSource = NFactura.MostrarPagoFactura(NroVentaSeleccionado).Tables[1];
                 this.OcultarColumnaPagos();
             }
             catch (Exception)
