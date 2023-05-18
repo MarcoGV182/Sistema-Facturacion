@@ -205,7 +205,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "v.230508";
+            this.label4.Text = "v.230518";
             // 
             // FrmLogin
             // 

@@ -207,5 +207,10 @@ namespace CapaPresentacion.Formularios.Facturacion
         {
             Limpiar();
         }
+
+        private void FrmCambiarPago_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _Instancia = null;
+        }
     }
 }

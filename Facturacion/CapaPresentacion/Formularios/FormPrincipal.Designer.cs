@@ -52,6 +52,7 @@
             this.MenuFacturacion = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarRegistroPagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuGastos = new System.Windows.Forms.ToolStripMenuItem();
             this.GastoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cuentasPorPagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,7 +98,6 @@
             this.txtnombreusuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.modificarRegistroPagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -324,6 +324,15 @@
             this.ventasToolStripMenuItem.Tag = "9";
             this.ventasToolStripMenuItem.Text = "Ventas";
             this.ventasToolStripMenuItem.Click += new System.EventHandler(this.ventasToolStripMenuItem_Click);
+            // 
+            // modificarRegistroPagoToolStripMenuItem
+            // 
+            this.modificarRegistroPagoToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.gastos_png;
+            this.modificarRegistroPagoToolStripMenuItem.Name = "modificarRegistroPagoToolStripMenuItem";
+            this.modificarRegistroPagoToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.modificarRegistroPagoToolStripMenuItem.Tag = "32";
+            this.modificarRegistroPagoToolStripMenuItem.Text = "Modificar Registro Pago";
+            this.modificarRegistroPagoToolStripMenuItem.Click += new System.EventHandler(this.modificarRegistroPagoToolStripMenuItem_Click);
             // 
             // MenuGastos
             // 
@@ -735,14 +744,6 @@
             this.toolStrip.Size = new System.Drawing.Size(927, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
-            // 
-            // modificarRegistroPagoToolStripMenuItem
-            // 
-            this.modificarRegistroPagoToolStripMenuItem.Name = "modificarRegistroPagoToolStripMenuItem";
-            this.modificarRegistroPagoToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.modificarRegistroPagoToolStripMenuItem.Tag = "32";
-            this.modificarRegistroPagoToolStripMenuItem.Text = "Modificar Registro Pago";
-            this.modificarRegistroPagoToolStripMenuItem.Click += new System.EventHandler(this.modificarRegistroPagoToolStripMenuItem_Click);
             // 
             // FormPrincipal
             // 

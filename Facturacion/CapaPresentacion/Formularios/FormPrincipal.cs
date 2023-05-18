@@ -700,6 +700,7 @@ namespace CapaPresentacion.Formularios
             frm.acceso = acceso;
             frm.MdiParent = this;
             frm.Show();
+            frm.BringToFront();
         }
     }
 }
