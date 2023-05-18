@@ -631,6 +631,7 @@
             this.Name = "FrmPagoFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "REGISTRAR PAGO";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPagoFactura_FormClosing);
             this.Load += new System.EventHandler(this.FrmPagoFactura_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmPagoFactura_KeyUp);
             this.tabControl1.ResumeLayout(false);

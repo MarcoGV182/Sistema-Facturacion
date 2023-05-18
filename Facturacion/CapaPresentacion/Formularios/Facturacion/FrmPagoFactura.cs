@@ -413,5 +413,10 @@ namespace CapaPresentacion.Formularios.Facturacion
                 txtMontoOtros.Text = "0";
             }
         }
+
+        private void FrmPagoFactura_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _Instancia = null;
+        }
     }
 }
