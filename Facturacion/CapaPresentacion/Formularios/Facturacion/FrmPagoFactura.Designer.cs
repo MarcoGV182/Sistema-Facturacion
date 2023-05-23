@@ -230,10 +230,13 @@
             // 
             // cboTarjeta
             // 
+            this.cboTarjeta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTarjeta.FormattingEnabled = true;
             this.cboTarjeta.Items.AddRange(new object[] {
             "CREDITO",
-            "DEBITO"});
+            "DEBITO",
+            "PREPAGA",
+            "OTROS"});
             this.cboTarjeta.Location = new System.Drawing.Point(127, 103);
             this.cboTarjeta.Name = "cboTarjeta";
             this.cboTarjeta.Size = new System.Drawing.Size(121, 25);
@@ -628,6 +631,7 @@
             this.Name = "FrmPagoFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "REGISTRAR PAGO";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPagoFactura_FormClosing);
             this.Load += new System.EventHandler(this.FrmPagoFactura_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmPagoFactura_KeyUp);
             this.tabControl1.ResumeLayout(false);

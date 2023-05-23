@@ -868,7 +868,7 @@ namespace CapaPresentacion.Formularios.Facturacion
                         nrofactura = txtNroFactura.Text;
                         cliente = codigoCliente.ToString();
                         total = txtTotalGral.Text;
-                        frmPagoFactura.ObtenerDatosFactura(nrofactura, Convert.ToInt32(cliente), Convert.ToDecimal(total));
+                        frmPagoFactura.ObtenerDatosFactura(nrofactura, Convert.ToInt32(cliente), Convert.ToDouble(total));
                         //InsertarOT();
                         frmPagoFactura.ShowDialog();
                     }

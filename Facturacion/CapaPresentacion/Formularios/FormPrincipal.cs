@@ -692,5 +692,15 @@ namespace CapaPresentacion.Formularios
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void modificarRegistroPagoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCambiarPago frm = FrmCambiarPago.GetInstancia();
+            frm.idUsuario = Convert.ToInt32(id);        
+            frm.acceso = acceso;
+            frm.MdiParent = this;
+            frm.Show();
+            frm.BringToFront();
+        }
     }
 }

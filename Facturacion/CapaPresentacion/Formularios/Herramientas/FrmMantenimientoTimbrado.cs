@@ -36,6 +36,9 @@ namespace CapaPresentacion.Formularios.Herramientas
 
         private void FrmNumeracionFactura_Load(object sender, EventArgs e)
         {
+            this.Top = 50;
+            this.Left = 30;
+
             Habilitar(false);
             Botones();
             MostrarTimbrado();
@@ -95,9 +98,6 @@ namespace CapaPresentacion.Formularios.Herramientas
             this.chkEstadoTimbrado.Checked = false;
             this.chkEstadoNumeracion.Checked = false;
             this.cboComprobante.SelectedIndex = 0;
-
-            IsEditar = false;
-            IsNuevo = false;
         }
 
         private void MostrarTimbrado()
@@ -336,6 +336,8 @@ namespace CapaPresentacion.Formularios.Herramientas
             {
                 Habilitar(false);
                 IsEditar = true;
+                Botones();
+                
 
                 this.txtEstablecimiento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Establecimiento"].Value);
                 this.txtPuntoExpedicion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["PuntoExpedicion"].Value);
@@ -557,6 +559,8 @@ namespace CapaPresentacion.Formularios.Herramientas
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            IsEditar = false;
+            IsNuevo = false;
             Limpiar();
             this.Habilitar(false);
             Botones();

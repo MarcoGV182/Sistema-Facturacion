@@ -178,7 +178,7 @@ namespace CapaNegocio
         }
 
 
-        public static DataTable MostrarPagoFactura(int nroVenta) 
+        public static DataSet MostrarPagoFactura(int nroVenta) 
         {
             DFactura objFactura = new DFactura();
             objFactura.Id = nroVenta;

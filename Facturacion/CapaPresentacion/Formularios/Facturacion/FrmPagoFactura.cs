@@ -16,19 +16,39 @@ namespace CapaPresentacion.Formularios.Facturacion
 {
     public partial class FrmPagoFactura : Form
     {
+        int IdVenta = 0;
+        int Cliente;
+        bool EditarPago = false;
+        static FrmPagoFactura _Instancia;
+        public bool resultado = false; 
 
-        int cliente;
         public FrmPagoFactura()
         {
             InitializeComponent();
         }
 
-        private static FrmPagoFactura _Instancia;
+        public FrmPagoFactura(int idVenta,bool editarPago)
+        {
+            InitializeComponent();
+            IdVenta = idVenta;
+            EditarPago = editarPago;
+        }
+
+        
         public static FrmPagoFactura GetInstancia() 
         { 
             if(_Instancia==null) 
             {
                 _Instancia = new FrmPagoFactura();
+            }
+            return _Instancia;
+        }
+
+        public static FrmPagoFactura GetInstancia(int idVenta,bool editar)
+        {
+            if (_Instancia == null)
+            {
+                _Instancia = new FrmPagoFactura(idVenta,editar);
             }
             return _Instancia;
         }
@@ -46,10 +66,10 @@ namespace CapaPresentacion.Formularios.Facturacion
             this.cboTipoPago.DisplayMember = "Descripcion";
         }
 
-        public void ObtenerDatosFactura(string nrofactura,int clientenro,decimal total) 
-        {
+        public void ObtenerDatosFactura(string nrofactura,int clientenro,double total) 
+        {   
             this.txtNroFactura.Text = nrofactura;
-            this.cliente = clientenro;
+            this.Cliente = clientenro;
             this.txtTotalVenta.Text = total.ToString("N0");
             this.txtMontoEfectivo.Text= total.ToString("N0");
         }
@@ -177,7 +197,6 @@ namespace CapaPresentacion.Formularios.Facturacion
             {
                               
                 //string pagoefectivo="", pagotarjeta="", pagocheque = "";
-                int idVenta = 0;
                 //EVALUAR
                 if (!Validaciones())
                 {
@@ -198,7 +217,7 @@ namespace CapaPresentacion.Formularios.Facturacion
                     double vuelto = Convert.ToDouble(this.txtVuelto.Text) < 0 ? 0 : Convert.ToDouble(this.txtVuelto.Text);
                     pagoEF = new DPagoFacturaEfectivo()
                     {
-                        NroVenta = idVenta,
+                        NroVenta = IdVenta,
                         Monto = Convert.ToDouble(this.txtMontoEfectivo.Text),
                         Vuelto = vuelto
                     };
@@ -209,7 +228,7 @@ namespace CapaPresentacion.Formularios.Facturacion
                 {
                     pagoTJ = new DPagoFacturaTarjeta()
                     {
-                        NroVenta = idVenta,
+                        NroVenta = IdVenta,
                         TipoTarjeta = this.cboTarjeta.Text,
                         ComprobanteNro = txtComprobante.Text,
                         Monto = Convert.ToDouble(this.txtMontoTarjeta.Text)
@@ -225,7 +244,7 @@ namespace CapaPresentacion.Formularios.Facturacion
                     };
                     pagoCQ = new DPagoFacturaCheque()
                     {
-                        NroVenta = idVenta,
+                        NroVenta = IdVenta,
                         NroCheque = this.txtNroCheque.Text,
                         Banco = banco,
                         FechaCheque = dtpFechaCheque.Checked == false ? (DateTime?)null : dtpFechaCheque.Value,
@@ -244,7 +263,7 @@ namespace CapaPresentacion.Formularios.Facturacion
 
                     pagoOT = new DPagoFacturaOtros()
                     {
-                        NroVenta = idVenta,
+                        NroVenta = IdVenta,
                         TipoPagoOtro = tpOT,
                         NroDocumentoPago = txtNroDocumentoOtros.Text,
                         Monto = Convert.ToDouble(this.txtMontoOtros.Text)
@@ -260,8 +279,31 @@ namespace CapaPresentacion.Formularios.Facturacion
                     Otro = pagoOT
                 };
 
-                FrmFacturaVenta frm = FrmFacturaVenta.GetInstancia();
-                string valor = frm.InsertarFactura(pg);
+
+
+                if (EditarPago)
+                {
+                   var respuesta = NPagoFactura.ModificarPago(IdVenta, pg);
+                    if (respuesta.ToUpper().Equals("OK"))
+                    {
+                        MensajeOK("Se ha modificado con éxito");
+                        resultado = true;
+                        this.Close();
+                    }
+                    else
+                    {
+                        resultado = false;
+                        MensajeError(respuesta);
+                    }
+                    
+                }
+                else
+                {
+                    FrmFacturaVenta frm = FrmFacturaVenta.GetInstancia();
+                    string valor = frm.InsertarFactura(pg);
+                }
+
+                
             }
             catch (Exception ex)
             {
@@ -370,6 +412,11 @@ namespace CapaPresentacion.Formularios.Facturacion
             {
                 txtMontoOtros.Text = "0";
             }
+        }
+
+        private void FrmPagoFactura_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _Instancia = null;
         }
     }
 }

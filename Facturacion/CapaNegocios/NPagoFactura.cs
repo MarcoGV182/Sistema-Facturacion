@@ -27,5 +27,12 @@ namespace CapaNegocio
             DPagoFacturaCheque obj = new DPagoFacturaCheque();            
             return obj.InsertarPagoFacturaCheque(pagocheque);
         }
+
+
+        public static string ModificarPago(int nroVenta, RegistroPagoFacturacion pagos)
+        {
+            RegistroPagoFacturacion obj = new RegistroPagoFacturacion();
+            return obj.EditarPagos(nroVenta, pagos);
+        }
     }
 }
