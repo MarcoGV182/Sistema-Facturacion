@@ -17,6 +17,9 @@ namespace CapaPresentacion.Formularios.Mantenimiento
 {
     public partial class FrmRaza : Form
     {
+        public int idUsuario;
+        public string Acceso;
+
         private bool IsNuevo = false;
         private bool IsEditar = false;
         List<NRaza> listaRaza = new List<NRaza>();
