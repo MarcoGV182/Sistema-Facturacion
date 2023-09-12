@@ -9,7 +9,7 @@ using System.Reflection.Emit;
 
 namespace CapaDatos
 {
-    public class DNumeracionComprobante
+    public class DNumeracionComprobante:Conexion
     {
         public int Id { get; set; }
         public int TipoComprobante { get; set; }
@@ -47,7 +47,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, sqlExistente);
+                Sqlcon = AbrirConexion(sqlExistente);
                 sqltran = sqltranExistente == null ? Sqlcon.BeginTransaction() : sqltranExistente;
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
@@ -139,7 +139,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon, ref sqlExistente);
+                CerrarConexion(Sqlcon, ref sqlExistente);
             }
             return rpta;
         }
@@ -156,7 +156,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, null);
+                Sqlcon = AbrirConexion();
                 Sqltran = Sqlcon.BeginTransaction();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
@@ -236,7 +236,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -247,12 +247,11 @@ namespace CapaDatos
             //declarar variable respuesta
             string rpta = "";
             //instanciamos la conexion
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion(Sqlcon);
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -276,8 +275,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -292,7 +290,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, sqlExistente);
+                Sqlcon = AbrirConexion(sqlExistente);
                 SqlTran = sqltranExistente == null ? Sqlcon.BeginTransaction() : sqltranExistente;
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
@@ -316,7 +314,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon, ref sqlExistente);
+                CerrarConexion(Sqlcon, ref sqlExistente);
             }
             return rpta;
         }
@@ -326,10 +324,10 @@ namespace CapaDatos
         public DataTable MostrarNumeracion(int IdTimbrado)
         {
             DataTable DtResultado = new DataTable("Numeracion");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarNumeracionComprobante";
@@ -347,7 +345,7 @@ namespace CapaDatos
             }
             finally 
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return DtResultado;
         }

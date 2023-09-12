@@ -57,11 +57,7 @@ namespace CapaNegocio
         }
 
 
-        //Metodo para mostrar que llama al metodo mostrar de la capa Datos
-        public static DataTable MostrarDeudaProveedor()
-        {
-            return new DClientes().MostrarDeudaProveedor();
-        }
+        
         //Metodo para mostrar que llama al metodo mostrar de la capa Datos
         public static DataTable MostrarDeudaCliente()
         {
@@ -88,12 +84,7 @@ namespace CapaNegocio
         }
 
 
-        public static DataTable ObtenerDeudaProveedor(string textoBuscar)
-        {
-            DClientes objClientes = new DClientes();
-            //objClientes.ClienteNro = textoBuscar;            
-            return objClientes.ObtenerDeudaProveedor(textoBuscar);
-        }
+        
         
 
 
@@ -114,13 +105,7 @@ namespace CapaNegocio
         }
 
 
-        //Metodo para buscar que llama al metodo buscar por documento de la capa Datos
-        public static DataTable BuscarDeudaProveedorDocumento(string textoBuscar)
-        {
-            DClientes objClientes = new DClientes();
-            objClientes.TextoBuscar = textoBuscar;
-            return objClientes.BuscarDeudaProveedorDocumento(objClientes);
-        }
+       
 
 
 

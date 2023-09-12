@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace CapaDatos
 {
-    public class DUsuarioServicio
+    public class DUsuarioServicio : Conexion
     {
         private int _UsuarioNro;
         private int _ServicioNro;
@@ -53,12 +53,11 @@ namespace CapaDatos
         public string InsertarUsuarioServicio(DUsuarioServicio UsuarioServicio)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -90,8 +89,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -108,22 +106,28 @@ namespace CapaDatos
             SqlConnection Sqlcon = new SqlConnection();
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                SqlCommand SqlCmd = new SqlCommand();
-                SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "sp_MostrarUsuario_Servicio";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
+                using (Sqlcon = AbrirConexion())
+                {
+                    using (SqlCommand SqlCmd = new SqlCommand())
+                    {
+                        SqlCmd.Connection = Sqlcon;
+                        SqlCmd.CommandText = "sp_MostrarUsuario_Servicio";
+                        SqlCmd.CommandType = CommandType.StoredProcedure;
 
-                // Parametros NroTipoUsuario
-                SqlParameter ParUsuarioNro = new SqlParameter();
-                ParUsuarioNro.ParameterName = "@UsuarioNro";
-                ParUsuarioNro.SqlDbType = SqlDbType.Int;
-                ParUsuarioNro.Value = US.UsuarioNro;
-                SqlCmd.Parameters.Add(ParUsuarioNro);
+                        // Parametros NroTipoUsuario
+                        SqlParameter ParUsuarioNro = new SqlParameter();
+                        ParUsuarioNro.ParameterName = "@UsuarioNro";
+                        ParUsuarioNro.SqlDbType = SqlDbType.Int;
+                        ParUsuarioNro.Value = US.UsuarioNro;
+                        SqlCmd.Parameters.Add(ParUsuarioNro);
 
-
-                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
-                SqlAdapter.Fill(DtResultado);
+                        using (SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd))
+                        {
+                            SqlAdapter.Fill(DtResultado);
+                        }                        
+                    }
+                }
+                
             }
             catch (Exception)
             {
@@ -138,12 +142,11 @@ namespace CapaDatos
         public string EliminarUsuarioServicio(DUsuarioServicio US)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -167,8 +170,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;

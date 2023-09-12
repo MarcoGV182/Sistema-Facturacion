@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace CapaDatos
 {
-    public class DDetalleOrdenTrabajo
+    public class DDetalleOrdenTrabajo:Conexion
     {
         private int _NroOT;
         private int _ServicioNro;

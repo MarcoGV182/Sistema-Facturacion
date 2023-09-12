@@ -220,9 +220,9 @@ namespace CapaPresentacion
 
 
         //Metodo para mostrar los datos en el datagrid
-        private async void Mostrar()
+        private void Mostrar()
         {            
-            this.dataListado.DataSource = await NProducto.Mostrar();
+            this.dataListado.DataSource = NProducto.Mostrar();
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);            
         }

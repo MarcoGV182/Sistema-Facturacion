@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class DTimbrado
+    public class DTimbrado:Conexion
     {
         public int IdTimbrado { get; set; }
         public string NroTimbrado { get; set; }
@@ -18,6 +18,10 @@ namespace CapaDatos
         public string Estado { get; set; }
 
 
+        public DTimbrado()
+        {
+            
+        }
 
 
         //Metodo Insertar
@@ -32,7 +36,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, sqlExistente);
+                Sqlcon = AbrirConexion(sqlExistente);
                 sqltran = sqltranExistente == null ? Sqlcon.BeginTransaction() : sqltranExistente;
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
@@ -100,7 +104,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon, ref sqlExistente);
+                CerrarConexion(Sqlcon, ref sqlExistente);
             }
             return rpta;
         }
@@ -117,7 +121,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, null);
+                Sqlcon = AbrirConexion();
                 sqltran = Sqlcon.BeginTransaction() ;
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
@@ -150,7 +154,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return rpta;
 
@@ -160,10 +164,10 @@ namespace CapaDatos
         public DataTable ObtenerTimbrado()
         {
             DataTable DtResultado = new DataTable("Timbrado");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarTimbrado";
@@ -175,6 +179,10 @@ namespace CapaDatos
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            finally
+            {
+                CerrarConexion(Sqlcon);
             }
 
             return DtResultado;

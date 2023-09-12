@@ -6,25 +6,29 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using System.Net.Http.Headers;
 
 namespace CapaDatos
 {
-    class Conexion
+    public abstract class Conexion
     {
-        public static string CadenaConexion = ConfigurationManager.ConnectionStrings["CapaPresentacion.Properties.Settings.Cn"].ConnectionString;
+        private readonly string CadenaConexion;
 
-
+        public Conexion()
+        {
+            CadenaConexion = ConfigurationManager.ConnectionStrings["SqlCnn"].ConnectionString;
+        }
 
         #region Acceso a Datos
-        public static SqlConnection AbrirConexion(string connectionString, SqlConnection sqlConnection = null) 
+
+        protected SqlConnection AbrirConexion(SqlConnection sqlConnection = null) 
         {
             if (sqlConnection == null)
             {
-                SqlConnection Sqlcon = new SqlConnection();
-                Sqlcon.ConnectionString = connectionString;
-                Sqlcon.Open();
+                SqlConnection sqlcon = new SqlConnection(CadenaConexion);
+                sqlcon.Open();
 
-                return Sqlcon;
+                return sqlcon;
             }
             else
             {
@@ -32,18 +36,29 @@ namespace CapaDatos
             }
         }
 
-        public static void CerrarConexion(SqlConnection sqlConnection)
+        protected void CerrarConexion(SqlConnection sqlConnection)
         {
-            if (sqlConnection.State == ConnectionState.Open)
+            if (sqlConnection == null)
+                return;
+
+            if (sqlConnection.State == ConnectionState.Open) 
+            {
                 sqlConnection.Close();
+                sqlConnection.Dispose();
+            }
+                
         }
 
-        public static void CerrarConexion(SqlConnection sqlConnection, ref SqlConnection sqlConnectionExistente)
+        protected void CerrarConexion(SqlConnection sqlConnection, ref SqlConnection sqlConnectionExistente)
         {
             if (sqlConnectionExistente == null) 
             {
-                if (sqlConnection.State == ConnectionState.Open)
+                if (sqlConnection.State == ConnectionState.Open) 
+                {
                     sqlConnection.Close();
+                    sqlConnection.Dispose();
+                }
+                    
             }
             
         }

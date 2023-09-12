@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class DPagoFactura
+    public class DPagoFactura:Conexion
     {
         public int PagoNro { get; set; }
         public int NroVenta { get; set; }
@@ -23,7 +23,7 @@ namespace CapaDatos
             try
             {
                 //codigo            
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, sqlConexionExistente);
+                Sqlcon = AbrirConexion(sqlConexionExistente);
                 //establecer la transaccion
                 Sqltran = sqltranExistente ?? Sqlcon.BeginTransaction();
                 //establecer el comando
@@ -56,7 +56,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon,ref sqlConexionExistente);
+                CerrarConexion(Sqlcon,ref sqlConexionExistente);
             }
             return rpta;
 
@@ -64,7 +64,7 @@ namespace CapaDatos
     }
 
 
-    public class RegistroPagoFacturacion
+    public class RegistroPagoFacturacion:Conexion
     {
         public DPagoFacturaEfectivo Efectivo { get; set; }
         public DPagoFacturaTarjeta Tarjeta { get; set; }
@@ -83,7 +83,7 @@ namespace CapaDatos
             {
                 #region Conexión
                 //codigo            
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion);
+                Sqlcon = AbrirConexion();
                 //establecer la transaccion
                 Sqltran = Sqlcon.BeginTransaction();
                 //establecer el comando
@@ -161,7 +161,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }

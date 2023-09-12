@@ -14,8 +14,7 @@ namespace CapaPresentacion.Formularios.Herramientas
 {
     public partial class FrmRecordatorio : Form
     {
-        private Point mouseOffset;
-        private bool isDragging = false;
+       
         public FrmRecordatorio()
         {
             InitializeComponent();

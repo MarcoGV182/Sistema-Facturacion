@@ -115,6 +115,7 @@ namespace CapaPresentacion.Formularios.Herramientas
 
             if (!acceso.ToUpper().Equals("ADMINISTRADOR"))
             {
+                //Si el usuario no es ADM entonces se oculta la pestaña de Colaborador
                 idColaborador = Convert.ToInt32(idUsuario);
                 TabPage pg = tabControl1.TabPages["tabColaborador"];
                 if (pg != null) { tabControl1.TabPages.Remove(pg); }
@@ -342,7 +343,7 @@ namespace CapaPresentacion.Formularios.Herramientas
         {
             errorIcono.Clear();
 
-            if (idColaborador == 0)
+            if (idColaborador.GetValueOrDefault() == 0)
             {
                 MensajeError("Debe registrar primeramente al colaborador");
                 return false;
@@ -357,7 +358,7 @@ namespace CapaPresentacion.Formularios.Herramientas
             if ((txtPass1.Text != string.Empty && txtPass2.Text == string.Empty) ||
                 (txtPass1.Text == string.Empty && txtPass2.Text != string.Empty))
             {
-                this.MensajeError("Favor verificar los datos del pass solicitado");
+                this.MensajeError("Favor verificar los datos del pass solicitado. Uno de los datos no fue ingresado");
                 return false;
             }
 
@@ -666,10 +667,9 @@ namespace CapaPresentacion.Formularios.Herramientas
                 {
                     return;
                 }
-                
 
                 DUsuarios user = new DUsuarios();
-                user.PersonaNro = idColaborador.Value;
+                user.PersonaNro = idColaborador.GetValueOrDefault();
                 user.PersonaNro = Convert.ToInt32(txtCodigo.Text);
                 user.Usuario = this.txtUsuario.Text.Trim().ToUpper();
                 user.Pass = this.txtPass1.Text;

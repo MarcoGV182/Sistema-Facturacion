@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class DConfiguracion
+    public class DConfiguracion:Conexion
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
@@ -28,7 +28,7 @@ namespace CapaDatos
             DConfiguracion result = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "Select id,Nombre,valor,Observacion from Configuracion where Nombre = @nombre";
@@ -54,7 +54,7 @@ namespace CapaDatos
             }
             finally 
             {
-                Conexion.CerrarConexion(Sqlcon);            
+                CerrarConexion(Sqlcon);            
             }
 
             return result;

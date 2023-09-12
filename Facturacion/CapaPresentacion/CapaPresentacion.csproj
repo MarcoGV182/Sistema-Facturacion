@@ -146,6 +146,18 @@
     <Compile Include="Formularios\Gastos\FrmEliminarArqueo.Designer.cs">
       <DependentUpon>FrmEliminarArqueo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Mantenimiento\FrmTipoMascota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Mantenimiento\FrmTipoMascota.Designer.cs">
+      <DependentUpon>FrmTipoMascota.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Mantenimiento\FrmRaza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Mantenimiento\FrmRaza.Designer.cs">
+      <DependentUpon>FrmRaza.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilidades\FormularioManager.cs" />
     <Compile Include="Formularios\FrmCargandoForm.cs">
       <SubType>Form</SubType>
@@ -690,6 +702,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gastos\FrmCuentaPorCobrar.resx">
       <DependentUpon>FrmCuentaPorCobrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Mantenimiento\FrmTipoMascota.resx">
+      <DependentUpon>FrmTipoMascota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Mantenimiento\FrmRaza.resx">
+      <DependentUpon>FrmRaza.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\RRHH\FrmDescuento.resx">
       <DependentUpon>FrmDescuento.cs</DependentUpon>

@@ -98,6 +98,8 @@
             this.txtnombreusuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.mascotasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.razaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -118,7 +120,8 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(927, 24);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip.Size = new System.Drawing.Size(1236, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -158,6 +161,7 @@
             this.serviciosToolStripMenuItem,
             this.PersonaToolStripMenuItem,
             this.proveedoresToolStripMenuItem,
+            this.mascotasToolStripMenuItem,
             this.ciudadToolStripMenuItem,
             this.ordenDeTrabajoToolStripMenuItem,
             this.empresaToolStripMenuItem});
@@ -179,7 +183,7 @@
             this.marcasToolStripMenuItem});
             this.productosToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.productos_png;
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.productosToolStripMenuItem.Tag = "1";
             this.productosToolStripMenuItem.Text = "Productos";
             // 
@@ -230,7 +234,7 @@
             this.tipoDeServicioToolStripMenuItem});
             this.serviciosToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.servicios_png;
             this.serviciosToolStripMenuItem.Name = "serviciosToolStripMenuItem";
-            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.serviciosToolStripMenuItem.Tag = "2";
             this.serviciosToolStripMenuItem.Text = "Servicios";
             // 
@@ -253,7 +257,7 @@
             // 
             this.PersonaToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.persona_png;
             this.PersonaToolStripMenuItem.Name = "PersonaToolStripMenuItem";
-            this.PersonaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.PersonaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.PersonaToolStripMenuItem.Tag = "3";
             this.PersonaToolStripMenuItem.Text = "Clientes";
             this.PersonaToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click_1);
@@ -262,7 +266,7 @@
             // 
             this.proveedoresToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.persona_png;
             this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.proveedoresToolStripMenuItem.Tag = "4";
             this.proveedoresToolStripMenuItem.Text = "Proveedores";
             this.proveedoresToolStripMenuItem.Click += new System.EventHandler(this.proveedoresToolStripMenuItem_Click_1);
@@ -271,7 +275,7 @@
             // 
             this.ciudadToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.Ciudad;
             this.ciudadToolStripMenuItem.Name = "ciudadToolStripMenuItem";
-            this.ciudadToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ciudadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ciudadToolStripMenuItem.Tag = "5";
             this.ciudadToolStripMenuItem.Text = "Ciudad";
             this.ciudadToolStripMenuItem.Click += new System.EventHandler(this.ciudadToolStripMenuItem_Click);
@@ -280,7 +284,7 @@
             // 
             this.ordenDeTrabajoToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.orden_de_trabajo_png;
             this.ordenDeTrabajoToolStripMenuItem.Name = "ordenDeTrabajoToolStripMenuItem";
-            this.ordenDeTrabajoToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ordenDeTrabajoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ordenDeTrabajoToolStripMenuItem.Tag = "6";
             this.ordenDeTrabajoToolStripMenuItem.Text = "Orden de Trabajo";
             this.ordenDeTrabajoToolStripMenuItem.Click += new System.EventHandler(this.ordenDeTrabajoToolStripMenuItem_Click);
@@ -289,7 +293,7 @@
             // 
             this.empresaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("empresaToolStripMenuItem.Image")));
             this.empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
-            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.empresaToolStripMenuItem.Tag = "7";
             this.empresaToolStripMenuItem.Text = "Empresa";
             this.empresaToolStripMenuItem.Click += new System.EventHandler(this.empresaToolStripMenuItem_Click);
@@ -722,9 +726,10 @@
             this.statusStrip.BackColor = System.Drawing.Color.DarkRed;
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.txtnombreusuario});
-            this.statusStrip.Location = new System.Drawing.Point(0, 431);
+            this.statusStrip.Location = new System.Drawing.Point(0, 536);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(927, 22);
+            this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip.Size = new System.Drawing.Size(1236, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -741,17 +746,33 @@
             this.toolStrip.BackColor = System.Drawing.Color.DarkRed;
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(927, 25);
+            this.toolStrip.Size = new System.Drawing.Size(1236, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
+            // mascotasToolStripMenuItem
+            // 
+            this.mascotasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.razaToolStripMenuItem});
+            this.mascotasToolStripMenuItem.Name = "mascotasToolStripMenuItem";
+            this.mascotasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mascotasToolStripMenuItem.Tag = "33";
+            this.mascotasToolStripMenuItem.Text = "Mascotas";
+            // 
+            // razaToolStripMenuItem
+            // 
+            this.razaToolStripMenuItem.Name = "razaToolStripMenuItem";
+            this.razaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.razaToolStripMenuItem.Text = "Raza";
+            this.razaToolStripMenuItem.Click += new System.EventHandler(this.razaToolStripMenuItem_Click);
+            // 
             // FormPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(927, 453);
+            this.ClientSize = new System.Drawing.Size(1236, 558);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
@@ -761,6 +782,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de Facturacion";
@@ -846,6 +868,8 @@
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarArqueoCajaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarRegistroPagoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mascotasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem razaToolStripMenuItem;
     }
 }
 

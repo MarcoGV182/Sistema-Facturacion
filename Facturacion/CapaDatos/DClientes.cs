@@ -10,7 +10,7 @@ using CapaDatos.Interfaces;
 
 namespace CapaDatos
 {
-   public class DClientes : IPersona
+   public class DClientes : Conexion, IPersona
     {     
         public string TextoBuscar { get; set; }
         public int PersonaNro { get; set ; }
@@ -24,6 +24,7 @@ namespace CapaDatos
         public string Email { get; set; }
         public string Observacion { get; set; }
         public DateTime? FechaNacimiento { get; set; }
+        public int Edad { get => CalcularEdad(); }
 
         public DClientes() {
 
@@ -44,17 +45,14 @@ namespace CapaDatos
         }
 
 
-
-        //Metodo insertar
         public string InsertarCliente(DClientes Cliente)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -157,24 +155,21 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
         }
 
 
-        //Metodo Editar
         public string EditarCliente(DClientes Cliente)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -275,8 +270,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -286,12 +280,11 @@ namespace CapaDatos
         public string EliminarCliente(DClientes Cliente)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -315,8 +308,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -327,10 +319,10 @@ namespace CapaDatos
         public DataTable MostrarCliente()
         {
             DataTable DtResultado = new DataTable("Cliente");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarClientes";
@@ -343,6 +335,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
+            }
             return DtResultado;
         }
 
@@ -352,10 +348,10 @@ namespace CapaDatos
         public DataTable MostrarClienteCombo(string textobuscar)
         {
             DataTable DtResultado = new DataTable("Cliente");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarClientesCombo";
@@ -369,14 +365,16 @@ namespace CapaDatos
 
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
-
-
                 SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
                 SqlAdapter.Fill(DtResultado);
             }
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
             }
 
             return DtResultado;
@@ -388,10 +386,10 @@ namespace CapaDatos
         public DataTable MostrarClienteTextBox(string textobuscar)
         {
             DataTable DtResultado = new DataTable("Cliente");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon =  null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarClientesTextBox";
@@ -414,49 +412,24 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
-
-            return DtResultado;
-
-        }
-
-
-
-
-        //Metodo Mostrar
-        public DataTable MostrarDeudaProveedor()
-        {
-            DataTable DtResultado = new DataTable("Proveedor");
-            SqlConnection Sqlcon = new SqlConnection();
-            try
+            finally 
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                SqlCommand SqlCmd = new SqlCommand();
-                SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "sp_MostrarDeudaProveedor";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
-
-                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
-                SqlAdapter.Fill(DtResultado);
-            }
-            catch (Exception)
-            {
-                DtResultado = null;
+                CerrarConexion(Sqlcon);
             }
 
             return DtResultado;
 
         }
-
 
 
         //Metodo Mostrar los Clientes con factura a credito
         public DataTable MostrarDeudaCliente()
         {
             DataTable DtResultado = new DataTable("Cliente");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarDeudaCliente";
@@ -469,22 +442,24 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
+            }
 
             return DtResultado;
 
         }
 
 
-
-
         //Metodo Buscar
         public DataTable BuscarNombre(DClientes Cliente)
         {
             DataTable DtResultado = new DataTable("Cliente");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarClientesNombre";
@@ -506,6 +481,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
+            }
 
             return DtResultado;
 
@@ -517,10 +496,10 @@ namespace CapaDatos
         public DataTable BuscarApellido(DClientes Cliente)
         {
             DataTable DtResultado = new DataTable("Cliente");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarClientesApellido";
@@ -546,48 +525,15 @@ namespace CapaDatos
             return DtResultado;
 
         }
-
-
-
-        //Metodo Buscar deuda
-        public DataTable ObtenerDeudaProveedor(string persona)
-        {
-            DataTable DtResultado = new DataTable("Deuda");
-            SqlConnection Sqlcon = new SqlConnection();
-            try
-            {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                SqlCommand SqlCmd = new SqlCommand();
-                SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "sp_ObtenerDeudaProveedor";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
-
-                //Parametros
-                SqlParameter ParTextoBuscar = new SqlParameter();
-                ParTextoBuscar.ParameterName = "@ProveedorNro";
-                ParTextoBuscar.SqlDbType = SqlDbType.Int;
-                ParTextoBuscar.SqlValue =persona;
-                SqlCmd.Parameters.Add(ParTextoBuscar);
-
-                //instanciar un DataAdapter
-                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
-                SqlAdapter.Fill(DtResultado);
-            }
-            catch (Exception)
-            {
-                DtResultado = null;
-            }
-
-            return DtResultado;
-        }
+        
 
         public DataTable BuscarDocumento(DClientes Cliente)
         {
             DataTable DtResultado = new DataTable("Cliente");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarClientesDocumento";
@@ -617,10 +563,10 @@ namespace CapaDatos
         public DataTable BuscarDeudaClienteDocumento(DClientes Cliente)
         {
             DataTable DtResultado = new DataTable("Cliente");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarDeudaCliente";
@@ -646,52 +592,14 @@ namespace CapaDatos
         }
 
 
-        public DataTable BuscarDeudaProveedorDocumento(DClientes Cliente)
-        {
-            DataTable DtResultado = new DataTable("Proveedor");
-            SqlConnection Sqlcon = new SqlConnection();
-            try
-            {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                SqlCommand SqlCmd = new SqlCommand();
-                SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "sp_BuscarDeudaProveedor";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
-
-                //Parametros
-                SqlParameter ParTextoBuscar = new SqlParameter();
-                ParTextoBuscar.ParameterName = "@TextoBuscar";
-                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
-                ParTextoBuscar.Size = 50;
-                ParTextoBuscar.SqlValue = Cliente.TextoBuscar;
-                SqlCmd.Parameters.Add(ParTextoBuscar);
-
-                //instanciar un DataAdapter
-                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
-                SqlAdapter.Fill(DtResultado);
-            }
-            catch (Exception)
-            {
-                DtResultado = null;
-            }
-
-            return DtResultado;
-
-        }
-
-
-
-
-
         public string ImportarExcel(DClientes Cliente)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //abrimos la conexion
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -712,8 +620,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -723,12 +630,11 @@ namespace CapaDatos
         public string ImportarTexto(DClientes Cliente)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //abrimos la conexion
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -749,11 +655,44 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
+        }
+
+
+        public int CalcularEdad()
+        {
+            // Obtiene la fecha actual:
+            DateTime fechaActual = DateTime.Today;
+
+            
+            if (FechaNacimiento.Value == null)
+            {
+                return 0;
+            }
+
+            // Comprueba que la se haya introducido una fecha válida; si 
+            // la fecha de nacimiento es mayor a la fecha actual se muestra mensaje 
+            // de advertencia:
+            if (FechaNacimiento.Value > fechaActual)
+            {
+                return 0;
+            }
+            else
+            {
+                int edad = fechaActual.Year - FechaNacimiento.Value.Year;
+
+                // Comprueba que el mes de la fecha de nacimiento es mayor 
+                // que el mes de la fecha actual:
+                if (FechaNacimiento.Value.Month > fechaActual.Month)
+                {
+                    --edad;
+                }
+
+                return edad;
+            }
         }
     }
 }

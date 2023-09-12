@@ -10,7 +10,7 @@ using System.Data.SqlTypes;
 
 namespace CapaDatos
 {
-    public class DUsuarios
+    public class DUsuarios : Conexion
     {
         private int _PersonaNro;
         private string _Nombre;
@@ -95,7 +95,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, sqlConExistente);
+                Sqlcon = AbrirConexion(sqlConExistente);
                 SqlTran = SqltranExistente ?? Sqlcon.BeginTransaction();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
@@ -147,7 +147,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon,ref sqlConExistente);
+                CerrarConexion(Sqlcon,ref sqlConExistente);
             }
             return rpta;
         }
@@ -166,7 +166,7 @@ namespace CapaDatos
             try
             {
                 //codigo
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion, sqlConExistente);
+                Sqlcon = AbrirConexion(sqlConExistente);
                 SqlTran = SqltranExistente ?? Sqlcon.BeginTransaction();
                 //establecer el comando                
                 SqlCmd.Connection = Sqlcon;
@@ -229,7 +229,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -240,12 +240,11 @@ namespace CapaDatos
         public string EliminarUsuario(DUsuarios Usuario)
         {
             string rpta = "";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 //codigo
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -269,8 +268,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -283,10 +281,10 @@ namespace CapaDatos
         public DataTable BuscarUsuario(DUsuarios usuario)
         {
             DataTable DtResultado = new DataTable("Usuario");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarUsuario";
@@ -299,14 +297,16 @@ namespace CapaDatos
                 ParTextoBuscar.Value = usuario.TextoBuscar;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
-
-
                 SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
                 SqlAdapter.Fill(DtResultado);
             }
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
             }
 
             return DtResultado;
@@ -318,10 +318,10 @@ namespace CapaDatos
         public DataTable BuscarLogin(DUsuarios Usuarios)
         {
             DataTable DtResultado = new DataTable("Usuario");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_Login";
@@ -354,7 +354,7 @@ namespace CapaDatos
             }
             finally 
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return DtResultado;
         }

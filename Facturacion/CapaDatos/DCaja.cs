@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace CapaDatos
 {
-    public class DCaja
+    public class DCaja:Conexion
     {
         private int _NroCaja;
         private DateTime _FechaApertura;
@@ -175,14 +175,12 @@ namespace CapaDatos
         {
             //declaracion de variables
             string rpta = "OK";
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             //constrolador de errores
             try
             {
                 //establecer conexion
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                //abrir la conexion
-                Sqlcon.Open();
+                Sqlcon = AbrirConexion();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -240,7 +238,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -255,7 +253,7 @@ namespace CapaDatos
             try
             {
                 //establecer conexion
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 //abrir la conexion
                 Sqlcon.Open();
                 //establecer el comando
@@ -290,7 +288,7 @@ namespace CapaDatos
             }
             finally
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -306,7 +304,7 @@ namespace CapaDatos
             try
             {
                 //establecer conexion
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 //abrir la conexion
                 Sqlcon.Open();
                 //establecer el comando
@@ -377,7 +375,7 @@ namespace CapaDatos
             SqlConnection Sqlcon = new SqlConnection();
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarSaldoCaja";
@@ -402,7 +400,7 @@ namespace CapaDatos
             SqlConnection Sqlcon = new SqlConnection();
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarCajaAbierta";
@@ -433,7 +431,7 @@ namespace CapaDatos
             SqlConnection Sqlcon = new SqlConnection();
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarListaArqueos";
@@ -453,7 +451,7 @@ namespace CapaDatos
             }
             finally 
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return DtResultado;
         }
@@ -466,7 +464,7 @@ namespace CapaDatos
             SqlConnection Sqlcon = new SqlConnection();
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_MostrarMovimientoCajaPagosFactura";
@@ -503,10 +501,10 @@ namespace CapaDatos
         public DataTable BuscarMovimientoPagos(string fechainicio, string fechafin)
         {
             DataTable DtResultado = new DataTable("MovimientoPagosFactura");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon = Conexion.AbrirConexion(Conexion.CadenaConexion,null);                
+                Sqlcon = AbrirConexion();                
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarMovimientoPagosCaja";
@@ -538,7 +536,7 @@ namespace CapaDatos
             }
             finally 
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
             return DtResultado;
         }
@@ -548,10 +546,10 @@ namespace CapaDatos
         public DataTable FiltroCajaResumen(string fechainicio, string fechafin)
         {
             DataTable DtResultado = new DataTable("ResumenCaja");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_BuscarResumenCajaFecha";
@@ -580,6 +578,10 @@ namespace CapaDatos
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
             }
             return DtResultado;
         }

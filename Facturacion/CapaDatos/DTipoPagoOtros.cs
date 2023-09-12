@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class DTipoPagoOtros
+    public class DTipoPagoOtros:Conexion
     {
         public int TipoOtrosNro { get; set; }
         public string Descripcion { get; set; }
@@ -23,10 +23,10 @@ namespace CapaDatos
         public DataTable MostrarTipoPagoOtros()
         {
             DataTable DtResultado = new DataTable("TipoOtros");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
+                Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "select TipoOtrosNro, Descripcion from dbo.TipoPagoOtros";
@@ -41,7 +41,7 @@ namespace CapaDatos
             }
             finally 
             {
-                Conexion.CerrarConexion(Sqlcon);
+                CerrarConexion(Sqlcon);
             }
 
             return DtResultado;
