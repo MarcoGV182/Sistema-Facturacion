@@ -98,8 +98,6 @@
             this.txtnombreusuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.mascotasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.razaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -120,8 +118,7 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(1236, 24);
+            this.menuStrip.Size = new System.Drawing.Size(927, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -161,7 +158,6 @@
             this.serviciosToolStripMenuItem,
             this.PersonaToolStripMenuItem,
             this.proveedoresToolStripMenuItem,
-            this.mascotasToolStripMenuItem,
             this.ciudadToolStripMenuItem,
             this.ordenDeTrabajoToolStripMenuItem,
             this.empresaToolStripMenuItem});
@@ -726,10 +722,9 @@
             this.statusStrip.BackColor = System.Drawing.Color.DarkRed;
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.txtnombreusuario});
-            this.statusStrip.Location = new System.Drawing.Point(0, 536);
+            this.statusStrip.Location = new System.Drawing.Point(0, 431);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip.Size = new System.Drawing.Size(1236, 22);
+            this.statusStrip.Size = new System.Drawing.Size(927, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -746,33 +741,17 @@
             this.toolStrip.BackColor = System.Drawing.Color.DarkRed;
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(1236, 25);
+            this.toolStrip.Size = new System.Drawing.Size(927, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
-            // mascotasToolStripMenuItem
-            // 
-            this.mascotasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.razaToolStripMenuItem});
-            this.mascotasToolStripMenuItem.Name = "mascotasToolStripMenuItem";
-            this.mascotasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.mascotasToolStripMenuItem.Tag = "33";
-            this.mascotasToolStripMenuItem.Text = "Mascotas";
-            // 
-            // razaToolStripMenuItem
-            // 
-            this.razaToolStripMenuItem.Name = "razaToolStripMenuItem";
-            this.razaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.razaToolStripMenuItem.Text = "Raza";
-            this.razaToolStripMenuItem.Click += new System.EventHandler(this.razaToolStripMenuItem_Click);
-            // 
             // FormPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1236, 558);
+            this.ClientSize = new System.Drawing.Size(927, 453);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
@@ -782,7 +761,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de Facturacion";
@@ -868,8 +846,6 @@
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarArqueoCajaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarRegistroPagoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mascotasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem razaToolStripMenuItem;
     }
 }
 

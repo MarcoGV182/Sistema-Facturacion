@@ -70,7 +70,6 @@
     <Compile Include="NProceso.cs" />
     <Compile Include="NProducto.cs" />
     <Compile Include="NProveedor.cs" />
-    <Compile Include="NRaza.cs" />
     <Compile Include="NRegla.cs" />
     <Compile Include="NRetencion.cs" />
     <Compile Include="NServicio.cs" />
@@ -79,7 +78,6 @@
     <Compile Include="NTipoComprobante.cs" />
     <Compile Include="NTipoDocumento.cs" />
     <Compile Include="NTipoImpuesto.cs" />
-    <Compile Include="NTipoMascota.cs" />
     <Compile Include="NTipoOperacion.cs" />
     <Compile Include="NTipoPago.cs" />
     <Compile Include="NTipoProducto.cs" />

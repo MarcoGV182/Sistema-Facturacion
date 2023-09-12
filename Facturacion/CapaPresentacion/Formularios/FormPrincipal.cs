@@ -702,15 +702,5 @@ namespace CapaPresentacion.Formularios
             frm.Show();
             frm.BringToFront();
         }
-
-        private void razaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmRaza frm = FrmRaza.GetInstancia();
-            frm.idUsuario = Convert.ToInt32(id);
-            frm.Acceso = acceso;
-            frm.MdiParent = this;
-            frm.Show();
-            frm.BringToFront();
-        }
     }
 }
