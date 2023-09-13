@@ -30,6 +30,11 @@ namespace CapaPresentacion.Formularios.Herramientas
 
         private static FrmUsuario _Instancia;
 
+        //Para la Gestion de Pestañas del formulario
+        private TabControl tabControlAux;
+        private List<TabPage> tabPagesAll = new List<TabPage>();
+        private List<TabPage> tabPagesOcultas = new List<TabPage>();
+
         public static FrmUsuario GetInstancia() 
         {
             if(_Instancia==null) 
@@ -43,7 +48,7 @@ namespace CapaPresentacion.Formularios.Herramientas
         public FrmUsuario()
         {
             InitializeComponent();
-            LlenarComboBox();
+            LlenarComboBox();           
         }
 
         //Metodo de mensaje de confirmacion
@@ -117,8 +122,7 @@ namespace CapaPresentacion.Formularios.Herramientas
             {
                 //Si el usuario no es ADM entonces se oculta la pestaña de Colaborador
                 idColaborador = Convert.ToInt32(idUsuario);
-                TabPage pg = tabControl1.TabPages["tabColaborador"];
-                if (pg != null) { tabControl1.TabPages.Remove(pg); }
+                MostrarOcultarPestana("tabColaborador",false);
 
                 chkEliminar.Visible = false;
                 btnEliminar.Visible = false;
@@ -126,6 +130,50 @@ namespace CapaPresentacion.Formularios.Herramientas
             }
 
             LeyendaContraseña();
+        }
+
+        private void MostrarOcultarPestana(string nombrePestana, bool mostrar) 
+        {
+            //TabPage tabPage = tabControlAux.TabPages[nombrePestana];
+            var ExisteTab = tabPagesAll.Where(c=> c.Name == nombrePestana).First();
+
+            if (ExisteTab != null)
+            {
+                if (mostrar)
+                {
+                    if (tabPagesOcultas.Contains(ExisteTab))
+                    {
+                        tabPagesOcultas.Remove(ExisteTab);
+                    }
+                }
+                else
+                {
+                    if (!tabPagesOcultas.Contains(ExisteTab))
+                    {
+                        tabPagesOcultas.Add(ExisteTab);
+                    }
+                }
+
+                ActualizarTabControl();
+            }
+
+        }
+
+        private void ActualizarTabControl()
+        {
+            tabControl1.TabPages.Clear();
+
+            foreach (TabPage tabPage in tabPagesAll)
+            {
+                if (!tabPagesOcultas.Contains(tabPage))
+                {
+                    tabControl1.TabPages.Add(tabPage);
+                }
+                /*else
+                {
+                    tabControl1.TabPages.Remove(tabPage);
+                }*/
+            }
         }
 
         //Habilitar Botones
@@ -175,6 +223,7 @@ namespace CapaPresentacion.Formularios.Herramientas
         {   
             this.dataListado.DataSource = NColaborador.Mostrar(idColaborador);
             this.OcultarColumnas();
+            this.MostrarOcultarPestana("tabUsuario",false);
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
 
@@ -201,6 +250,12 @@ namespace CapaPresentacion.Formularios.Herramientas
                 chktodos.Visible = false;
                 btnEliminar.Enabled = false;
             }
+            // Copia las pestañas originales a la lista tabPagesAll
+            foreach (TabPage tabPage in tabControl1.TabPages)
+            {
+                tabPagesAll.Add(tabPage);
+            }
+
             //top para ubicar en la parte superior
             this.Top = 0;
             //alineado hacia la izquierda
@@ -213,9 +268,10 @@ namespace CapaPresentacion.Formularios.Herramientas
         {
             this.IsNuevoColaborador = true;
             this.IsEditarColaborador = false;
+            this.esUsuario = false;
             this.Botones();
             this.Limpiar();
-            this.Habilitar(true);
+            this.Habilitar(true);            
 
             //Inicializar algunos controles
             this.cboEstado.SelectedIndex = 0;
@@ -543,12 +599,13 @@ namespace CapaPresentacion.Formularios.Herramientas
             this.txtUsuario.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Login"].Value);
             this.txtPass2.Text = string.Empty;//Convert.ToString(this.dataListado.CurrentRow.Cells["Password"].Value);
             this.cboAcceso.SelectedValue = Convert.IsDBNull(this.dataListado.CurrentRow.Cells["IdRol"].Value) ? 0 : Convert.ToInt32(this.dataListado.CurrentRow.Cells["IdRol"].Value);
-            //mostrar la segunda pestana la de mantenimiento al hacer doble click
-            this.tabControl1.SelectedIndex = 1;
+            //mostrar la segunda pestana la de mantenimiento al hacer doble click            
             this.txtPass2.PasswordChar = '*';
             this.IsNuevoColaborador = false;
             this.IsEditarColaborador = false;
             this.Botones();
+            this.MostrarOcultarPestana("tabUsuario",true);
+            this.tabControl1.SelectedIndex = 1;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

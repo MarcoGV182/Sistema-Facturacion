@@ -1,9 +1,12 @@
-﻿using System;
+﻿using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,6 +36,9 @@ namespace CapaPresentacion
             this.Top = 0;
             this.Left = 50;
 
+            //Se inicializa el fecha desde con el primer día del mes
+            var FechaInicioMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            dtpDesde.Value = FechaInicioMes;
 
         }
 
@@ -40,10 +46,9 @@ namespace CapaPresentacion
         {
         try 
         {
-                // TODO: esta línea de código carga datos en la tabla 'DsReporte.sp_LibroVenta' Puede moverla o quitarla según sea necesario.
-                this.sp_LibroVentaTableAdapter.Fill(this.DsReporte.sp_LibroVenta, this.dtpDesde.Value.ToString("dd/MM/yyyy"), this.dtpHasta.Value.ToString("dd/MM/yyyy"));
-
-                this.reportViewer1.RefreshReport();
+                var desde = dtpDesde.Value;
+                var hasta = dtpHasta.Value;
+                CargarDatos(desde, hasta);
         }
             catch(Exception ex) 
         {
@@ -55,6 +60,18 @@ namespace CapaPresentacion
         private void FrmLibroVentas_FormClosing(object sender, FormClosingEventArgs e)
         {
             _Instancia = null;
+        }
+
+
+        private void CargarDatos(DateTime inicio, DateTime fin) 
+        {
+            NLibroVentaReport reportModel = new NLibroVentaReport();
+            reportModel.LibroVentaReport(inicio, fin);
+
+            nLibroVentaReportBindingSource.DataSource = reportModel;
+            nDetalleDeVentasBindingSource.DataSource = reportModel.DetallesVentas;
+
+            this.reportViewer1.RefreshReport();
         }
     }
 }

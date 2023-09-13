@@ -702,5 +702,13 @@ namespace CapaPresentacion.Formularios
             frm.Show();
             frm.BringToFront();
         }
+
+        private void libroVentaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmLibroVentas frm = FrmLibroVentas.GetInstancia();
+            frm.MdiParent = this;
+            frm.Show();
+            frm.BringToFront();
+        }
     }
 }

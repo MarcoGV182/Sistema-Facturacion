@@ -18968,7 +18968,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19158,7 +19158,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19414,7 +19414,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19678,7 +19678,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -19872,7 +19872,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20079,7 +20079,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20279,7 +20279,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20482,7 +20482,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20684,7 +20684,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20890,7 +20890,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21079,7 +21079,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21284,7 +21284,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21462,7 +21462,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21663,7 +21663,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21866,7 +21866,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22056,7 +22056,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22243,7 +22243,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22426,7 +22426,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22626,7 +22626,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22829,7 +22829,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23019,7 +23019,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23211,7 +23211,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23411,7 +23411,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.Cn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

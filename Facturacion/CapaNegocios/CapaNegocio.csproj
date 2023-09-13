@@ -48,9 +48,11 @@
     <Compile Include="NConfiguracion.cs" />
     <Compile Include="NCuentaPorCobrar.cs" />
     <Compile Include="NDescuento.cs" />
+    <Compile Include="NDetalleDeVentas.cs" />
     <Compile Include="NEmpresa.cs" />
     <Compile Include="NFormaPago.cs" />
     <Compile Include="NGastos.cs" />
+    <Compile Include="NLibroVentaReport.cs" />
     <Compile Include="NLiquidacion.cs" />
     <Compile Include="NAjuste.cs" />
     <Compile Include="NCiudad.cs" />
