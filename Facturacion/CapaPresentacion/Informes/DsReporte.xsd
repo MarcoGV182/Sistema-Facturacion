@@ -4,7 +4,8 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SqlCnn" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SqlCnn (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CapaPresentacion.Properties.Settings.GlobalReference.Default.SqlCnn" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SqlCnn" IsAppSettingsProperty="true" Modifier="Assembly" Name="SqlCnn (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CapaPresentacion.Properties.Settings.GlobalReference.Default.SqlCnn" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="GestionVentaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="GestionVentaConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CapaPresentacion.Properties.Settings.GlobalReference.Default.GestionVentaConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sp_ReporteProductoTableAdapter" GeneratorDataComponentClassName="sp_ReporteProductoTableAdapter" Name="sp_ReporteProducto" UserDataComponentName="sp_ReporteProductoTableAdapter">
@@ -412,7 +413,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sp_ReporteResumenCajaFechaTableAdapter" GeneratorDataComponentClassName="sp_ReporteResumenCajaFechaTableAdapter" Name="sp_ReporteResumenCajaFecha" UserDataComponentName="sp_ReporteResumenCajaFechaTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SqlCnn (Settings)" DbObjectName="PuntoVentaCompra.dbo.sp_ReporteResumenCajaFecha" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="GestionVentaConnectionString (Settings)" DbObjectName="GestionVenta.dbo.sp_ReporteResumenCajaFecha" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.sp_ReporteResumenCajaFecha</CommandText>
@@ -428,15 +429,16 @@
             <Mappings>
               <Mapping SourceColumn="NroCaja" DataSetColumn="NroCaja" />
               <Mapping SourceColumn="Usuario" DataSetColumn="Usuario" />
-              <Mapping SourceColumn="FechaApertura" DataSetColumn="FechaApertura" />
               <Mapping SourceColumn="FechaCierre" DataSetColumn="FechaCierre" />
-              <Mapping SourceColumn="ImporteApertura" DataSetColumn="ImporteApertura" />
-              <Mapping SourceColumn="ImporteEntrega" DataSetColumn="ImporteEntrega" />
-              <Mapping SourceColumn="SaldoFinal" DataSetColumn="SaldoFinal" />
-              <Mapping SourceColumn="DiferenciaCierre" DataSetColumn="DiferenciaCierre" />
               <Mapping SourceColumn="Estado" DataSetColumn="Estado" />
               <Mapping SourceColumn="FechaInicio" DataSetColumn="FechaInicio" />
               <Mapping SourceColumn="FechaFin" DataSetColumn="FechaFin" />
+              <Mapping SourceColumn="CajaNro" DataSetColumn="CajaNro" />
+              <Mapping SourceColumn="FechaApertura" DataSetColumn="FechaApertura1" />
+              <Mapping SourceColumn="ImporteApertura" DataSetColumn="ImporteApertura1" />
+              <Mapping SourceColumn="ImporteEntrega" DataSetColumn="ImporteEntrega1" />
+              <Mapping SourceColumn="SaldoFinal" DataSetColumn="SaldoFinal1" />
+              <Mapping SourceColumn="DiferenciaCierre" DataSetColumn="DiferenciaCierre1" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1518,6 +1520,18 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="CajaNro" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="CajaNro" msprop:Generator_ColumnPropNameInTable="CajaNroColumn" msprop:Generator_ColumnVarNameInTable="columnCajaNro" msprop:Generator_UserColumnName="CajaNro" type="xs:int" />
+              <xs:element name="FechaApertura1" msdata:ReadOnly="true" msdata:Caption="FechaApertura" msprop:Generator_ColumnPropNameInRow="FechaApertura1" msprop:Generator_ColumnPropNameInTable="FechaApertura1Column" msprop:Generator_ColumnVarNameInTable="columnFechaApertura1" msprop:Generator_UserColumnName="FechaApertura1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ImporteApertura1" msdata:Caption="ImporteApertura" msprop:Generator_ColumnPropNameInRow="ImporteApertura1" msprop:Generator_ColumnPropNameInTable="ImporteApertura1Column" msprop:Generator_ColumnVarNameInTable="columnImporteApertura1" msprop:Generator_UserColumnName="ImporteApertura1" type="xs:decimal" />
+              <xs:element name="ImporteEntrega1" msdata:Caption="ImporteEntrega" msprop:Generator_ColumnPropNameInRow="ImporteEntrega1" msprop:Generator_ColumnPropNameInTable="ImporteEntrega1Column" msprop:Generator_ColumnVarNameInTable="columnImporteEntrega1" msprop:Generator_UserColumnName="ImporteEntrega1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SaldoFinal1" msdata:Caption="SaldoFinal" msprop:Generator_ColumnPropNameInRow="SaldoFinal1" msprop:Generator_ColumnPropNameInTable="SaldoFinal1Column" msprop:Generator_ColumnVarNameInTable="columnSaldoFinal1" msprop:Generator_UserColumnName="SaldoFinal1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DiferenciaCierre1" msdata:Caption="DiferenciaCierre" msprop:Generator_ColumnPropNameInRow="DiferenciaCierre1" msprop:Generator_ColumnPropNameInTable="DiferenciaCierre1Column" msprop:Generator_ColumnVarNameInTable="columnDiferenciaCierre1" msprop:Generator_UserColumnName="DiferenciaCierre1" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1836,7 +1850,7 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="CajaNro" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="CajaNroColumn" msprop:Generator_ColumnPropNameInRow="CajaNro" msprop:Generator_UserColumnName="CajaNro" msprop:Generator_ColumnVarNameInTable="columnCajaNro" type="xs:int" minOccurs="0" />
-              <xs:element name="Observacion" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Observacion" msprop:Generator_ColumnPropNameInTable="ObservacionColumn" msprop:Generator_ColumnPropNameInRow="Observacion" msprop:Generator_ColumnVarNameInTable="columnObservacion" minOccurs="0">
+              <xs:element name="Observacion" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="ObservacionColumn" msprop:Generator_ColumnPropNameInRow="Observacion" msprop:Generator_UserColumnName="Observacion" msprop:Generator_ColumnVarNameInTable="columnObservacion" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />

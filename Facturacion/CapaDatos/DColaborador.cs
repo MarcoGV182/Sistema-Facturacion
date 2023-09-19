@@ -81,7 +81,7 @@ namespace CapaDatos
                 SqlParameter ParFechaNacimiento = new SqlParameter();
                 ParFechaNacimiento.ParameterName = "@fechaNacimiento";
                 ParFechaNacimiento.SqlDbType = SqlDbType.Date;
-                ParFechaNacimiento.Value = Colaborador.FechaNacimiento.Value.Date;
+                ParFechaNacimiento.Value = Colaborador.FechaNacimiento == null ? (DateTime?)null : Colaborador.FechaNacimiento.Value.Date;
                 SqlCmd.Parameters.Add(ParFechaNacimiento);
 
                 //Parametros Ciudad

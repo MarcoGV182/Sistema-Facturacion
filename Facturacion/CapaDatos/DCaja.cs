@@ -254,8 +254,6 @@ namespace CapaDatos
             {
                 //establecer conexion
                 Sqlcon = AbrirConexion();
-                //abrir la conexion
-                Sqlcon.Open();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -305,8 +303,6 @@ namespace CapaDatos
             {
                 //establecer conexion
                 Sqlcon = AbrirConexion();
-                //abrir la conexion
-                Sqlcon.Open();
                 //establecer el comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
@@ -361,8 +357,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }

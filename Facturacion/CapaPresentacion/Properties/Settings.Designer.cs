@@ -26,11 +26,21 @@ namespace CapaPresentacion.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=Localhost;Initial Catalog=GestionVenta_20230912;User ID=accessDB;Pass" +
-            "word=adm2023")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=Localhost;Initial Catalog=GestionVenta;User ID=accessDB;Password=adm2" +
+            "023")]
         public string SqlCnn {
             get {
                 return ((string)(this["SqlCnn"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MARCONB-PC;Initial Catalog=GestionVenta;User ID=sa;Password=123456")]
+        public string GestionVentaConnectionString {
+            get {
+                return ((string)(this["GestionVentaConnectionString"]));
             }
         }
     }

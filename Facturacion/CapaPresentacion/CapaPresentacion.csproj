@@ -15,7 +15,7 @@
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>C:\Users\markg\Desktop\Scripts\Implementacion\</PublishUrl>
+    <PublishUrl>C:\Users\markg\Desktop\Programa-Implementacion\Ejecutable\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -28,7 +28,7 @@
     <TargetCulture>es-PY</TargetCulture>
     <ProductName>FacEasy</ProductName>
     <PublisherName>FacEasy</PublisherName>
-    <ApplicationRevision>18</ApplicationRevision>
+    <ApplicationRevision>23</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1186,12 +1186,12 @@
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.NetCore.CoreRuntime.7.0.x64">
       <Visible>False</Visible>
-      <ProductName>.NET Runtime 7.0.5 %28x64%29</ProductName>
+      <ProductName>.NET Runtime 7.0.9 %28x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.NetCore.CoreRuntime.7.0.x86">
       <Visible>False</Visible>
-      <ProductName>.NET Runtime 7.0.5 %28x86%29</ProductName>
+      <ProductName>.NET Runtime 7.0.9 %28x86%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>

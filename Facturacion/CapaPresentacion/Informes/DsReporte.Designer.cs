@@ -6758,6 +6758,18 @@ namespace CapaPresentacion.Informes {
             
             private global::System.Data.DataColumn columnFechaFin;
             
+            private global::System.Data.DataColumn columnCajaNro;
+            
+            private global::System.Data.DataColumn columnFechaApertura1;
+            
+            private global::System.Data.DataColumn columnImporteApertura1;
+            
+            private global::System.Data.DataColumn columnImporteEntrega1;
+            
+            private global::System.Data.DataColumn columnSaldoFinal1;
+            
+            private global::System.Data.DataColumn columnDiferenciaCierre1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public sp_ReporteResumenCajaFechaDataTable() {
@@ -6881,6 +6893,54 @@ namespace CapaPresentacion.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CajaNroColumn {
+                get {
+                    return this.columnCajaNro;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FechaApertura1Column {
+                get {
+                    return this.columnFechaApertura1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ImporteApertura1Column {
+                get {
+                    return this.columnImporteApertura1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ImporteEntrega1Column {
+                get {
+                    return this.columnImporteEntrega1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SaldoFinal1Column {
+                get {
+                    return this.columnSaldoFinal1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DiferenciaCierre1Column {
+                get {
+                    return this.columnDiferenciaCierre1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -6916,7 +6976,7 @@ namespace CapaPresentacion.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public sp_ReporteResumenCajaFechaRow Addsp_ReporteResumenCajaFechaRow(string Usuario, System.DateTime FechaApertura, string FechaCierre, double ImporteApertura, double ImporteEntrega, double SaldoFinal, double DiferenciaCierre, string Estado, string FechaInicio, string FechaFin) {
+            public sp_ReporteResumenCajaFechaRow Addsp_ReporteResumenCajaFechaRow(string Usuario, System.DateTime FechaApertura, string FechaCierre, double ImporteApertura, double ImporteEntrega, double SaldoFinal, double DiferenciaCierre, string Estado, string FechaInicio, string FechaFin, string FechaApertura1, decimal ImporteApertura1, decimal ImporteEntrega1, decimal SaldoFinal1, decimal DiferenciaCierre1) {
                 sp_ReporteResumenCajaFechaRow rowsp_ReporteResumenCajaFechaRow = ((sp_ReporteResumenCajaFechaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -6929,7 +6989,13 @@ namespace CapaPresentacion.Informes {
                         DiferenciaCierre,
                         Estado,
                         FechaInicio,
-                        FechaFin};
+                        FechaFin,
+                        null,
+                        FechaApertura1,
+                        ImporteApertura1,
+                        ImporteEntrega1,
+                        SaldoFinal1,
+                        DiferenciaCierre1};
                 rowsp_ReporteResumenCajaFechaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_ReporteResumenCajaFechaRow);
                 return rowsp_ReporteResumenCajaFechaRow;
@@ -6963,6 +7029,12 @@ namespace CapaPresentacion.Informes {
                 this.columnEstado = base.Columns["Estado"];
                 this.columnFechaInicio = base.Columns["FechaInicio"];
                 this.columnFechaFin = base.Columns["FechaFin"];
+                this.columnCajaNro = base.Columns["CajaNro"];
+                this.columnFechaApertura1 = base.Columns["FechaApertura1"];
+                this.columnImporteApertura1 = base.Columns["ImporteApertura1"];
+                this.columnImporteEntrega1 = base.Columns["ImporteEntrega1"];
+                this.columnSaldoFinal1 = base.Columns["SaldoFinal1"];
+                this.columnDiferenciaCierre1 = base.Columns["DiferenciaCierre1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6990,6 +7062,18 @@ namespace CapaPresentacion.Informes {
                 base.Columns.Add(this.columnFechaInicio);
                 this.columnFechaFin = new global::System.Data.DataColumn("FechaFin", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaFin);
+                this.columnCajaNro = new global::System.Data.DataColumn("CajaNro", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCajaNro);
+                this.columnFechaApertura1 = new global::System.Data.DataColumn("FechaApertura1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaApertura1);
+                this.columnImporteApertura1 = new global::System.Data.DataColumn("ImporteApertura1", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImporteApertura1);
+                this.columnImporteEntrega1 = new global::System.Data.DataColumn("ImporteEntrega1", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnImporteEntrega1);
+                this.columnSaldoFinal1 = new global::System.Data.DataColumn("SaldoFinal1", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSaldoFinal1);
+                this.columnDiferenciaCierre1 = new global::System.Data.DataColumn("DiferenciaCierre1", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDiferenciaCierre1);
                 this.columnNroCaja.AutoIncrement = true;
                 this.columnNroCaja.AutoIncrementSeed = -1;
                 this.columnNroCaja.AutoIncrementStep = -1;
@@ -7005,6 +7089,19 @@ namespace CapaPresentacion.Informes {
                 this.columnFechaInicio.MaxLength = 20;
                 this.columnFechaFin.ReadOnly = true;
                 this.columnFechaFin.MaxLength = 20;
+                this.columnCajaNro.AutoIncrement = true;
+                this.columnCajaNro.AutoIncrementSeed = -1;
+                this.columnCajaNro.AutoIncrementStep = -1;
+                this.columnCajaNro.AllowDBNull = false;
+                this.columnCajaNro.ReadOnly = true;
+                this.columnFechaApertura1.ReadOnly = true;
+                this.columnFechaApertura1.Caption = "FechaApertura";
+                this.columnFechaApertura1.MaxLength = 4000;
+                this.columnImporteApertura1.AllowDBNull = false;
+                this.columnImporteApertura1.Caption = "ImporteApertura";
+                this.columnImporteEntrega1.Caption = "ImporteEntrega";
+                this.columnSaldoFinal1.Caption = "SaldoFinal";
+                this.columnDiferenciaCierre1.Caption = "DiferenciaCierre";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15465,6 +15562,96 @@ namespace CapaPresentacion.Informes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int CajaNro {
+                get {
+                    return ((int)(this[this.tablesp_ReporteResumenCajaFecha.CajaNroColumn]));
+                }
+                set {
+                    this[this.tablesp_ReporteResumenCajaFecha.CajaNroColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string FechaApertura1 {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_ReporteResumenCajaFecha.FechaApertura1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaApertura1\' de la tabla \'sp_ReporteResumenCajaFecha\' " +
+                                "es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteResumenCajaFecha.FechaApertura1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal ImporteApertura1 {
+                get {
+                    return ((decimal)(this[this.tablesp_ReporteResumenCajaFecha.ImporteApertura1Column]));
+                }
+                set {
+                    this[this.tablesp_ReporteResumenCajaFecha.ImporteApertura1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal ImporteEntrega1 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_ReporteResumenCajaFecha.ImporteEntrega1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ImporteEntrega1\' de la tabla \'sp_ReporteResumenCajaFecha\'" +
+                                " es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteResumenCajaFecha.ImporteEntrega1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal SaldoFinal1 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_ReporteResumenCajaFecha.SaldoFinal1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'SaldoFinal1\' de la tabla \'sp_ReporteResumenCajaFecha\' es " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteResumenCajaFecha.SaldoFinal1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal DiferenciaCierre1 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_ReporteResumenCajaFecha.DiferenciaCierre1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DiferenciaCierre1\' de la tabla \'sp_ReporteResumenCajaFech" +
+                                "a\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_ReporteResumenCajaFecha.DiferenciaCierre1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsUsuarioNull() {
                 return this.IsNull(this.tablesp_ReporteResumenCajaFecha.UsuarioColumn);
             }
@@ -15557,6 +15744,54 @@ namespace CapaPresentacion.Informes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetFechaFinNull() {
                 this[this.tablesp_ReporteResumenCajaFecha.FechaFinColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFechaApertura1Null() {
+                return this.IsNull(this.tablesp_ReporteResumenCajaFecha.FechaApertura1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFechaApertura1Null() {
+                this[this.tablesp_ReporteResumenCajaFecha.FechaApertura1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsImporteEntrega1Null() {
+                return this.IsNull(this.tablesp_ReporteResumenCajaFecha.ImporteEntrega1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetImporteEntrega1Null() {
+                this[this.tablesp_ReporteResumenCajaFecha.ImporteEntrega1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsSaldoFinal1Null() {
+                return this.IsNull(this.tablesp_ReporteResumenCajaFecha.SaldoFinal1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetSaldoFinal1Null() {
+                this[this.tablesp_ReporteResumenCajaFecha.SaldoFinal1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsDiferenciaCierre1Null() {
+                return this.IsNull(this.tablesp_ReporteResumenCajaFecha.DiferenciaCierre1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetDiferenciaCierre1Null() {
+                this[this.tablesp_ReporteResumenCajaFecha.DiferenciaCierre1Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -21446,15 +21681,16 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
             tableMapping.DataSetTable = "sp_ReporteResumenCajaFecha";
             tableMapping.ColumnMappings.Add("NroCaja", "NroCaja");
             tableMapping.ColumnMappings.Add("Usuario", "Usuario");
-            tableMapping.ColumnMappings.Add("FechaApertura", "FechaApertura");
             tableMapping.ColumnMappings.Add("FechaCierre", "FechaCierre");
-            tableMapping.ColumnMappings.Add("ImporteApertura", "ImporteApertura");
-            tableMapping.ColumnMappings.Add("ImporteEntrega", "ImporteEntrega");
-            tableMapping.ColumnMappings.Add("SaldoFinal", "SaldoFinal");
-            tableMapping.ColumnMappings.Add("DiferenciaCierre", "DiferenciaCierre");
             tableMapping.ColumnMappings.Add("Estado", "Estado");
             tableMapping.ColumnMappings.Add("FechaInicio", "FechaInicio");
             tableMapping.ColumnMappings.Add("FechaFin", "FechaFin");
+            tableMapping.ColumnMappings.Add("CajaNro", "CajaNro");
+            tableMapping.ColumnMappings.Add("FechaApertura", "FechaApertura1");
+            tableMapping.ColumnMappings.Add("ImporteApertura", "ImporteApertura1");
+            tableMapping.ColumnMappings.Add("ImporteEntrega", "ImporteEntrega1");
+            tableMapping.ColumnMappings.Add("SaldoFinal", "SaldoFinal1");
+            tableMapping.ColumnMappings.Add("DiferenciaCierre", "DiferenciaCierre1");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -21462,7 +21698,7 @@ namespace CapaPresentacion.Informes.DsReporteTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.SqlCnn;
+            this._connection.ConnectionString = global::CapaPresentacion.Properties.Settings.Default.GestionVentaConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

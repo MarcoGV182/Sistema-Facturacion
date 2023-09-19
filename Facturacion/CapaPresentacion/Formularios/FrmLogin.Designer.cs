@@ -90,7 +90,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(344, 34);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Sistema de Facturacion";
+            this.label1.Text = "Sistema de Facturación";
             // 
             // groupBox1
             // 
@@ -181,9 +181,9 @@
             this.lblhora.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblhora.Location = new System.Drawing.Point(499, 257);
             this.lblhora.Name = "lblhora";
-            this.lblhora.Size = new System.Drawing.Size(47, 15);
+            this.lblhora.Size = new System.Drawing.Size(79, 15);
             this.lblhora.TabIndex = 5;
-            this.lblhora.Text = "label4";
+            this.lblhora.Text = "hora Actual";
             this.lblhora.Click += new System.EventHandler(this.label4_Click);
             // 
             // timer1
@@ -202,7 +202,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "v.230518";
+            this.label4.Text = "v.230913";
             // 
             // FrmLogin
             // 

@@ -446,7 +446,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -794,7 +793,7 @@
                 <Label>FechaApertura</Label>
                 <Value>=First(Fields!FechaApertura.Value, "DsCabecera")</Value>
                 <Style>
-                  <Format>dd/MM/yyyy</Format>
+                  <Format>dd/MM/yyyy HH:mm</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -834,7 +833,7 @@
                 <Label>FechaCierre</Label>
                 <Value>=First(Fields!FechaCierre.Value, "DsCabecera")</Value>
                 <Style>
-                  <Format>dd/MM/yyyy</Format>
+                  <Format>dd/MM/yyyy HH:mm</Format>
                 </Style>
               </TextRun>
             </TextRuns>
