@@ -16,6 +16,7 @@ namespace CapaDatos
         private DateTime _FechaApertura;
         private DateTime? _FechaCierre;
         private int _PersonaNro;
+        public string UsuarioLogin { get; set; }
         private double _Monto;        
         private char _Estado;
         private string _Observacion;
