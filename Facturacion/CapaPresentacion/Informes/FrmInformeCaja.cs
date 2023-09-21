@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CapaNegocio;
+using CapaNegocio.Reporting;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,7 +33,9 @@ namespace CapaPresentacion
 
         private void FrmInformeCaja_Load(object sender, EventArgs e)
         {
-            
+            //Se inicializa el fecha desde con el primer día del mes
+            var FechaInicioMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            dtpDesde.Value = FechaInicioMes;
         }
 
         private void btnGenerar_Click(object sender, EventArgs e)
@@ -39,8 +43,9 @@ namespace CapaPresentacion
             try
             {
                 // TODO: esta línea de código carga datos en la tabla 'DsReporte.sp_ReporteOT' Puede moverla o quitarla según sea necesario.
-                this.sp_ReporteResumenCajaFechaTableAdapter.Fill(this.DsReporte.sp_ReporteResumenCajaFecha, this.dtpDesde.Value.ToString("dd/MM/yyyy"), this.dtpHasta.Value.ToString("dd/MM/yyyy"));
-                this.reportViewer1.RefreshReport();
+                var desde = dtpDesde.Value;
+                var hasta = dtpHasta.Value;
+                CargarDatos(desde, hasta);
             }
             catch (Exception ex)
             {
@@ -51,6 +56,18 @@ namespace CapaPresentacion
         private void FrmInformeCaja_FormClosing(object sender, FormClosingEventArgs e)
         {
             _Instancia=null;
+        }
+
+
+        private void CargarDatos(DateTime inicio, DateTime fin)
+        {
+            NInformeCaja reportModel = new NInformeCaja();
+            reportModel.ResumenCajaReport(inicio, fin);
+
+            nInformeCajaBindingSource.DataSource = reportModel;
+            dCajaBindingSource.DataSource = reportModel.ListaArqueos;
+
+            this.reportViewer1.RefreshReport();
         }
     }
 }
