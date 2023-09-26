@@ -5,40 +5,37 @@ using System.Text;
 using System.Threading.Tasks;
 using CapaDatos;
 using System.Data;
+using CapaEntidades;
 
 namespace CapaNegocio
 {
     public class NUsuarios
     {
-        public static string Insertar(DUsuarios usuario)
+        public static string Insertar(EUsuario usuario)
         {
-            DUsuarios objUsuario = new DUsuarios();            
-            return objUsuario.InsertarUsuarios(usuario);
+            DUsuarios objUsuario = new DUsuarios();   
+            
+            return objUsuario.InsertarUsuarios(usuario.PersonaNro,usuario.Login,usuario.Pass,usuario.TipoUserNro);
         }
 
-
-
-        public static string Editar(DUsuarios usuario)
+        public static string Editar(EUsuario usuario)
         {
             DUsuarios objUsuario = new DUsuarios();           
-            return objUsuario.EditarUsuario(usuario);
+            return objUsuario.EditarUsuario(usuario.PersonaNro, usuario.Login, usuario.Pass, usuario.passNew, usuario.TipoUserNro);
         }
-
 
 
         public static string Eliminar(int usuarionro) 
         {
             DUsuarios objUsuario = new DUsuarios();
-            objUsuario.PersonaNro = usuarionro;
-            return objUsuario.EliminarUsuario(objUsuario);
+            return objUsuario.EliminarUsuario(usuarionro);
         }
 
 
         public static DataTable Buscar(string Usuario)
         {
             DUsuarios objUsuarios = new DUsuarios();
-            objUsuarios.Usuario = Usuario;
-            return objUsuarios.BuscarUsuario(objUsuarios);
+            return objUsuarios.BuscarUsuario(Usuario);
         }
 
 
@@ -47,19 +44,23 @@ namespace CapaNegocio
         public static DataTable BuscarLogin(string user, string pass)
         {
             DUsuarios objUsuarios = new DUsuarios();
-            objUsuarios.Usuario = user;
-            objUsuarios.Pass = pass;
-            return objUsuarios.BuscarLogin(objUsuarios);
+            return objUsuarios.BuscarLogin(user, pass);
         }
 
 
-
         //METODO PARA VERIFICAR LOS PERMISO QUE POSEE EL USUARIO AL LOGUEARSE AL SISTEMA 
-        public static bool VerificarPermisos(string permisos, string[]reglas) 
+        public bool VerificarPermisos(string reglas_Usuario, string[] reglas)
         {
-            DUsuarios objUsuarios = new DUsuarios();
-            //reglas=objUsuarios.ReglaUsuario;
-            return objUsuarios.ReglasVerificar(permisos,reglas);
+            string[] aReglas_Usuario_Formulario = reglas_Usuario.Split(',');
+            foreach (var r in aReglas_Usuario_Formulario)
+            {
+                if (r != "" && reglas.Contains(r))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
 

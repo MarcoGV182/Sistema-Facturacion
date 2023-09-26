@@ -64,6 +64,8 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbTipo = new System.Windows.Forms.GroupBox();
+            this.cbocolaborador = new System.Windows.Forms.ComboBox();
+            this.lblVendedor = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.rbManual = new System.Windows.Forms.RadioButton();
             this.rbAutoimprenta = new System.Windows.Forms.RadioButton();
@@ -370,6 +372,8 @@
             // 
             resources.ApplyResources(this.gbTipo, "gbTipo");
             this.gbTipo.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.gbTipo.Controls.Add(this.cbocolaborador);
+            this.gbTipo.Controls.Add(this.lblVendedor);
             this.gbTipo.Controls.Add(this.groupBox4);
             this.gbTipo.Controls.Add(this.cboComprobante);
             this.gbTipo.Controls.Add(this.lblComprobante);
@@ -389,6 +393,17 @@
             this.gbTipo.Controls.Add(this.lblDescripcion);
             this.gbTipo.Name = "gbTipo";
             this.gbTipo.TabStop = false;
+            // 
+            // cbocolaborador
+            // 
+            resources.ApplyResources(this.cbocolaborador, "cbocolaborador");
+            this.cbocolaborador.FormattingEnabled = true;
+            this.cbocolaborador.Name = "cbocolaborador";
+            // 
+            // lblVendedor
+            // 
+            resources.ApplyResources(this.lblVendedor, "lblVendedor");
+            this.lblVendedor.Name = "lblVendedor";
             // 
             // groupBox4
             // 
@@ -787,5 +802,7 @@
         private CapaPresentacion.Utilidades.RButton btnGuardar;
         private CapaPresentacion.Utilidades.RButton btnCancelar;
         private CapaPresentacion.Utilidades.RButton btnImprimir2;
+        private System.Windows.Forms.ComboBox cbocolaborador;
+        private System.Windows.Forms.Label lblVendedor;
     }
 }

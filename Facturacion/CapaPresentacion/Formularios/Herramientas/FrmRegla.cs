@@ -4,10 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using CapaEntidades;
 using CapaNegocio;
 
 namespace CapaPresentacion.Formularios.Herramientas
@@ -94,7 +95,7 @@ namespace CapaPresentacion.Formularios.Herramientas
         //Metodo para mostrar los datos en el datagrid
         private void Mostrar()
         {
-            this.dataListado.DataSource = NRegla.Mostrar();
+            this.dataListado.DataSource = NOperacion.Mostrar();
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -143,7 +144,7 @@ namespace CapaPresentacion.Formularios.Herramientas
                         if (Convert.ToBoolean(row.Cells[0].Value))
                         {
                             codigo = Convert.ToString(row.Cells[1].Value);
-                            rpta = NRegla.Eliminar(Convert.ToInt32(codigo));                           
+                            rpta = NOperacion.Eliminar(Convert.ToInt32(codigo));                           
                             //this.MensajeError(rpta);
                         }
                    }
@@ -213,41 +214,46 @@ namespace CapaPresentacion.Formularios.Herramientas
                 {
                     this.MensajeError("Falta algunos datos");
                     errorIcono.SetError(txtNombre, "Ingrese el nombre de la regla");
+                    return;
+                }
+
+                EOperacion eOperacion = new EOperacion();
+                eOperacion.Nombre = txtNombre.Text.Trim().ToUpper();
+                eOperacion.Descripcion = txtDescripcion.Text.Trim().ToUpper();
+
+                //si se ingresa un nuevo registro
+                if (this.IsNuevo)
+                {
+                    rpta = NOperacion.Insertar(eOperacion);
+                    //si se esta editando el registro    
                 }
                 else
                 {
-                    //si se ingresa un nuevo registro
-                    if (this.IsNuevo)
-                    {
-                        rpta = NRegla.Insertar(this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper());
-                        //si se esta editando el registro    
-                    }
-                    else
-                    {
-                        rpta = NRegla.Editar(Convert.ToInt32(this.txtCodigo.Text),this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper());
-                    }
-                    if (rpta.Equals("OK"))
-                    {
-                        if (IsNuevo)
-                        {
-                            this.MensajeOK("Se ha insertado con exito");
-                        }
-                        else
-                        {
-                            this.MensajeOK("Se ha editado con exito");
-                        }
-                    }
-                    else
-                    {
-                        this.MensajeError(rpta);
-                    }
-
-                    this.IsNuevo = false;
-                    this.IsEditar = false;
-                    this.Botones();
-                    this.Limpiar();
-                    this.Mostrar();
+                    eOperacion.IdOperacion = Convert.ToInt32(this.txtCodigo.Text);
+                    rpta = NOperacion.Editar(eOperacion);
                 }
+                if (rpta.Equals("OK"))
+                {
+                    if (IsNuevo)
+                    {
+                        this.MensajeOK("Se ha insertado con exito");
+                    }
+                    else
+                    {
+                        this.MensajeOK("Se ha editado con exito");
+                    }
+                }
+                else
+                {
+                    this.MensajeError(rpta);
+                }
+
+                this.IsNuevo = false;
+                this.IsEditar = false;
+                this.Botones();
+                this.Limpiar();
+                this.Mostrar();
+
             }
             catch (Exception ex)
             {

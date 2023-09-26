@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaDatos;
+using CapaEntidades;
 using CapaNegocio;
 using CapaPresentacion;
 using CapaPresentacion.Utilidades;
@@ -110,7 +110,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
         //Metodo buscar por descripcion
         private void Buscar()
         {
-            this.dataListado.DataSource = NMarca.BuscarDescripcion(this.txtBuscar.Text);
+            //this.dataListado.DataSource = NMarca.BuscarDescripcion(this.txtBuscar.Text);
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -248,6 +248,9 @@ namespace CapaPresentacion.Formularios.Mantenimiento
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            EMarca marca = new EMarca();
+            marca.Descripcion = this.txtDescripcion.Text.Trim().ToUpper();
+
             try
             {
                 string rpta = "";
@@ -261,14 +264,12 @@ namespace CapaPresentacion.Formularios.Mantenimiento
                 //si se ingresa un nuevo registro
                 if (this.IsNuevo)
                 {
-                    rpta = NMarca.Insertar(this.txtDescripcion.Text.Trim().ToUpper());
+                    rpta = NMarca.Insertar(marca);
                     //si se esta editando el registro    
                 }
                 else
                 {
-                    DMarca marca = new DMarca();
-                    marca.MarcaNro = Convert.ToInt32(this.txtCodigo.Text);
-                    marca.Descripcion = this.txtDescripcion.Text.Trim().ToUpper();
+                    marca.MarcaNro = Convert.ToInt32(this.txtCodigo.Text);                    
                     rpta = NMarca.Editar(marca);
                 }
 

@@ -5,125 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DAjuste:Conexion
     {
-        private int _CodAjuste;
-        private string _Descripcion;
-        private DateTime _FechaHora;
-        private string _Estado;
-        private string _Observacion;
-        private int _TipoAjusteNro;
-        private string usuario;
-
-        public int CodAjuste
-        {
-            get
-            {
-                return _CodAjuste;
-            }
-
-            set
-            {
-                _CodAjuste = value;
-            }
-        }
-
-        public string Descripcion
-        {
-            get
-            {
-                return _Descripcion;
-            }
-
-            set
-            {
-                _Descripcion = value;
-            }
-        }
-
-        public DateTime FechaHora
-        {
-            get
-            {
-                return _FechaHora;
-            }
-
-            set
-            {
-                _FechaHora = value;
-            }
-        }
-
-        public string Estado
-        {
-            get
-            {
-                return _Estado;
-            }
-
-            set
-            {
-                _Estado = value;
-            }
-        }
-
-        public string Observacion
-        {
-            get
-            {
-                return _Observacion;
-            }
-
-            set
-            {
-               _Observacion = value;
-            }
-        }
-
-        public int TipoAjusteNro
-        {
-            get
-            {
-                return _TipoAjusteNro;
-            }
-
-            set
-            {
-                _TipoAjusteNro = value;
-            }
-        }
-
-        public string Usuario
-        {
-            get
-            {
-                return usuario;
-            }
-
-            set
-            {
-                usuario = value;
-            }
-        }
-
         public DAjuste() { }
-
-        public DAjuste(int codajuste,string descripcion,DateTime fechahora,string estado,string observacion,int tipoajusteNro,string usuario) {
-            this.CodAjuste = codajuste;
-            this.Descripcion = descripcion;
-            this.FechaHora = fechahora;
-            this.Estado = estado;
-            this.Observacion = observacion;
-            this.TipoAjusteNro = tipoajusteNro;
-            this.usuario = usuario;
-         }
 
 
         //Metodo insertar
-        public string InsertarAjuste(DAjuste Ajuste, List<DDetalleAjuste> DetalleAjuste)
+        public string InsertarAjuste(EAjuste Ajuste, List<EDetalleAjuste> DetalleAjuste)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -203,14 +95,15 @@ namespace CapaDatos
                 if (rpta.Equals("OK"))
                 {
                     //Obtener el NroCompra
-                    this.CodAjuste = Convert.ToInt32(SqlCmd.Parameters["@CodAjuste"].Value);
+                    Ajuste.CodAjuste = Convert.ToInt32(SqlCmd.Parameters["@CodAjuste"].Value);
 
-                    foreach (DDetalleAjuste det in DetalleAjuste)
+                    foreach (EDetalleAjuste det in DetalleAjuste)
                     {
-                        det.CodAjuste= this.CodAjuste;
+                        DDetalleAjuste dDetalleAjuste  = new DDetalleAjuste();
+                        det.CodAjuste= Ajuste.CodAjuste;
 
                         //Llamar al metodo insertar
-                        rpta = det.InsertarDetalleAjuste(det, ref Sqlcon, ref Sqltran);
+                        rpta = dDetalleAjuste.InsertarDetalleAjuste(det, ref Sqlcon, ref Sqltran);
                         if (!rpta.Equals("OK"))
                         {
                             break;
@@ -368,7 +261,7 @@ namespace CapaDatos
 
 
         //Metodo Eliminar
-        public string EliminarAjuste(DAjuste ajuste, SqlConnection SqlConExistente = null, SqlTransaction SqlTranExistente = null)
+        public string EliminarAjuste(int AjusteNro, SqlConnection SqlConExistente = null, SqlTransaction SqlTranExistente = null)
         {
             #region Variables
             string rpta = "";
@@ -392,7 +285,7 @@ namespace CapaDatos
                 SqlParameter ParCodAjuste = new SqlParameter();
                 ParCodAjuste.ParameterName = "@AjusteNro";
                 ParCodAjuste.SqlDbType = SqlDbType.Int;
-                ParCodAjuste.Value = ajuste.CodAjuste;
+                ParCodAjuste.Value = AjusteNro;
                 SqlCmd.Parameters.Add(ParCodAjuste);
 
                 //ejecutar el comando sql
@@ -424,7 +317,7 @@ namespace CapaDatos
 
 
         //Metodo Restaurar Stock
-        public string RestaurarStock(DAjuste ajuste,SqlConnection SqlConExistente = null, SqlTransaction SqlTranExistente = null)
+        public string RestaurarStock(int ajusteId,SqlConnection SqlConExistente = null, SqlTransaction SqlTranExistente = null)
         {
             string rpta = "OK";
             SqlConnection Sqlcon = null;
@@ -445,7 +338,7 @@ namespace CapaDatos
                 SqlParameter ParCodAjuste = new SqlParameter();
                 ParCodAjuste.ParameterName = "@CodAjuste";
                 ParCodAjuste.SqlDbType = SqlDbType.Int;
-                ParCodAjuste.Value = ajuste.CodAjuste;
+                ParCodAjuste.Value = ajusteId;
                 SqlCmd.Parameters.Add(ParCodAjuste);
 
                 //ejecutar el comando sql
@@ -470,7 +363,7 @@ namespace CapaDatos
         }
 
 
-        public string EliminarAjusteRestaurar(DAjuste ajuste) 
+        public string EliminarAjusteRestaurar(int AjusteId) 
         {
             #region Variables
             string rpta = "OK";
@@ -485,12 +378,12 @@ namespace CapaDatos
                 SqlTran = Sqlcon.BeginTransaction();
 
                 //Restaurar Stock
-                rpta = RestaurarStock(ajuste, Sqlcon, SqlTran);
+                rpta = RestaurarStock(AjusteId, Sqlcon, SqlTran);
                 if (rpta != "OK") 
                 { throw new Exception(rpta); }
 
                 //Eliminar Ajuste
-                rpta = EliminarAjuste(ajuste, Sqlcon, SqlTran);
+                rpta = EliminarAjuste(AjusteId, Sqlcon, SqlTran);
                 if (rpta != "OK")
                 { throw new Exception(rpta); }
 

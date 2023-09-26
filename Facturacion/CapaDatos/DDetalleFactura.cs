@@ -5,28 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DDetalleFactura:Conexion
     {
-        public int NroVenta { get; set; }
-        public int NroItem { get; set; }
-        public int CodDetalle { get; set; }
-        public int ArticuloNro { get; set; }
-        public int Cantidad { get; set; }
-        public DTipoImpuesto TipoImpuesto { get; set; }
-        public double Precio { get; set; }
-        public double PrecioFinal { get; set; }
-        
-
-        public DDetalleFactura() {
-
-        }
-        
 
         //Metodo insertar
-        public string InsertarDetalleFactura(DDetalleFactura DetalleFactura, ref SqlConnection Sqlcon, ref SqlTransaction sqltran)
+        public string InsertarDetalleFactura(EDetalleFactura DetalleFactura, ref SqlConnection Sqlcon, ref SqlTransaction sqltran)
         {
             string rpta = "";
             try
@@ -65,7 +52,7 @@ namespace CapaDatos
                 SqlParameter ParProductoNro = new SqlParameter();
                 ParProductoNro.ParameterName = "@ArticuloNro";
                 ParProductoNro.SqlDbType = SqlDbType.Int;
-                ParProductoNro.Value = DetalleFactura.ArticuloNro;
+                ParProductoNro.Value = DetalleFactura.Articulo;
                 SqlCmd.Parameters.Add(ParProductoNro);
 
 

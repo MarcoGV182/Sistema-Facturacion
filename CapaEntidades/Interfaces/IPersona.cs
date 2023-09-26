@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaDatos.Interfaces
+namespace CapaEntidades.Interfaces
 {
     internal interface IPersona
     {
@@ -12,7 +12,7 @@ namespace CapaDatos.Interfaces
         string Nombre { get; set; }
         string Apellido { get; set; }
         string Documento { get; set; }
-        DTipoDocumento TipoDocumento { get; set; }        
+        ETipoDocumento TipoDocumento { get; set; }        
         int? CiudadNro { get; set; }
         string Direccion { get; set; }
         string Telefono { get; set; }

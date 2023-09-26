@@ -6,69 +6,19 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
-
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DOperacion:Conexion
     {
-        private int _IdOperacion;
-        private string _Nombre;
-        private string _Descripcion;
-        public DModulo Modulo { get; set; }
-        public bool Habilitado { get; set; }
-
-        public int IdOperacion
-        {
-            get
-            {
-                return _IdOperacion;
-            }
-
-            set
-            {
-                _IdOperacion = value;
-            }
-        }
-
-        public string Nombre
-        {
-            get
-            {
-                return _Nombre;
-            }
-
-            set
-            {
-                _Nombre = value;
-            }
-        }
-
-        public string Descripcion
-        {
-            get
-            {
-                return _Descripcion;
-            }
-
-            set
-            {
-                _Descripcion = value;
-            }
-        }
-
+        
         public DOperacion() { }
 
-        public DOperacion(int nroregla, string nombre, string descripcion) 
-        {
-            this.IdOperacion = nroregla;
-            this.Nombre = nombre;
-            this.Descripcion = descripcion;
-        }
 
 
         //Metodo insertar
-        public string InsertarRegla(DOperacion Regla)
+        public string InsertarRegla(EOperacion Regla)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
@@ -81,13 +31,6 @@ namespace CapaDatos
                 SqlCmd.Connection = Sqlcon;
                 SqlCmd.CommandText = "sp_InsertarReglaUsuario";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
-
-                //Parametros ParRegla
-                /*SqlParameter ParReglaNro = new SqlParameter();
-                ParReglaNro.ParameterName = "@IdOperacion";
-                ParReglaNro.SqlDbType = SqlDbType.Int;
-                ParReglaNro.Direction = ParameterDirection.Output;
-                SqlCmd.Parameters.Add(ParReglaNro);*/
 
                 //Parametros Nombre
                 SqlParameter ParNombre = new SqlParameter();
@@ -124,7 +67,7 @@ namespace CapaDatos
         }
 
         //Metodo Editar
-        public string EditarRegla(DOperacion Regla)
+        public string EditarRegla(EOperacion Regla)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -182,7 +125,7 @@ namespace CapaDatos
         }
 
         //Metodo Eliminar
-        public string EliminarRegla(DOperacion Regla)
+        public string EliminarRegla(int IdReglaOperacion)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -200,7 +143,7 @@ namespace CapaDatos
                 SqlParameter ParReglaNro = new SqlParameter();
                 ParReglaNro.ParameterName = "@IdOperacion";
                 ParReglaNro.SqlDbType = SqlDbType.Int;
-                ParReglaNro.Value = Regla.IdOperacion;
+                ParReglaNro.Value = IdReglaOperacion;
                 SqlCmd.Parameters.Add(ParReglaNro);
 
                 //ejecutar el comando sql

@@ -6,47 +6,21 @@ using System.Threading.Tasks;
 
 using System.Data;
 using System.Data.SqlClient;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DMarca:Conexion
     {
-        private int _MarcaNro;
-        private string _Descripcion;
-        private string _TextoBuscar;
-
-        public int MarcaNro
-        {
-            get{return _MarcaNro;}
-            set{_MarcaNro = value;}
-        }
-
-        public string Descripcion
-        {
-            get{return _Descripcion;}
-            set{_Descripcion = value;}
-        }
-
-        public string TextoBuscar
-        {
-            get { return _TextoBuscar; }
-            set { _TextoBuscar = value; }
-        }
 
         //Constructor Vacio
         public DMarca() {
 
         }
-        //Constructor con parametros
-        public DMarca(int marcaNro, string descripcion,string textobuscar) {
-            this.MarcaNro = marcaNro;
-            this.Descripcion = descripcion;
-            this.TextoBuscar = textobuscar;
-        }
 
 
         //Metodo insertar
-        public string InsertarMarca(DMarca Marca)
+        public string InsertarMarca(EMarca Marca)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -94,7 +68,7 @@ namespace CapaDatos
         }
 
         //Metodo Editar
-        public string EditarMarca(DMarca Marca)
+        public string EditarMarca(EMarca Marca)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -142,7 +116,7 @@ namespace CapaDatos
         }
 
         //Metodo Eliminar
-        public string EliminarMarca(DMarca Marca)
+        public string EliminarMarca(int MarcaId)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -160,7 +134,7 @@ namespace CapaDatos
                 SqlParameter ParMarcaNro = new SqlParameter();
                 ParMarcaNro.ParameterName = "@MarcaNro";
                 ParMarcaNro.SqlDbType = SqlDbType.Int;
-                ParMarcaNro.Value = Marca.MarcaNro;
+                ParMarcaNro.Value = MarcaId;
                 SqlCmd.Parameters.Add(ParMarcaNro);
 
                 //ejecutar el comando sql
@@ -208,43 +182,5 @@ namespace CapaDatos
             return DtResultado;
 
         }
-
-        //Metodo Buscar
-        public DataTable BuscarNombre(DMarca Marca)
-        {
-            DataTable DtResultado = new DataTable("Marca");
-            SqlConnection Sqlcon = null;
-            try
-            {
-                Sqlcon = AbrirConexion();
-                SqlCommand SqlCmd = new SqlCommand();
-                SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "sp_BuscarMarca";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
-
-                //Parametros
-                SqlParameter ParTextoBuscar = new SqlParameter();
-                ParTextoBuscar.ParameterName = "@TextoBuscar";
-                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
-                ParTextoBuscar.Size = 100;
-                ParTextoBuscar.SqlValue = Marca.TextoBuscar;
-                SqlCmd.Parameters.Add(ParTextoBuscar);
-
-                //instanciar un DataAdapter para el data table
-                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
-                SqlAdapter.Fill(DtResultado);
-            }
-            catch (Exception)
-            {
-                DtResultado = null;
-            }
-            finally 
-            {
-                CerrarConexion(Sqlcon);
-            }
-
-            return DtResultado;
-
-        }
-}
+    }
 }

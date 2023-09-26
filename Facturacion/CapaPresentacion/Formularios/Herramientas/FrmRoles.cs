@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaDatos;
+using CapaEntidades;
 using CapaNegocio;
 
 namespace CapaPresentacion.Formularios.Herramientas
@@ -240,7 +240,7 @@ namespace CapaPresentacion.Formularios.Herramientas
                     return;
                 }
 
-                DRol rol = new DRol()
+                ERol rol = new ERol()
                 {
                     Nombre = this.txtNombre.Text.Trim().ToUpper(),
                     Descripcion = this.txtDescripcion.Text.Trim().ToUpper()

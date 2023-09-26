@@ -5,96 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using CapaEntidades;
+
 namespace CapaDatos
 {
    public class DTipoImpuesto:Conexion
-    {
-        private int _TipoImpuestoNro;
-        private string _Descripcion;
-        private decimal _PorcentajeIva;
-        private decimal _BaseImponible;        
-        private string _TextoBuscar;
-
-        public int TipoImpuestoNro
-        {
-            get
-            {
-                return _TipoImpuestoNro;
-            }
-
-            set
-            {
-                _TipoImpuestoNro = value;
-            }
-        }
-
-        public string Descripcion
-        {
-            get
-            {
-                return _Descripcion;
-            }
-
-            set
-            {
-                _Descripcion = value;
-            }
-        }
-
-        public decimal PorcentajeIva
-        {
-            get
-            {
-                return _PorcentajeIva;
-            }
-
-            set
-            {
-                _PorcentajeIva = value;
-            }
-        }
-
-        public decimal BaseImponible
-        {
-            get
-            {
-                return _BaseImponible;
-            }
-
-            set
-            {
-                _BaseImponible = value;
-            }
-        }
-
-        public string TextoBuscar
-        {
-            get
-            {
-                return _TextoBuscar;
-            }
-
-            set
-            {
-                _TextoBuscar = value;
-            }
-        }
-        
-
-        public DTipoImpuesto() {
-
-        }
-
-        public DTipoImpuesto(int tipoimpuestonro, string descripcion, decimal porcentajeiva, decimal baseImponible, string textobuscar) {
-            this.TipoImpuestoNro = tipoimpuestonro;
-            this.Descripcion = descripcion;
-            this.PorcentajeIva = porcentajeiva;
-            this.BaseImponible = baseImponible;
-            this.TextoBuscar = textobuscar;
-        }
+    {        
 
         //Metodo insertar
-        public string InsertarImpuesto(DTipoImpuesto Impuesto)
+        public string InsertarImpuesto(ETipoImpuesto Impuesto)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -157,7 +76,7 @@ namespace CapaDatos
         }
 
         //Metodo Editar
-        public string EditarImpuesto(DTipoImpuesto Impuesto)
+        public string EditarImpuesto(ETipoImpuesto Impuesto)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -220,7 +139,7 @@ namespace CapaDatos
         }
 
         //Metodo Eliminar
-        public string EliminarImpuesto(DTipoImpuesto Impuesto)
+        public string EliminarImpuesto(int ImpuestoId)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -238,7 +157,7 @@ namespace CapaDatos
                 SqlParameter ParTipoImpuestoNro = new SqlParameter();
                 ParTipoImpuestoNro.ParameterName = "@TipoImpuestoNro";
                 ParTipoImpuestoNro.SqlDbType = SqlDbType.Int;
-                ParTipoImpuestoNro.Value = Impuesto.TipoImpuestoNro;
+                ParTipoImpuestoNro.Value = ImpuestoId;
                 SqlCmd.Parameters.Add(ParTipoImpuestoNro);
 
                 //ejecutar el comando sql
@@ -285,42 +204,6 @@ namespace CapaDatos
 
             return DtResultado;
 
-        }
-
-        //Metodo Buscar
-        public DataTable BuscarImpuesto(DTipoImpuesto Impuesto)
-        {
-            DataTable DtResultado = new DataTable("TipoImpuesto");
-            SqlConnection Sqlcon = null;
-            try
-            {
-                Sqlcon = AbrirConexion();
-                SqlCommand SqlCmd = new SqlCommand();
-                SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "sp_BuscarTipoImpuesto";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
-
-                //Parametros
-                SqlParameter ParTextoBuscar = new SqlParameter();
-                ParTextoBuscar.ParameterName = "@TextoBuscar";
-                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
-                ParTextoBuscar.Size = 100;
-                ParTextoBuscar.SqlValue = Impuesto.TextoBuscar;
-                SqlCmd.Parameters.Add(ParTextoBuscar);
-
-                //instanciar un DataAdapter para el data table
-                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
-                SqlAdapter.Fill(DtResultado);
-            }
-            catch (Exception)
-            {
-                DtResultado = null;
-            }
-            finally
-            {
-                CerrarConexion(Sqlcon);
-            }
-            return DtResultado;
         }
     }
 }

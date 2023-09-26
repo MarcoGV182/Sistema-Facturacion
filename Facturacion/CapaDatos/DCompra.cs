@@ -5,38 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-using CapaDatos.Interfaces;
+using CapaEntidades;
 
 namespace CapaDatos
 {
-    public class DCompra : Conexion, IDocumento
+    public class DCompra : Conexion
     {
-        public int Id { get; set; }
-        public int Establecimiento { get; set; }
-        public int PuntoExpedicion { get; set; }
-        public int Numero { get; set; }
-        public string NroFacturaCompra { get; set; }
-        public DProveedor Proveedor { get; set; }
-        public DateTime Fecha { get; set; }
-        public DTipoPago TipoPago { get; set; }
-        public int? CantCuotas { get; set; }
-        public DateTime? FechaVencimiento { get; set; }
-        public string NroTimbrado { get; set; }
-        public DTipoComprobante TipoComprobate { get; set; }
-        public string Usuario { get; set; }
-        public string Observacion { get; set; }
-        public string Estado { get; set; }
-        public List<DDetalleIngreso> DetalleCompra { get; set; }
-
-
-
-
         public DCompra() {
 
         }
 
         //Metodo insertar
-        public string Insertar(DCompra Compra)
+        public string Insertar(ECompra Compra)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
@@ -183,14 +163,16 @@ namespace CapaDatos
 
                 if(rpta.Equals("OK")) 
                 {
-                //Obtener el NroCompra
-                    this.Id = Convert.ToInt32(SqlCmd.Parameters["@NroCompra"].Value);                    
+                    //Obtener el NroCompra
+                    Compra.Id = Convert.ToInt32(SqlCmd.Parameters["@NroCompra"].Value);                    
                     
-                    foreach(DDetalleIngreso det in Compra.DetalleCompra) {
-                        det.idCompra = this.Id;
+                    foreach(EDetalleCompra det in Compra.DetalleCompra) 
+                    {
+                        DDetalleCompra dDetalleCompra = new DDetalleCompra();
+                        det.idCompra = Compra.Id;
                         
                         //Llamar al metodo insertar
-                        rpta = det.InsertarDetalleCompra(det, ref Sqlcon,ref Sqltran);
+                        rpta = dDetalleCompra.InsertarDetalleCompra(det, ref Sqlcon,ref Sqltran);
                         if(!rpta.Equals("OK")) 
                         {
                             break;
@@ -204,7 +186,7 @@ namespace CapaDatos
                 }
                 if (rpta.Equals("OK"))
                 {
-                    rpta = $"{this.Id};OK";
+                    rpta = $"{Compra.Id};OK";
                     Sqltran.Commit();
                 }
                 else
@@ -275,7 +257,7 @@ namespace CapaDatos
 
 
         //Metodo Eliminar
-        public string EliminarCompra(DCompra Compra)
+        public string EliminarCompra(int CompraId)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -293,7 +275,7 @@ namespace CapaDatos
                 SqlParameter ParNroFacturaCompra = new SqlParameter();
                 ParNroFacturaCompra.ParameterName = "@NroCompra";
                 ParNroFacturaCompra.SqlDbType = SqlDbType.Int;
-                ParNroFacturaCompra.Value = Compra.Id;
+                ParNroFacturaCompra.Value = CompraId;
                 SqlCmd.Parameters.Add(ParNroFacturaCompra);
 
                 //ejecutar el comando sql
@@ -313,7 +295,7 @@ namespace CapaDatos
 
 
         //Metodo Restaurar Stock despues de eliminar una compra
-        public string RestaurarStock(DCompra Compra)
+        public string RestaurarStock(int compraId)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -331,7 +313,7 @@ namespace CapaDatos
                 SqlParameter ParNroFacturaCompra = new SqlParameter();
                 ParNroFacturaCompra.ParameterName = "@NroCompra";
                 ParNroFacturaCompra.SqlDbType = SqlDbType.Int;
-                ParNroFacturaCompra.Value = Compra.Id;
+                ParNroFacturaCompra.Value = compraId;
                 SqlCmd.Parameters.Add(ParNroFacturaCompra);
 
 
@@ -599,7 +581,7 @@ namespace CapaDatos
 
 
         //Actualizar estado de CUENTAPORPAGAR 
-        public string CuentaAPagar(DCompra Compra)
+        public string CuentaAPagar(int compraId)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -618,7 +600,7 @@ namespace CapaDatos
                 SqlParameter ParNroFactura = new SqlParameter();
                 ParNroFactura.ParameterName = "@NroCompra";
                 ParNroFactura.SqlDbType = SqlDbType.Int;
-                ParNroFactura.Value = Compra.Id;
+                ParNroFactura.Value = compraId;
                 SqlCmd.Parameters.Add(ParNroFactura);
 
                 

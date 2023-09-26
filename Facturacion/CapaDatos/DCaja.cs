@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using CapaEntidades;
 
 //Hola que tal ojala este ya funcione
 
@@ -12,167 +13,11 @@ namespace CapaDatos
 {
     public class DCaja:Conexion
     {
-        private int _NroCaja;
-        private DateTime _FechaApertura;
-        private DateTime? _FechaCierre;
-        private int _PersonaNro;
-        public string UsuarioLogin { get; set; }
-        private double _Monto;        
-        private char _Estado;
-        private string _Observacion;
-        private double _ImporteEntrega;
-        private double _Diferencia;
-        private double _SaldoFinal;
-
-        public int NroCaja
-        {
-            get
-            {
-                return _NroCaja;
-            }
-
-            set
-            {
-                _NroCaja = value;
-            }
-        }
-
-        public DateTime FechaApertura
-        {
-            get
-            {
-                return _FechaApertura;
-            }
-
-            set
-            {
-                _FechaApertura = value;
-            }
-        }
-
-        public DateTime? FechaCierre
-        {
-            get
-            {
-                return _FechaCierre;
-            }
-
-            set
-            {
-                _FechaCierre = value;
-            }
-        }
-
-        public int PersonaNro
-        {
-            get
-            {
-                return _PersonaNro;
-            }
-
-            set
-            {
-                _PersonaNro = value;
-            }
-        }
-
-        public double Monto
-        {
-            get
-            {
-                return _Monto;
-            }
-
-            set
-            {
-                _Monto = value;
-            }
-        }
-
-        public char Estado
-        {
-            get
-            {
-                return _Estado;
-            }
-
-            set
-            {
-                _Estado = value;
-            }
-        }
-
-        public string Observacion
-        {
-            get
-            {
-                return _Observacion;
-            }
-
-            set
-            {
-                _Observacion = value;
-            }
-        }
-
-        public double ImporteEntrega
-        {
-            get
-            {
-                return _ImporteEntrega;
-            }
-
-            set
-            {
-                _ImporteEntrega = value;
-            }
-        }
-
-        public double Diferencia
-        {
-            get
-            {
-                return _Diferencia;
-            }
-
-            set
-            {
-                _Diferencia = value;
-            }
-        }
-
-        public double SaldoFinal
-        {
-            get
-            {
-                return _SaldoFinal;
-            }
-
-            set
-            {
-                _SaldoFinal = value;
-            }
-        }
-
         //Constructor sin parametris
         public DCaja() { }
-        //constructor con parametros
-        public DCaja(int nroCaja,DateTime fechaApertura, DateTime? fechaCierre,int personaNro,char estado,double monto,double importeentrega,double saldofinal,double diferencia ,string observacion)
-        {
-            this.NroCaja = NroCaja;
-            this.FechaApertura = fechaApertura;
-            this.FechaCierre = fechaCierre;
-            this.PersonaNro = personaNro;
-            this.Estado = estado;
-            this.Monto = monto;
-            this.ImporteEntrega = importeentrega;
-            this.SaldoFinal = saldofinal;
-            this.Diferencia = diferencia;
-            this.Observacion = observacion;
-        }
 
         //Metodo para insertar
-        public string InsertarCaja(DCaja Caja) 
+        public string InsertarCaja(ECaja Caja) 
         {
             //declaracion de variables
             string rpta = "OK";
@@ -217,7 +62,7 @@ namespace CapaDatos
                 SqlParameter ParMonto = new SqlParameter();
                 ParMonto.ParameterName = "@Monto";
                 ParMonto.SqlDbType = SqlDbType.Decimal;
-                ParMonto.Value = Caja.Monto;
+                ParMonto.Value = Caja.ImporteApertura;
                 SqlCmd.Parameters.Add(ParMonto);
 
                 //Observacion
@@ -245,7 +90,7 @@ namespace CapaDatos
         }
 
 
-        public string EliminarArqueo(DCaja Caja)
+        public string EliminarArqueo(int ArqueoId,int usuarioId)
         {
             //declaracion de variables
             string rpta = "OK";
@@ -266,7 +111,7 @@ namespace CapaDatos
                 SqlParameter ParNroCaja = new SqlParameter();
                 ParNroCaja.ParameterName = "@CajaNro";
                 ParNroCaja.SqlDbType = SqlDbType.Int;
-                ParNroCaja.Value = Caja.NroCaja;
+                ParNroCaja.Value = ArqueoId;
                 SqlCmd.Parameters.Add(ParNroCaja);
 
 
@@ -274,7 +119,7 @@ namespace CapaDatos
                 SqlParameter ParPersonaNro = new SqlParameter();
                 ParPersonaNro.ParameterName = "@UsuarioNro";
                 ParPersonaNro.SqlDbType = SqlDbType.Int;
-                ParPersonaNro.Value = Caja.PersonaNro;
+                ParPersonaNro.Value = usuarioId;
                 SqlCmd.Parameters.Add(ParPersonaNro);
 
                 //ejecutar el comando sql
@@ -294,7 +139,7 @@ namespace CapaDatos
 
 
         //Metodo para Cerrar Caja
-        public string CerrarCaja (DCaja Caja) 
+        public string CerrarCaja (ECaja Caja) 
         {
             //declaracion de variables
             string rpta = "";

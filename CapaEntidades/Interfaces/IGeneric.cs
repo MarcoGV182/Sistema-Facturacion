@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaDatos.Interfaces
+namespace CapaEntidades.Interfaces
 {
     public interface IGeneric<T> where T : class
     {

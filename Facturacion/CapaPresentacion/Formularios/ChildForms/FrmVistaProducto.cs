@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaDatos;
+using CapaEntidades;
 using CapaNegocio;
 using CapaPresentacion.Formularios;
 using CapaPresentacion.Formularios.Facturacion;
@@ -235,24 +235,33 @@ namespace CapaPresentacion.Formularios.ChildForms
 
 
                 //si se ingresa un nuevo registro
-                DProducto producto = new DProducto();
+                EProducto producto = new EProducto();
 
                 producto.Descripcion = this.txtDescripcion.Text.Trim().ToUpper();
-                producto.TipoProductoNro = Convert.ToInt32(cboTipoProducto.SelectedValue);
+                producto.TipoProducto = new ETipoProducto() 
+                { 
+                    TipoProductoNro = Convert.ToInt32(cboTipoProducto.SelectedValue)
+                };
                 producto.CodigoBarra = txtCodigoBarra.Text;
-                producto.UnidadMedida = new DUnidadMedida()
+                producto.UnidadMedida = new EUnidadMedida()
                 {
                     UnidadMedidaNro = Convert.ToInt32(cboUnidadMedida.SelectedValue),
                     Descripcion = cboUnidadMedida.Text.Trim()
                 };
                 producto.FechaVencimiento = dtpFechaVto.Checked ? dtpFechaVto.Value : (DateTime?)null;
-                producto.IdPresentacion = Convert.ToInt32(cboPresentacion.SelectedValue);
-                producto.MarcaNro = Convert.ToInt32(cboMarca.SelectedValue);
+                producto.Presentacion = new EPresentacionProducto() 
+                { 
+                    IdPresentacion = Convert.ToInt32(cboPresentacion.SelectedValue)
+                };
+                producto.Marca = new EMarca() 
+                { 
+                    MarcaNro = Convert.ToInt32(cboMarca.SelectedValue)
+                };
                 producto.StockActual = 0;//Convert.ToInt32(this.txtStockActual.Text);
                 producto.Stockminimo = Convert.ToInt32(this.txtStockMinimo.Value);
-                producto.PrecioCompra = Convert.ToDecimal(this.txtPrecioCompra.Text);
-                producto.Precio = Convert.ToDecimal(this.txtPrecioVenta.Text);
-                producto.TipoImpuesto = new DTipoImpuesto()
+                producto.PrecioCompra = Convert.ToDouble(this.txtPrecioCompra.Text);
+                producto.Precio = Convert.ToDouble(this.txtPrecioVenta.Text);
+                producto.TipoImpuesto = new ETipoImpuesto()
                 {
                     TipoImpuestoNro = Convert.ToInt32(this.cboImpuesto.SelectedValue),
                     Descripcion = this.cboImpuesto.Text
@@ -376,18 +385,18 @@ namespace CapaPresentacion.Formularios.ChildForms
                     return;
 
                 FrmCompra frm = FrmCompra.GetInstancia();
-                DProducto producto = new DProducto()
+                EProducto producto = new EProducto()
                 {
-                    ProductoNro = Convert.ToInt32(dataListado.CurrentRow.Cells["ArticuloNro"].Value),
+                    ArticuloNro = Convert.ToInt32(dataListado.CurrentRow.Cells["ArticuloNro"].Value),
                     Descripcion = Convert.ToString(dataListado.CurrentRow.Cells["Producto"].Value),
-                    UnidadMedida = new DUnidadMedida()
+                    UnidadMedida = new EUnidadMedida()
                     {
                         UnidadMedidaNro = Convert.ToInt32(dataListado.CurrentRow.Cells["UnidadMedidaNro"].Value),
                         Descripcion = dataListado.CurrentRow.Cells["UnidadMedida"].Value.ToString()
                     },
                     PrecioCompra = Convert.ToInt64(dataListado.CurrentRow.Cells["precioCompra"].Value),
-                    Precio = Convert.ToInt64(dataListado.CurrentRow.Cells["Precio"].Value),
-                    TipoImpuesto = new DTipoImpuesto()
+                    Precio = Convert.ToDouble(dataListado.CurrentRow.Cells["Precio"].Value),
+                    TipoImpuesto = new ETipoImpuesto()
                     {
                         TipoImpuestoNro = Convert.ToInt32(dataListado.CurrentRow.Cells["CodImpuesto"].Value),
                         Descripcion = Convert.ToString(dataListado.CurrentRow.Cells["tipoImpuesto"].Value),

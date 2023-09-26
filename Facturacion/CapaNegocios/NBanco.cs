@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using CapaDatos;
+using CapaEntidades;
 
 namespace CapaNegocio
 {
@@ -13,45 +14,32 @@ namespace CapaNegocio
         //Metodo para insertar que llama al metodo insertar de la capa Datos
         public static string Insertar(string descripcion)
         {
-            DBanco objBanco = new DBanco();
+            EBanco objBanco = new EBanco();
             objBanco.Descripcion = descripcion;
-            return objBanco.InsertarBanco(objBanco);
+            return new DBanco().InsertarBanco(objBanco);
         }
 
         //Metodo para editar que llama al metodo editar de la capa Datos
         public static string Editar(int BancoNro, string descripcion)
         {
-            DBanco objBanco = new DBanco();
+            EBanco objBanco = new EBanco();
             objBanco.BancoNro = BancoNro;
             objBanco.Descripcion = descripcion;
-            return objBanco.EditarBanco(objBanco);
+            return new DBanco().EditarBanco(objBanco);
         }
 
         //Metodo para eliminar que llama al metodo eliminar de la capa Datos
         public static string Eliminar(int BancoNro)
         {
             DBanco objBanco = new DBanco();
-            objBanco.BancoNro = BancoNro;
-            return objBanco.EliminarBanco(objBanco);
+            return objBanco.EliminarBanco(BancoNro);
         }
 
 
         //Metodo para mostrar que llama al metodo mostrar de la capa Datos
         public static DataTable Mostrar()
         {
-
             return new DBanco().MostrarBanco();
         }
-
-        //Metodo para buscar que llama al metodo buscar de la capa Datos
-        public static DataTable BuscarDescripcion(string textoBuscar)
-        {
-            DBanco objBanco = new DBanco();
-            objBanco.TextoBuscar = textoBuscar;
-            return objBanco.BuscarNombre(objBanco);
-        }
-
-
-
     }
 }

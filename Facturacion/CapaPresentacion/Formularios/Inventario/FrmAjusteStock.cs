@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntidades;
 using CapaNegocio;
 using CapaPresentacion.Formularios.ChildForms;
 using CapaPresentacion.Informes.DsReporteTableAdapters;
@@ -370,11 +371,18 @@ namespace CapaPresentacion.Formularios.Inventario
                     return;
 
 
+                EAjuste eAjuste = new EAjuste();
+                eAjuste.Descripcion = this.txtDescripcion.Text;
+                eAjuste.FechaHora = this.dtpFecha.Value;
+                eAjuste.Estado = "EMITIDO";
+                eAjuste.Observacion = txtObservacion.Text;
+                eAjuste.TipoAjusteNro = Convert.ToInt32(this.cboTipoAjuste.SelectedValue);
+                eAjuste.usuario = user;
 
                 //si se ingresa un nuevo registro
                 if (this.IsNuevo)
                 {
-                    rpta = NAjuste.Insertar(this.txtDescripcion.Text, this.dtpFecha.Value, "EMITIDO", txtObservacion.Text, Convert.ToInt32(this.cboTipoAjuste.SelectedValue), user, Dtdetalle);
+                    rpta = NAjuste.Insertar(eAjuste, Dtdetalle);
 
                 }
 

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Data;
 using CapaDatos;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using CapaEntidades;
+using System.Windows.Forms;
 
 namespace CapaNegocio
 {
@@ -14,20 +16,20 @@ namespace CapaNegocio
     {
        
         //Metodo para insertar que llama al metodo insertar de la capa Datos
-        public static string Insertar(DFactura CabFactura,DataTable dtDetalleFactura)
+        public static string Insertar(EFactura CabFactura,DataTable dtDetalleFactura)
         {
             DFactura objFactura = new DFactura();         
             //DETALLES DE COMPRAS
-            List<DDetalleFactura> detalles = new List<DDetalleFactura>();
+            List<EDetalleFactura> detalles = new List<EDetalleFactura>();
             foreach (DataRow row in dtDetalleFactura.Rows)
             {
-                DDetalleFactura dtFactura = new DDetalleFactura();                
-                dtFactura.ArticuloNro = Convert.ToInt32(row["ItemNro"].ToString());
+                EDetalleFactura dtFactura = new EDetalleFactura();                
+                dtFactura.Articulo.ArticuloNro = Convert.ToInt32(row["ItemNro"].ToString());
                 dtFactura.NroItem = Convert.ToInt32(row["Nro"]);
                 dtFactura.Cantidad = Convert.ToInt32(row["Cantidad"].ToString());
                 dtFactura.Precio = Convert.ToInt64(row["Precio"]);
                 dtFactura.PrecioFinal = Convert.ToInt64(row["PrecioFinal"]);
-                DTipoImpuesto ti = new DTipoImpuesto()
+                ETipoImpuesto ti = new ETipoImpuesto()
                 {
                     TipoImpuestoNro = Convert.ToInt32(row["CodTipoImpuesto"])
                 };
@@ -38,10 +40,10 @@ namespace CapaNegocio
         }
 
 
-        public static string Insertar(DFactura CabFactura, DataTable dtDetalleFactura, RegistroPagoFacturacion pagos)
+        public static string Insertar(EFactura CabFactura, DataTable dtDetalleFactura, ERegistroPagoFacturacion pagos)
         {
             DFactura objFactura = new DFactura();
-            List<DDetalleFactura> detalles = new List<DDetalleFactura>();
+            List<EDetalleFactura> detalles = new List<EDetalleFactura>();
             string respuesta = "OK";
             try
             {
@@ -49,14 +51,14 @@ namespace CapaNegocio
                 //DETALLES DE COMPRAS
                 foreach (DataRow row in dtDetalleFactura.Rows)
                 {
-                    DDetalleFactura dtFactura = new DDetalleFactura();
+                    EDetalleFactura dtFactura = new EDetalleFactura();
 
-                    dtFactura.ArticuloNro = Convert.ToInt32(row["ItemNro"].ToString());
+                    dtFactura.Articulo.ArticuloNro = Convert.ToInt32(row["ItemNro"].ToString());
                     dtFactura.NroItem = Convert.ToInt32(row["Nro"]);
                     dtFactura.Cantidad = Convert.ToInt32(row["Cantidad"].ToString());
                     dtFactura.Precio = Convert.ToInt64(row["PrecioInicial"]);
                     dtFactura.PrecioFinal = Convert.ToInt64(row["Precio"]);
-                    DTipoImpuesto ti = new DTipoImpuesto()
+                    ETipoImpuesto ti = new ETipoImpuesto()
                     {
                         TipoImpuestoNro = Convert.ToInt32(row["CodTipoImpuesto"])
                     };
@@ -79,7 +81,7 @@ namespace CapaNegocio
         }
 
 
-        private static string ValidacionPagos(double totalVenta,RegistroPagoFacturacion pagos) 
+        private static string ValidacionPagos(double totalVenta,ERegistroPagoFacturacion pagos) 
         {
             string val = "OK";
             if (pagos != null)
@@ -155,10 +157,10 @@ namespace CapaNegocio
         
         public static string CuentaACobrar(string nrofactura, int cliente)
         {
-            DFactura objFactura = new DFactura();
+            EFactura objFactura = new EFactura();
             objFactura.NroFactura = nrofactura;
             objFactura.ClienteNro = cliente;
-            return objFactura.CuentaACobrar(objFactura);
+            return new DFactura().CuentaACobrar(objFactura);
         }
 
 
@@ -180,15 +182,15 @@ namespace CapaNegocio
 
         public static DataSet MostrarPagoFactura(int nroVenta) 
         {
-            DFactura objFactura = new DFactura();
+            EFactura objFactura = new EFactura();
             objFactura.Id = nroVenta;
-            return objFactura.MostrarPagosFactura(objFactura);
+            return new DFactura().MostrarPagosFactura(objFactura);
         
         }
 
 
 
-        public static Double DesglosarImportesIVA(double importeIVAIncluido, int TipoImpuesto, int cantidadDecimales, string valorARetornar)
+        public static double DesglosarImportesIVA(double importeIVAIncluido, int TipoImpuesto, int cantidadDecimales, string valorARetornar)
         {
             DFactura objFactura = new DFactura();
             return objFactura.DesglosarIVA(importeIVAIncluido,TipoImpuesto,cantidadDecimales,valorARetornar);

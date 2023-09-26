@@ -6,48 +6,19 @@ using System.Threading.Tasks;
 
 using System.Data.SqlClient;
 using System.Data;
-using CapaDatos.Interfaces;
+using CapaEntidades;
 
 namespace CapaDatos
 {
-    public class DProveedor:Conexion, IPersona
+    public class DProveedor:Conexion
     {   
-        public DateTime? FechaAniversario { get; set; }
-        public int PersonaNro { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Documento { get; set; }
-        public DTipoDocumento TipoDocumento { get; set; }
-        public int? CiudadNro { get; set; }
-        public string Direccion { get; set; }
-        public string Telefono { get; set; }
-        public string Email { get; set; }
-        public string Observacion { get; set; }
-        public string RazonSocial { get; set; }
-        public string TextoBuscar { get; set; }
-        public DateTime? FechaNacimiento { get; set; }
-
         public DProveedor()
         {
 
         }
 
-        public DProveedor(int proveedorNro, string razonSocial, string ruc, int ciudadNro, string direccion, string telefono, string email,string representante ,string textobuscar)
-        {
-            this.PersonaNro = proveedorNro;
-            this.RazonSocial = razonSocial;
-            this.Documento = ruc;
-            this.CiudadNro = ciudadNro;
-            this.Direccion = direccion;
-            this.Telefono = telefono;
-            this.Email = email;
-            this.TextoBuscar = textobuscar;
-        }
-
-
-
         //Metodo insertar
-        public string InsertarProveedor(DProveedor Proveedor)
+        public string InsertarProveedor(EProveedor Proveedor)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
@@ -159,7 +130,7 @@ namespace CapaDatos
         }
 
         //Metodo Editar
-        public string EditarProveedor(DProveedor Proveedor)
+        public string EditarProveedor(EProveedor Proveedor)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
@@ -267,7 +238,7 @@ namespace CapaDatos
         }
 
         //Metodo Eliminar
-        public string EliminarProveedor(DProveedor Proveedor)
+        public string EliminarProveedor(int ProveedorId)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
@@ -285,7 +256,7 @@ namespace CapaDatos
                 SqlParameter ParProveedorNro = new SqlParameter();
                 ParProveedorNro.ParameterName = "@ProveedorNro";
                 ParProveedorNro.SqlDbType = SqlDbType.Int;
-                ParProveedorNro.Value = Proveedor.PersonaNro;
+                ParProveedorNro.Value = ProveedorId;
                 SqlCmd.Parameters.Add(ParProveedorNro);
 
                 //ejecutar el comando sql
@@ -409,7 +380,7 @@ namespace CapaDatos
         }
 
 
-        public DataTable BuscarDeudaProveedorDocumento(DProveedor proveedor)
+        public DataTable BuscarDeudaProveedorDocumento(string textoBuscar)
         {
             DataTable DtResultado = new DataTable("Proveedor");
             SqlConnection Sqlcon = new SqlConnection();
@@ -426,7 +397,7 @@ namespace CapaDatos
                 ParTextoBuscar.ParameterName = "@TextoBuscar";
                 ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 ParTextoBuscar.Size = 50;
-                ParTextoBuscar.SqlValue = proveedor.TextoBuscar;
+                ParTextoBuscar.SqlValue = textoBuscar;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
                 //instanciar un DataAdapter

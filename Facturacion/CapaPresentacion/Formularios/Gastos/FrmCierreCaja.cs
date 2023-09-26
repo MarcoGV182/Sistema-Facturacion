@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using CapaNegocio;
 using CapaPresentacion.Utilidades;
+using CapaEntidades;
 
 namespace CapaPresentacion.Formularios.Gastos
 {
@@ -276,7 +277,14 @@ namespace CapaPresentacion.Formularios.Gastos
 
 
                 string rpta = "";
-                rpta = NCaja.CerrarCaja(nroArqueo, fechaCierre, ImporteEntrega, Saldo, Diferencia);
+                ECaja eCaja = new ECaja();          
+                eCaja.NroCaja = nroArqueo;
+                eCaja.FechaCierre = fechaCierre;
+                eCaja.ImporteEntrega = ImporteEntrega;
+                eCaja.SaldoFinal = Saldo;
+                eCaja.Diferencia = Diferencia;
+
+                rpta = NCaja.CerrarCaja(eCaja);
 
                 //si se esta editando el registro    
                 if (rpta.Equals("OK"))

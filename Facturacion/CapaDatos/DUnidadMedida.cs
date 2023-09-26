@@ -6,47 +6,23 @@ using System.Threading.Tasks;
 
 using System.Data.SqlClient;
 using System.Data;
+using System.Reflection.Emit;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DUnidadMedida : Conexion
     {
-        private int _UnidadMedidaNro;
-        private string _Descripcion;
-        private string _TextoBuscar;
+       
 
-        public int UnidadMedidaNro
+        public DUnidadMedida() 
         {
-            get{return _UnidadMedidaNro;}
-            set{_UnidadMedidaNro = value;}
-        }
 
-        public string Descripcion
-        {
-            get{return _Descripcion;}
-            set{_Descripcion = value;}
-        }
-
-        public string TextoBuscar
-        {
-            get { return _TextoBuscar; }
-            set { _TextoBuscar = value; }
-        }
-
-
-        public DUnidadMedida() {
-
-        }
-
-        public DUnidadMedida(int unidadMedidaNro, string descripcion, string textobuscar) {
-            this.UnidadMedidaNro = unidadMedidaNro;
-            this.Descripcion = descripcion;
-            this._TextoBuscar=textobuscar;
         }
 
 
         //Metodo insertar
-        public string InsertarUnidadMedida(DUnidadMedida UnidadMedida)
+        public string InsertarUnidadMedida(EUnidadMedida UnidadMedida)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -94,7 +70,7 @@ namespace CapaDatos
         }
 
         //Metodo Editar
-        public string EditarUnidadMedida(DUnidadMedida UnidadMedida)
+        public string EditarUnidadMedida(EUnidadMedida UnidadMedida)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -139,7 +115,7 @@ namespace CapaDatos
         }
 
         //Metodo Eliminar
-        public string EliminarUnidadMedida(DUnidadMedida UnidadMedida)
+        public string EliminarUnidadMedida(int UnidadMedidaid)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -157,7 +133,7 @@ namespace CapaDatos
                 SqlParameter ParUnidadMedidaNro = new SqlParameter();
                 ParUnidadMedidaNro.ParameterName = "@UnidadMedidaNro";
                 ParUnidadMedidaNro.SqlDbType = SqlDbType.Int;
-                ParUnidadMedidaNro.Value = UnidadMedida.UnidadMedidaNro;
+                ParUnidadMedidaNro.Value = UnidadMedidaid;
                 SqlCmd.Parameters.Add(ParUnidadMedidaNro);
 
                 //ejecutar el comando sql
@@ -204,7 +180,7 @@ namespace CapaDatos
         }
 
         //Metodo Buscar
-        public DataTable BuscarNombre(DUnidadMedida UnidadMedida)
+        public DataTable BuscarNombre(string textoBuscar)
         {
             DataTable DtResultado = new DataTable("UnidadMedida");
             SqlConnection Sqlcon = null;
@@ -221,7 +197,7 @@ namespace CapaDatos
                 ParTextoBuscar.ParameterName = "@TextoBuscar";
                 ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 ParTextoBuscar.Size = 100;
-                ParTextoBuscar.SqlValue = UnidadMedida.TextoBuscar;
+                ParTextoBuscar.SqlValue = textoBuscar;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
                 //instanciar un DataAdapter

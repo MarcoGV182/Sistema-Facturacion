@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntidades;
 using CapaNegocio;
 using CapaPresentacion.Utilidades;
 
@@ -86,7 +87,13 @@ namespace CapaPresentacion
                 }
                 #endregion
 
-                rpta = NCaja.InsertarCaja(this.dtpFechaApertura.Value, Convert.ToInt32(this.id), Convert.ToDouble(this.txtMonto.Text), this.txtObservacion.Text);
+                ECaja eCaja = new ECaja();
+                eCaja.FechaApertura = this.dtpFechaApertura.Value;
+                eCaja.NroCaja = Convert.ToInt32(this.id);
+                eCaja.ImporteApertura = Convert.ToDouble(this.txtMonto.Text);
+                eCaja.Observacion = this.txtObservacion.Text;
+
+                rpta = NCaja.InsertarCaja(eCaja);
                 //si se esta editando el registro    
 
                 if (rpta.Equals("OK"))

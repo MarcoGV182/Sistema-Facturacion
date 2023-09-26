@@ -4,34 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CapaDatos;
+using CapaEntidades;
 
 namespace CapaNegocio
 {
     public class NPagoFactura
     {
-       public static string PagoEfectivo(DPagoFacturaEfectivo pagoefectivo) 
+       public static string PagoEfectivo(EPagoFacturaEfectivo pagoefectivo) 
        {
             DPagoFacturaEfectivo obj = new DPagoFacturaEfectivo();
             return obj.InsertarPagoFacturaEfectivo(pagoefectivo);       
        }
 
 
-        public static string PagoTarjeta(DPagoFacturaTarjeta pagoTarjeta)
+        public static string PagoTarjeta(EPagoFacturaTarjeta pagoTarjeta)
         {
             DPagoFacturaTarjeta obj = new DPagoFacturaTarjeta();
             return obj.InsertarPagoFacturaTarjeta(pagoTarjeta);
         }
 
-        public static string PagoCheque(DPagoFacturaCheque pagocheque)
+        public static string PagoCheque(EPagoFacturaCheque pagocheque)
         {
             DPagoFacturaCheque obj = new DPagoFacturaCheque();            
             return obj.InsertarPagoFacturaCheque(pagocheque);
         }
 
 
-        public static string ModificarPago(int nroVenta, RegistroPagoFacturacion pagos)
+        public static string ModificarPago(int nroVenta, ERegistroPagoFacturacion pagos)
         {
-            RegistroPagoFacturacion obj = new RegistroPagoFacturacion();
+            DRegistroPagoFacturacion obj = new DRegistroPagoFacturacion();
             return obj.EditarPagos(nroVenta, pagos);
         }
     }

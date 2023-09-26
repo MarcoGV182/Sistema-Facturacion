@@ -8,40 +8,27 @@ using System.Data.Sql;
 using CapaDatos;
 using System.Windows.Forms;
 using System.IO.Pipes;
+using CapaEntidades;
 
 namespace CapaNegocio
 {
     public class NCaja
     {
-
-
-       public static string InsertarCaja(DateTime fechaApertura, int personaNro, double monto, string observacion) 
-       {
-            DCaja Obj = new DCaja();
-            Obj.FechaApertura = fechaApertura;
-            Obj.PersonaNro = personaNro;
-            Obj.Observacion = observacion;
-            Obj.Monto = monto;
-            return Obj.InsertarCaja(Obj);
+       public static string InsertarCaja(ECaja ArqueoCaja) 
+       {            
+            return new DCaja().InsertarCaja(ArqueoCaja);
        }
 
        public static string EliminarArqueo(int cajaNro, int usuarioNro)
         {
-            DCaja Obj = new DCaja();
-            Obj.NroCaja = cajaNro;
-            Obj.PersonaNro = usuarioNro;
-            return Obj.EliminarArqueo(Obj);
+            DCaja Obj = new DCaja();          
+            return Obj.EliminarArqueo(cajaNro, usuarioNro);
         }
 
-        public static string CerrarCaja(int nrocaja,DateTime? fechacierre,double importeentrega, double saldofinal, double diferencia)
+        public static string CerrarCaja(ECaja CierreArqueoCaja)
         {
-            DCaja Obj = new DCaja();
-            Obj.NroCaja = nrocaja;
-            Obj.FechaCierre = fechacierre;
-            Obj.ImporteEntrega = importeentrega;
-            Obj.SaldoFinal = saldofinal;
-            Obj.Diferencia = diferencia;           
-            return Obj.CerrarCaja(Obj);
+            DCaja Obj = new DCaja();                 
+            return Obj.CerrarCaja(CierreArqueoCaja);
         }
 
         public static DataTable MostrarSaldo() 

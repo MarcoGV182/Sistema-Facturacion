@@ -6,46 +6,19 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
-using CapaDatos.Interfaces;
+using CapaEntidades;
 
 namespace CapaDatos
 {
-   public class DClientes : Conexion, IPersona
-    {     
-        public string TextoBuscar { get; set; }
-        public int PersonaNro { get; set ; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Documento { get; set; }
-        public DTipoDocumento TipoDocumento { get; set; }       
-        public int? CiudadNro { get; set; }
-        public string Direccion { get; set; }
-        public string Telefono { get; set; }
-        public string Email { get; set; }
-        public string Observacion { get; set; }
-        public DateTime? FechaNacimiento { get; set; }
-        public int Edad { get => CalcularEdad(); }
+   public class DCliente : Conexion
+    {           
 
-        public DClientes() {
+        public DCliente() 
+        {
 
         }
 
-        public DClientes(int clienteNro,string nombre,string apellido,string documento,DateTime? fechaNacimiento,int ciudadNro,string direccion,string telefono,string email,string observacion ,string textobuscar) {
-            this.PersonaNro = clienteNro;
-            this.Nombre = nombre;
-            this.Apellido = apellido;
-            this.Documento = documento;
-            this.FechaNacimiento = fechaNacimiento;
-            this.CiudadNro = ciudadNro;
-            this.Direccion = direccion;
-            this.Telefono = telefono;
-            this.Email = email;
-            this.Observacion = observacion;
-            this.TextoBuscar = textobuscar;
-        }
-
-
-        public string InsertarCliente(DClientes Cliente)
+        public string InsertarCliente(ECliente Cliente)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -162,7 +135,7 @@ namespace CapaDatos
         }
 
 
-        public string EditarCliente(DClientes Cliente)
+        public string EditarCliente(ECliente Cliente)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -277,7 +250,7 @@ namespace CapaDatos
         }
 
         //Metodo Eliminar
-        public string EliminarCliente(DClientes Cliente)
+        public string EliminarCliente(int clienteId)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -295,7 +268,7 @@ namespace CapaDatos
                 SqlParameter ParClienteNro = new SqlParameter();
                 ParClienteNro.ParameterName = "@PersonaNro";
                 ParClienteNro.SqlDbType = SqlDbType.Int;
-                ParClienteNro.Value = Cliente.PersonaNro;
+                ParClienteNro.Value = clienteId;
                 SqlCmd.Parameters.Add(ParClienteNro);
 
                 //ejecutar el comando sql
@@ -453,7 +426,7 @@ namespace CapaDatos
 
 
         //Metodo Buscar
-        public DataTable BuscarNombre(DClientes Cliente)
+        public DataTable BuscarNombre(string ClienteNombre)
         {
             DataTable DtResultado = new DataTable("Cliente");
             SqlConnection Sqlcon = null;
@@ -470,7 +443,7 @@ namespace CapaDatos
                 ParTextoBuscar.ParameterName = "@TextoBuscar";
                 ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 ParTextoBuscar.Size = 50;
-                ParTextoBuscar.SqlValue = Cliente.TextoBuscar;
+                ParTextoBuscar.SqlValue = ClienteNombre;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
                 //instanciar un DataAdapter
@@ -493,7 +466,7 @@ namespace CapaDatos
 
 
         //Metodo Buscar por apellido
-        public DataTable BuscarApellido(DClientes Cliente)
+        public DataTable BuscarApellido(string clienteApellido)
         {
             DataTable DtResultado = new DataTable("Cliente");
             SqlConnection Sqlcon = null;
@@ -510,7 +483,7 @@ namespace CapaDatos
                 ParTextoBuscar.ParameterName = "@TextoBuscar";
                 ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 ParTextoBuscar.Size = 50;
-                ParTextoBuscar.SqlValue = Cliente.TextoBuscar;
+                ParTextoBuscar.SqlValue = clienteApellido;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
                 //instanciar un DataAdapter
@@ -527,7 +500,7 @@ namespace CapaDatos
         }
         
 
-        public DataTable BuscarDocumento(DClientes Cliente)
+        public DataTable BuscarDocumento(string nroDocumentoCliente)
         {
             DataTable DtResultado = new DataTable("Cliente");
             SqlConnection Sqlcon = null;
@@ -544,7 +517,7 @@ namespace CapaDatos
                 ParTextoBuscar.ParameterName = "@TextoBuscar";
                 ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 ParTextoBuscar.Size = 50;
-                ParTextoBuscar.SqlValue = Cliente.TextoBuscar;
+                ParTextoBuscar.SqlValue = nroDocumentoCliente;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
                 //instanciar un DataAdapter
@@ -560,7 +533,7 @@ namespace CapaDatos
         }
 
 
-        public DataTable BuscarDeudaClienteDocumento(DClientes Cliente)
+        public DataTable BuscarDeudaClienteDocumento(string Cliente)
         {
             DataTable DtResultado = new DataTable("Cliente");
             SqlConnection Sqlcon = null;
@@ -577,7 +550,7 @@ namespace CapaDatos
                 ParTextoBuscar.ParameterName = "@TextoBuscar";
                 ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 ParTextoBuscar.Size = 50;
-                ParTextoBuscar.SqlValue = Cliente.TextoBuscar;
+                ParTextoBuscar.SqlValue = Cliente;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
                 //instanciar un DataAdapter
@@ -592,7 +565,7 @@ namespace CapaDatos
         }
 
 
-        public string ImportarExcel(DClientes Cliente)
+        public string ImportarExcel(ECliente Cliente)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -627,7 +600,7 @@ namespace CapaDatos
         }
 
 
-        public string ImportarTexto(DClientes Cliente)
+        public string ImportarTexto(ECliente Cliente)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -662,37 +635,6 @@ namespace CapaDatos
         }
 
 
-        public int CalcularEdad()
-        {
-            // Obtiene la fecha actual:
-            DateTime fechaActual = DateTime.Today;
-
-            
-            if (FechaNacimiento.Value == null)
-            {
-                return 0;
-            }
-
-            // Comprueba que la se haya introducido una fecha válida; si 
-            // la fecha de nacimiento es mayor a la fecha actual se muestra mensaje 
-            // de advertencia:
-            if (FechaNacimiento.Value > fechaActual)
-            {
-                return 0;
-            }
-            else
-            {
-                int edad = fechaActual.Year - FechaNacimiento.Value.Year;
-
-                // Comprueba que el mes de la fecha de nacimiento es mayor 
-                // que el mes de la fecha actual:
-                if (FechaNacimiento.Value.Month > fechaActual.Month)
-                {
-                    --edad;
-                }
-
-                return edad;
-            }
-        }
+        
     }
 }

@@ -5,33 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 using CapaDatos;
 using System.Data;
+using CapaEntidades;
+
 namespace CapaNegocio
 {
     public class NNumeracionFactura
     {
-        public static string Insertar(DNumeracionComprobante numeracionComprobante) 
+        public static string Insertar(ENumeracionComprobante numeracionComprobante) 
         {
             DNumeracionComprobante obj = new DNumeracionComprobante();            
             return obj.InsertarNumeracion(numeracionComprobante);
         }
 
-        public static string Insertar(DTimbrado timbrado,List<DNumeracionComprobante> ListaNumeracion)
+        public static string Insertar(ETimbrado timbrado,List<ENumeracionComprobante> ListaNumeracion)
         {
             DTimbrado obj = new DTimbrado();
             return obj.InsertarNumeracionTimbrado(timbrado, ListaNumeracion);
         }
 
-        public static string Editar(DTimbrado timbrado, List<DNumeracionComprobante> ListaNumeracion)
+        public static string Editar(ETimbrado timbrado, List<ENumeracionComprobante> ListaNumeracion)
         {
             DNumeracionComprobante obj = new DNumeracionComprobante();           
             return obj.EditarNumeracion(timbrado, ListaNumeracion);
         }
 
         public static string Eliminar(int id)
-        {
-            DNumeracionComprobante obj = new DNumeracionComprobante();
-            obj.Id=id;
-            return obj.EliminarNumeracion(obj);
+        {          
+            return new DNumeracionComprobante().EliminarNumeracion(id);
         }
 
 

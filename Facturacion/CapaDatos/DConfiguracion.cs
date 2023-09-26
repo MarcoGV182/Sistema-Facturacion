@@ -5,27 +5,23 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DConfiguracion:Conexion
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Valor { get; set; }
-        public string Observacion { get; set; }
-
         public DConfiguracion()
         {
             
         }
 
 
-        public DConfiguracion GetConfiguracion(string nombre)
+        public EConfiguracion GetConfiguracion(string nombre)
         {
             DataTable DtResultado = new DataTable("Configuracion");
             SqlConnection Sqlcon = new SqlConnection();
-            DConfiguracion result = null;
+            EConfiguracion result = null;
             try
             {
                 Sqlcon = AbrirConexion();
@@ -41,7 +37,7 @@ namespace CapaDatos
 
                 foreach (DataRow item in DtResultado.Rows)
                 {
-                    result = new DConfiguracion();
+                    result = new EConfiguracion();
                     result.Id = Convert.ToInt32(item["Id"]);
                     result.Nombre = item["Nombre"].ToString();
                     result.Valor = item["Valor"].ToString();

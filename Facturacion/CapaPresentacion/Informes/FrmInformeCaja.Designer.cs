@@ -114,7 +114,7 @@ namespace CapaPresentacion
             // 
             // dCajaBindingSource
             // 
-            this.dCajaBindingSource.DataSource = typeof(CapaDatos.DCaja);
+            this.dCajaBindingSource.DataSource = typeof(CapaEntidades.ECaja);
             // 
             // FrmInformeCaja
             // 

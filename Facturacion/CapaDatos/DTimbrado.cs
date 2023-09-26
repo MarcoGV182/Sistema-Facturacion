@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaEntidades;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,13 +11,6 @@ namespace CapaDatos
 {
     public class DTimbrado:Conexion
     {
-        public int IdTimbrado { get; set; }
-        public string NroTimbrado { get; set; }
-        public string FechaInicioVigencia { get; set; }
-        public string FechaFinVigencia { get; set; }
-        public string Ind_Autoimprenta { get; set; }
-        public string Estado { get; set; }
-
 
         public DTimbrado()
         {
@@ -25,10 +19,12 @@ namespace CapaDatos
 
 
         //Metodo Insertar
-        public string InsertarTimbrado(DTimbrado timbrado, SqlConnection sqlExistente = null, SqlTransaction sqltranExistente = null)
+        public int InsertarTimbrado(ETimbrado timbrado, 
+                                   SqlConnection sqlExistente = null, 
+                                   SqlTransaction sqltranExistente = null)
         {
             #region Variables
-            string rpta = "OK";
+            int rpta = 0;
             SqlConnection Sqlcon = null;
             SqlTransaction sqltran = null;
             #endregion
@@ -91,7 +87,7 @@ namespace CapaDatos
                 SqlCmd.ExecuteNonQuery();
 
 
-                timbrado.IdTimbrado = Convert.ToInt32(SqlCmd.Parameters["@Id"].Value);
+                rpta = Convert.ToInt32(SqlCmd.Parameters["@Id"].Value);
 
                 if (sqltranExistente == null)
                     sqltran.Commit();
@@ -100,7 +96,7 @@ namespace CapaDatos
             {
                 if (sqltranExistente == null)
                     sqltran.Rollback();
-                rpta = ex.Message;
+                throw ex;
             }
             finally
             {
@@ -110,7 +106,7 @@ namespace CapaDatos
         }
 
 
-        public string InsertarNumeracionTimbrado(DTimbrado timbrado,List<DNumeracionComprobante> Listanumeracion) 
+        public string InsertarNumeracionTimbrado(ETimbrado timbrado, List<ENumeracionComprobante> Listanumeracion) 
         {
             #region Variables
             string rpta = "OK";
@@ -129,16 +125,16 @@ namespace CapaDatos
                 SqlCmd.Transaction = sqltran;
 
 
-                rpta = InsertarTimbrado(timbrado, Sqlcon, sqltran);
+                var idTimbrado = InsertarTimbrado(timbrado, Sqlcon, sqltran);
 
-                if (!rpta.Equals("OK"))
-                    throw new Exception(rpta);
+                if (idTimbrado == 0)
+                    throw new Exception("El timbrado no fue");
 
 
                 foreach (var item in Listanumeracion)
                 {
-                    DNumeracionComprobante num = new DNumeracionComprobante();
-                    item.Timbrado.IdTimbrado = timbrado.IdTimbrado;
+                    DNumeracionComprobante num = new DNumeracionComprobante();                    
+                    item.Timbrado.IdTimbrado = idTimbrado;
                     rpta = num.InsertarNumeracion(item, Sqlcon, sqltran);
 
                     if (!rpta.Equals("OK"))

@@ -1,33 +1,16 @@
-﻿using CapaDatos.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CapaEntidades;
 
 namespace CapaDatos
 {
-    public class DColaborador : Conexion, IPersona
+    public class DColaborador : Conexion
     {
-        public int PersonaNro { get ; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Documento { get; set; }
-        public DTipoDocumento TipoDocumento { get; set; }
-        public int? CiudadNro { get; set; }
-        public string Direccion { get; set; }
-        public string Telefono { get; set; }
-        public string Email { get; set; }
-        public string Estado { get; set; }
-        public string Observacion { get; set; }
-        public DateTime? FechaNacimiento { get; set; }
-        public DUsuarios Usuario { get; set; }
-        public DateTime FechaIngreso { get; set; }
-        public DateTime? FechaEgreso { get; set; }
-        public double Salario { get; set; }
-
 
         public DColaborador()
         {
@@ -36,7 +19,7 @@ namespace CapaDatos
 
 
         //Metodo Insertar
-        public string InsertarColaborador(DColaborador Colaborador)
+        public string InsertarColaborador(EColaborador colaborador)
         {
             //declarar variable respuesta
             string rpta = "OK";
@@ -58,7 +41,7 @@ namespace CapaDatos
                 ParNombre.ParameterName = "@Nombre";
                 ParNombre.SqlDbType = SqlDbType.VarChar;
                 ParNombre.Size = 100;
-                ParNombre.Value = Colaborador.Nombre;
+                ParNombre.Value = colaborador.Nombre;
                 SqlCmd.Parameters.Add(ParNombre);
 
                 //Parametros Apellido
@@ -66,7 +49,7 @@ namespace CapaDatos
                 ParApellido.ParameterName = "@Apellido";
                 ParApellido.SqlDbType = SqlDbType.VarChar;
                 ParApellido.Size = 100;
-                ParApellido.Value = Colaborador.Apellido;
+                ParApellido.Value = colaborador.Apellido;
                 SqlCmd.Parameters.Add(ParApellido);
 
                 //Parametros Documento
@@ -74,21 +57,21 @@ namespace CapaDatos
                 ParDocumento.ParameterName = "@documento";
                 ParDocumento.SqlDbType = SqlDbType.VarChar;
                 ParDocumento.Size = 10;
-                ParDocumento.Value = Colaborador.Documento;
+                ParDocumento.Value = colaborador.Documento;
                 SqlCmd.Parameters.Add(ParDocumento);
 
                 //Parametros Fecha Nacimiento
                 SqlParameter ParFechaNacimiento = new SqlParameter();
                 ParFechaNacimiento.ParameterName = "@fechaNacimiento";
                 ParFechaNacimiento.SqlDbType = SqlDbType.Date;
-                ParFechaNacimiento.Value = Colaborador.FechaNacimiento == null ? (DateTime?)null : Colaborador.FechaNacimiento.Value.Date;
+                ParFechaNacimiento.Value = colaborador.FechaNacimiento;
                 SqlCmd.Parameters.Add(ParFechaNacimiento);
 
                 //Parametros Ciudad
                 SqlParameter ParCiudad = new SqlParameter();
                 ParCiudad.ParameterName = "@CiudadNro";
                 ParCiudad.SqlDbType = SqlDbType.Int;
-                ParCiudad.Value = Colaborador.CiudadNro;
+                ParCiudad.Value = colaborador.CiudadNro;
                 SqlCmd.Parameters.Add(ParCiudad);
 
                 //Parametros Direccion
@@ -96,7 +79,7 @@ namespace CapaDatos
                 ParDireccion.ParameterName = "@Direccion";
                 ParDireccion.SqlDbType = SqlDbType.VarChar;
                 ParDireccion.Size = 250;
-                ParDireccion.Value = Colaborador.Direccion;
+                ParDireccion.Value = colaborador.Direccion;
                 SqlCmd.Parameters.Add(ParDireccion);
 
                 //Parametros Telefono
@@ -104,7 +87,7 @@ namespace CapaDatos
                 ParTelefono.ParameterName = "@Telefono";
                 ParTelefono.SqlDbType = SqlDbType.VarChar;
                 ParTelefono.Size = 50;
-                ParTelefono.Value = Colaborador.Telefono;
+                ParTelefono.Value = colaborador.Telefono;
                 SqlCmd.Parameters.Add(ParTelefono);
 
                 //Parametros Email
@@ -112,7 +95,7 @@ namespace CapaDatos
                 ParEmail.ParameterName = "@Email";
                 ParEmail.SqlDbType = SqlDbType.VarChar;
                 ParEmail.Size = 50;
-                ParEmail.Value = Colaborador.Email;
+                ParEmail.Value = colaborador.Email;
                 SqlCmd.Parameters.Add(ParEmail);
 
                 //Parametros Estado
@@ -120,7 +103,7 @@ namespace CapaDatos
                 ParEstado.ParameterName = "@Estado";
                 ParEstado.SqlDbType = SqlDbType.VarChar;
                 ParEstado.Size = 8;
-                ParEstado.Value = Colaborador.Estado;
+                ParEstado.Value = colaborador.Estado;
                 SqlCmd.Parameters.Add(ParEstado);
 
                 //Parametros Observacion
@@ -128,31 +111,21 @@ namespace CapaDatos
                 ParObservacion.ParameterName = "@Observacion";
                 ParObservacion.SqlDbType = SqlDbType.VarChar;
                 ParObservacion.Size = 250;
-                ParObservacion.Value = Colaborador.Observacion;
+                ParObservacion.Value = colaborador.Observacion;
                 SqlCmd.Parameters.Add(ParObservacion);
 
                 SqlParameter ParFechaIngreso = new SqlParameter();
                 ParFechaIngreso.ParameterName = "@FechaIngreso";
                 ParFechaIngreso.SqlDbType = SqlDbType.Date;
-                ParFechaIngreso.Value = Colaborador.FechaIngreso.Date;
+                ParFechaIngreso.Value = colaborador.FechaIngreso;
                 SqlCmd.Parameters.Add(ParFechaIngreso);
 
                 
                 SqlParameter ParFechaEgreso = new SqlParameter();
                 ParFechaEgreso.ParameterName = "@FechaEgreso";
                 ParFechaEgreso.SqlDbType = SqlDbType.Date;
-                ParFechaEgreso.Value = Colaborador.FechaEgreso;
+                ParFechaEgreso.Value = colaborador.FechaEgreso;
                 SqlCmd.Parameters.Add(ParFechaEgreso);
-
-
-
-                /*//Parametro de Salario
-                SqlParameter ParSalario = new SqlParameter();
-                ParSalario.ParameterName = "@Salario";
-                ParSalario.SqlDbType = SqlDbType.Decimal;
-                ParSalario.Value = Usuario.Sueldo;
-                SqlCmd.Parameters.Add(ParSalario);*/
-
 
                 //ejecutar el comando sql
                 SqlCmd.ExecuteNonQuery();
@@ -171,7 +144,7 @@ namespace CapaDatos
 
 
         //Metodo Editar
-        public string EditarColaborador(DColaborador colaborador)
+        public string EditarColaborador(EColaborador colaborador)
         {
             //declarar variable respuesta
             string rpta = "OK";
@@ -288,15 +261,6 @@ namespace CapaDatos
                 SqlCmd.Parameters.Add(ParFechaEgreso);
 
 
-
-                /*//Parametro de Salario
-                SqlParameter ParSalario = new SqlParameter();
-                ParSalario.ParameterName = "@Salario";
-                ParSalario.SqlDbType = SqlDbType.Decimal;
-                ParSalario.Value = Usuario.Sueldo;
-                SqlCmd.Parameters.Add(ParSalario);*/
-
-
                 //ejecutar el comando sql                
                 SqlCmd.ExecuteNonQuery();
                 SqlCmd.Transaction.Commit();
@@ -356,7 +320,7 @@ namespace CapaDatos
                 Sqlcon = AbrirConexion();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "MostrarListaColaboradorActivo";
+                SqlCmd.CommandText = "sp_MostrarListaColaboradorActivo";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);

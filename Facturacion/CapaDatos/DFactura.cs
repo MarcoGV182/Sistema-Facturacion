@@ -8,63 +8,24 @@ using System.Data.SqlClient;
 using System.Data;
 using CapaDatos;
 using System.Diagnostics;
-using CapaDatos.Interfaces;
+using CapaEntidades;
 
 namespace CapaDatos
 {
-    public class DFactura : Conexion,IDocumento
+    public class DFactura : Conexion
     {
-        public int Id { get; set; }
-        public int Establecimiento { get; set; }
-        public int PuntoExpedicion { get; set; }
-        public int Numero { get; set; }
-        public string NroFactura { get; set; }
-        public int ClienteNro { get; set; }
-        public string NombreCliente { get; set; }
-        public DateTime Fecha { get; set; }
-        public int CodTipoPago { get; set; }
-        public int TipoComprobanteNro { get; set; }
-        public string Estado { get; set; }
-        public DTimbrado Timbrado { get; set; }
-        public string Observacion { get; set; }
-        public string Usuario { get; set; }
-        public int? Vendedor { get; set; }
-        public int? CantCuota { get; set; }
-        public int NroOrden { get; set; }
-        public string Ind_Autoimprenta { get; set; }
-
 
         public DFactura() { }
 
-        public DFactura(int nroVenta,string nroFactura,int clienteNro,string nombrecliente,int establecimiento,int puntoexpedicion, int numero,DTimbrado timbrado,DateTime fecha,int codtipopago,int tipoComprobante,string estado,string observacion, string usuario) 
-        {
-            this.Id = nroVenta;
-            this.NroFactura = nroFactura;
-            this.ClienteNro = clienteNro;
-            this.NombreCliente = nombrecliente;
-            this.Establecimiento = establecimiento;
-            this.PuntoExpedicion = puntoexpedicion;
-            this.Numero = numero;
-            this.Timbrado = timbrado;
-            this.Fecha = fecha;
-            this.CodTipoPago = codtipopago;
-            this.TipoComprobanteNro = tipoComprobante;
-            this.Estado = estado;
-            this.Observacion = observacion;
-            this.Usuario = usuario;
-        }
-
 
         //Metodo insertar
-        public string InsertarFactura(DFactura Factura, List<DDetalleFactura> DetalleFactura)
+        public string InsertarFactura(EFactura Factura, List<EDetalleFactura> DetalleFactura)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
             try
             {
                 //codigo
-                /*Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();*/
                 Sqlcon = AbrirConexion();
                 //establecer la transaccion
                 SqlTransaction Sqltran = Sqlcon.BeginTransaction();
@@ -75,6 +36,7 @@ namespace CapaDatos
                 SqlCmd.CommandText = "sp_InsertarFactura";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
+                #region Parametros Registro Factura
                 //Parametros 
                 SqlParameter ParNroVenta = new SqlParameter();
                 ParNroVenta.ParameterName = "@NroVenta";
@@ -194,7 +156,7 @@ namespace CapaDatos
                 ParEstado.Size = 9;
                 ParEstado.Value = Factura.Estado;
                 SqlCmd.Parameters.Add(ParEstado);
-               
+
 
                 //Parametros Estado
                 SqlParameter ParObservacion = new SqlParameter();
@@ -210,7 +172,9 @@ namespace CapaDatos
                 ParUsuario.SqlDbType = SqlDbType.VarChar;
                 ParObservacion.Size = 50;
                 ParUsuario.Value = Factura.Usuario;
-                SqlCmd.Parameters.Add(ParUsuario);               
+                SqlCmd.Parameters.Add(ParUsuario);
+                #endregion
+
 
                 //ejecutar el comando sql
                 rpta = SqlCmd.ExecuteNonQuery() >= 1 ? "OK" : "No se inserto el registro";
@@ -218,13 +182,14 @@ namespace CapaDatos
                 if (rpta.Equals("OK"))
                 {
                     //Obtener el NroCompra
-                    this.Id = Convert.ToInt32(SqlCmd.Parameters["@NroVenta"].Value);                    
-                    foreach (DDetalleFactura det in DetalleFactura)
+                    Factura.Id = Convert.ToInt32(SqlCmd.Parameters["@NroVenta"].Value);                    
+                    foreach (EDetalleFactura det in DetalleFactura)
                     {
-                        det.NroVenta = this.Id;
+                        DDetalleFactura dDetalleFactura = new DDetalleFactura();
+                        det.NroVenta = Factura.Id;
 
                         //Llamar al metodo insertar
-                        rpta = det.InsertarDetalleFactura(det, ref Sqlcon, ref Sqltran);
+                        rpta = dDetalleFactura.InsertarDetalleFactura(det, ref Sqlcon, ref Sqltran);
                         if (!rpta.Equals("OK"))
                         {
                             break;
@@ -232,13 +197,13 @@ namespace CapaDatos
                         else 
                         {
                         //descontar stock
-                            this.DisminuirStock(det.ArticuloNro, det.Cantidad, Sqlcon, Sqltran);
+                            this.DisminuirStock(det.Articulo.ArticuloNro, det.Cantidad, Sqlcon, Sqltran);
                         }
                     }
                 }
                 if (rpta.Equals("OK"))
                 {
-                    rpta = $"{this.Id};OK";
+                    rpta = $"{Factura.Id};OK";
                     Sqltran.Commit();
                 }
                 else
@@ -263,18 +228,16 @@ namespace CapaDatos
 
 
         //Metodo insertar
-        public string RegistrarFacturacion(DFactura Factura, 
-                                          List<DDetalleFactura> DetalleFactura,
-                                          RegistroPagoFacturacion pagos)
+        public string RegistrarFacturacion(EFactura Factura, 
+                                          List<EDetalleFactura> DetalleFactura,
+                                          ERegistroPagoFacturacion pagos)
         {
             string rpta = "OK";
             SqlConnection Sqlcon = new SqlConnection();
             SqlTransaction Sqltran = null;
             try
             {
-                //codigo
-                /*Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                Sqlcon.Open();*/
+                //codigo                
                 Sqlcon = AbrirConexion();
                 //establecer la transaccion
                 Sqltran = Sqlcon.BeginTransaction();
@@ -285,6 +248,7 @@ namespace CapaDatos
                 SqlCmd.CommandText = "sp_InsertarFactura";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
+                #region Parametros Registro Factura
                 //Parametros 
                 SqlParameter ParNroVenta = new SqlParameter();
                 ParNroVenta.ParameterName = "@NroVenta";
@@ -403,6 +367,7 @@ namespace CapaDatos
                 ParEstado.Value = Factura.Estado;
                 SqlCmd.Parameters.Add(ParEstado);
 
+                //Parametros Indicador Autoimprenta
                 SqlParameter ParIndAutoimprenta = new SqlParameter();
                 ParIndAutoimprenta.ParameterName = "@Ind_Autoimprenta";
                 ParIndAutoimprenta.SqlDbType = SqlDbType.VarChar;
@@ -410,7 +375,7 @@ namespace CapaDatos
                 SqlCmd.Parameters.Add(ParIndAutoimprenta);
 
 
-                //Parametros Estado
+                //Parametros Observacion
                 SqlParameter ParObservacion = new SqlParameter();
                 ParObservacion.ParameterName = "@Observacion";
                 ParObservacion.SqlDbType = SqlDbType.VarChar;
@@ -425,6 +390,7 @@ namespace CapaDatos
                 ParObservacion.Size = 50;
                 ParUsuario.Value = Factura.Usuario;
                 SqlCmd.Parameters.Add(ParUsuario);
+                #endregion
 
                 //ejecutar el comando sql
                 SqlCmd.ExecuteNonQuery();
@@ -433,18 +399,19 @@ namespace CapaDatos
                 {
                     #region Registrar DetalleFactura
                     //Obtener el NroVenta
-                    this.Id = Convert.ToInt32(SqlCmd.Parameters["@NroVenta"].Value);
-                    foreach (DDetalleFactura det in DetalleFactura)
+                    Factura.Id = Convert.ToInt32(SqlCmd.Parameters["@NroVenta"].Value);
+                    foreach (EDetalleFactura det in DetalleFactura)
                     {
-                        det.NroVenta = this.Id;
+                        DDetalleFactura dDetalleFactura = new DDetalleFactura();
+                        det.NroVenta = Factura.Id;
 
                         //Llamar al metodo insertar
-                        rpta = det.InsertarDetalleFactura(det, ref Sqlcon, ref Sqltran);
+                        rpta = dDetalleFactura.InsertarDetalleFactura(det, ref Sqlcon, ref Sqltran);
                         if (!rpta.Equals("OK"))
                             break;
                         else
                             //descontar stock
-                            this.DisminuirStock(det.ArticuloNro, det.Cantidad, Sqlcon, Sqltran);
+                            this.DisminuirStock(det.Articulo.ArticuloNro, det.Cantidad, Sqlcon, Sqltran);
                     }
                     #endregion
 
@@ -454,7 +421,7 @@ namespace CapaDatos
                         if (pagos.Efectivo != null)
                         {
                             DPagoFacturaEfectivo ef = new DPagoFacturaEfectivo();
-                            pagos.Efectivo.NroVenta = this.Id;
+                            pagos.Efectivo.NroVenta = Factura.Id;
                             rpta = ef.InsertarPagoFacturaEfectivo(pagos.Efectivo, Sqlcon, Sqltran);
                             if (!rpta.Equals("OK"))
                                 throw new Exception(rpta);
@@ -464,7 +431,7 @@ namespace CapaDatos
                         if (pagos.Tarjeta != null)
                         {
                             DPagoFacturaTarjeta tj = new DPagoFacturaTarjeta();
-                            pagos.Tarjeta.NroVenta = this.Id;
+                            pagos.Tarjeta.NroVenta = Factura.Id;
                             rpta = tj.InsertarPagoFacturaTarjeta(pagos.Tarjeta, Sqlcon, Sqltran);
                             if (!rpta.Equals("OK"))
                                 throw new Exception(rpta);
@@ -473,7 +440,7 @@ namespace CapaDatos
                         if (pagos.Cheque != null)
                         {
                             DPagoFacturaCheque cq = new DPagoFacturaCheque();
-                            pagos.Cheque.NroVenta = this.Id;
+                            pagos.Cheque.NroVenta = Factura.Id;
                             rpta = cq.InsertarPagoFacturaCheque(pagos.Cheque, Sqlcon, Sqltran);
                             if (!rpta.Equals("OK"))
                                 throw new Exception(rpta);
@@ -482,7 +449,7 @@ namespace CapaDatos
                         if (pagos.Otro != null)
                         {
                             DPagoFacturaOtros ot = new DPagoFacturaOtros();
-                            pagos.Otro.NroVenta = this.Id;
+                            pagos.Otro.NroVenta = Factura.Id;
                             rpta = ot.InsertarPagoFacturaOtros(pagos.Otro, Sqlcon, Sqltran);
                             if (!rpta.Equals("OK"))
                                 throw new Exception(rpta);
@@ -492,7 +459,7 @@ namespace CapaDatos
                 }
                 if (rpta.Equals("OK"))
                 {
-                    rpta = $"{this.Id};OK";
+                    rpta = $"{Factura.Id};OK";
                     Sqltran.Commit();
                 }
                 else
@@ -618,7 +585,7 @@ namespace CapaDatos
 
 
         //Actualizar estado de CUENTAPORCOBRAR 
-        public string CuentaACobrar(DFactura Factura)
+        public string CuentaACobrar(EFactura Factura)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
@@ -648,8 +615,6 @@ namespace CapaDatos
                 ParClienteNro.Value =Factura.ClienteNro;
                 SqlCmd.Parameters.Add(ParClienteNro);
 
-
-
                 //ejecutar el comando sql
                 rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se actualizo la Venta";
             }
@@ -659,8 +624,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -780,8 +744,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
             return rpta;
         }
@@ -837,6 +800,10 @@ namespace CapaDatos
             {
                 DtResultado = null;
             }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
+            }
             return DtResultado;
         }
 
@@ -888,10 +855,10 @@ namespace CapaDatos
 
 
         //Metodo Numeracion de Factura
-        public DataSet MostrarPagosFactura(DFactura Factura)
+        public DataSet MostrarPagosFactura(EFactura Factura)
         {
             DataSet DtResultado = new DataSet("DsPagos");
-            SqlConnection Sqlcon = new SqlConnection();
+            SqlConnection Sqlcon = null;
             try
             {
                 Sqlcon = AbrirConexion();
@@ -916,6 +883,10 @@ namespace CapaDatos
             catch (Exception)
             {
                 DtResultado = null;
+            }
+            finally 
+            {
+                CerrarConexion(Sqlcon);
             }
             return DtResultado;
         }

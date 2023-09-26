@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaDatos.Interfaces
+namespace CapaEntidades.Interfaces
 {
     public interface IDocumento
     {
@@ -12,9 +12,6 @@ namespace CapaDatos.Interfaces
         int Establecimiento { get; set; }
         int PuntoExpedicion { get; set; }
         int Numero { get; set; }
-
-
-        string Anular(int id,int usuario);
     }
 
    

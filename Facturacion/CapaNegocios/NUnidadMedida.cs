@@ -6,32 +6,29 @@ using System.Threading.Tasks;
 
 using CapaDatos;
 using System.Data;
-
+using CapaEntidades;
 
 namespace CapaNegocio
 {
     public class NUnidadMedida
     {
-         public static string Insertar(string descripcion) {
+         public static string Insertar(EUnidadMedida eUnidadMedida) {
             DUnidadMedida objUnidadMedida = new DUnidadMedida();
-            objUnidadMedida.Descripcion = descripcion;
-            return objUnidadMedida.InsertarUnidadMedida(objUnidadMedida);
+            return objUnidadMedida.InsertarUnidadMedida(eUnidadMedida);
         }
 
 
-        public static string Editar(int UnidadMedidaNro,string descripcion) {
+        public static string Editar(EUnidadMedida eUnidadMedida)
+        {
             DUnidadMedida objUnidadMedida = new DUnidadMedida();
-            objUnidadMedida.UnidadMedidaNro = UnidadMedidaNro;
-            objUnidadMedida.Descripcion = descripcion;
-            return objUnidadMedida.EditarUnidadMedida(objUnidadMedida);
+            return objUnidadMedida.EditarUnidadMedida(eUnidadMedida);
         }
 
         //Metodo para eliminar que llama al metodo eliminar de la capa Datos
         public static string Eliminar(int UnidadMedidaNro)
         {
             DUnidadMedida objUnidadMedida = new DUnidadMedida();
-            objUnidadMedida.UnidadMedidaNro = UnidadMedidaNro;
-            return objUnidadMedida.EliminarUnidadMedida(objUnidadMedida);
+            return objUnidadMedida.EliminarUnidadMedida(UnidadMedidaNro);
         }
 
 
@@ -46,8 +43,7 @@ namespace CapaNegocio
         public static DataTable BuscarDescripcion(string textoBuscar)
         {
             DUnidadMedida objUnidadMedida = new DUnidadMedida();
-            objUnidadMedida.TextoBuscar = textoBuscar;
-            return objUnidadMedida.BuscarNombre(objUnidadMedida);
+            return objUnidadMedida.BuscarNombre(textoBuscar);
         }
 
     }

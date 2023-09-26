@@ -110,7 +110,7 @@ namespace CapaPresentacion.Formularios.Herramientas
                     {
                         foreach (DataGridViewRow row in dataExcel.Rows)
                         {
-                            NCliente.ImportarExcel(Convert.ToString(row.Cells["Nombre"].Value), Convert.ToString(row.Cells["Apellido"].Value), Convert.ToString(row.Cells["Documento"].Value));
+                            //NCliente.ImportarExcel(Convert.ToString(row.Cells["Nombre"].Value), Convert.ToString(row.Cells["Apellido"].Value), Convert.ToString(row.Cells["Documento"].Value));
                         }
                         MensajeOK("Se han insertado correctamente los datos");
                     }

@@ -1,5 +1,6 @@
 ﻿using CapaDatos;
 using CapaDatos.Reporting;
+using CapaEntidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,7 +14,7 @@ namespace CapaNegocio.Reporting
     {
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
-        public List<DCaja> ListaArqueos { get; set; }
+        public List<ECaja> ListaArqueos { get; set; }
         public DateTime FechaReport { get; set; }
         public double TotalApertura { get; private set; }
         public double TotalEntrega { get; private set; }
@@ -36,18 +37,18 @@ namespace CapaNegocio.Reporting
                 FechaReport = DateTime.Now;
 
                 //Carga de Lista DetalleVentas
-                ListaArqueos = new List<DCaja>();
+                ListaArqueos = new List<ECaja>();
                 DInformeCaja r = new DInformeCaja();
                 var DtReporte = r.ResumenCajaPorFecha(FechaInicio, FechaFin);
                 foreach (DataRow row in DtReporte.Rows)
                 {
-                    DCaja nCajas = new DCaja()
+                    ECaja nCajas = new ECaja()
                     {
                         NroCaja = Convert.ToInt32(row[0]),
                         UsuarioLogin = row[1].ToString(),
                         FechaApertura =  Convert.ToDateTime(row[2]),
                         FechaCierre = Convert.ToDateTime(row[3]),
-                        Monto = Convert.ToDouble(row[4]),
+                        ImporteApertura = Convert.ToDouble(row[4]),
                         ImporteEntrega = Convert.ToDouble(row[5]),
                         SaldoFinal = Convert.ToDouble(row[6]),
                         Diferencia = Convert.ToDouble(row[7]),
@@ -59,7 +60,7 @@ namespace CapaNegocio.Reporting
                 }
 
                 //Carga variables de totales
-                TotalApertura = ListaArqueos.Sum(c => c.Monto);
+                TotalApertura = ListaArqueos.Sum(c => c.ImporteApertura);
                 TotalEntrega = ListaArqueos.Sum(c => c.ImporteEntrega);
                 TotalSaldo = ListaArqueos.Sum(c => c.SaldoFinal);
                 TotalDiferencia = ListaArqueos.Sum(c => c.Diferencia);

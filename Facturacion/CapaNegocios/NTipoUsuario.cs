@@ -5,18 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using CapaDatos;
+using CapaEntidades;
 
 namespace CapaNegocio
 {
     public class NTipoUsuario
     {
         //INSERTAR FILA
-        public static string Insertar(DRol rol) {
+        public static string Insertar(ERol rol) {
             DRol obj = new DRol();
             return obj.InsertarTipoUsuario(rol);
         }
         //EDITAR FILA
-        public static string Editar(DRol rol)
+        public static string Editar(ERol rol)
         {
             DRol obj = new DRol();
             return obj.EditarTipoUsuario(rol);
@@ -27,8 +28,7 @@ namespace CapaNegocio
         public static string Eliminar(int tipousuarionro)
         {
             DRol obj = new DRol();
-            obj.IdRol = tipousuarionro;
-            return obj.EliminarTipoUsuario(obj);
+            return obj.EliminarTipoUsuario(tipousuarionro);
         }
 
         //MOSTRAR DATOS

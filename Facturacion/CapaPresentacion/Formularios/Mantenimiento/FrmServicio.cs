@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaDatos;
+using CapaEntidades;
 using CapaNegocio;
 using CapaPresentacion.Utilidades;
 using Microsoft.Office.Interop.Excel;
@@ -21,6 +21,7 @@ namespace CapaPresentacion
 
         private bool IsNuevo = false;
         private bool IsEditar = false;
+        private List<EServicio> listServicio = new List<EServicio>();
 
         private static FrmServicio _Instancia;
         public static FrmServicio _GetInstancia() {
@@ -60,6 +61,113 @@ namespace CapaPresentacion
             this.txtObservacion.Text = string.Empty;
         }
 
+        private void CrearColumnasDataGrid() 
+        {
+            dataListado.AutoGenerateColumns = false;
+
+            //Configurar las columnas de servicios
+            DataGridViewTextBoxColumn columnaId = new DataGridViewTextBoxColumn();
+            columnaId.DataPropertyName = "ServicioNro";
+            columnaId.HeaderText = "Codigo";
+            dataListado.Columns.Add(columnaId);
+
+            DataGridViewTextBoxColumn columnDescripcion = new DataGridViewTextBoxColumn();
+            columnDescripcion.DataPropertyName = "Descripcion";
+            columnDescripcion.HeaderText = "Servicio";
+            dataListado.Columns.Add(columnDescripcion);
+
+            DataGridViewTextBoxColumn TipoServicioId = new DataGridViewTextBoxColumn();
+            TipoServicioId.DataPropertyName = "TipoServicio.TipoServicioNro";
+            TipoServicioId.HeaderText = "TipoServicioNro";
+            dataListado.Columns.Add(TipoServicioId);
+
+
+            DataGridViewTextBoxColumn TipoServicioDescripcion = new DataGridViewTextBoxColumn();
+            TipoServicioDescripcion.DataPropertyName = "TipoServicio.Descripcion";
+            TipoServicioDescripcion.HeaderText = "TipoServicio";
+            dataListado.Columns.Add(TipoServicioDescripcion);
+
+            DataGridViewTextBoxColumn TipoImpuestoId = new DataGridViewTextBoxColumn();
+            TipoImpuestoId.DataPropertyName = "TipoImpuesto.TipoImpuestoNro";
+            TipoImpuestoId.HeaderText = "TipoImpuestoNro";
+            dataListado.Columns.Add(TipoImpuestoId);
+
+            DataGridViewTextBoxColumn TipoImpuestoDescripcion = new DataGridViewTextBoxColumn();
+            TipoImpuestoDescripcion.DataPropertyName = "TipoImpuesto.Descripcion";
+            TipoImpuestoDescripcion.HeaderText = "Impuesto";
+            dataListado.Columns.Add(TipoImpuestoDescripcion);
+
+            DataGridViewTextBoxColumn Precio = new DataGridViewTextBoxColumn();
+            Precio.DataPropertyName = "Precio";
+            Precio.HeaderText = "Precio";
+            dataListado.Columns.Add(Precio);
+
+            DataGridViewTextBoxColumn Estado = new DataGridViewTextBoxColumn();
+            Estado.DataPropertyName = "Estado";
+            Estado.HeaderText = "Estado";
+            dataListado.Columns.Add(Estado);
+
+            DataGridViewTextBoxColumn Observacion = new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "Observacion",
+                HeaderText = "Observacion"
+            };
+            dataListado.Columns.Add(Observacion);
+
+            DataGridViewTextBoxColumn FechaRegistro = new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "FechaRegistro",
+                HeaderText = "FechaRegistro"
+            };
+            dataListado.Columns.Add(FechaRegistro);
+
+            #region Formato
+            dataListado.CellFormatting += (sender, e) =>
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex == TipoServicioId.Index)
+                {
+                    var fila = dataListado.Rows[e.RowIndex];
+                    if (fila.DataBoundItem != null)
+                    {
+                        var servicio = (EServicio)fila.DataBoundItem;
+                        e.Value = servicio.TipoServicio?.TipoServicioNro;
+                    }
+                }
+                if (e.RowIndex >= 0 && e.ColumnIndex == TipoServicioDescripcion.Index)
+                {
+                    var fila = dataListado.Rows[e.RowIndex];
+                    if (fila.DataBoundItem != null)
+                    {
+                        var servicio = (EServicio)fila.DataBoundItem;
+                        e.Value = servicio.TipoServicio?.Descripcion;
+                    }
+                }
+                if (e.RowIndex >= 0 && e.ColumnIndex == TipoImpuestoId.Index)
+                {
+                    var fila = dataListado.Rows[e.RowIndex];
+                    if (fila.DataBoundItem != null)
+                    {
+                        var servicio = (EServicio)fila.DataBoundItem;
+                        e.Value = servicio.TipoImpuesto?.TipoImpuestoNro;
+                    }
+                }
+                if (e.RowIndex >= 0 && e.ColumnIndex == TipoImpuestoDescripcion.Index)
+                {
+                    var fila = dataListado.Rows[e.RowIndex];
+                    if (fila.DataBoundItem != null)
+                    {
+                        var servicio = (EServicio)fila.DataBoundItem;
+                        e.Value = servicio.TipoImpuesto?.Descripcion;
+                    }
+                }
+                if (e.RowIndex >= 0 && e.ColumnIndex == Precio.Index)
+                {
+                    e.CellStyle.Format = "N0";
+                };
+            };
+            #endregion
+        }
+
         private void DataGridDiseno()
         {
             dataListado.BorderStyle = BorderStyle.None;
@@ -78,7 +186,7 @@ namespace CapaPresentacion
 
         private void MedidaColumna(DataGridView dg)
         {
-            dg.Columns["Servicio"].Width = 180;
+            //dg.Columns["Servicio"].Width = 180;
            
         }
 
@@ -139,17 +247,16 @@ namespace CapaPresentacion
         private void OcultarColumnas()
         {
             this.dataListado.Columns[0].Visible = false;
-            this.dataListado.Columns[4].Visible = false;
-            this.dataListado.Columns[6].Visible = false;
-            this.dataListado.Columns[8].Visible = false;
-            this.dataListado.Columns[9].Visible = false;
+            this.dataListado.Columns[3].Visible = false;
+            this.dataListado.Columns[5].Visible = false;
         }
 
         //Metodo para mostrar los datos en el datagrid
         private void Mostrar()
         {
-            this.dataListado.DataSource = NServicio.Mostrar();
-            this.OcultarColumnas();
+            listServicio = NServicio.Mostrar();
+            dataListado.DataSource = listServicio;
+            OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);            
         }
 
@@ -161,9 +268,9 @@ namespace CapaPresentacion
                 this.Mostrar();
                 return;
             }
-
-            this.dataListado.DataSource = NServicio.BuscarServicio(this.txtBuscar.Text);
-            this.OcultarColumnas();
+            listServicio = NServicio.BuscarServicio(this.txtBuscar.Text);
+            dataListado.DataSource = listServicio;
+            OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
 
@@ -175,6 +282,7 @@ namespace CapaPresentacion
             this.Limpiar();
             this.Habilitar(true);
             this.cboEstado.SelectedIndex = 0;
+            this.cboImpuesto.SelectedIndex = 0;
             this.txtDescripcion.Focus();
         }
 
@@ -191,12 +299,12 @@ namespace CapaPresentacion
                     return;
 
 
-                DServicio servicio = new DServicio()
+                EServicio servicio = new EServicio()
                 {                    
                     Descripcion = this.txtDescripcion.Text.Trim().ToUpper(),
                     TipoServicioNro = Convert.ToInt32(cboTipoServicio.SelectedValue),
                     TipoImpuestoNro = Convert.ToInt32(cboImpuesto.SelectedValue),
-                    Precio = Convert.ToDecimal(this.txtPrecio.Text),
+                    Precio = Convert.ToDouble(this.txtPrecio.Text),
                     Estado = this.cboEstado.Text,                    
                     Observacion = this.txtObservacion.Text
                 };
@@ -209,7 +317,7 @@ namespace CapaPresentacion
                 }
                 else
                 {
-                    servicio.ServicioNro = Convert.ToInt32(this.txtCodigo.Text);
+                    servicio.ArticuloNro = Convert.ToInt32(this.txtCodigo.Text);
                     rpta = NServicio.Editar(servicio);
                 }
                 if (rpta.Equals("OK"))
@@ -323,18 +431,29 @@ namespace CapaPresentacion
         }
 
         private void dataListado_DoubleClick(object sender, EventArgs e)
-        {   
-            this.txtCodigo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Codigo"].Value);
-            this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Servicio"].Value);
-            this.txtObservacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Observacion"].Value);            
-            this.txtPrecio.Text = Convert.ToDouble(this.dataListado.CurrentRow.Cells["Precio"].Value).ToString("N0");
-            this.cboImpuesto.SelectedValue = Convert.ToInt32(this.dataListado.CurrentRow.Cells["CodImpuesto"].Value);            
-            this.cboTipoServicio.SelectedValue = Convert.ToInt32(this.dataListado.CurrentRow.Cells["CodTipoServicio"].Value);                     
-            this.cboEstado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Estado"].Value);
-            this.Botones();
+        {
+            try
+            {
+                var servicio = dataListado.CurrentRow.DataBoundItem as EServicio;
 
-            //mostrar la segunda pestana la de mantenimiento al hacer doble click
-            this.tabControl1.SelectedIndex = 1;
+
+                this.txtCodigo.Text = servicio.ArticuloNro.ToString();
+                this.txtDescripcion.Text = servicio.Descripcion.ToString();
+                this.txtObservacion.Text = servicio.Observacion.ToString();
+                this.txtPrecio.Text = servicio.Precio.ToString("N0");
+                this.cboImpuesto.SelectedValue = servicio.TipoImpuesto.TipoImpuestoNro;
+                this.cboTipoServicio.SelectedValue = servicio.TipoServicio.TipoServicioNro;
+                this.cboEstado.Text = servicio.Estado;
+                this.Botones();
+
+                //mostrar la segunda pestana la de mantenimiento al hacer doble click
+                this.tabControl1.SelectedIndex = 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         private void chkEliminar_CheckedChanged(object sender, EventArgs e)
@@ -446,6 +565,7 @@ namespace CapaPresentacion
 
         private void FrmServicio_Load(object sender, EventArgs e)
         {
+            CrearColumnasDataGrid();
             DataGridDiseno();
             if (chkEliminar.Checked == false)
             {
@@ -462,26 +582,9 @@ namespace CapaPresentacion
             this.MedidaColumna(dataListado);
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void dataListado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            this.dataListado.Columns["Precio"].DefaultCellStyle.Format = "N0";
-
-        }
-
-        private void btnImprimir_Click(object sender, EventArgs e)
-        {
-            if (dataListado.Rows.Count == 0)
-            {
-                MensajeError("No existen registros para mostrar en el informe");
-                return;
-            }
-            FrmInformeServicio frm = new FrmInformeServicio();
-            frm.ShowDialog();
+            //this.dataListado.Columns["Precio"].DefaultCellStyle.Format = "N0";
         }
     }
 }

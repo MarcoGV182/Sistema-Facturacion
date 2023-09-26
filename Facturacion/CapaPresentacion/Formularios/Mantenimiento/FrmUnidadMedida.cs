@@ -8,7 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using CapaEntidades;
 using CapaNegocio;
 using CapaPresentacion.Utilidades;
 
@@ -201,41 +201,44 @@ namespace CapaPresentacion
                 {
                     this.MensajeError("Falta algunos datos");
                     errorIcono.SetError(txtDescripcion, "Ingrese la descripcion");
+                    return;
+                }
+
+                EUnidadMedida eUnidadMedida = new EUnidadMedida();
+                eUnidadMedida.Descripcion = this.txtDescripcion.Text.Trim().ToUpper();
+
+                //si se ingresa un nuevo registro
+                if (this.IsNuevo)
+                {
+                    rpta = NUnidadMedida.Insertar(eUnidadMedida);
+                    //si se esta editando el registro    
                 }
                 else
                 {
-                    //si se ingresa un nuevo registro
-                    if (this.IsNuevo)
-                    {
-                        rpta = NUnidadMedida.Insertar(this.txtDescripcion.Text.Trim().ToUpper());
-                        //si se esta editando el registro    
-                    }
-                    else
-                    {
-                        rpta = NUnidadMedida.Editar(Convert.ToInt32(this.txtCodigo.Text), this.txtDescripcion.Text.Trim().ToUpper());
-                    }
-                    if (rpta.Equals("OK"))
-                    {
-                        if (IsNuevo)
-                        {
-                            this.MensajeOK("Se ha insertado con exito");
-                        }
-                        else
-                        {
-                            this.MensajeOK("Se ha editado con exito");
-                        }
-                    }
-                    else
-                    {
-                        this.MensajeError(rpta);
-                    }
-
-                    this.IsNuevo = false;
-                    this.IsEditar = false;
-                    this.Botones();
-                    this.Limpiar();
-                    this.Mostrar();
+                    eUnidadMedida.UnidadMedidaNro = Convert.ToInt32(this.txtCodigo.Text);
+                    rpta = NUnidadMedida.Editar(eUnidadMedida);
                 }
+                if (rpta.Equals("OK"))
+                {
+                    if (IsNuevo)
+                    {
+                        this.MensajeOK("Se ha insertado con exito");
+                    }
+                    else
+                    {
+                        this.MensajeOK("Se ha editado con exito");
+                    }
+                }
+                else
+                {
+                    this.MensajeError(rpta);
+                }
+
+                this.IsNuevo = false;
+                this.IsEditar = false;
+                this.Botones();
+                this.Limpiar();
+                this.Mostrar();
             }
             catch (Exception ex)
             {

@@ -10,9 +10,6 @@ namespace CapaDatos
 {
     public class DTipoPagoOtros:Conexion
     {
-        public int TipoOtrosNro { get; set; }
-        public string Descripcion { get; set; }
-
 
         public DTipoPagoOtros()
         {

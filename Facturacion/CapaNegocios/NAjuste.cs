@@ -6,33 +6,27 @@ using System.Threading.Tasks;
 
 using CapaDatos;
 using System.Data;
+using CapaEntidades;
 
 namespace CapaNegocio
 {
     public class NAjuste
     {
         //Metodo para insertar que llama al metodo insertar de la capa Datos
-        public static string Insertar(string descripcion, DateTime fechahora, string estado, string observacion, int tipoajusteNro, string usuario,DataTable dtDetalleAjuste)
-        {
-            DAjuste objAjuste = new DAjuste();
-            objAjuste.Descripcion = descripcion;
-            objAjuste.FechaHora = fechahora;
-            objAjuste.Estado = estado;
-            objAjuste.TipoAjusteNro = tipoajusteNro;
-            objAjuste.Observacion = observacion;
-            objAjuste.Usuario = usuario;
+        public static string Insertar(EAjuste ajusteCabecera,DataTable dtDetalleAjuste)
+        {            
             //DETALLES DE AJUSTES
-            List<DDetalleAjuste> detalles = new List<DDetalleAjuste>();
+            List<EDetalleAjuste> detalles = new List<EDetalleAjuste>();
             foreach (DataRow row in dtDetalleAjuste.Rows)
             {
-                DDetalleAjuste dtajuste = new DDetalleAjuste();
+                EDetalleAjuste dtajuste = new EDetalleAjuste();
                 dtajuste.ArticuloNro = Convert.ToInt32(row["ArticuloNro"].ToString());                
                 dtajuste.Costo= Convert.ToDouble(row["Precio"].ToString());
                 dtajuste.Cantidad = Convert.ToInt32(row["Cantidad"].ToString());
                 dtajuste.StockAnterior = Convert.ToInt32(row["StockAnterior"].ToString());
                 detalles.Add(dtajuste);
             }
-            return objAjuste.InsertarAjuste(objAjuste, detalles);
+            return new DAjuste().InsertarAjuste(ajusteCabecera, detalles);
         }
 
 
@@ -66,16 +60,14 @@ namespace CapaNegocio
         public static string Eliminar(int codAjuste) 
         {
             DAjuste obj = new DAjuste();
-            obj.CodAjuste = codAjuste;
-            return obj.EliminarAjusteRestaurar(obj);
+            return obj.EliminarAjusteRestaurar(codAjuste);
         }
 
 
         public static string Restaurar(int codAjuste)
         {
             DAjuste obj = new DAjuste();
-            obj.CodAjuste = codAjuste;
-            return obj.RestaurarStock(obj);
+            return obj.RestaurarStock(codAjuste);
         }
 
 

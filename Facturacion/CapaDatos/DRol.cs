@@ -6,29 +6,16 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DRol:Conexion
     {
-        public int IdRol { get; set; }
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-
-
-
-
         public DRol(){ }
-
-        public DRol(int idrol, string nombre, string descripcion) {
-            IdRol = idrol;
-            Nombre = nombre;
-            Descripcion = descripcion;
-        }
-
-
+               
         //Metodo insertar
-        public string InsertarTipoUsuario(DRol TipoUsuario)
+        public string InsertarTipoUsuario(ERol TipoUsuario)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
@@ -84,7 +71,7 @@ namespace CapaDatos
         }
 
         //Metodo Editar
-        public string EditarTipoUsuario(DRol TipoUsuario)
+        public string EditarTipoUsuario(ERol TipoUsuario)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
@@ -142,7 +129,7 @@ namespace CapaDatos
         }
 
         //Metodo Eliminar
-        public string EliminarTipoUsuario(DRol TipoUsuario)
+        public string EliminarTipoUsuario(int tipoUsuarioId)
         {
             string rpta = "OK";
             SqlConnection Sqlcon = new SqlConnection();
@@ -160,7 +147,7 @@ namespace CapaDatos
                 SqlParameter ParTipoUsuarioNro = new SqlParameter();
                 ParTipoUsuarioNro.ParameterName = "@IdRol";
                 ParTipoUsuarioNro.SqlDbType = SqlDbType.Int;
-                ParTipoUsuarioNro.Value = TipoUsuario.IdRol;
+                ParTipoUsuarioNro.Value = tipoUsuarioId;
                 SqlCmd.Parameters.Add(ParTipoUsuarioNro);
 
                 //ejecutar el comando sql

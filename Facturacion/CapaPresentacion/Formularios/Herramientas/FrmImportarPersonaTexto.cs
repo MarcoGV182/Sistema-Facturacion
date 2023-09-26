@@ -135,7 +135,7 @@ namespace CapaPresentacion.Formularios.Herramientas
                 string rpta = "";
                 foreach (DataGridViewRow row in dataArchivo.Rows)
                 {
-                    rpta = NCliente.ImportarTexto(Convert.ToString(row.Cells[2].Value).Trim(), Convert.ToString(row.Cells[1].Value).Trim(), Convert.ToString(row.Cells[0].Value) + "-" + Convert.ToString(row.Cells[3].Value).Trim());  
+                    //rpta = NCliente.ImportarTexto(Convert.ToString(row.Cells[2].Value).Trim(), Convert.ToString(row.Cells[1].Value).Trim(), Convert.ToString(row.Cells[0].Value) + "-" + Convert.ToString(row.Cells[3].Value).Trim());  
                 }
 
                 if (rpta.Equals("OK"))

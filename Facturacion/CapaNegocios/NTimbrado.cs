@@ -15,5 +15,8 @@ namespace CapaNegocio
             DTimbrado timbrado = new DTimbrado();
             return timbrado.ObtenerTimbrado(); 
         }
+
+
+
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using CapaDatos;
 using System.Data;
+using CapaEntidades;
 
 namespace CapaNegocio
 {
@@ -13,14 +14,14 @@ namespace CapaNegocio
     {
 
         //Metodo para insertar que llama al metodo insertar de la capa Datos
-        public static string Insertar(DProveedor proveedor)
+        public static string Insertar(EProveedor proveedor)
         {
             DProveedor objProveedor = new DProveedor();
             return objProveedor.InsertarProveedor(proveedor);
         }
 
         //Metodo para editar que llama al metodo editar de la capa Datos
-        public static string Editar(DProveedor proveedor)
+        public static string Editar(EProveedor proveedor)
         {
             DProveedor objProveedor = new DProveedor();           
             return objProveedor.EditarProveedor(proveedor);
@@ -30,8 +31,7 @@ namespace CapaNegocio
         public static string Eliminar(int proveedornro)
         {
             DProveedor objProveedor = new DProveedor();
-            objProveedor.PersonaNro = proveedornro;
-            return objProveedor.EliminarProveedor(objProveedor);
+            return objProveedor.EliminarProveedor(proveedornro);
         }
 
 
@@ -56,8 +56,7 @@ namespace CapaNegocio
         public static DataTable BuscarDeudaProveedorDocumento(string textoBuscar)
         {
             DProveedor objProveeedor = new DProveedor();
-            objProveeedor.TextoBuscar = textoBuscar;
-            return objProveeedor.BuscarDeudaProveedorDocumento(objProveeedor);
+            return objProveeedor.BuscarDeudaProveedorDocumento(textoBuscar);
         }
 
 

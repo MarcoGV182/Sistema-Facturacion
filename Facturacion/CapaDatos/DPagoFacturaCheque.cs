@@ -5,21 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DPagoFacturaCheque: DPagoFactura
     {
-        public string NroCheque { get; set; }
-        public DBanco Banco { get; set; }
-        public DateTime? FechaCheque { get; set; }
+        
 
 
         public DPagoFacturaCheque() { }
         
 
         //Metodo insertar
-        public string InsertarPagoFacturaCheque(DPagoFacturaCheque PagoFacturaCheque, SqlConnection SqlconExistente = null, SqlTransaction sqltranExistente = null)
+        public string InsertarPagoFacturaCheque(EPagoFacturaCheque PagoFacturaCheque, SqlConnection SqlconExistente = null, SqlTransaction sqltranExistente = null)
         {
             #region Variables
             string rpta = "";

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using CapaNegocio;
 using System.Data.SqlClient;
 using System.Configuration;
-using CapaDatos;
+using CapaEntidades;
 using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion.Formularios.Herramientas
@@ -73,7 +73,8 @@ namespace CapaPresentacion.Formularios.Herramientas
                 chktodos.Checked = false;
 
                 int idModulo = Convert.ToInt32(cboModulo.SelectedValue);
-                int idRol = Convert.ToInt32(cboRoles.SelectedValue);               
+                int idRol = Convert.ToInt32(cboRoles.SelectedValue);  
+               
                 dataListado.DataSource = NTipoUsuarioRegla.Mostrar(idRol, idModulo);
 
                 this.OcultarColumnas();

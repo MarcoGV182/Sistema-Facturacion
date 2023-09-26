@@ -9,9 +9,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaDatos;
+using CapaEntidades;
 using CapaNegocio;
 using CapaPresentacion.Utilidades;
+using Microsoft.Office.Core;
 
 namespace CapaPresentacion
 {
@@ -24,6 +25,7 @@ namespace CapaPresentacion
             
         private bool IsNuevo = false;
         private bool IsEditar = false;
+        List<EProducto> listaProductos = new List<EProducto>();
         //int id = 0;
 
 
@@ -77,9 +79,11 @@ namespace CapaPresentacion
         }
 
         private void StockMenor() {
-            for(int i=0; i < dataListado.Rows.Count; i++) {
-                int stockactual = Convert.ToInt32(dataListado.Rows[i].Cells["StockActual"].Value);
-                int stockminimo= Convert.ToInt32(dataListado.Rows[i].Cells["stockMinimo"].Value);
+            for(int i=0; i < dataListado.Rows.Count; i++) 
+            {
+                var eProducto = dataListado.Rows[i].DataBoundItem as EProducto;
+                int stockactual = eProducto.StockActual;
+                int stockminimo= eProducto.Stockminimo;
                 if (stockactual <= stockminimo) {
                     dataListado.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
                  }
@@ -192,16 +196,16 @@ namespace CapaPresentacion
         private void OcultarColumnas()
         {
             this.dataListado.Columns[0].Visible = false;
-            this.dataListado.Columns[6].Visible = false;//UnidadMedidaNro
+            /*this.dataListado.Columns[6].Visible = false;//UnidadMedidaNro
             this.dataListado.Columns[11].Visible = false;//CodImpuesto
             this.dataListado.Columns[12].Visible = false;//PorcentajeIVA
-            this.dataListado.Columns[13].Visible = false;//BaseImponible
+            this.dataListado.Columns[13].Visible = false;//BaseImponible*/
         }
 
 
         private void MedidaColumna(DataGridView dg) 
         {
-            dg.Columns["ArticuloNro"].Width = 60;
+            /*dg.Columns["ArticuloNro"].Width = 60;
             dg.Columns["Producto"].Width = 180;
             dg.Columns["Presentacion"].Width = 100;
             dg.Columns["UnidadMedida"].Width = 100;
@@ -214,7 +218,143 @@ namespace CapaPresentacion
             dg.Columns["StockActual"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
             dg.Columns["StockMinimo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
             dg.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;            
-            dg.Columns["PrecioCompra"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;
+            dg.Columns["PrecioCompra"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter;*/
+        }
+
+        private void CrearColumnasDataGrid()
+        {
+            dataListado.AutoGenerateColumns = false;
+
+            //Configurar las columnas de Productos
+            DataGridViewTextBoxColumn columnaId = new DataGridViewTextBoxColumn();
+            columnaId.DataPropertyName = "ProductoNro";
+            columnaId.HeaderText = "Codigo";
+            dataListado.Columns.Add(columnaId);
+
+            DataGridViewTextBoxColumn columnCodBarra = new DataGridViewTextBoxColumn();
+            columnCodBarra.DataPropertyName = "CodigoBarra";
+            columnCodBarra.HeaderText = "Codigo Barra";
+            dataListado.Columns.Add(columnCodBarra);
+
+            DataGridViewTextBoxColumn columnProductoDesc = new DataGridViewTextBoxColumn();
+            columnProductoDesc.DataPropertyName = "Descripcion";
+            columnProductoDesc.HeaderText = "Producto";
+            dataListado.Columns.Add(columnProductoDesc);
+
+
+            DataGridViewTextBoxColumn columnTipoProducto = new DataGridViewTextBoxColumn();
+            columnTipoProducto.DataPropertyName = "TipoProducto.Descripcion";
+            columnTipoProducto.HeaderText = "Tipo Producto";
+            dataListado.Columns.Add(columnTipoProducto);
+
+            DataGridViewTextBoxColumn columnPresentacion = new DataGridViewTextBoxColumn();
+            columnPresentacion.DataPropertyName = "Presentacion.Descripcion";
+            columnPresentacion.HeaderText = "Presentacion";
+            dataListado.Columns.Add(columnPresentacion);
+
+            DataGridViewTextBoxColumn columnUnidadMedida = new DataGridViewTextBoxColumn();
+            columnUnidadMedida.DataPropertyName = "UnidadMedida.Descripcion";
+            columnUnidadMedida.HeaderText = "Unidad Medida";
+            dataListado.Columns.Add(columnUnidadMedida);
+
+            DataGridViewTextBoxColumn columnMarca = new DataGridViewTextBoxColumn();
+            columnMarca.DataPropertyName = "Marca.Descripcion";
+            columnMarca.HeaderText = "Marca";
+            dataListado.Columns.Add(columnMarca);
+
+            DataGridViewTextBoxColumn columnFechaVencimiento = new DataGridViewTextBoxColumn();
+            columnFechaVencimiento.DataPropertyName = "FechaVencimiento";
+            columnFechaVencimiento.HeaderText = "Vencimiento";
+            dataListado.Columns.Add(columnFechaVencimiento);
+
+            DataGridViewTextBoxColumn columnTipoImpuesto = new DataGridViewTextBoxColumn();
+            columnTipoImpuesto.DataPropertyName = "TipoImpuesto.Descripcion";
+            columnTipoImpuesto.HeaderText = "Tipo Impuesto";
+            dataListado.Columns.Add(columnTipoImpuesto);
+
+            DataGridViewTextBoxColumn columnStockMinimo = new DataGridViewTextBoxColumn();
+            columnStockMinimo.DataPropertyName = "StockMinimo";
+            columnStockMinimo.HeaderText = "Stock Minimo";
+            dataListado.Columns.Add(columnStockMinimo);
+
+            DataGridViewTextBoxColumn columnStockActual = new DataGridViewTextBoxColumn();
+            columnStockActual.DataPropertyName = "StockActual";
+            columnStockActual.HeaderText = "Stock Actual";
+            dataListado.Columns.Add(columnStockActual);
+
+            DataGridViewTextBoxColumn columnPrecioCompra = new DataGridViewTextBoxColumn();
+            columnPrecioCompra.DataPropertyName = "PrecioCompra";
+            columnPrecioCompra.HeaderText = "Precio Compra";
+            dataListado.Columns.Add(columnPrecioCompra);
+
+            DataGridViewTextBoxColumn columnPrecioVenta = new DataGridViewTextBoxColumn();
+            columnPrecioVenta.DataPropertyName = "PrecioVenta";
+            columnPrecioVenta.HeaderText = "Precio Venta";
+            dataListado.Columns.Add(columnPrecioVenta);
+
+            DataGridViewTextBoxColumn columnEstado = new DataGridViewTextBoxColumn();
+            columnEstado.DataPropertyName = "Estado";
+            columnEstado.HeaderText = "Estado";
+            dataListado.Columns.Add(columnEstado);
+
+            DataGridViewTextBoxColumn columnObs = new DataGridViewTextBoxColumn();
+            columnObs.DataPropertyName = "Observacion";
+            columnObs.HeaderText = "Observacion";
+            dataListado.Columns.Add(columnObs);
+
+            #region Formato
+            dataListado.CellFormatting += (sender, e) =>
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex == columnTipoProducto.Index)
+                {
+                    var fila = dataListado.Rows[e.RowIndex];
+                    if (fila.DataBoundItem != null)
+                    {
+                        var producto = (EProducto)fila.DataBoundItem;
+                        e.Value = producto.TipoProducto?.Descripcion;
+                    }
+                }
+                if (e.RowIndex >= 0 && e.ColumnIndex == columnPresentacion.Index)
+                {
+                    var fila = dataListado.Rows[e.RowIndex];
+                    if (fila.DataBoundItem != null)
+                    {
+                        var producto = (EProducto)fila.DataBoundItem;
+                        e.Value = producto.Presentacion?.Descripcion;
+                    }
+                }
+                if (e.RowIndex >= 0 && e.ColumnIndex == columnTipoImpuesto.Index)
+                {
+                    var fila = dataListado.Rows[e.RowIndex];
+                    if (fila.DataBoundItem != null)
+                    {
+                        var producto = (EProducto)fila.DataBoundItem;
+                        e.Value = producto.TipoImpuesto?.Descripcion;
+                    }
+                }
+                if (e.RowIndex >= 0 && e.ColumnIndex == columnMarca.Index)
+                {
+                    var fila = dataListado.Rows[e.RowIndex];
+                    if (fila.DataBoundItem != null)
+                    {
+                        var producto = (EProducto)fila.DataBoundItem;
+                        e.Value = producto.Marca?.Descripcion;
+                    }
+                }
+                if (e.RowIndex >= 0 && e.ColumnIndex == columnUnidadMedida.Index)
+                {
+                    var fila = dataListado.Rows[e.RowIndex];
+                    if (fila.DataBoundItem != null)
+                    {
+                        var producto = (EProducto)fila.DataBoundItem;
+                        e.Value = producto.UnidadMedida?.Descripcion;
+                    }
+                }              
+
+                columnPrecioCompra.DefaultCellStyle.Format = "N0";
+                columnPrecioVenta.DefaultCellStyle.Format = "N0";
+            };
+            #endregion
         }
 
 
@@ -222,7 +362,8 @@ namespace CapaPresentacion
         //Metodo para mostrar los datos en el datagrid
         private void Mostrar()
         {            
-            this.dataListado.DataSource = NProducto.Mostrar();
+            listaProductos = NProducto.Mostrar();
+            this.dataListado.DataSource = listaProductos;
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);            
         }
@@ -265,6 +406,7 @@ namespace CapaPresentacion
         private void CargasIniciales() 
         {
             DataGridDiseno();
+            CrearColumnasDataGrid();
             if (chkEliminar.Checked == false)
             {
                 chktodos.Visible = false;
@@ -307,30 +449,38 @@ namespace CapaPresentacion
                     return;
 
                 if (!Validaciones())
-                {
                     return;
-                }
 
 
                 //si se ingresa un nuevo registro
-                DProducto producto = new DProducto();
+                EProducto producto = new EProducto();
                 
                 producto.Descripcion = this.txtDescripcion.Text.Trim().ToUpper();
-                producto.TipoProductoNro = Convert.ToInt32(cboTipoProducto.SelectedValue);
+                producto.TipoProducto = new ETipoProducto()
+                {
+                    TipoProductoNro = Convert.ToInt32(cboTipoProducto.SelectedValue),
+                    Descripcion = cboTipoProducto.Text
+                };
                 producto.CodigoBarra = txtCodigoBarra.Text;
-                producto.UnidadMedida = new DUnidadMedida()
+                producto.UnidadMedida = new EUnidadMedida()
                 {
                     UnidadMedidaNro = Convert.ToInt32(cboUnidadMedida.SelectedValue),
                     Descripcion = cboUnidadMedida.Text.Trim()
                 };
                 producto.FechaVencimiento = dtpFechaVto.Checked ? dtpFechaVto.Value : (DateTime?)null;
-                producto.IdPresentacion = Convert.ToInt32(cboPresentacion.SelectedValue);
-                producto.MarcaNro = Convert.ToInt32(cboMarca.SelectedValue);
+                producto.Presentacion = new EPresentacionProducto()
+                {
+                    IdPresentacion = Convert.ToInt32(cboPresentacion.SelectedValue)
+                };
+                producto.Marca = new EMarca() 
+                { 
+                    MarcaNro = Convert.ToInt32(cboMarca.SelectedValue)
+                };
                 producto.StockActual = 0;//Convert.ToInt32(this.txtStockActual.Text);
                 producto.Stockminimo = Convert.ToInt32(this.txtStockMinimo.Value);
-                producto.PrecioCompra = Convert.ToDecimal(this.txtPrecioCompra.Text);
-                producto.Precio = Convert.ToDecimal(this.txtPrecioVenta.Text);
-                producto.TipoImpuesto = new DTipoImpuesto()
+                producto.PrecioCompra = Convert.ToDouble(this.txtPrecioCompra.Text);
+                producto.Precio = Convert.ToDouble(this.txtPrecioVenta.Text);
+                producto.TipoImpuesto = new ETipoImpuesto()
                 {
                     TipoImpuestoNro = Convert.ToInt32(this.cboImpuesto.SelectedValue),
                     Descripcion = this.cboImpuesto.Text
@@ -346,7 +496,7 @@ namespace CapaPresentacion
                 }
                 else
                 {
-                    producto.ProductoNro = Convert.ToInt32(this.txtCodigo.Text);
+                    producto.ArticuloNro = Convert.ToInt32(this.txtCodigo.Text);
                     rpta = NProducto.Editar(producto);
                 }
 
@@ -485,27 +635,28 @@ namespace CapaPresentacion
 
         private void dataListado_DoubleClick(object sender, EventArgs e)
         {
-            this.txtCodigo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["ArticuloNro"].Value);
-            this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Producto"].Value);
-            this.txtCodigoBarra.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["CodigoBarra"].Value);
-            this.txtPrecioCompra.Text = Convert.ToDouble(this.dataListado.CurrentRow.Cells["PrecioCompra"].Value).ToString("N0");           
-            this.txtPrecioVenta.Text = Convert.ToDouble(this.dataListado.CurrentRow.Cells["Precio"].Value).ToString("N0");
-            this.txtStockActual.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["StockActual"].Value);
-            this.txtStockMinimo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["StockMinimo"].Value);
-            this.txtObservacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Observacion"].Value);
-            this.cboMarca.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Marca"].Value);
-            this.cboPresentacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Presentacion"].Value);
-            this.cboTipoProducto.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["TipoProducto"].Value);
-            this.cboUnidadMedida.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["UnidadMedida"].Value);
-            this.cboEstado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Estado"].Value);
-            this.cboImpuesto.SelectedValue = Convert.ToInt32(this.dataListado.CurrentRow.Cells["CodImpuesto"].Value);
-            if (string.IsNullOrEmpty(this.dataListado.CurrentRow.Cells["FechaVencimiento"].Value.ToString())) 
+            var ProductoSeleccionado = dataListado.CurrentRow.DataBoundItem as EProducto;
+            this.txtCodigo.Text = ProductoSeleccionado.ArticuloNro.ToString();
+            this.txtDescripcion.Text = Convert.ToString(ProductoSeleccionado.Descripcion);
+            this.txtCodigoBarra.Text = Convert.ToString(ProductoSeleccionado.CodigoBarra);
+            this.txtPrecioCompra.Text = Convert.ToDouble(ProductoSeleccionado.PrecioCompra).ToString("N0");           
+            this.txtPrecioVenta.Text = Convert.ToDouble(ProductoSeleccionado.Precio).ToString("N0");
+            this.txtStockActual.Text = Convert.ToString(ProductoSeleccionado.StockActual);
+            this.txtStockMinimo.Text = Convert.ToString(ProductoSeleccionado.Stockminimo);
+            this.txtObservacion.Text = Convert.ToString(ProductoSeleccionado.Observacion);
+            this.cboMarca.Text = Convert.ToString(ProductoSeleccionado.Marca.Descripcion);
+            this.cboPresentacion.Text = Convert.ToString(ProductoSeleccionado.Presentacion.Descripcion);
+            this.cboTipoProducto.Text = Convert.ToString(ProductoSeleccionado.TipoProducto.Descripcion);
+            this.cboUnidadMedida.Text = Convert.ToString(ProductoSeleccionado.UnidadMedida.Descripcion);
+            this.cboEstado.Text = Convert.ToString(ProductoSeleccionado.Estado);
+            this.cboImpuesto.SelectedValue = Convert.ToInt32(ProductoSeleccionado.TipoImpuesto.TipoImpuestoNro);
+            if (string.IsNullOrEmpty(ProductoSeleccionado.FechaVencimiento.ToString())) 
             {
                 dtpFechaVto.Checked = false;
             }   
             else
             {
-                this.dtpFechaVto.Value =  Convert.ToDateTime(this.dataListado.CurrentRow.Cells["FechaVencimiento"].Value);
+                this.dtpFechaVto.Value =  Convert.ToDateTime(ProductoSeleccionado.FechaVencimiento.Value);
             }
             
             this.lblCodigo.Visible = true;
@@ -632,8 +783,9 @@ namespace CapaPresentacion
         
         private void dataListado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            /*
             this.dataListado.Columns["PrecioCompra"].DefaultCellStyle.Format = "N0";
-            this.dataListado.Columns["Precio"].DefaultCellStyle.Format = "N0";
+            this.dataListado.Columns["Precio"].DefaultCellStyle.Format = "N0";*/
         }
 
         private void dataListado_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)

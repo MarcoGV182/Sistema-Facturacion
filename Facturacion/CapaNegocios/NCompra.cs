@@ -6,24 +6,25 @@ using System.Threading.Tasks;
 
 using CapaDatos;
 using System.Data;
+using CapaEntidades;
 
 namespace CapaNegocio
 {
     public class NCompra
     {
         //Metodo para insertar que llama al metodo insertar de la capa Datos
-        public static string Insertar(DCompra compra, DataTable dtDetalleCompra)
+        public static string Insertar(ECompra compra, DataTable dtDetalleCompra)
         {
             DCompra objCompra = new DCompra();            
             //DETALLES DE COMPRAS
-            List<DDetalleIngreso> detalles = new List<DDetalleIngreso>();
+            List<EDetalleCompra> detalles = new List<EDetalleCompra>();
             foreach(DataRow row in dtDetalleCompra.Rows) {
-                DDetalleIngreso dtcompra = new DDetalleIngreso();
+                EDetalleCompra dtcompra = new EDetalleCompra();
                // dtcompra.NroFacturaCompra = row["NroFactura"].ToString();
                 //dtcompra.ProveedorNro = Convert.ToInt32(row["ProveedorNro"].ToString());
                 dtcompra.ProductoNro = Convert.ToInt32(row["ProductoNro"].ToString());  
                 dtcompra.NroItem = Convert.ToInt32(row["Nro"].ToString());
-                DTipoImpuesto ti = new DTipoImpuesto()
+                ETipoImpuesto ti = new ETipoImpuesto()
                 {
                     TipoImpuestoNro = Convert.ToInt32(row["CodTipoImpuesto"])
                 };
@@ -50,8 +51,7 @@ namespace CapaNegocio
         public static string EliminarCompra(int NroCompra)
         {
             DCompra objCompra = new DCompra();
-            objCompra.Id = NroCompra;
-            return objCompra.EliminarCompra(objCompra);
+            return objCompra.EliminarCompra(NroCompra);
         }
 
 
@@ -59,9 +59,8 @@ namespace CapaNegocio
         //Metodo para eliminar que llama al metodo eliminar de la capa Datos
         public static string CuentaAPagar(int NroCompra)
         {
-            DCompra objCompra = new DCompra();
-            objCompra.Id = NroCompra;
-            return objCompra.CuentaAPagar(objCompra);
+            DCompra objCompra = new DCompra();           
+            return objCompra.CuentaAPagar(NroCompra);
         }
 
 
@@ -69,8 +68,7 @@ namespace CapaNegocio
         public static string Restaurar(int NroCompra) 
         {
             DCompra objCompra = new DCompra();
-            objCompra.Id = NroCompra;
-            return objCompra.RestaurarStock(objCompra);
+            return objCompra.RestaurarStock(NroCompra);
         }
         
 

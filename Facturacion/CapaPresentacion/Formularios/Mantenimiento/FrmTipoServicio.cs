@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using CapaEntidades;
 using CapaNegocio;
 
 namespace CapaPresentacion
@@ -17,6 +17,7 @@ namespace CapaPresentacion
 
         private bool IsNuevo = false;
         private bool IsEditar = false;
+        private List<ETipoServicio> listaTipoServicio = new List<ETipoServicio>();
 
         //INSTANCIA PARA LLAMAR SOLO UNA VEZ AL FORMULARIO
         private static FrmTipoServicio _Instancia;
@@ -87,13 +88,13 @@ namespace CapaPresentacion
         private void OcultarColumnas()
         {
             this.dataListado.Columns[0].Visible = false;
-            this.dataListado.Columns[1].Visible = false;
         }
 
         //Metodo para mostrar los datos en el datagrid
         private void Mostrar()
         {
-            this.dataListado.DataSource = NTipoServicio.Mostrar();
+            listaTipoServicio = NTipoServicio.Mostrar();
+            this.dataListado.DataSource = listaTipoServicio;
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -101,9 +102,27 @@ namespace CapaPresentacion
         //Metodo buscar por descripcion
         private void Buscar()
         {
-            this.dataListado.DataSource = NTipoServicio.BuscarDescripcion(this.txtBuscar.Text);
+            var listaFiltrada = listaTipoServicio.Where(c => c.Descripcion.ToUpper().Contains(txtBuscar.Text.ToUpper())).ToList();
+            this.dataListado.DataSource = listaFiltrada;
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros " + Convert.ToString(dataListado.Rows.Count);
+        }
+
+
+        private void CrearColumnasDataGrid() 
+        {
+            dataListado.AutoGenerateColumns = false;
+
+            //Configurar las columnas de servicios
+            DataGridViewTextBoxColumn columnaId = new DataGridViewTextBoxColumn();
+            columnaId.DataPropertyName = "TipoServicioNro";
+            columnaId.HeaderText = "Codigo";
+            dataListado.Columns.Add(columnaId);
+
+            DataGridViewTextBoxColumn columnDescripcion = new DataGridViewTextBoxColumn();
+            columnDescripcion.DataPropertyName = "Descripcion";
+            columnDescripcion.HeaderText = "Tipo Servicio";
+            dataListado.Columns.Add(columnDescripcion);  
         }
 
 
@@ -114,6 +133,7 @@ namespace CapaPresentacion
                 chktodos.Visible = false;
                 btnEliminar.Enabled = false;
             }
+            CrearColumnasDataGrid();
             //top para ubicar en la parte superior
             this.Top = 0;
             //alineado hacia la izquierda
@@ -123,6 +143,7 @@ namespace CapaPresentacion
             this.Habilitar(false);
             this.Botones();
         }
+
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
@@ -309,8 +330,9 @@ namespace CapaPresentacion
 
         private void dataListado_DoubleClick(object sender, EventArgs e)
         {
-            this.txtCodigo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["TipoServicioNro"].Value);
-            this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Descripcion"].Value);
+            var tipoServicio = dataListado.CurrentRow.DataBoundItem as ETipoServicio;
+            this.txtCodigo.Text = Convert.ToString(tipoServicio.TipoServicioNro);
+            this.txtDescripcion.Text = tipoServicio.Descripcion;
             //mostrar la segunda pestana la de mantenimiento al hacer doble click
             this.tabControl1.SelectedIndex = 1;
         }

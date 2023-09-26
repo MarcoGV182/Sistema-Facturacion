@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 
 using CapaDatos;
 using System.Data;
+using CapaEntidades;
 
 namespace CapaNegocio
 {
     public class NServicio
     {
         //Metodo para insertar que llama al metodo insertar de la capa Datos
-        public static string Insertar(DServicio servicio)
+        public static string Insertar(EServicio servicio)
         {
             DServicio objServicio = new DServicio();
             return objServicio.InsertarServicio(servicio);
         }
 
         //Metodo para editar que llama al metodo editar de la capa Datos
-        public static string Editar(DServicio servicio)
+        public static string Editar(EServicio servicio)
         {
             DServicio objServicio = new DServicio();           
             return objServicio.EditarServicio(servicio);
@@ -29,23 +30,94 @@ namespace CapaNegocio
         public static string Eliminar(int servicionro)
         {
             DServicio objServicio = new DServicio();
-            objServicio.ServicioNro = servicionro;
-            return objServicio.EliminarServicio(objServicio);
+            return objServicio.EliminarServicio(servicionro);
         }
 
 
         //Metodo para mostrar que llama al metodo mostrar de la capa Datos
-        public static DataTable Mostrar()
+        public static List<EServicio> Mostrar()
         {
-            return new DServicio().MostrarServicio();
+            List<EServicio> ListaServicio = new List<EServicio>();
+            try
+            {
+                var ServicioDT = new DServicio().MostrarServicio();
+                foreach (DataRow row in ServicioDT.Rows)
+                {
+                    EServicio eServicio = new EServicio();
+                    eServicio.ArticuloNro = Convert.ToInt32(row[0]);
+                    eServicio.Descripcion = row[1].ToString();
+                    eServicio.Precio = Convert.ToDouble(row[2]);
+                    eServicio.TipoServicioNro = Convert.ToInt32(row[3]);
+                    eServicio.TipoServicio = new ETipoServicio()
+                    {
+                        TipoServicioNro = eServicio.TipoServicioNro,
+                        Descripcion = row[4].ToString()
+                    };
+                    eServicio.TipoImpuestoNro = Convert.ToInt32(row[5]);
+                    eServicio.TipoImpuesto = new ETipoImpuesto()
+                    {
+                        TipoImpuestoNro = eServicio.TipoImpuestoNro,
+                        Descripcion = row[6].ToString(),
+                        PorcentajeIva = Convert.ToDecimal(row[7]),
+                        BaseImponible = Convert.ToDecimal(row[8]),
+                    };
+                    eServicio.Estado = row[9].ToString();
+                    eServicio.Observacion = row[10].ToString();
+                    eServicio.FechaRegistro = Convert.ToDateTime(row[11]);
+
+                    ListaServicio.Add(eServicio);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+            return ListaServicio;
         }
 
         //Metodo para buscar que llama al metodo buscar por nombre de la capa Datos
-        public static DataTable BuscarServicio(string textoBuscar)
+        public static List<EServicio> BuscarServicio(string textoBuscar)
         {
-            DServicio objServicio = new DServicio();
-            objServicio.TextoBuscar = textoBuscar;
-            return objServicio.BuscarServicio(objServicio);
+            List<EServicio> ListaServicio = new List<EServicio>();
+            try
+            {
+                var ServicioDT = new DServicio().BuscarServicio(textoBuscar);
+                foreach (DataRow row in ServicioDT.Rows)
+                {
+                    EServicio eServicio = new EServicio();
+                    eServicio.ArticuloNro = Convert.ToInt32(row[0]);
+                    eServicio.Descripcion = row[1].ToString();
+                    eServicio.Precio = Convert.ToDouble(row[2]);
+                    eServicio.TipoServicioNro = Convert.ToInt32(row[3]);
+                    eServicio.TipoServicio = new ETipoServicio()
+                    {
+                        TipoServicioNro = eServicio.TipoServicioNro,
+                        Descripcion = row[4].ToString()
+                    };
+                    eServicio.TipoImpuestoNro = Convert.ToInt32(row[5]);
+                    eServicio.TipoImpuesto = new ETipoImpuesto()
+                    {
+                        TipoImpuestoNro = eServicio.TipoImpuestoNro,
+                        Descripcion = row[6].ToString(),
+                        PorcentajeIva = Convert.ToDecimal(row[7]),
+                        BaseImponible = Convert.ToDecimal(row[8]),
+                    };
+                    eServicio.Estado = row[9].ToString();
+                    eServicio.Observacion = row[10].ToString();
+                    eServicio.FechaRegistro = Convert.ToDateTime(row[11]);
+
+                    ListaServicio.Add(eServicio);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+            return ListaServicio;            
         }
     }
 }

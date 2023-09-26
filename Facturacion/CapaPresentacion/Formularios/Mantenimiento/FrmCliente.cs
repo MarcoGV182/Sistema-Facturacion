@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using CapaNegocio;
 using System.Data.SqlClient;
-using CapaDatos;
+using CapaEntidades;
+using CapaNegocio;
 using CapaPresentacion.Informes.DsReporteTableAdapters;
 using CapaPresentacion.Utilidades;
 using System.Data.SqlTypes;
@@ -292,14 +292,14 @@ namespace CapaPresentacion.Formularios.Mantenimiento
 
                 //si se ingresa un nuevo registro
 
-                DClientes cliente = new DClientes();
+                ECliente cliente = new ECliente();
                 int codigoCliente = string.IsNullOrEmpty(txtCodigo.Text) ? 0 : Convert.ToInt32(txtCodigo.Text);
                 cliente.PersonaNro = codigoCliente;
                 cliente.Nombre = this.txtNombre.Text.Trim().ToUpper();
                 cliente.Apellido = this.txtApellido.Text.Trim().ToUpper();
                 cliente.Documento = this.txtDocumento.Text.Trim();
 
-                DTipoDocumento tipoDocumento = new DTipoDocumento();
+                ETipoDocumento tipoDocumento = new ETipoDocumento();
                 if (Convert.ToInt32(cboTipoDocumento.SelectedValue) > 0)
                 {
                     tipoDocumento.idTipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue);

@@ -5,95 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using CapaEntidades;
 
 namespace CapaDatos
 {
    public class DServicio:Conexion
-    {
-        private int _ServicioNro;
-        private string _Descripcion;
-        private int _TipoServicioNro;
-        private int _TipoImpuestoNro;
-        private decimal _Precio;
-        private int _PorcentajeComision;
-        private string _Estado;
-        private string _Observacion;
-        private string _TextoBuscar;
-
-        public int ServicioNro
-        {
-            get{return _ServicioNro;}
-            set{_ServicioNro = value;}
-        }
-
-        public string Descripcion
-        {
-            get{return _Descripcion;}
-            set{_Descripcion = value;}
-        }
-
-        public int TipoServicioNro
-        {
-            get{return _TipoServicioNro;}
-            set{_TipoServicioNro = value;}
-        }
-
-        public int TipoImpuestoNro
-        {
-            get{return _TipoImpuestoNro;}
-            set{_TipoImpuestoNro = value;}
-        }
-
-        public decimal Precio
-        {
-            get{return _Precio; }
-            set{ _Precio = value;}
-        }
-
-        public string Estado
-        {
-            get{return _Estado;}
-            set{_Estado = value;}
-        }
-
-        public string Observacion
-        {
-            get{return _Observacion;}
-            set{_Observacion = value;}
-        }
-
-        public string TextoBuscar
-        {
-            get { return _TextoBuscar; }
-            set { _TextoBuscar = value; }
-        }
-
-        public int PorcentajeComision
-        {
-            get { return _PorcentajeComision;}
-            set { _PorcentajeComision = value;
-            }
-        }
+    {        
 
         public DServicio() {
 
         }
-
-        public DServicio(int servicioNro,string descripcion,int tipoServicioNro,int tipoImpuestoNro,decimal precio,int porcentajecomision,string estado,string observacion,string textobuscar) 
-        {
-            this.ServicioNro = servicioNro;
-            this.Descripcion = descripcion;
-            this.TipoServicioNro = tipoServicioNro;
-            this.TipoImpuestoNro = tipoImpuestoNro;
-            this.Precio = precio;
-            this.PorcentajeComision = porcentajecomision;
-            this.Estado = estado;
-            this.Observacion = observacion;
-            this.TextoBuscar = textobuscar;
-        }
+        
 
         //Metodo Insertar
-        public string InsertarServicio(DServicio Servicio)
+        public string InsertarServicio(EServicio Servicio)
         {
             //declarar variable respuesta
             string rpta = "";
@@ -175,7 +100,7 @@ namespace CapaDatos
         }
 
         //Metodo Editar
-        public string EditarServicio(DServicio Servicio)
+        public string EditarServicio(EServicio Servicio)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
@@ -193,7 +118,7 @@ namespace CapaDatos
                 SqlParameter ParServicioNro = new SqlParameter();
                 ParServicioNro.ParameterName = "@ServicioNro";
                 ParServicioNro.SqlDbType = SqlDbType.Int;
-                ParServicioNro.Value = Servicio.ServicioNro;
+                ParServicioNro.Value = Servicio.ArticuloNro;
                 SqlCmd.Parameters.Add(ParServicioNro);
 
                 //Parametros 
@@ -259,7 +184,7 @@ namespace CapaDatos
         }
 
         //Metodo Eliminar
-        public string EliminarServicio(DServicio Servicio)
+        public string EliminarServicio(int servicioId)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
@@ -277,7 +202,7 @@ namespace CapaDatos
                 SqlParameter ParServicioNro = new SqlParameter();
                 ParServicioNro.ParameterName = "@ServicioNro";
                 ParServicioNro.SqlDbType = SqlDbType.Int;
-                ParServicioNro.Value = Servicio.ServicioNro;
+                ParServicioNro.Value = servicioId;
                 SqlCmd.Parameters.Add(ParServicioNro);
 
                 //ejecutar el comando sql
@@ -327,7 +252,7 @@ namespace CapaDatos
         }
 
         //Metodo Buscar
-        public DataTable BuscarServicio(DServicio Servicio)
+        public DataTable BuscarServicio(string servicioDescripcion)
         {
             DataTable DtResultado = new DataTable("Servicio");
             SqlConnection Sqlcon = new SqlConnection();
@@ -344,7 +269,7 @@ namespace CapaDatos
                 ParTextoBuscar.ParameterName = "@TextoBuscar";
                 ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 ParTextoBuscar.Size = 50;
-                ParTextoBuscar.SqlValue = Servicio.TextoBuscar;
+                ParTextoBuscar.SqlValue = servicioDescripcion;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
                 //instanciar un DataAdapter

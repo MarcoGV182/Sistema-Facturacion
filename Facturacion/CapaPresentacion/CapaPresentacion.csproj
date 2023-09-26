@@ -581,12 +581,6 @@
     <Compile Include="Informes\FrmInformeRetencion.Designer.cs">
       <DependentUpon>FrmInformeRetencion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Informes\FrmInformeServicio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Informes\FrmInformeServicio.Designer.cs">
-      <DependentUpon>FrmInformeServicio.cs</DependentUpon>
-    </Compile>
     <Compile Include="Informes\FrmLibroCompra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -648,9 +642,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
-      <Project>{9476b28a-d4ba-4377-9d1f-198573388223}</Project>
-      <Name>CapaDatos</Name>
+    <ProjectReference Include="..\..\CapaEntidades\CapaEntidades.csproj">
+      <Project>{076aec42-5bf9-4c03-bb0d-2fcfe7e51802}</Project>
+      <Name>CapaEntidades</Name>
     </ProjectReference>
     <ProjectReference Include="..\CapaNegocios\CapaNegocio.csproj">
       <Project>{c4f7e322-11c6-4ee5-af21-5d48f2afeafc}</Project>
@@ -883,9 +877,6 @@
     <EmbeddedResource Include="Informes\FrmInformeRetencion.resx">
       <DependentUpon>FrmInformeRetencion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Informes\FrmInformeServicio.resx">
-      <DependentUpon>FrmInformeServicio.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Informes\FrmLibroCompra.resx">
       <DependentUpon>FrmLibroCompra.cs</DependentUpon>
     </EmbeddedResource>
@@ -920,7 +911,6 @@
     <EmbeddedResource Include="Informes\RptProductosMasVendidos.rdlc" />
     <EmbeddedResource Include="Informes\RptReporteComprasFiltro.rdlc" />
     <EmbeddedResource Include="Informes\RptReporteDeudasCliente.rdlc" />
-    <EmbeddedResource Include="Informes\RptReporteServicio.rdlc" />
     <EmbeddedResource Include="Informes\RptReporteVentasFiltro.rdlc" />
     <EmbeddedResource Include="Formularios\RRHH\FrmMantenimiento_Proceso.resx">
       <DependentUpon>FrmMantenimiento_Proceso.cs</DependentUpon>

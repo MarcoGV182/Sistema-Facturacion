@@ -10,9 +10,6 @@ namespace CapaDatos
 {
     public class DModulo:Conexion
     {
-        public int IdModulo { get; set; }
-        public string Descripcion { get; set; }
-
 
         public DModulo()
         {

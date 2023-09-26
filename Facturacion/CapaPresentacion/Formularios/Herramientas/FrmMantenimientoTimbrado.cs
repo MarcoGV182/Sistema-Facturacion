@@ -1,4 +1,4 @@
-﻿using CapaDatos;
+﻿using CapaEntidades;
 using CapaNegocio;
 using CapaPresentacion.Utilidades;
 using System;
@@ -15,7 +15,7 @@ namespace CapaPresentacion.Formularios.Herramientas
         private bool IsEditar = false;
         private int IdNumeracion = 0;
         private int IdTimbrado = 0;
-        List<DNumeracionComprobante> ListaNumeracion = null;
+        List<ENumeracionComprobante> ListaNumeracion = null;
         DataTable dtNumeracion = null;
 
         public FrmMantenimientoTimbrado()
@@ -224,7 +224,7 @@ namespace CapaPresentacion.Formularios.Herramientas
                     return;
                 }
 
-                DTimbrado t = new DTimbrado()
+                ETimbrado t = new ETimbrado()
                 {
                     IdTimbrado = IdTimbrado,
                     NroTimbrado = txtNroTimbrado.Text,
@@ -234,10 +234,10 @@ namespace CapaPresentacion.Formularios.Herramientas
                     Estado = estado
                 };
 
-                ListaNumeracion = new List<DNumeracionComprobante>();
+                ListaNumeracion = new List<ENumeracionComprobante>();
                 foreach (DataGridViewRow item in dataListado.Rows)
                 {
-                    DNumeracionComprobante dNumeracion = new DNumeracionComprobante();
+                    ENumeracionComprobante dNumeracion = new ENumeracionComprobante();
                     dNumeracion.Id = Convert.ToInt32(item.Cells["Id"].Value);
                     dNumeracion.Establecimiento = Convert.ToInt32(item.Cells["Establecimiento"].Value);
                     dNumeracion.PuntoExpedicion = Convert.ToInt32(item.Cells["PuntoExpedicion"].Value);
@@ -245,7 +245,7 @@ namespace CapaPresentacion.Formularios.Herramientas
                     dNumeracion.NumeroHasta = Convert.ToInt32(item.Cells["NumeroHasta"].Value);
                     dNumeracion.TipoComprobante = Convert.ToInt32(item.Cells["ComprobanteNro"].Value);
                     dNumeracion.Estado = item.Cells["Estado"].Value.ToString();
-                    DTimbrado timbrado = new DTimbrado() { IdTimbrado = Convert.ToInt32(item.Cells["IdTimbrado"].Value) };
+                    ETimbrado timbrado = new ETimbrado() { IdTimbrado = Convert.ToInt32(item.Cells["IdTimbrado"].Value) };
                     dNumeracion.Timbrado = timbrado;
                     ListaNumeracion.Add(dNumeracion);
                 }

@@ -1,5 +1,4 @@
-﻿using CapaDatos;
-using Microsoft.Office.Interop.Excel;
+﻿using Microsoft.Office.Interop.Excel;
 using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using System;
@@ -14,13 +13,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
+using CapaEntidades;
 
 namespace CapaPresentacion
 {
     public partial class FrmConsultaRUC : Form
     {
         public string RUC_Nombre;
-        private List<DRuc> ListRuc = new List<DRuc>();
+        private List<ERuc> ListRuc = new List<ERuc>();
         private Form _tipoFormulario;
 
         public FrmConsultaRUC()
@@ -100,9 +100,9 @@ namespace CapaPresentacion
             //EnviarDatosRUC(_tipoFormulario);
         }
 
-        private async Task<List<DRuc>> GetTableDataAsync()
+        private async Task<List<ERuc>> GetTableDataAsync()
         {
-            List<DRuc> tableData = new List<DRuc>();
+            List<ERuc> tableData = new List<ERuc>();
             try
             {
                 // Ejecutar un script de JavaScript para obtener los datos de la tabla con ID "myTable"
@@ -134,7 +134,7 @@ namespace CapaPresentacion
                     return tableData;
                 }
 
-                tableData = JsonConvert.DeserializeObject<List<DRuc>>(noNewLineResult);
+                tableData = JsonConvert.DeserializeObject<List<ERuc>>(noNewLineResult);
                 //var tableData = JsonConvert.DeserializeObject<List<DRuc>>(noNewLineResult);
             }
             catch (Exception)

@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaDatos;
+using CapaEntidades;
 using CapaNegocio;
 using CapaPresentacion.Formularios.Facturacion;
 
@@ -218,13 +218,13 @@ namespace CapaPresentacion.Formularios.ChildForms
                 if (!ValidacionCliente())
                     return;
 
-                DClientes cliente = new DClientes();
+                ECliente cliente = new ECliente();
                 int codigoCliente = string.IsNullOrEmpty(txtCodigo.Text) ? 0 : Convert.ToInt32(txtCodigo.Text);
                 cliente.PersonaNro = codigoCliente;
                 cliente.Nombre = this.txtNombre.Text.Trim().ToUpper();
                 cliente.Apellido = this.txtApellido.Text.Trim().ToUpper();
                 cliente.Documento = this.txtDocumento.Text.Trim();
-                DTipoDocumento tipoDocumento = new DTipoDocumento()
+                ETipoDocumento tipoDocumento = new ETipoDocumento()
                 {
                     idTipoDocumento = Convert.ToInt32(cboCiudad.SelectedValue),
                     Descripcion = cboCiudad.Text

@@ -6,48 +6,21 @@ using System.Threading.Tasks;
 
 using System.Data;
 using System.Data.SqlClient;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DCiudad:Conexion
     {
-        private int _CiudadNro;
-        public int CiudadNro
-        {
-            get { return _CiudadNro; }
-            set { _CiudadNro = value; }
-        }
-
-        private string _Descripcion;
-        public string Descripcion
-        {
-            get { return _Descripcion;}
-            set{_Descripcion = value;}
-        }
-
-
-        private string _TextoBuscar;
-        public string TextoBuscar
-        {
-            get{return _TextoBuscar;}
-            set{_TextoBuscar = value;}
-        }
-        
         //Constructor vacio
         public DCiudad()
         {
 
         }
-        //Constructor con parametros
-        public DCiudad(int CiudadNro, string descripcion, string textobuscar)
-        {
-            this.CiudadNro = CiudadNro;
-            this.Descripcion = descripcion;
-            this.TextoBuscar = textobuscar;
-        }
+        
 
         //Metodo insertar
-        public string InsertarCiudad(DCiudad Ciudad)
+        public string InsertarCiudad(ECiudad Ciudad)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -94,7 +67,7 @@ namespace CapaDatos
         }
 
         //Metodo Editar
-        public string EditarCiudad(DCiudad Ciudad)
+        public string EditarCiudad(ECiudad Ciudad)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -141,7 +114,7 @@ namespace CapaDatos
         }
 
         //Metodo Eliminar
-        public string EliminarCiudad(DCiudad Ciudad)
+        public string EliminarCiudad(int ciudadId)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -159,7 +132,7 @@ namespace CapaDatos
                 SqlParameter ParCiudadNro = new SqlParameter();
                 ParCiudadNro.ParameterName = "@CiudadNro";
                 ParCiudadNro.SqlDbType = SqlDbType.Int;
-                ParCiudadNro.Value = Ciudad.CiudadNro;
+                ParCiudadNro.Value = ciudadId;
                 SqlCmd.Parameters.Add(ParCiudadNro);
 
                 //ejecutar el comando sql
@@ -172,8 +145,7 @@ namespace CapaDatos
             }
             finally
             {
-                if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();
+                CerrarConexion(Sqlcon);
             }
 
             return rpta;
@@ -210,7 +182,7 @@ namespace CapaDatos
         }
 
         //Metodo Buscar
-        public DataTable BuscarNombre(DCiudad Ciudad)
+        public DataTable BuscarNombre(string textoBuscar)
         {
             DataTable DtResultado = new DataTable("Ciudad");
             SqlConnection Sqlcon = null;
@@ -227,7 +199,7 @@ namespace CapaDatos
                 ParTextoBuscar.ParameterName = "@TextoBuscar";
                 ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 ParTextoBuscar.Size = 100;
-                ParTextoBuscar.SqlValue = Ciudad.TextoBuscar;
+                ParTextoBuscar.SqlValue = textoBuscar;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
                 //instanciar un DataAdapter

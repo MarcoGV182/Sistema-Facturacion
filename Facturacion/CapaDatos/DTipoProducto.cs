@@ -5,46 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DTipoProducto : Conexion
     {
-        private int _TipoProductoNro;
-        public int TipoProductoNro
-        {
-            get { return _TipoProductoNro; }
-            set { _TipoProductoNro = value; }
-
-        }
-        private string _Descripcion;
-        public string Descripcion
-        {
-            get{return _Descripcion;}
-            set{_Descripcion = value;}
-        }
-
-        private string _TextoBuscar;
-        public string TextoBuscar
-        {
-            get{return _TextoBuscar;}
-            set{_TextoBuscar = value;}
-        }
-
-
         //Constructor vacio
         public DTipoProducto() {
 
         }
-        //Constructor con parametros
-        public DTipoProducto(int tipoProductoNro, string descripcion, string textobuscar) {
-            this.TipoProductoNro = tipoProductoNro;
-            this.Descripcion = descripcion;
-            this.TextoBuscar = textobuscar;
-        }
 
         //Metodo insertar
-        public string InsertarTipoProducto(DTipoProducto TipoProducto) {
+        public string InsertarTipoProducto(ETipoProducto TipoProducto) {
             string rpta = "";
             SqlConnection Sqlcon = null;
             try {
@@ -89,7 +62,7 @@ namespace CapaDatos
         }
 
         //Metodo Editar
-        public string EditarTipoProducto(DTipoProducto TipoProducto)
+        public string EditarTipoProducto(ETipoProducto TipoProducto)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -137,7 +110,7 @@ namespace CapaDatos
         }
 
         //Metodo Eliminar
-        public string EliminarTipoProducto(DTipoProducto TipoProducto)
+        public string EliminarTipoProducto(int tipoProductoId)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -155,7 +128,7 @@ namespace CapaDatos
                 SqlParameter ParTipoProductoNro = new SqlParameter();
                 ParTipoProductoNro.ParameterName = "@TipoProductoNro";
                 ParTipoProductoNro.SqlDbType = SqlDbType.Int;
-                ParTipoProductoNro.Value = TipoProducto.TipoProductoNro;
+                ParTipoProductoNro.Value = tipoProductoId;
                 SqlCmd.Parameters.Add(ParTipoProductoNro);
                                 
                 //ejecutar el comando sql
@@ -205,7 +178,7 @@ namespace CapaDatos
         }
 
         //Metodo Buscar
-        public DataTable BuscarNombre(DTipoProducto TipoProducto)
+        public DataTable BuscarNombre(string textoBuscar)
         {
             DataTable DtResultado = new DataTable("TipoProducto");
             SqlConnection Sqlcon = null;
@@ -222,7 +195,7 @@ namespace CapaDatos
                 ParTextoBuscar.ParameterName = "@TextoBuscar";
                 ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 ParTextoBuscar.Size = 50;
-                ParTextoBuscar.SqlValue = TipoProducto.TextoBuscar;
+                ParTextoBuscar.SqlValue = textoBuscar;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
                 
                 //instanciar un DataAdapter

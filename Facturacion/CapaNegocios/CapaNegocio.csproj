@@ -73,7 +73,7 @@
     <Compile Include="NProceso.cs" />
     <Compile Include="NProducto.cs" />
     <Compile Include="NProveedor.cs" />
-    <Compile Include="NRegla.cs" />
+    <Compile Include="NOperacion.cs" />
     <Compile Include="NRetencion.cs" />
     <Compile Include="NServicio.cs" />
     <Compile Include="NTimbrado.cs" />
@@ -93,6 +93,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CapaEntidades\CapaEntidades.csproj">
+      <Project>{076aec42-5bf9-4c03-bb0d-2fcfe7e51802}</Project>
+      <Name>CapaEntidades</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
       <Project>{9476b28a-d4ba-4377-9d1f-198573388223}</Project>
       <Name>CapaDatos</Name>

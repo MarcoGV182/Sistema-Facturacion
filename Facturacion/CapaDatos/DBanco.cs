@@ -5,66 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DBanco:Conexion
     {
-        private int _BancoNro;
-        private string _Descripcion;
-        private string _TextoBuscar;
-
-        public int BancoNro
-        {
-            get
-            {
-                return _BancoNro;
-            }
-
-            set
-            {
-                _BancoNro = value;
-            }
-        }
-
-        public string Descripcion
-        {
-            get
-            {
-                return _Descripcion;
-            }
-
-            set
-            {
-                _Descripcion = value;
-            }
-        }
-
-        public string TextoBuscar
-        {
-            get
-            {
-                return _TextoBuscar;
-            }
-
-            set
-            {
-                _TextoBuscar = value;
-            }
-        }
-
-        
-
         public DBanco() { }
-
-        public DBanco(int banconro,string descripcion, string textobuscar) {
-            this.BancoNro = BancoNro;
-            this.Descripcion = descripcion;
-            this.TextoBuscar = textobuscar;            
-        }
+               
 
         //Metodo insertar
-        public string InsertarBanco(DBanco Banco)
+        public string InsertarBanco(EBanco Banco)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -113,7 +64,7 @@ namespace CapaDatos
         }
 
         //Metodo Editar
-        public string EditarBanco(DBanco Banco)
+        public string EditarBanco(EBanco Banco)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -162,7 +113,7 @@ namespace CapaDatos
         }
 
         //Metodo Eliminar
-        public string EliminarBanco(DBanco Banco)
+        public string EliminarBanco(int BancoId)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -181,7 +132,7 @@ namespace CapaDatos
                 SqlParameter ParBancoNro = new SqlParameter();
                 ParBancoNro.ParameterName = "@BancoNro";
                 ParBancoNro.SqlDbType = SqlDbType.Int;
-                ParBancoNro.Value = Banco.BancoNro;
+                ParBancoNro.Value = BancoId;
                 SqlCmd.Parameters.Add(ParBancoNro);
 
                 //ejecutar el comando sql
@@ -226,41 +177,5 @@ namespace CapaDatos
             return DtResultado;
 
         }
-
-        //Metodo Buscar
-        public DataTable BuscarNombre(DBanco Banco)
-        {
-            DataTable DtResultado = new DataTable("Banco");
-            SqlConnection Sqlcon = null;
-            try
-            {
-                Sqlcon = AbrirConexion();
-                SqlCommand SqlCmd = new SqlCommand();
-                SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "sp_BuscarBanco";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
-
-                //Parametros
-                SqlParameter ParTextoBuscar = new SqlParameter();
-                ParTextoBuscar.ParameterName = "@TextoBuscar";
-                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
-                ParTextoBuscar.Size = 100;
-                ParTextoBuscar.SqlValue = Banco.TextoBuscar;
-                SqlCmd.Parameters.Add(ParTextoBuscar);
-
-                //instanciar un DataAdapter para el data table
-                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
-                SqlAdapter.Fill(DtResultado);
-            }
-            catch (Exception)
-            {
-                DtResultado = null;
-            }
-
-            return DtResultado;
-
-        }
-
-
     }
 }

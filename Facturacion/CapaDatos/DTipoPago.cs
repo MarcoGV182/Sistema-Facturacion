@@ -5,50 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection.Emit;
 
 namespace CapaDatos
 {
     public class DTipoPago:Conexion
     {
-        private int _FormaPago;
-        private string _Descripcion;
-
-        public int FormaPago
-        {
-            get
-            {
-                return _FormaPago;
-            }
-
-            set
-            {
-                _FormaPago = value;
-            }
-        }
-
-        public string Descripcion
-        {
-            get
-            {
-                return _Descripcion;
-            }
-
-            set
-            {
-                _Descripcion = value;
-            }
-        }
-
-
         public DTipoPago() {
 
-        }
-
-        public DTipoPago(int FormaPago, string descripcion) 
-        {
-            this.FormaPago = FormaPago;
-            this.Descripcion = descripcion;
-        }
+        }       
 
 
         //Metodo Mostrar

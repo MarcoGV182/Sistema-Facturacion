@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
-using CapaDatos;
+using CapaEntidades;
 using CapaNegocio;
 using CapaPresentacion.Utilidades;
 
@@ -291,7 +291,7 @@ namespace CapaPresentacion.Formularios.Herramientas
                 }
 
 
-                DColaborador Colaborador = new DColaborador();
+                EColaborador Colaborador = new EColaborador();
                 Colaborador.Nombre = this.txtNombre.Text.Trim().ToUpper();
                 Colaborador.Apellido = this.txtApellido.Text.Trim().ToUpper();
                 Colaborador.Documento = this.txtDocumento.Text.Trim();
@@ -725,10 +725,10 @@ namespace CapaPresentacion.Formularios.Herramientas
                     return;
                 }
 
-                DUsuarios user = new DUsuarios();
+                EUsuario user = new EUsuario();
                 user.PersonaNro = idColaborador.GetValueOrDefault();
                 user.PersonaNro = Convert.ToInt32(txtCodigo.Text);
-                user.Usuario = this.txtUsuario.Text.Trim().ToUpper();
+                user.Login = this.txtUsuario.Text.Trim().ToUpper();
                 user.Pass = this.txtPass1.Text;
                 user.passNew = this.txtPass2.Text;
                 user.TipoUserNro = Convert.ToInt32(this.cboAcceso.SelectedValue);

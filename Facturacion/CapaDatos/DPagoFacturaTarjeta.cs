@@ -5,28 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DPagoFacturaTarjeta : DPagoFactura
     {  
-        public string TipoTarjeta { get; set; }
-        public string ComprobanteNro { get; set; }
-
 
         public DPagoFacturaTarjeta() { }
-        public DPagoFacturaTarjeta(int pagoNro,int nroventa,string tipotarjeta,double monto,string comprobanteNro) 
-        {
-            this.PagoNro = pagoNro;
-            this.NroVenta= nroventa;
-            this.TipoTarjeta = tipotarjeta;
-            this.Monto = monto;
-            this.ComprobanteNro = comprobanteNro;
-        }
-
 
         //Metodo insertar
-        public string InsertarPagoFacturaTarjeta(DPagoFacturaTarjeta PagoFacturaTarjeta, SqlConnection SqlconExistente = null, SqlTransaction sqltranExistente = null)
+        public string InsertarPagoFacturaTarjeta(EPagoFacturaTarjeta PagoFacturaTarjeta, SqlConnection SqlconExistente = null, SqlTransaction sqltranExistente = null)
         {
             #region Variables
             string rpta = "";

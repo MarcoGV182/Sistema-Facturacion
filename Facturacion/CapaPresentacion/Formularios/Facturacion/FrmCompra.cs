@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaDatos;
+using CapaEntidades;
 using CapaNegocio;
 using CapaPresentacion.Formularios.ChildForms;
 using CapaPresentacion.Informes.DsReporteTableAdapters;
@@ -163,8 +163,8 @@ namespace CapaPresentacion.Formularios.Facturacion
         }
 
         //Obtener los datos del producto
-        public void ObtenerProducto(DProducto producto) {
-            this.txtCodProducto.Text = producto.ProductoNro.ToString();
+        public void ObtenerProducto(EProducto producto) {
+            this.txtCodProducto.Text = producto.ArticuloNro.ToString();
             this.txtProducto.Text = producto.Descripcion;
             this.txtUnidadMedida.Text = producto.UnidadMedida.Descripcion;
             this.txtPrecioCompra.Text = producto.PrecioCompra.ToString("N0");
@@ -587,23 +587,23 @@ namespace CapaPresentacion.Formularios.Facturacion
 
                 codTipoPago = Convert.ToInt32(this.cboTipoPago.SelectedValue);
 
-                DCompra compra = new DCompra()
+                ECompra compra = new ECompra()
                 {
                     Id = IdCompra,
-                    Proveedor = new DProveedor()
+                    Proveedor = new EProveedor()
                     {
                         PersonaNro = CodProveedor,
                         RazonSocial = this.txtProveedor.Text,
                     },
                     Fecha = this.dtpFecha.Value,
-                    TipoPago = new DTipoPago()
+                    TipoPago = new ETipoPago()
                     {
                         FormaPago = Convert.ToInt32(this.cboTipoPago.SelectedValue),
                         Descripcion = this.cboTipoPago.Text
                     },
                     CantCuotas = codTipoPago == 2 ? Convert.ToInt32(this.txtDias.Text) : (int?)null,
                     FechaVencimiento = dtpFechaVenc.Visible ? dtpFechaVenc.Value : (DateTime?)null,
-                    TipoComprobate = new DTipoComprobante()
+                    TipoComprobate = new ETipoComprobante()
                     {
                         ComprobanteNro = Convert.ToInt32(cboComprobante.SelectedValue),
                         Nombre = cboComprobante.Text
@@ -1019,10 +1019,10 @@ namespace CapaPresentacion.Formularios.Facturacion
 
         public void AsignarDatos(params object[] datos)
         {
-            var registro = (DRuc)datos[0];
+            /*var registro = (Ruc)datos[0];
 
             txtDocumento.Text = registro.Ruc;
-            txtProveedor.Text = registro.RazonSocial;
+            txtProveedor.Text = registro.RazonSocial;*/
             // Asigna aquí los valores de los controles correspondientes
         }
 

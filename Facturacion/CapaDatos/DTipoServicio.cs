@@ -6,32 +6,12 @@ using System.Threading.Tasks;
 
 using System.Data;
 using System.Data.SqlClient;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DTipoServicio : Conexion
     {
-        private int _TipoServicioNro;
-        public int TipoServicioNro
-        {
-            get { return _TipoServicioNro; }
-            set { _TipoServicioNro = value; }
-
-        }
-        private string _Descripcion;
-        public string Descripcion
-        {
-            get { return _Descripcion; }
-            set { _Descripcion = value; }
-        }
-
-        private string _TextoBuscar;
-        public string TextoBuscar
-        {
-            get { return _TextoBuscar; }
-            set { _TextoBuscar = value; }
-        }
-
 
         //Constructor vacio
         public DTipoServicio()
@@ -39,15 +19,9 @@ namespace CapaDatos
 
         }
         //Constructor con parametros
-        public DTipoServicio(int tipoServicioNro, string descripcion, string textobuscar)
-        {
-            this.TipoServicioNro = tipoServicioNro;
-            this.Descripcion = descripcion;
-            this.TextoBuscar = textobuscar;
-        }
-
+       
         //Metodo insertar
-        public string InsertarTipoServicio(DTipoServicio TipoServicio)
+        public string InsertarTipoServicio(ETipoServicio TipoServicio)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -95,7 +69,7 @@ namespace CapaDatos
         }
 
         //Metodo Editar
-        public string EditarTipoServicio(DTipoServicio TipoServicio)
+        public string EditarTipoServicio(ETipoServicio TipoServicio)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -143,7 +117,7 @@ namespace CapaDatos
         }
 
         //Metodo Eliminar
-        public string EliminarTipoServicio(DTipoServicio TipoServicio)
+        public string EliminarTipoServicio(int tipoServicioId)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -161,7 +135,7 @@ namespace CapaDatos
                 SqlParameter ParTipoServicioNro = new SqlParameter();
                 ParTipoServicioNro.ParameterName = "@TipoServicioNro";
                 ParTipoServicioNro.SqlDbType = SqlDbType.Int;
-                ParTipoServicioNro.Value = TipoServicio.TipoServicioNro;
+                ParTipoServicioNro.Value = tipoServicioId;
                 SqlCmd.Parameters.Add(ParTipoServicioNro);
 
                 //ejecutar el comando sql
@@ -209,44 +183,5 @@ namespace CapaDatos
             return DtResultado;
 
         }
-
-        //Metodo Buscar
-        public DataTable BuscarNombre(DTipoServicio TipoServicio)
-        {
-            DataTable DtResultado = new DataTable("TipoServicio");
-            SqlConnection Sqlcon = null;
-            try
-            {
-                Sqlcon = AbrirConexion();
-                SqlCommand SqlCmd = new SqlCommand();
-                SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "sp_BuscarTipoServicio";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
-
-                //Parametros
-                SqlParameter ParTextoBuscar = new SqlParameter();
-                ParTextoBuscar.ParameterName = "@TextoBuscar";
-                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
-                ParTextoBuscar.Size = 50;
-                ParTextoBuscar.SqlValue = TipoServicio.TextoBuscar;
-                SqlCmd.Parameters.Add(ParTextoBuscar);
-
-                //instanciar un DataAdapter
-                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
-                SqlAdapter.Fill(DtResultado);
-            }
-            catch (Exception)
-            {
-                DtResultado = null;
-            }
-            finally 
-            {
-                CerrarConexion(Sqlcon);
-            }
-
-            return DtResultado;
-
-        }
-
     }
 }

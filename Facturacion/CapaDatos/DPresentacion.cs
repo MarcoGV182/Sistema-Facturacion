@@ -5,43 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using CapaEntidades;
+
 namespace CapaDatos
 {
     public class DPresentacion:Conexion
     {
-        private int _IdPresentacion;
-        private string _Descripcion;
-        private string _TextoBuscar;
-
-        public int IdPresentacion
-        {
-            get{return _IdPresentacion;}
-            set{_IdPresentacion = value;}
-        }
-        public string Descripcion
-        {
-            get{return _Descripcion;}
-            set{_Descripcion = value;}
-        }
-
-        public string TextoBuscar
-        {
-            get { return _TextoBuscar; }
-            set { _TextoBuscar = value; }
-        }
-
+       
         public DPresentacion() {
 
         }
 
-        public DPresentacion(int idpresentacion, string descripcion, string textobuscar) {
-            this.IdPresentacion = idpresentacion;
-            this.Descripcion = descripcion;
-            this.TextoBuscar = textobuscar;
-        }
-
         //Metodo insertar
-        public string InsertarPresentacion(DPresentacion Presentacion)
+        public string InsertarPresentacion(EPresentacionProducto Presentacion)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
@@ -90,7 +66,7 @@ namespace CapaDatos
         }
 
         //Metodo Editar
-        public string EditarPresentacion(DPresentacion Presentacion)
+        public string EditarPresentacion(EPresentacionProducto Presentacion)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
@@ -139,7 +115,7 @@ namespace CapaDatos
         }
 
         //Metodo Eliminar
-        public string EliminarPresentacion(DPresentacion Presentacion)
+        public string EliminarPresentacion(int presentacionId)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
@@ -157,7 +133,7 @@ namespace CapaDatos
                 SqlParameter ParidPresentacion = new SqlParameter();
                 ParidPresentacion.ParameterName = "@idPresentacion";
                 ParidPresentacion.SqlDbType = SqlDbType.Int;
-                ParidPresentacion.Value = Presentacion.IdPresentacion;
+                ParidPresentacion.Value = presentacionId;
                 SqlCmd.Parameters.Add(ParidPresentacion);
 
                 //ejecutar el comando sql
@@ -208,7 +184,7 @@ namespace CapaDatos
         }
 
         //Metodo Buscar
-        public DataTable BuscarPresentacion(DPresentacion Presentacion)
+        public DataTable BuscarPresentacion(string textoBuscar)
         {
             DataTable DtResultado = new DataTable("Presentacion");
             SqlConnection Sqlcon = new SqlConnection();
@@ -225,7 +201,7 @@ namespace CapaDatos
                 ParTextoBuscar.ParameterName = "@TextoBuscar";
                 ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 ParTextoBuscar.Size = 50;
-                ParTextoBuscar.SqlValue = Presentacion.TextoBuscar;
+                ParTextoBuscar.SqlValue = textoBuscar;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
                 //instanciar un DataAdapter para el data table

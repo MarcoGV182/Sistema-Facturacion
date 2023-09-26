@@ -6,204 +6,19 @@ using System.Threading.Tasks;
 
 using System.Data;
 using System.Data.SqlClient;
+using CapaEntidades;
+
 namespace CapaDatos
 {
     public class DProducto:Conexion
     {
-        private int _ProductoNro;
-        private string _Descripcion;
-        private int _TipoProductoNro;
-        private int _IdPresentacion;
-        public string CodigoBarra { get; set; }
-        public DateTime? FechaVencimiento { get; set; }
-        private DUnidadMedida _UnidadMedida;
-        private DTipoImpuesto _TipoImpuesto;
-        private int _MarcaNro;
-        private int _Stockminimo;
-        private int _StockActual;
-        private decimal _PrecioCompra;
-        private decimal _Precio;
-        private string _Estado;
-        private string _Observacion;
-        private string _TextoBuscar;
-
-        public int ProductoNro
-        {
-            get
-            {
-                return _ProductoNro;
-            }
-
-            set
-            {
-                _ProductoNro = value;
-            }
-        }
-
-        public string Descripcion
-        {
-            get
-            {
-                return _Descripcion;
-            }
-
-            set
-            {
-                _Descripcion = value;
-            }
-        }
-
-       
-
-        public int TipoProductoNro
-        {
-            get
-            {
-                return _TipoProductoNro;
-            }
-
-            set
-            {
-                _TipoProductoNro = value;
-            }
-        }
-
-        public int IdPresentacion
-        {
-            get
-            {
-                return _IdPresentacion;
-            }
-
-            set
-            {
-                _IdPresentacion = value;
-            }
-        }
-
-        public DUnidadMedida UnidadMedida
-        {
-            get
-            {
-                return _UnidadMedida;
-            }
-
-            set
-            {
-                _UnidadMedida = value;
-            }
-        }
-
-        public int MarcaNro
-        {
-            get
-            {
-                return _MarcaNro;
-            }
-
-            set
-            {
-                _MarcaNro = value;
-            }
-        }
-
-        public int Stockminimo
-        {
-            get
-            {
-                return _Stockminimo;
-            }
-
-            set
-            {
-                _Stockminimo = value;
-            }
-        }
-
-        public int StockActual
-        {
-            get
-            {
-                return _StockActual;
-            }
-
-            set
-            {
-                _StockActual = value;
-            }
-        }
-
-        public decimal PrecioCompra
-        {
-            get
-            {
-                return _PrecioCompra;
-            }
-
-            set
-            {
-                _PrecioCompra = value;
-            }
-        }
-
-        public decimal Precio
-        {
-            get
-            {
-                return _Precio;
-            }
-
-            set
-            {
-                _Precio = value;
-            }
-        }
-
-        public string Estado
-        {
-            get
-            {
-                return _Estado;
-            }
-
-            set
-            {
-                _Estado = value;
-            }
-        }
-
-        public string Observacion
-        {
-            get{return _Observacion;}
-            set{_Observacion = value;}
-        }
-
-        public string TextoBuscar
-        {
-            get{return _TextoBuscar;}
-            set{_TextoBuscar = value;}
-        }
-
-        public DTipoImpuesto TipoImpuesto
-        {
-            get
-            {
-                return _TipoImpuesto;
-            }
-
-            set
-            {
-                _TipoImpuesto = value;
-            }
-        }
-
         public DProducto() {
 
         }
 
 
         //Metodo Insertar
-        public string InsertarProducto(DProducto Producto) {
+        public string InsertarProducto(EProducto Producto) {
             //declarar variable respuesta
             string rpta = "OK";
             //instanciamos la conexion
@@ -238,14 +53,14 @@ namespace CapaDatos
                 SqlParameter ParTipoProductoNro = new SqlParameter();
                 ParTipoProductoNro.ParameterName = "@TipoProductoNro";
                 ParTipoProductoNro.SqlDbType = SqlDbType.Int;
-                ParTipoProductoNro.Value = Producto.TipoProductoNro;
+                ParTipoProductoNro.Value = Producto.TipoProducto.TipoProductoNro;
                 SqlCmd.Parameters.Add(ParTipoProductoNro);
 
                 //Parametros 
                 SqlParameter ParidPresentacion = new SqlParameter();
                 ParidPresentacion.ParameterName = "@idPresentacion";
                 ParidPresentacion.SqlDbType = SqlDbType.Int;
-                ParidPresentacion.Value = Producto.IdPresentacion;
+                ParidPresentacion.Value = Producto.Presentacion.IdPresentacion;
                 SqlCmd.Parameters.Add(ParidPresentacion);
 
                 //Parametros 
@@ -259,7 +74,7 @@ namespace CapaDatos
                 SqlParameter ParMarcaNro = new SqlParameter();
                 ParMarcaNro.ParameterName = "@MarcaNro";
                 ParMarcaNro.SqlDbType = SqlDbType.Int;
-                ParMarcaNro.Value = Producto.MarcaNro;
+                ParMarcaNro.Value = Producto.Marca.MarcaNro;
                 SqlCmd.Parameters.Add(ParMarcaNro);
 
                 //Parametros 
@@ -343,7 +158,7 @@ namespace CapaDatos
         }
 
         //Metodo Editar
-        public string EditarProducto(DProducto Producto)
+        public string EditarProducto(EProducto Producto)
         {
             string rpta = "";
             SqlConnection Sqlcon = new SqlConnection();
@@ -361,7 +176,7 @@ namespace CapaDatos
                 SqlParameter ParProductoNro = new SqlParameter();
                 ParProductoNro.ParameterName = "@ArticuloNro";
                 ParProductoNro.SqlDbType = SqlDbType.Int;
-                ParProductoNro.Value = Producto.ProductoNro;
+                ParProductoNro.Value = Producto.ArticuloNro;
                 SqlCmd.Parameters.Add(ParProductoNro);
 
                 //Parametros 
@@ -394,14 +209,14 @@ namespace CapaDatos
                 SqlParameter ParTipoProductoNro = new SqlParameter();
                 ParTipoProductoNro.ParameterName = "@TipoProductoNro";
                 ParTipoProductoNro.SqlDbType = SqlDbType.Int;
-                ParTipoProductoNro.Value = Producto.TipoProductoNro;
+                ParTipoProductoNro.Value = Producto.TipoProducto.TipoProductoNro;
                 SqlCmd.Parameters.Add(ParTipoProductoNro);
 
                 //Parametros 
                 SqlParameter ParidPresentacion = new SqlParameter();
                 ParidPresentacion.ParameterName = "@idPresentacion";
                 ParidPresentacion.SqlDbType = SqlDbType.Int;
-                ParidPresentacion.Value = Producto.IdPresentacion;
+                ParidPresentacion.Value = Producto.Presentacion.IdPresentacion;
                 SqlCmd.Parameters.Add(ParidPresentacion);
 
                 //Parametros 
@@ -415,7 +230,7 @@ namespace CapaDatos
                 SqlParameter ParMarcaNro = new SqlParameter();
                 ParMarcaNro.ParameterName = "@MarcaNro";
                 ParMarcaNro.SqlDbType = SqlDbType.Int;
-                ParMarcaNro.Value = Producto.MarcaNro;
+                ParMarcaNro.Value = Producto.Marca.MarcaNro;
                 SqlCmd.Parameters.Add(ParMarcaNro);
 
                 //Parametros 
@@ -486,7 +301,7 @@ namespace CapaDatos
         }
 
         //Metodo Eliminar
-        public string EliminarProducto(DProducto Producto)
+        public string EliminarProducto(int ProductoId)
         {
             string rpta = "OK";
             SqlConnection Sqlcon = new SqlConnection();
@@ -504,7 +319,7 @@ namespace CapaDatos
                 SqlParameter ParProductoNro = new SqlParameter();
                 ParProductoNro.ParameterName = "@ProductoNro";
                 ParProductoNro.SqlDbType = SqlDbType.Int;
-                ParProductoNro.Value = Producto.ProductoNro;
+                ParProductoNro.Value = ProductoId;
                 SqlCmd.Parameters.Add(ParProductoNro);
 
                 //ejecutar el comando sql
@@ -582,7 +397,7 @@ namespace CapaDatos
         }
 
         //Metodo Buscar
-        public DataTable BuscarProducto(DProducto Producto)
+        public DataTable BuscarProducto(string productoDescripcion)
         {
             DataTable DtResultado = new DataTable("Producto");
             SqlConnection Sqlcon = new SqlConnection();
@@ -599,7 +414,7 @@ namespace CapaDatos
                 ParTextoBuscar.ParameterName = "@TextoBuscar";
                 ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 ParTextoBuscar.Size = 50;
-                ParTextoBuscar.SqlValue = Producto.TextoBuscar;
+                ParTextoBuscar.SqlValue = productoDescripcion;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
                 //instanciar un DataAdapter
@@ -618,7 +433,7 @@ namespace CapaDatos
         }
 
         //Metodo Buscar
-        public DataTable BuscarProductoActivo(DProducto Producto)
+        public DataTable BuscarProductoActivo(string productoDescripcion)
         {
             DataTable DtResultado = new DataTable("Producto");
             SqlConnection Sqlcon = new SqlConnection();
@@ -635,7 +450,7 @@ namespace CapaDatos
                 ParTextoBuscar.ParameterName = "@TextoBuscar";
                 ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 ParTextoBuscar.Size = 50;
-                ParTextoBuscar.SqlValue = Producto.TextoBuscar;
+                ParTextoBuscar.SqlValue = productoDescripcion;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
                 //instanciar un DataAdapter

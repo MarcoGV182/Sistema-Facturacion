@@ -10,9 +10,6 @@ namespace CapaDatos
 {
     public class DTipoDocumento:Conexion
     {
-        public int idTipoDocumento { get; set; }
-        public string Descripcion { get; set; }
-
         public DTipoDocumento()
         {
 

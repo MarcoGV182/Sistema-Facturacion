@@ -12,80 +12,15 @@ namespace CapaDatos
 {
     public class DUsuarios : Conexion
     {
-        private int _PersonaNro;
-        private string _Nombre;
-        private string _Apellido;
-        private string _usuario;
-        private string _pass;
-        public string passNew { get; set; }
-        private int _TipoUserNro;
-        private string _TextoBuscar;
-        private string[] _ReglaUsuario;
 
-
-        public int PersonaNro
+        public DUsuarios() 
         {
-            get{return _PersonaNro;}
-            set{_PersonaNro = value;}
-        }
-
-        public string Nombre
-        {
-            get{return _Nombre;}
-            set{_Nombre = value;}
-        }
-
-        public string Apellido
-        {
-            get{return _Apellido;}
-            set{_Apellido = value;}
-        }
-
-        public string Usuario
-        {
-            get{return _usuario;}
-            set{_usuario = value;}
-        }
-
-        public string Pass
-        {
-            get{return _pass;}
-            set{_pass = value;}
-        }
-
-        public int TipoUserNro
-        {
-            get{return _TipoUserNro;}
-            set{_TipoUserNro = value;}
-        }
-
-        public string TextoBuscar
-        {
-            get { return _TextoBuscar; }
-            set { _TextoBuscar = value; }
-        }
-     
-
-        public string[] ReglaUsuario
-        {
-            get
-            {
-                return _ReglaUsuario;
-            }
-
-            set
-            {
-                _ReglaUsuario = value;
-            }
-        }        
-
-        public DUsuarios() {
 
         }
 
 
         //Metodo Insertar
-        public string InsertarUsuarios(DUsuarios Usuario, SqlConnection sqlConExistente = null, SqlTransaction SqltranExistente = null)
+        public string InsertarUsuarios(int PersonaNro,string UsuarioLogin,string Pass,int TipoUserNro,SqlConnection sqlConExistente = null, SqlTransaction SqltranExistente = null)
         {
             //declarar variable respuesta
             string rpta = "OK";
@@ -107,14 +42,14 @@ namespace CapaDatos
                 SqlParameter ParIdUser = new SqlParameter();
                 ParIdUser.ParameterName = "@IdUsuario";
                 ParIdUser.SqlDbType = SqlDbType.Int;
-                ParIdUser.Value = Usuario.PersonaNro;
+                ParIdUser.Value = PersonaNro;
                 SqlCmd.Parameters.Add(ParIdUser);
 
                 SqlParameter ParUser= new SqlParameter();
                 ParUser.ParameterName = "@Usuario";
                 ParUser.SqlDbType = SqlDbType.VarChar;
                 ParUser.Size = 250;
-                ParUser.Value = Usuario.Usuario;
+                ParUser.Value = UsuarioLogin;
                 SqlCmd.Parameters.Add(ParUser);
 
                 //Parametros Observacion
@@ -122,14 +57,14 @@ namespace CapaDatos
                 ParPass.ParameterName = "@Pass";
                 ParPass.SqlDbType = SqlDbType.VarChar;
                 ParPass.Size = 250;
-                ParPass.Value = Usuario.Pass;
+                ParPass.Value = Pass;
                 SqlCmd.Parameters.Add(ParPass);
 
                 //Parametros Observacion
                 SqlParameter ParAcceso = new SqlParameter();
                 ParAcceso.ParameterName = "@TipoUserNro";
                 ParAcceso.SqlDbType = SqlDbType.Int;
-                ParAcceso.Value = Usuario.TipoUserNro;
+                ParAcceso.Value = TipoUserNro;
                 SqlCmd.Parameters.Add(ParAcceso);
 
             
@@ -155,7 +90,7 @@ namespace CapaDatos
 
 
         //Metodo Editar
-        public string EditarUsuario(DUsuarios Usuario, SqlConnection sqlConExistente = null, SqlTransaction SqltranExistente = null)
+        public string EditarUsuario(int PersonaNro, string UsuarioLogin, string Pass,string PassNew, int TipoUserNro, SqlConnection sqlConExistente = null, SqlTransaction SqltranExistente = null)
         {
             //declarar variable respuesta
             string rpta = "OK";
@@ -179,7 +114,7 @@ namespace CapaDatos
                 SqlParameter ParPersonaNro = new SqlParameter();
                 ParPersonaNro.ParameterName = "@PersonaNro";
                 ParPersonaNro.SqlDbType = SqlDbType.Int;
-                ParPersonaNro.Value = Usuario.PersonaNro;
+                ParPersonaNro.Value = PersonaNro;
                 SqlCmd.Parameters.Add(ParPersonaNro);
 
                 //Parametros Observacion
@@ -187,7 +122,7 @@ namespace CapaDatos
                 ParUser.ParameterName = "@Usuario";
                 ParUser.SqlDbType = SqlDbType.VarChar;
                 ParUser.Size = 250;
-                ParUser.Value = Usuario.Usuario;
+                ParUser.Value = UsuarioLogin;
                 SqlCmd.Parameters.Add(ParUser);
 
 
@@ -196,21 +131,21 @@ namespace CapaDatos
                 ParPassAnterior.ParameterName = "@OldPass";
                 ParPassAnterior.SqlDbType = SqlDbType.VarChar;
                 ParPassAnterior.Size = 50;
-                ParPassAnterior.Value = Usuario.Pass;
+                ParPassAnterior.Value = Pass;
                 SqlCmd.Parameters.Add(ParPassAnterior);
 
                 SqlParameter ParPassNuevo = new SqlParameter();
                 ParPassNuevo.ParameterName = "@NewPass";
                 ParPassNuevo.SqlDbType = SqlDbType.VarChar;
                 ParPassNuevo.Size = 50;
-                ParPassNuevo.Value = Usuario.passNew;
+                ParPassNuevo.Value = PassNew;
                 SqlCmd.Parameters.Add(ParPassNuevo);
 
                 //Parametros Observacion
                 SqlParameter ParAcceso = new SqlParameter();
                 ParAcceso.ParameterName = "@TipoUserNro";
                 ParAcceso.SqlDbType = SqlDbType.Int;
-                ParAcceso.Value = Usuario.TipoUserNro;
+                ParAcceso.Value = TipoUserNro;
                 SqlCmd.Parameters.Add(ParAcceso);
 
                 //ejecutar el comando sql                
@@ -237,7 +172,7 @@ namespace CapaDatos
 
 
         //Metodo Eliminar
-        public string EliminarUsuario(DUsuarios Usuario)
+        public string EliminarUsuario(int UsuarioNro)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;
@@ -255,7 +190,7 @@ namespace CapaDatos
                 SqlParameter ParUsuarioNro = new SqlParameter();
                 ParUsuarioNro.ParameterName = "@UsuarioNro";
                 ParUsuarioNro.SqlDbType = SqlDbType.Int;
-                ParUsuarioNro.Value = Usuario.PersonaNro;
+                ParUsuarioNro.Value = UsuarioNro;
                 SqlCmd.Parameters.Add(ParUsuarioNro);
 
                 //ejecutar el comando sql
@@ -278,7 +213,7 @@ namespace CapaDatos
 
 
         //Metodo Mostrar
-        public DataTable BuscarUsuario(DUsuarios usuario)
+        public DataTable BuscarUsuario(string TextoBuscar)
         {
             DataTable DtResultado = new DataTable("Usuario");
             SqlConnection Sqlcon = null;
@@ -294,7 +229,7 @@ namespace CapaDatos
                 ParTextoBuscar.ParameterName = "@TextoBuscar";
                 ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
                 ParTextoBuscar.Size = 50;
-                ParTextoBuscar.Value = usuario.TextoBuscar;
+                ParTextoBuscar.Value = TextoBuscar;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
                 SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
@@ -315,7 +250,7 @@ namespace CapaDatos
 
         
         //Metodo Buscar
-        public DataTable BuscarLogin(DUsuarios Usuarios)
+        public DataTable BuscarLogin(string UsuarioLogin,string Pass)
         {
             DataTable DtResultado = new DataTable("Usuario");
             SqlConnection Sqlcon = null;
@@ -332,7 +267,7 @@ namespace CapaDatos
                 ParUser.ParameterName = "@Usuario";
                 ParUser.SqlDbType = SqlDbType.VarChar;
                 ParUser.Size = 50;
-                ParUser.SqlValue = Usuarios.Usuario;
+                ParUser.SqlValue = UsuarioLogin;
                 SqlCmd.Parameters.Add(ParUser);
 
                 //Parametros
@@ -340,7 +275,7 @@ namespace CapaDatos
                 ParPass.ParameterName = "@Pass";
                 ParPass.SqlDbType = SqlDbType.VarChar;
                 ParPass.Size = 50;
-                ParPass.SqlValue = Usuarios.Pass;
+                ParPass.SqlValue = Pass;
                 SqlCmd.Parameters.Add(ParPass);
 
                 //instanciar un DataAdapter
@@ -358,58 +293,5 @@ namespace CapaDatos
             }
             return DtResultado;
         }
-
-
-        //Metodo Mostrar
-        /*public DataTable Mostrar_UsuarioServicio(DUsuarios usuario)
-        {
-            DataTable DtResultado = new DataTable("Usuario");
-            SqlConnection Sqlcon = new SqlConnection();
-            try
-            {
-                Sqlcon.ConnectionString = Conexion.CadenaConexion;
-                SqlCommand SqlCmd = new SqlCommand();
-                SqlCmd.Connection = Sqlcon;
-                SqlCmd.CommandText = "sp_Mostrar_UsuarioServicio";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
-
-                SqlParameter ParServicioNro = new SqlParameter();
-                ParServicioNro.ParameterName = "@ServicioNro";
-                ParServicioNro.SqlDbType = SqlDbType.Int;
-                ParServicioNro.Value = usuario.ServicioNro;
-                SqlCmd.Parameters.Add(ParServicioNro);
-
-                SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);
-                SqlAdapter.Fill(DtResultado);
-            }
-            catch (Exception)
-            {
-                DtResultado = null;
-            }
-
-            return DtResultado;
-
-        }*/
-
-
-
-
-        //METODO PARA VERIFICAR LOS PERMISO QUE POSEE EL USUARIO AL LOGUEARSE AL SISTEMA 
-        public bool ReglasVerificar(string reglas_Usuario,string[]reglas) 
-        {
-            ReglaUsuario=reglas;
-            string[] aReglas_Usuario_Formulario = reglas_Usuario.Split(',');
-            foreach (var r in aReglas_Usuario_Formulario)
-            {
-                if(r!="" && reglas.Contains(r)) 
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-
     }
 }

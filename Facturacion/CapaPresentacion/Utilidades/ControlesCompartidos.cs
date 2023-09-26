@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -44,6 +45,36 @@ namespace CapaPresentacion.Utilidades
                        
 
             return table;
+        }
+
+        public static List<T> AgregarNuevaFila<T>(List<T>Lista , string nombreCellDisplayMember, string nombreCellValueMember) where T: class
+        {
+            if (Lista == null || Lista.Count == 0)
+                return Lista;
+
+
+            // Crear una instancia de T (clase) utilizando reflection
+            Type tipo = typeof(T);
+            T nuevaFila = (T)Activator.CreateInstance(tipo);
+
+            // Asignar valores a las propiedades de la nueva fila
+            PropertyInfo propDisplayMember = tipo.GetProperty(nombreCellDisplayMember);
+            PropertyInfo propValueMember = tipo.GetProperty(nombreCellValueMember);
+
+            if (propDisplayMember != null && propValueMember != null)
+            {
+                propDisplayMember.SetValue(nuevaFila, "Seleccione", null); // Cambia "ValorDisplay" por el valor deseado
+                propValueMember.SetValue(nuevaFila, 0, null);     // Cambia "ValorValue" por el valor deseado
+            }
+            else
+            {
+                throw new ArgumentException("Los nombres de propiedad proporcionados no son válidos.");
+            }
+
+            // Agregar la nueva fila a la lista
+            Lista.Add(nuevaFila);
+
+            return Lista.OrderBy(item => propValueMember.GetValue(item)).ToList(); ;
         }
 
         public static void SoloNumeros(KeyPressEventArgs e)

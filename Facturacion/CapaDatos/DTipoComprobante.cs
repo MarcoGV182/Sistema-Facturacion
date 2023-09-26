@@ -11,11 +11,6 @@ namespace CapaDatos
     public class DTipoComprobante:Conexion
     {
 
-        public int ComprobanteNro { get; set; }
-        public string Nombre { get; set; }
-        public bool AfectaCaja { get; set; }
-
-
         public DTipoComprobante() 
         {
         

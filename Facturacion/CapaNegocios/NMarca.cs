@@ -5,21 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using CapaDatos;
 using System.Data;
+using CapaEntidades;
+using System.Text.RegularExpressions;
 
 namespace CapaNegocio
 {
     public class NMarca
     {
         //Metodo para insertar que llama al metodo insertar de la capa Datos
-        public static string Insertar(string descripcion)
+        public static string Insertar(EMarca eMarca)
         {
             DMarca objMarca = new DMarca();
-            objMarca.Descripcion = descripcion;
-            return objMarca.InsertarMarca(objMarca);
+            return objMarca.InsertarMarca(eMarca);
         }
 
         //Metodo para editar que llama al metodo editar de la capa Datos
-        public static string Editar(DMarca marca)
+        public static string Editar(EMarca marca)
         {
             DMarca objMarca = new DMarca();
             return objMarca.EditarMarca(marca);
@@ -29,27 +30,36 @@ namespace CapaNegocio
         public static string Eliminar(int MarcaNro)
         {
             DMarca objMarca = new DMarca();
-            objMarca.MarcaNro = MarcaNro;
-            return objMarca.EliminarMarca(objMarca);
+            return objMarca.EliminarMarca(MarcaNro);
         }
 
 
         //Metodo para mostrar que llama al metodo mostrar de la capa Datos
-        public static DataTable Mostrar()
-        {   
-            return new DMarca().MostrarMarca();
-        }
-
-        //Metodo para buscar que llama al metodo buscar de la capa Datos
-        public static DataTable BuscarDescripcion(string textoBuscar)
+        public static List<EMarca> Mostrar()
         {
-            DMarca objMarca = new DMarca();
-            objMarca.TextoBuscar = textoBuscar;
-            return objMarca.BuscarNombre(objMarca);
+            List<EMarca> listaMarca = new List<EMarca>();
+            try
+            {
+                var MarcaDT = new DMarca().MostrarMarca();
+
+                foreach (DataRow item in MarcaDT.Rows)
+                {
+                    EMarca marca = new EMarca()
+                    {
+                        MarcaNro = Convert.ToInt32(item[0]),
+                        Descripcion = item[1].ToString()
+                    };
+                    listaMarca.Add(marca);
+                }
+                return listaMarca;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
-
-
-
+       
     }
 }

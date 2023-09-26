@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio;
 using System.Data.SqlClient;
-using CapaDatos;
+using CapaEntidades;
 using CapaPresentacion.Utilidades;
 using CapaPresentacion.Formularios.Facturacion;
 
@@ -249,13 +249,13 @@ namespace CapaPresentacion.Formularios.ChildForms
 
                 //si se ingresa un nuevo registro
 
-                DClientes cliente = new DClientes();
+                ECliente cliente = new ECliente();
                 int codigoCliente = string.IsNullOrEmpty(txtCodigo.Text) ? 0 : Convert.ToInt32(txtCodigo.Text);
                 cliente.PersonaNro = codigoCliente;
                 cliente.Nombre = this.txtNombre.Text.Trim().ToUpper();
                 cliente.Apellido = this.txtApellido.Text.Trim().ToUpper();
                 cliente.Documento = this.txtDocumento.Text.Trim();
-                DTipoDocumento tipoDocumento = new DTipoDocumento()
+                ETipoDocumento tipoDocumento = new ETipoDocumento()
                 {
                     idTipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue),
                     Descripcion = cboTipoDocumento.Text

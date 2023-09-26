@@ -5,26 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DPagoFacturaEfectivo: DPagoFactura
     {  
-        public double Vuelto { get; set; }
-
        
 
         public DPagoFacturaEfectivo() { }
-        public DPagoFacturaEfectivo(int pagoNro,int nroVenta,double monto,double vuelto)
-        {
-            this.PagoNro = pagoNro;
-            this.NroVenta = nroVenta;
-            this.Monto = monto;
-            this.Vuelto =   monto;       
-        }
+        
 
         //Metodo insertar
-        public string InsertarPagoFacturaEfectivo(DPagoFacturaEfectivo PagoFacturaEfectivo, SqlConnection SqlconExistente = null, SqlTransaction sqltranExistente = null)
+        public string InsertarPagoFacturaEfectivo(EPagoFacturaEfectivo PagoFacturaEfectivo, SqlConnection SqlconExistente = null, SqlTransaction sqltranExistente = null)
         {
             #region Variables
             string rpta = "";

@@ -5,116 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using CapaEntidades;
+
 namespace CapaDatos
 {
     public class DEmpresa:Conexion
     {
-        private int _EmpresaNro;
-        private string _Nombre;
-        private string _Ruc;
-        private DateTime? _FechaInicio;
-        private string _Slogan;
-        public string Direccion { get; set; }
-        private byte[] _Logo;
-        private char _Estado;
-
-        public int EmpresaNro
-        {
-            get
-            {
-                return _EmpresaNro;
-            }
-
-            set
-            {
-                _EmpresaNro = value;
-            }
-        }
-
-        public string Nombre
-        {
-            get
-            {
-                return _Nombre;
-            }
-
-            set
-            {
-                _Nombre = value;
-            }
-        }
-
-        public string Ruc
-        {
-            get
-            {
-                return _Ruc;
-            }
-
-            set
-            {
-                _Ruc = value;
-            }
-        }
-
-        public DateTime? FechaInicio
-        {
-            get
-            {
-                return _FechaInicio;
-            }
-
-            set
-            {
-                _FechaInicio = value;
-            }
-        }
-
-        public string Slogan
-        {
-            get
-            {
-                return _Slogan;
-            }
-
-            set
-            {
-                _Slogan = value;
-            }
-        }
-
-        public char Estado
-        {
-            get
-            {
-                return _Estado;
-            }
-
-            set
-            {
-                _Estado = value;
-            }
-        }
-
-        public byte[] Logo
-        {
-            get
-            {
-                return _Logo;
-            }
-
-            set
-            {
-                _Logo = value;
-            }
-        }
-
         public DEmpresa() { }
-
-        
-
+                
         //Metodo Insertar
-        public string InsertarEmpresa(DEmpresa Empresa)
+        public string InsertarEmpresa(EEmpresa Empresa)
         {
             string rpta = "OK";
             SqlConnection Sqlcon = new SqlConnection();
@@ -199,7 +99,7 @@ namespace CapaDatos
         }
 
         //Metodo Editar
-        public string EditarEmpresa(DEmpresa Empresa)
+        public string EditarEmpresa(EEmpresa Empresa)
         {
             string rpta = "";
             SqlConnection Sqlcon = null;

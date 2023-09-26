@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using CapaDatos;
 using System.Data;
-
+using CapaEntidades;
 
 namespace CapaNegocio
 {
@@ -15,42 +15,49 @@ namespace CapaNegocio
         //Metodo para insertar que llama al metodo insertar de la capa Datos
         public static string Insertar(string descripcion)
         {
-            DTipoServicio objTipoServicio = new DTipoServicio();
+            ETipoServicio objTipoServicio = new ETipoServicio();
             objTipoServicio.Descripcion = descripcion;
-            return objTipoServicio.InsertarTipoServicio(objTipoServicio);
+            return new DTipoServicio().InsertarTipoServicio(objTipoServicio);
         }
 
         //Metodo para editar que llama al metodo editar de la capa Datos
         public static string Editar(int tipoServicioNro, string descripcion)
         {
-            DTipoServicio objTipoServicio= new DTipoServicio();
+            ETipoServicio objTipoServicio = new ETipoServicio();
             objTipoServicio.TipoServicioNro = tipoServicioNro;
             objTipoServicio.Descripcion = descripcion;
-            return objTipoServicio.EditarTipoServicio(objTipoServicio);
+            return new DTipoServicio().EditarTipoServicio(objTipoServicio);
         }
 
         //Metodo para eliminar que llama al metodo eliminar de la capa Datos
         public static string Eliminar(int tipoServicioNro)
         {
             DTipoServicio objTipoServicio = new DTipoServicio();
-            objTipoServicio.TipoServicioNro = tipoServicioNro;
-            return objTipoServicio.EliminarTipoServicio(objTipoServicio);
+            return objTipoServicio.EliminarTipoServicio(tipoServicioNro);
         }
 
 
         //Metodo para mostrar que llama al metodo mostrar de la capa Datos
-        public static DataTable Mostrar()
+        public static List<ETipoServicio> Mostrar()
         {
+            List<ETipoServicio> ListaTipoServicio = new List<ETipoServicio>();
+            try
+            {
+                var servicioDT = new DTipoServicio().MostrarTipoServicio();
+                foreach (DataRow row in servicioDT.Rows)
+                {
+                    ETipoServicio eServicio = new ETipoServicio();
+                    eServicio.TipoServicioNro = Convert.ToInt32(row[0]);
+                    eServicio.Descripcion = row[1].ToString();
 
-            return new DTipoServicio().MostrarTipoServicio();
-        }
-
-        //Metodo para buscar que llama al metodo buscar de la capa Datos
-        public static DataTable BuscarDescripcion(string textoBuscar)
-        {
-            DTipoServicio objTipoServicio = new DTipoServicio();
-            objTipoServicio.TextoBuscar = textoBuscar;
-            return objTipoServicio.BuscarNombre(objTipoServicio);
+                    ListaTipoServicio.Add(eServicio);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ListaTipoServicio;
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using CapaDatos;
 using System.Data;
+using CapaEntidades;
 
 namespace CapaNegocio
 {
@@ -13,26 +14,25 @@ namespace CapaNegocio
     {
         //Metodo para insertar que llama al metodo insertar de la capa Datos
         public static string Insertar(string descripcion) {
-            DTipoProducto objTipoProducto = new DTipoProducto();
+            ETipoProducto objTipoProducto = new ETipoProducto();
             objTipoProducto.Descripcion= descripcion;
-            return objTipoProducto.InsertarTipoProducto(objTipoProducto);
+            return new DTipoProducto().InsertarTipoProducto(objTipoProducto);
         }
 
         //Metodo para editar que llama al metodo editar de la capa Datos
         public static string Editar(int tipoProductoNro, string descripcion)
         {
-            DTipoProducto objTipoProducto = new DTipoProducto();
+            ETipoProducto objTipoProducto = new ETipoProducto();
             objTipoProducto.TipoProductoNro = tipoProductoNro;
             objTipoProducto.Descripcion= descripcion;
-            return objTipoProducto.EditarTipoProducto(objTipoProducto);
+            return new DTipoProducto().EditarTipoProducto(objTipoProducto);
         }
 
         //Metodo para eliminar que llama al metodo eliminar de la capa Datos
         public static string Eliminar(int tipoProductoNro)
         {
             DTipoProducto objTipoProducto = new DTipoProducto();
-            objTipoProducto.TipoProductoNro = tipoProductoNro;
-            return objTipoProducto.EliminarTipoProducto(objTipoProducto);
+            return objTipoProducto.EliminarTipoProducto(tipoProductoNro);
         }
 
 
@@ -47,8 +47,7 @@ namespace CapaNegocio
         public static DataTable BuscarDescripcion(string textoBuscar)
         {
             DTipoProducto objTipoProducto = new DTipoProducto();
-            objTipoProducto.TextoBuscar = textoBuscar;
-            return objTipoProducto.BuscarNombre(objTipoProducto);
+            return objTipoProducto.BuscarNombre(textoBuscar);
         }
 
     }

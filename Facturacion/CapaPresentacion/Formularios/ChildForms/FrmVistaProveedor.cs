@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaDatos;
+using CapaEntidades;
 using CapaNegocio;
 using CapaPresentacion.Formularios.Facturacion;
 using CapaPresentacion.Utilidades;
@@ -158,12 +158,12 @@ namespace CapaPresentacion.Formularios.ChildForms
 
                 //si se ingresa un nuevo registro
 
-                DProveedor proveedor = new DProveedor();
+                EProveedor proveedor = new EProveedor();
                 int codigoProveedor = string.IsNullOrEmpty(txtCodigo.Text) ? 0 : Convert.ToInt32(txtCodigo.Text);
                 proveedor.PersonaNro = codigoProveedor;
                 proveedor.RazonSocial = this.txtRazonSocial.Text.Trim().ToUpper();
                 proveedor.Documento = this.txtRUC.Text.Trim();
-                DTipoDocumento tipoDocumento = new DTipoDocumento()
+                ETipoDocumento tipoDocumento = new ETipoDocumento()
                 {
                     idTipoDocumento = Convert.ToInt32(cboTipoDocumento.SelectedValue),
                     Descripcion = cboTipoDocumento.Text

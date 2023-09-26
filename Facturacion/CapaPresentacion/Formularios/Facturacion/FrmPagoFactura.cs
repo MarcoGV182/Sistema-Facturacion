@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio;
 using System.Data.SqlClient;
-using CapaDatos;
+using CapaEntidades;
 using Microsoft.Reporting.WinForms;
 
 namespace CapaPresentacion.Formularios.Facturacion
@@ -206,16 +206,16 @@ namespace CapaPresentacion.Formularios.Facturacion
                 this.lblError.Visible = false;
 
 
-                DPagoFacturaEfectivo pagoEF = null;
-                DPagoFacturaTarjeta pagoTJ = null;
-                DPagoFacturaCheque pagoCQ = null;
-                DPagoFacturaOtros pagoOT = null;
+                EPagoFacturaEfectivo pagoEF = null;
+                EPagoFacturaTarjeta pagoTJ = null;
+                EPagoFacturaCheque pagoCQ = null;
+                EPagoFacturaOtros pagoOT = null;
 
                 //Pago en efectivo
                 if (this.txtMontoEfectivo.Text != "0")
                 {
                     double vuelto = Convert.ToDouble(this.txtVuelto.Text) < 0 ? 0 : Convert.ToDouble(this.txtVuelto.Text);
-                    pagoEF = new DPagoFacturaEfectivo()
+                    pagoEF = new EPagoFacturaEfectivo()
                     {
                         NroVenta = IdVenta,
                         Monto = Convert.ToDouble(this.txtMontoEfectivo.Text),
@@ -226,7 +226,7 @@ namespace CapaPresentacion.Formularios.Facturacion
                 //Pago en Tarjeta
                 if (this.txtMontoTarjeta.Text != "0")
                 {
-                    pagoTJ = new DPagoFacturaTarjeta()
+                    pagoTJ = new EPagoFacturaTarjeta()
                     {
                         NroVenta = IdVenta,
                         TipoTarjeta = this.cboTarjeta.Text,
@@ -238,11 +238,11 @@ namespace CapaPresentacion.Formularios.Facturacion
                 //Pago en Cheque
                 if (this.txtMontoCheque.Text != "0")
                 {
-                    DBanco banco = new DBanco()
+                    EBanco banco = new EBanco()
                     {
                         BancoNro = Convert.ToInt32(cboBanco.SelectedValue)
                     };
-                    pagoCQ = new DPagoFacturaCheque()
+                    pagoCQ = new EPagoFacturaCheque()
                     {
                         NroVenta = IdVenta,
                         NroCheque = this.txtNroCheque.Text,
@@ -255,13 +255,13 @@ namespace CapaPresentacion.Formularios.Facturacion
 
                 if (this.txtMontoOtros.Text != "0")
                 {
-                    DTipoPagoOtros tpOT = new DTipoPagoOtros()
+                    ETipoPagoOtros tpOT = new ETipoPagoOtros()
                     {
                         TipoOtrosNro = Convert.ToInt32(cboTipoPago.SelectedValue),
                         Descripcion = cboTipoPago.Text
                     };
 
-                    pagoOT = new DPagoFacturaOtros()
+                    pagoOT = new EPagoFacturaOtros()
                     {
                         NroVenta = IdVenta,
                         TipoPagoOtro = tpOT,
@@ -271,7 +271,7 @@ namespace CapaPresentacion.Formularios.Facturacion
                 }
 
                 //Se asigna los objetos
-                RegistroPagoFacturacion pg = new RegistroPagoFacturacion()
+                ERegistroPagoFacturacion pg = new ERegistroPagoFacturacion()
                 {
                     Efectivo = pagoEF,
                     Tarjeta = pagoTJ,

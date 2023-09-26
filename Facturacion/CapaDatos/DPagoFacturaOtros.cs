@@ -5,15 +5,12 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DPagoFacturaOtros : DPagoFactura
     {
-        public DTipoPagoOtros TipoPagoOtro { get; set; }
-        public string NroDocumentoPago { get; set; }
-
-
         public DPagoFacturaOtros()
         {
             
@@ -21,7 +18,7 @@ namespace CapaDatos
 
 
         //Metodo insertar
-        public string InsertarPagoFacturaOtros(DPagoFacturaOtros PagoFacturaOtros, SqlConnection SqlconExistente = null, SqlTransaction sqltranExistente = null)
+        public string InsertarPagoFacturaOtros(EPagoFacturaOtros PagoFacturaOtros, SqlConnection SqlconExistente = null, SqlTransaction sqltranExistente = null)
         {
             #region Variables
             string rpta = "";

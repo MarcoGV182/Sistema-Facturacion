@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using CapaDatos;
 using System.Data;
+using CapaEntidades;
 
 namespace CapaNegocio
 {
@@ -14,26 +15,25 @@ namespace CapaNegocio
         //Metodo para insertar que llama al metodo insertar de la capa Datos
         public static string Insertar(string descripcion)
         {
-            DCiudad objCiudad = new DCiudad();
+            ECiudad objCiudad = new ECiudad();
             objCiudad.Descripcion = descripcion;
-            return objCiudad.InsertarCiudad(objCiudad);
+            return new DCiudad().InsertarCiudad(objCiudad);
         }
 
         //Metodo para editar que llama al metodo editar de la capa Datos
         public static string Editar(int CiudadNro, string descripcion)
         {
-            DCiudad objCiudad = new DCiudad();
+            ECiudad objCiudad = new ECiudad();
             objCiudad.CiudadNro = CiudadNro;
             objCiudad.Descripcion = descripcion;
-            return objCiudad.EditarCiudad(objCiudad);
+            return new DCiudad().EditarCiudad(objCiudad);
         }
 
         //Metodo para eliminar que llama al metodo eliminar de la capa Datos
         public static string Eliminar(int CiudadNro)
         {
             DCiudad objCiudad = new DCiudad();
-            objCiudad.CiudadNro = CiudadNro;
-            return objCiudad.EliminarCiudad(objCiudad);
+            return objCiudad.EliminarCiudad(CiudadNro);
         }
 
 
@@ -47,8 +47,7 @@ namespace CapaNegocio
         public static DataTable BuscarDescripcion(string textoBuscar)
         {
             DCiudad objCiudad = new DCiudad();
-            objCiudad.TextoBuscar = textoBuscar;
-            return objCiudad.BuscarNombre(objCiudad);
+            return objCiudad.BuscarNombre(textoBuscar);
         }
     }
 }

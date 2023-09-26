@@ -5,61 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using CapaEntidades;
+
 namespace CapaDatos
 {
-    public class DDetalleIngreso:Conexion
+    public class DDetalleCompra:Conexion
     {
-        public int idCompra { get; set; }
-        private int _DetalleCompraNro;
-        public int NroItem { get; set; }
-        public DTipoImpuesto TipoImpuesto { get; set; }
-        private int _ProductoNro;
-        private int _Cantidad;
-        private decimal _PrecioUnitario;
-        //private int _TextoBuscar;
 
-        public int DetalleCompraNro
+        public DDetalleCompra() 
         {
-            get{return _DetalleCompraNro;}
-            set{_DetalleCompraNro = value;}
-        }
 
-        
-        public int ProductoNro
-        {
-            get{return _ProductoNro;}
-            set{_ProductoNro = value;}
-        }
-
-        public int Cantidad
-        {
-            get{return _Cantidad;}
-            set{ _Cantidad = value;}
-        }
-       
-
-        public decimal PrecioUnitario
-        {
-            get{return _PrecioUnitario;}
-            set{_PrecioUnitario = value;}
-        }
-        
-
-        public DDetalleIngreso() {
-
-        }
-
-
-        public DDetalleIngreso(int detallecompraNro,string nrofacturacompra,int proveedornro,int productonro,int cantidad,decimal precioCompra) {
-            this.DetalleCompraNro = detallecompraNro;
-            this.ProductoNro = proveedornro;         
-            this.ProductoNro = productonro;
-            this.Cantidad = cantidad;
-            this.PrecioUnitario = precioCompra;           
-        }
+        }        
 
         //Metodo insertar
-        public string InsertarDetalleCompra(DDetalleIngreso DetalleCompra, ref SqlConnection Sqlcon, ref SqlTransaction sqltran)
+        public string InsertarDetalleCompra(EDetalleCompra DetalleCompra, ref SqlConnection Sqlcon, ref SqlTransaction sqltran)
         {
             string rpta = "";
             try

@@ -50,7 +50,7 @@
     <Compile Include="DBackup.cs" />
     <Compile Include="DCaja.cs" />
     <Compile Include="DCiudad.cs" />
-    <Compile Include="DClientes.cs" />
+    <Compile Include="DCliente.cs" />
     <Compile Include="DColaborador.cs" />
     <Compile Include="DCompra.cs" />
     <Compile Include="DConfiguracion.cs" />
@@ -62,7 +62,7 @@
     <Compile Include="DPagoCuentaPorPagar.cs" />
     <Compile Include="DDetalleAjuste.cs" />
     <Compile Include="DDetalleFactura.cs" />
-    <Compile Include="DDetalleIngreso.cs" />
+    <Compile Include="DDetalleCompra.cs" />
     <Compile Include="DDetalleOrdenTrabajo.cs" />
     <Compile Include="DEmpresa.cs" />
     <Compile Include="DFactura.cs" />
@@ -81,8 +81,8 @@
     <Compile Include="DProducto.cs" />
     <Compile Include="DProveedor.cs" />
     <Compile Include="DOperacion.cs" />
+    <Compile Include="DRegistroPagoFacturacion.cs" />
     <Compile Include="DRetencion.cs" />
-    <Compile Include="DRuc.cs" />
     <Compile Include="DServicio.cs" />
     <Compile Include="DSucursal.cs" />
     <Compile Include="DTimbrado.cs" />
@@ -99,10 +99,7 @@
     <Compile Include="DTipoUsuarioRegla.cs" />
     <Compile Include="DUsuarios.cs" />
     <Compile Include="DUsuarioServicio.cs" />
-    <Compile Include="Interfaces\IDocumento.cs" />
     <Compile Include="DModulo.cs" />
-    <Compile Include="Interfaces\IGeneric.cs" />
-    <Compile Include="Interfaces\IPersona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -119,6 +116,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CapaEntidades\CapaEntidades.csproj">
+      <Project>{076AEC42-5BF9-4C03-BB0D-2FCFE7E51802}</Project>
+      <Name>CapaEntidades</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace CapaDatos
+namespace CapaEntidades
 {
-    public class DRuc
+    public class ERuc
     {
         public string Ruc { get; set; }
         [JsonProperty("RAZÓN SOCIAL")]

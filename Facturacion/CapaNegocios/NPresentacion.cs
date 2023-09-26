@@ -6,34 +6,31 @@ using System.Threading.Tasks;
 
 using CapaDatos;
 using System.Data;
+using CapaEntidades;
 
 namespace CapaNegocio
 {
     public class NPresentacion
     {
         //Metodo para insertar que llama al metodo insertar de la capa Datos
-        public static string Insertar(string descripcion)
+        public static string Insertar(EPresentacionProducto presentacionProducto)
         {
             DPresentacion objPresentacion = new DPresentacion();
-            objPresentacion.Descripcion = descripcion;
-            return objPresentacion.InsertarPresentacion(objPresentacion);
+            return objPresentacion.InsertarPresentacion(presentacionProducto);
         }
 
         //Metodo para editar que llama al metodo editar de la capa Datos
-        public static string Editar(int idPresentacion, string descripcion)
+        public static string Editar(EPresentacionProducto presentacionProducto)
         {
             DPresentacion objPresentacion = new DPresentacion();
-            objPresentacion.IdPresentacion = idPresentacion;
-            objPresentacion.Descripcion = descripcion;
-            return objPresentacion.EditarPresentacion(objPresentacion);
+            return objPresentacion.EditarPresentacion(presentacionProducto);
         }
 
         //Metodo para eliminar que llama al metodo eliminar de la capa Datos
         public static string Eliminar(int idPresentacion)
         {
             DPresentacion objPresentacion = new DPresentacion();
-            objPresentacion.IdPresentacion = idPresentacion;
-            return objPresentacion.EliminarPresentacion(objPresentacion);
+            return objPresentacion.EliminarPresentacion(idPresentacion);
         }
 
 
@@ -48,8 +45,7 @@ namespace CapaNegocio
         public static DataTable Buscar(string textoBuscar)
         {
             DPresentacion objPresentacion= new DPresentacion();
-            objPresentacion.TextoBuscar = textoBuscar;
-            return objPresentacion.BuscarPresentacion(objPresentacion);
+            return objPresentacion.BuscarPresentacion(textoBuscar);
         }
 
 

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
-using CapaDatos;
+using CapaEntidades;
 using CapaNegocio;
 using CapaPresentacion.Utilidades;
 
@@ -164,7 +164,7 @@ namespace CapaPresentacion.Formularios.Mantenimiento
                     fecha = null;
                 }
 
-                DEmpresa empresa = new DEmpresa()
+                EEmpresa empresa = new EEmpresa()
                 {
                     Nombre = this.txtNombre.Text.Trim(),
                     Direccion = txtDireccion.Text.Trim(),

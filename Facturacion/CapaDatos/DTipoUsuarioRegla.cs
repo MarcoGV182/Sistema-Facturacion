@@ -5,24 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DTipoUsuarioRegla : Conexion
     {
-        public DRol Rol { get; set; }
-        public DOperacion Operacion { get; set; }
-
-
-
-
-
         public DTipoUsuarioRegla() { }
 
         
 
         //Metodo insertar
-        public string InsertarTipoUsuarioRegla(DTipoUsuarioRegla TipoUsuarioRegla, string tieneHabilitado)
+        public string InsertarTipoUsuarioRegla(ETipoUsuarioRegla TipoUsuarioRegla, string tieneHabilitado)
         {
             string rpta = "OK";
             SqlConnection Sqlcon = null;
@@ -76,7 +70,7 @@ namespace CapaDatos
 
 
         //Metodo Mostrar
-        public DataTable MostrarTipoUsuarioRegla(DTipoUsuarioRegla TUR)
+        public DataTable MostrarTipoUsuarioRegla(ETipoUsuarioRegla TUR)
         {
             DataTable DtResultado = new DataTable("TipoUsuarioRegla");
             SqlConnection Sqlcon = null;
@@ -99,7 +93,7 @@ namespace CapaDatos
                 SqlParameter ParModulo = new SqlParameter();
                 ParModulo.ParameterName = "@Modulo";
                 ParModulo.SqlDbType = SqlDbType.Int;
-                ParModulo.Value = TUR.Operacion.Modulo.IdModulo;
+                ParModulo.Value = TUR.Operacion.IdModulo;
                 SqlCmd.Parameters.Add(ParModulo);
 
 
@@ -120,7 +114,7 @@ namespace CapaDatos
         }
 
         //ELIMINAR ANTES DE INSERTAR
-        public string EliminarTipoUserRegla(DTipoUsuarioRegla TUR)
+        public string EliminarTipoUserRegla(int RolId)
         {
             string rpta = "OK";
             SqlConnection Sqlcon = null;
@@ -138,7 +132,7 @@ namespace CapaDatos
                 SqlParameter ParTipoUsuarioNro = new SqlParameter();
                 ParTipoUsuarioNro.ParameterName = "@TipoUsuarioNro";
                 ParTipoUsuarioNro.SqlDbType = SqlDbType.Int;
-                ParTipoUsuarioNro.Value = TUR.Rol.IdRol;
+                ParTipoUsuarioNro.Value = RolId;
                 SqlCmd.Parameters.Add(ParTipoUsuarioNro);
 
                 //ejecutar el comando sql

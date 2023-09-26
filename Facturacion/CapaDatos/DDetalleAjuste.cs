@@ -5,111 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DDetalleAjuste:Conexion
     {
-        private int _CodDetalleAjuste;
-        private int _CodAjuste;
-        private int _ArticuloNro;
-        private int _Cantidad;
-        private double _Costo;
-        private int _StockAnterior;
-
-        public int CodDetalleAjuste
-        {
-            get
-            {
-                return _CodDetalleAjuste;
-            }
-
-            set
-            {
-                _CodDetalleAjuste = value;
-            }
-        }
-
-        public int CodAjuste
-        {
-            get
-            {
-                return _CodAjuste;
-            }
-
-            set
-            {
-                _CodAjuste = value;
-            }
-        }
-
-        public int ArticuloNro
-        {
-            get
-            {
-                return _ArticuloNro;
-            }
-
-            set
-            {
-                _ArticuloNro = value;
-            }
-        }
-
-        public int Cantidad
-        {
-            get
-            {
-                return _Cantidad;
-            }
-
-            set
-            {
-                _Cantidad = value;
-            }
-        }
-
-        public double Costo
-        {
-            get
-            {
-                return _Costo;
-            }
-
-            set
-            {
-                _Costo = value;
-            }
-        }
-
-        public int StockAnterior
-        {
-            get
-            {
-                return _StockAnterior;
-            }
-
-            set
-            {
-                _StockAnterior = value;
-            }
-        }
 
         public DDetalleAjuste() {
 
         }
-
-        public DDetalleAjuste(int coddetalleajuste, int codajuste, int articulonro, int cantidad, double costo,int stockanterior) {
-            this.CodDetalleAjuste = coddetalleajuste;
-            this.CodAjuste = codajuste;
-            this.Cantidad = cantidad;
-            this.ArticuloNro = articulonro;
-            this.Costo = costo;
-            this.StockAnterior = stockanterior;
-        }
+       
 
         //Metodo insertar
-        public string InsertarDetalleAjuste(DDetalleAjuste DetalleAjuste, ref SqlConnection Sqlcon, ref SqlTransaction sqltran)
+        public string InsertarDetalleAjuste(EDetalleAjuste DetalleAjuste, ref SqlConnection Sqlcon, ref SqlTransaction sqltran)
         {
             string rpta = "";
             try

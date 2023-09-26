@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using CapaEntidades;
+using CapaEntidades.Interfaces;
 using CapaNegocio;
 using CapaPresentacion.Formularios.Facturacion;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
@@ -19,6 +20,25 @@ namespace CapaPresentacion.Formularios.ChildForms
 
         //INSTANCIA PARA LLAMAR SOLO UNA VEZ AL FORMULARIO
         private static FrmVistaItem _Instancia;
+
+
+        #region Variables de TipoDataGridColumn
+        //Articulos
+        DataGridViewTextBoxColumn columnTipoProducto;
+        DataGridViewTextBoxColumn columnPresentacion;
+        DataGridViewTextBoxColumn columnMarca;
+        DataGridViewTextBoxColumn columnUnidadMedida;
+        DataGridViewTextBoxColumn columnPrecioCompra;
+
+        //Servicio
+        DataGridViewTextBoxColumn columnTipoServicioId = new DataGridViewTextBoxColumn();
+        DataGridViewTextBoxColumn columnTipoServicioDescripcion= new DataGridViewTextBoxColumn();
+
+        DataGridViewTextBoxColumn columnaId;
+        DataGridViewTextBoxColumn columnTipoImpuestoDescripcion;
+        DataGridViewTextBoxColumn columnPrecio;
+
+        #endregion
 
         public static FrmVistaItem GetInstancia()
         {
@@ -54,12 +74,12 @@ namespace CapaPresentacion.Formularios.ChildForms
 
         private void OcultarColumnasServicio()
         {
-            this.dataListado.Columns[0].Visible = false;
+            /*this.dataListado.Columns[0].Visible = false;
             this.dataListado.Columns["Codigo"].Visible = false;
             this.dataListado.Columns["PorcentajeIVA"].Visible = false;
             this.dataListado.Columns["CodImpuesto"].Visible = false;
             this.dataListado.Columns["BaseImponible"].Visible = false;
-            this.dataListado.Columns["Estado"].Visible = false;
+            this.dataListado.Columns["Estado"].Visible = false;*/
         }
 
 
@@ -105,17 +125,149 @@ namespace CapaPresentacion.Formularios.ChildForms
         {            
             if (rbProductos.Checked) 
             {
-                dataListado.DataSource = NProducto.MostrarActivo();
-                this.OcultarColumnasProducto();
+                var lstProducto = NProducto.MostrarActivo();
+                CrearColumnasDataGridProducto();
+                dataListado.DataSource = lstProducto;                
+                //OcultarColumnasProducto();
                 lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
             }else if(rbServicios.Checked)
-            {                
-                this.dataListado.DataSource = NServicio.Mostrar();
-                this.OcultarColumnasServicio();
+            {       
+                var lstServicio = NServicio.Mostrar();
+                CrearColumnasDataGridServicio();
+                dataListado.DataSource = lstServicio;              
+                OcultarColumnasServicio();
                 lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
             }
         }
 
+        private void CrearColumnasDataGridProducto()
+        {
+            dataListado.Columns.Clear();
+            dataListado.AutoGenerateColumns = false;
+
+            //Configurar las columnas de Productos
+            columnaId = new DataGridViewTextBoxColumn();
+            columnaId.DataPropertyName = "ArticuloNro";
+            columnaId.HeaderText = "Codigo";
+            dataListado.Columns.Add(columnaId);
+
+            DataGridViewTextBoxColumn columnCodBarra = new DataGridViewTextBoxColumn();
+            columnCodBarra.DataPropertyName = "CodigoBarra";
+            columnCodBarra.HeaderText = "Codigo Barra";
+            dataListado.Columns.Add(columnCodBarra);
+
+            DataGridViewTextBoxColumn columnProductoDesc = new DataGridViewTextBoxColumn();
+            columnProductoDesc.DataPropertyName = "Descripcion";
+            columnProductoDesc.HeaderText = "Producto";
+            dataListado.Columns.Add(columnProductoDesc);
+
+
+            columnTipoProducto = new DataGridViewTextBoxColumn();
+            columnTipoProducto.HeaderText = "Tipo Producto";
+            dataListado.Columns.Add(columnTipoProducto);
+
+            columnPresentacion = new DataGridViewTextBoxColumn();
+            columnPresentacion.HeaderText = "Presentacion";
+            dataListado.Columns.Add(columnPresentacion);
+
+            columnUnidadMedida = new DataGridViewTextBoxColumn();
+            columnUnidadMedida.HeaderText = "Unidad Medida";
+            dataListado.Columns.Add(columnUnidadMedida);
+
+            columnMarca = new DataGridViewTextBoxColumn();
+            columnMarca.HeaderText = "Marca";
+            dataListado.Columns.Add(columnMarca);
+
+            DataGridViewTextBoxColumn columnFechaVencimiento = new DataGridViewTextBoxColumn();
+            columnFechaVencimiento.DataPropertyName = "FechaVencimiento";
+            columnFechaVencimiento.HeaderText = "Vencimiento";
+            dataListado.Columns.Add(columnFechaVencimiento);
+
+            columnTipoImpuestoDescripcion = new DataGridViewTextBoxColumn();
+            columnTipoImpuestoDescripcion.HeaderText = "Tipo Impuesto";
+            dataListado.Columns.Add(columnTipoImpuestoDescripcion);
+
+            DataGridViewTextBoxColumn columnStockMinimo = new DataGridViewTextBoxColumn();
+            columnStockMinimo.DataPropertyName = "StockMinimo";
+            columnStockMinimo.HeaderText = "Stock Minimo";
+            dataListado.Columns.Add(columnStockMinimo);
+
+            DataGridViewTextBoxColumn columnStockActual = new DataGridViewTextBoxColumn();
+            columnStockActual.DataPropertyName = "StockActual";
+            columnStockActual.HeaderText = "Stock Actual";
+            dataListado.Columns.Add(columnStockActual);
+
+            columnPrecioCompra = new DataGridViewTextBoxColumn();
+            columnPrecioCompra.DataPropertyName = "PrecioCompra";
+            columnPrecioCompra.HeaderText = "Precio Compra";
+            dataListado.Columns.Add(columnPrecioCompra);
+
+            columnPrecio = new DataGridViewTextBoxColumn();
+            columnPrecio.DataPropertyName = "PrecioVenta";
+            columnPrecio.HeaderText = "Precio Venta";
+            dataListado.Columns.Add(columnPrecio);
+
+            DataGridViewTextBoxColumn columnEstado = new DataGridViewTextBoxColumn();
+            columnEstado.DataPropertyName = "Estado";
+            columnEstado.HeaderText = "Estado";
+            dataListado.Columns.Add(columnEstado);
+
+            DataGridViewTextBoxColumn columnObs = new DataGridViewTextBoxColumn();
+            columnObs.DataPropertyName = "Observacion";
+            columnObs.HeaderText = "Observacion";
+            dataListado.Columns.Add(columnObs);
+        }
+
+        private void CrearColumnasDataGridServicio()
+        {
+            dataListado.Columns.Clear();
+            dataListado.AutoGenerateColumns = false;
+
+            //Configurar las columnas de servicios
+            columnaId = new DataGridViewTextBoxColumn();
+            columnaId.DataPropertyName = "ArticuloNro";
+            columnaId.HeaderText = "Codigo";
+            dataListado.Columns.Add(columnaId);
+
+            DataGridViewTextBoxColumn columnDescripcion = new DataGridViewTextBoxColumn();
+            columnDescripcion.DataPropertyName = "Descripcion";
+            columnDescripcion.HeaderText = "Servicio";
+            dataListado.Columns.Add(columnDescripcion);
+
+
+            columnTipoServicioDescripcion = new DataGridViewTextBoxColumn();
+            columnTipoServicioDescripcion.HeaderText = "TipoServicio";
+            dataListado.Columns.Add(columnTipoServicioDescripcion);
+            
+
+            columnTipoImpuestoDescripcion = new DataGridViewTextBoxColumn();
+            columnTipoImpuestoDescripcion.HeaderText = "Impuesto";
+            dataListado.Columns.Add(columnTipoImpuestoDescripcion);
+
+            columnPrecio = new DataGridViewTextBoxColumn();
+            columnPrecio.DataPropertyName = "Precio";
+            columnPrecio.HeaderText = "Precio";
+            dataListado.Columns.Add(columnPrecio);
+
+            DataGridViewTextBoxColumn Estado = new DataGridViewTextBoxColumn();
+            Estado.DataPropertyName = "Estado";
+            Estado.HeaderText = "Estado";
+            dataListado.Columns.Add(Estado);
+
+            DataGridViewTextBoxColumn Observacion = new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "Observacion",
+                HeaderText = "Observacion"
+            };
+            dataListado.Columns.Add(Observacion);
+
+            DataGridViewTextBoxColumn FechaRegistro = new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "FechaRegistro",
+                HeaderText = "FechaRegistro"
+            };
+            dataListado.Columns.Add(FechaRegistro);            
+        }
         private void BuscarProducto()
         {
            this.dataListado.DataSource = NProducto.BuscarProductoActivo(this.txtBuscar.Text);
@@ -224,13 +376,73 @@ namespace CapaPresentacion.Formularios.ChildForms
         try {
                 if (rbProductos.Checked)
                 {
-                    this.dataListado.Columns["Precio"].DefaultCellStyle.Format = "N0";                    
-                    this.dataListado.Columns["PrecioCompra"].DefaultCellStyle.Format = "N0";
+                    if (e.RowIndex >= 0 && e.ColumnIndex == columnTipoProducto.Index)
+                    {
+                        var fila = dataListado.Rows[e.RowIndex];
+                        if (fila.DataBoundItem != null)
+                        {
+                            var producto = (EProducto)fila.DataBoundItem;
+                            e.Value = producto.TipoProducto?.Descripcion;
+                        }
+                    }
+                    if (e.RowIndex >= 0 && e.ColumnIndex == columnPresentacion.Index)
+                    {
+                        var fila = dataListado.Rows[e.RowIndex];
+                        if (fila.DataBoundItem != null)
+                        {
+                            var producto = (EProducto)fila.DataBoundItem;
+                            e.Value = producto.Presentacion?.Descripcion;
+                        }
+                    }                   
+                    if (e.RowIndex >= 0 && e.ColumnIndex == columnMarca.Index)
+                    {
+                        var fila = dataListado.Rows[e.RowIndex];
+                        if (fila.DataBoundItem != null)
+                        {
+                            var producto = (EProducto)fila.DataBoundItem;
+                            e.Value = producto.Marca?.Descripcion;
+                        }
+                    }
+                    if (e.RowIndex >= 0 && e.ColumnIndex == columnUnidadMedida.Index)
+                    {
+                        var fila = dataListado.Rows[e.RowIndex];
+                        if (fila.DataBoundItem != null)
+                        {
+                            var producto = (EProducto)fila.DataBoundItem;
+                            e.Value = producto.UnidadMedida?.Descripcion;
+                        }
+                    }
+
+                    columnPrecioCompra.DefaultCellStyle.Format = "N0";
                 }
                 else
                 {
-                    this.dataListado.Columns["Precio"].DefaultCellStyle.Format = "N0";
+                    
+                    if (e.RowIndex >= 0 && e.ColumnIndex == columnTipoServicioDescripcion.Index)
+                    {
+                        var fila = dataListado.Rows[e.RowIndex];
+                        if (fila.DataBoundItem != null)
+                        {
+                            var servicio = (EServicio)fila.DataBoundItem;
+                            e.Value = servicio.TipoServicio?.Descripcion;
+                        }
+                    }                    
                 }
+
+                
+                if (e.RowIndex >= 0 && e.ColumnIndex == columnTipoImpuestoDescripcion.Index)
+                {
+                    var fila = dataListado.Rows[e.RowIndex];
+                    if (fila.DataBoundItem != null)
+                    {
+                        var servicio = (IArticulo)fila.DataBoundItem;
+                        e.Value = servicio.TipoImpuesto?.Descripcion;
+                    }
+                }
+                if (e.RowIndex >= 0 && e.ColumnIndex == columnPrecio.Index)
+                {
+                    e.CellStyle.Format = "N0";
+                };
             } catch(Exception)
             {
                 //MessageBox.Show(ex.Message); 

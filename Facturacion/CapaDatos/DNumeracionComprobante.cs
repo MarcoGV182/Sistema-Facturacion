@@ -6,38 +6,15 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Reflection.Emit;
+using CapaEntidades;
 
 namespace CapaDatos
 {
     public class DNumeracionComprobante:Conexion
     {
-        public int Id { get; set; }
-        public int TipoComprobante { get; set; }
-        public int? Establecimiento { get; set; }
-        public int? PuntoExpedicion { get; set; }
-        public int NumeroDesde { get; set; }
-        public int NumeroHasta { get; set; }
-        public int NumeroActual { get; set; }
-        public DTimbrado Timbrado { get; set; }
-        public string Estado { get; set; }
-
-
-        public DNumeracionComprobante() { }
-
-        public DNumeracionComprobante(int id, int establecimiento, int puntoexpedicion, int tipocomprobante,int numerodesde,int numerohasta,DTimbrado timbrado,char estado)
-        {
-            this.Id = id;
-            this.Establecimiento = establecimiento;
-            this.PuntoExpedicion = puntoexpedicion;
-            this.TipoComprobante = tipocomprobante;
-            this.NumeroDesde = numerodesde;
-            this.NumeroHasta = numerohasta;
-            this.Timbrado = timbrado;
-        }
-
 
         //Metodo Insertar
-        public string InsertarNumeracion(DNumeracionComprobante Numeracion, SqlConnection sqlExistente=null, SqlTransaction sqltranExistente=null)
+        public string InsertarNumeracion(ENumeracionComprobante numeracionComprobante, SqlConnection sqlExistente=null, SqlTransaction sqltranExistente=null)
         {
             //declarar variable respuesta
             string rpta = "OK";
@@ -69,34 +46,34 @@ namespace CapaDatos
                 SqlParameter ParIdNumeracion = new SqlParameter();
                 ParIdNumeracion.ParameterName = "@IdNumeracion";
                 ParIdNumeracion.SqlDbType = SqlDbType.Int;
-                ParIdNumeracion.Value = Numeracion.Id;
+                ParIdNumeracion.Value = numeracionComprobante.Id;
                 SqlCmd.Parameters.Add(ParIdNumeracion);
 
                 //Parametros 
                 SqlParameter ParSerie = new SqlParameter();
                 ParSerie.ParameterName = "@Establecimiento";
                 ParSerie.SqlDbType = SqlDbType.Int;
-                ParSerie.Value = Numeracion.Establecimiento;
+                ParSerie.Value = numeracionComprobante.Establecimiento;
                 SqlCmd.Parameters.Add(ParSerie);
 
                 //Parametros 
                 SqlParameter ParSucursal = new SqlParameter();
                 ParSucursal.ParameterName = "@PuntoExpedicion";
                 ParSucursal.SqlDbType = SqlDbType.Int;
-                ParSucursal.Value = Numeracion.PuntoExpedicion;
+                ParSucursal.Value = numeracionComprobante.PuntoExpedicion;
                 SqlCmd.Parameters.Add(ParSucursal);
 
                 //Parametros 
                 SqlParameter ParNumeroDesde = new SqlParameter();
                 ParNumeroDesde.ParameterName = "@NumeroDesde";
                 ParNumeroDesde.SqlDbType = SqlDbType.Int;
-                ParNumeroDesde.Value = Numeracion.NumeroDesde;
+                ParNumeroDesde.Value = numeracionComprobante.NumeroDesde;
                 SqlCmd.Parameters.Add(ParNumeroDesde);
 
                 SqlParameter ParNumeroHasta = new SqlParameter();
                 ParNumeroHasta.ParameterName = "@NumeroHasta";
                 ParNumeroHasta.SqlDbType = SqlDbType.Int;
-                ParNumeroHasta.Value = Numeracion.NumeroHasta;
+                ParNumeroHasta.Value = numeracionComprobante.NumeroHasta;
                 SqlCmd.Parameters.Add(ParNumeroHasta);
 
                 //Parametros 
@@ -104,7 +81,7 @@ namespace CapaDatos
                 ParTipoComprobante.ParameterName = "@TipoComprobante";
                 ParTipoComprobante.SqlDbType = SqlDbType.VarChar;
                 ParTipoComprobante.Size = 10;
-                ParTipoComprobante.Value = Numeracion.TipoComprobante;
+                ParTipoComprobante.Value = numeracionComprobante.TipoComprobante;
                 SqlCmd.Parameters.Add(ParTipoComprobante);
 
 
@@ -112,7 +89,7 @@ namespace CapaDatos
                 SqlParameter ParTimbrado = new SqlParameter();
                 ParTimbrado.ParameterName = "@Timbrado";
                 ParTimbrado.SqlDbType = SqlDbType.Int;
-                ParTimbrado.Value = Numeracion.Timbrado.IdTimbrado;
+                ParTimbrado.Value = numeracionComprobante.Timbrado.IdTimbrado;
                 SqlCmd.Parameters.Add(ParTimbrado);
 
 
@@ -120,7 +97,7 @@ namespace CapaDatos
                 SqlParameter ParEstado = new SqlParameter();
                 ParEstado.ParameterName = "@Estado";
                 ParEstado.SqlDbType = SqlDbType.VarChar;
-                ParEstado.Value = Numeracion.Estado;
+                ParEstado.Value = numeracionComprobante.Estado;
                 SqlCmd.Parameters.Add(ParEstado);
 
                 #endregion
@@ -146,7 +123,7 @@ namespace CapaDatos
 
 
         //Metodo Editar
-        public string EditarNumeracion(DTimbrado timbrado, List<DNumeracionComprobante> Listanumeracion)
+        public string EditarNumeracion(ETimbrado timbrado, List<ENumeracionComprobante> Listanumeracion)
         {
             //declarar variable respuesta
             string rpta = "";
@@ -242,7 +219,7 @@ namespace CapaDatos
         }
 
         //Metodo eliminar
-        public string EliminarNumeracion(DNumeracionComprobante Numeracion)
+        public string EliminarNumeracion(int idNumeracionComprobante)
         {
             //declarar variable respuesta
             string rpta = "";
@@ -262,7 +239,7 @@ namespace CapaDatos
                 SqlParameter ParId = new SqlParameter();
                 ParId.ParameterName = "@Id";
                 ParId.SqlDbType = SqlDbType.Int;
-                ParId.Value = Numeracion.Id;
+                ParId.Value = idNumeracionComprobante;
                 SqlCmd.Parameters.Add(ParId);
                
 
