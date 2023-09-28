@@ -56,37 +56,6 @@ namespace CapaPresentacion.Formularios.ChildForms
             InitializeComponent();
         }
 
-        private void OcultarColumnasProducto()
-        {
-            try
-            {
-                this.dataListado.Columns["ArticuloNro"].Visible = false;
-                this.dataListado.Columns["PorcentajeIVA"].Visible = false;
-                //this.dataListado.Columns["Divisor"].Visible = false;
-                //this.dataListado.Columns["Gravadas"].Visible = false;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-           
-        }
-
-        private void OcultarColumnasServicio()
-        {
-            /*this.dataListado.Columns[0].Visible = false;
-            this.dataListado.Columns["Codigo"].Visible = false;
-            this.dataListado.Columns["PorcentajeIVA"].Visible = false;
-            this.dataListado.Columns["CodImpuesto"].Visible = false;
-            this.dataListado.Columns["BaseImponible"].Visible = false;
-            this.dataListado.Columns["Estado"].Visible = false;*/
-        }
-
-
-
-
-
-
         //PINTAR LAS CELDAS SEGUN EL VALOR DEL STOCK 
         private void StockMenor()
         {
@@ -134,8 +103,7 @@ namespace CapaPresentacion.Formularios.ChildForms
             {       
                 var lstServicio = NServicio.Mostrar();
                 CrearColumnasDataGridServicio();
-                dataListado.DataSource = lstServicio;              
-                OcultarColumnasServicio();
+                dataListado.DataSource = lstServicio;  
                 lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
             }
         }
@@ -270,14 +238,12 @@ namespace CapaPresentacion.Formularios.ChildForms
         }
         private void BuscarProducto()
         {
-           this.dataListado.DataSource = NProducto.BuscarProductoActivo(this.txtBuscar.Text);
-           this.OcultarColumnasProducto();
+           dataListado.DataSource = NProducto.BuscarProductoActivo(txtBuscar.Text);
            lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);  
        }
 
         private void BuscarServicio() {
-            this.dataListado.DataSource = NServicio.BuscarServicio(this.txtBuscar.Text);
-            this.OcultarColumnasServicio();
+            dataListado.DataSource = NServicio.BuscarServicio(txtBuscar.Text);
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
                 
@@ -296,41 +262,18 @@ namespace CapaPresentacion.Formularios.ChildForms
                 FrmFacturaVenta frm = FrmFacturaVenta.GetInstancia();
                 DataTable dtdescuento = new DataTable();
                 string des = string.Empty;
-
-                string codigo, descripcion, unidadmedida, tipoImpuesto;
-                int stock,codImpuesto;
-                double precio,preciocompra;
-                decimal porcentajeIVA, baseImponible, comision;
+               
                 if (rbProductos.Checked)
                 {
-                    codigo = Convert.ToString(dataListado.CurrentRow.Cells["ArticuloNro"].Value);
-                    descripcion = Convert.ToString(dataListado.CurrentRow.Cells["Producto"].Value);
-                    unidadmedida = Convert.ToString(dataListado.CurrentRow.Cells["UnidadMedida"].Value);
-                    precio = Convert.ToInt64(dataListado.CurrentRow.Cells["Precio"].Value);
-                    codImpuesto = Convert.ToInt32(dataListado.CurrentRow.Cells["CodImpuesto"].Value);
-                    tipoImpuesto = Convert.ToString(dataListado.CurrentRow.Cells["tipoImpuesto"].Value);
-                    porcentajeIVA = Convert.ToDecimal(dataListado.CurrentRow.Cells["PorcentajeIva"].Value);
-                    baseImponible = Convert.ToDecimal(dataListado.CurrentRow.Cells["baseImponible"].Value);
-
-                    stock = Convert.ToInt32(dataListado.CurrentRow.Cells["StockActual"].Value);
-                    preciocompra = Convert.ToInt64(dataListado.CurrentRow.Cells["precioCompra"].Value);
-
-                    frm.ObtenerProducto(codigo, descripcion, precio, preciocompra, codImpuesto, tipoImpuesto,stock);
-                    this.Hide();
+                    var itemProducto = dataListado.CurrentRow.DataBoundItem as EProducto;
+                    frm.ObtenerProducto(itemProducto);
+                    Hide();
                 }
                 else
                 {
-                    codigo = Convert.ToString(dataListado.CurrentRow.Cells["Codigo"].Value);
-                    descripcion = Convert.ToString(dataListado.CurrentRow.Cells["Servicio"].Value);
-                    precio = Convert.ToDouble(dataListado.CurrentRow.Cells["Precio"].Value);
-                    codImpuesto = Convert.ToInt32(dataListado.CurrentRow.Cells["CodImpuesto"].Value);
-                    tipoImpuesto = Convert.ToString(dataListado.CurrentRow.Cells["tipoImpuesto"].Value);
-                    porcentajeIVA = Convert.ToDecimal(dataListado.CurrentRow.Cells["PorcentajeIva"].Value);
-                    baseImponible = Convert.ToDecimal(dataListado.CurrentRow.Cells["baseImponible"].Value);
-                    //comision = Convert.ToDecimal(dataListado.CurrentRow.Cells["PorcentajeComision"].Value);
-                    comision = 0;
-                    frm.ObtenerServicio(codigo, descripcion, precio, codImpuesto, tipoImpuesto, comision);                    
-                    this.Hide();
+                    var itemServicio = dataListado.CurrentRow.DataBoundItem as EServicio;                    
+                    frm.ObtenerServicio(itemServicio);                    
+                    Hide();
                 }
 
             }
@@ -344,8 +287,8 @@ namespace CapaPresentacion.Formularios.ChildForms
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            this.Mostrar();
-            this.StockMenor();
+            Mostrar();
+            StockMenor();
           
         }
                 
@@ -373,9 +316,9 @@ namespace CapaPresentacion.Formularios.ChildForms
 
         private void dataListado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         { 
-        try {
+            try {
                 if (rbProductos.Checked)
-                {
+                  {
                     if (e.RowIndex >= 0 && e.ColumnIndex == columnTipoProducto.Index)
                     {
                         var fila = dataListado.Rows[e.RowIndex];
@@ -443,34 +386,22 @@ namespace CapaPresentacion.Formularios.ChildForms
                 {
                     e.CellStyle.Format = "N0";
                 };
-            } catch(Exception)
+            } catch(Exception ex)
             {
-                //MessageBox.Show(ex.Message); 
+                MessageBox.Show(ex.Message); 
             }
-        
-        }
-
-        private void dataListado_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
-        {
-            
-               
-        }
-
-        private void cboItem_SelectedValueChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void cboItem_SelectedIndexChanged(object sender, EventArgs e)
         {
             dataListado.CurrentCell = null;
-            this.Mostrar();
-            this.StockMenor();
+            Mostrar();
+            StockMenor();
         }
 
         private void dataListado_Leave(object sender, EventArgs e)
         {
-            this.dataListado.ClearSelection();
+            dataListado.ClearSelection();
         }
 
         private void dataListado_KeyDown(object sender, KeyEventArgs e)
@@ -485,11 +416,11 @@ namespace CapaPresentacion.Formularios.ChildForms
         {
             if (rbProductos.Checked)
             {
-                this.BuscarProducto();
+                BuscarProducto();
             }
             else
             {
-                this.BuscarServicio();
+                BuscarServicio();
             }
         }
 

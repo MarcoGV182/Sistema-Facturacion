@@ -48,11 +48,11 @@
     <Compile Include="NConfiguracion.cs" />
     <Compile Include="NCuentaPorCobrar.cs" />
     <Compile Include="NDescuento.cs" />
-    <Compile Include="Reporting\NDetalleDeVentas.cs" />
     <Compile Include="NEmpresa.cs" />
     <Compile Include="NFormaPago.cs" />
     <Compile Include="NGastos.cs" />
     <Compile Include="Reporting\NInformeCaja.cs" />
+    <Compile Include="Reporting\NInformeVentaColaborador.cs" />
     <Compile Include="Reporting\NLibroVentaReport.cs" />
     <Compile Include="NLiquidacion.cs" />
     <Compile Include="NAjuste.cs" />

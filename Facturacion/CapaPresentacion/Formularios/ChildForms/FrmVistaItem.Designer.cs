@@ -32,20 +32,20 @@
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbProductos = new System.Windows.Forms.RadioButton();
+            this.rbServicios = new System.Windows.Forms.RadioButton();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dataListado = new System.Windows.Forms.DataGridView();
             this.lblTotal = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.rbServicios = new System.Windows.Forms.RadioButton();
-            this.rbProductos = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabPage1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             this.tabControl1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // errorIcono
@@ -72,6 +72,38 @@
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbProductos);
+            this.groupBox1.Controls.Add(this.rbServicios);
+            this.groupBox1.Location = new System.Drawing.Point(215, 2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 31);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            // 
+            // rbProductos
+            // 
+            this.rbProductos.AutoSize = true;
+            this.rbProductos.Location = new System.Drawing.Point(94, 11);
+            this.rbProductos.Name = "rbProductos";
+            this.rbProductos.Size = new System.Drawing.Size(73, 17);
+            this.rbProductos.TabIndex = 11;
+            this.rbProductos.TabStop = true;
+            this.rbProductos.Text = "Productos";
+            this.rbProductos.UseVisualStyleBackColor = true;
+            // 
+            // rbServicios
+            // 
+            this.rbServicios.AutoSize = true;
+            this.rbServicios.Location = new System.Drawing.Point(20, 11);
+            this.rbServicios.Name = "rbServicios";
+            this.rbServicios.Size = new System.Drawing.Size(68, 17);
+            this.rbServicios.TabIndex = 10;
+            this.rbServicios.TabStop = true;
+            this.rbServicios.Text = "Servicios";
+            this.rbServicios.UseVisualStyleBackColor = true;
+            // 
             // btnBuscar
             // 
             this.btnBuscar.Location = new System.Drawing.Point(421, 9);
@@ -87,7 +119,7 @@
             this.dataListado.AllowUserToAddRows = false;
             this.dataListado.AllowUserToDeleteRows = false;
             this.dataListado.AllowUserToOrderColumns = true;
-            this.dataListado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataListado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataListado.BackgroundColor = System.Drawing.Color.White;
             this.dataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataListado.Location = new System.Drawing.Point(10, 42);
@@ -98,7 +130,6 @@
             this.dataListado.Size = new System.Drawing.Size(718, 341);
             this.dataListado.TabIndex = 7;
             this.dataListado.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataListado_CellFormatting);
-            this.dataListado.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataListado_CellPainting);
             this.dataListado.DoubleClick += new System.EventHandler(this.dataListado_DoubleClick);
             this.dataListado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataListado_KeyDown);
             this.dataListado.Leave += new System.EventHandler(this.dataListado_Leave);
@@ -139,38 +170,6 @@
             this.tabControl1.Size = new System.Drawing.Size(742, 418);
             this.tabControl1.TabIndex = 9;
             // 
-            // rbServicios
-            // 
-            this.rbServicios.AutoSize = true;
-            this.rbServicios.Location = new System.Drawing.Point(20, 11);
-            this.rbServicios.Name = "rbServicios";
-            this.rbServicios.Size = new System.Drawing.Size(68, 17);
-            this.rbServicios.TabIndex = 10;
-            this.rbServicios.TabStop = true;
-            this.rbServicios.Text = "Servicios";
-            this.rbServicios.UseVisualStyleBackColor = true;
-            // 
-            // rbProductos
-            // 
-            this.rbProductos.AutoSize = true;
-            this.rbProductos.Location = new System.Drawing.Point(94, 11);
-            this.rbProductos.Name = "rbProductos";
-            this.rbProductos.Size = new System.Drawing.Size(73, 17);
-            this.rbProductos.TabIndex = 11;
-            this.rbProductos.TabStop = true;
-            this.rbProductos.Text = "Productos";
-            this.rbProductos.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rbProductos);
-            this.groupBox1.Controls.Add(this.rbServicios);
-            this.groupBox1.Location = new System.Drawing.Point(215, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 31);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            // 
             // FrmVistaItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,10 +185,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
-            this.tabControl1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

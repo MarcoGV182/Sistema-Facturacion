@@ -10,7 +10,7 @@ namespace CapaDatos.Reporting
 {
     public class DLibroCompraReport: Conexion
     {
-        public DataTable ObtenerLibroVenta(DateTime FechaInicio, DateTime FechaFin)
+        public DataTable ObtenerLibroVenta(DateTime FechaInicio, DateTime FechaFin, string Estado)
         {
             DataTable DtResultado = new DataTable("LibroVenta");
             SqlConnection Sqlcon = null;
@@ -29,9 +29,10 @@ namespace CapaDatos.Reporting
                                               Imp_Gravado,
                                               Imp_IVA,
                                               Imp_Exento, 
-                                              Total
+                                              Total,
+                                              Estado
                                         from v_LibroVenta v
-                                        where v.Fecha >= @Desde and v.Fecha <= @Hasta";
+                                        where v.Fecha >= @Desde and v.Fecha <= @Hasta and v.Estado = @Estado";
 
                 SqlParameter ParDesde = new SqlParameter();
                 ParDesde.ParameterName = "@Desde";
@@ -45,8 +46,13 @@ namespace CapaDatos.Reporting
                 ParHasta.Value = FechaFin;
                 SqlCmd.Parameters.Add(ParHasta);
 
-                SqlCmd.CommandType = CommandType.Text;
+                SqlParameter ParEstado = new SqlParameter();
+                ParEstado.ParameterName = "@Estado";
+                ParEstado.SqlDbType = SqlDbType.VarChar;
+                ParEstado.Value = Estado;
+                SqlCmd.Parameters.Add(ParEstado);
 
+                SqlCmd.CommandType = CommandType.Text;
 
                 //instanciar un DataAdapter
                 SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlCmd);

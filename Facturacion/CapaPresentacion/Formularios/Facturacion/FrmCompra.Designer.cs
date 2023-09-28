@@ -208,11 +208,11 @@
             // 
             // txtNroTimbrado
             // 
-            this.txtNroTimbrado.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.txtNroTimbrado.Location = new System.Drawing.Point(348, 22);
+            this.txtNroTimbrado.Font = new System.Drawing.Font("Times New Roman", 11F);
+            this.txtNroTimbrado.Location = new System.Drawing.Point(350, 20);
             this.txtNroTimbrado.MaxLength = 10;
             this.txtNroTimbrado.Name = "txtNroTimbrado";
-            this.txtNroTimbrado.Size = new System.Drawing.Size(123, 23);
+            this.txtNroTimbrado.Size = new System.Drawing.Size(123, 24);
             this.txtNroTimbrado.TabIndex = 2;
             this.txtNroTimbrado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -272,7 +272,7 @@
             this.cboComprobante.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboComprobante.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.cboComprobante.FormattingEnabled = true;
-            this.cboComprobante.Location = new System.Drawing.Point(790, 56);
+            this.cboComprobante.Location = new System.Drawing.Point(808, 56);
             this.cboComprobante.Name = "cboComprobante";
             this.cboComprobante.Size = new System.Drawing.Size(116, 23);
             this.cboComprobante.TabIndex = 9;

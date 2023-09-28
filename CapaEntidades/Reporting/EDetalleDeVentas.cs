@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaNegocio
+namespace CapaEntidades.Reporting
 {
-    public class NDetalleDeVentas
+    public class EDetalleDeVentas
     {
         public int NroVenta { get; set; }
         public DateTime Fecha { get; set; }

@@ -16,9 +16,9 @@ namespace CapaEntidades
         public double ImporteApertura { get; set; }
         public char Estado { get; set; }
         public string Observacion { get; set; }
-        public double ImporteEntrega { get; set; }
-        public double Diferencia { get; set; }
-        public double SaldoFinal { get; set; }
+        public double? ImporteEntrega { get; set; }
+        public double? Diferencia { get; set; }
+        public double? SaldoFinal { get; set; }
 
         public ECaja()
         {

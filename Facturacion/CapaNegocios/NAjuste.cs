@@ -38,11 +38,10 @@ namespace CapaNegocio
         }
 
         //Metodo para buscar que llama al metodo buscar por nombre de la capa Datos
-        public static DataTable BuscarAjusteFecha(string textoBuscar1, string textoBuscar2)
+        public static DataTable BuscarAjusteFecha(DateTime FechaDesde, DateTime FechaHasta)
         {
             DAjuste objAjuste = new DAjuste();
-
-            return objAjuste.BuscarFechas(textoBuscar1, textoBuscar2);
+            return objAjuste.BuscarFechas(FechaDesde, FechaHasta);
         }
 
         public static DataTable MostarDetalle(int CodAjuste)

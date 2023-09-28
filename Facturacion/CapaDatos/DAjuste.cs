@@ -135,7 +135,7 @@ namespace CapaDatos
 
 
         //Metodo Buscar
-        public DataTable BuscarFechas(string Textobuscar1, string TextoBuscar2)
+        public DataTable BuscarFechas(DateTime Textobuscar1, DateTime TextoBuscar2)
         {
             DataTable DtResultado = new DataTable("Ajuste");
             SqlConnection Sqlcon = null;
@@ -150,16 +150,14 @@ namespace CapaDatos
                 //Parametros
                 SqlParameter ParTextoBuscar = new SqlParameter();
                 ParTextoBuscar.ParameterName = "@fecha1";
-                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
-                ParTextoBuscar.Size = 50;
+                ParTextoBuscar.SqlDbType = SqlDbType.DateTime;
                 ParTextoBuscar.SqlValue = Textobuscar1;
                 SqlCmd.Parameters.Add(ParTextoBuscar);
 
                 //Parametros
                 SqlParameter ParTextoBuscar2 = new SqlParameter();
                 ParTextoBuscar2.ParameterName = "@fecha2";
-                ParTextoBuscar2.SqlDbType = SqlDbType.VarChar;
-                ParTextoBuscar2.Size = 50;
+                ParTextoBuscar2.SqlDbType = SqlDbType.DateTime;
                 ParTextoBuscar2.SqlValue = TextoBuscar2;
                 SqlCmd.Parameters.Add(ParTextoBuscar2);
 

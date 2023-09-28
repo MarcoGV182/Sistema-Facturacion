@@ -435,9 +435,16 @@ namespace CapaPresentacion.Formularios.Facturacion
 
         private void btnBuscarProducto_Click(object sender, EventArgs e)
         {
-            FrmVistaProducto frmvista = new FrmVistaProducto();
-            frmvista.ShowDialog();
+            FrmVistaProducto frm = new FrmVistaProducto();
+            frm.FormClosed += Frm_FormClosed;
+            frm.ShowDialog();
             this.txtCantidad.Focus();
+        }
+
+        private void Frm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FrmVistaProducto retorno = (FrmVistaProducto)sender;
+            ObtenerProducto(retorno.ProductoSeleccionado);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -598,7 +605,7 @@ namespace CapaPresentacion.Formularios.Facturacion
                     Fecha = this.dtpFecha.Value,
                     TipoPago = new ETipoPago()
                     {
-                        FormaPago = Convert.ToInt32(this.cboTipoPago.SelectedValue),
+                        IdFormaPago = Convert.ToInt32(this.cboTipoPago.SelectedValue),
                         Descripcion = this.cboTipoPago.Text
                     },
                     CantCuotas = codTipoPago == 2 ? Convert.ToInt32(this.txtDias.Text) : (int?)null,

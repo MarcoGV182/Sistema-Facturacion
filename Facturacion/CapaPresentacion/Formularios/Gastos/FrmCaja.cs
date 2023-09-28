@@ -81,7 +81,7 @@ namespace CapaPresentacion
                 #region Validacion Previa
                 if (this.txtMonto.Text == string.Empty)
                 {
-                    this.MensajeError("Falta algunos datos");
+                    MensajeError("Falta algunos datos");
                     errorIcono.SetError(txtMonto, "Ingrese el importe de la caja");
                     return;
                 }
@@ -89,7 +89,7 @@ namespace CapaPresentacion
 
                 ECaja eCaja = new ECaja();
                 eCaja.FechaApertura = this.dtpFechaApertura.Value;
-                eCaja.NroCaja = Convert.ToInt32(this.id);
+                eCaja.PersonaNro = Convert.ToInt32(this.id);
                 eCaja.ImporteApertura = Convert.ToDouble(this.txtMonto.Text);
                 eCaja.Observacion = this.txtObservacion.Text;
 
@@ -98,21 +98,16 @@ namespace CapaPresentacion
 
                 if (rpta.Equals("OK"))
                 {
-
-                    this.MensajeOK("La Caja se ha abierto con exito");
-                    this.Close();
+                    MensajeOK("La Caja se ha abierto con exito");
+                    Close();
                 }
                 else
                 {
-                    this.MensajeError(rpta);
+                    MensajeError(rpta);
                     return;
                 }
 
-                this.Limpiar();
-                //this.Mostrar();
-
-
-
+                Limpiar();
             }
             catch (Exception ex)
             {

@@ -93,7 +93,7 @@ namespace CapaDatos
                 SqlParameter ParClienteNro = new SqlParameter();
                 ParClienteNro.ParameterName = "@ClienteNro";
                 ParClienteNro.SqlDbType = SqlDbType.Int;
-                ParClienteNro.Value = Factura.ClienteNro;
+                ParClienteNro.Value = Factura.Cliente.PersonaNro;
                 SqlCmd.Parameters.Add(ParClienteNro);
 
                 //Parametro nombre cliente
@@ -101,14 +101,14 @@ namespace CapaDatos
                 ParNombreCliente.ParameterName = "@NombreCliente";
                 ParNombreCliente.SqlDbType = SqlDbType.VarChar;
                 ParNombreCliente.Size = 250;
-                ParNombreCliente.Value = Factura.NombreCliente;
+                ParNombreCliente.Value = Factura.Cliente.Nombre;
                 SqlCmd.Parameters.Add(ParNombreCliente);
 
                 //Parametros usuario
                 SqlParameter ParVendedor = new SqlParameter();
                 ParVendedor.ParameterName = "@Vendedor";
                 ParVendedor.SqlDbType = SqlDbType.Int;
-                ParVendedor.Value = Factura.Vendedor;
+                ParVendedor.Value = Factura.ColaboradorVendedor.PersonaNro;
                 SqlCmd.Parameters.Add(ParVendedor);
 
                 //Parametros TipoPago
@@ -130,23 +130,15 @@ namespace CapaDatos
                 SqlParameter ParFormaPago = new SqlParameter();
                 ParFormaPago.ParameterName = "@CodTipoPago";
                 ParFormaPago.SqlDbType = SqlDbType.Int;
-                ParFormaPago.Value = Factura.CodTipoPago;
+                ParFormaPago.Value = Factura.TipoPago.IdFormaPago;
                 SqlCmd.Parameters.Add(ParFormaPago);
 
                 //Parametros tipo de comprobante
                 SqlParameter ParTipoComprobante = new SqlParameter();
                 ParTipoComprobante.ParameterName = "@ComprobanteNro";
                 ParTipoComprobante.SqlDbType = SqlDbType.Int;
-                ParTipoComprobante.Value = Factura.TipoComprobanteNro;
+                ParTipoComprobante.Value = Factura.TipoComprobante.ComprobanteNro;
                 SqlCmd.Parameters.Add(ParTipoComprobante);
-
-
-                //Parametros Estado
-                SqlParameter ParNroOrden = new SqlParameter();
-                ParNroOrden.ParameterName = "@NroOrden";
-                ParNroOrden.SqlDbType = SqlDbType.Int;
-                ParNroOrden.Value = Factura.NroOrden;
-                SqlCmd.Parameters.Add(ParNroOrden);
 
 
                 //Parametros Estado
@@ -304,7 +296,7 @@ namespace CapaDatos
                 SqlParameter ParClienteNro = new SqlParameter();
                 ParClienteNro.ParameterName = "@ClienteNro";
                 ParClienteNro.SqlDbType = SqlDbType.Int;
-                ParClienteNro.Value = Factura.ClienteNro;
+                ParClienteNro.Value = Factura.Cliente.PersonaNro;
                 SqlCmd.Parameters.Add(ParClienteNro);
 
                 //Parametro nombre cliente
@@ -312,14 +304,14 @@ namespace CapaDatos
                 ParNombreCliente.ParameterName = "@NombreCliente";
                 ParNombreCliente.SqlDbType = SqlDbType.VarChar;
                 ParNombreCliente.Size = 250;
-                ParNombreCliente.Value = Factura.NombreCliente;
+                ParNombreCliente.Value = Factura.Cliente.Nombre;
                 SqlCmd.Parameters.Add(ParNombreCliente);
 
                 //Parametros usuario
                 SqlParameter ParVendedor = new SqlParameter();
                 ParVendedor.ParameterName = "@Vendedor";
                 ParVendedor.SqlDbType = SqlDbType.Int;
-                ParVendedor.Value = Factura.Vendedor;
+                ParVendedor.Value = Factura.ColaboradorVendedor.PersonaNro;
                 SqlCmd.Parameters.Add(ParVendedor);
 
                 //Parametros TipoPago
@@ -341,22 +333,15 @@ namespace CapaDatos
                 SqlParameter ParFormaPago = new SqlParameter();
                 ParFormaPago.ParameterName = "@CodTipoPago";
                 ParFormaPago.SqlDbType = SqlDbType.Int;
-                ParFormaPago.Value = Factura.CodTipoPago;
+                ParFormaPago.Value = Factura.TipoPago.IdFormaPago;
                 SqlCmd.Parameters.Add(ParFormaPago);
 
                 //Parametros tipo de comprobante
                 SqlParameter ParTipoComprobante = new SqlParameter();
                 ParTipoComprobante.ParameterName = "@ComprobanteNro";
                 ParTipoComprobante.SqlDbType = SqlDbType.Int;
-                ParTipoComprobante.Value = Factura.TipoComprobanteNro;
+                ParTipoComprobante.Value = Factura.TipoComprobante.ComprobanteNro;
                 SqlCmd.Parameters.Add(ParTipoComprobante);
-
-                //Parametros Estado
-                SqlParameter ParNroOrden = new SqlParameter();
-                ParNroOrden.ParameterName = "@NroOrden";
-                ParNroOrden.SqlDbType = SqlDbType.Int;
-                ParNroOrden.Value = Factura.NroOrden;
-                SqlCmd.Parameters.Add(ParNroOrden);
 
 
                 //Parametros Estado
@@ -476,8 +461,6 @@ namespace CapaDatos
             finally
             {
                 CerrarConexion(Sqlcon);
-                /*if (Sqlcon.State == ConnectionState.Open)
-                    Sqlcon.Close();*/
             }
             return rpta;
         }
@@ -612,7 +595,7 @@ namespace CapaDatos
                 SqlParameter ParClienteNro = new SqlParameter();
                 ParClienteNro.ParameterName = "@ClienteNro";
                 ParClienteNro.SqlDbType = SqlDbType.Int;
-                ParClienteNro.Value =Factura.ClienteNro;
+                ParClienteNro.Value =Factura.Cliente.PersonaNro;
                 SqlCmd.Parameters.Add(ParClienteNro);
 
                 //ejecutar el comando sql

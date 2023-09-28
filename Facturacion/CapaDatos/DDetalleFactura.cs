@@ -52,7 +52,7 @@ namespace CapaDatos
                 SqlParameter ParProductoNro = new SqlParameter();
                 ParProductoNro.ParameterName = "@ArticuloNro";
                 ParProductoNro.SqlDbType = SqlDbType.Int;
-                ParProductoNro.Value = DetalleFactura.Articulo;
+                ParProductoNro.Value = DetalleFactura.Articulo.ArticuloNro;
                 SqlCmd.Parameters.Add(ParProductoNro);
 
 

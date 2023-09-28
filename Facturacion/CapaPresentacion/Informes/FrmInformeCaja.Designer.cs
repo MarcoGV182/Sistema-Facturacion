@@ -32,25 +32,33 @@ namespace CapaPresentacion
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.eInformeCajaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dCajaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.dtpHasta = new System.Windows.Forms.DateTimePicker();
             this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.nInformeCajaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dCajaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.nInformeCajaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eInformeCajaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dCajaBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // eInformeCajaBindingSource
+            // 
+            this.eInformeCajaBindingSource.DataSource = typeof(CapaEntidades.Reporting.EInformeCaja);
+            // 
+            // dCajaBindingSource
+            // 
+            this.dCajaBindingSource.DataSource = typeof(CapaEntidades.ECaja);
             // 
             // reportViewer1
             // 
             this.reportViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            reportDataSource1.Name = "DsInformeCajaReporting";
-            reportDataSource1.Value = this.nInformeCajaBindingSource;
+            reportDataSource1.Name = "DsInformeCaja";
+            reportDataSource1.Value = this.eInformeCajaBindingSource;
             reportDataSource2.Name = "DsCaja";
             reportDataSource2.Value = this.dCajaBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
@@ -108,14 +116,6 @@ namespace CapaPresentacion
             this.label1.TabIndex = 16;
             this.label1.Text = "Desde:";
             // 
-            // nInformeCajaBindingSource
-            // 
-            this.nInformeCajaBindingSource.DataSource = typeof(CapaNegocio.Reporting.NInformeCaja);
-            // 
-            // dCajaBindingSource
-            // 
-            this.dCajaBindingSource.DataSource = typeof(CapaEntidades.ECaja);
-            // 
             // FrmInformeCaja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -132,7 +132,7 @@ namespace CapaPresentacion
             this.Text = "Informe Caja";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmInformeCaja_FormClosing);
             this.Load += new System.EventHandler(this.FrmInformeCaja_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.nInformeCajaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eInformeCajaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dCajaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -147,7 +147,7 @@ namespace CapaPresentacion
         private System.Windows.Forms.DateTimePicker dtpDesde;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.BindingSource nInformeCajaBindingSource;
         private System.Windows.Forms.BindingSource dCajaBindingSource;
+        private System.Windows.Forms.BindingSource eInformeCajaBindingSource;
     }
 }

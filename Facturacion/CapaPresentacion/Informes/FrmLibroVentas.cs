@@ -33,8 +33,9 @@ namespace CapaPresentacion
 
         private void FrmLibroVentas_Load(object sender, EventArgs e)
         {
-            this.Top = 0;
-            this.Left = 50;
+            Top = 0;
+            Left = 50;
+            cboEstado.SelectedIndex = 0;
 
             //Se inicializa el fecha desde con el primer día del mes
             var FechaInicioMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
@@ -48,7 +49,8 @@ namespace CapaPresentacion
         {
                 var desde = dtpDesde.Value;
                 var hasta = dtpHasta.Value;
-                CargarDatos(desde, hasta);
+                var estado = cboEstado.Text;
+                CargarDatos(desde, hasta, estado);
         }
             catch(Exception ex) 
         {
@@ -63,13 +65,14 @@ namespace CapaPresentacion
         }
 
 
-        private void CargarDatos(DateTime inicio, DateTime fin) 
+        private void CargarDatos(DateTime inicio, DateTime fin, string estado) 
         {
             NLibroVentaReport reportModel = new NLibroVentaReport();
-            reportModel.LibroVentaReport(inicio, fin);
+            reportModel.LibroVentaReport(inicio, fin,estado);
 
-            nLibroVentaReportBindingSource.DataSource = reportModel;
-            nDetalleDeVentasBindingSource.DataSource = reportModel.DetallesVentas;
+            eLibroVentaReportBindingSource.DataSource = reportModel.eLibroVentaReport;
+            eDetalleDeVentasBindingSource.DataSource = reportModel.eLibroVentaReport.DetallesVentas;
+            //nDetalleDeVentasBindingSource.DataSource = reportModel.eLibroVentaReport.DetallesVentas;
 
             this.reportViewer1.RefreshReport();
         }

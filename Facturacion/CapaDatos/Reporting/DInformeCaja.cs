@@ -33,7 +33,7 @@ namespace CapaDatos.Reporting
 		                                        Caja c join Persona p on c.UsuarioNro=p.PersonaNro
 			                                           join Usuario u on p.PersonaNro=u.UsuarioNro
 	                                        WHERE
-		                                        FechaApertura >= @FechaInicio AND FechaCierre <= DATEADD(DAY,1,@FechaFin)
+		                                        FechaApertura >= @FechaInicio AND FechaApertura <= DATEADD(DAY,1,@FechaFin)
                                             ORDER BY FechaApertura asc";
 
                 SqlParameter ParDesde = new SqlParameter();

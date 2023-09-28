@@ -67,7 +67,7 @@ namespace CapaPresentacion
 
             //Configurar las columnas de servicios
             DataGridViewTextBoxColumn columnaId = new DataGridViewTextBoxColumn();
-            columnaId.DataPropertyName = "ServicioNro";
+            columnaId.DataPropertyName = "ArticuloNro";
             columnaId.HeaderText = "Codigo";
             dataListado.Columns.Add(columnaId);
 

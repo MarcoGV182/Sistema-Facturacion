@@ -17,6 +17,9 @@ using System.Globalization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Text.RegularExpressions;
 using CapaPresentacion.Formularios.ChildForms;
+using CapaEntidades.Interfaces;
+using CapaPresentacion.Formularios.Herramientas;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion.Formularios.Facturacion
 {
@@ -59,7 +62,8 @@ namespace CapaPresentacion.Formularios.Facturacion
         bool FormatoCorrectoFactura = true;
         bool isInitializing = true;
 
-        List<EDetalleFactura> detalleFacturaLista = new List<EDetalleFactura>();
+        List<EDetalleFactura> ListaDetalleFactura = new List<EDetalleFactura>();
+        List<EFactura> ListaFacturas;
 
 
         //INSTANCIA PARA LLAMAR SOLO UNA VEZ AL FORMULARIO
@@ -74,48 +78,49 @@ namespace CapaPresentacion.Formularios.Facturacion
         public FrmFacturaVenta()
         {
             InitializeComponent();
-            this.ttMensaje.SetToolTip(txtCliente, "Seleccione el Cliente");
-            this.ttMensaje.SetToolTip(txtNroFactura, "Ingrese el numero de factura");
-            this.ttMensaje.SetToolTip(dtpFecha, "Ingrese la fecha de Venta");
-            this.ttMensaje.SetToolTip(cboTipoPago, "Seleccione el tipo de pago");
-            this.ttMensaje.SetToolTip(txtItem, "Seleccione el Item");
-            this.ttMensaje.SetToolTip(btnBuscarItem, "Click para buscar item");
-            this.ttMensaje.SetToolTip(btnBuscarCliente, "Click para buscar al Cliente");
-            this.ttMensaje.SetToolTip(btnAgregar, "Click para agregar el item al carrito");
-            this.ttMensaje.SetToolTip(btnQuitar, "Click para quitar el item del carrito");
-            this.ttMensaje.SetToolTip(btnGuardar, "Click para guardar la Venta");
-            this.ttMensaje.SetToolTip(btnNuevo, "Cick para iniciar una nueva Factura");
-            this.ttMensaje.SetToolTip(btnCancelar, "Click para cancelar la Factura");
+            ttMensaje.SetToolTip(txtCliente, "Seleccione el Cliente");
+            ttMensaje.SetToolTip(txtNroFactura, "Ingrese el numero de factura");
+            ttMensaje.SetToolTip(dtpFecha, "Ingrese la fecha de Venta");
+            ttMensaje.SetToolTip(cboTipoPago, "Seleccione el tipo de pago");
+            ttMensaje.SetToolTip(txtItem, "Seleccione el Item");
+            ttMensaje.SetToolTip(btnBuscarItem, "Click para buscar item");
+            ttMensaje.SetToolTip(btnBuscarCliente, "Click para buscar al Cliente");
+            ttMensaje.SetToolTip(btnAgregar, "Click para agregar el item al carrito");
+            ttMensaje.SetToolTip(btnQuitar, "Click para quitar el item del carrito");
+            ttMensaje.SetToolTip(btnGuardar, "Click para guardar la Venta");
+            ttMensaje.SetToolTip(btnNuevo, "Cick para iniciar una nueva Factura");
+            ttMensaje.SetToolTip(btnCancelar, "Click para cancelar la Factura");
             codigoCliente = 0;
-            this.txtCodItem.ReadOnly = true;
-            this.txtItem.ReadOnly = true;
-            this.txtCliente.ReadOnly = true;
-            this.txtIva.ReadOnly = true;
+            txtCodItem.ReadOnly = true;
+            txtItem.ReadOnly = true;
+            txtCliente.ReadOnly = true;
+            txtIva.ReadOnly = true;
+
+            CrearDataGridColumn();
+            DataGridDiseno(dataListado);
             LlenarCombos();
+            CrearTabla();
+            MedidaColumna(dgvDetalleFactura);
             isInitializing = true;
             dtpFecha.Value = DateTime.Today;
         }
 
         private void FrmFacturaVenta_Load(object sender, EventArgs e)
         {
-            DataGridDiseno(dataListado);
+           
             //DataGridDiseno(dgvDetalleFactura);
             if (chkAnular.Checked == false)
                 btnAnular.Enabled = false;
 
-            this.Top = 50;
-            this.Left = 30;
-
-            this.Mostrar();
-            this.Habilitar(false);
-            this.Botones();
-            this.CrearTabla();
-            this.OcultarColumnasDetalle();
-            this.cboComprobante.SelectedIndex = 0;
-            this.cboTipoPago.SelectedIndex = 0;
-            this.MedidaColumna(dgvDetalleFactura);
-            this.btnImprimir2.Visible = false;
-
+            Top = 50;
+            Left = 30;
+            Mostrar();
+            Habilitar(false);
+            Botones();           
+            OcultarColumnasDetalle();
+            cboComprobante.SelectedIndex = 0;
+            cboTipoPago.SelectedIndex = 0;            
+            btnImprimir2.Visible = false;
             //Evento de los radioButtons
             rbAutoimprenta.CheckedChanged += RadioButton_CheckedChanged;
             rbManual.CheckedChanged += RadioButton_CheckedChanged;
@@ -144,7 +149,6 @@ namespace CapaPresentacion.Formularios.Facturacion
         private void MedidaColumna(DataGridView dg)
         {
             //Medida
-            /*
             dg.Columns["Nro"].Width = 35;
             dg.Columns["Item"].Width = 240;
             dg.Columns["Precio"].Width = 70;
@@ -176,8 +180,7 @@ namespace CapaPresentacion.Formularios.Facturacion
             dg.Columns["PrecioInicial"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dg.Columns["SubtotalIVA"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dg.Columns["SubtotalNeto"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dg.Columns["SubTotal"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            */
+            dg.Columns["SubTotal"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;            
         }
 
         public void ObtenerEmpleadoFactura(string usuarionro, string nombre)
@@ -210,7 +213,7 @@ namespace CapaPresentacion.Formularios.Facturacion
             try
             {
                 //
-                cbocolaborador.DataSource = NColaborador.MostrarColaboradorActivo();
+                cbocolaborador.DataSource = ControlesCompartidos.AgregarNuevaFila(NColaborador.MostrarColaboradorActivo(), "NombreApellido", "ColaboradorNro"); ;
                 cbocolaborador.DisplayMember = "NombreApellido";
                 cbocolaborador.ValueMember = "ColaboradorNro";
 
@@ -239,16 +242,16 @@ namespace CapaPresentacion.Formularios.Facturacion
         }
 
         //Obtener los datos del producto
-        public void ObtenerProducto(string codigo, string descripcion, double precio,double preciocompra,int codTipoImpuesto,string descripcionImpuesto,int stock)
+        public void ObtenerProducto(EProducto p)
         {
-            this.txtCodItem.Text = codigo;
-            this.txtItem.Text = descripcion;
-            this.txtIva.Text = descripcionImpuesto;
-            this.CodTipoImpuesto = codTipoImpuesto;
-            this.txtExistencia.Text = stock.ToString();
-            this.precioCompra = preciocompra;
-            precioInicial = precio;
-            this.txtPrecio.Text = precioInicial.ToString();
+            txtCodItem.Text = p.ArticuloNro.ToString();
+            txtItem.Text = p.Descripcion;
+            txtIva.Text = p.TipoImpuesto.Descripcion;
+            CodTipoImpuesto = p.TipoImpuesto.TipoImpuestoNro;
+            txtExistencia.Text = p.StockActual.ToString();
+            precioCompra = p.PrecioCompra;
+            precioInicial = p.Precio;
+            txtPrecio.Text = precioInicial.ToString();
 
             //PONER POR DEFECTO LA SELECCION DEL CAMPO CANTIDAD            
             txtCantidad.Text = "1";
@@ -261,7 +264,7 @@ namespace CapaPresentacion.Formularios.Facturacion
         {
             for (int i = 0; i < dataListado.Rows.Count; i++)
             {
-                string estado = Convert.ToString(dataListado.Rows[i].Cells["Estado"].Value);
+                var estado = dataListado.Rows[i].DataBoundItem as EFactura;                
                 if (estado.Equals("ANULADO"))
                 {
                     dataListado.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
@@ -272,15 +275,14 @@ namespace CapaPresentacion.Formularios.Facturacion
 
 
         //Obtener los datos del Servicio
-        public void ObtenerServicio(string codigo, string descripcion, double precio,int codTipoImpuesto, string descripcionImpuesto, decimal comision)
+        public void ObtenerServicio(EServicio s)
         {
-            this.txtCodItem.Text = codigo;
-            this.txtItem.Text = descripcion;
-            precioInicial = precio;
-            this.txtPrecio.Text = precio.ToString();
-            this.txtIva.Text = descripcionImpuesto;
-            CodTipoImpuesto = codTipoImpuesto;
-            porcentajeComision = comision;
+            txtCodItem.Text = s.ArticuloNro.ToString();
+            txtItem.Text = s.Descripcion;
+            precioInicial = s.Precio;
+            txtPrecio.Text = precioInicial.ToString();
+            txtIva.Text = s.TipoImpuesto.Descripcion;
+            CodTipoImpuesto = s.TipoImpuesto.TipoImpuestoNro;
 
             //PONER POR DEFECTO LA SELECCION DEL CAMPO CANTIDAD
             cantidadItem = 1;            
@@ -316,7 +318,7 @@ namespace CapaPresentacion.Formularios.Facturacion
             this.txtDocumento.Text= "00000";
            // this.txtDias.Text = string.Empty;
             this.txtObservacion.Text = string.Empty;
-            this.txtTotalGravadas.Text = string.Empty;
+            this.txtTotalNeto.Text = string.Empty;
             this.txttotalIva.Text = string.Empty;
             this.txtTotalGral.Text = string.Empty;
             this.dtpFecha.Value = DateTime.Now;
@@ -346,7 +348,6 @@ namespace CapaPresentacion.Formularios.Facturacion
 
         private void CrearTabla()
         {
-            /*
             this.Dtdetalle = new DataTable("Detalle");
             this.Dtdetalle.Columns.Add("Nro", System.Type.GetType("System.Int32"));
             this.Dtdetalle.Columns.Add("ItemNro", System.Type.GetType("System.Int32"));
@@ -375,131 +376,42 @@ namespace CapaPresentacion.Formularios.Facturacion
             dgvDetalleFactura.Columns["SubtotalIVA"].HeaderText = "IVA";
             dgvDetalleFactura.Columns["SubTotalNeto"].HeaderText = "Neto";
             dgvDetalleFactura.Columns["SubTotal"].HeaderText = "Total";
-            */
-            dataListado.AutoGenerateColumns = false;
-
-            //Configurar las columnas de Productos
-            DataGridViewTextBoxColumn columnNro = new DataGridViewTextBoxColumn();
-            columnNro.DataPropertyName = "NroItem";
-            columnNro.HeaderText = "Nro.";
-            dataListado.Columns.Add(columnNro);
-
-            /*DataGridViewTextBoxColumn columnItemNro = new DataGridViewTextBoxColumn();
-            columnItemNro.DataPropertyName = "CodDetalle";
-            columnItemNro.HeaderText = "CodDetalle";
-            dataListado.Columns.Add(columnItemNro);*/
-
-            DataGridViewTextBoxColumn columnArticuloNro = new DataGridViewTextBoxColumn();
-            columnArticuloNro.DataPropertyName = "Articulo.ArticuloNro";
-            columnArticuloNro.HeaderText = "ArticuloNro";
-            dataListado.Columns.Add(columnArticuloNro);
-
-
-            DataGridViewTextBoxColumn columnArticuloDescrip = new DataGridViewTextBoxColumn();
-            columnArticuloDescrip.DataPropertyName = "Articulo.Descripcion";
-            columnArticuloDescrip.HeaderText = "Item";
-            dataListado.Columns.Add(columnArticuloDescrip);
-
-
-            DataGridViewTextBoxColumn columnTipoImpuesto = new DataGridViewTextBoxColumn();
-            columnTipoImpuesto.DataPropertyName = "TipoImpuesto.Descripcion";
-            columnTipoImpuesto.HeaderText = "IVA";
-            dataListado.Columns.Add(columnTipoImpuesto);
-
-
-            DataGridViewTextBoxColumn columnCant = new DataGridViewTextBoxColumn();
-            columnCant.DataPropertyName = "Cantidad";
-            columnCant.HeaderText = "Cantidad";
-            dataListado.Columns.Add(columnCant);
-
-            DataGridViewTextBoxColumn ColumnPrecio = new DataGridViewTextBoxColumn();
-            ColumnPrecio.DataPropertyName = "Precio";
-            ColumnPrecio.HeaderText = "Precio";
-            dataListado.Columns.Add(ColumnPrecio);
-
-            DataGridViewTextBoxColumn ColumnPrecioInical = new DataGridViewTextBoxColumn();
-            ColumnPrecioInical.DataPropertyName = "PrecioInicial";
-            ColumnPrecioInical.HeaderText = "PrecioInicial";
-            dataListado.Columns.Add(ColumnPrecioInical);
-
-            DataGridViewTextBoxColumn ColumnCodTipoImpuesto = new DataGridViewTextBoxColumn();
-            ColumnCodTipoImpuesto.DataPropertyName = "CodTipoImpuesto";
-            ColumnCodTipoImpuesto.HeaderText = "Tipo Impuesto";
-            dataListado.Columns.Add(ColumnCodTipoImpuesto);
-
-            #region Formato
-            dataListado.CellFormatting += (sender, e) =>
-            {
-                if (e.RowIndex >= 0 && e.ColumnIndex == columnTipoImpuesto.Index)
-                {
-                    var fila = dataListado.Rows[e.RowIndex];
-                    if (fila.DataBoundItem != null)
-                    {
-                        var detalleFactura = (EDetalleFactura)fila.DataBoundItem;
-                        e.Value = detalleFactura.TipoImpuesto?.Descripcion;
-                    }
-                }
-                if (e.RowIndex >= 0 && e.ColumnIndex == ColumnCodTipoImpuesto.Index)
-                {
-                    var fila = dataListado.Rows[e.RowIndex];
-                    if (fila.DataBoundItem != null)
-                    {
-                        var detalleFactura = (EDetalleFactura)fila.DataBoundItem;
-                        e.Value = detalleFactura.TipoImpuesto?.TipoImpuestoNro;
-                    }
-                }
-                if (e.RowIndex >= 0 && e.ColumnIndex == columnTipoImpuesto.Index)
-                {
-                    var fila = dataListado.Rows[e.RowIndex];
-                    if (fila.DataBoundItem != null)
-                    {
-                        var producto = (EProducto)fila.DataBoundItem;
-                        e.Value = producto.TipoImpuesto?.Descripcion;
-                    }
-                }
-                
-
-                ColumnPrecio.DefaultCellStyle.Format = "N0";
-                ColumnPrecioInical.DefaultCellStyle.Format = "N0";
-            };
-            #endregion
-
-            dataListado.DataSource = detalleFacturaLista;
         }
 
 
         //Habilitar botones
         private void Habilitar(bool valor)
         {
-            this.txtNumeracionOT.ReadOnly = !valor;           
-            this.txtDocumento.ReadOnly = !valor;
-            this.txtCliente.ReadOnly = valor;
-            this.dtpFecha.Enabled = valor;
-            this.txtObservacion.ReadOnly = !valor;
-            this.txtItem.ReadOnly = !valor;
-            this.txtCodItem.ReadOnly = valor;
-            this.txtExistencia.ReadOnly = !valor;
-            this.txtCantidad.ReadOnly = !valor;
-            this.txtPrecio.ReadOnly = !valor;
-            this.txtIva.ReadOnly = !valor;
-            this.cboTipoPago.Enabled = valor;
-            this.txtObservacion.ReadOnly = !valor;
-            this.txtTotalGravadas.ReadOnly = !valor;
-            this.txttotalIva.ReadOnly = !valor;
-            this.txtTotalGral.ReadOnly = !valor;
-            this.cboTipoPago.Enabled = valor;
-            this.cboComprobante.Enabled = valor;
-            this.btnBuscarItem.Enabled = valor;
-            this.btnBuscarCliente.Enabled = valor;
-            this.btnAgregar.Enabled = valor;
-            this.btnQuitar.Enabled = valor;
-            this.txtCliente.ReadOnly = !valor;
-            this.txtItem.ReadOnly = !valor;
+            txtNumeracionOT.ReadOnly = !valor;           
+            txtDocumento.ReadOnly = !valor;
+            txtCliente.ReadOnly = valor;
+            dtpFecha.Enabled = valor;
+            txtObservacion.ReadOnly = !valor;
+            txtItem.ReadOnly = !valor;
+            txtCodItem.ReadOnly = valor;
+            txtExistencia.ReadOnly = !valor;
+            txtCantidad.ReadOnly = !valor;
+            txtPrecio.ReadOnly = !valor;
+            txtIva.ReadOnly = !valor;
+            cboTipoPago.Enabled = valor;
+            txtObservacion.ReadOnly = !valor;
+            txtTotalNeto.ReadOnly = !valor;
+            txttotalIva.ReadOnly = !valor;
+            txtTotalGral.ReadOnly = !valor;
+            cboTipoPago.Enabled = valor;
+            cboComprobante.Enabled = valor;
+            btnBuscarItem.Enabled = valor;
+            btnBuscarCliente.Enabled = valor;
+            btnAgregar.Enabled = valor;
+            btnQuitar.Enabled = valor;
+            txtCliente.ReadOnly = !valor;
+            txtItem.ReadOnly = !valor;
+            cbocolaborador.Enabled = valor;
             rbAutoimprenta.Enabled = valor;
             rbManual.Enabled = valor;
 
             //Inicializar la fecha desde del filtro al primer día del mes
-            this.dtpFechadesde.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            dtpFechadesde.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             if (rbAutoimprenta.Checked)
                 txtNroFactura.ReadOnly = true;
         }
@@ -533,12 +445,7 @@ namespace CapaPresentacion.Formularios.Facturacion
 
             try
             {
-                this.dataListado.Columns[0].Visible = false;
-                this.dataListado.Columns["PersonaNro"].Visible = false;
-                this.dataListado.Columns["TipoComprobante"].Visible = false;
-                this.dataListado.Columns["CodTipoPago"].Visible = false;
-                this.dataListado.Columns["Colaborador"].Visible = false;
-                this.dataListado.Columns["ColaboradorNro"].Visible = false;
+                this.dataListado.Columns[0].Visible = false;                
             }
             catch (Exception)
             {
@@ -551,7 +458,6 @@ namespace CapaPresentacion.Formularios.Facturacion
         {
             try
             {
-                /*
                 this.dgvDetalleFactura.Columns["Nro"].Visible = true;
                 this.dgvDetalleFactura.Columns["ItemNro"].Visible = false;
                 this.dgvDetalleFactura.Columns["Precio"].Visible = true;
@@ -572,29 +478,160 @@ namespace CapaPresentacion.Formularios.Facturacion
 
                 if (dgvDetalleFactura.Columns.Contains("Ganancia"))
                     this.dgvDetalleFactura.Columns["Ganancia"].Visible = false;
-
-                */
             }
             catch (Exception)
             {
                 throw;
             }
-            
+        }
+
+        private void CrearDataGridColumn() 
+        {
+            //dataListado.Columns.Clear();
+            dataListado.AutoGenerateColumns = false;
+
+            DataGridViewTextBoxColumn columnaId = new DataGridViewTextBoxColumn();
+            columnaId.DataPropertyName = "Id";
+            columnaId.Name = "NroVenta";
+            columnaId.HeaderText = "NroVenta";
+            dataListado.Columns.Add(columnaId);
+
+            DataGridViewTextBoxColumn columnNroFactura = new DataGridViewTextBoxColumn();
+            columnNroFactura.DataPropertyName = "NroFactura";
+            columnNroFactura.Name = "NroFactura";
+            columnNroFactura.HeaderText = "Nro. Factura";
+            dataListado.Columns.Add(columnNroFactura);
+
+            DataGridViewTextBoxColumn columnCliente = new DataGridViewTextBoxColumn();
+            columnCliente.HeaderText = "Cliente";
+            dataListado.Columns.Add(columnCliente);
+
+            DataGridViewTextBoxColumn columnNroDocumento = new DataGridViewTextBoxColumn();
+            columnNroDocumento.HeaderText = "Nro. Documento";
+            dataListado.Columns.Add(columnNroDocumento);
+
+            DataGridViewTextBoxColumn columnFecha = new DataGridViewTextBoxColumn();
+            columnFecha.DataPropertyName = "Fecha";
+            columnFecha.HeaderText = "Fecha";
+            dataListado.Columns.Add(columnFecha);
+
+            DataGridViewTextBoxColumn columnTipoPago = new DataGridViewTextBoxColumn();
+            columnTipoPago.HeaderText = "Tipo Pago";
+            dataListado.Columns.Add(columnTipoPago);
+
+            DataGridViewTextBoxColumn columnComprobante = new DataGridViewTextBoxColumn();
+            columnComprobante.HeaderText = "Comprobante";
+            dataListado.Columns.Add(columnComprobante);
+
+            DataGridViewTextBoxColumn columnIVA = new DataGridViewTextBoxColumn();
+            columnIVA.DataPropertyName = "ImporteIVA";
+            columnIVA.HeaderText = "IVA";
+            dataListado.Columns.Add(columnIVA);
+
+            DataGridViewTextBoxColumn columnGravada = new DataGridViewTextBoxColumn();
+            columnGravada.DataPropertyName = "ImporteGravada";
+            columnGravada.HeaderText = "Gravado";
+            dataListado.Columns.Add(columnGravada);
+
+            DataGridViewTextBoxColumn columnExento = new DataGridViewTextBoxColumn();
+            columnExento.DataPropertyName = "ImporteExento";
+            columnExento.HeaderText = "Exento";
+            dataListado.Columns.Add(columnExento);
+
+            DataGridViewTextBoxColumn columnTotal = new DataGridViewTextBoxColumn();
+            columnTotal.DataPropertyName = "Total";
+            columnTotal.HeaderText = "Total";
+            dataListado.Columns.Add(columnTotal);
+
+            DataGridViewTextBoxColumn columnAutoimprenta = new DataGridViewTextBoxColumn();
+            columnAutoimprenta.DataPropertyName = "Ind_Autoimprenta";
+            columnAutoimprenta.HeaderText = "Es Autoimprenta";
+            dataListado.Columns.Add(columnAutoimprenta);
+
+            DataGridViewTextBoxColumn columnFechaInsercion = new DataGridViewTextBoxColumn();
+            columnFechaInsercion.DataPropertyName = "FechaInsercion";
+            columnFechaInsercion.HeaderText = "Fecha registro";
+            dataListado.Columns.Add(columnFechaInsercion);
+
+            DataGridViewTextBoxColumn columnUserInsercion = new DataGridViewTextBoxColumn();
+            columnUserInsercion.DataPropertyName = "UsuarioInsercion";
+            columnUserInsercion.HeaderText = "Usuario registro";
+            dataListado.Columns.Add(columnUserInsercion);
+
+            DataGridViewTextBoxColumn columnUserAnulacion = new DataGridViewTextBoxColumn();
+            columnUserAnulacion.DataPropertyName = "UsuarioAnulacion";
+            columnUserAnulacion.HeaderText = "Usuario Anulacion";
+            dataListado.Columns.Add(columnUserAnulacion);
+
+            DataGridViewTextBoxColumn columnFechaAnulacion = new DataGridViewTextBoxColumn();
+            columnFechaAnulacion.DataPropertyName = "FechaAnulacion";
+            columnFechaAnulacion.HeaderText = "Usuario Anulacion";
+            dataListado.Columns.Add(columnFechaAnulacion);
+
+            #region Formato
+            dataListado.CellFormatting += (sender, e) =>
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex == columnCliente.Index)
+                {
+                    var fila = dataListado.Rows[e.RowIndex];
+                    if (fila.DataBoundItem != null)
+                    {
+                        var factura = (EFactura)fila.DataBoundItem;
+                        e.Value = factura.Cliente?.Nombre;
+                    }
+                }
+                if (e.RowIndex >= 0 && e.ColumnIndex == columnNroDocumento.Index)
+                {
+                    var fila = dataListado.Rows[e.RowIndex];
+                    if (fila.DataBoundItem != null)
+                    {
+                        var factura = (EFactura)fila.DataBoundItem;
+                        e.Value = factura.Cliente?.Documento;
+                    }
+                }
+                if (e.RowIndex >= 0 && e.ColumnIndex == columnTipoPago.Index)
+                {
+                    var fila = dataListado.Rows[e.RowIndex];
+                    if (fila.DataBoundItem != null)
+                    {
+                        var factura = (EFactura)fila.DataBoundItem;
+                        e.Value = factura.TipoPago?.Descripcion;
+                    }
+                }
+                if (e.RowIndex >= 0 && e.ColumnIndex == columnComprobante.Index)
+                {
+                    var fila = dataListado.Rows[e.RowIndex];
+                    if (fila.DataBoundItem != null)
+                    {
+                        var factura = (EFactura)fila.DataBoundItem;
+                        e.Value = factura.TipoComprobante?.Nombre;
+                    }
+                }
+                
+
+                columnIVA.DefaultCellStyle.Format = "N0";
+                columnGravada.DefaultCellStyle.Format = "N0";
+                columnExento.DefaultCellStyle.Format = "N0";
+                columnTotal.DefaultCellStyle.Format = "N0";
+            };
+            #endregion
         }
 
         //Metodo para mostrar los datos en el datagrid
         private void Mostrar()
         {
-            this.dataListado.DataSource = NFactura.Mostrar();
-            this.OcultarColumnas();
+            ListaFacturas = NFactura.Mostrar();            
+            dataListado.DataSource = ListaFacturas;
+            OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
 
         //Metodo buscar por fechas
         private void BuscarFechas()
         {
-            this.dataListado.DataSource = NFactura.BuscarFacturaFecha(this.dtpFechadesde.Value.ToString("yyyy-MM-dd"), dtpfechahasta.Value.ToString("yyyy-MM-dd"));
-            this.OcultarColumnas();
+            ListaFacturas = NFactura.BuscarFacturaFecha(dtpFechadesde.Value.ToString("yyyy-MM-dd"), dtpfechahasta.Value.ToString("yyyy-MM-dd"));
+            dataListado.DataSource = ListaFacturas;
+            OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
 
@@ -602,7 +639,7 @@ namespace CapaPresentacion.Formularios.Facturacion
         //Metodo buscar por detalle
         private void MostrarDetalle()
         {
-            this.dgvDetalleFactura.DataSource = NFactura.MostrarDetalle(idVenta);
+            dgvDetalleFactura.DataSource = NFactura.MostrarDetalle(idVenta);
             OcultarColumnasDetalle();
         }
 
@@ -667,6 +704,7 @@ namespace CapaPresentacion.Formularios.Facturacion
             this.LimpiarDetalle();
             this.OcultarColumnasDetalle();
             this.cboComprobante.SelectedIndex = 0;
+            this.cbocolaborador.SelectedIndex = 0;
             this.btnGuardar.Visible = true;
             this.btnImprimir2.Visible = false;
             //this.btnRetencion.Visible = false;
@@ -807,28 +845,31 @@ namespace CapaPresentacion.Formularios.Facturacion
                 if (dataListado.Rows.Count == 0)
                     return;
 
-                idVenta = Convert.ToInt32(this.dataListado.CurrentRow.Cells["NroVenta"].Value);
-                this.txtCliente.Text = (this.dataListado.CurrentRow.Cells["Cliente"].Value).ToString();
-                this.codigoCliente = Convert.ToInt32(this.dataListado.CurrentRow.Cells["PersonaNro"].Value);
-                this.txtDocumento.Text = (this.dataListado.CurrentRow.Cells["Documento"].Value).ToString();
-                this.txtNroFactura.Text = (this.dataListado.CurrentRow.Cells["NroFactura"].Value).ToString();
-                this.cboComprobante.Text = (this.dataListado.CurrentRow.Cells["TipoComprobante"].Value).ToString();
-                this.dtpFecha.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["Fecha"].Value);
-                this.cboTipoPago.Text = (this.dataListado.CurrentRow.Cells["TipoPago"].Value).ToString();
+                var eFacturaSeleccionada = dataListado.CurrentRow.DataBoundItem as EFactura;
+
+                idVenta = eFacturaSeleccionada.Id;
+                txtCliente.Text = (eFacturaSeleccionada.Cliente.Nombre).ToString();
+                codigoCliente = Convert.ToInt32(eFacturaSeleccionada.Cliente.PersonaNro);
+                txtDocumento.Text = (eFacturaSeleccionada.Cliente.Documento).ToString();
+                txtNroFactura.Text = (eFacturaSeleccionada.NroFactura).ToString();
+                cboComprobante.Text = (eFacturaSeleccionada.TipoComprobante.Nombre).ToString();
+                dtpFecha.Value = eFacturaSeleccionada.Fecha;
+                cboTipoPago.Text = (eFacturaSeleccionada.TipoPago.Descripcion).ToString();
+                if (eFacturaSeleccionada.ColaboradorVendedor != null)
+                    cbocolaborador.SelectedValue = eFacturaSeleccionada.ColaboradorVendedor.PersonaNro;
+                
 
                 //Evaluar si el documento fue registrados como AUTOIMPRENTA o MANUAL
-                if (dataListado.CurrentRow.Cells["Ind_Autoimprenta"].Value.ToString() == "S")
+                if (eFacturaSeleccionada.Ind_Autoimprenta == "S")
                     rbAutoimprenta.Checked = true;
-                else if (dataListado.CurrentRow.Cells["Ind_Autoimprenta"].Value.ToString() == "N")
+                else
                     rbManual.Checked = true;
 
-                this.txtTotalGravadas.Text =Convert.ToDouble(this.dataListado.CurrentRow.Cells["Gravada"].Value).ToString("N0");
-                this.txttotalIva.Text = Convert.ToDouble(this.dataListado.CurrentRow.Cells["Iva"].Value).ToString("N0");
-                this.txtTotalGral.Text = Convert.ToDouble(this.dataListado.CurrentRow.Cells["Total"].Value).ToString("N0");                
+                this.txtTotalNeto.Text = (eFacturaSeleccionada.ImporteGravada + eFacturaSeleccionada.ImporteExento).ToString("N0");
+                this.txttotalIva.Text = eFacturaSeleccionada.ImporteIVA.ToString("N0");
+                this.txtTotalGral.Text = eFacturaSeleccionada.Total.ToString("N0");                
                 this.MostrarDetalle();
                 this.tabControl1.SelectedIndex = 1;
-                /*this.btnRetencion.Visible = true;
-                this.btnRetencion.Enabled = true;*/
                 this.btnGuardar.Enabled = false;
                 this.btnImprimir2.Visible = true;
             }
@@ -845,13 +886,23 @@ namespace CapaPresentacion.Formularios.Facturacion
                 string rpta = "";
                 EFactura factura = new EFactura();
                 factura.NroFactura = this.txtNroFactura.Text;
-                factura.ClienteNro = codigoCliente.Value;
-                factura.NombreCliente = this.txtCliente.Text;
-                factura.CodTipoPago = Convert.ToInt32(this.cboTipoPago.SelectedValue);
+                factura.Cliente = new ECliente() 
+                { 
+                    PersonaNro = codigoCliente.Value,
+                    Nombre = txtCliente.Text
+                };
+                factura.TipoPago = new ETipoPago()
+                {
+                    IdFormaPago = Convert.ToInt32(cboTipoPago.SelectedValue),
+                    Descripcion = cboTipoPago.Text
+                };
                 factura.Fecha = this.dtpFecha.Value;
-                factura.TipoComprobanteNro = Convert.ToInt32(this.cboComprobante.SelectedValue);
-                factura.CantCuota = null;
-                factura.Vendedor = null;
+                factura.TipoComprobante = new ETipoComprobante()
+                {
+                    ComprobanteNro = Convert.ToInt32(cboComprobante.SelectedValue),
+                    Nombre = cboComprobante.Text
+                };
+                factura.CantCuota = null;                
                 factura.Usuario = this.idUsuario.ToString();//codigo de usuario
                 factura.Ind_Autoimprenta = Ind_Autoimprenta;
                 if (numeracion.Establecimiento.HasValue)
@@ -863,9 +914,15 @@ namespace CapaPresentacion.Formularios.Facturacion
                 factura.Timbrado = numeracion.Timbrado;
                 factura.Estado = "EMITIDO";
                 factura.Observacion = txtObservacion.Text;
-                factura.ColaboradorNro = cbocolaborador.Text == string.Empty ? (int?)null : Convert.ToInt32(cbocolaborador.SelectedValue);
+                if (cbocolaborador.Text != string.Empty && cbocolaborador.SelectedIndex > 0)
+                {
+                    factura.ColaboradorVendedor = new EColaborador()
+                    {
+                        PersonaNro = Convert.ToInt32(cbocolaborador.SelectedValue)
+                    };
+                }
 
-                rpta = NFactura.Insertar(factura,Dtdetalle, pagos);
+                rpta = NFactura.Insertar(factura,ListaDetalleFactura, pagos);
                 if (rpta.Contains("OK"))
                 {
                     idVenta = Convert.ToInt32(rpta.Split(';')[0]);
@@ -1094,10 +1151,10 @@ namespace CapaPresentacion.Formularios.Facturacion
         {
             try
             {
+                EDetalleFactura item;
                 double iva = 0;
                 double gravada = 0;
                 double exento = 0;
-                double SubTotal = 0;
 
                 if (!ValidacionItems())
                 {
@@ -1108,95 +1165,119 @@ namespace CapaPresentacion.Formularios.Facturacion
                 errorIcono.Clear();
                 bool registrar = true;
 
-                //VERIFICAR SI EL PRODUCTO/SERVICIO YA EXISTE EN EL DATAGRID
-                foreach (DataRow fila in Dtdetalle.Rows)
+                #region Cargar datos de DetalleFactura
+                item = new EDetalleFactura();
+                if (esProducto)
                 {
-                    if (Convert.ToInt32(fila["ItemNro"]) == Convert.ToInt32(txtCodItem.Text))
-                    {
-                        //ASIGNAMOS LOS NUEVOS VALORES
-                        registrar = false;
-                        MensajeError("El item ya esta insertado");
-                    }
-                }
-
-                //agregar en el detalle
-                row = this.Dtdetalle.NewRow();
-                row["ItemNro"] = Convert.ToInt32(txtCodItem.Text);
-                row["Item"] = txtItem.Text;
-                row["PrecioInicial"] = precioInicial;
-                row["IVA"] = txtIva.Text;
-                row["Cantidad"] = Convert.ToInt32(txtCantidad.Text);
-
-                if (esProducto) 
-                {
-                    if (registrar && Convert.ToInt32(this.txtCantidad.Text) > Convert.ToInt32(this.txtExistencia.Text)) 
-                    {
-                        if (MessageBox.Show("No existe stock suficiente del Articulo seleccionado. \nDesea continuar ?", "Sistema de Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                            return;          
-                    } 
-                }
-                    
-
-
-
-                if (registrar && this.txtExistencia.Text == string.Empty)
-                {
-                    if (this.txtCantidad.Text == string.Empty)
-                        row["Cantidad"] = 1;
-                    else
-                        row["Cantidad"] = Convert.ToInt32(txtCantidad.Text);
-                }
-
-                row["CodTipoImpuesto"] = CodTipoImpuesto;
-                double precioFinal = Convert.ToDouble(txtPrecio.Text);
-                row["Precio"] = precioFinal.ToString("N0");
-                SubTotal = Convert.ToDouble(row["Precio"]) * Convert.ToInt32(row["Cantidad"]);
-                row["Subtotal"] = SubTotal;
-                gravada = NFactura.DesglosarImportesIVA(SubTotal, CodTipoImpuesto, 0, "GRAV");
-                exento = NFactura.DesglosarImportesIVA(SubTotal, CodTipoImpuesto, 0, "EXEN");
-                iva = NFactura.DesglosarImportesIVA(SubTotal, CodTipoImpuesto, 0, "IVA");
-                row["SubTotalNeto"] = gravada + exento;
-                row["SubtotalIVA"] = iva;
-
-                //AGREGAR DATOS DE OT
-                //SI NO ESTA ASIGNADO A NINGUN EMPLEADO IGUAL INSERTAR EL REGISTRO
-                /*if (codigoEmpleado == string.Empty && txtEmpleado.Text == string.Empty)
-                {
-                    row["UsuarioNro"] = DBNull.Value;
-                    row["Empleado"] = DBNull.Value;
-                    row["ComisionServicio"] = DBNull.Value;
-                    row["Ganancia"] = DBNull.Value;
+                    item.Articulo = new EProducto();
+                    item.Articulo.tipoArticulo = TipoArticulo.Producto;
                 }
                 else
                 {
-                    row["UsuarioNro"] = codigoEmpleado;
-                    row["Empleado"] = txtEmpleado.Text;
-                    row["ComisionServicio"] = porcentajeComision;
+                    item.Articulo = new EServicio();
+                    item.Articulo.tipoArticulo = TipoArticulo.Servicio;
+                }
+                item.Articulo.ArticuloNro = Convert.ToInt32(txtCodItem.Text);
+                item.Articulo.Descripcion = txtItem.Text;
+                item.Precio = precioInicial;
+                item.TipoImpuesto = new ETipoImpuesto()
+                {
+                    Descripcion = txtIva.Text,
+                    TipoImpuestoNro = CodTipoImpuesto
+                };
 
-                    ganancia = Convert.ToDouble(row["Subtotal"]) * (Convert.ToDouble(row["ComisionServicio"]) / 100);
+                item.Cantidad = (registrar && this.txtExistencia.Text == string.Empty && txtCantidad.Text == string.Empty) ? 1 : Convert.ToInt32(txtCantidad.Text);
+                EDetalleFactura dtAEliminar = new EDetalleFactura();
+                foreach (var df in ListaDetalleFactura)
+                {
+                    if (df.Articulo.ArticuloNro == item.Articulo.ArticuloNro)
+                    {
+                        if (MessageBox.Show("Ya existe el mismo Item en el detalle. \nDesea sumar la cantidad ?", "Sistema de Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                            return;
 
-                    row["Ganancia"] = ganancia.ToString("N0");
-                }*/
+                        item.Cantidad = df.Cantidad + Convert.ToInt32(txtCantidad.Text);
+                        dtAEliminar = df;
+                    }
+                    else
+                    {
+                        item.Cantidad = (registrar && this.txtExistencia.Text == string.Empty && txtCantidad.Text == string.Empty) ? 1 : Convert.ToInt32(txtCantidad.Text);
+                    }
+                }
+                if (dtAEliminar.Articulo != null)
+                {
+                    ListaDetalleFactura.Remove(dtAEliminar);
+                }
 
-                this.dgvDetalleFactura.DataSource = this.Dtdetalle;               
-                this.Dtdetalle.Rows.Add(row);
-                ReenumerarItems();
-                this.LimpiarDetalle();
+                if (item.Articulo.tipoArticulo == TipoArticulo.Producto)
+                {
+                    if (registrar && Convert.ToInt32(this.txtCantidad.Text) > Convert.ToInt32(this.txtExistencia.Text))
+                    {
+                        if (MessageBox.Show("No existe stock suficiente del Articulo seleccionado. \nDesea continuar ?", "Sistema de Facturacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                            return;
+                    }
+                }
+                
+                item.PrecioFinal = Convert.ToDouble(txtPrecio.Text);
+                item.SubTotalGral = item.PrecioFinal * item.Cantidad;
+                gravada = NFactura.DesglosarImportesIVA(item.SubTotalGral, item.TipoImpuesto.TipoImpuestoNro, 0, "GRAV");
+                exento  = NFactura.DesglosarImportesIVA(item.SubTotalGral, item.TipoImpuesto.TipoImpuestoNro, 0, "EXEN");
+                iva     = NFactura.DesglosarImportesIVA(item.SubTotalGral, item.TipoImpuesto.TipoImpuestoNro, 0, "IVA");
+                item.SubTotalNeto = gravada + exento;
+                item.SubTotalIVA = iva;
+                ListaDetalleFactura.Add(item);
+                #endregion
 
-                //totales                    
-                Total = Total + Convert.ToInt32(row["SubTotal"]);
-                SubtotalIVA = SubtotalIVA + Convert.ToInt32(row["SubtotalIVA"]);
-                SubTotalGravadas = SubTotalGravadas + Convert.ToInt32(row["SubTotalNeto"]);
-
-                //Total = (SubtotalIVA + SubTotal + SubTotalGravadas);                
-                txtTotalGravadas.Text = SubTotalGravadas.ToString("N0");
-                txttotalIva.Text = SubtotalIVA.ToString("N0");
-                txtTotalGral.Text = Total.ToString("N0");
+                AgregarDetalleDataTable();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+
+        private void AgregarDetalleDataTable()
+        {
+            int i = 0;
+            //agregar en el detalle
+            Dtdetalle.Clear();
+            foreach (var itemDetalle in ListaDetalleFactura)
+            {                
+                row = this.Dtdetalle.NewRow();
+                i++;
+                itemDetalle.NroItem = i;
+                row["Nro"] = itemDetalle.NroItem;
+                row["ItemNro"] = itemDetalle.Articulo.ArticuloNro;
+                row["Item"] = itemDetalle.Articulo.Descripcion;
+                row["PrecioInicial"] = itemDetalle.Precio;                
+                row["Cantidad"] = itemDetalle.Cantidad;
+                row["IVA"] = itemDetalle.TipoImpuesto.Descripcion;
+                row["CodTipoImpuesto"] = itemDetalle.TipoImpuesto.TipoImpuestoNro;
+                row["Precio"] = itemDetalle.PrecioFinal;
+                row["Subtotal"] = itemDetalle.SubTotalGral;
+                row["SubTotalNeto"] = itemDetalle.SubTotalNeto;
+                row["SubtotalIVA"] = itemDetalle.SubTotalIVA;
+                this.Dtdetalle.Rows.Add(row);
+            }
+
+            this.dgvDetalleFactura.DataSource = this.Dtdetalle;            
+            //ReenumerarItems();
+            this.LimpiarDetalle();
+            CalcularTotales();
+        }
+
+
+        private void CalcularTotales() 
+        {
+            //totales                    
+            Total = ListaDetalleFactura.Sum(c => c.SubTotalGral);//Total + Convert.ToInt32(row["SubTotal"]);
+            SubtotalIVA = ListaDetalleFactura.Sum(c => c.SubTotalIVA);//SubtotalIVA + Convert.ToInt32(row["SubtotalIVA"]);
+            SubTotalGravadas = ListaDetalleFactura.Sum(c => c.SubTotalNeto);//SubTotalGravadas + Convert.ToInt32(row["SubTotalNeto"]);
+
+            //Total = (SubtotalIVA + SubTotal + SubTotalGravadas);                
+            txtTotalNeto.Text = SubTotalGravadas.ToString("N0");
+            txttotalIva.Text = SubtotalIVA.ToString("N0");
+            txtTotalGral.Text = Total.ToString("N0");
         }
 
 
@@ -1251,19 +1332,16 @@ namespace CapaPresentacion.Formularios.Facturacion
 
             int indiceFila = dgvDetalleFactura.CurrentCell.RowIndex;
             row = Dtdetalle.Rows[indiceFila];
+            var ItemSeleccionado = ListaDetalleFactura.Where(c => c.NroItem == Convert.ToInt32(row["Nro"])).FirstOrDefault();
+
+            if (ItemSeleccionado != null)
+                ListaDetalleFactura.Remove(ItemSeleccionado);
             
-            //disminuir total                
-            Total = Total - Convert.ToInt32(row["SubTotal"]);
-            SubtotalIVA = SubtotalIVA - Convert.ToInt32(row["SubtotalIVA"]);
-            SubTotalGravadas = SubTotalGravadas - Convert.ToInt32(row["SubTotalNeto"]);
-
-            txtTotalGravadas.Text = SubTotalGravadas.ToString("N0");
-            txttotalIva.Text = SubtotalIVA.ToString("N0");
-            txtTotalGral.Text = Total.ToString("N0");
-
             //eliminamos la fila
             this.Dtdetalle.Rows.Remove(row);
             this.dgvDetalleFactura.DataSource = this.Dtdetalle;
+
+            CalcularTotales();
             ReenumerarItems();
         }
 
@@ -1272,9 +1350,10 @@ namespace CapaPresentacion.Formularios.Facturacion
         {
             for (int i = 0; i < Dtdetalle.Rows.Count; i++)
             {
-                Dtdetalle.Rows[i]["Nro"] = i + 1;
+                int nroItem = i + 1;
+                ListaDetalleFactura[i].NroItem = nroItem;
+                Dtdetalle.Rows[i]["Nro"] = nroItem;
             }
-        
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -1332,7 +1411,8 @@ namespace CapaPresentacion.Formularios.Facturacion
                 this.dgvDetalleFactura.Columns["PrecioInicial"].DefaultCellStyle.Format = "N0";
                 this.dgvDetalleFactura.Columns["SubTotalNeto"].DefaultCellStyle.Format = "N0";
                 this.dgvDetalleFactura.Columns["SubtotalIVA"].DefaultCellStyle.Format = "N0";
-                this.dgvDetalleFactura.Columns["SubTotal"].DefaultCellStyle.Format = "N0";              
+                this.dgvDetalleFactura.Columns["SubTotal"].DefaultCellStyle.Format = "N0";  
+                
             }
             catch (Exception)
             {
@@ -1345,10 +1425,10 @@ namespace CapaPresentacion.Formularios.Facturacion
         {
             try
             {
-                this.dataListado.Columns["GRAVADA"].DefaultCellStyle.Format = "N0";
+                /*this.dataListado.Columns["GRAVADA"].DefaultCellStyle.Format = "N0";
                 this.dataListado.Columns["IVA"].DefaultCellStyle.Format = "N0";
                 this.dataListado.Columns["EXENTO"].DefaultCellStyle.Format = "N0";
-                this.dataListado.Columns["Total"].DefaultCellStyle.Format = "N0";
+                this.dataListado.Columns["Total"].DefaultCellStyle.Format = "N0";*/
                 //this.dataListado.Columns["TotalDescuento"].DefaultCellStyle.Format = "N0";
             }
             catch (Exception)
@@ -1396,10 +1476,12 @@ namespace CapaPresentacion.Formularios.Facturacion
                     return;
                 }
 
+                var eFacturaSeleccionada = dataListado.CurrentRow.DataBoundItem as EFactura;
+
                 //Si el usuario no tiene el acceso de ADM solo puede reimprimir documentos del día
                 if (!acceso.ToUpper().Equals("ADMINISTRADOR"))
                 {
-                    var fechaFactura = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["Fecha"].Value).ToShortDateString();
+                    var fechaFactura = eFacturaSeleccionada.Fecha.ToShortDateString();
                     var fechaActual = DateTime.Now.ToShortDateString();
                     if (fechaFactura != fechaActual)
                     {
@@ -1408,7 +1490,9 @@ namespace CapaPresentacion.Formularios.Facturacion
                     }
                 }
 
-                if (this.dataListado.CurrentRow.Cells["Comprobante"].Value.ToString() != "FACTURA")
+                
+
+                if (eFacturaSeleccionada.TipoComprobante.Nombre != "FACTURA")
                 {
                     MensajeError("El registro seleccionado no es un Factura");
                     return;
@@ -1422,7 +1506,7 @@ namespace CapaPresentacion.Formularios.Facturacion
 
                 FrmComprobanteVenta frm = new FrmComprobanteVenta();
                 int nroVenta;
-                nroVenta = Convert.ToInt32(this.dataListado.CurrentRow.Cells["NroVenta"].Value);
+                nroVenta = eFacturaSeleccionada.Id;
                 frm.nroVenta = nroVenta;
                 frm.ShowDialog();
 
@@ -1557,7 +1641,7 @@ namespace CapaPresentacion.Formularios.Facturacion
                 this.txtCliente.Text = dt.Rows[0]["Cliente"].ToString();
                 this.dtpFecha.Value = Convert.ToDateTime(dt.Rows[0]["Fecha"]);
                 this.txttotalIva.Text = dt.Rows[0]["TotalIva"].ToString();
-                this.txtTotalGravadas.Text = dt.Rows[0]["TotalGravadas"].ToString();
+                this.txtTotalNeto.Text = dt.Rows[0]["TotalGravadas"].ToString();
                 this.txtTotalGral.Text = dt.Rows[0]["Total"].ToString();
 
 
@@ -1588,7 +1672,7 @@ namespace CapaPresentacion.Formularios.Facturacion
 
                     //Total = (SubtotalIVA + SubTotal + SubTotalGravadas);
 
-                    txtTotalGravadas.Text = SubTotalGravadas.ToString("N0");
+                    txtTotalNeto.Text = SubTotalGravadas.ToString("N0");
                     txttotalIva.Text = SubtotalIVA.ToString("N0");
                     txtTotalGral.Text = Total.ToString("N0");
 

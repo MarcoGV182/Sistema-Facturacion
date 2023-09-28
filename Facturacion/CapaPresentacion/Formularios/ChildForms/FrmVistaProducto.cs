@@ -9,20 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaEntidades;
 using CapaNegocio;
-using CapaPresentacion.Formularios;
-using CapaPresentacion.Formularios.Facturacion;
-using CapaPresentacion.Utilidades;
+using CapaPresentacion.Formularios.Inventario;
 
 namespace CapaPresentacion.Formularios.ChildForms
 {
     public partial class FrmVistaProducto : Form
     {
-
-        private bool IsNuevo = false;
-
-
         //INSTANCIA PARA LLAMAR SOLO UNA VEZ AL FORMULARIO
         private static FrmVistaProducto _Instancia;
+        public EProducto ProductoSeleccionado;
 
         public static FrmVistaProducto GetInstancia()
         {
@@ -36,20 +31,20 @@ namespace CapaPresentacion.Formularios.ChildForms
         public FrmVistaProducto()
         {
             InitializeComponent();
-            LlenarCombos();
+            CrearColumnasDataGridProducto();
         }
 
         private void StockMenor()
         {
             for (int i = 0; i < dataListado.Rows.Count; i++)
             {
-                int stockactual = Convert.ToInt32(dataListado.Rows[i].Cells["StockActual"].Value);
-                int stockminimo = Convert.ToInt32(dataListado.Rows[i].Cells["stockMinimo"].Value);
+                var ArticuloItem = dataListado.Rows[i].DataBoundItem as EProducto;
+                int stockactual = ArticuloItem.StockActual;
+                int stockminimo = ArticuloItem.Stockminimo;
                 if (stockactual <= stockminimo)
                 {
                     dataListado.Rows[i].DefaultCellStyle.BackColor = Color.Red;
                 }
-
             }
         }
 
@@ -82,349 +77,176 @@ namespace CapaPresentacion.Formularios.ChildForms
             MessageBox.Show(mensaje, "Sistema de Facturacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        //Limpiar los controles del formulario
-        private void Limpiar()
-        {
-            this.txtCodigo.Text = string.Empty;
-            this.txtDescripcion.Text = string.Empty;
-            this.txtPrecioCompra.Text = string.Empty;
-            this.txtPrecioVenta.Text = string.Empty;
-            this.txtStockMinimo.Value = 0;
-            this.txtStockActual.Text = string.Empty;
-        }
-
-        private void LlenarCombos()
-        {
-            //llenar combo Marca    
-            cboMarca.DataSource = NMarca.Mostrar();
-            cboMarca.DisplayMember = "Descripcion";
-            cboMarca.ValueMember = "MarcaNro";
-            //llenar combo Tipo de Producto    
-            cboTipoProducto.DataSource = NTipoProducto.Mostrar();
-            cboTipoProducto.DisplayMember = "Descripcion";
-            cboTipoProducto.ValueMember = "TipoProductoNro";
-            //llenar combo Unidad de Medida  
-            cboUnidadMedida.DataSource = NUnidadMedida.Mostrar();
-            cboUnidadMedida.DisplayMember = "Descripcion";
-            cboUnidadMedida.ValueMember = "UnidadMedidaNro";
-            //llenar combo Presentacion 
-            cboPresentacion.DataSource = NPresentacion.Mostrar();
-            cboPresentacion.DisplayMember = "Descripcion";
-            cboPresentacion.ValueMember = "idPresentacion";
-            //llenar combo Impuesto
-            cboImpuesto.DataSource = NTipoImpuesto.Mostrar();
-            cboImpuesto.DisplayMember = "Descripcion";
-            cboImpuesto.ValueMember = "TipoImpuestoNro";
-
-        }
-
-        //Habilitar botones
-        private void Habilitar(bool valor)
-        {
-            this.txtCodigo.ReadOnly = !valor;
-            this.txtDescripcion.ReadOnly = !valor;
-            this.txtPrecioCompra.ReadOnly = !valor;
-            this.txtPrecioVenta.ReadOnly = !valor;
-            this.txtStockMinimo.Enabled = valor;
-            this.txtStockActual.ReadOnly = !valor;
-            this.cboEstado.Enabled = valor;
-            this.cboMarca.Enabled = valor;
-            this.cboTipoProducto.Enabled = valor;
-            this.cboUnidadMedida.Enabled = valor;
-            this.cboPresentacion.Enabled = valor;
-            this.cboImpuesto.Enabled = valor;
-            this.txtObservacion.ReadOnly = !valor;
-
-        }
-
-        //Habilitar Botones
-        private void Botones()
-        {
-            if (this.IsNuevo)
-            {
-                this.Habilitar(true);                
-                this.btnGuardar.Enabled = true;
-                this.btnCancelar.Enabled = true;
-            }
-            else
-            {
-                this.Habilitar(false);                
-                this.btnGuardar.Enabled = false;
-                this.btnCancelar.Enabled = false;
-            }
-        }
-
-        //ocultar columnas
-        private void OcultarColumnas()
-        {
-            this.dataListado.Columns[0].Visible = false;
-            this.dataListado.Columns[1].Visible = false;
-            this.dataListado.Columns[9].Visible = false;
-            this.dataListado.Columns[10].Visible = false;
-            this.dataListado.Columns[11].Visible = false;
-            this.dataListado.Columns["PorcentajeIVA"].Visible = false;
-        }
-
         //Metodo para mostrar los datos en el datagrid
         private void Mostrar()
         {
-            this.dataListado.DataSource = NProducto.Mostrar();
-            this.OcultarColumnas();
+            var ListaArticulo = NProducto.Mostrar();
+            this.dataListado.DataSource = ListaArticulo;
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
-            this.txtCodigo.Visible = false;
+        }
+
+        private void CrearColumnasDataGridProducto()
+        {
+            dataListado.Columns.Clear();
+            dataListado.AutoGenerateColumns = false;
+
+            //Configurar las columnas de Productos
+            DataGridViewTextBoxColumn columnaId = new DataGridViewTextBoxColumn();
+            columnaId.DataPropertyName = "ArticuloNro";
+            columnaId.Name = "ArticuloNro";
+            columnaId.HeaderText = "Codigo";
+            dataListado.Columns.Add(columnaId);
+
+            DataGridViewTextBoxColumn columnCodBarra = new DataGridViewTextBoxColumn();
+            columnCodBarra.DataPropertyName = "CodigoBarra";
+            columnCodBarra.HeaderText = "Codigo Barra";
+            dataListado.Columns.Add(columnCodBarra);
+
+            DataGridViewTextBoxColumn columnProductoDesc = new DataGridViewTextBoxColumn();
+            columnProductoDesc.DataPropertyName = "Descripcion";
+            columnProductoDesc.HeaderText = "Producto";
+            dataListado.Columns.Add(columnProductoDesc);
+
+            DataGridViewTextBoxColumn columnStockMinimo = new DataGridViewTextBoxColumn();
+            columnStockMinimo.DataPropertyName = "StockMinimo";
+            columnStockMinimo.HeaderText = "Stock Minimo";
+            dataListado.Columns.Add(columnStockMinimo);
+
+            DataGridViewTextBoxColumn columnStockActual = new DataGridViewTextBoxColumn();
+            columnStockActual.DataPropertyName = "StockActual";
+            columnStockActual.HeaderText = "Stock Actual";
+            dataListado.Columns.Add(columnStockActual);
+
+            DataGridViewTextBoxColumn columnMarca = new DataGridViewTextBoxColumn();
+            columnMarca.HeaderText = "Marca";
+            dataListado.Columns.Add(columnMarca);
+
+            DataGridViewTextBoxColumn columnFechaVencimiento = new DataGridViewTextBoxColumn();
+            columnFechaVencimiento.DataPropertyName = "FechaVencimiento";
+            columnFechaVencimiento.HeaderText = "Vencimiento";
+            dataListado.Columns.Add(columnFechaVencimiento);
+
+            DataGridViewTextBoxColumn columnTipoImpuestoDescripcion = new DataGridViewTextBoxColumn();
+            columnTipoImpuestoDescripcion.HeaderText = "Tipo Impuesto";
+            dataListado.Columns.Add(columnTipoImpuestoDescripcion);
+                      
+
+            DataGridViewTextBoxColumn columnPrecioCompra = new DataGridViewTextBoxColumn();
+            columnPrecioCompra.DataPropertyName = "PrecioCompra";
+            columnPrecioCompra.HeaderText = "Precio Compra";
+            dataListado.Columns.Add(columnPrecioCompra);
+
+            DataGridViewTextBoxColumn columnPrecio = new DataGridViewTextBoxColumn();
+            columnPrecio.DataPropertyName = "Precio";
+            columnPrecio.HeaderText = "Precio Venta";
+            dataListado.Columns.Add(columnPrecio);
+
+            DataGridViewTextBoxColumn columnEstado = new DataGridViewTextBoxColumn();
+            columnEstado.DataPropertyName = "Estado";
+            columnEstado.HeaderText = "Estado";
+            dataListado.Columns.Add(columnEstado);
+
+            DataGridViewTextBoxColumn columnObs = new DataGridViewTextBoxColumn();
+            columnObs.DataPropertyName = "Observacion";
+            columnObs.HeaderText = "Observacion";
+            dataListado.Columns.Add(columnObs);
+
+            #region Formato
+            dataListado.CellFormatting += (sender, e) =>
+            {                
+                if (e.RowIndex >= 0 && e.ColumnIndex == columnTipoImpuestoDescripcion.Index)
+                {
+                    var fila = dataListado.Rows[e.RowIndex];
+                    if (fila.DataBoundItem != null)
+                    {
+                        var producto = (EProducto)fila.DataBoundItem;
+                        e.Value = producto.TipoImpuesto?.Descripcion;
+                    }
+                }
+                if (e.RowIndex >= 0 && e.ColumnIndex == columnMarca.Index)
+                {
+                    var fila = dataListado.Rows[e.RowIndex];
+                    if (fila.DataBoundItem != null)
+                    {
+                        var producto = (EProducto)fila.DataBoundItem;
+                        e.Value = producto.Marca?.Descripcion;
+                    }
+                }
+
+                columnPrecioCompra.DefaultCellStyle.Format = "N0";
+                columnPrecio.DefaultCellStyle.Format = "N0";
+            };
+            #endregion
+
+            DataGridDiseno();
         }
 
         //Metodo buscar por descripcion
         private void Buscar()
         {
-            if (string.IsNullOrEmpty(txtBuscar.Text) || string.IsNullOrWhiteSpace(txtBuscar.Text))
-            {
-                this.Mostrar();
-                return;
-            }
-
-            this.dataListado.DataSource = NProducto.BuscarProducto(this.txtBuscar.Text);
-            this.OcultarColumnas();
+            var ListaArticulos = NProducto.BuscarProducto(this.txtBuscar.Text);
+            this.dataListado.DataSource = ListaArticulos;
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
 
 
         private void FrmVistaProducto_Load(object sender, EventArgs e)
-        {
-            DataGridDiseno();
+        {   
             //top para ubicar en la parte superior
-            this.Top = 100;
+            Top = 0;
             //alineado hacia la izquierda
-            this.Left = 50;
-            this.Habilitar(false);
-            this.Botones();
-            this.Mostrar();
+            Left = 0;            
+            Mostrar();
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            NuevoRegistro();
-        }
+       
 
-        private void NuevoRegistro() 
-        {
-            this.IsNuevo = true;
-            this.Botones();
-            this.Limpiar();
-            this.Habilitar(true);
-            this.cboEstado.SelectedIndex = 0;
-            this.txtDescripcion.Focus();
-            this.txtCodigo.Visible = false;
-
-        }
-
-        
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string rpta = "";
-
-                if (!ControlesCompartidos.MensajeConfirmacion(this, "¿Desea guardar el registro?"))
-                    return;
-
-                if (!Validaciones())
-                {
-                    return;
-                }
-
-
-                //si se ingresa un nuevo registro
-                EProducto producto = new EProducto();
-
-                producto.Descripcion = this.txtDescripcion.Text.Trim().ToUpper();
-                producto.TipoProducto = new ETipoProducto() 
-                { 
-                    TipoProductoNro = Convert.ToInt32(cboTipoProducto.SelectedValue)
-                };
-                producto.CodigoBarra = txtCodigoBarra.Text;
-                producto.UnidadMedida = new EUnidadMedida()
-                {
-                    UnidadMedidaNro = Convert.ToInt32(cboUnidadMedida.SelectedValue),
-                    Descripcion = cboUnidadMedida.Text.Trim()
-                };
-                producto.FechaVencimiento = dtpFechaVto.Checked ? dtpFechaVto.Value : (DateTime?)null;
-                producto.Presentacion = new EPresentacionProducto() 
-                { 
-                    IdPresentacion = Convert.ToInt32(cboPresentacion.SelectedValue)
-                };
-                producto.Marca = new EMarca() 
-                { 
-                    MarcaNro = Convert.ToInt32(cboMarca.SelectedValue)
-                };
-                producto.StockActual = 0;//Convert.ToInt32(this.txtStockActual.Text);
-                producto.Stockminimo = Convert.ToInt32(this.txtStockMinimo.Value);
-                producto.PrecioCompra = Convert.ToDouble(this.txtPrecioCompra.Text);
-                producto.Precio = Convert.ToDouble(this.txtPrecioVenta.Text);
-                producto.TipoImpuesto = new ETipoImpuesto()
-                {
-                    TipoImpuestoNro = Convert.ToInt32(this.cboImpuesto.SelectedValue),
-                    Descripcion = this.cboImpuesto.Text
-                };
-                producto.Observacion = this.txtObservacion.Text;
-                producto.Estado = this.cboEstado.Text;
-
-
-
-                if (this.IsNuevo)
-                {
-                    rpta = NProducto.Insertar(producto);
-                }
-
-
-                if (rpta.Equals("OK"))
-                {
-                    if (IsNuevo)
-                    {
-                        this.MensajeOK("Se ha insertado con exito");
-                        this.errorIcono.Clear();
-                    }                    
-                }
-                else
-                {
-                    this.MensajeError(rpta);
-                    return;
-                }
-                this.IsNuevo = false;
-                this.Botones();
-                this.Limpiar();
-                this.Mostrar();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + ex.StackTrace);
-            }
-        }
-
-
-        private bool Validaciones()
-        {
-            if (this.txtDescripcion.Text == string.Empty)
-            {
-                this.MensajeError("Falta algunos datos");
-                errorIcono.SetError(txtDescripcion, "Ingrese la descripcion");
-                return false;
-            }
-
-            if (this.txtStockActual.Text == string.Empty)
-            {
-                this.MensajeError("Falta algunos datos");
-                errorIcono.SetError(txtStockActual, "Ingrese el Stock del producto");
-                return false;
-            }
-
-            if (this.cboEstado.Text == string.Empty)
-            {
-                this.MensajeError("Falta algunos datos");
-                errorIcono.SetError(cboEstado, "Seleccione el Estado del Producto");
-                return false;
-            }
-
-            if (this.txtPrecioVenta.Text == string.Empty)
-            {
-                this.MensajeError("Falta algunos datos");
-                errorIcono.SetError(txtPrecioVenta, "Ingrese el Precio Minorista del Producto");
-                return false;
-            }
-
-            if (this.cboMarca.Text == string.Empty)
-            {
-                this.MensajeError("Falta algunos datos");
-                errorIcono.SetError(cboMarca, "Seleccione la Marca del Producto");
-                return false;
-            }
-
-            if (this.cboPresentacion.Text == string.Empty)
-            {
-                this.MensajeError("Falta algunos datos");
-                errorIcono.SetError(cboPresentacion, "Seleccione la Presentacion del Producto");
-                return false;
-            }
-
-            if (this.cboTipoProducto.Text == string.Empty)
-            {
-                this.MensajeError("Falta algunos datos");
-                errorIcono.SetError(cboTipoProducto, "Seleccione el Tipo de Producto");
-                return false;
-            }
-
-            if (this.cboUnidadMedida.Text == string.Empty)
-            {
-                this.MensajeError("Falta algunos datos");
-                errorIcono.SetError(cboUnidadMedida, "Seleccione la Unidad de Medida del Producto");
-                return false;
-            }
-
-
-            return true;
-        }
-        
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Limpiar();
-            this.Habilitar(false);            
-        }
-        
-
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             this.Buscar();
+        }    
+
+        private void dataListado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            StockMenor();
         }
 
         private void dataListado_DoubleClick(object sender, EventArgs e)
         {
-            try
-            {
-                if (dataListado.CurrentRow == null)
-                    return;
+            /*FrmAjusteStock frm = FrmAjusteStock.GetInstancia();
+            string id, descripcion, precio, stock;
+            var ArticuloSeleccionado = dataListado.CurrentRow.DataBoundItem as EProducto;
+            id = Convert.ToString(ArticuloSeleccionado.ArticuloNro);
+            descripcion = Convert.ToString(ArticuloSeleccionado.Descripcion);
+            precio = Convert.ToString(ArticuloSeleccionado.PrecioCompra);
+            stock = Convert.ToString(ArticuloSeleccionado.StockActual);*/
+            ProductoSeleccionado = dataListado.CurrentRow.DataBoundItem as EProducto;
 
-                FrmCompra frm = FrmCompra.GetInstancia();
-                EProducto producto = new EProducto()
-                {
-                    ArticuloNro = Convert.ToInt32(dataListado.CurrentRow.Cells["ArticuloNro"].Value),
-                    Descripcion = Convert.ToString(dataListado.CurrentRow.Cells["Producto"].Value),
-                    UnidadMedida = new EUnidadMedida()
-                    {
-                        UnidadMedidaNro = Convert.ToInt32(dataListado.CurrentRow.Cells["UnidadMedidaNro"].Value),
-                        Descripcion = dataListado.CurrentRow.Cells["UnidadMedida"].Value.ToString()
-                    },
-                    PrecioCompra = Convert.ToInt64(dataListado.CurrentRow.Cells["precioCompra"].Value),
-                    Precio = Convert.ToDouble(dataListado.CurrentRow.Cells["Precio"].Value),
-                    TipoImpuesto = new ETipoImpuesto()
-                    {
-                        TipoImpuestoNro = Convert.ToInt32(dataListado.CurrentRow.Cells["CodImpuesto"].Value),
-                        Descripcion = Convert.ToString(dataListado.CurrentRow.Cells["tipoImpuesto"].Value),
-                        PorcentajeIva = Convert.ToDecimal(dataListado.CurrentRow.Cells["PorcentajeIva"].Value),
-                        BaseImponible = Convert.ToDecimal(dataListado.CurrentRow.Cells["baseImponible"].Value)
-                    },
-                    StockActual = Convert.ToInt32(dataListado.CurrentRow.Cells["StockActual"].Value)
+            //frm.ObtenerProducto(id, descripcion, precio, stock);
+            this.Close();
+        }
 
-                };
+        private void FrmVistaProductoAjuste_Load(object sender, EventArgs e)
+        {         
+            Top = 100;
+            Left = 50;
+               
+            Mostrar();
+        }
 
-                frm.ObtenerProducto(producto);
-                this.Hide();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);  
-                
-            }           
+        private void txtBuscar_TextChanged_1(object sender, EventArgs e)
+        {
+            Buscar();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Buscar();
         }
 
         private void dataListado_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             StockMenor();
-        }
-
-        private void btnRecargar_Click(object sender, EventArgs e)
-        {
-            LlenarCombos();
         }
     }
 }

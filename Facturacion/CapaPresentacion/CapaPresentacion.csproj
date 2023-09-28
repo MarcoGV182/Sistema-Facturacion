@@ -479,12 +479,6 @@
     <Compile Include="Formularios\ChildForms\FrmVistaProducto.Designer.cs">
       <DependentUpon>FrmVistaProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\ChildForms\FrmVistaProductoAjuste.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\ChildForms\FrmVistaProductoAjuste.Designer.cs">
-      <DependentUpon>FrmVistaProductoAjuste.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\ChildForms\FrmVistaProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -826,9 +820,6 @@
     <EmbeddedResource Include="Formularios\ChildForms\FrmVistaProducto.resx">
       <DependentUpon>FrmVistaProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\ChildForms\FrmVistaProductoAjuste.resx">
-      <DependentUpon>FrmVistaProductoAjuste.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\ChildForms\FrmVistaProveedor.resx">
       <DependentUpon>FrmVistaProveedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -938,6 +929,10 @@
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\CapaDatos.DCaja.datasource" />
+    <None Include="Properties\DataSources\CapaEntidades.ECaja.datasource" />
+    <None Include="Properties\DataSources\CapaEntidades.Reporting.EDetalleDeVentas.datasource" />
+    <None Include="Properties\DataSources\CapaEntidades.Reporting.EInformeCaja.datasource" />
+    <None Include="Properties\DataSources\CapaEntidades.Reporting.ELibroVentaReport.datasource" />
     <None Include="Properties\DataSources\CapaNegocio.NDetalleDeVentas.datasource" />
     <None Include="Properties\DataSources\CapaNegocio.NLibroVentaReport.datasource" />
     <None Include="Properties\DataSources\CapaNegocio.Reporting.NInformeCaja.datasource" />

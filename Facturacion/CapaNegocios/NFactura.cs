@@ -40,34 +40,14 @@ namespace CapaNegocio
         }
 
 
-        public static string Insertar(EFactura CabFactura, DataTable dtDetalleFactura, ERegistroPagoFacturacion pagos)
+        public static string Insertar(EFactura CabFactura, List<EDetalleFactura> dtDetalleFactura, ERegistroPagoFacturacion pagos)
         {
             DFactura objFactura = new DFactura();
             List<EDetalleFactura> detalles = new List<EDetalleFactura>();
             string respuesta = "OK";
             try
             {
-                double totalFactura = 0;                
-                //DETALLES DE COMPRAS
-                foreach (DataRow row in dtDetalleFactura.Rows)
-                {
-                    EDetalleFactura dtFactura = new EDetalleFactura();
-
-                    dtFactura.Articulo.ArticuloNro = Convert.ToInt32(row["ItemNro"].ToString());
-                    dtFactura.NroItem = Convert.ToInt32(row["Nro"]);
-                    dtFactura.Cantidad = Convert.ToInt32(row["Cantidad"].ToString());
-                    dtFactura.Precio = Convert.ToInt64(row["PrecioInicial"]);
-                    dtFactura.PrecioFinal = Convert.ToInt64(row["Precio"]);
-                    ETipoImpuesto ti = new ETipoImpuesto()
-                    {
-                        TipoImpuestoNro = Convert.ToInt32(row["CodTipoImpuesto"])
-                    };
-                    dtFactura.TipoImpuesto = ti;
-                    detalles.Add(dtFactura);
-
-                    totalFactura += dtFactura.PrecioFinal * dtFactura.Cantidad;
-                }
-
+                double totalFactura = dtDetalleFactura.Sum(c=>c.PrecioFinal * c.Cantidad);   
                 respuesta = ValidacionPagos(totalFactura, pagos);
                 if (!respuesta.Equals("OK"))
                     throw new Exception(respuesta);
@@ -77,7 +57,7 @@ namespace CapaNegocio
                 throw ex;
             }    
            
-            return objFactura.RegistrarFacturacion(CabFactura, detalles, pagos);
+            return objFactura.RegistrarFacturacion(CabFactura, dtDetalleFactura, pagos);
         }
 
 
@@ -128,9 +108,63 @@ namespace CapaNegocio
 
 
         //Metodo para mostrar que llama al metodo mostrar de la capa Datos
-        public static DataTable Mostrar()
+        public static List<EFactura> Mostrar()
         {
-            return new DFactura().MostrarFactura();
+            List<EFactura> ListaFacturas = new List<EFactura>();
+            try
+            {
+                var FacturaDT = new DFactura().MostrarFactura();
+                foreach (DataRow row in FacturaDT.Rows)
+                {
+                    EFactura Factura = new EFactura();
+                    Factura.Id = Convert.ToInt32(row[0]);
+                    Factura.NroFactura = row[1].ToString();
+                    Factura.Cliente = new ECliente()
+                    { 
+                        PersonaNro = Convert.ToInt32(row[2]),
+                        Documento = row[3].ToString(),
+                        Nombre = row[4].ToString()
+                    };
+
+                    if (row[5] != DBNull.Value)
+                    {
+                        Factura.ColaboradorVendedor = new EColaborador()
+                        {
+                            PersonaNro = Convert.ToInt32(row[5]),
+                            Nombre = row[6].ToString()
+                        };
+                    }
+                    
+                    Factura.Fecha = Convert.ToDateTime(row[7]);
+                    Factura.TipoPago = new ETipoPago()
+                    {
+                        IdFormaPago = Convert.ToInt32(row[8]),
+                        Descripcion = row[9].ToString()
+                    };
+                    Factura.TipoComprobante = new ETipoComprobante()
+                    {
+                        ComprobanteNro = Convert.ToInt32(row[10]),
+                        Nombre = row[11].ToString()
+                    };
+                    Factura.ImporteIVA = Convert.ToDouble(row[12]);
+                    Factura.ImporteGravada = Convert.ToDouble(row[13]);
+                    Factura.ImporteExento = Convert.ToDouble(row[14]);
+                    Factura.Observacion = row["Observacion"].ToString();
+                    Factura.Ind_Autoimprenta = row["Ind_Autoimprenta"].ToString();
+                    Factura.UsuarioInsercion = row["UsuarioInsercion"].ToString();
+                    Factura.FechaInsercion = Convert.ToDateTime(row["FechaInsercion"]);
+                    Factura.Estado = row["Estado"].ToString();
+                    Factura.FechaAnulacion = row["FechaAnulacion"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["FechaAnulacion"]);
+                    Factura.UsuarioAnulacion = row["UsuarioAnulacion"].ToString();
+
+                    ListaFacturas.Add(Factura);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ListaFacturas;
         }
 
         //Metodo para mostrar que llama al metodo mostrar de la capa Datos
@@ -141,11 +175,63 @@ namespace CapaNegocio
         
 
         //Metodo para buscar que llama al metodo buscar por nombre de la capa Datos
-        public static DataTable BuscarFacturaFecha(string textoBuscar1, string textoBuscar2)
+        public static List<EFactura> BuscarFacturaFecha(string textoBuscar1, string textoBuscar2)
         {
-            DFactura objFactura = new DFactura();
+            List<EFactura> ListaFacturas = new List<EFactura>();
+            try
+            {
+                var FacturaDT = new DFactura().BuscarFechas(textoBuscar1, textoBuscar2);
+                foreach (DataRow row in FacturaDT.Rows)
+                {
+                    EFactura Factura = new EFactura();
+                    Factura.Id = Convert.ToInt32(row[0]);
+                    Factura.NroFactura = row[1].ToString();
+                    Factura.Cliente = new ECliente()
+                    {
+                        PersonaNro = Convert.ToInt32(row[2]),
+                        Documento = row[3].ToString(),
+                        Nombre = row[4].ToString()
+                    };
 
-            return objFactura.BuscarFechas(textoBuscar1, textoBuscar2);
+                    if (row[5] != DBNull.Value)
+                    {
+                        Factura.ColaboradorVendedor = new EColaborador()
+                        {
+                            PersonaNro = Convert.ToInt32(row[5]),
+                            Nombre = row[6].ToString()
+                        };
+                    }
+
+                    Factura.Fecha = Convert.ToDateTime(row[7]);
+                    Factura.TipoPago = new ETipoPago()
+                    {
+                        IdFormaPago = Convert.ToInt32(row[8]),
+                        Descripcion = row[9].ToString()
+                    };
+                    Factura.TipoComprobante = new ETipoComprobante()
+                    {
+                        ComprobanteNro = Convert.ToInt32(row[10]),
+                        Nombre = row[11].ToString()
+                    };
+                    Factura.ImporteIVA = Convert.ToDouble(row[12]);
+                    Factura.ImporteGravada = Convert.ToDouble(row[13]);
+                    Factura.ImporteExento = Convert.ToDouble(row[14]);
+                    Factura.Observacion = row["Observacion"].ToString();
+                    Factura.Ind_Autoimprenta = row["Ind_Autoimprenta"].ToString();
+                    Factura.UsuarioInsercion = row["UsuarioInsercion"].ToString();
+                    Factura.FechaInsercion = Convert.ToDateTime(row["FechaInsercion"]);
+                    Factura.Estado = row["Estado"].ToString();
+                    Factura.FechaAnulacion = row["FechaAnulacion"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["FechaAnulacion"]);
+                    Factura.UsuarioAnulacion = row["UsuarioAnulacion"].ToString();
+
+                    ListaFacturas.Add(Factura);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ListaFacturas;
         }
 
         public static DataTable MostrarDetalle(int idVenta)
@@ -154,12 +240,15 @@ namespace CapaNegocio
             return objFactura.MostrarDetalleFactura(idVenta);
         }
 
-        
+
         public static string CuentaACobrar(string nrofactura, int cliente)
         {
             EFactura objFactura = new EFactura();
             objFactura.NroFactura = nrofactura;
-            objFactura.ClienteNro = cliente;
+            objFactura.Cliente = new ECliente() 
+            { 
+                PersonaNro = cliente
+            };
             return new DFactura().CuentaACobrar(objFactura);
         }
 

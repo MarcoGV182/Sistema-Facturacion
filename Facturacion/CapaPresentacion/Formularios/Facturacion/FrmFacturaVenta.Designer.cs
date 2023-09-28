@@ -58,7 +58,7 @@
             this.chkAnular = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtTotalGravadas = new System.Windows.Forms.TextBox();
+            this.txtTotalNeto = new System.Windows.Forms.TextBox();
             this.txtObservacion = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
@@ -343,11 +343,11 @@
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
             // 
-            // txtTotalGravadas
+            // txtTotalNeto
             // 
-            this.txtTotalGravadas.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            resources.ApplyResources(this.txtTotalGravadas, "txtTotalGravadas");
-            this.txtTotalGravadas.Name = "txtTotalGravadas";
+            this.txtTotalNeto.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            resources.ApplyResources(this.txtTotalNeto, "txtTotalNeto");
+            this.txtTotalNeto.Name = "txtTotalNeto";
             // 
             // txtObservacion
             // 
@@ -645,7 +645,7 @@
             // 
             this.groupBox3.Controls.Add(this.txtTotalGral);
             this.groupBox3.Controls.Add(this.txttotalIva);
-            this.groupBox3.Controls.Add(this.txtTotalGravadas);
+            this.groupBox3.Controls.Add(this.txtTotalNeto);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label9);
@@ -754,7 +754,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtTotalGral;
         private System.Windows.Forms.TextBox txttotalIva;
-        private System.Windows.Forms.TextBox txtTotalGravadas;
+        private System.Windows.Forms.TextBox txtTotalNeto;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView dgvDetalleFactura;

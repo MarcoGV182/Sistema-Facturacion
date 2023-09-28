@@ -213,7 +213,7 @@ namespace CapaPresentacion.Formularios.Inventario
         //Metodo buscar por fechas
         private void BuscarFechas()
         {
-            this.dataListado.DataSource = NAjuste.BuscarAjusteFecha(this.dtpFechadesde.Value.ToString("dd-MM-yyyy HH:mm"), dtpfechahasta.Value.ToString("dd-MM-yyyy HH:mm"));
+            this.dataListado.DataSource = NAjuste.BuscarAjusteFecha(dtpFechadesde.Value, dtpfechahasta.Value);
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -253,8 +253,18 @@ namespace CapaPresentacion.Formularios.Inventario
 
         private void btnBuscarItem_Click(object sender, EventArgs e)
         {
-            FrmVistaProductoAjuste frm = new FrmVistaProductoAjuste();
+            FrmVistaProducto frm = new FrmVistaProducto();
+            frm.FormClosed += Frm_FormClosed;
             frm.ShowDialog();
+        }
+
+        private void Frm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FrmVistaProducto retorno = (FrmVistaProducto)sender;
+            ObtenerProducto(retorno.ProductoSeleccionado.ArticuloNro.ToString(),
+                            retorno.ProductoSeleccionado.Descripcion,
+                            retorno.ProductoSeleccionado.Precio.ToString("N0"),
+                            retorno.ProductoSeleccionado.StockActual.ToString());
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -431,14 +441,14 @@ namespace CapaPresentacion.Formularios.Inventario
         {
             try
             {
-                this.codAjuste = Convert.ToInt32(this.dataListado.CurrentRow.Cells["CodAjuste"].Value);
-                this.txtNumero.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["NumAjuste"].Value);
-                this.txtDescripcion.Text = (this.dataListado.CurrentRow.Cells["Descripcion"].Value).ToString();                
-                this.dtpFecha.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["FechaHora"].Value);
-                this.cboTipoAjuste.Text = (this.dataListado.CurrentRow.Cells["TipoAjuste"].Value).ToString();                
-                this.txtTotalGral.Text = Convert.ToDouble(this.dataListado.CurrentRow.Cells["Total"].Value).ToString("N0");
-                this.MostrarDetalle();
-                this.tabControl1.SelectedIndex = 1;
+                codAjuste = Convert.ToInt32(this.dataListado.CurrentRow.Cells["CodAjuste"].Value);
+                txtNumero.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["NumAjuste"].Value);
+                txtDescripcion.Text = (this.dataListado.CurrentRow.Cells["Descripcion"].Value).ToString();                
+                dtpFecha.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["FechaHora"].Value);
+                cboTipoAjuste.Text = (this.dataListado.CurrentRow.Cells["TipoAjuste"].Value).ToString();                
+                txtTotalGral.Text = Convert.ToDouble(this.dataListado.CurrentRow.Cells["Total"].Value).ToString("N0");
+                MostrarDetalle();
+                tabControl1.SelectedIndex = 1;
             }
             catch (Exception ex)
             {
@@ -448,7 +458,7 @@ namespace CapaPresentacion.Formularios.Inventario
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            this.BuscarFechas();
+            BuscarFechas();
         }
 
         private void btnAnular_Click(object sender, EventArgs e)
@@ -575,7 +585,7 @@ namespace CapaPresentacion.Formularios.Inventario
 
         private void btnBuscarItem_Click_1(object sender, EventArgs e)
         {
-            FrmVistaProductoAjuste frm = new FrmVistaProductoAjuste();
+            FrmVistaProducto frm = new FrmVistaProducto();
             frm.ShowDialog();
         }
 

@@ -51,7 +51,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label1.Location = new System.Drawing.Point(37, 68);
+            this.label1.Location = new System.Drawing.Point(40, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 16);
             this.label1.TabIndex = 0;
@@ -61,7 +61,7 @@
             // 
             this.lbUsuario.AutoSize = true;
             this.lbUsuario.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.lbUsuario.Location = new System.Drawing.Point(130, 68);
+            this.lbUsuario.Location = new System.Drawing.Point(160, 68);
             this.lbUsuario.Name = "lbUsuario";
             this.lbUsuario.Size = new System.Drawing.Size(50, 16);
             this.lbUsuario.TabIndex = 1;
@@ -71,7 +71,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label2.Location = new System.Drawing.Point(37, 109);
+            this.label2.Location = new System.Drawing.Point(36, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 16);
             this.label2.TabIndex = 2;
@@ -81,11 +81,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label3.Location = new System.Drawing.Point(37, 145);
+            this.label3.Location = new System.Drawing.Point(36, 144);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 16);
+            this.label3.Size = new System.Drawing.Size(124, 16);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Imp. Apertura:";
+            this.label3.Text = "Importe de Apertura:";
             // 
             // label5
             // 
@@ -93,29 +93,31 @@
             this.label5.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.label5.Location = new System.Drawing.Point(22, 183);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 16);
+            this.label5.Size = new System.Drawing.Size(93, 16);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Observaciones";
+            this.label5.Text = "Observaciones:";
             // 
             // txtMonto
             // 
-            this.txtMonto.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.txtMonto.Location = new System.Drawing.Point(133, 140);
+            this.txtMonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.2F);
+            this.txtMonto.Location = new System.Drawing.Point(163, 142);
             this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(141, 23);
+            this.txtMonto.Size = new System.Drawing.Size(141, 21);
             this.txtMonto.TabIndex = 2;
+            this.ttMensaje.SetToolTip(this.txtMonto, "Ingrese el importe con el que iniciará su Caja");
             this.txtMonto.TextChanged += new System.EventHandler(this.txtMonto_TextChanged);
             this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
             // txtObservacion
             // 
-            this.txtObservacion.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.txtObservacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.2F);
             this.txtObservacion.Location = new System.Drawing.Point(25, 202);
             this.txtObservacion.MaxLength = 150;
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.Size = new System.Drawing.Size(317, 99);
             this.txtObservacion.TabIndex = 3;
+            this.ttMensaje.SetToolTip(this.txtObservacion, "Ingrese alguna observación. Esto se imprimirá con el informe");
             // 
             // ttMensaje
             // 
@@ -127,14 +129,15 @@
             // 
             // dtpFechaApertura
             // 
-            this.dtpFechaApertura.CalendarFont = new System.Drawing.Font("Times New Roman", 10F);
+            this.dtpFechaApertura.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.2F);
             this.dtpFechaApertura.CustomFormat = "dd/MM/yyyy HH:mm";
-            this.dtpFechaApertura.Font = new System.Drawing.Font("Times New Roman", 11F);
+            this.dtpFechaApertura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.2F);
             this.dtpFechaApertura.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaApertura.Location = new System.Drawing.Point(133, 102);
+            this.dtpFechaApertura.Location = new System.Drawing.Point(163, 102);
             this.dtpFechaApertura.Name = "dtpFechaApertura";
-            this.dtpFechaApertura.Size = new System.Drawing.Size(141, 24);
+            this.dtpFechaApertura.Size = new System.Drawing.Size(141, 21);
             this.dtpFechaApertura.TabIndex = 1;
+            this.ttMensaje.SetToolTip(this.dtpFechaApertura, "Ingrese la fecha y hora de apertura de la caja");
             // 
             // pictureBox3
             // 
@@ -170,7 +173,7 @@
             this.btnAceptar.FlatAppearance.BorderSize = 0;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
-            this.btnAceptar.Location = new System.Drawing.Point(114, 305);
+            this.btnAceptar.Location = new System.Drawing.Point(106, 307);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(68, 32);
             this.btnAceptar.TabIndex = 14;
@@ -189,7 +192,7 @@
             this.btnCancelar.FlatAppearance.BorderSize = 0;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(206, 305);
+            this.btnCancelar.Location = new System.Drawing.Point(198, 307);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(68, 32);
             this.btnCancelar.TabIndex = 15;

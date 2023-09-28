@@ -6,42 +6,36 @@ using System.Text;
 using System.Threading.Tasks;
 using CapaDatos;
 using CapaDatos.Reporting;
+using CapaEntidades;
+using CapaEntidades.Reporting;
 
 namespace CapaNegocio
 {
     public class NLibroVentaReport
     {
-        public DateTime FechaInicio { get; set; }
-        public DateTime FechaFin { get; set; }
-        public List<NDetalleDeVentas> DetallesVentas { get; set; }
-        public DateTime FechaReport { get; set; }
-        public double TotalGravada { get; private set; }
-        public double TotalIVA { get; private set; }
-        public double TotalExento { get; private set; }
-        public double TotalGral { get; private set; }
-
-
-        public void LibroVentaReport(DateTime fechainicio,DateTime fechafin) 
-        {
+        public ELibroVentaReport eLibroVentaReport;
+        public void LibroVentaReport(DateTime fechainicio,DateTime fechafin, string Estado) 
+        {                        
             try
             {
-                TotalGravada = 0;
-                TotalIVA = 0;
-                TotalExento = 0;
-                TotalGral = 0;
+                eLibroVentaReport = new ELibroVentaReport();
+                eLibroVentaReport.TotalGravada = 0;
+                eLibroVentaReport.TotalIVA = 0;
+                eLibroVentaReport.TotalExento = 0;
+                eLibroVentaReport.TotalGral = 0;
 
                 //Carga de variables de fechas
-                FechaInicio = fechainicio;
-                FechaFin = fechafin;
-                FechaReport = DateTime.Now;
+                eLibroVentaReport.FechaInicio = fechainicio;
+                eLibroVentaReport.FechaFin = fechafin;
+                eLibroVentaReport.FechaReport = DateTime.Now;
 
                 //Carga de Lista DetalleVentas
-                DetallesVentas = new List<NDetalleDeVentas>();
+                List<EDetalleDeVentas> eDetalleDeVentas = new List<EDetalleDeVentas>();
                 DLibroCompraReport r = new DLibroCompraReport();
-                var DtReporte = r.ObtenerLibroVenta(FechaInicio, FechaFin);
+                var DtReporte = r.ObtenerLibroVenta(eLibroVentaReport.FechaInicio, eLibroVentaReport.FechaFin, Estado);
                 foreach (DataRow row in DtReporte.Rows)
                 {
-                    NDetalleDeVentas nDetalleDeVentas = new NDetalleDeVentas()
+                    EDetalleDeVentas nDetalleDeVentas = new EDetalleDeVentas()
                     {
                         NroVenta = Convert.ToInt32(row[0]),
                         Fecha = Convert.ToDateTime(row[1]),
@@ -56,14 +50,15 @@ namespace CapaNegocio
                         Total = Convert.ToDouble(row[10])
                     };
 
-                    DetallesVentas.Add(nDetalleDeVentas);
+                    eDetalleDeVentas.Add(nDetalleDeVentas);
                 }
 
                 //Carga variables de totales
-                TotalGravada = DetallesVentas.Sum(c => c.Imp_Gravado);
-                TotalIVA = DetallesVentas.Sum(c => c.Imp_IVA);
-                TotalExento = DetallesVentas.Sum(c => c.Imp_Exento);
-                TotalGral = DetallesVentas.Sum(c => c.Total);
+                eLibroVentaReport.TotalGravada = eDetalleDeVentas.Sum(c => c.Imp_Gravado);
+                eLibroVentaReport.TotalIVA = eDetalleDeVentas.Sum(c => c.Imp_IVA);
+                eLibroVentaReport.TotalExento = eDetalleDeVentas.Sum(c => c.Imp_Exento);
+                eLibroVentaReport.TotalGral = eDetalleDeVentas.Sum(c => c.Total);
+                eLibroVentaReport.DetallesVentas = eDetalleDeVentas;
             }
             catch (Exception ex)
             {

@@ -99,7 +99,7 @@ namespace CapaDatos
                 SqlParameter ParFormaPago = new SqlParameter();
                 ParFormaPago.ParameterName = "@CodTipoPago";
                 ParFormaPago.SqlDbType = SqlDbType.Int;
-                ParFormaPago.Value = Compra.TipoPago.FormaPago;
+                ParFormaPago.Value = Compra.TipoPago.IdFormaPago;
                 SqlCmd.Parameters.Add(ParFormaPago);
 
                 //Parametros tipo de comprobante

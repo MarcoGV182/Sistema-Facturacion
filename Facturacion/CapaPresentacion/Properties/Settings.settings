@@ -5,9 +5,9 @@
     <Setting Name="SqlCnn" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionString&gt;Data Source=Localhost;Initial Catalog=GestionVenta;User ID=accessDB;Password=adm2023&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=Localhost;Initial Catalog=GestionVenta_20230912;User ID=accessDB;Password=adm2023&lt;/ConnectionString&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=Localhost;Initial Catalog=GestionVenta;User ID=accessDB;Password=adm2023</Value>
+      <Value Profile="(Default)">Data Source=Localhost;Initial Catalog=GestionVenta_20230912;User ID=accessDB;Password=adm2023</Value>
     </Setting>
   </Settings>
 </SettingsFile>

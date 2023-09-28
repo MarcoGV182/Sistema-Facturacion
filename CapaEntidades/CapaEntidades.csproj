@@ -90,6 +90,10 @@
     <Compile Include="Interfaces\IGeneric.cs" />
     <Compile Include="Interfaces\IPersona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporting\EDetalleDeVentas.cs" />
+    <Compile Include="Reporting\EInformeCaja.cs" />
+    <Compile Include="Reporting\EDetalleInformeVentaColaborador.cs" />
+    <Compile Include="Reporting\ELibroVentaReport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

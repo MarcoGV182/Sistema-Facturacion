@@ -108,6 +108,7 @@
     </Compile>
     <Compile Include="DTipoPagoOtros.cs" />
     <Compile Include="Reporting\DInformeCaja.cs" />
+    <Compile Include="Reporting\DInformeVentaColaborador.cs" />
     <Compile Include="Reporting\DLibroCompraReport.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -12,7 +12,7 @@
               <Width>1.83375cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.17083cm</Width>
+              <Width>1.80041cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
@@ -55,7 +55,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox2</rd:DefaultName>
@@ -107,7 +109,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox10</rd:DefaultName>
@@ -159,7 +163,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox3</rd:DefaultName>
@@ -799,14 +805,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Monto">
+                    <Textbox Name="ImporteApertura">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Monto.Value</Value>
+                              <Value>=Fields!ImporteApertura.Value</Value>
                               <Style>
                                 <Format>#,0;(#,0)</Format>
                               </Style>
@@ -817,7 +823,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Monto</rd:DefaultName>
+                      <rd:DefaultName>ImporteApertura</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1022,7 +1028,7 @@
         <Top>0.42016cm</Top>
         <Left>0.23495cm</Left>
         <Height>1.64979cm</Height>
-        <Width>19.56437cm</Width>
+        <Width>19.19395cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1033,16 +1039,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.63229cm</Width>
+              <Width>2.57937cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.55292cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.89146cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.87791cm</Width>
+              <Width>1.75916cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -1208,11 +1214,11 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>DsInformeCajaReporting</DataSetName>
+        <DataSetName>DsInformeCaja</DataSetName>
         <Top>2.21106cm</Top>
         <Left>9.65412cm</Left>
         <Height>0.6cm</Height>
-        <Width>8.90166cm</Width>
+        <Width>8.78291cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -1243,7 +1249,7 @@
               <TextRuns>
                 <TextRun>
                   <Label>FechaInicio</Label>
-                  <Value>=First(Fields!FechaInicio.Value, "DsInformeCajaReporting")</Value>
+                  <Value>=First(Fields!FechaInicio.Value, "DsInformeCaja")</Value>
                   <Style>
                     <Format>dd/MM/yyyy</Format>
                   </Style>
@@ -1309,7 +1315,7 @@
               <TextRuns>
                 <TextRun>
                   <Label>FechaFin</Label>
-                  <Value>=First(Fields!FechaFin.Value, "DsInformeCajaReporting")</Value>
+                  <Value>=First(Fields!FechaFin.Value, "DsInformeCaja")</Value>
                   <Style>
                     <Format>dd/MM/yyyy</Format>
                   </Style>
@@ -1492,7 +1498,7 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DsInformeCajaReporting">
+    <DataSet Name="DsInformeCaja">
       <Query>
         <DataSourceName>CapaNegocioReporting</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -1528,9 +1534,9 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>CapaNegocio.Reporting</rd:DataSetName>
-        <rd:TableName>NInformeCaja</rd:TableName>
-        <rd:ObjectDataSourceType>CapaNegocio.Reporting.NInformeCaja, CapaNegocio, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:DataSetName>CapaEntidades.Reporting</rd:DataSetName>
+        <rd:TableName>EInformeCaja</rd:TableName>
+        <rd:ObjectDataSourceType>CapaEntidades.Reporting.EInformeCaja, CapaEntidades, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
     <DataSet Name="DsCaja">
@@ -1555,12 +1561,12 @@
           <DataField>FechaCierre</DataField>
           <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
-        <Field Name="ImporteEntrega">
-          <DataField>ImporteEntrega</DataField>
+        <Field Name="ImporteApertura">
+          <DataField>ImporteApertura</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="Monto">
-          <DataField>Monto</DataField>
+        <Field Name="ImporteEntrega">
+          <DataField>ImporteEntrega</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="NroCaja">
@@ -1585,9 +1591,9 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>CapaDatos</rd:DataSetName>
-        <rd:TableName>DCaja</rd:TableName>
-        <rd:ObjectDataSourceType>CapaDatos.DCaja, CapaDatos, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:DataSetName>CapaEntidades</rd:DataSetName>
+        <rd:TableName>ECaja</rd:TableName>
+        <rd:ObjectDataSourceType>CapaEntidades.ECaja, CapaEntidades, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

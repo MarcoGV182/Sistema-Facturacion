@@ -64,8 +64,8 @@ namespace CapaPresentacion
             NInformeCaja reportModel = new NInformeCaja();
             reportModel.ResumenCajaReport(inicio, fin);
 
-            nInformeCajaBindingSource.DataSource = reportModel;
-            dCajaBindingSource.DataSource = reportModel.ListaArqueos;
+            eInformeCajaBindingSource.DataSource = reportModel.eInformeCaja;
+            dCajaBindingSource.DataSource = reportModel.eInformeCaja.ListaArqueos;
 
             this.reportViewer1.RefreshReport();
         }

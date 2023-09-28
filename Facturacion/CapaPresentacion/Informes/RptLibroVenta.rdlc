@@ -1406,9 +1406,9 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>CapaNegocio</rd:DataSetName>
-        <rd:TableName>NLibroVentaReport</rd:TableName>
-        <rd:ObjectDataSourceType>CapaNegocio.NLibroVentaReport, CapaNegocio, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:DataSetName>CapaEntidades.Reporting</rd:DataSetName>
+        <rd:TableName>ELibroVentaReport</rd:TableName>
+        <rd:ObjectDataSourceType>CapaEntidades.Reporting.ELibroVentaReport, CapaEntidades, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
     <DataSet Name="DsDetalleDeVentas">
@@ -1463,9 +1463,10 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>CapaNegocio</rd:DataSetName>
-        <rd:TableName>NDetalleDeVentas</rd:TableName>
-        <rd:ObjectDataSourceType>CapaNegocio.NDetalleDeVentas, CapaNegocio, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:DataSetName>CapaEntidades.Reporting</rd:DataSetName>
+        <rd:TableName>ELibroVentaReport</rd:TableName>
+        <rd:ObjectDataSourceSelectMethod>DetallesVentas</rd:ObjectDataSourceSelectMethod>
+        <rd:ObjectDataSourceType>CapaEntidades.Reporting.ELibroVentaReport, CapaEntidades, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

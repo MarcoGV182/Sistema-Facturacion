@@ -196,10 +196,6 @@ namespace CapaPresentacion
         private void OcultarColumnas()
         {
             this.dataListado.Columns[0].Visible = false;
-            /*this.dataListado.Columns[6].Visible = false;//UnidadMedidaNro
-            this.dataListado.Columns[11].Visible = false;//CodImpuesto
-            this.dataListado.Columns[12].Visible = false;//PorcentajeIVA
-            this.dataListado.Columns[13].Visible = false;//BaseImponible*/
         }
 
 
@@ -227,7 +223,7 @@ namespace CapaPresentacion
 
             //Configurar las columnas de Productos
             DataGridViewTextBoxColumn columnaId = new DataGridViewTextBoxColumn();
-            columnaId.DataPropertyName = "ProductoNro";
+            columnaId.DataPropertyName = "ArticuloNro";
             columnaId.HeaderText = "Codigo";
             dataListado.Columns.Add(columnaId);
 
@@ -288,7 +284,7 @@ namespace CapaPresentacion
             dataListado.Columns.Add(columnPrecioCompra);
 
             DataGridViewTextBoxColumn columnPrecioVenta = new DataGridViewTextBoxColumn();
-            columnPrecioVenta.DataPropertyName = "PrecioVenta";
+            columnPrecioVenta.DataPropertyName = "Precio";
             columnPrecioVenta.HeaderText = "Precio Venta";
             dataListado.Columns.Add(columnPrecioVenta);
 
@@ -413,13 +409,13 @@ namespace CapaPresentacion
                 btnEliminar.Enabled = false;
             }
             //top para ubicar en la parte superior
-            this.Top = 0;
+            Top = 0;
             //alineado hacia la izquierda
-            this.Left = 0;
-            this.Habilitar(false);
-            this.Botones();
-            this.Mostrar();
-            this.MedidaColumna(dataListado);
+            Left = 0;
+            Habilitar(false);
+            Botones();
+            Mostrar();
+            MedidaColumna(dataListado);
 
         }
 
@@ -427,16 +423,16 @@ namespace CapaPresentacion
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            this.IsNuevo = true;
-            this.IsEditar = false;
-            this.Botones();
-            this.Limpiar();
-            this.Habilitar(true);
+            IsNuevo = true;
+            IsEditar = false;
+            Botones();
+            Limpiar();
+            Habilitar(true);
 
-            this.txtCodigoBarra.Focus();
-            this.cboEstado.SelectedIndex = 0;            
-            this.txtCodigo.Visible = true;            
-            this.dtpFechaVto.Checked = false;
+            txtCodigoBarra.Focus();
+            cboEstado.SelectedIndex = 0;            
+            txtCodigo.Visible = true;            
+            dtpFechaVto.Checked = false;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -627,44 +623,42 @@ namespace CapaPresentacion
             if (e.ColumnIndex == dataListado.Columns["Eliminar"].Index)
             {
                 DataGridViewCheckBoxCell chkEliminarDV = (DataGridViewCheckBoxCell)dataListado.Rows[e.RowIndex].Cells["Eliminar"];
-
                 chkEliminarDV.Value = !Convert.ToBoolean(chkEliminarDV.Value);
-
             }
         }
 
         private void dataListado_DoubleClick(object sender, EventArgs e)
         {
             var ProductoSeleccionado = dataListado.CurrentRow.DataBoundItem as EProducto;
-            this.txtCodigo.Text = ProductoSeleccionado.ArticuloNro.ToString();
-            this.txtDescripcion.Text = Convert.ToString(ProductoSeleccionado.Descripcion);
-            this.txtCodigoBarra.Text = Convert.ToString(ProductoSeleccionado.CodigoBarra);
-            this.txtPrecioCompra.Text = Convert.ToDouble(ProductoSeleccionado.PrecioCompra).ToString("N0");           
-            this.txtPrecioVenta.Text = Convert.ToDouble(ProductoSeleccionado.Precio).ToString("N0");
-            this.txtStockActual.Text = Convert.ToString(ProductoSeleccionado.StockActual);
-            this.txtStockMinimo.Text = Convert.ToString(ProductoSeleccionado.Stockminimo);
-            this.txtObservacion.Text = Convert.ToString(ProductoSeleccionado.Observacion);
-            this.cboMarca.Text = Convert.ToString(ProductoSeleccionado.Marca.Descripcion);
-            this.cboPresentacion.Text = Convert.ToString(ProductoSeleccionado.Presentacion.Descripcion);
-            this.cboTipoProducto.Text = Convert.ToString(ProductoSeleccionado.TipoProducto.Descripcion);
-            this.cboUnidadMedida.Text = Convert.ToString(ProductoSeleccionado.UnidadMedida.Descripcion);
-            this.cboEstado.Text = Convert.ToString(ProductoSeleccionado.Estado);
-            this.cboImpuesto.SelectedValue = Convert.ToInt32(ProductoSeleccionado.TipoImpuesto.TipoImpuestoNro);
+            txtCodigo.Text = ProductoSeleccionado.ArticuloNro.ToString();
+            txtDescripcion.Text = Convert.ToString(ProductoSeleccionado.Descripcion);
+            txtCodigoBarra.Text = Convert.ToString(ProductoSeleccionado.CodigoBarra);
+            txtPrecioCompra.Text = Convert.ToDouble(ProductoSeleccionado.PrecioCompra).ToString("N0");           
+            txtPrecioVenta.Text = Convert.ToDouble(ProductoSeleccionado.Precio).ToString("N0");
+            txtStockActual.Text = Convert.ToString(ProductoSeleccionado.StockActual);
+            txtStockMinimo.Text = Convert.ToString(ProductoSeleccionado.Stockminimo);
+            txtObservacion.Text = Convert.ToString(ProductoSeleccionado.Observacion);
+            cboMarca.Text = Convert.ToString(ProductoSeleccionado.Marca.Descripcion);
+            cboPresentacion.Text = Convert.ToString(ProductoSeleccionado.Presentacion.Descripcion);
+            cboTipoProducto.Text = Convert.ToString(ProductoSeleccionado.TipoProducto.Descripcion);
+            cboUnidadMedida.Text = Convert.ToString(ProductoSeleccionado.UnidadMedida.Descripcion);
+            cboEstado.Text = Convert.ToString(ProductoSeleccionado.Estado);
+            cboImpuesto.SelectedValue = Convert.ToInt32(ProductoSeleccionado.TipoImpuesto.TipoImpuestoNro);
             if (string.IsNullOrEmpty(ProductoSeleccionado.FechaVencimiento.ToString())) 
             {
                 dtpFechaVto.Checked = false;
             }   
             else
             {
-                this.dtpFechaVto.Value =  Convert.ToDateTime(ProductoSeleccionado.FechaVencimiento.Value);
+                dtpFechaVto.Value =  Convert.ToDateTime(ProductoSeleccionado.FechaVencimiento.Value);
             }
             
-            this.lblCodigo.Visible = true;
-            this.txtCodigo.Visible = true;
-            this.Botones();
+            lblCodigo.Visible = true;
+            txtCodigo.Visible = true;
+            Botones();
 
             //mostrar la segunda pestana la de mantenimiento al hacer doble click
-            this.tabProducto.SelectedIndex = 1;
+            tabProducto.SelectedIndex = 1;
         }
 
         private void chkEliminar_CheckedChanged(object sender, EventArgs e)
@@ -673,14 +667,14 @@ namespace CapaPresentacion
             {
                 btnEliminar.Enabled = true;
                 chktodos.Visible = true;
-                this.dataListado.Columns[0].Visible = true;
+                dataListado.Columns[0].Visible = true;
             }
             else
             {
                 chktodos.Checked = false;
                 btnEliminar.Enabled = false;
                 chktodos.Visible = false;
-                this.dataListado.Columns[0].Visible = false;
+                dataListado.Columns[0].Visible = false;
             }
         }
 
@@ -767,25 +761,17 @@ namespace CapaPresentacion
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            this.Buscar();
+            Buscar();
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {            
-            this.Buscar();
+            Buscar();
         }
 
         private void FrmProducto_FormClosing(object sender, FormClosingEventArgs e)
         {
             _Instancia = null;
-        }
-
-        
-        private void dataListado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            /*
-            this.dataListado.Columns["PrecioCompra"].DefaultCellStyle.Format = "N0";
-            this.dataListado.Columns["Precio"].DefaultCellStyle.Format = "N0";*/
         }
 
         private void dataListado_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)

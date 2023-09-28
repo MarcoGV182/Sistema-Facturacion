@@ -32,8 +32,6 @@ namespace CapaPresentacion
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.nLibroVentaReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nDetalleDeVentasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,18 +39,14 @@ namespace CapaPresentacion
             this.dtpHasta = new System.Windows.Forms.DateTimePicker();
             this.btnObtener = new System.Windows.Forms.Button();
             this.gbFiltro = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.nLibroVentaReportBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nDetalleDeVentasBindingSource)).BeginInit();
+            this.cboEstado = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.eLibroVentaReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eDetalleDeVentasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gbFiltro.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.eLibroVentaReportBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eDetalleDeVentasBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // nLibroVentaReportBindingSource
-            // 
-            this.nLibroVentaReportBindingSource.DataSource = typeof(CapaNegocio.NLibroVentaReport);
-            // 
-            // nDetalleDeVentasBindingSource
-            // 
-            this.nDetalleDeVentasBindingSource.DataSource = typeof(CapaNegocio.NDetalleDeVentas);
             // 
             // reportViewer1
             // 
@@ -60,16 +54,16 @@ namespace CapaPresentacion
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             reportDataSource1.Name = "DsLibroVentaReport";
-            reportDataSource1.Value = this.nLibroVentaReportBindingSource;
+            reportDataSource1.Value = this.eLibroVentaReportBindingSource;
             reportDataSource2.Name = "DsDetalleDeVentas";
-            reportDataSource2.Value = this.nDetalleDeVentasBindingSource;
+            reportDataSource2.Value = this.eDetalleDeVentasBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "CapaPresentacion.Informes.RptLibroVenta.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(14, 109);
+            this.reportViewer1.Location = new System.Drawing.Point(12, 138);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1090, 442);
+            this.reportViewer1.Size = new System.Drawing.Size(1095, 401);
             this.reportViewer1.TabIndex = 0;
             // 
             // label1
@@ -100,7 +94,7 @@ namespace CapaPresentacion
             this.dtpDesde.Location = new System.Drawing.Point(64, 26);
             this.dtpDesde.Name = "dtpDesde";
             this.dtpDesde.Size = new System.Drawing.Size(112, 24);
-            this.dtpDesde.TabIndex = 3;
+            this.dtpDesde.TabIndex = 1;
             // 
             // dtpHasta
             // 
@@ -109,11 +103,11 @@ namespace CapaPresentacion
             this.dtpHasta.Location = new System.Drawing.Point(64, 56);
             this.dtpHasta.Name = "dtpHasta";
             this.dtpHasta.Size = new System.Drawing.Size(112, 24);
-            this.dtpHasta.TabIndex = 4;
+            this.dtpHasta.TabIndex = 2;
             // 
             // btnObtener
             // 
-            this.btnObtener.Location = new System.Drawing.Point(182, 55);
+            this.btnObtener.Location = new System.Drawing.Point(182, 81);
             this.btnObtener.Name = "btnObtener";
             this.btnObtener.Size = new System.Drawing.Size(87, 27);
             this.btnObtener.TabIndex = 5;
@@ -123,6 +117,8 @@ namespace CapaPresentacion
             // 
             // gbFiltro
             // 
+            this.gbFiltro.Controls.Add(this.cboEstado);
+            this.gbFiltro.Controls.Add(this.label3);
             this.gbFiltro.Controls.Add(this.label1);
             this.gbFiltro.Controls.Add(this.btnObtener);
             this.gbFiltro.Controls.Add(this.label2);
@@ -130,10 +126,40 @@ namespace CapaPresentacion
             this.gbFiltro.Controls.Add(this.dtpDesde);
             this.gbFiltro.Location = new System.Drawing.Point(12, 12);
             this.gbFiltro.Name = "gbFiltro";
-            this.gbFiltro.Size = new System.Drawing.Size(301, 91);
+            this.gbFiltro.Size = new System.Drawing.Size(301, 122);
             this.gbFiltro.TabIndex = 6;
             this.gbFiltro.TabStop = false;
             this.gbFiltro.Text = "Filtro";
+            // 
+            // cboEstado
+            // 
+            this.cboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEstado.FormattingEnabled = true;
+            this.cboEstado.Items.AddRange(new object[] {
+            "EMITIDO",
+            "ANULADO"});
+            this.cboEstado.Location = new System.Drawing.Point(64, 85);
+            this.cboEstado.Name = "cboEstado";
+            this.cboEstado.Size = new System.Drawing.Size(112, 23);
+            this.cboEstado.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.label3.Location = new System.Drawing.Point(15, 92);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 16);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Estado:";
+            // 
+            // eLibroVentaReportBindingSource
+            // 
+            this.eLibroVentaReportBindingSource.DataSource = typeof(CapaEntidades.Reporting.ELibroVentaReport);
+            // 
+            // eDetalleDeVentasBindingSource
+            // 
+            this.eDetalleDeVentasBindingSource.DataSource = typeof(CapaEntidades.Reporting.EDetalleDeVentas);
             // 
             // FrmLibroVentas
             // 
@@ -147,10 +173,10 @@ namespace CapaPresentacion
             this.Text = "Libro de Ventas";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLibroVentas_FormClosing);
             this.Load += new System.EventHandler(this.FrmLibroVentas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.nLibroVentaReportBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nDetalleDeVentasBindingSource)).EndInit();
             this.gbFiltro.ResumeLayout(false);
             this.gbFiltro.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.eLibroVentaReportBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eDetalleDeVentasBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -163,8 +189,10 @@ namespace CapaPresentacion
         private System.Windows.Forms.DateTimePicker dtpDesde;
         private System.Windows.Forms.DateTimePicker dtpHasta;
         private System.Windows.Forms.Button btnObtener;
-        private System.Windows.Forms.BindingSource nLibroVentaReportBindingSource;
-        private System.Windows.Forms.BindingSource nDetalleDeVentasBindingSource;
         private System.Windows.Forms.GroupBox gbFiltro;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboEstado;
+        private System.Windows.Forms.BindingSource eLibroVentaReportBindingSource;
+        private System.Windows.Forms.BindingSource eDetalleDeVentasBindingSource;
     }
 }

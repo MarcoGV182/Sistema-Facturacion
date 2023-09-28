@@ -370,7 +370,7 @@
     <value>NoControl</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>612, 28</value>
+    <value>621, 28</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 16</value>
@@ -975,31 +975,31 @@
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="txtTotalGravadas.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="txtTotalNeto.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
-  <data name="txtTotalGravadas.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="txtTotalNeto.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 22</value>
   </data>
-  <data name="txtTotalGravadas.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="txtTotalNeto.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 26</value>
   </data>
-  <data name="txtTotalGravadas.TabIndex" type="System.Int32, mscorlib">
+  <data name="txtTotalNeto.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="txtTotalGravadas.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+  <data name="txtTotalNeto.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="&gt;&gt;txtTotalGravadas.Name" xml:space="preserve">
-    <value>txtTotalGravadas</value>
+  <data name="&gt;&gt;txtTotalNeto.Name" xml:space="preserve">
+    <value>txtTotalNeto</value>
   </data>
-  <data name="&gt;&gt;txtTotalGravadas.Type" xml:space="preserve">
+  <data name="&gt;&gt;txtTotalNeto.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txtTotalGravadas.Parent" xml:space="preserve">
+  <data name="&gt;&gt;txtTotalNeto.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="&gt;&gt;txtTotalGravadas.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txtTotalNeto.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="txtObservacion.Font" type="System.Drawing.Font, System.Drawing">
@@ -1420,13 +1420,13 @@
     <value>Top, Left, Right</value>
   </data>
   <data name="cbocolaborador.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9.75pt</value>
+    <value>Times New Roman, 11.25pt</value>
   </data>
   <data name="cbocolaborador.Location" type="System.Drawing.Point, System.Drawing">
     <value>142, 119</value>
   </data>
   <data name="cbocolaborador.Size" type="System.Drawing.Size, System.Drawing">
-    <value>265, 23</value>
+    <value>265, 25</value>
   </data>
   <data name="cbocolaborador.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
