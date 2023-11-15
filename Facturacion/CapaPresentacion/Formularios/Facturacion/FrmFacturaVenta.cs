@@ -621,7 +621,7 @@ namespace CapaPresentacion.Formularios.Facturacion
         private void Mostrar()
         {
             ListaFacturas = NFactura.Mostrar();            
-            dataListado.DataSource = ListaFacturas;
+            dataListado.DataSource = ListaFacturas.OrderByDescending(c=>c.Fecha).ToList();
             OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -630,7 +630,7 @@ namespace CapaPresentacion.Formularios.Facturacion
         private void BuscarFechas()
         {
             ListaFacturas = NFactura.BuscarFacturaFecha(dtpFechadesde.Value.ToString("yyyy-MM-dd"), dtpfechahasta.Value.ToString("yyyy-MM-dd"));
-            dataListado.DataSource = ListaFacturas;
+            dataListado.DataSource = ListaFacturas.OrderByDescending(c => c.Fecha).ToList(); 
             OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }

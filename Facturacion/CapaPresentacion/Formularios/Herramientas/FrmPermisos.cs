@@ -155,7 +155,9 @@ namespace CapaPresentacion.Formularios.Herramientas
                 foreach (DataGridViewRow row in dataListado.Rows)
                 {   
                     string habilitado = Convert.ToBoolean(row.Cells["Habilitado"].Value) ? "S" : "N";
-                    inserted = NTipoUsuarioRegla.Insertar(Convert.ToInt32(row.Cells["IdOperacion"].Value), Convert.ToInt32(cboRoles.SelectedValue), habilitado);
+                    int RolSeleccion = Convert.ToInt32(cboRoles.SelectedValue);
+                    int OperacionSeleccion = Convert.ToInt32(row.Cells["IdOperacion"].Value);
+                    inserted = NTipoUsuarioRegla.Insertar(OperacionSeleccion, RolSeleccion, habilitado);
 
                     if (!inserted.Equals("OK"))
                         break;

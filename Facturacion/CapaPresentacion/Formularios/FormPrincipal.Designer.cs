@@ -100,6 +100,7 @@
             this.txtnombreusuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.ventasPorColaboradorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -455,7 +456,8 @@
             this.productosToolStripMenuItem2,
             this.stockToolStripMenuItem,
             this.movimientosToolStripMenuItem,
-            this.libroVentaToolStripMenuItem});
+            this.libroVentaToolStripMenuItem,
+            this.ventasPorColaboradorToolStripMenuItem});
             this.MenuConsultas.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.MenuConsultas.ForeColor = System.Drawing.Color.Black;
             this.MenuConsultas.Image = global::CapaPresentacion.Properties.Resources.consulta_png;
@@ -764,6 +766,14 @@
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
+            // ventasPorColaboradorToolStripMenuItem
+            // 
+            this.ventasPorColaboradorToolStripMenuItem.Name = "ventasPorColaboradorToolStripMenuItem";
+            this.ventasPorColaboradorToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.ventasPorColaboradorToolStripMenuItem.Tag = "35";
+            this.ventasPorColaboradorToolStripMenuItem.Text = "Ventas por Colaborador";
+            this.ventasPorColaboradorToolStripMenuItem.Click += new System.EventHandler(this.ventasPorColaboradorToolStripMenuItem_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -867,6 +877,7 @@
         private System.Windows.Forms.ToolStripMenuItem modificarRegistroPagoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem libroVentaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem libroVentaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ventasPorColaboradorToolStripMenuItem;
     }
 }
 

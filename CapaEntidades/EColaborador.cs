@@ -25,5 +25,6 @@ namespace CapaEntidades
         public DateTime FechaIngreso { get; set; }
         public DateTime? FechaEgreso { get; set; }
         public double Salario { get; set; }
+        public bool HabilitadoVendedor { get; set; }
     }
 }

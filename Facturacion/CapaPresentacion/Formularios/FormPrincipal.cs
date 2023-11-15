@@ -18,6 +18,7 @@ using CapaPresentacion.Formularios.Herramientas;
 using CapaPresentacion.Formularios.Inventario;
 using CapaPresentacion.Formularios.Mantenimiento;
 using CapaPresentacion.Formularios.RRHH;
+using CapaPresentacion.Informes;
 using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion.Formularios
@@ -706,6 +707,14 @@ namespace CapaPresentacion.Formularios
         private void libroVentaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmLibroVentas frm = FrmLibroVentas.GetInstancia();
+            frm.MdiParent = this;
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void ventasPorColaboradorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmInformeVentaColaborador frm = FrmInformeVentaColaborador.GetInstancia();
             frm.MdiParent = this;
             frm.Show();
             frm.BringToFront();

@@ -18,7 +18,7 @@ namespace CapaNegocio
             ETipoUsuarioRegla eTipoUsuarioRegla = new ETipoUsuarioRegla();
             eTipoUsuarioRegla.Operacion = new EOperacion()
             {
-                IdModulo = idOperacion
+                IdOperacion = idOperacion
             };
             eTipoUsuarioRegla.Rol = new ERol()
             {

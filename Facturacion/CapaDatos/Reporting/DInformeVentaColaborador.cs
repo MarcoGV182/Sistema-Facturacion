@@ -10,7 +10,7 @@ namespace CapaDatos.Reporting
 {
     public class DInformeVentaColaborador:Conexion
     {
-        public DataTable InformeVentaColaborador(DateTime fechaDesde,DateTime fechaHasta,int VendedorColaboradorId)
+        public DataTable InformeVentaColaborador(DateTime fechaDesde,DateTime fechaHasta,int? VendedorColaboradorId)
         {
             DataTable DtResultado = new DataTable("InformeVentaColaborador");
             SqlConnection Sqlcon = null;
@@ -29,7 +29,8 @@ namespace CapaDatos.Reporting
                                         from factura f join DetalleFactura df on f.NroVenta = df.NroVenta
 			                                           join Colaborador c on f.Vendedor = c.ColaboradorNro
 			                                           join Persona p on c.ColaboradorNro = p.PersonaNro
-                                        where f.FechaFactura >= @FechaDesde and f.FechaFactura <= @FechaHasta and f.Vendedor = ISNULL(@Vendedor,f.Vendedor)
+                                        where f.FechaFactura >= @FechaDesde and f.FechaFactura <= @FechaHasta 
+                                          and f.Vendedor = ISNULL(@Vendedor,f.Vendedor)
                                         group by 
                                              f.NroFactura,
 	                                         f.NroVenta,
@@ -53,8 +54,8 @@ namespace CapaDatos.Reporting
 
                 SqlParameter ParVendedor = new SqlParameter();
                 ParVendedor.ParameterName = "@Vendedor";
-                ParVendedor.SqlDbType = SqlDbType.Int;
-                ParVendedor.Value = VendedorColaboradorId;
+                ParVendedor.SqlDbType = SqlDbType.VarChar;
+                ParVendedor.Value = (object)VendedorColaboradorId ?? DBNull.Value;
                 SqlCmd.Parameters.Add(ParVendedor);
 
                 SqlCmd.CommandType = CommandType.Text;

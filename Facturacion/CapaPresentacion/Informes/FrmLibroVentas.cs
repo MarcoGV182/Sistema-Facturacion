@@ -15,12 +15,11 @@ namespace CapaPresentacion
 {
     public partial class FrmLibroVentas : Form
     {
+        private static FrmLibroVentas _Instancia;
         public FrmLibroVentas()
         {
             InitializeComponent();
-        }
-
-        private static FrmLibroVentas _Instancia;
+        }        
 
         public static FrmLibroVentas GetInstancia() 
         { 
@@ -45,18 +44,17 @@ namespace CapaPresentacion
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-        try 
-        {
+            try
+            {
                 var desde = dtpDesde.Value;
                 var hasta = dtpHasta.Value;
                 var estado = cboEstado.Text;
                 CargarDatos(desde, hasta, estado);
-        }
-            catch(Exception ex) 
-        {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
-        }
-           
+            }
         }
 
         private void FrmLibroVentas_FormClosing(object sender, FormClosingEventArgs e)

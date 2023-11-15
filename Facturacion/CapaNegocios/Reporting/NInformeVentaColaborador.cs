@@ -14,15 +14,16 @@ namespace CapaNegocio.Reporting
 {
     public class NInformeVentaColaborador
     {
-        List<EDetalleInformeVentaColaborador> Detalleinforme;
-        public int ColaboradorId { get; set; }
+        public List<EDetalleInformeVentaColaborador> Detalleinforme;
+        public int? ColaboradorId { get; set; }
+        public string NombreColaborador { get; set; }
         public DateTime Desde { get; set; }
         public DateTime Hasta { get; set; }
         public DateTime FechaReport { get; set; }
         public double TotalGralVenta { get; set; }
 
 
-        public void ObtenerInformeVentaColaborador(DateTime FechaDesde,DateTime FechaHasta, int Colaborador) 
+        public void ObtenerInformeVentaColaborador(DateTime FechaDesde,DateTime FechaHasta, int? Colaborador) 
         {
            try
             {

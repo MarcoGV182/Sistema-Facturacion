@@ -146,6 +146,12 @@
     <Compile Include="Formularios\Gastos\FrmEliminarArqueo.Designer.cs">
       <DependentUpon>FrmEliminarArqueo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Informes\FrmInformeVentaColaborador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Informes\FrmInformeVentaColaborador.Designer.cs">
+      <DependentUpon>FrmInformeVentaColaborador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilidades\FormularioManager.cs" />
     <Compile Include="Formularios\FrmCargandoForm.cs">
       <SubType>Form</SubType>
@@ -829,6 +835,9 @@
     <EmbeddedResource Include="Formularios\FrmUsuarioServicio.resx">
       <DependentUpon>FrmUsuarioServicio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Informes\FrmInformeVentaColaborador.resx">
+      <DependentUpon>FrmInformeVentaColaborador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Informes\FrmComprasFiltro.resx">
       <DependentUpon>FrmComprasFiltro.cs</DependentUpon>
     </EmbeddedResource>
@@ -896,6 +905,7 @@
     <EmbeddedResource Include="Informes\RptInformePagosProveedor.rdlc" />
     <EmbeddedResource Include="Informes\RptInformePagosCliente.rdlc" />
     <EmbeddedResource Include="Informes\RptInformeRetencion.rdlc" />
+    <EmbeddedResource Include="Informes\RptInformeVentaColaborador.rdlc" />
     <EmbeddedResource Include="Informes\RptLibroCompras.rdlc" />
     <EmbeddedResource Include="Informes\RptLibroVenta.rdlc" />
     <EmbeddedResource Include="Informes\RptProducto.rdlc" />
@@ -931,11 +941,13 @@
     <None Include="Properties\DataSources\CapaDatos.DCaja.datasource" />
     <None Include="Properties\DataSources\CapaEntidades.ECaja.datasource" />
     <None Include="Properties\DataSources\CapaEntidades.Reporting.EDetalleDeVentas.datasource" />
+    <None Include="Properties\DataSources\CapaEntidades.Reporting.EDetalleInformeVentaColaborador.datasource" />
     <None Include="Properties\DataSources\CapaEntidades.Reporting.EInformeCaja.datasource" />
     <None Include="Properties\DataSources\CapaEntidades.Reporting.ELibroVentaReport.datasource" />
     <None Include="Properties\DataSources\CapaNegocio.NDetalleDeVentas.datasource" />
     <None Include="Properties\DataSources\CapaNegocio.NLibroVentaReport.datasource" />
     <None Include="Properties\DataSources\CapaNegocio.Reporting.NInformeCaja.datasource" />
+    <None Include="Properties\DataSources\CapaNegocio.Reporting.NInformeVentaColaborador.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

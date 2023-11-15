@@ -32,6 +32,8 @@ namespace CapaPresentacion
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.eLibroVentaReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.eDetalleDeVentasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,12 +43,18 @@ namespace CapaPresentacion
             this.gbFiltro = new System.Windows.Forms.GroupBox();
             this.cboEstado = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.eLibroVentaReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.eDetalleDeVentasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gbFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eLibroVentaReportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eDetalleDeVentasBindingSource)).BeginInit();
+            this.gbFiltro.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // eLibroVentaReportBindingSource
+            // 
+            this.eLibroVentaReportBindingSource.DataSource = typeof(CapaEntidades.Reporting.ELibroVentaReport);
+            // 
+            // eDetalleDeVentasBindingSource
+            // 
+            this.eDetalleDeVentasBindingSource.DataSource = typeof(CapaEntidades.Reporting.EDetalleDeVentas);
             // 
             // reportViewer1
             // 
@@ -147,19 +155,11 @@ namespace CapaPresentacion
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.label3.Location = new System.Drawing.Point(15, 92);
+            this.label3.Location = new System.Drawing.Point(14, 88);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 16);
             this.label3.TabIndex = 6;
             this.label3.Text = "Estado:";
-            // 
-            // eLibroVentaReportBindingSource
-            // 
-            this.eLibroVentaReportBindingSource.DataSource = typeof(CapaEntidades.Reporting.ELibroVentaReport);
-            // 
-            // eDetalleDeVentasBindingSource
-            // 
-            this.eDetalleDeVentasBindingSource.DataSource = typeof(CapaEntidades.Reporting.EDetalleDeVentas);
             // 
             // FrmLibroVentas
             // 
@@ -173,10 +173,10 @@ namespace CapaPresentacion
             this.Text = "Libro de Ventas";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLibroVentas_FormClosing);
             this.Load += new System.EventHandler(this.FrmLibroVentas_Load);
-            this.gbFiltro.ResumeLayout(false);
-            this.gbFiltro.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eLibroVentaReportBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eDetalleDeVentasBindingSource)).EndInit();
+            this.gbFiltro.ResumeLayout(false);
+            this.gbFiltro.PerformLayout();
             this.ResumeLayout(false);
 
         }
