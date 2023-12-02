@@ -311,7 +311,7 @@ namespace CapaDatos
                 SqlParameter ParVendedor = new SqlParameter();
                 ParVendedor.ParameterName = "@Vendedor";
                 ParVendedor.SqlDbType = SqlDbType.Int;
-                ParVendedor.Value = Factura.ColaboradorVendedor.PersonaNro;
+                ParVendedor.Value = Factura.ColaboradorVendedor?.PersonaNro;
                 SqlCmd.Parameters.Add(ParVendedor);
 
                 //Parametros TipoPago

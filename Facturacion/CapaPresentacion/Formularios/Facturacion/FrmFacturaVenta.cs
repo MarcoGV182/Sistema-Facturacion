@@ -265,7 +265,7 @@ namespace CapaPresentacion.Formularios.Facturacion
             for (int i = 0; i < dataListado.Rows.Count; i++)
             {
                 var estado = dataListado.Rows[i].DataBoundItem as EFactura;                
-                if (estado.Equals("ANULADO"))
+                if (estado.Estado.ToUpper().Equals("ANULADO"))
                 {
                     dataListado.Rows[i].DefaultCellStyle.ForeColor = Color.Red;
                 }
@@ -775,15 +775,17 @@ namespace CapaPresentacion.Formularios.Facturacion
                 //recorrer el datagrip para eliminar mas de un registro
                 foreach (DataGridViewRow row in dataListado.Rows)
                 {
+                    EFactura itemAnular = (EFactura)row.DataBoundItem;
+                    
                     if (Convert.ToBoolean(row.Cells[0].Value))
                     {
-                        if (row.Cells["Estado"].Value.Equals("ANULADO"))
+                        if (itemAnular.Estado.ToUpper().Equals("ANULADO"))
                         {
                             this.MensajeError("La factura ya se encuentra anulada");
                             return;
                         }
 
-                        codigo = Convert.ToInt32(row.Cells["NroVenta"].Value);
+                        codigo = itemAnular.Id;
                         rpta = NFactura.AnularFactura(codigo, idUsuario);
                     }
                 }
@@ -1541,6 +1543,20 @@ namespace CapaPresentacion.Formularios.Facturacion
         {
             try
             {
+                //Si el usuario no tiene el acceso de ADM solo puede reimprimir documentos del día
+                if (!acceso.ToUpper().Equals("ADMINISTRADOR"))
+                {
+                    var fechaFactura = dtpFecha.Value.ToShortDateString();
+                    var fechaActual = DateTime.Now.ToShortDateString();
+                    if (fechaFactura != fechaActual)
+                    {
+                        MensajeError("Solo puede reimprimir Facturas del día.\nSolo el ADMINISTRADOR puede reimprimir de cualquier día");
+                        return;
+                    }
+                }
+
+
+
                 //Mensaje de carga de reporte
                 btnImprimir2.Text = "Cargando...";
                 btnImprimir2.Enabled = false;

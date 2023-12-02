@@ -95,14 +95,16 @@ namespace CapaPresentacion.Formularios.ChildForms
             if (rbProductos.Checked) 
             {
                 var lstProducto = NProducto.MostrarActivo();
-                CrearColumnasDataGridProducto();
+                dataListado.DataSource = null;
+                CrearColumnasDataGridProducto();                
                 dataListado.DataSource = lstProducto;                
                 //OcultarColumnasProducto();
                 lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
             }else if(rbServicios.Checked)
             {       
                 var lstServicio = NServicio.Mostrar();
-                CrearColumnasDataGridServicio();
+                dataListado.DataSource = null;
+                CrearColumnasDataGridServicio();                
                 dataListado.DataSource = lstServicio;  
                 lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
             }
@@ -238,11 +240,24 @@ namespace CapaPresentacion.Formularios.ChildForms
         }
         private void BuscarProducto()
         {
-           dataListado.DataSource = NProducto.BuscarProductoActivo(txtBuscar.Text);
+            if (string.IsNullOrEmpty(txtBuscar.Text)) 
+            {
+                Mostrar();
+                return;
+            }                
+
+            dataListado.DataSource = NProducto.BuscarProductoActivo(txtBuscar.Text);
            lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);  
-       }
+        }
 
         private void BuscarServicio() {
+            if (string.IsNullOrEmpty(txtBuscar.Text)) 
+            {
+                Mostrar();
+                return;
+
+            }
+
             dataListado.DataSource = NServicio.BuscarServicio(txtBuscar.Text);
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -315,10 +330,11 @@ namespace CapaPresentacion.Formularios.ChildForms
         }
 
         private void dataListado_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        { 
-            try {
+        {
+            try
+            {
                 if (rbProductos.Checked)
-                  {
+                {
                     if (e.RowIndex >= 0 && e.ColumnIndex == columnTipoProducto.Index)
                     {
                         var fila = dataListado.Rows[e.RowIndex];
@@ -336,7 +352,7 @@ namespace CapaPresentacion.Formularios.ChildForms
                             var producto = (EProducto)fila.DataBoundItem;
                             e.Value = producto.Presentacion?.Descripcion;
                         }
-                    }                   
+                    }
                     if (e.RowIndex >= 0 && e.ColumnIndex == columnMarca.Index)
                     {
                         var fila = dataListado.Rows[e.RowIndex];
@@ -360,7 +376,7 @@ namespace CapaPresentacion.Formularios.ChildForms
                 }
                 else
                 {
-                    
+
                     if (e.RowIndex >= 0 && e.ColumnIndex == columnTipoServicioDescripcion.Index)
                     {
                         var fila = dataListado.Rows[e.RowIndex];
@@ -369,10 +385,10 @@ namespace CapaPresentacion.Formularios.ChildForms
                             var servicio = (EServicio)fila.DataBoundItem;
                             e.Value = servicio.TipoServicio?.Descripcion;
                         }
-                    }                    
+                    }
                 }
 
-                
+
                 if (e.RowIndex >= 0 && e.ColumnIndex == columnTipoImpuestoDescripcion.Index)
                 {
                     var fila = dataListado.Rows[e.RowIndex];
@@ -386,9 +402,10 @@ namespace CapaPresentacion.Formularios.ChildForms
                 {
                     e.CellStyle.Format = "N0";
                 };
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message); 
+                MessageBox.Show(ex.Message);
             }
         }
 

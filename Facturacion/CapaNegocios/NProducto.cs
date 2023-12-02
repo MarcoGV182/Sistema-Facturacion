@@ -7,6 +7,7 @@ using CapaDatos;
 using System.Data;
 using CapaEntidades;
 using System.Net.Http.Headers;
+using System.Net;
 
 namespace CapaNegocio
 {
@@ -247,22 +248,25 @@ namespace CapaNegocio
                         Descripcion = row[7].ToString()
                     };
                     eProducto.FechaVencimiento = row[8] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row[8]);
+
+
                     eProducto.TipoImpuesto = new ETipoImpuesto()
                     {
-                        Descripcion = row[8].ToString(),
-                        TipoImpuestoNro = Convert.ToInt32(row[9]),
-                        PorcentajeIva = Convert.ToDecimal(row[10]),
-                        BaseImponible = Convert.ToDecimal(row[11])
+                        Descripcion = row[9].ToString(),
+                        TipoImpuestoNro = Convert.ToInt32(row[10]),
+                        PorcentajeIva = Convert.ToDecimal(row[11]),
+                        BaseImponible = Convert.ToDecimal(row[12])
                     };
-                    eProducto.Stockminimo = Convert.ToInt32(row[12]);
-                    eProducto.StockActual = Convert.ToInt32(row[13]);
-                    eProducto.PrecioCompra = Convert.ToDouble(row[14]);
-                    eProducto.Precio = Convert.ToDouble(row[15]);
-                    eProducto.Estado = row[16].ToString();
-                    eProducto.Observacion = row[17].ToString();
+                    eProducto.Stockminimo = Convert.ToInt32(row[13]);
+                    eProducto.StockActual = Convert.ToInt32(row[14]);
+                    eProducto.PrecioCompra = Convert.ToDouble(row[15]);
+                    eProducto.Precio = Convert.ToDouble(row[16]);
+                    eProducto.Estado = row[17].ToString();
+                    eProducto.Observacion = row[18].ToString();
 
                     ListaProductos.Add(eProducto);
                 }
+
             }
             catch (Exception ex)
             {
